@@ -1,0 +1,17 @@
+{
+  "name": "data-elements",
+  "authors": [
+    "The Polymer Authors"
+  ],
+  "keywords": [
+    "element-collection"
+  ],
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "dependencies": {
+    "app-pouchdb": "PolymerElements/app-pouchdb",
+    "app-storage": "PolymerElements/app-storage",
+    "iron-ajax": "PolymerElements/iron-ajax",
+    "iron-jsonp-library": "PolymerElements/iron-jsonp-library",
+    "polymerfire": "firebase/polymerfire"
+  }
+}

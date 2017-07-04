@@ -1,0 +1,355 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-ripple/paper-ripple.html">
+<link rel="import" href="../paper-material/paper-material.html">
+<link rel="import" href="../paper-slider/paper-slider.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-styles/typography.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-icons/av-icons.html">
+<link rel="import" href="../paper-styles/color.html">
+
+<!--
+`paper-video-controls`
+A video container element that will provide material design controls for the video.
+
+Example:
+
+    <paper-video-controls>
+      <video>
+        <source src="demo.mp4" type="video/mp4">
+      </video>
+    </paper-video-controls>
+
+### Top controls
+
+If you want to add some extra controls to the top of the video (for example back button, video title, subtitle choice etc), you can also add a div inside this element with the class `top-controls`.
+Furthermore, if you want this to only be shown when in full screen, add the `fullscreen-controls` class as well. See demo for example.
+
+### Styling
+
+The following custom properties and mixins are available for styling:
+
+Custom property | Description | Default
+----------------|-------------|----------
+`--paper-video-controls-background` | The background color of the controls | `white`
+`--paper-video-controls-color` | The color of text, buttons etc on the control bar. | `--paper-grey-700`
+`--paper-video-controls-slider-color` | Color of the sliders (both progress bar and volume). | `--google-blue-700`
+`--paper-video-controls-pin-text-color` | Color of the text inside the pin | `white`
+
+@demo demo/index.html 
+-->
+
+<dom-module id="paper-video-controls">
+  <template>
+    <style>
+      :host {
+        display: block;
+        font-family: 'Roboto', 'Noto', sans-serif;
+        --paper-video-controls-background: white;
+        --paper-video-controls-color: var(--paper-grey-700);
+        --paper-video-controls-slider-color: var(--google-blue-700);
+        --paper-video-controls-pin-text-color: white;
+      }
+      :host #container:-webkit-full-screen ::content .top-controls {
+        
+      }
+      :host #container:-webkit-full-screen #videoControls,
+      :host #container:fullscreen #videoControls,
+      :host #container:-moz-full-screen #videoControls,
+      :host #container:-ms-fullscreen #videoControls,
+      
+      :host #container:-webkit-full-screen ::content .top-controls,
+      :host #container:fullscreen ::content .top-controls,
+      :host #container:-moz-full-screen ::content .top-controls,
+      :host #container:-ms-fullscreen ::content .top-controls {
+        position: fixed;
+      }
+      :host #videoControls,:host ::content .top-controls {
+        position: absolute;
+        left: 0;
+        right: 0;
+        transition: 0.1s;
+      }
+      :host #videoControls {
+        bottom: 4px;
+        display: flex;
+        color: var(--paper-video-controls-color);
+        background-color: var(--paper-video-controls-background);
+        align-items: center;
+        padding: 15px;
+      }
+      :host ::content .top-controls {
+        top: 0px;
+      }
+      :host ::content #container:not(:-webkit-full-screen) .fullscreen-controls {
+        display: none;
+      }
+      :host .container {
+          position: relative;
+          display: inline-block;
+          outline: none;
+          width: 100%;
+      }
+      :host #durationSlider {
+          flex: 1;
+      }
+      :host #volumeSlider {
+          max-width: 120px;
+      }
+      :host #container:-webkit-full-screen,
+      :host #container:-webkit-full-screen ::content video {
+          width: 100vw;
+          height: 100vh;
+      }
+      :host ::content video {
+        background-color: black;
+        width: 100%;
+      }
+      :host.controls-hidden .container {
+        cursor: none;
+      }
+      
+      :host(.controls-hidden:not([controls])) {
+        cursor: default;
+      }
+      
+      :host(.controls-hidden) #videoControls, :host(.controls-hidden) ::content .top-controls {
+        transition: 0.5s;
+        opacity: 0;
+        pointer-events: none;
+        touch-action: none;
+      }
+      :host .video-time {
+        @apply(--paper-font-caption);
+      }
+      paper-slider {
+        --paper-slider-knob-start-color: var(--paper-video-controls-slider-color);
+        --paper-slider-knob-start-border-color: var(--paper-video-controls-slider-color);
+        --paper-slider-knob-color: var(--paper-video-controls-slider-color);
+        --paper-slider-active-color: var(--paper-video-controls-slider-color);
+        --paper-slider-knob-color: var(--paper-video-controls-slider-color);
+        --paper-slider-pin-color: var(--paper-video-controls-slider-color);
+        --paper-slider-font-color: var(--paper-video-controls-pin-text-color);
+      }
+      @media (max-width:640px)  { 
+          #volumeSlider, #toggleMute {
+            display: none;
+          }
+      }
+    </style>
+    <div id="container" class="container">
+      <content id="videoContent" select="video"></content>
+      <content id="topControls" select=".top-controls"></content>
+      <paper-material elevation="1" hidden$="{{!controls}}" id="videoControls">
+          <paper-icon-button id="playPauseIcon" on-tap="togglePlayPause" icon="av:play-arrow"></paper-icon-button>
+          <span class="video-time">{{_readableDuration(currentTime)}}/[[_readableDuration(duration)]]</span>
+          <paper-slider pin="[[timePin]]" id="durationSlider" max="[[duration]]" on-change="_changeCurrentTime" immediate-value="{{durationSliderValue}}" pin-label="[[_readableDuration(durationSliderValue)]]"></paper-slider>
+          <paper-icon-button id="toggleMute" icon="av:volume-up" on-tap="toggleMute"></paper-icon-button>
+          <paper-slider pin="[[volumePin]]" pin-label="[[_readableVolume(volumeSliderValue)]]" immediate-value="{{volumeSliderValue}}" id="volumeSlider" value="{{videoVolume}}" on-immediate-value-change="_changeVolume"></paper-slider>
+          <paper-icon-button id="fullScreen" icon="icons:fullscreen" on-tap="toggleFullScreen"></paper-icon-button>
+      </paper-material>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'paper-video-controls',
+      attached: function() {
+        var video = this.getContentChildren('#videoContent')[0];
+        if (video) {
+          this.$.video = video;
+          var that = this;
+          video.ondurationchange = function() {
+            that._durationChange();
+          };
+          video.onloadedmetadata = function() {
+            that._durationChange();
+          }
+          video.ontimeupdate = function() {
+            that._currentTimeChange();
+          };
+          this._currentTimeChange();
+          video.onvolumechange = function() {
+            that._currentVolumeChange();
+          };
+          this._currentVolumeChange();
+          video.onpause = function() {
+            that.$.playPauseIcon.icon = "av:play-arrow";
+          }
+          video.onplay = function() {
+            that.$.playPauseIcon.icon = "av:pause";
+          }
+          if (this.requestFullScreen) {
+            this.onfullscreenchange = function() {
+              that._fullscreenChange(document.fullscreen);
+            }
+          } else if (this.webkitRequestFullscreen) {
+            this.onwebkitfullscreenchange = function() {
+              that._fullScreenChange(document.webkitIsFullScreen);
+            }
+          } else if (this.mozRequestFullScreen) {
+            document.onmozfullscreenchange = function() {
+              that._fullScreenChange(document.mozFullScreen);
+            }
+          } else if (video.webkitEnterFullscreen) {
+            video.addEventListener("webkitbeginfullscreen", function() {
+              that._fullscreenChange(true);
+            });
+            video.addEventListener("webkitendfullscreen", function() {
+              that._fullscreenChange(false);
+            });
+          }
+        }
+      },
+      properties: {
+        /**
+         * If true, will show a small pin with timestamp when dragging the time progress slider.
+         */
+        timePin: {
+          type: Boolean,
+          value: true
+        },
+        /**
+         * If true, will show a small pin with percentage when dragging the volume slider. 
+         */
+        volumePin: {
+          type: Boolean,
+          value: true
+        },
+        /**
+         * True when the video is currently in full screen.
+         */
+        fullScreen: {
+          type: Boolean,
+          value: false,
+          notify: true,
+          readOnly: true
+        },
+        /**
+         * Number of miliseconds while playing until the controls should auto-hide. 0 will disable auto hide.
+         */
+        autoHideControls: {
+          type: Number,
+          value: 2500
+        }
+      },
+      listeners: {
+        'mousemove': 'wakeupControls',
+        'tap': 'wakeupControls'
+      },
+      _readableDuration: function(seconds) {
+        var sec = Math.floor(seconds);
+        var min = Math.floor(sec / 60);
+        min = min >= 10 ? min : '0' + min;
+        sec = Math.floor(sec % 60);
+        sec = sec >= 10 ? sec : '0' + sec;
+
+        return min + ':' + sec;
+      },
+      _durationChange: function() {
+        this.duration = this.$.video.duration;
+      },
+      _currentTimeChange: function() {
+        var duration = this.$.video.duration;
+        if (!isNaN(duration) && duration !== undefined && duration != null) {
+          this._durationChange();
+        }
+        this.currentTime = this.$.video.currentTime;
+        if (!this.$.durationSlider.dragging) {
+          this.$.durationSlider.value = this.currentTime;
+        }
+        if (this.autoHideControls > 0 && !this.$.video.paused && !this._controlSleepTimeout) {
+          this._controlSleepTimeout = setTimeout(this.sleepControls.bind(this), this.autoHideControls);
+        }
+      },
+      _currentVolumeChange: function() {
+        this.videoVolume = this.$.video.volume * 100;
+        this.$.toggleMute.icon = this.$.video.muted ? "av:volume-off" : "av:volume-up"
+      },
+      _changeVolume: function() {
+        this.$.video.volume = this.$.volumeSlider.immediateValue / 100;
+      },
+      _changeCurrentTime: function() {
+        if (!this.$.durationSlider.dragging) {
+          this.$.video.currentTime = this.$.durationSlider.value
+        }
+      },
+      _readableVolume: function(volume) {
+        return volume + "%";
+      },
+      _fullScreenChange: function(fullScreen) {
+        this._setFullScreen(fullScreen);
+        this.$.fullScreen.icon = fullScreen ? "icons:fullscreen-exit" : "icons:fullscreen"
+      },
+      /**
+      * Shows the controls
+      */
+      wakeupControls: function() {
+        clearTimeout(this._controlSleepTimeout);
+        this.classList.remove('controls-hidden');
+        this._controlSleepTimeout = null;
+      },
+      /**
+      * Hides the controls
+      */
+      sleepControls: function() {
+        this.classList.add('controls-hidden');
+      },
+      /**
+      * Open the video in full screen.
+      */
+      openFullScreen: function() {
+        if (this.requestFullScreen) {
+          this.$.container.requestFullScreen();
+        } else if (this.webkitRequestFullscreen) {
+          this.$.container.webkitRequestFullscreen();
+        } else if (this.mozRequestFullScreen) {
+          this.$.container.mozRequestFullScreen();
+        } else if (this.$.video.webkitEnterFullScreen) {
+          this.$.video.webkitEnterFullScreen();
+        }
+      },
+      /**
+      * Close current full screen.
+      */
+      closeFullScreen: function() {
+        if (this.requestFullScreen) {
+          document.exitFullscreen();
+        } else if (this.webkitRequestFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (this.mozRequestFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (this.$.video.webkitEnterFullScreen) {
+          this.$.video.webkitExitFullscreen();
+        }
+      },
+      /**
+      * Toggle between full screen and not.
+      */
+      toggleFullScreen: function() {
+        if (this.fullScreen) {
+          this.closeFullScreen();
+        } else {
+          this.openFullScreen();
+        }
+      },
+      /**
+      * Toggle between play and pause of the video.
+      */
+      togglePlayPause: function() {
+        if (this.$.video.paused) {
+          this.$.video.play()
+        } else {
+          this.$.video.pause();
+        }
+      },
+      /**
+      * Toggle between muted and unmuted on the video.
+      */
+      toggleMute: function() {
+        this.$.video.muted = !this.$.video.muted;
+      }
+    });
+  </script>
+</dom-module>

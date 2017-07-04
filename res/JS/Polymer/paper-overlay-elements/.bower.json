@@ -1,0 +1,27 @@
+{
+  "name": "paper-overlay-elements",
+  "authors": [
+    "The Polymer Authors"
+  ],
+  "keywords": [
+    "element-collection"
+  ],
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "dependencies": {
+    "paper-dialog": "PolymerElements/paper-dialog#*",
+    "paper-dialog-behavior": "PolymerElements/paper-dialog-behavior#*",
+    "paper-dialog-scrollable": "PolymerElements/paper-dialog-scrollable#*",
+    "paper-fab": "PolymerElements/paper-fab#*"
+  },
+  "homepage": "https://github.com/PolymerElements/paper-overlay-elements",
+  "_release": "f5ac577501",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f5ac5775019014a2340551efeff2ff4904aaa01f"
+  },
+  "_source": "https://github.com/PolymerElements/paper-overlay-elements.git",
+  "_target": "*",
+  "_originalSource": "PolymerElements/paper-overlay-elements",
+  "_direct": true
+}

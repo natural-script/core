@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <title>paper-video-controls demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script type="javascript" src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+
+    <link rel="import" href="../paper-video-controls.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+      .vertical-section-container {
+        max-width: 700px;
+      }
+      .green-slider {
+        --paper-video-controls-slider-color: var(--google-green-700);
+        --paper-video-controls-color: var(--google-green-700);
+      }
+      .dark-theme {
+        --paper-video-controls-slider-color: #E0E0E0;
+        --paper-video-controls-pin-text-color: black;
+        --paper-video-controls-background: #212121;
+        --paper-video-controls-color: #EEEEEE;
+      }
+      .top-controls {
+        background-color: rgba(0, 0, 0, 0.7);
+        font-size: 1.5em;
+        color: var(--google-green-700);
+        padding: 15px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="vertical-section-container centered">
+      <h3>Basic paper-video-controls Demo</h3>
+      <demo-snippet>
+        <template>
+          <paper-video-controls>
+            <video>
+              <source src="demo.mp4" type="video/mp4">
+            </video>
+          </paper-video-controls>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>paper-video-controls with slider color theme and pins</h3>
+      <demo-snippet>
+        <template>
+          <paper-video-controls class="green-slider" time-pin volume-pin>
+            <div class="top-controls fullscreen-controls">
+              Video title that is only shown in full screen.
+            </div>
+            <video>
+              <source src="demo.mp4" type="video/mp4">
+            </video>
+          </paper-video-controls>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>paper-video-controls with dark theme, and never hide</h3>
+      <demo-snippet>
+        <template>
+          <paper-video-controls class="dark-theme" time-pin volume-pin auto-hide-controls="0">
+            <video>
+              <source src="demo.mp4" type="video/mp4">
+            </video>
+          </paper-video-controls>
+        </template>
+      </demo-snippet>
+    </div>
+
+  </body>
+</html>
