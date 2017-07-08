@@ -1,90 +1,126 @@
-var put = $('body');
 var lang = 0;
-var yesTranslations = ['yes', 'yup', 'oui', 'نعم', 'ايوه', 'はい', '是', '是'];
-var noTranslations = ['no', 'nope', 'non', 'لا', 'لأ', 'いいえ', '沒有', '没有'];
-var blackTranslations = ['black', 'black', 'noir', 'اسود', 'اسود', '黒', '黑色', '黑色'];
-var redTranslations = ['red', 'red', 'rouge', 'احمر', 'احمر', '赤', '紅', '红'];
-var blueTranslations = ['blue', 'blue', 'bleu', 'ازرق', 'ازرق', '青', '藍色', '蓝色'];
-var cyanTranslations = ['cyan', 'cyan', 'cyan', 'سماوى', 'لبنى', 'シアン', '青色', '青色'];
-var grayTranslations = ['gray', 'gray', 'gris', 'رصاصى', 'فرانى', 'グレー', '灰色', '灰色'];
-var greenTranslations = ['green', 'green', 'vert', 'اخضر', 'اخضر', '緑', '綠色', '绿色'];
-var whiteTranslations = ['white', 'white', 'blanc', 'ابيض', 'ابيض', '白', '白色', '白色'];
-var orangeTranslations = ['orange', 'orange', 'orange', 'برتقالى', 'برتقانى', 'オレンジ', '橙子', '橙子'];
-var yellowTranslations = ['yellow', 'yellow', 'jaune', 'اصفر', 'اصفر', '黄', '黃色', '黄色'];
-var brownTranslations = ['brown', 'brown', 'marron', 'بنى', 'بنى', '褐色', '棕色', '棕色'];
-var tealTranslations = ['teal', 'teal', 'sarcelle', 'تركواز', 'تركواز', 'ティール', '水鴨', '水鸭'];
-var pinkTranslations = ['pink', 'pink', 'rose', 'زهرى', 'بمبى', 'ピンク', '粉', '粉'];
-var lightGreenTranslations = ['light green', 'light green', 'Vert clair', 'اخضر فاتح', 'اخضر فاتح', 'ライトグリーン', '淺綠色', '浅绿色'];
-var colorTranslations = ['colour', 'color', 'couleur', 'اللون', 'اللون', 'カラー', '顏色', '颜色'];
-var pinTranslations = ['pin', 'pin', 'épingle', 'الدبوس', 'الدبوس', 'ピン', '銷', '销'];
-var animationTranslations = ['aniamtion', 'aniamtion', 'animation', 'الحركة', 'الحركة', 'アニメーション', '動畫', '动画'];
-var commandsTranslations = ['commands', 'commands', 'commandes', 'الأوامر', 'الأوامر', 'コマンド', '命令', '命令'];
-var sliderTranslations = ['slider', 'slider', 'curseur', 'دبوس', 'دبوس', 'スライダー', '滑塊', '滑块'];
-var buttonTranslations = ['button', 'button', 'curseur', 'زر', 'زرار', 'スライダー', '滑塊', '滑块'];
-var databaseCenterTranslations = ['database_center', 'database_center', 'épingle', 'مركز_قاعدة_البيانات', 'مركز_الداتا_بيز', 'ピン', '銷', '销'];
-var FABTranslations = ['FAB', 'FAB', 'épingle', 'دبوس', 'دبوس', 'ピン', '銷', '销'];
-var colorsPaletteTranslations = ['colours_palette', 'colors_palette', 'épingle', 'دبوس', 'دبوس', 'ピン', '銷', '销'];
-var textFnTranslations = ['text0', 'text0', 'épingle', 'نص', 'كلام', 'ピン', '銷', '销'];
-var buttonWithAnIconTranslations = ['button_with_an_icon', 'button_with_an_icon', 'épingle', 'زر_بأيقونة', 'زرار_بأيكونة', 'ピン', '銷', '销'];
-var iconTranslations = ['icon', 'icon', 'épingle', 'ايقونة', 'ايكونة', 'ピン', '銷', '销'];
-var imageTranslations = ['image', 'image', 'épingle', 'صورة', 'صورة', 'ピン', '銷', '销'];
-var videoTranslations = ['video', 'video', 'épingle', 'فيديو', 'فيديو', 'ピン', '銷', '销'];
-var audioTranslations = ['audio', 'audio', 'épingle', 'صوت', 'صوت', 'ピン', '銷', '销'];
-var textboxTranslations = ['text box', 'text box', 'épingle', 'صندوق_النص', 'مكان_الكتابة', 'ピン', '銷', '销'];
-var sectionTranslations = ['section', 'section', 'épingle', 'دبوس', 'دبوس', 'ピン', '銷', '销'];
-var checkboxTranslations = ['checkbox', 'checkbox', 'épingle', 'دبوس', 'دبوس', 'ピン', '銷', '销'];
-var loadingSpinnerTranslations = ['loading_spinner', 'loading_spinner', 'épingle', 'دبوس', 'دبوس', 'ピン', '銷', '销'];
-var loadingBarTranslations = ['loading_bar', 'loading_bar', 'épingle', 'دبوس', 'دبوس', 'ピン', '銷', '销'];
-var notificationCountTranslations = ['notification_count', 'notification_count', 'épingle', 'دبوس', 'دبوس', 'ピン', '銷', '销'];
-var dialogBoxTranslations = ['dialog_box', 'dialog_box', 'épingle', 'دبوس', 'دبوس', 'ピン', '銷', '销'];
-var dropdownTranslations = ['dropdown_menu', 'dropdown_menu', 'épingle', 'دبوس', 'دبوس', 'ピン', '銷', '销'];
-var backgroundTranslations = ['background', 'background', 'épingle', 'الخلفية', 'الخلفية', 'ピン', '銷', '销'];
-var tooltipTranslations = ['tooltip', 'tooltip', 'épingle', 'الخلفية', 'الخلفية', 'ピン', '銷', '销'];
-var textTranslations = ['text', 'text', 'épingle', 'النص', 'الكلام', 'ピン', '銷', '销'];
-var widthTranslations = ['width', 'width', 'épingle', 'العرض', 'العرض', 'ピン', '銷', '销'];
-var lengthTranslations = ['length', 'length', 'épingle', 'الطول', 'الطول', 'ピン', '銷', '销'];
-var locationTranslations = ['location', 'location', 'épingle', 'المكان', 'المكان', 'ピン', '銷', '销'];
-var locationFromLeftTranslations = ['location from the left', 'location from the left', 'épingle', 'المكان_من_اليمين', 'المكان_من_اللمين', 'ピン', '銷', '销'];
-var locationFromRightTranslations = ['location from the right', 'location from the right', 'épingle', 'المكان_من_الشمال', 'المكان_من_الشمال', 'ピン', '銷', '销'];
-var locationFromTopTranslations = ['location from the top', 'location from the top', 'épingle', 'المكان_من_فوق', 'المكان_من_فوق', 'ピン', '銷', '销'];
-var locationFromBottomTranslations = ['location from the bottom', 'location from the bottom', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var hostTranslations = ['host', 'host', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var usernameTranslations = ['username', 'username', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var passwordTranslations = ['password', 'password', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var setupTranslations = ['setup', 'setup', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var logoTranslations = ['logo', 'logo', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var titleTranslations = ['title', 'title', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var modeTranslations = ['mode', 'mode', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var pageTranslations = ['page', 'page', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var nameTranslations = ['name', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var transparencyTranslations = ['transparency', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var sizeTranslations = ['size', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var thicknessTranslations = ['thickness', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var switchedOnTranslations = ['switchedOn', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var raisedTranslations = ['raised', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var disabledTranslations = ['disabled', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var fontStyleTranslations = ['fontStyle', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var fontColourTranslations = ['fontColour', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var bodyTranslations = ['body', 'body', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var rippleTranslations = ['ripple', 'ripple', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var minTranslations = ['min', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var maxTranslations = ['max', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var requirementTranslations = ['requirement', 'requirement', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var typeTranslations = ['type', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var dynamicSizeTranslations = ['dynamicSize', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var clearButtonTranslations = ['clearButton', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var suffixTranslations = ['suffix', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var prefixTranslations = ['prefix', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var stepTranslations = ['step', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var progressTranslations = ['progress', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var valueBoxTranslations = ['valueBox', 'name', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var iconColorTranslations = ['iconColour', 'iconColor', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var imageSourceTranslations = ['imageSource', 'iconColor', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var FXTranslations = ['FX', 'FX', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var emitterTranslations = ['emitter', 'emitter', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var directionTranslations = ['emitter', 'emitter', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
-var loadingTranslations = ['loading', 'loading', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン', '銷', '销'];
+$('code').hide();
+var code = "jQuery(document).ready(function ($) { var ";
+if (lang == 0) {
+    code += "put";
+} else if (lang == 1) {
+    code += "put";
 
+} else if (lang == 2) {
+    code += "mettre";
+
+} else if (lang == 3) {
+    code += "ضع";
+
+} else if (lang == 4) {
+    code += "حط";
+
+} else if (lang == 5) {
+    code += "置く";
+
+}
+code += " = $('body');";
+code += $('code').html();
+code += "});";
+$(function () {
+    $('<meta>')
+        .attr('charset', 'UTF-8')
+        .appendTo('head');
+    $('<script>')
+        .attr('type', 'text/javascript')
+        .text(code)
+        .appendTo('head');
+})
+var yesTranslations = ['yes', 'yup', 'oui', 'نعم', 'ايوه', 'はい'];
+var noTranslations = ['no', 'nope', 'non', 'لا', 'لأ', 'いいえ'];
+var blackTranslations = ['black', 'black', 'noir', 'اسود', 'اسود', '黒'];
+var redTranslations = ['red', 'red', 'rouge', 'احمر', 'احمر', '赤'];
+var blueTranslations = ['blue', 'blue', 'bleu', 'ازرق', 'ازرق', '青'];
+var cyanTranslations = ['cyan', 'cyan', 'cyan', 'سماوى', 'لبنى', 'シアン'];
+var grayTranslations = ['gray', 'gray', 'gris', 'رصاصى', 'فرانى', 'グレー'];
+var greenTranslations = ['green', 'green', 'vert', 'اخضر', 'اخضر', '緑'];
+var whiteTranslations = ['white', 'white', 'blanc', 'ابيض', 'ابيض', '白'];
+var orangeTranslations = ['orange', 'orange', 'orange', 'برتقالى', 'برتقانى', 'オレンジ'];
+var yellowTranslations = ['yellow', 'yellow', 'jaune', 'اصفر', 'اصفر', '黄'];
+var brownTranslations = ['brown', 'brown', 'marron', 'بنى', 'بنى', '褐色', '棕色', '棕色'];
+var tealTranslations = ['teal', 'teal', 'sarcelle', 'تركواز', 'تركواز', 'ティール'];
+var pinkTranslations = ['pink', 'pink', 'rose', 'زهرى', 'بمبى', 'ピンク'];
+var lightGreenTranslations = ['light green', 'light green', 'Vert clair', 'اخضر فاتح', 'اخضر فاتح', 'ライトグリーン'];
+var colorTranslations = ['colour', 'color', 'couleur', 'اللون', 'اللون', 'カラー'];
+var pinTranslations = ['pin', 'pin', 'épingle', 'الدبوس', 'الدبوس', 'ピン'];
+var animationTranslations = ['aniamtion', 'aniamtion', 'animation', 'الحركة', 'الحركة', 'アニメーション'];
+var commandsTranslations = ['commands', 'commands', 'commandes', 'الأوامر', 'الأوامر', 'コマンド'];
+var sliderTranslations = ['slider', 'slider', 'curseur', 'دبوس', 'دبوس', 'スライダー'];
+var buttonTranslations = ['button', 'button', 'curseur', 'زر', 'زرار', 'ボタン'];
+var databaseCenterTranslations = ['database_centre', 'database_center', 'centre_de_base_de_données', 'مركز قاعدة البيانات', 'مركز الداتا بيز', 'ピン'];
+var FABTranslations = ['FAB', 'FAB', 'épingle', 'دبوس', 'دبوس', 'ピン'];
+var colorsPaletteTranslations = ['colours_palette', 'colors_palette', 'palette_de_couleurs', 'لوحة_الوان', 'بلتة_الوان', 'カラーパレット'];
+var textFnTranslations = ['text0', 'text0', 'texte', 'نص', 'كلام', 'テキスト'];
+var buttonWithAnIconTranslations = ['button_with_an_icon', 'button_with_an_icon', 'bouton_avec_icône', 'زر_بأيقونة', 'زرار_بأيكونة', 'アイコン付きボタン'];
+var iconTranslations = ['icon', 'icon', 'icône', 'ايقونة', 'ايكونة', 'アイコン'];
+var imageTranslations = ['image', 'image', 'image', 'صورة', 'صورة', 'ピクチャー'];
+var videoTranslations = ['video', 'video', 'vidéo', 'فيديو', 'فيديو', 'ビデオ'];
+var audioTranslations = ['audio', 'audio', "l'audio", 'صوت', 'صوت', 'オーディオ'];
+var textboxTranslations = ['text_box', 'text_box', 'champ_de_texte', 'صندوق_النص', 'مكان_الكتابة', 'ピン'];
+var sectionTranslations = ['section', 'section', 'section', 'دبوس', 'دبوس', 'ピン'];
+var checkboxTranslations = ['checkbox', 'checkbox', 'case_à_cocher', 'دبوس', 'دبوس', 'チェックボックス'];
+var spinnerTranslations = ['loading_spinner', 'loading_spinner', 'épingle', 'دبوس', 'دبوس', 'ピン'];
+var barTranslations = ['loading_bar', 'loading_bar', 'épingle', 'دبوس', 'دبوس', 'ピン'];
+var loaderTranslations = ['loader', 'loader', 'épingle', 'دبوس', 'دبوس', 'ピン'];
+var notificationCountTranslations = ['notification_count', 'notification_count', 'épingle', 'دبوس', 'دبوس', 'ピン'];
+var dialogBoxTranslations = ['dialog_box', 'dialog_box', 'épingle', 'دبوس', 'دبوس', 'ピン'];
+var dropdownTranslations = ['dropdown_menu', 'dropdown_menu', 'menu_déroulant', 'دبوس', 'دبوس', 'ピン'];
+var backgroundTranslations = ['background', 'background', 'contexte', 'الخلفية', 'الخلفية', 'ピン'];
+var tooltipTranslations = ['tooltip', 'tooltip', 'info-bulle', 'الخلفية', 'الخلفية', 'ツールチップ'];
+var textTranslations = ['text', 'text', 'texte', 'النص', 'الكلام', 'テキスト'];
+var widthTranslations = ['width', 'width', 'largeur', 'العرض', 'العرض', '幅'];
+var lengthTranslations = ['length', 'length', 'longueur', 'الطول', 'الطول', '長さ'];
+var positionTranslations = ['position', 'position', 'position', 'المكان', 'المكان', 'ポジション'];
+var distanceFromLeftTranslations = ['distance_from_the_left', 'distance_from_the_left', 'distance_à_partir_de_la_gauche', 'المسافة_من_الشمال', 'المسافة_من_الشمال', '左からの距離'];
+var distanceFromRightTranslations = ['distance_from_the_right', 'distance_from_the_right', 'distance_à_partir_de_la_droit', 'المسافة_من_اليمين', 'المسافة_من_اللمين', '右からの距離'];
+var distanceFromTopTranslations = ['distance_from_the_top', 'distance_from_the_top', 'distance_à_partir_de_le_haut', 'المسافة_من_أعلى', 'المسافة_من_فوق', '上からの距離'];
+var distanceFromBottomTranslations = ['distance_from_the_bottom', 'distance_from_the_bottom', 'distance_à_partir_de_le_fond', 'المسافة_من_اسفل', 'المسافة_من_تحت', '底からの距離'];
+var centerLocationTranslations = ['centre_location', 'center_location', 'emplacement_central', 'مقر_المركز', 'مقر_المركز', 'ピン'];
+var usernameTranslations = ['username', 'username', "nom_d'utilisateur", 'اسم_المستخدم', 'اسم_المستخدم', 'ピン'];
+var passwordTranslations = ['password', 'password', 'mot_de_passe', 'كلمة_المرور', 'كلمة_السر', 'ピン'];
+var setupTranslations = ['setup', 'setup', 'installer', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン'];
+var logoTranslations = ['logo', 'logo', 'logo', 'الشعار', 'اللوجو', 'ロゴ'];
+var titleTranslations = ['title', 'title', 'titre', 'العنوان', 'العنوان', 'タイトル'];
+var modeTranslations = ['mode', 'mode', 'mode', 'الوضعية', 'المود', 'モード'];
+var pageTranslations = ['page', 'page', 'page', 'صفحة', 'صفحة', 'ページ'];
+var nameTranslations = ['name', 'name', 'prénom', 'الاسم', 'الاسم', '名'];
+var transparencyTranslations = ['transparency', 'transparency', 'transparence', 'الشفافية', 'الشفافية', '透明性'];
+var sizeTranslations = ['size', 'size', 'taille', 'الحجم', 'الحجم', 'サイズ'];
+var thicknessTranslations = ['thickness', 'thickness', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン'];
+var switchedTranslations = ['switched', 'switched', 'commuté', 'المكان_من_تحت', 'المكان_من_تحت', 'スイッチされる'];
+var raisedTranslations = ['raised', 'raised', 'élevé', 'مرفوع', 'مرفوع', '育てられる'];
+var disabledTranslations = ['disabled', 'disabled', 'désactivée', 'معطل', 'مقفول', '無効'];
+var fontStyleTranslations = ['font_style', 'font_style', 'le_style_de_police', 'شكل_الخط', 'شكل_الخط', 'フォントスタイル'];
+var fontColourTranslations = ['font_ colour', 'font_color', 'couleur_de_la_police', 'لون_الخط', 'لون_الخط', 'フォントの色'];
+var bodyTranslations = ['body', 'body', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン'];
+var rippleTranslations = ['ripple', 'ripple', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン'];
+var minTranslations = ['min', 'min', 'min', 'المكان_من_تحت', 'المكان_من_تحت', '最小'];
+var maxTranslations = ['max', 'max', 'max', 'المكان_من_تحت', 'المكان_من_تحت', '最大'];
+var requirementTranslations = ['requirement', 'requirement', 'exigence', 'المطلوب', 'المطلوب', '要件'];
+var typeTranslations = ['type', 'type', 'type', 'النوع', 'النوع', 'タイプ'];
+var dynamicSizeTranslations = ['dynamic_size', 'dynamic_size', 'taille_dynamique', 'مقاس_متغير', 'مقاس_متغير', '動的なサイズ'];
+var clearButtonTranslations = ['clear_button', 'clear_button', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン'];
+var suffixTranslations = ['suffix', 'suffix', 'suffixe', 'النهاية', 'النهاية', 'サフィックス'];
+var prefixTranslations = ['prefix', 'prefix', 'préfixe', 'البداية', 'البداية', 'プレフィックス'];
+var stepTranslations = ['step', 'step', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン'];
+var progressTranslations = ['progress', 'progress', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン'];
+var valueBoxTranslations = ['valueBox', 'valueBox', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン'];
+var iconColorTranslations = ['iconColour', 'iconColor', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン'];
+var imageSourceTranslations = ['imageSource', 'iconColor', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン'];
+var FXTranslations = ['FX', 'FX', 'FX', 'FX', 'FX', 'FX'];
+var emitterTranslations = ['emitter', 'emitter', 'émetteur', 'باعث', 'باعث', 'エミッタ'];
+var directionTranslations = ['direction', 'direction', 'direction', 'الإتجاه', 'الإتجاه', '方向'];
+var loadingTranslations = ['loading', 'loading', 'chargement', 'يحمل', 'بيحمل', '読み込み中'];
+var imageWidthTranslations = ['image_width', 'image_width', "largeur de l'image", 'عرض_الصورة', 'عرض_الصورة', '画像の幅'];
+var imageLengthTranslations = ['image_length', 'image_length', "longueur de l'image", 'طول_الصورة', 'طول_الصورة', '画像の長さ'];
+var sourceTranslations = ['source', 'source', "la_source", 'المصدر', 'المصدر', 'ソース'];
+var itemsTranslations = ['items', 'items', "articles", 'العناصر', 'العناصر', 'アイテム'];
+var descriptionTranslations = ['description', 'description', "la_description", 'الوصف', 'الوصف', '説明'];
 
 function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, para4) {
     if (commandCode == 'c1A') {
@@ -93,7 +129,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When clicked, ');
         } else if (lang == 2) {
-            return commandValue.split('Lorsque vous cliquez dessus, ');
+            return commandValue.split('Quand il a été cliqué, ');
         }
     } else if (commandCode == 'c1B') {
         if (lang == 0) {
@@ -101,7 +137,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer moved over it, ');
         } else if (lang == 2) {
-            return commandValue.split("Lorsque le pointeur de la souris est déplacé, ");
+            return commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ");
         }
     } else if (commandCode == 'c1C') {
         if (lang == 0) {
@@ -109,7 +145,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer moved away from it, ');
         } else if (lang == 2) {
-            return commandValue.split('Lorsque le pointeur de la souris est éloigné de celui-ci, ');
+            return commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ");
         }
     } else if (commandCode == 'c1D') {
         if (lang == 0) {
@@ -117,7 +153,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer is being moved out of it, ');
         } else if (lang == 2) {
-            return commandValue.split('Lorsque le pointeur de la souris est déplacé hors de lui, ');
+            return commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ");
         }
     } else if (commandCode == 'c1E') {
         if (lang == 0) {
@@ -125,7 +161,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer is being moved over it, ');
         } else if (lang == 2) {
-            return commandValue.split('Lorsque le pointeur de la souris est déplacé, ');
+            return commandValue.split('Lorsque le pointeur de la souris se déplace au dessus, ');
         }
     } else if (commandCode == 'c1F') {
         if (lang == 0) {
@@ -141,7 +177,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When double clicked, ');
         } else if (lang == 1) {
-            return commandValue.split('Quand il est double-cliqué, ');
+            return commandValue.split('Quand il a été double-cliqué, ');
         }
     } else if (commandCode == 'c1H') {
         if (lang == 0) {
@@ -149,7 +185,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When right clicked, ');
         } else if (lang == 2) {
-            return commandValue.split('Quand il fait un clic droit, ');
+            return commandValue.split('Quand il a été droit-cliqué, ');
         }
     } else if (commandCode == 'c1I') {
         if (lang == 0) {
@@ -157,7 +193,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When a key pressed while focusing it, ');
         } else if (lang == 2) {
-            return commandValue.split("Lorsqu'une touche est pressée tout en la focalisant, ");
+            return commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ");
         }
     } else if (commandCode == 'c1J') {
         if (lang == 0) {
@@ -165,7 +201,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When a key is being pressed while focusing it, ');
         } else if (lang == 2) {
-            return commandValue.split("Lorsqu'une touche est pressée tout en la focalisant, ");
+            return commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ");
         }
     } else if (commandCode == 'c1K') {
         if (lang == 0) {
@@ -181,7 +217,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When focused, ');
         } else if (lang == 2) {
-            return commandValue.split("Lorsqu'on est focalisé, ");
+            return commandValue.split("Lorsqu'on a été focalisé, ");
         }
     } else if (commandCode == 'c1M') {
         if (lang == 0) {
@@ -189,7 +225,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When it is being focused, ');
         } else if (lang == 2) {
-            return commandValue.split('Quand il est focalisé, ');
+            return commandValue.split("Quand il est en train d'être focalisé, ");
         }
     } else if (commandCode == 'c1N') {
         if (lang == 0) {
@@ -213,7 +249,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When scrolled, ');
         } else if (lang == 2) {
-            return commandValue.split("Lorsqu'il s'est déroulé, ");
+            return commandValue.split("Lorsqu'il s'a été déroulé, ");
         }
     } else if (commandCode == 'c2qA') {
         if (lang == 0) {
@@ -221,15 +257,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When clicked, ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[0];
+            return commandValue.split('Quand il a été cliqué, ')[1].split(' ')[0];
         }
     } else if (commandCode == 'c2qB') {
         if (lang == 0) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0];
+            return commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[0];
         } else if (lang == 1) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0];
+            return commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0];
+            return commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[0];
         }
     } else if (commandCode == 'c2qC') {
         if (lang == 0) {
@@ -237,7 +273,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[0];
+            return commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[0];
         }
     } else if (commandCode == 'c2qD') {
         if (lang == 0) {
@@ -245,15 +281,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[0];
+            return commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[0];
         }
     } else if (commandCode == 'c2qE') {
         if (lang == 0) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0];
+            return commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[0];
         } else if (lang == 1) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0];
+            return commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0];
+            return commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[0];
         }
     } else if (commandCode == 'c2qF') {
         if (lang == 0) {
@@ -261,7 +297,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When it is no longer clicked, ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('When it is no longer clicked, ')[1].split(' ')[0];
+            return commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[0];
         }
     } else if (commandCode == 'c2qG') {
         if (lang == 0) {
@@ -269,7 +305,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When double clicked, ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('When double clicked, ')[1].split(' ')[0];
+            return commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[0];
         }
     } else if (commandCode == 'c2qH') {
         if (lang == 0) {
@@ -277,7 +313,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When right clicked, ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('When right clicked, ')[1].split(' ')[0];
+            return commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[0];
         }
     } else if (commandCode == 'c2qI') {
         if (lang == 0) {
@@ -285,7 +321,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[0];
+            return commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[0];
         }
     } else if (commandCode == 'c2qJ') {
         if (lang == 0) {
@@ -293,15 +329,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[0];
+            return commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[0];
         }
     } else if (commandCode == 'c2qK') {
         if (lang == 0) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0];
+            return commandValue.split('When its contents have been modified, ')[1].split(' ')[0];
         } else if (lang == 1) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0];
+            return commandValue.split('When its contents have been modified, ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0];
+            return commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[0];
         }
     } else if (commandCode == 'c2qL') {
         if (lang == 0) {
@@ -309,7 +345,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When focused, ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('When focused, ')[1].split(' ')[0];
+            return commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[0];
         }
     } else if (commandCode == 'c2qM') {
         if (lang == 0) {
@@ -317,7 +353,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When it is being focused, ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('When it is being focused, ')[1].split(' ')[0];
+            return commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[0];
         }
     } else if (commandCode == 'c2qN') {
         if (lang == 0) {
@@ -325,7 +361,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When slept, ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('When slept, ')[1].split(' ')[0];
+            return commandValue.split("Quand il a dormi, ")[1].split(' ')[0];
         }
     } else if (commandCode == 'c2qO') {
         if (lang == 0) {
@@ -333,7 +369,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the data of this form has been sent, ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('When the data of this form has been sent, ')[1].split(' ')[0];
+            return commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[0];
         }
     } else if (commandCode == 'c2qP') {
         if (lang == 0) {
@@ -341,7 +377,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When scrolled, ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('When scrolled, ')[1].split(' ')[0];
+            return commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[0];
         }
     } else if (commandCode == 'c2ruA') {
         if (lang == 0) {
@@ -349,7 +385,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return 'remove';
         } else if (lang == 2) {
-            return 'remove';
+            return 'supprimer';
         }
     } else if (commandCode == 'c2ruB') {
         if (lang == 0) {
@@ -357,7 +393,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return 'play';
         } else if (lang == 2) {
-            return 'play';
+            return 'lecture';
         }
     } else if (commandCode == 'c2ruC') {
         if (lang == 0) {
@@ -373,7 +409,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('remove ')[1];
         } else if (lang == 2) {
-            return commandValue.split('remove ')[1];
+            return commandValue.split('supprimer ')[1];
         }
     } else if (commandCode == 'c3r') {
         if (lang == 0) {
@@ -381,7 +417,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return 'it';
         } else if (lang == 2) {
-            return 'it';
+            return 'il';
         }
     } else if (commandCode == 'c4') {
         if (lang == 0) {
@@ -389,7 +425,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('remove ')[1];
         } else if (lang == 2) {
-            return commandValue.split('remove ')[1];
+            return commandValue.split('supprimer ')[1];
         }
     } else if (commandCode == 'c5qA') {
         if (lang == 0) {
@@ -397,15 +433,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[1];
         } else if (lang == 2) {
-            return commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[0] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[1];
+            return commandValue.split('Quand il a été cliqué, ')[1].split(' ')[0] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[1];
         }
     } else if (commandCode == 'c5qB') {
         if (lang == 0) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1];
+            return commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[1];
         } else if (lang == 1) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1];
+            return commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[1];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1];
+            return commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[1];
         }
     } else if (commandCode == 'c5qC') {
         if (lang == 0) {
@@ -413,7 +449,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[1];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[1];
+            return commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[1];
         }
     } else if (commandCode == 'c5qD') {
         if (lang == 0) {
@@ -421,15 +457,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[1];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[1];
+            return commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[1];
         }
     } else if (commandCode == 'c5qE') {
         if (lang == 0) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1];
+            return commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[1];
         } else if (lang == 1) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1];
+            return commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[1];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1];
+            return commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[1];
         }
     } else if (commandCode == 'c5qF') {
         if (lang == 0) {
@@ -437,7 +473,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When it is no longer clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[1];
         } else if (lang == 2) {
-            return commandValue.split('When it is no longer clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[1];
+            return commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[1];
         }
     } else if (commandCode == 'c5qG') {
         if (lang == 0) {
@@ -445,7 +481,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When double clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[1];
         } else if (lang == 2) {
-            return commandValue.split('When double clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[1];
+            return commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[1];
         }
     } else if (commandCode == 'c5qH') {
         if (lang == 0) {
@@ -453,7 +489,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When right clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[1];
         } else if (lang == 2) {
-            return commandValue.split('When right clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[1];
+            return commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[1];
         }
     } else if (commandCode == 'c5qI') {
         if (lang == 0) {
@@ -461,7 +497,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[1];
         } else if (lang == 2) {
-            return commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[1];
+            return commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[1];
         }
     } else if (commandCode == 'c5qJ') {
         if (lang == 0) {
@@ -469,15 +505,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[1];
         } else if (lang == 2) {
-            return commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[1];
+            return commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[1];
         }
     } else if (commandCode == 'c5qK') {
         if (lang == 0) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1];
+            return commandValue.split('When its contents have been modified, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[1];
         } else if (lang == 1) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1];
+            return commandValue.split('When its contents have been modified, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[1];
         } else if (lang == 2) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1];
+            return commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[1];
         }
     } else if (commandCode == 'c5qL') {
         if (lang == 0) {
@@ -485,7 +521,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When focused, ')[1].split(' ')[1];
         } else if (lang == 2) {
-            return commandValue.split('When focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When focused, ')[1].split(' ')[1];
+            return commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[1];
         }
     } else if (commandCode == 'c5qM') {
         if (lang == 0) {
@@ -493,7 +529,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When it is being focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[1];
         } else if (lang == 2) {
-            return commandValue.split('When it is being focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[1];
+            return commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[1];
         }
     } else if (commandCode == 'c5qN') {
         if (lang == 0) {
@@ -501,7 +537,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When slept, ')[1].split(' ')[0] + ' ' + commandValue.split('When slept, ')[1].split(' ')[1];
         } else if (lang == 2) {
-            return commandValue.split('When slept, ')[1].split(' ')[0] + ' ' + commandValue.split('When slept, ')[1].split(' ')[1];
+            return commandValue.split("Quand il a dormi, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[1];
         }
     } else if (commandCode == 'c5qO') {
         if (lang == 0) {
@@ -509,7 +545,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the data of this form has been sent, ')[1].split(' ')[0] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[1];
         } else if (lang == 2) {
-            return commandValue.split('When the data of this form has been sent, ')[1].split(' ')[0] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[1];
+            return commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[1];
         }
     } else if (commandCode == 'c5qP') {
         if (lang == 0) {
@@ -517,7 +553,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When scrolled, ')[1].split(' ')[0] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[1];
         } else if (lang == 2) {
-            return commandValue.split('When scrolled, ')[1].split(' ')[0] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[1];
+            return commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[1];
         }
     } else if (commandCode == 'c5r') {
         if (lang == 0) {
@@ -525,7 +561,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return 'redirect to';
         } else if (lang == 2) {
-            return 'redirect to';
+            return 'rediriger vers';
         }
     } else if (commandCode == 'c6') {
         if (lang == 0) {
@@ -533,7 +569,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('redirect to ')[1];
         } else if (lang == 2) {
-            return commandValue.split('redirect to ')[1];
+            return commandValue.split('rediriger vers ')[1];
         }
     } else if (commandCode == 'c7') {
         if (lang == 0) {
@@ -541,7 +577,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('play ')[1];
         } else if (lang == 2) {
-            return commandValue.split('play ')[1];
+            return commandValue.split('lecture ')[1];
         }
     } else if (commandCode == 'c8') {
         if (lang == 0) {
@@ -557,15 +593,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[0] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[1] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[2] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[3];
+            return commandValue.split('Quand il a été cliqué, ')[1].split(' ')[0] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[1] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[2] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[3];
         }
     } else if (commandCode == 'c9qB') {
         if (lang == 0) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[3];
+            return commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[3];
         } else if (lang == 1) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[3];
+            return commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[3];
+            return commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[3];
         }
     } else if (commandCode == 'c9qC') {
         if (lang == 0) {
@@ -573,7 +609,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[3];
+            return commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[3];
         }
     } else if (commandCode == 'c9qD') {
         if (lang == 0) {
@@ -581,15 +617,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[3];
+            return commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[3];
         }
     } else if (commandCode == 'c9qE') {
         if (lang == 0) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[3];
+            return commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[3];
         } else if (lang == 1) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[3];
+            return commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[3];
+            return commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[3];
         }
     } else if (commandCode == 'c9qF') {
         if (lang == 0) {
@@ -597,7 +633,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When it is no longer clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split('When it is no longer clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[3];
+            return commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[3];
         }
     } else if (commandCode == 'c9qG') {
         if (lang == 0) {
@@ -605,7 +641,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When double clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split('When double clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[3];
+            return commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[3];
         }
     } else if (commandCode == 'c9qH') {
         if (lang == 0) {
@@ -613,7 +649,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When right clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split('When right clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[3];
+            return commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[3];
         }
     } else if (commandCode == 'c9qI') {
         if (lang == 0) {
@@ -621,7 +657,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[3];
+            return commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[3];
         }
     } else if (commandCode == 'c9qJ') {
         if (lang == 0) {
@@ -629,15 +665,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[3];
+            return commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[3];
         }
     } else if (commandCode == 'c9qK') {
         if (lang == 0) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[3];
+            return commandValue.split('When its contents have been modified, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[3];
         } else if (lang == 1) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[3];
+            return commandValue.split('When its contents have been modified, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[3];
+            return commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[3];
         }
     } else if (commandCode == 'c9qL') {
         if (lang == 0) {
@@ -645,7 +681,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When focused, ')[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split('When focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When focused, ')[1].split(' ')[3];
+            return commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[3];
         }
     } else if (commandCode == 'c9qM') {
         if (lang == 0) {
@@ -653,7 +689,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When it is being focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split('When it is being focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[3];
+            return commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[3];
         }
     } else if (commandCode == 'c9qN') {
         if (lang == 0) {
@@ -661,7 +697,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When slept, ')[1].split(' ')[0] + ' ' + commandValue.split('When slept, ')[1].split(' ')[1] + ' ' + commandValue.split('When slept, ')[1].split(' ')[2] + ' ' + commandValue.split('When slept, ')[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split('When slept, ')[1].split(' ')[0] + ' ' + commandValue.split('When slept, ')[1].split(' ')[1] + ' ' + commandValue.split('When slept, ')[1].split(' ')[2] + ' ' + commandValue.split('When slept, ')[1].split(' ')[3];
+            return commandValue.split("Quand il a dormi, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[3];
         }
     } else if (commandCode == 'c9qO') {
         if (lang == 0) {
@@ -669,7 +705,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the data of this form has been sent, ')[1].split(' ')[0] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[1] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[2] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split('When the data of this form has been sent, ')[1].split(' ')[0] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[1] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[2] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[3];
+            return commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[3];
         }
     } else if (commandCode == 'c9qP') {
         if (lang == 0) {
@@ -677,7 +713,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When scrolled, ')[1].split(' ')[0] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[1] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[2] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split('When scrolled, ')[1].split(' ')[0] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[1] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[2] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[3];
+            return commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[3];
         }
     } else if (commandCode == 'c9r') {
         if (lang == 0) {
@@ -685,7 +721,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return 'set its value to';
         } else if (lang == 2) {
-            return 'set its value to';
+            return 'définir sa valeur à';
         }
     } else if (commandCode == 'c10q') {
         if (lang == 0) {
@@ -693,7 +729,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('set its value to ')[1].split(' ')[0] + ' ' + commandValue.split('set its value to ')[1].split(' ')[1] + ' ' + commandValue.split('set its value to ')[1].split(' ')[2];
         } else if (lang == 2) {
-            return commandValue.split('set its value to ')[1].split(' ')[0] + ' ' + commandValue.split('set its value to ')[1].split(' ')[1] + ' ' + commandValue.split('set its value to ')[1].split(' ')[2];
+            return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
         }
     } else if (commandCode == 'c10r') {
         if (lang == 0) {
@@ -717,7 +753,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('set its value to ')[1];
         } else if (lang == 2) {
-            return commandValue.split('Définir sa valeur à ')[1];
+            return commandValue.split('définir sa valeur à ')[1];
         }
     } else if (commandCode == 'c13qA') {
         if (lang == 0) {
@@ -725,15 +761,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[5];
         } else if (lang == 2) {
-            return commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[0] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[1] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[2] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[3] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[5];
+            return commandValue.split('Quand il a été cliqué, ')[1].split(' ')[0] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[1] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[2] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[3] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[5];
         }
     } else if (commandCode == 'c13qB') {
         if (lang == 0) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[5];
+            return commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[5];
         } else if (lang == 1) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[5];
+            return commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[5];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[5];
+            return commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[5];
         }
     } else if (commandCode == 'c13qC') {
         if (lang == 0) {
@@ -741,7 +777,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[5];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[5];
+            return commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[5];
         }
     } else if (commandCode == 'c13qD') {
         if (lang == 0) {
@@ -749,15 +785,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[5];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[5];
+            return commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[5];
         }
     } else if (commandCode == 'c13qE') {
         if (lang == 0) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[5];
+            return commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[5];
         } else if (lang == 1) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[5];
+            return commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[5];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[5];
+            return commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[5];
         }
     } else if (commandCode == 'c13qF') {
         if (lang == 0) {
@@ -765,7 +801,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When it is no longer clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[5];
         } else if (lang == 2) {
-            return commandValue.split('When it is no longer clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[5];
+            return commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[5];
         }
     } else if (commandCode == 'c13qG') {
         if (lang == 0) {
@@ -773,7 +809,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When double clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[5];
         } else if (lang == 2) {
-            return commandValue.split('When double clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[5];
+            return commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[5];
         }
     } else if (commandCode == 'c13qH') {
         if (lang == 0) {
@@ -781,7 +817,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When right clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[5];
         } else if (lang == 2) {
-            return commandValue.split('When right clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[5];
+            return commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[5];
         }
     } else if (commandCode == 'c13qI') {
         if (lang == 0) {
@@ -789,7 +825,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[3] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[5];
         } else if (lang == 2) {
-            return commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[3] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[5];
+            return commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[5];
         }
     } else if (commandCode == 'c13qJ') {
         if (lang == 0) {
@@ -797,15 +833,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[3] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[5];
         } else if (lang == 2) {
-            return commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[3] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[5];
+            return commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[5];
         }
     } else if (commandCode == 'c13qK') {
         if (lang == 0) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[5];
+            return commandValue.split('When its contents have been modified, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[5];
         } else if (lang == 1) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[5];
+            return commandValue.split('When its contents have been modified, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[5];
         } else if (lang == 2) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[5];
+            return commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[5];
         }
     } else if (commandCode == 'c13qL') {
         if (lang == 0) {
@@ -813,7 +849,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When focused, ')[1].split(' ')[3] + ' ' + commandValue.split('When focused, ')[1].split(' ')[5];
         } else if (lang == 2) {
-            return commandValue.split('When focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When focused, ')[1].split(' ')[3] + ' ' + commandValue.split('When focused, ')[1].split(' ')[5];
+            return commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[5];
         }
     } else if (commandCode == 'c13qM') {
         if (lang == 0) {
@@ -821,7 +857,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When it is being focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[3] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[5];
         } else if (lang == 2) {
-            return commandValue.split('When it is being focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[3] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[5];
+            return commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[5];
         }
     } else if (commandCode == 'c13qN') {
         if (lang == 0) {
@@ -829,7 +865,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When slept, ')[1].split(' ')[0] + ' ' + commandValue.split('When slept, ')[1].split(' ')[1] + ' ' + commandValue.split('When slept, ')[1].split(' ')[2] + ' ' + commandValue.split('When slept, ')[1].split(' ')[3] + ' ' + commandValue.split('When slept, ')[1].split(' ')[5];
         } else if (lang == 2) {
-            return commandValue.split('When slept, ')[1].split(' ')[0] + ' ' + commandValue.split('When slept, ')[1].split(' ')[1] + ' ' + commandValue.split('When slept, ')[1].split(' ')[2] + ' ' + commandValue.split('When slept, ')[1].split(' ')[3] + ' ' + commandValue.split('When slept, ')[1].split(' ')[5];
+            return commandValue.split("Quand il a dormi, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[5];
         }
     } else if (commandCode == 'c13qO') {
         if (lang == 0) {
@@ -837,7 +873,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the data of this form has been sent, ')[1].split(' ')[0] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[1] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[2] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[3] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[5];
         } else if (lang == 2) {
-            return commandValue.split('When the data of this form has been sent, ')[1].split(' ')[0] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[1] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[2] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[3] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[5];
+            return commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[5];
         }
     } else if (commandCode == 'c13qP') {
         if (lang == 0) {
@@ -845,7 +881,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When scrolled, ')[1].split(' ')[0] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[1] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[2] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[3] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[5];
         } else if (lang == 2) {
-            return commandValue.split('When scrolled, ')[1].split(' ')[0] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[1] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[2] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[3] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[5];
+            return commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[5];
         }
     } else if (commandCode == 'c13r') {
         if (lang == 0) {
@@ -885,7 +921,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return 'the value of';
         } else if (lang == 2) {
-            return 'the value of';
+            return 'la valeur de';
         }
     } else if (commandCode == 'c17') {
         if (lang == 0) {
@@ -901,15 +937,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[4] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[6];
         } else if (lang == 2) {
-            return commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[0] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[1] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[2] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[3] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[4] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[6];
+            return commandValue.split('Quand il a été cliqué, ')[1].split(' ')[0] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[1] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[2] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[3] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[4] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[5] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[7];
         }
     } else if (commandCode == 'c18qB') {
         if (lang == 0) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[4] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[6];
+            return commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[4] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[6];
         } else if (lang == 1) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[4] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[6];
+            return commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[4] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[6];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[4] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[6];
+            return commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[4] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[6];
         }
     } else if (commandCode == 'c18qC') {
         if (lang == 0) {
@@ -917,7 +953,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[4] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[6];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[4] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[6];
+            return commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[4] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[6];
         }
     } else if (commandCode == 'c18qD') {
         if (lang == 0) {
@@ -925,15 +961,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[4] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[6];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[4] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[6];
+            return commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[4] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[6];
         }
     } else if (commandCode == 'c18qE') {
         if (lang == 0) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[4] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[6];
+            return commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[4] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[6];
         } else if (lang == 1) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[4] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[6];
+            return commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[4] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[6];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[4] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[6];
+            return commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[4] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[6];
         }
     } else if (commandCode == 'c18qF') {
         if (lang == 0) {
@@ -941,7 +977,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When it is no longer clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[4] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[6];
         } else if (lang == 2) {
-            return commandValue.split('When it is no longer clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[4] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[6];
+            return commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[4] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[6];
         }
     } else if (commandCode == 'c18qG') {
         if (lang == 0) {
@@ -949,7 +985,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When double clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[4] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[6];
         } else if (lang == 2) {
-            return commandValue.split('When double clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[4] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[6];
+            return commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[4] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[6];
         }
     } else if (commandCode == 'c18qH') {
         if (lang == 0) {
@@ -957,7 +993,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When right clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[4] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[6];
         } else if (lang == 2) {
-            return commandValue.split('When right clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[4] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[6];
+            return commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[4] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[6];
         }
     } else if (commandCode == 'c18qI') {
         if (lang == 0) {
@@ -965,7 +1001,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[3] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[4] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[6];
         } else if (lang == 2) {
-            return commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[3] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[4] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[6];
+            return commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[4] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[6];
         }
     } else if (commandCode == 'c18qJ') {
         if (lang == 0) {
@@ -973,15 +1009,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[3] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[4] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[6];
         } else if (lang == 2) {
-            return commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[3] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[4] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[6];
+            return commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[4] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[6];
         }
     } else if (commandCode == 'c18qK') {
         if (lang == 0) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[4] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[6];
+            return commandValue.split('When its contents have been modified, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[4] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[6];
         } else if (lang == 1) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[4] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[6];
+            return commandValue.split('When its contents have been modified, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[4] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[6];
         } else if (lang == 2) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[4] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[6];
+            return commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[4] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[7];
         }
     } else if (commandCode == 'c18qL') {
         if (lang == 0) {
@@ -989,7 +1025,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When focused, ')[1].split(' ')[3] + ' ' + commandValue.split('When focused, ')[1].split(' ')[4] + ' ' + commandValue.split('When focused, ')[1].split(' ')[6];
         } else if (lang == 2) {
-            return commandValue.split('When focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When focused, ')[1].split(' ')[3] + ' ' + commandValue.split('When focused, ')[1].split(' ')[4] + ' ' + commandValue.split('When focused, ')[1].split(' ')[6];
+            return commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[4] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[7];
         }
     } else if (commandCode == 'c18qM') {
         if (lang == 0) {
@@ -997,7 +1033,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When it is being focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[3] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[4] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[6];
         } else if (lang == 2) {
-            return commandValue.split('When it is being focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[3] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[4] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[6];
+            return commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[4] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[5] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[7];
         }
     } else if (commandCode == 'c18qN') {
         if (lang == 0) {
@@ -1005,7 +1041,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When slept, ')[1].split(' ')[0] + ' ' + commandValue.split('When slept, ')[1].split(' ')[1] + ' ' + commandValue.split('When slept, ')[1].split(' ')[2] + ' ' + commandValue.split('When slept, ')[1].split(' ')[3] + ' ' + commandValue.split('When slept, ')[1].split(' ')[4] + ' ' + commandValue.split('When slept, ')[1].split(' ')[6];
         } else if (lang == 2) {
-            return commandValue.split('When slept, ')[1].split(' ')[0] + ' ' + commandValue.split('When slept, ')[1].split(' ')[1] + ' ' + commandValue.split('When slept, ')[1].split(' ')[2] + ' ' + commandValue.split('When slept, ')[1].split(' ')[3] + ' ' + commandValue.split('When slept, ')[1].split(' ')[4] + ' ' + commandValue.split('When slept, ')[1].split(' ')[6];
+            return commandValue.split("Quand il a dormi, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[4] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[6];
         }
     } else if (commandCode == 'c18qO') {
         if (lang == 0) {
@@ -1013,7 +1049,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the data of this form has been sent, ')[1].split(' ')[0] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[1] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[2] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[3] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[4] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[6];
         } else if (lang == 2) {
-            return commandValue.split('When the data of this form has been sent, ')[1].split(' ')[0] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[1] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[2] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[3] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[4] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[6];
+            return commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[4] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[7];
         }
     } else if (commandCode == 'c18qP') {
         if (lang == 0) {
@@ -1021,7 +1057,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When scrolled, ')[1].split(' ')[0] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[1] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[2] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[3] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[4] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[6];
         } else if (lang == 2) {
-            return commandValue.split('When scrolled, ')[1].split(' ')[0] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[1] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[2] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[3] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[4] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[6];
+            return commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[4] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[7];
         }
     } else if (commandCode == 'c18r') {
         if (lang == 0) {
@@ -1029,7 +1065,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return 'set the time position of to';
         } else if (lang == 2) {
-            return 'set the time position of to';
+            return 'définir la position de temps de à';
         }
     } else if (commandCode == 'c19') {
         if (lang == 0) {
@@ -1037,7 +1073,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('set the time position of ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('set the time position of ')[1].split(' ')[0];
+            return commandValue.split('définir la position de temps de ')[1].split(' ')[0];
         }
     } else if (commandCode == 'c20') {
         if (lang == 0) {
@@ -1053,7 +1089,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('set the time position of ' + para1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the time position of ' + para1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the time position of ' + para1 + ' to ')[1].split(' ')[2];
         } else if (lang == 2) {
-            return commandValue.split('set the time position of ' + para1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the time position of ' + para1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the time position of ' + para1 + ' to ')[1].split(' ')[2];
+            return commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[2];
         }
     } else if (commandCode == 'c21r') {
         if (lang == 0) {
@@ -1061,7 +1097,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return 'the value of';
         } else if (lang == 2) {
-            return 'the value of';
+            return 'la valeur de';
         }
     } else if (commandCode == 'c22') {
         if (lang == 0) {
@@ -1069,7 +1105,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('set the time position of ' + targetElement + ' to ')[1];
         } else if (lang == 2) {
-            return commandValue.split('set the time position of ' + targetElement + ' to ')[1];
+            return commandValue.split('définir la position de temps de ' + targetElement + ' à ')[1];
         }
     } else if (commandCode == 'c23qA') {
         if (lang == 0) {
@@ -1077,15 +1113,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[5] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[6] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[8] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[9] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[10] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[11] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[12] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[0] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[1] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[2] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[3] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[5] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[6] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[8] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[9] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[10] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[11] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[12] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[13];
+            return commandValue.split('Quand il a été cliqué, ')[1].split(' ')[0] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[1] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[2] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[3] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[5] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[6] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[8] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[9] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[10] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[11] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[12] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[13];
         }
     } else if (commandCode == 'c23qB') {
         if (lang == 0) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[13];
+            return commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[13];
         } else if (lang == 1) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[13];
+            return commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[13];
+            return commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[13];
         }
     } else if (commandCode == 'c23qC') {
         if (lang == 0) {
@@ -1093,7 +1129,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer 10oved away from it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer11moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer 10oved away from it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer11moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[13];
+            return commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer 10oved away from it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer11moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[13];
         }
     } else if (commandCode == 'c23qD') {
         if (lang == 0) {
@@ -1101,15 +1137,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[13];
+            return commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[13];
         }
     } else if (commandCode == 'c23qE') {
         if (lang == 0) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[13];
+            return commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[13];
         } else if (lang == 1) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[13];
+            return commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[13];
+            return commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[13];
         }
     } else if (commandCode == 'c23qF') {
         if (lang == 0) {
@@ -1117,7 +1153,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When it is no longer clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[5] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[6] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[8] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[9] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[10] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[11] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[12] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split('When it is no longer clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[5] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[6] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[8] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[9] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[10] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[11] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[12] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[13];
+            return commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[5] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[6] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[8] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[9] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[10] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[11] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[12] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[13];
         }
     } else if (commandCode == 'c23qG') {
         if (lang == 0) {
@@ -1125,7 +1161,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When double clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[5] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[6] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[8] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[9] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[10] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[11] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[12] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split('When double clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[5] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[6] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[8] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[9] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[10] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[11] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[12] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[13];
+            return commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[5] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[6] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[8] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[9] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[10] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[11] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[12] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[13];
         }
     } else if (commandCode == 'c23qH') {
         if (lang == 0) {
@@ -1133,7 +1169,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When right clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[5] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[6] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[8] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[9] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[10] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[11] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[12] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split('When right clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[5] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[6] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[8] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[9] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[10] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[11] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[12] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[13];
+            return commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[5] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[6] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[8] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[9] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[10] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[11] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[12] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[13];
         }
     } else if (commandCode == 'c23qI') {
         if (lang == 0) {
@@ -1141,7 +1177,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[3] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[5] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[6] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[8] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[9] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[10] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[11] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[12] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[3] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[5] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[6] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[8] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[9] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[10] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[11] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[12] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[13];
+            return commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[13];
         }
     } else if (commandCode == 'c23qJ') {
         if (lang == 0) {
@@ -1149,15 +1185,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[3] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[5] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[6] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[8] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[9] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[10] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[11] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[12] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[3] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[5] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[6] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[8] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[9] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[10] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[11] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[12] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[13];
+            return commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[13];
         }
     } else if (commandCode == 'c23qK') {
         if (lang == 0) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[5] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[6] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[8] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[9] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[10] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[11] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[12] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[13];
+            return commandValue.split('When its contents have been modified, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[5] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[6] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[8] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[9] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[10] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[11] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[12] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[13];
         } else if (lang == 1) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[5] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[6] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[8] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[9] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[10] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[11] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[12] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[13];
+            return commandValue.split('When its contents have been modified, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[5] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[6] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[8] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[9] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[10] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[11] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[12] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[5] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[6] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[8] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[9] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[10] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[11] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[12] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[13];
+            return commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[13];
         }
     } else if (commandCode == 'c23qL') {
         if (lang == 0) {
@@ -1165,7 +1201,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When focused, ')[1].split(' ')[3] + ' ' + commandValue.split('When focused, ')[1].split(' ')[5] + ' ' + commandValue.split('When focused, ')[1].split(' ')[6] + ' ' + commandValue.split('When focused, ')[1].split(' ')[8] + ' ' + commandValue.split('When focused, ')[1].split(' ')[9] + ' ' + commandValue.split('When focused, ')[1].split(' ')[10] + ' ' + commandValue.split('When focused, ')[1].split(' ')[11] + ' ' + commandValue.split('When focused, ')[1].split(' ')[12] + ' ' + commandValue.split('When focused, ')[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split('When focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When focused, ')[1].split(' ')[3] + ' ' + commandValue.split('When focused, ')[1].split(' ')[5] + ' ' + commandValue.split('When focused, ')[1].split(' ')[6] + ' ' + commandValue.split('When focused, ')[1].split(' ')[8] + ' ' + commandValue.split('When focused, ')[1].split(' ')[9] + ' ' + commandValue.split('When focused, ')[1].split(' ')[10] + ' ' + commandValue.split('When focused, ')[1].split(' ')[11] + ' ' + commandValue.split('When focused, ')[1].split(' ')[12] + ' ' + commandValue.split('When focused, ')[1].split(' ')[13];
+            return commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[13];
         }
     } else if (commandCode == 'c23qM') {
         if (lang == 0) {
@@ -1173,7 +1209,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When it is being focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[3] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[5] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[6] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[8] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[9] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[10] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[11] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[12] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split('When it is being focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[3] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[5] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[6] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[8] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[9] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[10] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[11] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[12] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[13];
+            return commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[5] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[6] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[8] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[9] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[10] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[11] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[12] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[13];
         }
     } else if (commandCode == 'c23qN') {
         if (lang == 0) {
@@ -1181,7 +1217,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When slept, ')[1].split(' ')[0] + ' ' + commandValue.split('When slept, ')[1].split(' ')[1] + ' ' + commandValue.split('When slept, ')[1].split(' ')[2] + ' ' + commandValue.split('When slept, ')[1].split(' ')[3] + ' ' + commandValue.split('When slept, ')[1].split(' ')[5] + ' ' + commandValue.split('When slept, ')[1].split(' ')[6] + ' ' + commandValue.split('When slept, ')[1].split(' ')[8] + ' ' + commandValue.split('When slept, ')[1].split(' ')[9] + ' ' + commandValue.split('When slept, ')[1].split(' ')[10] + ' ' + commandValue.split('When slept, ')[1].split(' ')[11] + ' ' + commandValue.split('When slept, ')[1].split(' ')[12] + ' ' + commandValue.split('When slept, ')[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split('When slept, ')[1].split(' ')[0] + ' ' + commandValue.split('When slept, ')[1].split(' ')[1] + ' ' + commandValue.split('When slept, ')[1].split(' ')[2] + ' ' + commandValue.split('When slept, ')[1].split(' ')[3] + ' ' + commandValue.split('When slept, ')[1].split(' ')[5] + ' ' + commandValue.split('When slept, ')[1].split(' ')[6] + ' ' + commandValue.split('When slept, ')[1].split(' ')[8] + ' ' + commandValue.split('When slept, ')[1].split(' ')[9] + ' ' + commandValue.split('When slept, ')[1].split(' ')[10] + ' ' + commandValue.split('When slept, ')[1].split(' ')[11] + ' ' + commandValue.split('When slept, ')[1].split(' ')[12] + ' ' + commandValue.split('When slept, ')[1].split(' ')[13];
+            return commandValue.split("Quand il a dormi, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[5] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[6] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[8] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[9] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[10] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[11] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[12] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[13];
         }
     } else if (commandCode == 'c23qO') {
         if (lang == 0) {
@@ -1189,7 +1225,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the data of this form has been sent, ')[1].split(' ')[0] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[1] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[2] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[3] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[5] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[6] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[8] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[9] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[10] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[11] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[12] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split('When the data of this form has been sent, ')[1].split(' ')[0] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[1] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[2] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[3] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[5] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[6] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[8] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[9] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[10] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[11] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[12] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[13];
+            return commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[13];
         }
     } else if (commandCode == 'c23qP') {
         if (lang == 0) {
@@ -1197,7 +1233,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When scrolled, ')[1].split(' ')[0] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[1] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[2] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[3] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[5] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[6] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[8] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[9] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[10] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[11] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[12] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split('When scrolled, ')[1].split(' ')[0] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[1] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[2] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[3] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[5] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[6] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[8] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[9] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[10] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[11] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[12] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[13];
+            return commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[13];
         }
     } else if (commandCode == 'c23r') {
         if (lang == 0) {
@@ -1205,7 +1241,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return 'go to the database the branch and then insert the following data:';
         } else if (lang == 2) {
-            return 'go to the database the branch and then insert the following data:';
+            return 'aller à la base de données la branche et ensuite insérer les données suivantes:';
         }
     } else if (commandCode == 'c24') {
         if (lang == 0) {
@@ -1213,7 +1249,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('go to the database ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('go to the database ')[1].split(' ')[0];
+            return commandValue.split('aller à la base de données ')[1].split(' ')[0];
         }
     } else if (commandCode == 'c25') {
         if (lang == 0) {
@@ -1221,7 +1257,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('the branch ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('the branch ')[1].split(' ')[0];
+            return commandValue.split('la branche ')[1].split(' ')[0];
         }
     } else if (commandCode == 'c26') {
         if (lang == 0) {
@@ -1229,7 +1265,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then insert the following data: ')[1].split(', ');
         } else if (lang == 2) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then insert the following data: ')[1].split(', ');
+            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' et ensuite insérer les données suivantes: ')[1].split(', ');
         }
     } else if (commandCode == 'c27qA') {
         if (lang == 0) {
@@ -1237,23 +1273,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[5] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[6] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[8] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[9] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[10] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[11] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[12] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[13] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[14] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[15] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[17] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[18] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[19] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[20] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[21] + ' ' + commandValue.split('When clicked, ')[1].split(' ')[22];
         } else if (lang == 2) {
-            return commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[0] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[1] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[2] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[3] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[5] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[6] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[8] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[9] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[10] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[11] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[12] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[13] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[14] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[15] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[17] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[18] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[19] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[20] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[21] + ' ' + commandValue.split('Lorsque vous cliquez dessus, ')[1].split(' ')[22];
+            return commandValue.split('Quand il a été cliqué, ')[1].split(' ')[0] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[1] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[2] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[3] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[5] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[6] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[8] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[9] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[10] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[11] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[12] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[13] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[14] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[15] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[17] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[18] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[19] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[20] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[21] + ' ' + commandValue.split('Quand il a été cliqué, ')[1].split(' ')[22];
         }
     } else if (commandCode == 'c27qB') {
         if (lang == 0) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[13] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[14] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[15] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[17] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[18] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[19] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[20] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[21] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[22];
+            return commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[13] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[14] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[15] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[17] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[18] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[19] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[20] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[21] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[22];
         } else if (lang == 1) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[13] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[14] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[15] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[17] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[18] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[19] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[20] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[21] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[22];
+            return commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[13] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[14] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[15] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[17] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[18] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[19] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[20] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[21] + ' ' + commandValue.split('When the mouse pointer moved over it, ')[1].split(' ')[22];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[13] + ' ' + commandValue.split('When the mouse pointer moved on it, ')[1].split(' ')[14] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[15] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[17] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[18] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[19] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[20] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[21] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[22];
+            return commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[13] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[14] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[15] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[17] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[18] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[19] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[20] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[21] + ' ' + commandValue.split("Lorsque le pointeur de souris a été déplacé au dessus, ")[1].split(' ')[22];
         }
     } else if (commandCode == 'c27qC') {
         if (lang == 0) {
             return commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[13] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[14] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[15] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[17] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[18] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[19] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[20] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[21] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[22];
         } else if (lang == 1) {
-            return commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[13] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[14] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[15] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[17] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[18] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[19] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[20] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[21] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[22];
+            return commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[13] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[14] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[15] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[17] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[18] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[19] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[20] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[21] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[22];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[13] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[14] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[15] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[17] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[18] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[19] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[20] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[21] + ' ' + commandValue.split('When the mouse pointer moved away from it, ')[1].split(' ')[22];
+            return commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[13] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[14] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[15] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[17] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[18] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[19] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[20] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[21] + ' ' + commandValue.split("Lorsque le pointeur de la souris s'a été éloigné de lui, ")[1].split(' ')[22];
         }
     } else if (commandCode == 'c27qD') {
         if (lang == 0) {
@@ -1261,15 +1297,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[13] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[14] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[15] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[17] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[18] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[19] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[20] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[21] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[22];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[13] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[14] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[15] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[17] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[18] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[19] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[20] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[21] + ' ' + commandValue.split('When the mouse pointer is being moved out of it, ')[1].split(' ')[22];
+            return commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[13] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[14] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[15] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[17] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[18] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[19] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[20] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[21] + ' ' + commandValue.split("Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ")[1].split(' ')[22];
         }
     } else if (commandCode == 'c27qE') {
         if (lang == 0) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[13] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[14] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[15] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[17] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[18] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[19] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[20] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[21] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[22];
+            return commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[13] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[14] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[15] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[17] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[18] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[19] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[20] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[21] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[22];
         } else if (lang == 1) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[13] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[14] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[15] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[17] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[18] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[19] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[20] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[21] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[22];
+            return commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[13] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[14] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[15] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[17] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[18] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[19] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[20] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[21] + ' ' + commandValue.split('When the mouse pointer is being moved over it, ')[1].split(' ')[22];
         } else if (lang == 2) {
-            return commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[0] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[1] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[2] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[3] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[5] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[6] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[12] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[13] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[14] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[15] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[17] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[18] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[19] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[20] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[21] + ' ' + commandValue.split('When the mouse pointer is being moved on it, ')[1].split(' ')[22];
+            return commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[13] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[14] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[15] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[17] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[18] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[19] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[20] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[21] + ' ' + commandValue.split("Lorsque le pointeur de la souris se déplace au dessus, ")[1].split(' ')[22];
         }
     } else if (commandCode == 'c27qF') {
         if (lang == 0) {
@@ -1277,7 +1313,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When it is no longer clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[5] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[6] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[8] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[9] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[10] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[11] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[12] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[13] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[14] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[15] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[17] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[18] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[19] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[20] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[21] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[22];
         } else if (lang == 2) {
-            return commandValue.split('When it is no longer clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[5] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[6] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[8] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[9] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[10] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[11] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[12] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[13] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[14] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[15] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[17] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[18] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[19] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[20] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[21] + ' ' + commandValue.split('When it is no longer clicked, ')[1].split(' ')[22];
+            return commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[5] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[6] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[8] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[9] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[10] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[11] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[12] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[13] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[14] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[15] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[17] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[18] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[19] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[20] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[21] + ' ' + commandValue.split("Quand il n'est plus fait cliqué, ")[1].split(' ')[22];
         }
     } else if (commandCode == 'c27qG') {
         if (lang == 0) {
@@ -1285,7 +1321,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When double clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[5] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[6] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[8] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[9] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[10] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[11] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[12] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[13] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[14] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[15] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[17] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[18] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[19] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[20] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[21] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[22];
         } else if (lang == 2) {
-            return commandValue.split('When double clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[5] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[6] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[8] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[9] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[10] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[11] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[12] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[13] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[14] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[15] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[17] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[18] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[19] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[20] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[21] + ' ' + commandValue.split('When double clicked, ')[1].split(' ')[22];
+            return commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[5] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[6] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[8] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[9] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[10] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[11] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[12] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[13] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[14] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[15] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[17] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[18] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[19] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[20] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[21] + ' ' + commandValue.split("Quand il a été double-cliqué, ")[1].split(' ')[22];
         }
     } else if (commandCode == 'c27qH') {
         if (lang == 0) {
@@ -1293,7 +1329,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When right clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[5] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[6] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[8] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[9] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[10] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[11] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[12] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[13] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[14] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[15] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[17] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[18] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[19] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[20] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[21] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[22];
         } else if (lang == 2) {
-            return commandValue.split('When right clicked, ')[1].split(' ')[0] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[1] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[2] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[3] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[5] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[6] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[8] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[9] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[10] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[11] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[12] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[13] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[14] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[15] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[17] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[18] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[19] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[20] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[21] + ' ' + commandValue.split('When right clicked, ')[1].split(' ')[22];
+            return commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[5] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[6] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[8] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[9] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[10] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[11] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[12] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[13] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[14] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[15] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[17] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[18] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[19] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[20] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[21] + ' ' + commandValue.split("Quand il a été droit-cliqué, ")[1].split(' ')[22];
         }
     } else if (commandCode == 'c27qI') {
         if (lang == 0) {
@@ -1301,7 +1337,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[3] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[5] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[6] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[8] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[9] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[10] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[11] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[12] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[13] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[14] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[15] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[17] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[18] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[19] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[20] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[21] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[22];
         } else if (lang == 2) {
-            return commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[3] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[5] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[6] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[8] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[9] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[10] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[11] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[12] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[13] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[14] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[15] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[17] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[18] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[19] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[20] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[21] + ' ' + commandValue.split('When a key pressed while focusing it, ')[1].split(' ')[22];
+            return commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[13] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[14] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[15] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[17] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[18] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[19] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[20] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[21] + ' ' + commandValue.split("Lorsqu'une touche a été pressée tout en la focalisant, ")[1].split(' ')[22];
         }
     } else if (commandCode == 'c27qJ') {
         if (lang == 0) {
@@ -1309,15 +1345,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[3] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[5] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[6] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[8] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[9] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[10] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[11] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[12] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[13] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[14] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[15] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[17] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[18] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[19] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[20] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[21] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[22];
         } else if (lang == 2) {
-            return commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[0] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[1] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[2] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[3] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[5] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[6] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[8] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[9] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[10] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[11] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[12] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[13] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[14] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[15] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[17] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[18] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[19] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[20] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[21] + ' ' + commandValue.split('When a key is being pressed while focusing it, ')[1].split(' ')[22];
+            return commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[13] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[14] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[15] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[17] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[18] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[19] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[20] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[21] + ' ' + commandValue.split("Lorsqu'une touche est en train d'être pressée tout en la focalisant, ")[1].split(' ')[22];
         }
     } else if (commandCode == 'c27qK') {
         if (lang == 0) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[5] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[6] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[8] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[9] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[10] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[11] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[12] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[13] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[14] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[15] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[17] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[18] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[19] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[20] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[21] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[22];
+            return commandValue.split('When its contents have been modified, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[5] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[6] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[8] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[9] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[10] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[11] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[12] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[13] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[14] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[15] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[17] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[18] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[19] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[20] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[21] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[22];
         } else if (lang == 1) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[5] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[6] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[8] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[9] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[10] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[11] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[12] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[13] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[14] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[15] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[17] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[18] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[19] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[20] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[21] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[22];
+            return commandValue.split('When its contents have been modified, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[5] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[6] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[8] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[9] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[10] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[11] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[12] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[13] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[14] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[15] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[17] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[18] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[19] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[20] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[21] + ' ' + commandValue.split('When its contents have been modified, ')[1].split(' ')[22];
         } else if (lang == 2) {
-            return commandValue.split('When its contents have been changed, ')[1].split(' ')[0] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[1] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[2] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[3] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[5] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[6] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[8] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[9] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[10] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[11] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[12] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[13] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[14] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[15] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[17] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[18] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[19] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[20] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[21] + ' ' + commandValue.split('When its contents have been changed, ')[1].split(' ')[22];
+            return commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[13] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[14] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[15] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[17] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[18] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[19] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[20] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[21] + ' ' + commandValue.split("Lorsque son contenu a été modifié, ")[1].split(' ')[22];
         }
     } else if (commandCode == 'c27qL') {
         if (lang == 0) {
@@ -1325,7 +1361,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When focused, ')[1].split(' ')[3] + ' ' + commandValue.split('When focused, ')[1].split(' ')[5] + ' ' + commandValue.split('When focused, ')[1].split(' ')[6] + ' ' + commandValue.split('When focused, ')[1].split(' ')[8] + ' ' + commandValue.split('When focused, ')[1].split(' ')[9] + ' ' + commandValue.split('When focused, ')[1].split(' ')[10] + ' ' + commandValue.split('When focused, ')[1].split(' ')[11] + ' ' + commandValue.split('When focused, ')[1].split(' ')[12] + ' ' + commandValue.split('When focused, ')[1].split(' ')[13] + ' ' + commandValue.split('When focused, ')[1].split(' ')[14] + ' ' + commandValue.split('When focused, ')[1].split(' ')[15] + ' ' + commandValue.split('When focused, ')[1].split(' ')[17] + ' ' + commandValue.split('When focused, ')[1].split(' ')[18] + ' ' + commandValue.split('When focused, ')[1].split(' ')[19] + ' ' + commandValue.split('When focused, ')[1].split(' ')[20] + ' ' + commandValue.split('When focused, ')[1].split(' ')[21] + ' ' + commandValue.split('When focused, ')[1].split(' ')[22];
         } else if (lang == 2) {
-            return commandValue.split('When focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When focused, ')[1].split(' ')[3] + ' ' + commandValue.split('When focused, ')[1].split(' ')[5] + ' ' + commandValue.split('When focused, ')[1].split(' ')[6] + ' ' + commandValue.split('When focused, ')[1].split(' ')[8] + ' ' + commandValue.split('When focused, ')[1].split(' ')[9] + ' ' + commandValue.split('When focused, ')[1].split(' ')[10] + ' ' + commandValue.split('When focused, ')[1].split(' ')[11] + ' ' + commandValue.split('When focused, ')[1].split(' ')[12] + ' ' + commandValue.split('When focused, ')[1].split(' ')[13] + ' ' + commandValue.split('When focused, ')[1].split(' ')[14] + ' ' + commandValue.split('When focused, ')[1].split(' ')[15] + ' ' + commandValue.split('When focused, ')[1].split(' ')[17] + ' ' + commandValue.split('When focused, ')[1].split(' ')[18] + ' ' + commandValue.split('When focused, ')[1].split(' ')[19] + ' ' + commandValue.split('When focused, ')[1].split(' ')[20] + ' ' + commandValue.split('When focused, ')[1].split(' ')[21] + ' ' + commandValue.split('When focused, ')[1].split(' ')[22];
+            return commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[13] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[14] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[15] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[17] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[18] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[19] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[20] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[21] + ' ' + commandValue.split("Lorsqu'on a été focalisé, ")[1].split(' ')[22];
         }
     } else if (commandCode == 'c27qM') {
         if (lang == 0) {
@@ -1333,7 +1369,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When it is being focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[3] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[5] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[6] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[8] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[9] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[10] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[11] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[12] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[13] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[14] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[15] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[17] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[18] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[19] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[20] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[21] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[22];
         } else if (lang == 2) {
-            return commandValue.split('When it is being focused, ')[1].split(' ')[0] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[1] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[2] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[3] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[5] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[6] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[8] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[9] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[10] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[11] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[12] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[13] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[14] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[15] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[17] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[18] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[19] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[20] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[21] + ' ' + commandValue.split('When it is being focused, ')[1].split(' ')[22];
+            return commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[5] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[6] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[8] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[9] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[10] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[11] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[12] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[13] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[14] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[15] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[17] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[18] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[19] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[20] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[21] + ' ' + commandValue.split("Quand il est en train d'être focalisé, ")[1].split(' ')[22];
         }
     } else if (commandCode == 'c27qN') {
         if (lang == 0) {
@@ -1341,7 +1377,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When slept, ')[1].split(' ')[0] + ' ' + commandValue.split('When slept, ')[1].split(' ')[1] + ' ' + commandValue.split('When slept, ')[1].split(' ')[2] + ' ' + commandValue.split('When slept, ')[1].split(' ')[3] + ' ' + commandValue.split('When slept, ')[1].split(' ')[5] + ' ' + commandValue.split('When slept, ')[1].split(' ')[6] + ' ' + commandValue.split('When slept, ')[1].split(' ')[8] + ' ' + commandValue.split('When slept, ')[1].split(' ')[9] + ' ' + commandValue.split('When slept, ')[1].split(' ')[10] + ' ' + commandValue.split('When slept, ')[1].split(' ')[11] + ' ' + commandValue.split('When slept, ')[1].split(' ')[12] + ' ' + commandValue.split('When slept, ')[1].split(' ')[13] + ' ' + commandValue.split('When slept, ')[1].split(' ')[14] + ' ' + commandValue.split('When slept, ')[1].split(' ')[15] + ' ' + commandValue.split('When slept, ')[1].split(' ')[17] + ' ' + commandValue.split('When slept, ')[1].split(' ')[18] + ' ' + commandValue.split('When slept, ')[1].split(' ')[19] + ' ' + commandValue.split('When slept, ')[1].split(' ')[20] + ' ' + commandValue.split('When slept, ')[1].split(' ')[21] + ' ' + commandValue.split('When slept, ')[1].split(' ')[22];
         } else if (lang == 2) {
-            return commandValue.split('When slept, ')[1].split(' ')[0] + ' ' + commandValue.split('When slept, ')[1].split(' ')[1] + ' ' + commandValue.split('When slept, ')[1].split(' ')[2] + ' ' + commandValue.split('When slept, ')[1].split(' ')[3] + ' ' + commandValue.split('When slept, ')[1].split(' ')[5] + ' ' + commandValue.split('When slept, ')[1].split(' ')[6] + ' ' + commandValue.split('When slept, ')[1].split(' ')[8] + ' ' + commandValue.split('When slept, ')[1].split(' ')[9] + ' ' + commandValue.split('When slept, ')[1].split(' ')[10] + ' ' + commandValue.split('When slept, ')[1].split(' ')[11] + ' ' + commandValue.split('When slept, ')[1].split(' ')[12] + ' ' + commandValue.split('When slept, ')[1].split(' ')[13] + ' ' + commandValue.split('When slept, ')[1].split(' ')[14] + ' ' + commandValue.split('When slept, ')[1].split(' ')[15] + ' ' + commandValue.split('When slept, ')[1].split(' ')[17] + ' ' + commandValue.split('When slept, ')[1].split(' ')[18] + ' ' + commandValue.split('When slept, ')[1].split(' ')[19] + ' ' + commandValue.split('When slept, ')[1].split(' ')[20] + ' ' + commandValue.split('When slept, ')[1].split(' ')[21] + ' ' + commandValue.split('When slept, ')[1].split(' ')[22];
+            return commandValue.split("Quand il a dormi, ")[1].split(' ')[0] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[1] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[2] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[3] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[5] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[6] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[8] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[9] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[10] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[11] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[12] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[13] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[14] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[15] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[17] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[18] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[19] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[20] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[21] + ' ' + commandValue.split("Quand il a dormi, ")[1].split(' ')[22];
         }
     } else if (commandCode == 'c27qO') {
         if (lang == 0) {
@@ -1349,7 +1385,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When the data of this form has been sent, ')[1].split(' ')[0] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[1] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[2] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[3] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[5] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[6] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[8] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[9] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[10] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[11] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[12] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[13] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[14] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[15] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[17] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[18] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[19] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[20] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[21] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[22];
         } else if (lang == 2) {
-            return commandValue.split('When the data of this form has been sent, ')[1].split(' ')[0] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[1] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[2] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[3] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[5] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[6] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[8] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[9] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[10] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[11] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[12] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[13] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[14] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[15] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[17] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[18] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[19] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[20] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[21] + ' ' + commandValue.split('When the data of this form has been sent, ')[1].split(' ')[22];
+            return commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[13] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[14] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[15] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[17] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[18] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[19] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[20] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[21] + ' ' + commandValue.split("Lorsque les données de ce formulaire ont été envoyées, ")[1].split(' ')[22];
         }
     } else if (commandCode == 'c27qP') {
         if (lang == 0) {
@@ -1357,7 +1393,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('When scrolled, ')[1].split(' ')[0] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[1] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[2] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[3] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[5] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[6] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[8] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[9] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[10] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[11] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[12] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[13] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[14] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[15] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[17] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[18] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[19] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[20] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[21] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[22];
         } else if (lang == 2) {
-            return commandValue.split('When scrolled, ')[1].split(' ')[0] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[1] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[2] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[3] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[5] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[6] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[8] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[9] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[10] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[11] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[12] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[13] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[14] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[15] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[17] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[18] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[19] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[20] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[21] + ' ' + commandValue.split('When scrolled, ')[1].split(' ')[22];
+            return commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[0] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[1] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[2] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[3] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[5] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[6] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[8] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[9] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[10] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[11] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[12] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[13] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[14] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[15] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[17] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[18] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[19] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[20] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[21] + ' ' + commandValue.split("Lorsqu'il s'a été déroulé, ")[1].split(' ')[22];
         }
     } else if (commandCode == 'c27r') {
         if (lang == 0) {
@@ -1365,7 +1401,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return 'go to the database the branch and then get the value of the slot which has the same class of';
         } else if (lang == 2) {
-            return 'go to the database the branch and then get the value of the slot which has the same class of';
+            return 'aller à la base de données la branche et ensuite obtenir la valeur de la fente which has the same class of';
         }
     } else if (commandCode == 'c28') {
         if (lang == 0) {
@@ -1389,7 +1425,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('get the value of the slot ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('get the value of the slot ')[1].split(' ')[0];
+            return commandValue.split('obtenir la valeur de la fente ')[1].split(' ')[0];
         }
     } else if (commandCode == 'c31') {
         if (lang == 0) {
@@ -3904,7 +3940,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     $('head').append('<link rel="icon" type="image/png" href="' + settings[logoTranslations[lang]] + '">');
                 }
                 if (settings[titleTranslations[lang]]) {
-                    $('head').append('<[titleTranslations[lang]]>' + settings[titleTranslations[lang]] + '</[titleTranslations[lang]]>');
+                    $('head').append('<title>' + settings[titleTranslations[lang]] + '</title>');
                 }
                 $.fn[pageTranslations[lang]] = function (options) {
                     // Establish our default settings
@@ -3978,12 +4014,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 $.fn[databaseCenterTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
-                        [hostTranslations[lang]]: 'localhost',
+                        [centerLocationTranslations[lang]]: 'localhost',
                         [usernameTranslations[lang]]: 'root',
                         [passwordTranslations[lang]]: 'root'
                     }, options);
                     return this.each(function () {
-                        sessionStorage.dbhost = settings[hostTranslations[lang]];
+                        sessionStorage.dbhost = settings[centerLocationTranslations[lang]];
                         sessionStorage.dbusername = settings[usernameTranslations[lang]];
                         sessionStorage.dbpassword = settings[passwordTranslations[lang]];
                     });
@@ -4001,7 +4037,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [fontStyleTranslations[lang]]: null,
                         [disabledTranslations[lang]]: null,
                         raised: null,
-                        switchedOn: null,
+                        switched: null,
                         [animationTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
@@ -4019,13 +4055,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('disabled', '');
+                            $('#' + name + '').prop('disabled', true);
                         }
                         if (settings[raisedTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('raised', '');
+                            $('#' + name + '').prop('raised', true);
                         }
-                        if (settings[switchedOnTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('toggles', '');
+                        if (settings[switchedTranslations[lang]] == yesTranslations[lang]) {
+                            $('#' + name + '').prop('toggled', true);
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == 'thick') {
@@ -4350,21 +4386,26 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
-                $.fn[loadingSpinnerTranslations[lang]] = function (options) {
+                $.fn[loaderTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
                         [lengthTranslations[lang]]: null,
-                        loading: null,
+                        [loadingTranslations[lang]]: null,
                         [animationTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [typeTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
-                        var out = '<paper-spinner id="' + name + '"></paper-spinner>';
+                        if (settings[typeTranslations[lang]] == settings[barTranslations[lang]]) {
+                            var out = '<paper-progress id="' + name + '"></paper-progress>';
+                        } else if (settings[typeTranslations[lang]] == settings[spinnerTranslations[lang]]) {
+                            var out = '<paper-spinner id="' + name + '"></paper-spinner>';
+                        }
                         $('contents').append(out);
                         if (settings[fontColourTranslations[lang]]) {
                             setFontColour(name, settings[fontColourTranslations[lang]]);
@@ -4373,43 +4414,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             setBG(name, settings[backgroundTranslations[lang]]);
                         }
                         if (settings[loadingTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('active', '');
-                        }
-                        if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
-                        }
-                        if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
-                        }
-                        if (settings[animationTranslations[lang]]) {
-                            setAnimation(name, settings[animationTranslations[lang]]);
-                        }
-                        if (settings[transparencyTranslations[lang]]) {
-                            $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[transparencyTranslations[lang]] + '%)');
-                        }
-                    });
-                };
-                $.fn[loadingBarTranslations[lang]] = function (options) {
-                    // Establish our default settings
-                    var settings = $.extend({
-                        [nameTranslations[lang]]: null,
-                        [widthTranslations[lang]]: null,
-                        [lengthTranslations[lang]]: null,
-                        loading: null,
-                        [animationTranslations[lang]]: null,
-                        [backgroundTranslations[lang]]: null,
-                        [transparencyTranslations[lang]]: null,
-                        [commandsTranslations[lang]]: null
-                    }, options);
-                    return this.each(function () {
-                        var name = settings[nameTranslations[lang]];
-                        var out = '<paper-progress id="' + name + '"></paper-progress>';
-                        $('contents').append(out);
-                        if (settings[fontColourTranslations[lang]]) {
-                            setFontColour(name, settings[fontColourTranslations[lang]]);
-                        }
-                        if (settings[backgroundTranslations[lang]]) {
-                            setBG(name, settings[backgroundTranslations[lang]]);
+                            $('#' + name + '').prop('active', true);
                         }
                         if (settings[widthTranslations[lang]]) {
                             $('#' + name + '').css('width', settings[widthTranslations[lang]]);
@@ -4429,9 +4434,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     // Establish our default settings
                     var settings = $.extend({
                         [titleTranslations[lang]]: null,
-                        source: null,
-                        imageWidth: null,
-                        imageLength: null,
+                        [sourceTranslations[lang]]: null,
+                        [imageWidthTranslations[lang]]: null,
+                        [imageLengthTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
                         [lengthTranslations[lang]]: null,
@@ -4442,17 +4447,17 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
-                        var source = settings.source;
+                        var source = settings[sourceTranslations[lang]];
                         var out = '<img id="' + name + '" src="' + source + '"></img>';
                         $('contents').append(out);
                         if (settings[backgroundTranslations[lang]]) {
                             setBG(name, settings[backgroundTranslations[lang]]);
                         }
-                        if (settings.imageWidth) {
-                            $('#' + name + '').attr('width', settings.imageWidth);
+                        if (settings[imageWidthTranslations[lang]]) {
+                            $('#' + name + '').attr('width', settings[imageWidthTranslations[lang]]);
                         }
-                        if (settings.imageLength) {
-                            $('#' + name + '').attr('length', settings.imageLength);
+                        if (settings[imageLengthTranslations[lang]]) {
+                            $('#' + name + '').attr('length', settings[imageLengthTranslations[lang]]);
                         }
                         if (settings[titleTranslations[lang]]) {
                             $('#' + name + '').attr('alt', settings[titleTranslations[lang]]);
@@ -4539,7 +4544,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     // Establish our default settings
                     var settings = $.extend({
                         [textTranslations[lang]]: null,
-                        description: null,
+                        [descriptionTranslations[lang]]: null,
                         [thicknessTranslations[lang]]: null,
                         [disabledTranslations[lang]]: null,
                         checked: null,
@@ -4570,16 +4575,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             setBG(name, settings[backgroundTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('disabled', '');
+                            $('#' + name + '').prop('disabled', true);
                         }
                         if (settings.checked == yesTranslations[lang]) {
-                            $('#' + name + '').attr('checked', '');
+                            $('#' + name + '').prop('checked', true);
                         }
                         if (settings[rippleTranslations[lang]]) {
-                            $('#' + name + '').attr('noink', '');
+                            $('#' + name + '').prop('noink', true);
                         }
-                        if (settings.description) {
-                            $('#' + name + '').append('<span class="subtitle">' + settings.description + '</span>');
+                        if (settings[descriptionTranslations[lang]]) {
+                            $('#' + name + '').append('<span class="subtitle">' + settings[descriptionTranslations[lang]] + '</span>');
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == 'thick') {
@@ -4700,7 +4705,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     // Establish our default settings
                     var settings = $.extend({
                         [titleTranslations[lang]]: null,
-                        items: null,
+                        [itemsTranslations[lang]]: null,
                         [rippleTranslations[lang]]: null,
                         preselected: null,
                         [disabledTranslations[lang]]: null,
@@ -4719,8 +4724,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<paper-dropdown-menu id="' + name + '" label="' + settings[titleTranslations[lang]] + '">';
-                        if (settings.items) {
-                            var items = settings.items.split(' &&& ');
+                        if (settings[itemsTranslations[lang]]) {
+                            var items = settings[itemsTranslations[lang]].split(' &&& ');
                             out += '<paper-listbox id="' + name + '-contents" class="dropdown-content" '
                             if (settings.preselected) {
                                 out += 'selected="' + settings.preselected + '">'
@@ -4741,10 +4746,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('disabled', '');
+                            $('#' + name + '').prop('disabled', true);
                         }
                         if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
-                            $('#' + name + '').attr('noink', '');
+                            $('#' + name + '').prop('noink', true);
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == 'thick') {
@@ -4779,7 +4784,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 $.fn[FABTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
-                        description: null,
+                        [descriptionTranslations[lang]]: null,
                         [iconTranslations[lang]]: null,
                         [textTranslations[lang]]: null,
                         [rippleTranslations[lang]]: null,
@@ -4816,8 +4821,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[iconTranslations[lang]]) {
                             out += 'icon="' + settings[iconTranslations[lang]] + '" ';
                         }
-                        if (settings.description) {
-                            out += '[titleTranslations[lang]]="' + settings.description + '" ';
+                        if (settings[descriptionTranslations[lang]]) {
+                            out += 'title="' + settings[descriptionTranslations[lang]] + '" ';
                         }
                         out += 'id="' + name + '"></paper-fab>';
                         $('contents').append(out);
@@ -4828,10 +4833,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('disabled', '');
+                            $('#' + name + '').prop('disabled', true);
                         }
                         if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
-                            $('#' + name + '').attr('noink', '');
+                            $('#' + name + '').prop('noink', true);
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == 'thick') {
@@ -4936,8 +4941,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[iconTranslations[lang]]) {
                             out += 'icon="' + settings[iconTranslations[lang]] + '" ';
                         }
-                        if (settings.description) {
-                            out += '[titleTranslations[lang]]="' + settings.description + '" ';
+                        if (settings[descriptionTranslations[lang]]) {
+                            out += 'title="' + settings[descriptionTranslations[lang]] + '" ';
                         }
                         out += 'id="' + name + '">';
                         if (settings[prefixTranslations[lang]]) {
@@ -4961,7 +4966,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }
                         }
                         if (settings[clearButtonTranslations[lang]] == yesTranslations[lang]) {
-                            out += '<paper-icon-button suffix onclick="clearInput()" icon="clear" alt="clear" [titleTranslations[lang]]="clear"></paper-icon-button>';
+                            out += '<paper-icon-button suffix onclick="clearInput()" icon="clear" alt="clear" title="clear"></paper-icon-button>';
                         }
                         if (settings[dynamicSizeTranslations[lang]] == yesTranslations[lang]) {
                             out += '</paper-textarea>';
@@ -4976,10 +4981,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('disabled', '');
+                            $('#' + name + '').prop('disabled', true);
                         }
                         if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
-                            $('#' + name + '').attr('noink', '');
+                            $('#' + name + '').prop('noink', true);
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == 'thick') {
@@ -5073,10 +5078,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('disabled', '');
+                            $('#' + name + '').prop('disabled', true);
                         }
                         if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
-                            $('#' + name + '').attr('noink', '');
+                            $('#' + name + '').prop('noink', true);
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == 'thick') {
