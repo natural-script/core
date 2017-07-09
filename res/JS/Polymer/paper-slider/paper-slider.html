@@ -90,6 +90,11 @@ Custom property | Description | Default
       :host(:focus) {
         outline: none;
       }
+        
+      :host-context([dir="rtl"]) #sliderContainer {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+      }
 
       #sliderContainer {
         position: relative;
@@ -334,7 +339,7 @@ Custom property | Description | Default
         on-up="_resetKnob"
         on-track="_onTrack"
         on-transitionend="_knobTransitionEnd">
-          <div class="slider-knob-inner" value$="[[_getPinLabel(pinLabel, immediateValue)]]"></div>
+          <div class="slider-knob-inner" value$="[[immediateValue]]"></div>
       </div>
     </div>
 
@@ -386,16 +391,6 @@ Custom property | Description | Default
           type: Boolean,
           value: false,
           notify: true
-        },
-
-        /**
-         * If set, a this text will be used in the pin instead of just the numeric
-         * number. Use if you need to format the label in any way.
-         */
-        pinLabel: {
-          type: String,
-          value: "",
-          notify: false
         },
 
         /**
@@ -482,8 +477,10 @@ Custom property | Description | Default
       },
 
       keyBindings: {
-        'left down pagedown home': '_decrementKey',
-        'right up pageup end': '_incrementKey'
+        'left': '_leftKey',
+        'right': '_rightKey',
+        'down pagedown home': '_decrementKey',
+        'up pageup end': '_incrementKey'
       },
 
       /**
@@ -581,7 +578,9 @@ Custom property | Description | Default
           this._trackStart(event);
         }
 
-        var dx = Math.min(this._maxx, Math.max(this._minx, event.detail.dx));
+        var direction = this._isRTL ? -1 : 1;
+        var dx = Math.min(
+            this._maxx, Math.max(this._minx, event.detail.dx * direction));
         this._x = this._startx + dx;
 
         var immediateValue = this._calcStep(this._calcKnobPosition(this._x / this._w));
@@ -619,6 +618,9 @@ Custom property | Description | Default
         this._w = this.$.sliderBar.offsetWidth;
         var rect = this.$.sliderBar.getBoundingClientRect();
         var ratio = (event.detail.x - rect.left) / this._w;
+        if (this._isRTL) {
+          ratio = 1 - ratio;
+        }
         var prevRatio = this.ratio;
 
         this._setTransiting(true);
@@ -660,6 +662,9 @@ Custom property | Description | Default
         if (steps > maxMarkers) {
           steps = maxMarkers;
         }
+        if (steps < 0 || !isFinite(steps)) {
+          steps = 0;
+        }
         this._setMarkers(new Array(steps));
       },
 
@@ -683,6 +688,27 @@ Custom property | Description | Default
         });
       },
 
+      get _isRTL() {
+        if (this.__isRTL === undefined) {
+          this.__isRTL = window.getComputedStyle(this)['direction'] === 'rtl';
+        }
+        return this.__isRTL;
+      },
+
+      _leftKey: function(event) {
+        if (this._isRTL)
+          this._incrementKey(event);
+        else
+          this._decrementKey(event);
+      },
+
+      _rightKey: function(event) {
+        if (this._isRTL)
+          this._decrementKey(event);
+        else
+          this._incrementKey(event);
+      },
+
       _incrementKey: function(event) {
         if (!this.disabled) {
           if (event.detail.key === 'end') {
@@ -691,6 +717,7 @@ Custom property | Description | Default
             this.increment();
           }
           this.fire('change');
+          event.preventDefault();
         }
       },
 
@@ -702,6 +729,7 @@ Custom property | Description | Default
             this.decrement();
           }
           this.fire('change');
+          event.preventDefault();
         }
       },
 
@@ -712,10 +740,6 @@ Custom property | Description | Default
 
       _inputKeyDown: function(event) {
         event.stopPropagation();
-      },
-
-      _getPinLabel: function(pinLabel, value) {
-        return pinLabel ? pinLabel : value;
       },
 
       // create the element ripple inside the `sliderKnob`
