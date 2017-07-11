@@ -71,7 +71,6 @@ var animationTranslations = ['aniamtion', 'aniamtion', 'animation', 'الحرك�
 var commandsTranslations = ['commands', 'commands', 'commandes', 'الأوامر', 'الأوامر', 'コマンド'];
 var sliderTranslations = ['slider', 'slider', 'curseur', 'دبوس', 'دبوس', 'スライダー'];
 var buttonTranslations = ['button', 'button', 'curseur', 'زر', 'زرار', 'ボタン'];
-var databaseCenterTranslations = ['database_centre', 'database_center', 'centre_de_base_de_données', 'مركز قاعدة البيانات', 'مركز الداتا بيز', 'ピン'];
 var FABTranslations = ['FAB', 'FAB', 'épingle', 'دبوس', 'دبوس', 'ピン'];
 var colorsPaletteTranslations = ['colours_palette', 'colors_palette', 'palette_de_couleurs', 'لوحة_الوان', 'بلتة_الوان', 'カラーパレット'];
 var textFnTranslations = ['text0', 'text0', 'texte', 'نص', 'كلام', 'テキスト'];
@@ -99,7 +98,7 @@ var distanceFromLeftTranslations = ['distance_from_the_left', 'distance_from_the
 var distanceFromRightTranslations = ['distance_from_the_right', 'distance_from_the_right', 'distance_à_partir_de_la_droit', 'المسافة_من_اليمين', 'المسافة_من_اللمين', '右からの距離'];
 var distanceFromTopTranslations = ['distance_from_the_top', 'distance_from_the_top', 'distance_à_partir_de_le_haut', 'المسافة_من_أعلى', 'المسافة_من_فوق', '上からの距離'];
 var distanceFromBottomTranslations = ['distance_from_the_bottom', 'distance_from_the_bottom', 'distance_à_partir_de_le_fond', 'المسافة_من_اسفل', 'المسافة_من_تحت', '底からの距離'];
-var centerLocationTranslations = ['centre_location', 'center_location', 'emplacement_central', 'مقر_المركز', 'مقر_المركز', 'ピン'];
+var firebaseCenterTranslations = ['firebase_centre', 'firebase_center', 'emplacement_central', 'مقر_المركز', 'مقر_المركز', 'ピン'];
 var usernameTranslations = ['username', 'username', "nom_d'utilisateur", 'اسم_المستخدم', 'اسم_المستخدم', 'ピン'];
 var passwordTranslations = ['password', 'password', 'mot_de_passe', 'كلمة_المرور', 'كلمة_السر', 'ピン'];
 var setupTranslations = ['setup', 'setup', 'installer', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン'];
@@ -140,6 +139,8 @@ var imageLengthTranslations = ['image_length', 'image_length', "longueur de l'im
 var sourceTranslations = ['source', 'source', "la_source", 'المصدر', 'المصدر', 'ソース'];
 var itemsTranslations = ['items', 'items', "articles", 'العناصر', 'العناصر', 'アイテム'];
 var descriptionTranslations = ['description', 'description', "la_description", 'الوصف', 'الوصف', '説明'];
+var privateTranslations = ['private', 'private', "privé", 'خاص', 'خاص', 'プライベート'];
+var loginFormTranslations = ['login_form', 'login_form', "formulaire_de_connexion", 'خاص', 'خاص', 'ログインフォーム'];
 
 function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, para4) {
     if (lang == 0) {
@@ -2249,241 +2250,241 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         }
     } else if (commandCode == 'c27qA') {
         if (lang == 0) {
-            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13] + ' ' + commandValue.split(E1)[1].split(' ')[14] + ' ' + commandValue.split(E1)[1].split(' ')[15] + ' ' + commandValue.split(E1)[1].split(' ')[17] + ' ' + commandValue.split(E1)[1].split(' ')[18] + ' ' + commandValue.split(E1)[1].split(' ')[19] + ' ' + commandValue.split(E1)[1].split(' ')[20] + ' ' + commandValue.split(E1)[1].split(' ')[21] + ' ' + commandValue.split(E1)[1].split(' ')[22];
+            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13] + ' ' + commandValue.split(E1)[1].split(' ')[14] + ' ' + commandValue.split(E1)[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13] + ' ' + commandValue.split(E1)[1].split(' ')[14] + ' ' + commandValue.split(E1)[1].split(' ')[15] + ' ' + commandValue.split(E1)[1].split(' ')[17] + ' ' + commandValue.split(E1)[1].split(' ')[18] + ' ' + commandValue.split(E1)[1].split(' ')[19] + ' ' + commandValue.split(E1)[1].split(' ')[20] + ' ' + commandValue.split(E1)[1].split(' ')[21] + ' ' + commandValue.split(E1)[1].split(' ')[22];
+            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13] + ' ' + commandValue.split(E1)[1].split(' ')[14] + ' ' + commandValue.split(E1)[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13] + ' ' + commandValue.split(E1)[1].split(' ')[14] + ' ' + commandValue.split(E1)[1].split(' ')[15] + ' ' + commandValue.split(E1)[1].split(' ')[17] + ' ' + commandValue.split(E1)[1].split(' ')[18] + ' ' + commandValue.split(E1)[1].split(' ')[19] + ' ' + commandValue.split(E1)[1].split(' ')[20] + ' ' + commandValue.split(E1)[1].split(' ')[21] + ' ' + commandValue.split(E1)[1].split(' ')[22];
+            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13] + ' ' + commandValue.split(E1)[1].split(' ')[14] + ' ' + commandValue.split(E1)[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13] + ' ' + commandValue.split(E1)[1].split(' ')[14] + ' ' + commandValue.split(E1)[1].split(' ')[15] + ' ' + commandValue.split(E1)[1].split(' ')[17] + ' ' + commandValue.split(E1)[1].split(' ')[18] + ' ' + commandValue.split(E1)[1].split(' ')[19] + ' ' + commandValue.split(E1)[1].split(' ')[20] + ' ' + commandValue.split(E1)[1].split(' ')[21] + ' ' + commandValue.split(E1)[1].split(' ')[22];
+            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13] + ' ' + commandValue.split(E1)[1].split(' ')[14] + ' ' + commandValue.split(E1)[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13] + ' ' + commandValue.split(E1)[1].split(' ')[14] + ' ' + commandValue.split(E1)[1].split(' ')[15] + ' ' + commandValue.split(E1)[1].split(' ')[17] + ' ' + commandValue.split(E1)[1].split(' ')[18] + ' ' + commandValue.split(E1)[1].split(' ')[19] + ' ' + commandValue.split(E1)[1].split(' ')[20] + ' ' + commandValue.split(E1)[1].split(' ')[21] + ' ' + commandValue.split(E1)[1].split(' ')[22];
+            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13] + ' ' + commandValue.split(E1)[1].split(' ')[14] + ' ' + commandValue.split(E1)[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13] + ' ' + commandValue.split(E1)[1].split(' ')[14] + ' ' + commandValue.split(E1)[1].split(' ')[15] + ' ' + commandValue.split(E1)[1].split(' ')[17] + ' ' + commandValue.split(E1)[1].split(' ')[18] + ' ' + commandValue.split(E1)[1].split(' ')[19] + ' ' + commandValue.split(E1)[1].split(' ')[20] + ' ' + commandValue.split(E1)[1].split(' ')[21] + ' ' + commandValue.split(E1)[1].split(' ')[22];
+            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13] + ' ' + commandValue.split(E1)[1].split(' ')[14] + ' ' + commandValue.split(E1)[1].split(' ')[15];
         }
     } else if (commandCode == 'c27qB') {
         if (lang == 0) {
-            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13] + ' ' + commandValue.split(E2)[1].split(' ')[14] + ' ' + commandValue.split(E2)[1].split(' ')[15] + ' ' + commandValue.split(E2)[1].split(' ')[17] + ' ' + commandValue.split(E2)[1].split(' ')[18] + ' ' + commandValue.split(E2)[1].split(' ')[19] + ' ' + commandValue.split(E2)[1].split(' ')[20] + ' ' + commandValue.split(E2)[1].split(' ')[21] + ' ' + commandValue.split(E2)[1].split(' ')[22];
+            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13] + ' ' + commandValue.split(E2)[1].split(' ')[14] + ' ' + commandValue.split(E2)[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13] + ' ' + commandValue.split(E2)[1].split(' ')[14] + ' ' + commandValue.split(E2)[1].split(' ')[15] + ' ' + commandValue.split(E2)[1].split(' ')[17] + ' ' + commandValue.split(E2)[1].split(' ')[18] + ' ' + commandValue.split(E2)[1].split(' ')[19] + ' ' + commandValue.split(E2)[1].split(' ')[20] + ' ' + commandValue.split(E2)[1].split(' ')[21] + ' ' + commandValue.split(E2)[1].split(' ')[22];
+            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13] + ' ' + commandValue.split(E2)[1].split(' ')[14] + ' ' + commandValue.split(E2)[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13] + ' ' + commandValue.split(E2)[1].split(' ')[14] + ' ' + commandValue.split(E2)[1].split(' ')[15] + ' ' + commandValue.split(E2)[1].split(' ')[17] + ' ' + commandValue.split(E2)[1].split(' ')[18] + ' ' + commandValue.split(E2)[1].split(' ')[19] + ' ' + commandValue.split(E2)[1].split(' ')[20] + ' ' + commandValue.split(E2)[1].split(' ')[21] + ' ' + commandValue.split(E2)[1].split(' ')[22];
+            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13] + ' ' + commandValue.split(E2)[1].split(' ')[14] + ' ' + commandValue.split(E2)[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13] + ' ' + commandValue.split(E2)[1].split(' ')[14] + ' ' + commandValue.split(E2)[1].split(' ')[15] + ' ' + commandValue.split(E2)[1].split(' ')[17] + ' ' + commandValue.split(E2)[1].split(' ')[18] + ' ' + commandValue.split(E2)[1].split(' ')[19] + ' ' + commandValue.split(E2)[1].split(' ')[20] + ' ' + commandValue.split(E2)[1].split(' ')[21] + ' ' + commandValue.split(E2)[1].split(' ')[22];
+            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13] + ' ' + commandValue.split(E2)[1].split(' ')[14] + ' ' + commandValue.split(E2)[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13] + ' ' + commandValue.split(E2)[1].split(' ')[14] + ' ' + commandValue.split(E2)[1].split(' ')[15] + ' ' + commandValue.split(E2)[1].split(' ')[17] + ' ' + commandValue.split(E2)[1].split(' ')[18] + ' ' + commandValue.split(E2)[1].split(' ')[19] + ' ' + commandValue.split(E2)[1].split(' ')[20] + ' ' + commandValue.split(E2)[1].split(' ')[21] + ' ' + commandValue.split(E2)[1].split(' ')[22];
+            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13] + ' ' + commandValue.split(E2)[1].split(' ')[14] + ' ' + commandValue.split(E2)[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13] + ' ' + commandValue.split(E2)[1].split(' ')[14] + ' ' + commandValue.split(E2)[1].split(' ')[15] + ' ' + commandValue.split(E2)[1].split(' ')[17] + ' ' + commandValue.split(E2)[1].split(' ')[18] + ' ' + commandValue.split(E2)[1].split(' ')[19] + ' ' + commandValue.split(E2)[1].split(' ')[20] + ' ' + commandValue.split(E2)[1].split(' ')[21] + ' ' + commandValue.split(E2)[1].split(' ')[22];
+            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13] + ' ' + commandValue.split(E2)[1].split(' ')[14] + ' ' + commandValue.split(E2)[1].split(' ')[15];
         }
     } else if (commandCode == 'c27qC') {
         if (lang == 0) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split(E3)[1].split(' ')[9] + ' ' + commandValue.split(E3)[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split(E3)[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13] + ' ' + commandValue.split(E3)[1].split(' ')[14] + ' ' + commandValue.split(E3)[1].split(' ')[15] + ' ' + commandValue.split(E3)[1].split(' ')[17] + ' ' + commandValue.split(E3)[1].split(' ')[18] + ' ' + commandValue.split(E3)[1].split(' ')[19] + ' ' + commandValue.split(E3)[1].split(' ')[20] + ' ' + commandValue.split(E3)[1].split(' ')[21] + ' ' + commandValue.split(E3)[1].split(' ')[22];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split(E3)[1].split(' ')[9] + ' ' + commandValue.split(E3)[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split(E3)[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13] + ' ' + commandValue.split(E3)[1].split(' ')[14] + ' ' + commandValue.split(E3)[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split(E3)[1].split(' ')[9] + ' ' + commandValue.split(E3)[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split(E3)[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13] + ' ' + commandValue.split(E3)[1].split(' ')[14] + ' ' + commandValue.split(E3)[1].split(' ')[15] + ' ' + commandValue.split(E3)[1].split(' ')[17] + ' ' + commandValue.split(E3)[1].split(' ')[18] + ' ' + commandValue.split(E3)[1].split(' ')[19] + ' ' + commandValue.split(E3)[1].split(' ')[20] + ' ' + commandValue.split(E3)[1].split(' ')[21] + ' ' + commandValue.split(E3)[1].split(' ')[22];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split(E3)[1].split(' ')[9] + ' ' + commandValue.split(E3)[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split(E3)[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13] + ' ' + commandValue.split(E3)[1].split(' ')[14] + ' ' + commandValue.split(E3)[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split(E3)[1].split(' ')[9] + ' ' + commandValue.split(E3)[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split(E3)[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13] + ' ' + commandValue.split(E3)[1].split(' ')[14] + ' ' + commandValue.split(E3)[1].split(' ')[15] + ' ' + commandValue.split(E3)[1].split(' ')[17] + ' ' + commandValue.split(E3)[1].split(' ')[18] + ' ' + commandValue.split(E3)[1].split(' ')[19] + ' ' + commandValue.split(E3)[1].split(' ')[20] + ' ' + commandValue.split(E3)[1].split(' ')[21] + ' ' + commandValue.split(E3)[1].split(' ')[22];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split(E3)[1].split(' ')[9] + ' ' + commandValue.split(E3)[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split(E3)[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13] + ' ' + commandValue.split(E3)[1].split(' ')[14] + ' ' + commandValue.split(E3)[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split(E3)[1].split(' ')[9] + ' ' + commandValue.split(E3)[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split(E3)[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13] + ' ' + commandValue.split(E3)[1].split(' ')[14] + ' ' + commandValue.split(E3)[1].split(' ')[15] + ' ' + commandValue.split(E3)[1].split(' ')[17] + ' ' + commandValue.split(E3)[1].split(' ')[18] + ' ' + commandValue.split(E3)[1].split(' ')[19] + ' ' + commandValue.split(E3)[1].split(' ')[20] + ' ' + commandValue.split(E3)[1].split(' ')[21] + ' ' + commandValue.split(E3)[1].split(' ')[22];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split(E3)[1].split(' ')[9] + ' ' + commandValue.split(E3)[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split(E3)[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13] + ' ' + commandValue.split(E3)[1].split(' ')[14] + ' ' + commandValue.split(E3)[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split(E3)[1].split(' ')[9] + ' ' + commandValue.split(E3)[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split(E3)[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13] + ' ' + commandValue.split(E3)[1].split(' ')[14] + ' ' + commandValue.split(E3)[1].split(' ')[15] + ' ' + commandValue.split(E3)[1].split(' ')[17] + ' ' + commandValue.split(E3)[1].split(' ')[18] + ' ' + commandValue.split(E3)[1].split(' ')[19] + ' ' + commandValue.split(E3)[1].split(' ')[20] + ' ' + commandValue.split(E3)[1].split(' ')[21] + ' ' + commandValue.split(E3)[1].split(' ')[22];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split(E3)[1].split(' ')[9] + ' ' + commandValue.split(E3)[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split(E3)[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13] + ' ' + commandValue.split(E3)[1].split(' ')[14] + ' ' + commandValue.split(E3)[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split(E3)[1].split(' ')[9] + ' ' + commandValue.split(E3)[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split(E3)[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13] + ' ' + commandValue.split(E3)[1].split(' ')[14] + ' ' + commandValue.split(E3)[1].split(' ')[15] + ' ' + commandValue.split(E3)[1].split(' ')[17] + ' ' + commandValue.split(E3)[1].split(' ')[18] + ' ' + commandValue.split(E3)[1].split(' ')[19] + ' ' + commandValue.split(E3)[1].split(' ')[20] + ' ' + commandValue.split(E3)[1].split(' ')[21] + ' ' + commandValue.split(E3)[1].split(' ')[22];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split(E3)[1].split(' ')[9] + ' ' + commandValue.split(E3)[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split(E3)[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13] + ' ' + commandValue.split(E3)[1].split(' ')[14] + ' ' + commandValue.split(E3)[1].split(' ')[15];
         }
     } else if (commandCode == 'c27qD') {
         if (lang == 0) {
-            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11] + ' ' + commandValue.split(E4)[1].split(' ')[12] + ' ' + commandValue.split(E4)[1].split(' ')[13] + ' ' + commandValue.split(E4)[1].split(' ')[14] + ' ' + commandValue.split(E4)[1].split(' ')[15] + ' ' + commandValue.split(E4)[1].split(' ')[17] + ' ' + commandValue.split(E4)[1].split(' ')[18] + ' ' + commandValue.split(E4)[1].split(' ')[19] + ' ' + commandValue.split(E4)[1].split(' ')[20] + ' ' + commandValue.split(E4)[1].split(' ')[21] + ' ' + commandValue.split(E4)[1].split(' ')[22];
+            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11] + ' ' + commandValue.split(E4)[1].split(' ')[12] + ' ' + commandValue.split(E4)[1].split(' ')[13] + ' ' + commandValue.split(E4)[1].split(' ')[14] + ' ' + commandValue.split(E4)[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11] + ' ' + commandValue.split(E4)[1].split(' ')[12] + ' ' + commandValue.split(E4)[1].split(' ')[13] + ' ' + commandValue.split(E4)[1].split(' ')[14] + ' ' + commandValue.split(E4)[1].split(' ')[15] + ' ' + commandValue.split(E4)[1].split(' ')[17] + ' ' + commandValue.split(E4)[1].split(' ')[18] + ' ' + commandValue.split(E4)[1].split(' ')[19] + ' ' + commandValue.split(E4)[1].split(' ')[20] + ' ' + commandValue.split(E4)[1].split(' ')[21] + ' ' + commandValue.split(E4)[1].split(' ')[22];
+            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11] + ' ' + commandValue.split(E4)[1].split(' ')[12] + ' ' + commandValue.split(E4)[1].split(' ')[13] + ' ' + commandValue.split(E4)[1].split(' ')[14] + ' ' + commandValue.split(E4)[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11] + ' ' + commandValue.split(E4)[1].split(' ')[12] + ' ' + commandValue.split(E4)[1].split(' ')[13] + ' ' + commandValue.split(E4)[1].split(' ')[14] + ' ' + commandValue.split(E4)[1].split(' ')[15] + ' ' + commandValue.split(E4)[1].split(' ')[17] + ' ' + commandValue.split(E4)[1].split(' ')[18] + ' ' + commandValue.split(E4)[1].split(' ')[19] + ' ' + commandValue.split(E4)[1].split(' ')[20] + ' ' + commandValue.split(E4)[1].split(' ')[21] + ' ' + commandValue.split(E4)[1].split(' ')[22];
+            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11] + ' ' + commandValue.split(E4)[1].split(' ')[12] + ' ' + commandValue.split(E4)[1].split(' ')[13] + ' ' + commandValue.split(E4)[1].split(' ')[14] + ' ' + commandValue.split(E4)[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11] + ' ' + commandValue.split(E4)[1].split(' ')[12] + ' ' + commandValue.split(E4)[1].split(' ')[13] + ' ' + commandValue.split(E4)[1].split(' ')[14] + ' ' + commandValue.split(E4)[1].split(' ')[15] + ' ' + commandValue.split(E4)[1].split(' ')[17] + ' ' + commandValue.split(E4)[1].split(' ')[18] + ' ' + commandValue.split(E4)[1].split(' ')[19] + ' ' + commandValue.split(E4)[1].split(' ')[20] + ' ' + commandValue.split(E4)[1].split(' ')[21] + ' ' + commandValue.split(E4)[1].split(' ')[22];
+            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11] + ' ' + commandValue.split(E4)[1].split(' ')[12] + ' ' + commandValue.split(E4)[1].split(' ')[13] + ' ' + commandValue.split(E4)[1].split(' ')[14] + ' ' + commandValue.split(E4)[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11] + ' ' + commandValue.split(E4)[1].split(' ')[12] + ' ' + commandValue.split(E4)[1].split(' ')[13] + ' ' + commandValue.split(E4)[1].split(' ')[14] + ' ' + commandValue.split(E4)[1].split(' ')[15] + ' ' + commandValue.split(E4)[1].split(' ')[17] + ' ' + commandValue.split(E4)[1].split(' ')[18] + ' ' + commandValue.split(E4)[1].split(' ')[19] + ' ' + commandValue.split(E4)[1].split(' ')[20] + ' ' + commandValue.split(E4)[1].split(' ')[21] + ' ' + commandValue.split(E4)[1].split(' ')[22];
+            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11] + ' ' + commandValue.split(E4)[1].split(' ')[12] + ' ' + commandValue.split(E4)[1].split(' ')[13] + ' ' + commandValue.split(E4)[1].split(' ')[14] + ' ' + commandValue.split(E4)[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11] + ' ' + commandValue.split(E4)[1].split(' ')[12] + ' ' + commandValue.split(E4)[1].split(' ')[13] + ' ' + commandValue.split(E4)[1].split(' ')[14] + ' ' + commandValue.split(E4)[1].split(' ')[15] + ' ' + commandValue.split(E4)[1].split(' ')[17] + ' ' + commandValue.split(E4)[1].split(' ')[18] + ' ' + commandValue.split(E4)[1].split(' ')[19] + ' ' + commandValue.split(E4)[1].split(' ')[20] + ' ' + commandValue.split(E4)[1].split(' ')[21] + ' ' + commandValue.split(E4)[1].split(' ')[22];
+            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11] + ' ' + commandValue.split(E4)[1].split(' ')[12] + ' ' + commandValue.split(E4)[1].split(' ')[13] + ' ' + commandValue.split(E4)[1].split(' ')[14] + ' ' + commandValue.split(E4)[1].split(' ')[15];
         }
     } else if (commandCode == 'c27qE') {
         if (lang == 0) {
-            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11] + ' ' + commandValue.split(E5)[1].split(' ')[12] + ' ' + commandValue.split(E5)[1].split(' ')[13] + ' ' + commandValue.split(E5)[1].split(' ')[14] + ' ' + commandValue.split(E5)[1].split(' ')[15] + ' ' + commandValue.split(E5)[1].split(' ')[17] + ' ' + commandValue.split(E5)[1].split(' ')[18] + ' ' + commandValue.split(E5)[1].split(' ')[19] + ' ' + commandValue.split(E5)[1].split(' ')[20] + ' ' + commandValue.split(E5)[1].split(' ')[21] + ' ' + commandValue.split(E5)[1].split(' ')[22];
+            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11] + ' ' + commandValue.split(E5)[1].split(' ')[12] + ' ' + commandValue.split(E5)[1].split(' ')[13] + ' ' + commandValue.split(E5)[1].split(' ')[14] + ' ' + commandValue.split(E5)[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11] + ' ' + commandValue.split(E5)[1].split(' ')[12] + ' ' + commandValue.split(E5)[1].split(' ')[13] + ' ' + commandValue.split(E5)[1].split(' ')[14] + ' ' + commandValue.split(E5)[1].split(' ')[15] + ' ' + commandValue.split(E5)[1].split(' ')[17] + ' ' + commandValue.split(E5)[1].split(' ')[18] + ' ' + commandValue.split(E5)[1].split(' ')[19] + ' ' + commandValue.split(E5)[1].split(' ')[20] + ' ' + commandValue.split(E5)[1].split(' ')[21] + ' ' + commandValue.split(E5)[1].split(' ')[22];
+            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11] + ' ' + commandValue.split(E5)[1].split(' ')[12] + ' ' + commandValue.split(E5)[1].split(' ')[13] + ' ' + commandValue.split(E5)[1].split(' ')[14] + ' ' + commandValue.split(E5)[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11] + ' ' + commandValue.split(E5)[1].split(' ')[12] + ' ' + commandValue.split(E5)[1].split(' ')[13] + ' ' + commandValue.split(E5)[1].split(' ')[14] + ' ' + commandValue.split(E5)[1].split(' ')[15] + ' ' + commandValue.split(E5)[1].split(' ')[17] + ' ' + commandValue.split(E5)[1].split(' ')[18] + ' ' + commandValue.split(E5)[1].split(' ')[19] + ' ' + commandValue.split(E5)[1].split(' ')[20] + ' ' + commandValue.split(E5)[1].split(' ')[21] + ' ' + commandValue.split(E5)[1].split(' ')[22];
+            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11] + ' ' + commandValue.split(E5)[1].split(' ')[12] + ' ' + commandValue.split(E5)[1].split(' ')[13] + ' ' + commandValue.split(E5)[1].split(' ')[14] + ' ' + commandValue.split(E5)[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11] + ' ' + commandValue.split(E5)[1].split(' ')[12] + ' ' + commandValue.split(E5)[1].split(' ')[13] + ' ' + commandValue.split(E5)[1].split(' ')[14] + ' ' + commandValue.split(E5)[1].split(' ')[15] + ' ' + commandValue.split(E5)[1].split(' ')[17] + ' ' + commandValue.split(E5)[1].split(' ')[18] + ' ' + commandValue.split(E5)[1].split(' ')[19] + ' ' + commandValue.split(E5)[1].split(' ')[20] + ' ' + commandValue.split(E5)[1].split(' ')[21] + ' ' + commandValue.split(E5)[1].split(' ')[22];
+            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11] + ' ' + commandValue.split(E5)[1].split(' ')[12] + ' ' + commandValue.split(E5)[1].split(' ')[13] + ' ' + commandValue.split(E5)[1].split(' ')[14] + ' ' + commandValue.split(E5)[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11] + ' ' + commandValue.split(E5)[1].split(' ')[12] + ' ' + commandValue.split(E5)[1].split(' ')[13] + ' ' + commandValue.split(E5)[1].split(' ')[14] + ' ' + commandValue.split(E5)[1].split(' ')[15] + ' ' + commandValue.split(E5)[1].split(' ')[17] + ' ' + commandValue.split(E5)[1].split(' ')[18] + ' ' + commandValue.split(E5)[1].split(' ')[19] + ' ' + commandValue.split(E5)[1].split(' ')[20] + ' ' + commandValue.split(E5)[1].split(' ')[21] + ' ' + commandValue.split(E5)[1].split(' ')[22];
+            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11] + ' ' + commandValue.split(E5)[1].split(' ')[12] + ' ' + commandValue.split(E5)[1].split(' ')[13] + ' ' + commandValue.split(E5)[1].split(' ')[14] + ' ' + commandValue.split(E5)[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11] + ' ' + commandValue.split(E5)[1].split(' ')[12] + ' ' + commandValue.split(E5)[1].split(' ')[13] + ' ' + commandValue.split(E5)[1].split(' ')[14] + ' ' + commandValue.split(E5)[1].split(' ')[15] + ' ' + commandValue.split(E5)[1].split(' ')[17] + ' ' + commandValue.split(E5)[1].split(' ')[18] + ' ' + commandValue.split(E5)[1].split(' ')[19] + ' ' + commandValue.split(E5)[1].split(' ')[20] + ' ' + commandValue.split(E5)[1].split(' ')[21] + ' ' + commandValue.split(E5)[1].split(' ')[22];
+            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11] + ' ' + commandValue.split(E5)[1].split(' ')[12] + ' ' + commandValue.split(E5)[1].split(' ')[13] + ' ' + commandValue.split(E5)[1].split(' ')[14] + ' ' + commandValue.split(E5)[1].split(' ')[15];
         }
     } else if (commandCode == 'c27qF') {
         if (lang == 0) {
-            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11] + ' ' + commandValue.split(E6)[1].split(' ')[12] + ' ' + commandValue.split(E6)[1].split(' ')[13] + ' ' + commandValue.split(E6)[1].split(' ')[14] + ' ' + commandValue.split(E6)[1].split(' ')[15] + ' ' + commandValue.split(E6)[1].split(' ')[17] + ' ' + commandValue.split(E6)[1].split(' ')[18] + ' ' + commandValue.split(E6)[1].split(' ')[19] + ' ' + commandValue.split(E6)[1].split(' ')[20] + ' ' + commandValue.split(E6)[1].split(' ')[21] + ' ' + commandValue.split(E6)[1].split(' ')[22];
+            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11] + ' ' + commandValue.split(E6)[1].split(' ')[12] + ' ' + commandValue.split(E6)[1].split(' ')[13] + ' ' + commandValue.split(E6)[1].split(' ')[14] + ' ' + commandValue.split(E6)[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11] + ' ' + commandValue.split(E6)[1].split(' ')[12] + ' ' + commandValue.split(E6)[1].split(' ')[13] + ' ' + commandValue.split(E6)[1].split(' ')[14] + ' ' + commandValue.split(E6)[1].split(' ')[15] + ' ' + commandValue.split(E6)[1].split(' ')[17] + ' ' + commandValue.split(E6)[1].split(' ')[18] + ' ' + commandValue.split(E6)[1].split(' ')[19] + ' ' + commandValue.split(E6)[1].split(' ')[20] + ' ' + commandValue.split(E6)[1].split(' ')[21] + ' ' + commandValue.split(E6)[1].split(' ')[22];
+            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11] + ' ' + commandValue.split(E6)[1].split(' ')[12] + ' ' + commandValue.split(E6)[1].split(' ')[13] + ' ' + commandValue.split(E6)[1].split(' ')[14] + ' ' + commandValue.split(E6)[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11] + ' ' + commandValue.split(E6)[1].split(' ')[12] + ' ' + commandValue.split(E6)[1].split(' ')[13] + ' ' + commandValue.split(E6)[1].split(' ')[14] + ' ' + commandValue.split(E6)[1].split(' ')[15] + ' ' + commandValue.split(E6)[1].split(' ')[17] + ' ' + commandValue.split(E6)[1].split(' ')[18] + ' ' + commandValue.split(E6)[1].split(' ')[19] + ' ' + commandValue.split(E6)[1].split(' ')[20] + ' ' + commandValue.split(E6)[1].split(' ')[21] + ' ' + commandValue.split(E6)[1].split(' ')[22];
+            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11] + ' ' + commandValue.split(E6)[1].split(' ')[12] + ' ' + commandValue.split(E6)[1].split(' ')[13] + ' ' + commandValue.split(E6)[1].split(' ')[14] + ' ' + commandValue.split(E6)[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11] + ' ' + commandValue.split(E6)[1].split(' ')[12] + ' ' + commandValue.split(E6)[1].split(' ')[13] + ' ' + commandValue.split(E6)[1].split(' ')[14] + ' ' + commandValue.split(E6)[1].split(' ')[15] + ' ' + commandValue.split(E6)[1].split(' ')[17] + ' ' + commandValue.split(E6)[1].split(' ')[18] + ' ' + commandValue.split(E6)[1].split(' ')[19] + ' ' + commandValue.split(E6)[1].split(' ')[20] + ' ' + commandValue.split(E6)[1].split(' ')[21] + ' ' + commandValue.split(E6)[1].split(' ')[22];
+            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11] + ' ' + commandValue.split(E6)[1].split(' ')[12] + ' ' + commandValue.split(E6)[1].split(' ')[13] + ' ' + commandValue.split(E6)[1].split(' ')[14] + ' ' + commandValue.split(E6)[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11] + ' ' + commandValue.split(E6)[1].split(' ')[12] + ' ' + commandValue.split(E6)[1].split(' ')[13] + ' ' + commandValue.split(E6)[1].split(' ')[14] + ' ' + commandValue.split(E6)[1].split(' ')[15] + ' ' + commandValue.split(E6)[1].split(' ')[17] + ' ' + commandValue.split(E6)[1].split(' ')[18] + ' ' + commandValue.split(E6)[1].split(' ')[19] + ' ' + commandValue.split(E6)[1].split(' ')[20] + ' ' + commandValue.split(E6)[1].split(' ')[21] + ' ' + commandValue.split(E6)[1].split(' ')[22];
+            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11] + ' ' + commandValue.split(E6)[1].split(' ')[12] + ' ' + commandValue.split(E6)[1].split(' ')[13] + ' ' + commandValue.split(E6)[1].split(' ')[14] + ' ' + commandValue.split(E6)[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11] + ' ' + commandValue.split(E6)[1].split(' ')[12] + ' ' + commandValue.split(E6)[1].split(' ')[13] + ' ' + commandValue.split(E6)[1].split(' ')[14] + ' ' + commandValue.split(E6)[1].split(' ')[15] + ' ' + commandValue.split(E6)[1].split(' ')[17] + ' ' + commandValue.split(E6)[1].split(' ')[18] + ' ' + commandValue.split(E6)[1].split(' ')[19] + ' ' + commandValue.split(E6)[1].split(' ')[20] + ' ' + commandValue.split(E6)[1].split(' ')[21] + ' ' + commandValue.split(E6)[1].split(' ')[22];
+            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11] + ' ' + commandValue.split(E6)[1].split(' ')[12] + ' ' + commandValue.split(E6)[1].split(' ')[13] + ' ' + commandValue.split(E6)[1].split(' ')[14] + ' ' + commandValue.split(E6)[1].split(' ')[15];
         }
     } else if (commandCode == 'c27qG') {
         if (lang == 0) {
-            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11] + ' ' + commandValue.split(E7)[1].split(' ')[12] + ' ' + commandValue.split(E7)[1].split(' ')[13] + ' ' + commandValue.split(E7)[1].split(' ')[14] + ' ' + commandValue.split(E7)[1].split(' ')[15] + ' ' + commandValue.split(E7)[1].split(' ')[17] + ' ' + commandValue.split(E7)[1].split(' ')[18] + ' ' + commandValue.split(E7)[1].split(' ')[19] + ' ' + commandValue.split(E7)[1].split(' ')[20] + ' ' + commandValue.split(E7)[1].split(' ')[21] + ' ' + commandValue.split(E7)[1].split(' ')[22];
+            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11] + ' ' + commandValue.split(E7)[1].split(' ')[12] + ' ' + commandValue.split(E7)[1].split(' ')[13] + ' ' + commandValue.split(E7)[1].split(' ')[14] + ' ' + commandValue.split(E7)[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11] + ' ' + commandValue.split(E7)[1].split(' ')[12] + ' ' + commandValue.split(E7)[1].split(' ')[13] + ' ' + commandValue.split(E7)[1].split(' ')[14] + ' ' + commandValue.split(E7)[1].split(' ')[15] + ' ' + commandValue.split(E7)[1].split(' ')[17] + ' ' + commandValue.split(E7)[1].split(' ')[18] + ' ' + commandValue.split(E7)[1].split(' ')[19] + ' ' + commandValue.split(E7)[1].split(' ')[20] + ' ' + commandValue.split(E7)[1].split(' ')[21] + ' ' + commandValue.split(E7)[1].split(' ')[22];
+            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11] + ' ' + commandValue.split(E7)[1].split(' ')[12] + ' ' + commandValue.split(E7)[1].split(' ')[13] + ' ' + commandValue.split(E7)[1].split(' ')[14] + ' ' + commandValue.split(E7)[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11] + ' ' + commandValue.split(E7)[1].split(' ')[12] + ' ' + commandValue.split(E7)[1].split(' ')[13] + ' ' + commandValue.split(E7)[1].split(' ')[14] + ' ' + commandValue.split(E7)[1].split(' ')[15] + ' ' + commandValue.split(E7)[1].split(' ')[17] + ' ' + commandValue.split(E7)[1].split(' ')[18] + ' ' + commandValue.split(E7)[1].split(' ')[19] + ' ' + commandValue.split(E7)[1].split(' ')[20] + ' ' + commandValue.split(E7)[1].split(' ')[21] + ' ' + commandValue.split(E7)[1].split(' ')[22];
+            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11] + ' ' + commandValue.split(E7)[1].split(' ')[12] + ' ' + commandValue.split(E7)[1].split(' ')[13] + ' ' + commandValue.split(E7)[1].split(' ')[14] + ' ' + commandValue.split(E7)[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11] + ' ' + commandValue.split(E7)[1].split(' ')[12] + ' ' + commandValue.split(E7)[1].split(' ')[13] + ' ' + commandValue.split(E7)[1].split(' ')[14] + ' ' + commandValue.split(E7)[1].split(' ')[15] + ' ' + commandValue.split(E7)[1].split(' ')[17] + ' ' + commandValue.split(E7)[1].split(' ')[18] + ' ' + commandValue.split(E7)[1].split(' ')[19] + ' ' + commandValue.split(E7)[1].split(' ')[20] + ' ' + commandValue.split(E7)[1].split(' ')[21] + ' ' + commandValue.split(E7)[1].split(' ')[22];
+            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11] + ' ' + commandValue.split(E7)[1].split(' ')[12] + ' ' + commandValue.split(E7)[1].split(' ')[13] + ' ' + commandValue.split(E7)[1].split(' ')[14] + ' ' + commandValue.split(E7)[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11] + ' ' + commandValue.split(E7)[1].split(' ')[12] + ' ' + commandValue.split(E7)[1].split(' ')[13] + ' ' + commandValue.split(E7)[1].split(' ')[14] + ' ' + commandValue.split(E7)[1].split(' ')[15] + ' ' + commandValue.split(E7)[1].split(' ')[17] + ' ' + commandValue.split(E7)[1].split(' ')[18] + ' ' + commandValue.split(E7)[1].split(' ')[19] + ' ' + commandValue.split(E7)[1].split(' ')[20] + ' ' + commandValue.split(E7)[1].split(' ')[21] + ' ' + commandValue.split(E7)[1].split(' ')[22];
+            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11] + ' ' + commandValue.split(E7)[1].split(' ')[12] + ' ' + commandValue.split(E7)[1].split(' ')[13] + ' ' + commandValue.split(E7)[1].split(' ')[14] + ' ' + commandValue.split(E7)[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11] + ' ' + commandValue.split(E7)[1].split(' ')[12] + ' ' + commandValue.split(E7)[1].split(' ')[13] + ' ' + commandValue.split(E7)[1].split(' ')[14] + ' ' + commandValue.split(E7)[1].split(' ')[15] + ' ' + commandValue.split(E7)[1].split(' ')[17] + ' ' + commandValue.split(E7)[1].split(' ')[18] + ' ' + commandValue.split(E7)[1].split(' ')[19] + ' ' + commandValue.split(E7)[1].split(' ')[20] + ' ' + commandValue.split(E7)[1].split(' ')[21] + ' ' + commandValue.split(E7)[1].split(' ')[22];
+            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11] + ' ' + commandValue.split(E7)[1].split(' ')[12] + ' ' + commandValue.split(E7)[1].split(' ')[13] + ' ' + commandValue.split(E7)[1].split(' ')[14] + ' ' + commandValue.split(E7)[1].split(' ')[15];
         }
     } else if (commandCode == 'c27qH') {
         if (lang == 0) {
-            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11] + ' ' + commandValue.split(E8)[1].split(' ')[12] + ' ' + commandValue.split(E8)[1].split(' ')[13] + ' ' + commandValue.split(E8)[1].split(' ')[14] + ' ' + commandValue.split(E8)[1].split(' ')[15] + ' ' + commandValue.split(E8)[1].split(' ')[17] + ' ' + commandValue.split(E8)[1].split(' ')[18] + ' ' + commandValue.split(E8)[1].split(' ')[19] + ' ' + commandValue.split(E8)[1].split(' ')[20] + ' ' + commandValue.split(E8)[1].split(' ')[21] + ' ' + commandValue.split(E8)[1].split(' ')[22];
+            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11] + ' ' + commandValue.split(E8)[1].split(' ')[12] + ' ' + commandValue.split(E8)[1].split(' ')[13] + ' ' + commandValue.split(E8)[1].split(' ')[14] + ' ' + commandValue.split(E8)[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11] + ' ' + commandValue.split(E8)[1].split(' ')[12] + ' ' + commandValue.split(E8)[1].split(' ')[13] + ' ' + commandValue.split(E8)[1].split(' ')[14] + ' ' + commandValue.split(E8)[1].split(' ')[15] + ' ' + commandValue.split(E8)[1].split(' ')[17] + ' ' + commandValue.split(E8)[1].split(' ')[18] + ' ' + commandValue.split(E8)[1].split(' ')[19] + ' ' + commandValue.split(E8)[1].split(' ')[20] + ' ' + commandValue.split(E8)[1].split(' ')[21] + ' ' + commandValue.split(E8)[1].split(' ')[22];
+            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11] + ' ' + commandValue.split(E8)[1].split(' ')[12] + ' ' + commandValue.split(E8)[1].split(' ')[13] + ' ' + commandValue.split(E8)[1].split(' ')[14] + ' ' + commandValue.split(E8)[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11] + ' ' + commandValue.split(E8)[1].split(' ')[12] + ' ' + commandValue.split(E8)[1].split(' ')[13] + ' ' + commandValue.split(E8)[1].split(' ')[14] + ' ' + commandValue.split(E8)[1].split(' ')[15] + ' ' + commandValue.split(E8)[1].split(' ')[17] + ' ' + commandValue.split(E8)[1].split(' ')[18] + ' ' + commandValue.split(E8)[1].split(' ')[19] + ' ' + commandValue.split(E8)[1].split(' ')[20] + ' ' + commandValue.split(E8)[1].split(' ')[21] + ' ' + commandValue.split(E8)[1].split(' ')[22];
+            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11] + ' ' + commandValue.split(E8)[1].split(' ')[12] + ' ' + commandValue.split(E8)[1].split(' ')[13] + ' ' + commandValue.split(E8)[1].split(' ')[14] + ' ' + commandValue.split(E8)[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11] + ' ' + commandValue.split(E8)[1].split(' ')[12] + ' ' + commandValue.split(E8)[1].split(' ')[13] + ' ' + commandValue.split(E8)[1].split(' ')[14] + ' ' + commandValue.split(E8)[1].split(' ')[15] + ' ' + commandValue.split(E8)[1].split(' ')[17] + ' ' + commandValue.split(E8)[1].split(' ')[18] + ' ' + commandValue.split(E8)[1].split(' ')[19] + ' ' + commandValue.split(E8)[1].split(' ')[20] + ' ' + commandValue.split(E8)[1].split(' ')[21] + ' ' + commandValue.split(E8)[1].split(' ')[22];
+            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11] + ' ' + commandValue.split(E8)[1].split(' ')[12] + ' ' + commandValue.split(E8)[1].split(' ')[13] + ' ' + commandValue.split(E8)[1].split(' ')[14] + ' ' + commandValue.split(E8)[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11] + ' ' + commandValue.split(E8)[1].split(' ')[12] + ' ' + commandValue.split(E8)[1].split(' ')[13] + ' ' + commandValue.split(E8)[1].split(' ')[14] + ' ' + commandValue.split(E8)[1].split(' ')[15] + ' ' + commandValue.split(E8)[1].split(' ')[17] + ' ' + commandValue.split(E8)[1].split(' ')[18] + ' ' + commandValue.split(E8)[1].split(' ')[19] + ' ' + commandValue.split(E8)[1].split(' ')[20] + ' ' + commandValue.split(E8)[1].split(' ')[21] + ' ' + commandValue.split(E8)[1].split(' ')[22];
+            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11] + ' ' + commandValue.split(E8)[1].split(' ')[12] + ' ' + commandValue.split(E8)[1].split(' ')[13] + ' ' + commandValue.split(E8)[1].split(' ')[14] + ' ' + commandValue.split(E8)[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11] + ' ' + commandValue.split(E8)[1].split(' ')[12] + ' ' + commandValue.split(E8)[1].split(' ')[13] + ' ' + commandValue.split(E8)[1].split(' ')[14] + ' ' + commandValue.split(E8)[1].split(' ')[15] + ' ' + commandValue.split(E8)[1].split(' ')[17] + ' ' + commandValue.split(E8)[1].split(' ')[18] + ' ' + commandValue.split(E8)[1].split(' ')[19] + ' ' + commandValue.split(E8)[1].split(' ')[20] + ' ' + commandValue.split(E8)[1].split(' ')[21] + ' ' + commandValue.split(E8)[1].split(' ')[22];
+            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11] + ' ' + commandValue.split(E8)[1].split(' ')[12] + ' ' + commandValue.split(E8)[1].split(' ')[13] + ' ' + commandValue.split(E8)[1].split(' ')[14] + ' ' + commandValue.split(E8)[1].split(' ')[15];
         }
     } else if (commandCode == 'c27qI') {
         if (lang == 0) {
-            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11] + ' ' + commandValue.split(E9)[1].split(' ')[12] + ' ' + commandValue.split(E9)[1].split(' ')[13] + ' ' + commandValue.split(E9)[1].split(' ')[14] + ' ' + commandValue.split(E9)[1].split(' ')[15] + ' ' + commandValue.split(E9)[1].split(' ')[17] + ' ' + commandValue.split(E9)[1].split(' ')[18] + ' ' + commandValue.split(E9)[1].split(' ')[19] + ' ' + commandValue.split(E9)[1].split(' ')[20] + ' ' + commandValue.split(E9)[1].split(' ')[21] + ' ' + commandValue.split(E9)[1].split(' ')[22];
+            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11] + ' ' + commandValue.split(E9)[1].split(' ')[12] + ' ' + commandValue.split(E9)[1].split(' ')[13] + ' ' + commandValue.split(E9)[1].split(' ')[14] + ' ' + commandValue.split(E9)[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11] + ' ' + commandValue.split(E9)[1].split(' ')[12] + ' ' + commandValue.split(E9)[1].split(' ')[13] + ' ' + commandValue.split(E9)[1].split(' ')[14] + ' ' + commandValue.split(E9)[1].split(' ')[15] + ' ' + commandValue.split(E9)[1].split(' ')[17] + ' ' + commandValue.split(E9)[1].split(' ')[18] + ' ' + commandValue.split(E9)[1].split(' ')[19] + ' ' + commandValue.split(E9)[1].split(' ')[20] + ' ' + commandValue.split(E9)[1].split(' ')[21] + ' ' + commandValue.split(E9)[1].split(' ')[22];
+            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11] + ' ' + commandValue.split(E9)[1].split(' ')[12] + ' ' + commandValue.split(E9)[1].split(' ')[13] + ' ' + commandValue.split(E9)[1].split(' ')[14] + ' ' + commandValue.split(E9)[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11] + ' ' + commandValue.split(E9)[1].split(' ')[12] + ' ' + commandValue.split(E9)[1].split(' ')[13] + ' ' + commandValue.split(E9)[1].split(' ')[14] + ' ' + commandValue.split(E9)[1].split(' ')[15] + ' ' + commandValue.split(E9)[1].split(' ')[17] + ' ' + commandValue.split(E9)[1].split(' ')[18] + ' ' + commandValue.split(E9)[1].split(' ')[19] + ' ' + commandValue.split(E9)[1].split(' ')[20] + ' ' + commandValue.split(E9)[1].split(' ')[21] + ' ' + commandValue.split(E9)[1].split(' ')[22];
+            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11] + ' ' + commandValue.split(E9)[1].split(' ')[12] + ' ' + commandValue.split(E9)[1].split(' ')[13] + ' ' + commandValue.split(E9)[1].split(' ')[14] + ' ' + commandValue.split(E9)[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11] + ' ' + commandValue.split(E9)[1].split(' ')[12] + ' ' + commandValue.split(E9)[1].split(' ')[13] + ' ' + commandValue.split(E9)[1].split(' ')[14] + ' ' + commandValue.split(E9)[1].split(' ')[15] + ' ' + commandValue.split(E9)[1].split(' ')[17] + ' ' + commandValue.split(E9)[1].split(' ')[18] + ' ' + commandValue.split(E9)[1].split(' ')[19] + ' ' + commandValue.split(E9)[1].split(' ')[20] + ' ' + commandValue.split(E9)[1].split(' ')[21] + ' ' + commandValue.split(E9)[1].split(' ')[22];
+            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11] + ' ' + commandValue.split(E9)[1].split(' ')[12] + ' ' + commandValue.split(E9)[1].split(' ')[13] + ' ' + commandValue.split(E9)[1].split(' ')[14] + ' ' + commandValue.split(E9)[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11] + ' ' + commandValue.split(E9)[1].split(' ')[12] + ' ' + commandValue.split(E9)[1].split(' ')[13] + ' ' + commandValue.split(E9)[1].split(' ')[14] + ' ' + commandValue.split(E9)[1].split(' ')[15] + ' ' + commandValue.split(E9)[1].split(' ')[17] + ' ' + commandValue.split(E9)[1].split(' ')[18] + ' ' + commandValue.split(E9)[1].split(' ')[19] + ' ' + commandValue.split(E9)[1].split(' ')[20] + ' ' + commandValue.split(E9)[1].split(' ')[21] + ' ' + commandValue.split(E9)[1].split(' ')[22];
+            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11] + ' ' + commandValue.split(E9)[1].split(' ')[12] + ' ' + commandValue.split(E9)[1].split(' ')[13] + ' ' + commandValue.split(E9)[1].split(' ')[14] + ' ' + commandValue.split(E9)[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11] + ' ' + commandValue.split(E9)[1].split(' ')[12] + ' ' + commandValue.split(E9)[1].split(' ')[13] + ' ' + commandValue.split(E9)[1].split(' ')[14] + ' ' + commandValue.split(E9)[1].split(' ')[15] + ' ' + commandValue.split(E9)[1].split(' ')[17] + ' ' + commandValue.split(E9)[1].split(' ')[18] + ' ' + commandValue.split(E9)[1].split(' ')[19] + ' ' + commandValue.split(E9)[1].split(' ')[20] + ' ' + commandValue.split(E9)[1].split(' ')[21] + ' ' + commandValue.split(E9)[1].split(' ')[22];
+            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11] + ' ' + commandValue.split(E9)[1].split(' ')[12] + ' ' + commandValue.split(E9)[1].split(' ')[13] + ' ' + commandValue.split(E9)[1].split(' ')[14] + ' ' + commandValue.split(E9)[1].split(' ')[15];
         }
     } else if (commandCode == 'c27qJ') {
         if (lang == 0) {
-            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11] + ' ' + commandValue.split(E10)[1].split(' ')[12] + ' ' + commandValue.split(E10)[1].split(' ')[13] + ' ' + commandValue.split(E10)[1].split(' ')[14] + ' ' + commandValue.split(E10)[1].split(' ')[15] + ' ' + commandValue.split(E10)[1].split(' ')[17] + ' ' + commandValue.split(E10)[1].split(' ')[18] + ' ' + commandValue.split(E10)[1].split(' ')[19] + ' ' + commandValue.split(E10)[1].split(' ')[20] + ' ' + commandValue.split(E10)[1].split(' ')[21] + ' ' + commandValue.split(E10)[1].split(' ')[22];
+            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11] + ' ' + commandValue.split(E10)[1].split(' ')[12] + ' ' + commandValue.split(E10)[1].split(' ')[13] + ' ' + commandValue.split(E10)[1].split(' ')[14] + ' ' + commandValue.split(E10)[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11] + ' ' + commandValue.split(E10)[1].split(' ')[12] + ' ' + commandValue.split(E10)[1].split(' ')[13] + ' ' + commandValue.split(E10)[1].split(' ')[14] + ' ' + commandValue.split(E10)[1].split(' ')[15] + ' ' + commandValue.split(E10)[1].split(' ')[17] + ' ' + commandValue.split(E10)[1].split(' ')[18] + ' ' + commandValue.split(E10)[1].split(' ')[19] + ' ' + commandValue.split(E10)[1].split(' ')[20] + ' ' + commandValue.split(E10)[1].split(' ')[21] + ' ' + commandValue.split(E10)[1].split(' ')[22];
+            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11] + ' ' + commandValue.split(E10)[1].split(' ')[12] + ' ' + commandValue.split(E10)[1].split(' ')[13] + ' ' + commandValue.split(E10)[1].split(' ')[14] + ' ' + commandValue.split(E10)[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11] + ' ' + commandValue.split(E10)[1].split(' ')[12] + ' ' + commandValue.split(E10)[1].split(' ')[13] + ' ' + commandValue.split(E10)[1].split(' ')[14] + ' ' + commandValue.split(E10)[1].split(' ')[15] + ' ' + commandValue.split(E10)[1].split(' ')[17] + ' ' + commandValue.split(E10)[1].split(' ')[18] + ' ' + commandValue.split(E10)[1].split(' ')[19] + ' ' + commandValue.split(E10)[1].split(' ')[20] + ' ' + commandValue.split(E10)[1].split(' ')[21] + ' ' + commandValue.split(E10)[1].split(' ')[22];
+            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11] + ' ' + commandValue.split(E10)[1].split(' ')[12] + ' ' + commandValue.split(E10)[1].split(' ')[13] + ' ' + commandValue.split(E10)[1].split(' ')[14] + ' ' + commandValue.split(E10)[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11] + ' ' + commandValue.split(E10)[1].split(' ')[12] + ' ' + commandValue.split(E10)[1].split(' ')[13] + ' ' + commandValue.split(E10)[1].split(' ')[14] + ' ' + commandValue.split(E10)[1].split(' ')[15] + ' ' + commandValue.split(E10)[1].split(' ')[17] + ' ' + commandValue.split(E10)[1].split(' ')[18] + ' ' + commandValue.split(E10)[1].split(' ')[19] + ' ' + commandValue.split(E10)[1].split(' ')[20] + ' ' + commandValue.split(E10)[1].split(' ')[21] + ' ' + commandValue.split(E10)[1].split(' ')[22];
+            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11] + ' ' + commandValue.split(E10)[1].split(' ')[12] + ' ' + commandValue.split(E10)[1].split(' ')[13] + ' ' + commandValue.split(E10)[1].split(' ')[14] + ' ' + commandValue.split(E10)[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11] + ' ' + commandValue.split(E10)[1].split(' ')[12] + ' ' + commandValue.split(E10)[1].split(' ')[13] + ' ' + commandValue.split(E10)[1].split(' ')[14] + ' ' + commandValue.split(E10)[1].split(' ')[15] + ' ' + commandValue.split(E10)[1].split(' ')[17] + ' ' + commandValue.split(E10)[1].split(' ')[18] + ' ' + commandValue.split(E10)[1].split(' ')[19] + ' ' + commandValue.split(E10)[1].split(' ')[20] + ' ' + commandValue.split(E10)[1].split(' ')[21] + ' ' + commandValue.split(E10)[1].split(' ')[22];
+            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11] + ' ' + commandValue.split(E10)[1].split(' ')[12] + ' ' + commandValue.split(E10)[1].split(' ')[13] + ' ' + commandValue.split(E10)[1].split(' ')[14] + ' ' + commandValue.split(E10)[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11] + ' ' + commandValue.split(E10)[1].split(' ')[12] + ' ' + commandValue.split(E10)[1].split(' ')[13] + ' ' + commandValue.split(E10)[1].split(' ')[14] + ' ' + commandValue.split(E10)[1].split(' ')[15] + ' ' + commandValue.split(E10)[1].split(' ')[17] + ' ' + commandValue.split(E10)[1].split(' ')[18] + ' ' + commandValue.split(E10)[1].split(' ')[19] + ' ' + commandValue.split(E10)[1].split(' ')[20] + ' ' + commandValue.split(E10)[1].split(' ')[21] + ' ' + commandValue.split(E10)[1].split(' ')[22];
+            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11] + ' ' + commandValue.split(E10)[1].split(' ')[12] + ' ' + commandValue.split(E10)[1].split(' ')[13] + ' ' + commandValue.split(E10)[1].split(' ')[14] + ' ' + commandValue.split(E10)[1].split(' ')[15];
         }
     } else if (commandCode == 'c27qK') {
         if (lang == 0) {
-            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11] + ' ' + commandValue.split(E11)[1].split(' ')[12] + ' ' + commandValue.split(E11)[1].split(' ')[13] + ' ' + commandValue.split(E11)[1].split(' ')[14] + ' ' + commandValue.split(E11)[1].split(' ')[15] + ' ' + commandValue.split(E11)[1].split(' ')[17] + ' ' + commandValue.split(E11)[1].split(' ')[18] + ' ' + commandValue.split(E11)[1].split(' ')[19] + ' ' + commandValue.split(E11)[1].split(' ')[20] + ' ' + commandValue.split(E11)[1].split(' ')[21] + ' ' + commandValue.split(E11)[1].split(' ')[22];
+            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11] + ' ' + commandValue.split(E11)[1].split(' ')[12] + ' ' + commandValue.split(E11)[1].split(' ')[13] + ' ' + commandValue.split(E11)[1].split(' ')[14] + ' ' + commandValue.split(E11)[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11] + ' ' + commandValue.split(E11)[1].split(' ')[12] + ' ' + commandValue.split(E11)[1].split(' ')[13] + ' ' + commandValue.split(E11)[1].split(' ')[14] + ' ' + commandValue.split(E11)[1].split(' ')[15] + ' ' + commandValue.split(E11)[1].split(' ')[17] + ' ' + commandValue.split(E11)[1].split(' ')[18] + ' ' + commandValue.split(E11)[1].split(' ')[19] + ' ' + commandValue.split(E11)[1].split(' ')[20] + ' ' + commandValue.split(E11)[1].split(' ')[21] + ' ' + commandValue.split(E11)[1].split(' ')[22];
+            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11] + ' ' + commandValue.split(E11)[1].split(' ')[12] + ' ' + commandValue.split(E11)[1].split(' ')[13] + ' ' + commandValue.split(E11)[1].split(' ')[14] + ' ' + commandValue.split(E11)[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11] + ' ' + commandValue.split(E11)[1].split(' ')[12] + ' ' + commandValue.split(E11)[1].split(' ')[13] + ' ' + commandValue.split(E11)[1].split(' ')[14] + ' ' + commandValue.split(E11)[1].split(' ')[15] + ' ' + commandValue.split(E11)[1].split(' ')[17] + ' ' + commandValue.split(E11)[1].split(' ')[18] + ' ' + commandValue.split(E11)[1].split(' ')[19] + ' ' + commandValue.split(E11)[1].split(' ')[20] + ' ' + commandValue.split(E11)[1].split(' ')[21] + ' ' + commandValue.split(E11)[1].split(' ')[22];
+            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11] + ' ' + commandValue.split(E11)[1].split(' ')[12] + ' ' + commandValue.split(E11)[1].split(' ')[13] + ' ' + commandValue.split(E11)[1].split(' ')[14] + ' ' + commandValue.split(E11)[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11] + ' ' + commandValue.split(E11)[1].split(' ')[12] + ' ' + commandValue.split(E11)[1].split(' ')[13] + ' ' + commandValue.split(E11)[1].split(' ')[14] + ' ' + commandValue.split(E11)[1].split(' ')[15] + ' ' + commandValue.split(E11)[1].split(' ')[17] + ' ' + commandValue.split(E11)[1].split(' ')[18] + ' ' + commandValue.split(E11)[1].split(' ')[19] + ' ' + commandValue.split(E11)[1].split(' ')[20] + ' ' + commandValue.split(E11)[1].split(' ')[21] + ' ' + commandValue.split(E11)[1].split(' ')[22];
+            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11] + ' ' + commandValue.split(E11)[1].split(' ')[12] + ' ' + commandValue.split(E11)[1].split(' ')[13] + ' ' + commandValue.split(E11)[1].split(' ')[14] + ' ' + commandValue.split(E11)[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11] + ' ' + commandValue.split(E11)[1].split(' ')[12] + ' ' + commandValue.split(E11)[1].split(' ')[13] + ' ' + commandValue.split(E11)[1].split(' ')[14] + ' ' + commandValue.split(E11)[1].split(' ')[15] + ' ' + commandValue.split(E11)[1].split(' ')[17] + ' ' + commandValue.split(E11)[1].split(' ')[18] + ' ' + commandValue.split(E11)[1].split(' ')[19] + ' ' + commandValue.split(E11)[1].split(' ')[20] + ' ' + commandValue.split(E11)[1].split(' ')[21] + ' ' + commandValue.split(E11)[1].split(' ')[22];
+            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11] + ' ' + commandValue.split(E11)[1].split(' ')[12] + ' ' + commandValue.split(E11)[1].split(' ')[13] + ' ' + commandValue.split(E11)[1].split(' ')[14] + ' ' + commandValue.split(E11)[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11] + ' ' + commandValue.split(E11)[1].split(' ')[12] + ' ' + commandValue.split(E11)[1].split(' ')[13] + ' ' + commandValue.split(E11)[1].split(' ')[14] + ' ' + commandValue.split(E11)[1].split(' ')[15] + ' ' + commandValue.split(E11)[1].split(' ')[17] + ' ' + commandValue.split(E11)[1].split(' ')[18] + ' ' + commandValue.split(E11)[1].split(' ')[19] + ' ' + commandValue.split(E11)[1].split(' ')[20] + ' ' + commandValue.split(E11)[1].split(' ')[21] + ' ' + commandValue.split(E11)[1].split(' ')[22];
+            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11] + ' ' + commandValue.split(E11)[1].split(' ')[12] + ' ' + commandValue.split(E11)[1].split(' ')[13] + ' ' + commandValue.split(E11)[1].split(' ')[14] + ' ' + commandValue.split(E11)[1].split(' ')[15];
         }
     } else if (commandCode == 'c27qL') {
         if (lang == 0) {
-            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11] + ' ' + commandValue.split(E12)[1].split(' ')[12] + ' ' + commandValue.split(E12)[1].split(' ')[13] + ' ' + commandValue.split(E12)[1].split(' ')[14] + ' ' + commandValue.split(E12)[1].split(' ')[15] + ' ' + commandValue.split(E12)[1].split(' ')[17] + ' ' + commandValue.split(E12)[1].split(' ')[18] + ' ' + commandValue.split(E12)[1].split(' ')[19] + ' ' + commandValue.split(E12)[1].split(' ')[20] + ' ' + commandValue.split(E12)[1].split(' ')[21] + ' ' + commandValue.split(E12)[1].split(' ')[22];
+            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11] + ' ' + commandValue.split(E12)[1].split(' ')[12] + ' ' + commandValue.split(E12)[1].split(' ')[13] + ' ' + commandValue.split(E12)[1].split(' ')[14] + ' ' + commandValue.split(E12)[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11] + ' ' + commandValue.split(E12)[1].split(' ')[12] + ' ' + commandValue.split(E12)[1].split(' ')[13] + ' ' + commandValue.split(E12)[1].split(' ')[14] + ' ' + commandValue.split(E12)[1].split(' ')[15] + ' ' + commandValue.split(E12)[1].split(' ')[17] + ' ' + commandValue.split(E12)[1].split(' ')[18] + ' ' + commandValue.split(E12)[1].split(' ')[19] + ' ' + commandValue.split(E12)[1].split(' ')[20] + ' ' + commandValue.split(E12)[1].split(' ')[21] + ' ' + commandValue.split(E12)[1].split(' ')[22];
+            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11] + ' ' + commandValue.split(E12)[1].split(' ')[12] + ' ' + commandValue.split(E12)[1].split(' ')[13] + ' ' + commandValue.split(E12)[1].split(' ')[14] + ' ' + commandValue.split(E12)[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11] + ' ' + commandValue.split(E12)[1].split(' ')[12] + ' ' + commandValue.split(E12)[1].split(' ')[13] + ' ' + commandValue.split(E12)[1].split(' ')[14] + ' ' + commandValue.split(E12)[1].split(' ')[15] + ' ' + commandValue.split(E12)[1].split(' ')[17] + ' ' + commandValue.split(E12)[1].split(' ')[18] + ' ' + commandValue.split(E12)[1].split(' ')[19] + ' ' + commandValue.split(E12)[1].split(' ')[20] + ' ' + commandValue.split(E12)[1].split(' ')[21] + ' ' + commandValue.split(E12)[1].split(' ')[22];
+            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11] + ' ' + commandValue.split(E12)[1].split(' ')[12] + ' ' + commandValue.split(E12)[1].split(' ')[13] + ' ' + commandValue.split(E12)[1].split(' ')[14] + ' ' + commandValue.split(E12)[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11] + ' ' + commandValue.split(E12)[1].split(' ')[12] + ' ' + commandValue.split(E12)[1].split(' ')[13] + ' ' + commandValue.split(E12)[1].split(' ')[14] + ' ' + commandValue.split(E12)[1].split(' ')[15] + ' ' + commandValue.split(E12)[1].split(' ')[17] + ' ' + commandValue.split(E12)[1].split(' ')[18] + ' ' + commandValue.split(E12)[1].split(' ')[19] + ' ' + commandValue.split(E12)[1].split(' ')[20] + ' ' + commandValue.split(E12)[1].split(' ')[21] + ' ' + commandValue.split(E12)[1].split(' ')[22];
+            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11] + ' ' + commandValue.split(E12)[1].split(' ')[12] + ' ' + commandValue.split(E12)[1].split(' ')[13] + ' ' + commandValue.split(E12)[1].split(' ')[14] + ' ' + commandValue.split(E12)[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11] + ' ' + commandValue.split(E12)[1].split(' ')[12] + ' ' + commandValue.split(E12)[1].split(' ')[13] + ' ' + commandValue.split(E12)[1].split(' ')[14] + ' ' + commandValue.split(E12)[1].split(' ')[15] + ' ' + commandValue.split(E12)[1].split(' ')[17] + ' ' + commandValue.split(E12)[1].split(' ')[18] + ' ' + commandValue.split(E12)[1].split(' ')[19] + ' ' + commandValue.split(E12)[1].split(' ')[20] + ' ' + commandValue.split(E12)[1].split(' ')[21] + ' ' + commandValue.split(E12)[1].split(' ')[22];
+            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11] + ' ' + commandValue.split(E12)[1].split(' ')[12] + ' ' + commandValue.split(E12)[1].split(' ')[13] + ' ' + commandValue.split(E12)[1].split(' ')[14] + ' ' + commandValue.split(E12)[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11] + ' ' + commandValue.split(E12)[1].split(' ')[12] + ' ' + commandValue.split(E12)[1].split(' ')[13] + ' ' + commandValue.split(E12)[1].split(' ')[14] + ' ' + commandValue.split(E12)[1].split(' ')[15] + ' ' + commandValue.split(E12)[1].split(' ')[17] + ' ' + commandValue.split(E12)[1].split(' ')[18] + ' ' + commandValue.split(E12)[1].split(' ')[19] + ' ' + commandValue.split(E12)[1].split(' ')[20] + ' ' + commandValue.split(E12)[1].split(' ')[21] + ' ' + commandValue.split(E12)[1].split(' ')[22];
+            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11] + ' ' + commandValue.split(E12)[1].split(' ')[12] + ' ' + commandValue.split(E12)[1].split(' ')[13] + ' ' + commandValue.split(E12)[1].split(' ')[14] + ' ' + commandValue.split(E12)[1].split(' ')[15];
         }
     } else if (commandCode == 'c27qM') {
         if (lang == 0) {
-            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11] + ' ' + commandValue.split(E13)[1].split(' ')[12] + ' ' + commandValue.split(E13)[1].split(' ')[13] + ' ' + commandValue.split(E13)[1].split(' ')[14] + ' ' + commandValue.split(E13)[1].split(' ')[15] + ' ' + commandValue.split(E13)[1].split(' ')[17] + ' ' + commandValue.split(E13)[1].split(' ')[18] + ' ' + commandValue.split(E13)[1].split(' ')[19] + ' ' + commandValue.split(E13)[1].split(' ')[20] + ' ' + commandValue.split(E13)[1].split(' ')[21] + ' ' + commandValue.split(E13)[1].split(' ')[22];
+            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11] + ' ' + commandValue.split(E13)[1].split(' ')[12] + ' ' + commandValue.split(E13)[1].split(' ')[13] + ' ' + commandValue.split(E13)[1].split(' ')[14] + ' ' + commandValue.split(E13)[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11] + ' ' + commandValue.split(E13)[1].split(' ')[12] + ' ' + commandValue.split(E13)[1].split(' ')[13] + ' ' + commandValue.split(E13)[1].split(' ')[14] + ' ' + commandValue.split(E13)[1].split(' ')[15] + ' ' + commandValue.split(E13)[1].split(' ')[17] + ' ' + commandValue.split(E13)[1].split(' ')[18] + ' ' + commandValue.split(E13)[1].split(' ')[19] + ' ' + commandValue.split(E13)[1].split(' ')[20] + ' ' + commandValue.split(E13)[1].split(' ')[21] + ' ' + commandValue.split(E13)[1].split(' ')[22];
+            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11] + ' ' + commandValue.split(E13)[1].split(' ')[12] + ' ' + commandValue.split(E13)[1].split(' ')[13] + ' ' + commandValue.split(E13)[1].split(' ')[14] + ' ' + commandValue.split(E13)[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11] + ' ' + commandValue.split(E13)[1].split(' ')[12] + ' ' + commandValue.split(E13)[1].split(' ')[13] + ' ' + commandValue.split(E13)[1].split(' ')[14] + ' ' + commandValue.split(E13)[1].split(' ')[15] + ' ' + commandValue.split(E13)[1].split(' ')[17] + ' ' + commandValue.split(E13)[1].split(' ')[18] + ' ' + commandValue.split(E13)[1].split(' ')[19] + ' ' + commandValue.split(E13)[1].split(' ')[20] + ' ' + commandValue.split(E13)[1].split(' ')[21] + ' ' + commandValue.split(E13)[1].split(' ')[22];
+            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11] + ' ' + commandValue.split(E13)[1].split(' ')[12] + ' ' + commandValue.split(E13)[1].split(' ')[13] + ' ' + commandValue.split(E13)[1].split(' ')[14] + ' ' + commandValue.split(E13)[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11] + ' ' + commandValue.split(E13)[1].split(' ')[12] + ' ' + commandValue.split(E13)[1].split(' ')[13] + ' ' + commandValue.split(E13)[1].split(' ')[14] + ' ' + commandValue.split(E13)[1].split(' ')[15] + ' ' + commandValue.split(E13)[1].split(' ')[17] + ' ' + commandValue.split(E13)[1].split(' ')[18] + ' ' + commandValue.split(E13)[1].split(' ')[19] + ' ' + commandValue.split(E13)[1].split(' ')[20] + ' ' + commandValue.split(E13)[1].split(' ')[21] + ' ' + commandValue.split(E13)[1].split(' ')[22];
+            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11] + ' ' + commandValue.split(E13)[1].split(' ')[12] + ' ' + commandValue.split(E13)[1].split(' ')[13] + ' ' + commandValue.split(E13)[1].split(' ')[14] + ' ' + commandValue.split(E13)[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11] + ' ' + commandValue.split(E13)[1].split(' ')[12] + ' ' + commandValue.split(E13)[1].split(' ')[13] + ' ' + commandValue.split(E13)[1].split(' ')[14] + ' ' + commandValue.split(E13)[1].split(' ')[15] + ' ' + commandValue.split(E13)[1].split(' ')[17] + ' ' + commandValue.split(E13)[1].split(' ')[18] + ' ' + commandValue.split(E13)[1].split(' ')[19] + ' ' + commandValue.split(E13)[1].split(' ')[20] + ' ' + commandValue.split(E13)[1].split(' ')[21] + ' ' + commandValue.split(E13)[1].split(' ')[22];
+            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11] + ' ' + commandValue.split(E13)[1].split(' ')[12] + ' ' + commandValue.split(E13)[1].split(' ')[13] + ' ' + commandValue.split(E13)[1].split(' ')[14] + ' ' + commandValue.split(E13)[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11] + ' ' + commandValue.split(E13)[1].split(' ')[12] + ' ' + commandValue.split(E13)[1].split(' ')[13] + ' ' + commandValue.split(E13)[1].split(' ')[14] + ' ' + commandValue.split(E13)[1].split(' ')[15] + ' ' + commandValue.split(E13)[1].split(' ')[17] + ' ' + commandValue.split(E13)[1].split(' ')[18] + ' ' + commandValue.split(E13)[1].split(' ')[19] + ' ' + commandValue.split(E13)[1].split(' ')[20] + ' ' + commandValue.split(E13)[1].split(' ')[21] + ' ' + commandValue.split(E13)[1].split(' ')[22];
+            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11] + ' ' + commandValue.split(E13)[1].split(' ')[12] + ' ' + commandValue.split(E13)[1].split(' ')[13] + ' ' + commandValue.split(E13)[1].split(' ')[14] + ' ' + commandValue.split(E13)[1].split(' ')[15];
         }
     } else if (commandCode == 'c27qN') {
         if (lang == 0) {
-            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11] + ' ' + commandValue.split(E14)[1].split(' ')[12] + ' ' + commandValue.split(E14)[1].split(' ')[13] + ' ' + commandValue.split(E14)[1].split(' ')[14] + ' ' + commandValue.split(E14)[1].split(' ')[15] + ' ' + commandValue.split(E14)[1].split(' ')[17] + ' ' + commandValue.split(E14)[1].split(' ')[18] + ' ' + commandValue.split(E14)[1].split(' ')[19] + ' ' + commandValue.split(E14)[1].split(' ')[20] + ' ' + commandValue.split(E14)[1].split(' ')[21] + ' ' + commandValue.split(E14)[1].split(' ')[22];
+            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11] + ' ' + commandValue.split(E14)[1].split(' ')[12] + ' ' + commandValue.split(E14)[1].split(' ')[13] + ' ' + commandValue.split(E14)[1].split(' ')[14] + ' ' + commandValue.split(E14)[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11] + ' ' + commandValue.split(E14)[1].split(' ')[12] + ' ' + commandValue.split(E14)[1].split(' ')[13] + ' ' + commandValue.split(E14)[1].split(' ')[14] + ' ' + commandValue.split(E14)[1].split(' ')[15] + ' ' + commandValue.split(E14)[1].split(' ')[17] + ' ' + commandValue.split(E14)[1].split(' ')[18] + ' ' + commandValue.split(E14)[1].split(' ')[19] + ' ' + commandValue.split(E14)[1].split(' ')[20] + ' ' + commandValue.split(E14)[1].split(' ')[21] + ' ' + commandValue.split(E14)[1].split(' ')[22];
+            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11] + ' ' + commandValue.split(E14)[1].split(' ')[12] + ' ' + commandValue.split(E14)[1].split(' ')[13] + ' ' + commandValue.split(E14)[1].split(' ')[14] + ' ' + commandValue.split(E14)[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11] + ' ' + commandValue.split(E14)[1].split(' ')[12] + ' ' + commandValue.split(E14)[1].split(' ')[13] + ' ' + commandValue.split(E14)[1].split(' ')[14] + ' ' + commandValue.split(E14)[1].split(' ')[15] + ' ' + commandValue.split(E14)[1].split(' ')[17] + ' ' + commandValue.split(E14)[1].split(' ')[18] + ' ' + commandValue.split(E14)[1].split(' ')[19] + ' ' + commandValue.split(E14)[1].split(' ')[20] + ' ' + commandValue.split(E14)[1].split(' ')[21] + ' ' + commandValue.split(E14)[1].split(' ')[22];
+            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11] + ' ' + commandValue.split(E14)[1].split(' ')[12] + ' ' + commandValue.split(E14)[1].split(' ')[13] + ' ' + commandValue.split(E14)[1].split(' ')[14] + ' ' + commandValue.split(E14)[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11] + ' ' + commandValue.split(E14)[1].split(' ')[12] + ' ' + commandValue.split(E14)[1].split(' ')[13] + ' ' + commandValue.split(E14)[1].split(' ')[14] + ' ' + commandValue.split(E14)[1].split(' ')[15] + ' ' + commandValue.split(E14)[1].split(' ')[17] + ' ' + commandValue.split(E14)[1].split(' ')[18] + ' ' + commandValue.split(E14)[1].split(' ')[19] + ' ' + commandValue.split(E14)[1].split(' ')[20] + ' ' + commandValue.split(E14)[1].split(' ')[21] + ' ' + commandValue.split(E14)[1].split(' ')[22];
+            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11] + ' ' + commandValue.split(E14)[1].split(' ')[12] + ' ' + commandValue.split(E14)[1].split(' ')[13] + ' ' + commandValue.split(E14)[1].split(' ')[14] + ' ' + commandValue.split(E14)[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11] + ' ' + commandValue.split(E14)[1].split(' ')[12] + ' ' + commandValue.split(E14)[1].split(' ')[13] + ' ' + commandValue.split(E14)[1].split(' ')[14] + ' ' + commandValue.split(E14)[1].split(' ')[15] + ' ' + commandValue.split(E14)[1].split(' ')[17] + ' ' + commandValue.split(E14)[1].split(' ')[18] + ' ' + commandValue.split(E14)[1].split(' ')[19] + ' ' + commandValue.split(E14)[1].split(' ')[20] + ' ' + commandValue.split(E14)[1].split(' ')[21] + ' ' + commandValue.split(E14)[1].split(' ')[22];
+            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11] + ' ' + commandValue.split(E14)[1].split(' ')[12] + ' ' + commandValue.split(E14)[1].split(' ')[13] + ' ' + commandValue.split(E14)[1].split(' ')[14] + ' ' + commandValue.split(E14)[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11] + ' ' + commandValue.split(E14)[1].split(' ')[12] + ' ' + commandValue.split(E14)[1].split(' ')[13] + ' ' + commandValue.split(E14)[1].split(' ')[14] + ' ' + commandValue.split(E14)[1].split(' ')[15] + ' ' + commandValue.split(E14)[1].split(' ')[17] + ' ' + commandValue.split(E14)[1].split(' ')[18] + ' ' + commandValue.split(E14)[1].split(' ')[19] + ' ' + commandValue.split(E14)[1].split(' ')[20] + ' ' + commandValue.split(E14)[1].split(' ')[21] + ' ' + commandValue.split(E14)[1].split(' ')[22];
+            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11] + ' ' + commandValue.split(E14)[1].split(' ')[12] + ' ' + commandValue.split(E14)[1].split(' ')[13] + ' ' + commandValue.split(E14)[1].split(' ')[14] + ' ' + commandValue.split(E14)[1].split(' ')[15];
         }
     } else if (commandCode == 'c27qO') {
         if (lang == 0) {
-            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11] + ' ' + commandValue.split(E15)[1].split(' ')[12] + ' ' + commandValue.split(E15)[1].split(' ')[13] + ' ' + commandValue.split(E15)[1].split(' ')[14] + ' ' + commandValue.split(E15)[1].split(' ')[15] + ' ' + commandValue.split(E15)[1].split(' ')[17] + ' ' + commandValue.split(E15)[1].split(' ')[18] + ' ' + commandValue.split(E15)[1].split(' ')[19] + ' ' + commandValue.split(E15)[1].split(' ')[20] + ' ' + commandValue.split(E15)[1].split(' ')[21] + ' ' + commandValue.split(E15)[1].split(' ')[22];
+            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11] + ' ' + commandValue.split(E15)[1].split(' ')[12] + ' ' + commandValue.split(E15)[1].split(' ')[13] + ' ' + commandValue.split(E15)[1].split(' ')[14] + ' ' + commandValue.split(E15)[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11] + ' ' + commandValue.split(E15)[1].split(' ')[12] + ' ' + commandValue.split(E15)[1].split(' ')[13] + ' ' + commandValue.split(E15)[1].split(' ')[14] + ' ' + commandValue.split(E15)[1].split(' ')[15] + ' ' + commandValue.split(E15)[1].split(' ')[17] + ' ' + commandValue.split(E15)[1].split(' ')[18] + ' ' + commandValue.split(E15)[1].split(' ')[19] + ' ' + commandValue.split(E15)[1].split(' ')[20] + ' ' + commandValue.split(E15)[1].split(' ')[21] + ' ' + commandValue.split(E15)[1].split(' ')[22];
+            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11] + ' ' + commandValue.split(E15)[1].split(' ')[12] + ' ' + commandValue.split(E15)[1].split(' ')[13] + ' ' + commandValue.split(E15)[1].split(' ')[14] + ' ' + commandValue.split(E15)[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11] + ' ' + commandValue.split(E15)[1].split(' ')[12] + ' ' + commandValue.split(E15)[1].split(' ')[13] + ' ' + commandValue.split(E15)[1].split(' ')[14] + ' ' + commandValue.split(E15)[1].split(' ')[15] + ' ' + commandValue.split(E15)[1].split(' ')[17] + ' ' + commandValue.split(E15)[1].split(' ')[18] + ' ' + commandValue.split(E15)[1].split(' ')[19] + ' ' + commandValue.split(E15)[1].split(' ')[20] + ' ' + commandValue.split(E15)[1].split(' ')[21] + ' ' + commandValue.split(E15)[1].split(' ')[22];
+            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11] + ' ' + commandValue.split(E15)[1].split(' ')[12] + ' ' + commandValue.split(E15)[1].split(' ')[13] + ' ' + commandValue.split(E15)[1].split(' ')[14] + ' ' + commandValue.split(E15)[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11] + ' ' + commandValue.split(E15)[1].split(' ')[12] + ' ' + commandValue.split(E15)[1].split(' ')[13] + ' ' + commandValue.split(E15)[1].split(' ')[14] + ' ' + commandValue.split(E15)[1].split(' ')[15] + ' ' + commandValue.split(E15)[1].split(' ')[17] + ' ' + commandValue.split(E15)[1].split(' ')[18] + ' ' + commandValue.split(E15)[1].split(' ')[19] + ' ' + commandValue.split(E15)[1].split(' ')[20] + ' ' + commandValue.split(E15)[1].split(' ')[21] + ' ' + commandValue.split(E15)[1].split(' ')[22];
+            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11] + ' ' + commandValue.split(E15)[1].split(' ')[12] + ' ' + commandValue.split(E15)[1].split(' ')[13] + ' ' + commandValue.split(E15)[1].split(' ')[14] + ' ' + commandValue.split(E15)[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11] + ' ' + commandValue.split(E15)[1].split(' ')[12] + ' ' + commandValue.split(E15)[1].split(' ')[13] + ' ' + commandValue.split(E15)[1].split(' ')[14] + ' ' + commandValue.split(E15)[1].split(' ')[15] + ' ' + commandValue.split(E15)[1].split(' ')[17] + ' ' + commandValue.split(E15)[1].split(' ')[18] + ' ' + commandValue.split(E15)[1].split(' ')[19] + ' ' + commandValue.split(E15)[1].split(' ')[20] + ' ' + commandValue.split(E15)[1].split(' ')[21] + ' ' + commandValue.split(E15)[1].split(' ')[22];
+            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11] + ' ' + commandValue.split(E15)[1].split(' ')[12] + ' ' + commandValue.split(E15)[1].split(' ')[13] + ' ' + commandValue.split(E15)[1].split(' ')[14] + ' ' + commandValue.split(E15)[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11] + ' ' + commandValue.split(E15)[1].split(' ')[12] + ' ' + commandValue.split(E15)[1].split(' ')[13] + ' ' + commandValue.split(E15)[1].split(' ')[14] + ' ' + commandValue.split(E15)[1].split(' ')[15] + ' ' + commandValue.split(E15)[1].split(' ')[17] + ' ' + commandValue.split(E15)[1].split(' ')[18] + ' ' + commandValue.split(E15)[1].split(' ')[19] + ' ' + commandValue.split(E15)[1].split(' ')[20] + ' ' + commandValue.split(E15)[1].split(' ')[21] + ' ' + commandValue.split(E15)[1].split(' ')[22];
+            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11] + ' ' + commandValue.split(E15)[1].split(' ')[12] + ' ' + commandValue.split(E15)[1].split(' ')[13] + ' ' + commandValue.split(E15)[1].split(' ')[14] + ' ' + commandValue.split(E15)[1].split(' ')[15];
         }
     } else if (commandCode == 'c27qP') {
         if (lang == 0) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15] + ' ' + commandValue.split(E16)[1].split(' ')[17] + ' ' + commandValue.split(E16)[1].split(' ')[18] + ' ' + commandValue.split(E16)[1].split(' ')[19] + ' ' + commandValue.split(E16)[1].split(' ')[20] + ' ' + commandValue.split(E16)[1].split(' ')[21] + ' ' + commandValue.split(E16)[1].split(' ')[22];
+            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15] + ' ' + commandValue.split(E16)[1].split(' ')[17] + ' ' + commandValue.split(E16)[1].split(' ')[18] + ' ' + commandValue.split(E16)[1].split(' ')[19] + ' ' + commandValue.split(E16)[1].split(' ')[20] + ' ' + commandValue.split(E16)[1].split(' ')[21] + ' ' + commandValue.split(E16)[1].split(' ')[22];
+            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15] + ' ' + commandValue.split(E16)[1].split(' ')[17] + ' ' + commandValue.split(E16)[1].split(' ')[18] + ' ' + commandValue.split(E16)[1].split(' ')[19] + ' ' + commandValue.split(E16)[1].split(' ')[20] + ' ' + commandValue.split(E16)[1].split(' ')[21] + ' ' + commandValue.split(E16)[1].split(' ')[22];
+            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15] + ' ' + commandValue.split(E16)[1].split(' ')[17] + ' ' + commandValue.split(E16)[1].split(' ')[18] + ' ' + commandValue.split(E16)[1].split(' ')[19] + ' ' + commandValue.split(E16)[1].split(' ')[20] + ' ' + commandValue.split(E16)[1].split(' ')[21] + ' ' + commandValue.split(E16)[1].split(' ')[22];
+            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15] + ' ' + commandValue.split(E16)[1].split(' ')[17] + ' ' + commandValue.split(E16)[1].split(' ')[18] + ' ' + commandValue.split(E16)[1].split(' ')[19] + ' ' + commandValue.split(E16)[1].split(' ')[20] + ' ' + commandValue.split(E16)[1].split(' ')[21] + ' ' + commandValue.split(E16)[1].split(' ')[22];
+            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15] + ' ' + commandValue.split(E16)[1].split(' ')[17] + ' ' + commandValue.split(E16)[1].split(' ')[18] + ' ' + commandValue.split(E16)[1].split(' ')[19] + ' ' + commandValue.split(E16)[1].split(' ')[20] + ' ' + commandValue.split(E16)[1].split(' ')[21] + ' ' + commandValue.split(E16)[1].split(' ')[22];
+            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15];
         }
     } else if (commandCode == 'c27r') {
         if (lang == 0) {
-            return 'go to the database the branch and then get the value of the slot which has the same class of';
+            return 'go to the database the branch and then get the value of the slot';
         } else if (lang == 1) {
-            return 'go to the database the branch and then get the value of the slot which has the same class of';
+            return 'go to the database the branch and then get the value of the slot';
         } else if (lang == 2) {
-            return 'aller à la base de données la branche et ensuite obtenir la valeur de la fente which has the same class of';
+            return 'aller à la base de données la branche et ensuite obtenir la valeur de la fente';
         } else if (lang == 3) {
-            return 'aller à la base de données la branche et ensuite obtenir la valeur de la fente which has the same class of';
+            return 'aller à la base de données la branche et ensuite obtenir la valeur de la fente';
         } else if (lang == 4) {
-            return 'aller à la base de données la branche et ensuite obtenir la valeur de la fente which has the same class of';
+            return 'aller à la base de données la branche et ensuite obtenir la valeur de la fente';
         } else if (lang == 5) {
-            return 'aller à la base de données la branche et ensuite obtenir la valeur de la fente which has the same class of';
+            return 'aller à la base de données la branche et ensuite obtenir la valeur de la fente';
         }
     } else if (commandCode == 'c28') {
         if (lang == 0) {
@@ -2527,216 +2528,6 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 5) {
             return commandValue.split('obtenir la valeur de la fente ')[1].split(' ')[0];
         }
-    } else if (commandCode == 'c31') {
-        if (lang == 0) {
-            return commandValue.split('in the slot ')[1].split(' ')[0];
-        } else if (lang == 1) {
-            return commandValue.split('in the slot ')[1].split(' ')[0];
-        } else if (lang == 2) {
-            return commandValue.split('in the slot ')[1].split(' ')[0];
-        } else if (lang == 3) {
-            return commandValue.split('in the slot ')[1].split(' ')[0];
-        } else if (lang == 4) {
-            return commandValue.split('in the slot ')[1].split(' ')[0];
-        } else if (lang == 5) {
-            return commandValue.split('in the slot ')[1].split(' ')[0];
-        }
-    } else if (commandCode == 'c32q') {
-        if (lang == 0) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value ')[1].split(' ')[0];
-        } else if (lang == 1) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value ')[1].split(' ')[0];
-        } else if (lang == 2) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value ')[1].split(' ')[0];
-        } else if (lang == 3) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value ')[1].split(' ')[0];
-        } else if (lang == 4) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value ')[1].split(' ')[0];
-        } else if (lang == 5) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value ')[1].split(' ')[0];
-        }
-    } else if (commandCode == 'c32r') {
-        if (lang == 0) {
-            return 'of';
-        } else if (lang == 1) {
-            return 'of';
-        } else if (lang == 2) {
-            return 'of';
-        } else if (lang == 3) {
-            return 'of';
-        } else if (lang == 4) {
-            return 'of';
-        } else if (lang == 5) {
-            return 'of';
-        }
-    } else if (commandCode == 'c33') {
-        if (lang == 0) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value of ')[1].split(' ')[0];
-        } else if (lang == 1) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value of ')[1].split(' ')[0];
-        } else if (lang == 2) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value of ')[1].split(' ')[0];
-        } else if (lang == 3) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value of ')[1].split(' ')[0];
-        } else if (lang == 4) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value of ')[1].split(' ')[0];
-        } else if (lang == 5) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value of ')[1].split(' ')[0];
-        }
-    } else if (commandCode == 'c34q') {
-        if (lang == 0) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 1) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 2) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 3) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 4) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 5) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        }
-    } else if (commandCode == 'c34r') {
-        if (lang == 0) {
-            return 'sentence';
-        } else if (lang == 1) {
-            return 'sentence';
-        } else if (lang == 2) {
-            return 'sentence';
-        } else if (lang == 3) {
-            return 'sentence';
-        } else if (lang == 4) {
-            return 'sentence';
-        } else if (lang == 5) {
-            return 'sentence';
-        }
-    } else if (commandCode == 'c35') {
-        if (lang == 0) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the sentence ')[1].split(' in the slot ' + para4 + '')[0];
-        } else if (lang == 1) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the sentence ')[1].split(' in the slot ' + para4 + '')[0];
-        } else if (lang == 2) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the sentence ')[1].split(' in the slot ' + para4 + '')[0];
-        } else if (lang == 3) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the sentence ')[1].split(' in the slot ' + para4 + '')[0];
-        } else if (lang == 4) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the sentence ')[1].split(' in the slot ' + para4 + '')[0];
-        } else if (lang == 5) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the sentence ')[1].split(' in the slot ' + para4 + '')[0];
-        }
-    } else if (commandCode == 'c36q') {
-        if (lang == 0) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 1) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 2) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 3) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 4) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 5) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        }
-    } else if (commandCode == 'c36r') {
-        if (lang == 0) {
-            return 'word';
-        } else if (lang == 1) {
-            return 'word';
-        } else if (lang == 2) {
-            return 'word';
-        } else if (lang == 3) {
-            return 'word';
-        } else if (lang == 4) {
-            return 'word';
-        } else if (lang == 5) {
-            return 'word';
-        }
-    } else if (commandCode == 'c37') {
-        if (lang == 0) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the word ')[1].split(' in the slot ' + para4 + '')[0];
-        } else if (lang == 1) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the word ')[1].split(' in the slot ' + para4 + '')[0];
-        } else if (lang == 2) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the word ')[1].split(' in the slot ' + para4 + '')[0];
-        } else if (lang == 3) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the word ')[1].split(' in the slot ' + para4 + '')[0];
-        } else if (lang == 4) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the word ')[1].split(' in the slot ' + para4 + '')[0];
-        } else if (lang == 5) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the word ')[1].split(' in the slot ' + para4 + '')[0];
-        }
-    } else if (commandCode == 'c38q') {
-        if (lang == 0) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 1) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 2) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 3) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 4) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 5) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        }
-    } else if (commandCode == 'c38r') {
-        if (lang == 0) {
-            return 'words';
-        } else if (lang == 1) {
-            return 'words';
-        } else if (lang == 2) {
-            return 'words';
-        } else if (lang == 3) {
-            return 'words';
-        } else if (lang == 4) {
-            return 'words';
-        } else if (lang == 5) {
-            return 'words';
-        }
-    } else if (commandCode == 'c39') {
-        if (lang == 0) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the words ')[1].split(' in the slot ' + para4 + '')[0];
-        } else if (lang == 1) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the words ')[1].split(' in the slot ' + para4 + '')[0];
-        } else if (lang == 2) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the words ')[1].split(' in the slot ' + para4 + '')[0];
-        } else if (lang == 3) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the words ')[1].split(' in the slot ' + para4 + '')[0];
-        } else if (lang == 4) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the words ')[1].split(' in the slot ' + para4 + '')[0];
-        } else if (lang == 5) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the words ')[1].split(' in the slot ' + para4 + '')[0];
-        }
-    } else if (commandCode == 'c40q') {
-        if (lang == 0) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 1) {
-            return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 2) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 3) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 4) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        } else if (lang == 5) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the ')[1].split(' ')[0];
-        }
-    } else if (commandCode == 'c40r') {
-        if (lang == 0) {
-            return 'value';
-        } else if (lang == 1) {
-            return 'value';
-        } else if (lang == 2) {
-            return 'value';
-        } else if (lang == 3) {
-            return 'value';
-        } else if (lang == 4) {
-            return 'value';
-        } else if (lang == 5) {
-            return 'value';
-        }
     } else if (commandCode == 'c41') {
         if (lang == 0) {
             return commandValue.split('go to the database ' + para1 + ' the branch ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value ')[1].split(' in the slot ' + para4 + '')[0];
@@ -2753,17 +2544,17 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         }
     } else if (commandCode == 'c42') {
         if (lang == 0) {
-            return commandValue.split('and then set it as the value of ')[1];
+            return commandValue.split('and set it as the value of ')[1];
         } else if (lang == 1) {
-            return commandValue.split('and then set it as the value of ')[1];
+            return commandValue.split('and set it as the value of ')[1];
         } else if (lang == 2) {
-            return commandValue.split('puis définissez-le comme valeur de ')[1];
+            return commandValue.split('définissez-le comme valeur de ')[1];
         } else if (lang == 3) {
-            return commandValue.split('puis définissez-le comme valeur de ')[1];
+            return commandValue.split('définissez-le comme valeur de ')[1];
         } else if (lang == 4) {
-            return commandValue.split('puis définissez-le comme valeur de ')[1];
+            return commandValue.split('définissez-le comme valeur de ')[1];
         } else if (lang == 5) {
-            return commandValue.split('puis définissez-le comme valeur de ')[1];
+            return commandValue.split('définissez-le comme valeur de ')[1];
         }
     } else if (commandCode == 'c43') {
         if (lang == 0) {
@@ -3117,53 +2908,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
                             }
                         }
-                        $.ajax({
-                            method: 'POST',
-                            url: '../res/PHP/DBInsert.php',
-                            data: {
-                                servername: sessionStorage.dbhost,
-                                username: sessionStorage.dbusername,
-                                password: sessionStorage.dbpassword,
-                                dbname: dbname,
-                                tablename: tablename,
-                                data: data
-                            }
-                        });
+                        data = JSON.parse(data);
+                        firebase.database().ref(dbname + '/' + tablename).set(data);
                     });
                 } else if (commandsFnTranslations('c27qA', commands[commandID]) == commandsFnTranslations('c27r')) {
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    var resourceSlot = commandsFnTranslations('c31', commands[commandID]);
-                    var resourceData;
                     (function (commandID) {
                         $('#' + elementName + '').click(function () {
-                            if (commandsFnTranslations('c32q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c32r')) {
-                                resourceData = $('#' + commandsFnTranslations('c33', commands[commandID], dbname, tablename, calledSlot) + '').val();
-                            } else if (commandsFnTranslations('c34q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c34r')) {
-                                resourceData = commandsFnTranslations('c35', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c36q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c36r')) {
-                                resourceData = commandsFnTranslations('c37', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c38q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c38r')) {
-                                resourceData = commandsFnTranslations('c39', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c40q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c40r')) {
-                                resourceData = commandsFnTranslations('c41', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            }
-                            $.ajax({
-                                method: 'POST',
-                                url: '../res/PHP/DBRead.php',
-                                data: {
-                                    servername: sessionStorage.dbhost,
-                                    username: sessionStorage.dbusername,
-                                    password: sessionStorage.dbpassword,
-                                    dbname: dbname,
-                                    tablename: tablename,
-                                    calledSlot: calledSlot,
-                                    resourceSlot: resourceSlot,
-                                    resourceData: resourceData
-                                }
-                            }).done(function (returnedValue) {
-                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(returnedValue);
+                            var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                            dbRef.on('value', function (snapshot) {
+                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
                     })(commandID);
@@ -3237,7 +2993,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').mouseenter(function () {
+                    $('#' + elementName + '').click(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c43', '', dataRaw[i]);
@@ -3248,53 +3004,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
                             }
                         }
-                        $.ajax({
-                            method: 'POST',
-                            url: '../res/PHP/DBInsert.php',
-                            data: {
-                                servername: sessionStorage.dbhost,
-                                username: sessionStorage.dbusername,
-                                password: sessionStorage.dbpassword,
-                                dbname: dbname,
-                                tablename: tablename,
-                                data: data
-                            }
-                        });
+                        data = JSON.parse(data);
+                        firebase.database().ref(dbname + '/' + tablename).set(data);
                     });
                 } else if (commandsFnTranslations('c27qB', commands[commandID]) == commandsFnTranslations('c27r')) {
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    var resourceSlot = commandsFnTranslations('c31', commands[commandID]);
-                    var resourceData;
                     (function (commandID) {
-                        $('#' + elementName + '').mouseenter(function () {
-                            if (commandsFnTranslations('c32q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c32r')) {
-                                resourceData = $('#' + commandsFnTranslations('c33', commands[commandID], dbname, tablename, calledSlot) + '').val();
-                            } else if (commandsFnTranslations('c34q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c34r')) {
-                                resourceData = commandsFnTranslations('c35', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c36q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c36r')) {
-                                resourceData = commandsFnTranslations('c37', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c38q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c38r')) {
-                                resourceData = commandsFnTranslations('c39', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c40q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c40r')) {
-                                resourceData = commandsFnTranslations('c41', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            }
-                            $.ajax({
-                                method: 'POST',
-                                url: '../res/PHP/DBRead.php',
-                                data: {
-                                    servername: sessionStorage.dbhost,
-                                    username: sessionStorage.dbusername,
-                                    password: sessionStorage.dbpassword,
-                                    dbname: dbname,
-                                    tablename: tablename,
-                                    calledSlot: calledSlot,
-                                    resourceSlot: resourceSlot,
-                                    resourceData: resourceData
-                                }
-                            }).done(function (returnedValue) {
-                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(returnedValue);
+                        $('#' + elementName + '').click(function () {
+                            var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                            dbRef.on('value', function (snapshot) {
+                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
                     })(commandID);
@@ -3368,7 +3089,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').mouseleave(function () {
+                    $('#' + elementName + '').click(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c43', '', dataRaw[i]);
@@ -3379,53 +3100,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
                             }
                         }
-                        $.ajax({
-                            method: 'POST',
-                            url: '../res/PHP/DBInsert.php',
-                            data: {
-                                servername: sessionStorage.dbhost,
-                                username: sessionStorage.dbusername,
-                                password: sessionStorage.dbpassword,
-                                dbname: dbname,
-                                tablename: tablename,
-                                data: data
-                            }
-                        });
+                        data = JSON.parse(data);
+                        firebase.database().ref(dbname + '/' + tablename).set(data);
                     });
                 } else if (commandsFnTranslations('c27qC', commands[commandID]) == commandsFnTranslations('c27r')) {
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    var resourceSlot = commandsFnTranslations('c31', commands[commandID]);
-                    var resourceData;
                     (function (commandID) {
-                        $('#' + elementName + '').mouseleave(function () {
-                            if (commandsFnTranslations('c32q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c32r')) {
-                                resourceData = $('#' + commandsFnTranslations('c33', commands[commandID], dbname, tablename, calledSlot) + '').val();
-                            } else if (commandsFnTranslations('c34q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c34r')) {
-                                resourceData = commandsFnTranslations('c35', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c36q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c36r')) {
-                                resourceData = commandsFnTranslations('c37', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c38q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c38r')) {
-                                resourceData = commandsFnTranslations('c39', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c40q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c40r')) {
-                                resourceData = commandsFnTranslations('c41', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            }
-                            $.ajax({
-                                method: 'POST',
-                                url: '../res/PHP/DBRead.php',
-                                data: {
-                                    servername: sessionStorage.dbhost,
-                                    username: sessionStorage.dbusername,
-                                    password: sessionStorage.dbpassword,
-                                    dbname: dbname,
-                                    tablename: tablename,
-                                    calledSlot: calledSlot,
-                                    resourceSlot: resourceSlot,
-                                    resourceData: resourceData
-                                }
-                            }).done(function (returnedValue) {
-                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(returnedValue);
+                        $('#' + elementName + '').click(function () {
+                            var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                            dbRef.on('value', function (snapshot) {
+                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
                     })(commandID);
@@ -3499,7 +3185,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').mouseout(function () {
+                    $('#' + elementName + '').click(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c43', '', dataRaw[i]);
@@ -3510,53 +3196,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
                             }
                         }
-                        $.ajax({
-                            method: 'POST',
-                            url: '../res/PHP/DBInsert.php',
-                            data: {
-                                servername: sessionStorage.dbhost,
-                                username: sessionStorage.dbusername,
-                                password: sessionStorage.dbpassword,
-                                dbname: dbname,
-                                tablename: tablename,
-                                data: data
-                            }
-                        });
+                        data = JSON.parse(data);
+                        firebase.database().ref(dbname + '/' + tablename).set(data);
                     });
                 } else if (commandsFnTranslations('c27qD', commands[commandID]) == commandsFnTranslations('c27r')) {
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    var resourceSlot = commandsFnTranslations('c31', commands[commandID]);
-                    var resourceData;
                     (function (commandID) {
-                        $('#' + elementName + '').mouseout(function () {
-                            if (commandsFnTranslations('c32q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c32r')) {
-                                resourceData = $('#' + commandsFnTranslations('c33', commands[commandID], dbname, tablename, calledSlot) + '').val();
-                            } else if (commandsFnTranslations('c34q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c34r')) {
-                                resourceData = commandsFnTranslations('c35', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c36q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c36r')) {
-                                resourceData = commandsFnTranslations('c37', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c38q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c38r')) {
-                                resourceData = commandsFnTranslations('c39', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c40q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c40r')) {
-                                resourceData = commandsFnTranslations('c41', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            }
-                            $.ajax({
-                                method: 'POST',
-                                url: '../res/PHP/DBRead.php',
-                                data: {
-                                    servername: sessionStorage.dbhost,
-                                    username: sessionStorage.dbusername,
-                                    password: sessionStorage.dbpassword,
-                                    dbname: dbname,
-                                    tablename: tablename,
-                                    calledSlot: calledSlot,
-                                    resourceSlot: resourceSlot,
-                                    resourceData: resourceData
-                                }
-                            }).done(function (returnedValue) {
-                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(returnedValue);
+                        $('#' + elementName + '').click(function () {
+                            var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                            dbRef.on('value', function (snapshot) {
+                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
                     })(commandID);
@@ -3630,7 +3281,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').mousemove(function () {
+                    $('#' + elementName + '').click(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c43', '', dataRaw[i]);
@@ -3641,53 +3292,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
                             }
                         }
-                        $.ajax({
-                            method: 'POST',
-                            url: '../res/PHP/DBInsert.php',
-                            data: {
-                                servername: sessionStorage.dbhost,
-                                username: sessionStorage.dbusername,
-                                password: sessionStorage.dbpassword,
-                                dbname: dbname,
-                                tablename: tablename,
-                                data: data
-                            }
-                        });
+                        data = JSON.parse(data);
+                        firebase.database().ref(dbname + '/' + tablename).set(data);
                     });
                 } else if (commandsFnTranslations('c27qE', commands[commandID]) == commandsFnTranslations('c27r')) {
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    var resourceSlot = commandsFnTranslations('c31', commands[commandID]);
-                    var resourceData;
                     (function (commandID) {
-                        $('#' + elementName + '').mousemove(function () {
-                            if (commandsFnTranslations('c32q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c32r')) {
-                                resourceData = $('#' + commandsFnTranslations('c33', commands[commandID], dbname, tablename, calledSlot) + '').val();
-                            } else if (commandsFnTranslations('c34q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c34r')) {
-                                resourceData = commandsFnTranslations('c35', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c36q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c36r')) {
-                                resourceData = commandsFnTranslations('c37', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c38q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c38r')) {
-                                resourceData = commandsFnTranslations('c39', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c40q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c40r')) {
-                                resourceData = commandsFnTranslations('c41', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            }
-                            $.ajax({
-                                method: 'POST',
-                                url: '../res/PHP/DBRead.php',
-                                data: {
-                                    servername: sessionStorage.dbhost,
-                                    username: sessionStorage.dbusername,
-                                    password: sessionStorage.dbpassword,
-                                    dbname: dbname,
-                                    tablename: tablename,
-                                    calledSlot: calledSlot,
-                                    resourceSlot: resourceSlot,
-                                    resourceData: resourceData
-                                }
-                            }).done(function (returnedValue) {
-                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(returnedValue);
+                        $('#' + elementName + '').click(function () {
+                            var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                            dbRef.on('value', function (snapshot) {
+                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
                     })(commandID);
@@ -3761,7 +3377,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').mouseup(function () {
+                    $('#' + elementName + '').click(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c43', '', dataRaw[i]);
@@ -3772,53 +3388,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
                             }
                         }
-                        $.ajax({
-                            method: 'POST',
-                            url: '../res/PHP/DBInsert.php',
-                            data: {
-                                servername: sessionStorage.dbhost,
-                                username: sessionStorage.dbusername,
-                                password: sessionStorage.dbpassword,
-                                dbname: dbname,
-                                tablename: tablename,
-                                data: data
-                            }
-                        });
+                        data = JSON.parse(data);
+                        firebase.database().ref(dbname + '/' + tablename).set(data);
                     });
                 } else if (commandsFnTranslations('c27qF', commands[commandID]) == commandsFnTranslations('c27r')) {
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    var resourceSlot = commandsFnTranslations('c31', commands[commandID]);
-                    var resourceData;
                     (function (commandID) {
-                        $('#' + elementName + '').mouseup(function () {
-                            if (commandsFnTranslations('c32q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c32r')) {
-                                resourceData = $('#' + commandsFnTranslations('c33', commands[commandID], dbname, tablename, calledSlot) + '').val();
-                            } else if (commandsFnTranslations('c34q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c34r')) {
-                                resourceData = commandsFnTranslations('c35', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c36q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c36r')) {
-                                resourceData = commandsFnTranslations('c37', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c38q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c38r')) {
-                                resourceData = commandsFnTranslations('c39', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c40q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c40r')) {
-                                resourceData = commandsFnTranslations('c41', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            }
-                            $.ajax({
-                                method: 'POST',
-                                url: '../res/PHP/DBRead.php',
-                                data: {
-                                    servername: sessionStorage.dbhost,
-                                    username: sessionStorage.dbusername,
-                                    password: sessionStorage.dbpassword,
-                                    dbname: dbname,
-                                    tablename: tablename,
-                                    calledSlot: calledSlot,
-                                    resourceSlot: resourceSlot,
-                                    resourceData: resourceData
-                                }
-                            }).done(function (returnedValue) {
-                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(returnedValue);
+                        $('#' + elementName + '').click(function () {
+                            var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                            dbRef.on('value', function (snapshot) {
+                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
                     })(commandID);
@@ -3892,7 +3473,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').dblclick(function () {
+                    $('#' + elementName + '').click(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c43', '', dataRaw[i]);
@@ -3903,53 +3484,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
                             }
                         }
-                        $.ajax({
-                            method: 'POST',
-                            url: '../res/PHP/DBInsert.php',
-                            data: {
-                                servername: sessionStorage.dbhost,
-                                username: sessionStorage.dbusername,
-                                password: sessionStorage.dbpassword,
-                                dbname: dbname,
-                                tablename: tablename,
-                                data: data
-                            }
-                        });
+                        data = JSON.parse(data);
+                        firebase.database().ref(dbname + '/' + tablename).set(data);
                     });
                 } else if (commandsFnTranslations('c27qG', commands[commandID]) == commandsFnTranslations('c27r')) {
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    var resourceSlot = commandsFnTranslations('c31', commands[commandID]);
-                    var resourceData;
                     (function (commandID) {
-                        $('#' + elementName + '').dblclick(function () {
-                            if (commandsFnTranslations('c32q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c32r')) {
-                                resourceData = $('#' + commandsFnTranslations('c33', commands[commandID], dbname, tablename, calledSlot) + '').val();
-                            } else if (commandsFnTranslations('c34q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c34r')) {
-                                resourceData = commandsFnTranslations('c35', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c36q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c36r')) {
-                                resourceData = commandsFnTranslations('c37', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c38q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c38r')) {
-                                resourceData = commandsFnTranslations('c39', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c40q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c40r')) {
-                                resourceData = commandsFnTranslations('c41', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            }
-                            $.ajax({
-                                method: 'POST',
-                                url: '../res/PHP/DBRead.php',
-                                data: {
-                                    servername: sessionStorage.dbhost,
-                                    username: sessionStorage.dbusername,
-                                    password: sessionStorage.dbpassword,
-                                    dbname: dbname,
-                                    tablename: tablename,
-                                    calledSlot: calledSlot,
-                                    resourceSlot: resourceSlot,
-                                    resourceData: resourceData
-                                }
-                            }).done(function (returnedValue) {
-                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(returnedValue);
+                        $('#' + elementName + '').click(function () {
+                            var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                            dbRef.on('value', function (snapshot) {
+                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
                     })(commandID);
@@ -4023,7 +3569,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').contextmenu(function () {
+                    $('#' + elementName + '').click(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c43', '', dataRaw[i]);
@@ -4034,53 +3580,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
                             }
                         }
-                        $.ajax({
-                            method: 'POST',
-                            url: '../res/PHP/DBInsert.php',
-                            data: {
-                                servername: sessionStorage.dbhost,
-                                username: sessionStorage.dbusername,
-                                password: sessionStorage.dbpassword,
-                                dbname: dbname,
-                                tablename: tablename,
-                                data: data
-                            }
-                        });
+                        data = JSON.parse(data);
+                        firebase.database().ref(dbname + '/' + tablename).set(data);
                     });
                 } else if (commandsFnTranslations('c27qH', commands[commandID]) == commandsFnTranslations('c27r')) {
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    var resourceSlot = commandsFnTranslations('c31', commands[commandID]);
-                    var resourceData;
                     (function (commandID) {
-                        $('#' + elementName + '').contextmenu(function () {
-                            if (commandsFnTranslations('c32q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c32r')) {
-                                resourceData = $('#' + commandsFnTranslations('c33', commands[commandID], dbname, tablename, calledSlot) + '').val();
-                            } else if (commandsFnTranslations('c34q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c34r')) {
-                                resourceData = commandsFnTranslations('c35', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c36q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c36r')) {
-                                resourceData = commandsFnTranslations('c37', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c38q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c38r')) {
-                                resourceData = commandsFnTranslations('c39', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c40q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c40r')) {
-                                resourceData = commandsFnTranslations('c41', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            }
-                            $.ajax({
-                                method: 'POST',
-                                url: '../res/PHP/DBRead.php',
-                                data: {
-                                    servername: sessionStorage.dbhost,
-                                    username: sessionStorage.dbusername,
-                                    password: sessionStorage.dbpassword,
-                                    dbname: dbname,
-                                    tablename: tablename,
-                                    calledSlot: calledSlot,
-                                    resourceSlot: resourceSlot,
-                                    resourceData: resourceData
-                                }
-                            }).done(function (returnedValue) {
-                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(returnedValue);
+                        $('#' + elementName + '').click(function () {
+                            var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                            dbRef.on('value', function (snapshot) {
+                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
                     })(commandID);
@@ -4154,7 +3665,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').keypress(function () {
+                    $('#' + elementName + '').click(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c43', '', dataRaw[i]);
@@ -4165,53 +3676,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
                             }
                         }
-                        $.ajax({
-                            method: 'POST',
-                            url: '../res/PHP/DBInsert.php',
-                            data: {
-                                servername: sessionStorage.dbhost,
-                                username: sessionStorage.dbusername,
-                                password: sessionStorage.dbpassword,
-                                dbname: dbname,
-                                tablename: tablename,
-                                data: data
-                            }
-                        });
+                        data = JSON.parse(data);
+                        firebase.database().ref(dbname + '/' + tablename).set(data);
                     });
                 } else if (commandsFnTranslations('c27qI', commands[commandID]) == commandsFnTranslations('c27r')) {
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    var resourceSlot = commandsFnTranslations('c31', commands[commandID]);
-                    var resourceData;
                     (function (commandID) {
-                        $('#' + elementName + '').keypress(function () {
-                            if (commandsFnTranslations('c32q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c32r')) {
-                                resourceData = $('#' + commandsFnTranslations('c33', commands[commandID], dbname, tablename, calledSlot) + '').val();
-                            } else if (commandsFnTranslations('c34q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c34r')) {
-                                resourceData = commandsFnTranslations('c35', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c36q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c36r')) {
-                                resourceData = commandsFnTranslations('c37', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c38q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c38r')) {
-                                resourceData = commandsFnTranslations('c39', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c40q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c40r')) {
-                                resourceData = commandsFnTranslations('c41', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            }
-                            $.ajax({
-                                method: 'POST',
-                                url: '../res/PHP/DBRead.php',
-                                data: {
-                                    servername: sessionStorage.dbhost,
-                                    username: sessionStorage.dbusername,
-                                    password: sessionStorage.dbpassword,
-                                    dbname: dbname,
-                                    tablename: tablename,
-                                    calledSlot: calledSlot,
-                                    resourceSlot: resourceSlot,
-                                    resourceData: resourceData
-                                }
-                            }).done(function (returnedValue) {
-                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(returnedValue);
+                        $('#' + elementName + '').click(function () {
+                            var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                            dbRef.on('value', function (snapshot) {
+                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
                     })(commandID);
@@ -4285,7 +3761,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').keydown(function () {
+                    $('#' + elementName + '').click(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c43', '', dataRaw[i]);
@@ -4296,53 +3772,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
                             }
                         }
-                        $.ajax({
-                            method: 'POST',
-                            url: '../res/PHP/DBInsert.php',
-                            data: {
-                                servername: sessionStorage.dbhost,
-                                username: sessionStorage.dbusername,
-                                password: sessionStorage.dbpassword,
-                                dbname: dbname,
-                                tablename: tablename,
-                                data: data
-                            }
-                        });
+                        data = JSON.parse(data);
+                        firebase.database().ref(dbname + '/' + tablename).set(data);
                     });
                 } else if (commandsFnTranslations('c27qJ', commands[commandID]) == commandsFnTranslations('c27r')) {
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    var resourceSlot = commandsFnTranslations('c31', commands[commandID]);
-                    var resourceData;
                     (function (commandID) {
-                        $('#' + elementName + '').keydown(function () {
-                            if (commandsFnTranslations('c32q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c32r')) {
-                                resourceData = $('#' + commandsFnTranslations('c33', commands[commandID], dbname, tablename, calledSlot) + '').val();
-                            } else if (commandsFnTranslations('c34q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c34r')) {
-                                resourceData = commandsFnTranslations('c35', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c36q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c36r')) {
-                                resourceData = commandsFnTranslations('c37', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c38q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c38r')) {
-                                resourceData = commandsFnTranslations('c39', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c40q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c40r')) {
-                                resourceData = commandsFnTranslations('c41', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            }
-                            $.ajax({
-                                method: 'POST',
-                                url: '../res/PHP/DBRead.php',
-                                data: {
-                                    servername: sessionStorage.dbhost,
-                                    username: sessionStorage.dbusername,
-                                    password: sessionStorage.dbpassword,
-                                    dbname: dbname,
-                                    tablename: tablename,
-                                    calledSlot: calledSlot,
-                                    resourceSlot: resourceSlot,
-                                    resourceData: resourceData
-                                }
-                            }).done(function (returnedValue) {
-                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(returnedValue);
+                        $('#' + elementName + '').click(function () {
+                            var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                            dbRef.on('value', function (snapshot) {
+                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
                     })(commandID);
@@ -4416,7 +3857,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').change(function () {
+                    $('#' + elementName + '').click(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c43', '', dataRaw[i]);
@@ -4427,53 +3868,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
                             }
                         }
-                        $.ajax({
-                            method: 'POST',
-                            url: '../res/PHP/DBInsert.php',
-                            data: {
-                                servername: sessionStorage.dbhost,
-                                username: sessionStorage.dbusername,
-                                password: sessionStorage.dbpassword,
-                                dbname: dbname,
-                                tablename: tablename,
-                                data: data
-                            }
-                        });
+                        data = JSON.parse(data);
+                        firebase.database().ref(dbname + '/' + tablename).set(data);
                     });
                 } else if (commandsFnTranslations('c27qK', commands[commandID]) == commandsFnTranslations('c27r')) {
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    var resourceSlot = commandsFnTranslations('c31', commands[commandID]);
-                    var resourceData;
                     (function (commandID) {
-                        $('#' + elementName + '').change(function () {
-                            if (commandsFnTranslations('c32q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c32r')) {
-                                resourceData = $('#' + commandsFnTranslations('c33', commands[commandID], dbname, tablename, calledSlot) + '').val();
-                            } else if (commandsFnTranslations('c34q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c34r')) {
-                                resourceData = commandsFnTranslations('c35', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c36q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c36r')) {
-                                resourceData = commandsFnTranslations('c37', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c38q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c38r')) {
-                                resourceData = commandsFnTranslations('c39', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c40q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c40r')) {
-                                resourceData = commandsFnTranslations('c41', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            }
-                            $.ajax({
-                                method: 'POST',
-                                url: '../res/PHP/DBRead.php',
-                                data: {
-                                    servername: sessionStorage.dbhost,
-                                    username: sessionStorage.dbusername,
-                                    password: sessionStorage.dbpassword,
-                                    dbname: dbname,
-                                    tablename: tablename,
-                                    calledSlot: calledSlot,
-                                    resourceSlot: resourceSlot,
-                                    resourceData: resourceData
-                                }
-                            }).done(function (returnedValue) {
-                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(returnedValue);
+                        $('#' + elementName + '').click(function () {
+                            var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                            dbRef.on('value', function (snapshot) {
+                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
                     })(commandID);
@@ -4547,7 +3953,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').focus(function () {
+                    $('#' + elementName + '').click(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c43', '', dataRaw[i]);
@@ -4558,53 +3964,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
                             }
                         }
-                        $.ajax({
-                            method: 'POST',
-                            url: '../res/PHP/DBInsert.php',
-                            data: {
-                                servername: sessionStorage.dbhost,
-                                username: sessionStorage.dbusername,
-                                password: sessionStorage.dbpassword,
-                                dbname: dbname,
-                                tablename: tablename,
-                                data: data
-                            }
-                        });
+                        data = JSON.parse(data);
+                        firebase.database().ref(dbname + '/' + tablename).set(data);
                     });
                 } else if (commandsFnTranslations('c27qL', commands[commandID]) == commandsFnTranslations('c27r')) {
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    var resourceSlot = commandsFnTranslations('c31', commands[commandID]);
-                    var resourceData;
                     (function (commandID) {
-                        $('#' + elementName + '').focus(function () {
-                            if (commandsFnTranslations('c32q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c32r')) {
-                                resourceData = $('#' + commandsFnTranslations('c33', commands[commandID], dbname, tablename, calledSlot) + '').val();
-                            } else if (commandsFnTranslations('c34q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c34r')) {
-                                resourceData = commandsFnTranslations('c35', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c36q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c36r')) {
-                                resourceData = commandsFnTranslations('c37', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c38q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c38r')) {
-                                resourceData = commandsFnTranslations('c39', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c40q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c40r')) {
-                                resourceData = commandsFnTranslations('c41', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            }
-                            $.ajax({
-                                method: 'POST',
-                                url: '../res/PHP/DBRead.php',
-                                data: {
-                                    servername: sessionStorage.dbhost,
-                                    username: sessionStorage.dbusername,
-                                    password: sessionStorage.dbpassword,
-                                    dbname: dbname,
-                                    tablename: tablename,
-                                    calledSlot: calledSlot,
-                                    resourceSlot: resourceSlot,
-                                    resourceData: resourceData
-                                }
-                            }).done(function (returnedValue) {
-                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(returnedValue);
+                        $('#' + elementName + '').click(function () {
+                            var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                            dbRef.on('value', function (snapshot) {
+                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
                     })(commandID);
@@ -4678,7 +4049,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').focusin(function () {
+                    $('#' + elementName + '').click(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c43', '', dataRaw[i]);
@@ -4689,53 +4060,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
                             }
                         }
-                        $.ajax({
-                            method: 'POST',
-                            url: '../res/PHP/DBInsert.php',
-                            data: {
-                                servername: sessionStorage.dbhost,
-                                username: sessionStorage.dbusername,
-                                password: sessionStorage.dbpassword,
-                                dbname: dbname,
-                                tablename: tablename,
-                                data: data
-                            }
-                        });
+                        data = JSON.parse(data);
+                        firebase.database().ref(dbname + '/' + tablename).set(data);
                     });
                 } else if (commandsFnTranslations('c27qM', commands[commandID]) == commandsFnTranslations('c27r')) {
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    var resourceSlot = commandsFnTranslations('c31', commands[commandID]);
-                    var resourceData;
                     (function (commandID) {
-                        $('#' + elementName + '').focusin(function () {
-                            if (commandsFnTranslations('c32q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c32r')) {
-                                resourceData = $('#' + commandsFnTranslations('c33', commands[commandID], dbname, tablename, calledSlot) + '').val();
-                            } else if (commandsFnTranslations('c34q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c34r')) {
-                                resourceData = commandsFnTranslations('c35', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c36q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c36r')) {
-                                resourceData = commandsFnTranslations('c37', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c38q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c38r')) {
-                                resourceData = commandsFnTranslations('c39', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c40q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c40r')) {
-                                resourceData = commandsFnTranslations('c41', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            }
-                            $.ajax({
-                                method: 'POST',
-                                url: '../res/PHP/DBRead.php',
-                                data: {
-                                    servername: sessionStorage.dbhost,
-                                    username: sessionStorage.dbusername,
-                                    password: sessionStorage.dbpassword,
-                                    dbname: dbname,
-                                    tablename: tablename,
-                                    calledSlot: calledSlot,
-                                    resourceSlot: resourceSlot,
-                                    resourceData: resourceData
-                                }
-                            }).done(function (returnedValue) {
-                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(returnedValue);
+                        $('#' + elementName + '').click(function () {
+                            var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                            dbRef.on('value', function (snapshot) {
+                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
                     })(commandID);
@@ -4809,7 +4145,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').focusout(function () {
+                    $('#' + elementName + '').click(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c43', '', dataRaw[i]);
@@ -4820,53 +4156,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
                             }
                         }
-                        $.ajax({
-                            method: 'POST',
-                            url: '../res/PHP/DBInsert.php',
-                            data: {
-                                servername: sessionStorage.dbhost,
-                                username: sessionStorage.dbusername,
-                                password: sessionStorage.dbpassword,
-                                dbname: dbname,
-                                tablename: tablename,
-                                data: data
-                            }
-                        });
+                        data = JSON.parse(data);
+                        firebase.database().ref(dbname + '/' + tablename).set(data);
                     });
                 } else if (commandsFnTranslations('c27qN', commands[commandID]) == commandsFnTranslations('c27r')) {
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    var resourceSlot = commandsFnTranslations('c31', commands[commandID]);
-                    var resourceData;
                     (function (commandID) {
-                        $('#' + elementName + '').focusout(function () {
-                            if (commandsFnTranslations('c32q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c32r')) {
-                                resourceData = $('#' + commandsFnTranslations('c33', commands[commandID], dbname, tablename, calledSlot) + '').val();
-                            } else if (commandsFnTranslations('c34q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c34r')) {
-                                resourceData = commandsFnTranslations('c35', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c36q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c36r')) {
-                                resourceData = commandsFnTranslations('c37', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c38q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c38r')) {
-                                resourceData = commandsFnTranslations('c39', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c40q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c40r')) {
-                                resourceData = commandsFnTranslations('c41', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            }
-                            $.ajax({
-                                method: 'POST',
-                                url: '../res/PHP/DBRead.php',
-                                data: {
-                                    servername: sessionStorage.dbhost,
-                                    username: sessionStorage.dbusername,
-                                    password: sessionStorage.dbpassword,
-                                    dbname: dbname,
-                                    tablename: tablename,
-                                    calledSlot: calledSlot,
-                                    resourceSlot: resourceSlot,
-                                    resourceData: resourceData
-                                }
-                            }).done(function (returnedValue) {
-                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(returnedValue);
+                        $('#' + elementName + '').click(function () {
+                            var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                            dbRef.on('value', function (snapshot) {
+                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
                     })(commandID);
@@ -4940,7 +4241,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').submit(function () {
+                    $('#' + elementName + '').click(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c43', '', dataRaw[i]);
@@ -4951,53 +4252,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
                             }
                         }
-                        $.ajax({
-                            method: 'POST',
-                            url: '../res/PHP/DBInsert.php',
-                            data: {
-                                servername: sessionStorage.dbhost,
-                                username: sessionStorage.dbusername,
-                                password: sessionStorage.dbpassword,
-                                dbname: dbname,
-                                tablename: tablename,
-                                data: data
-                            }
-                        });
+                        data = JSON.parse(data);
+                        firebase.database().ref(dbname + '/' + tablename).set(data);
                     });
                 } else if (commandsFnTranslations('c27qO', commands[commandID]) == commandsFnTranslations('c27r')) {
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    var resourceSlot = commandsFnTranslations('c31', commands[commandID]);
-                    var resourceData;
                     (function (commandID) {
-                        $('#' + elementName + '').submit(function () {
-                            if (commandsFnTranslations('c32q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c32r')) {
-                                resourceData = $('#' + commandsFnTranslations('c33', commands[commandID], dbname, tablename, calledSlot) + '').val();
-                            } else if (commandsFnTranslations('c34q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c34r')) {
-                                resourceData = commandsFnTranslations('c35', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c36q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c36r')) {
-                                resourceData = commandsFnTranslations('c37', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c38q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c38r')) {
-                                resourceData = commandsFnTranslations('c39', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c40q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c40r')) {
-                                resourceData = commandsFnTranslations('c41', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            }
-                            $.ajax({
-                                method: 'POST',
-                                url: '../res/PHP/DBRead.php',
-                                data: {
-                                    servername: sessionStorage.dbhost,
-                                    username: sessionStorage.dbusername,
-                                    password: sessionStorage.dbpassword,
-                                    dbname: dbname,
-                                    tablename: tablename,
-                                    calledSlot: calledSlot,
-                                    resourceSlot: resourceSlot,
-                                    resourceData: resourceData
-                                }
-                            }).done(function (returnedValue) {
-                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(returnedValue);
+                        $('#' + elementName + '').click(function () {
+                            var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                            dbRef.on('value', function (snapshot) {
+                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
                     })(commandID);
@@ -5071,7 +4337,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').scroll(function () {
+                    $('#' + elementName + '').click(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c43', '', dataRaw[i]);
@@ -5082,53 +4348,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
                             }
                         }
-                        $.ajax({
-                            method: 'POST',
-                            url: '../res/PHP/DBInsert.php',
-                            data: {
-                                servername: sessionStorage.dbhost,
-                                username: sessionStorage.dbusername,
-                                password: sessionStorage.dbpassword,
-                                dbname: dbname,
-                                tablename: tablename,
-                                data: data
-                            }
-                        });
+                        data = JSON.parse(data);
+                        firebase.database().ref(dbname + '/' + tablename).set(data);
                     });
                 } else if (commandsFnTranslations('c27qP', commands[commandID]) == commandsFnTranslations('c27r')) {
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    var resourceSlot = commandsFnTranslations('c31', commands[commandID]);
-                    var resourceData;
                     (function (commandID) {
-                        $('#' + elementName + '').scroll(function () {
-                            if (commandsFnTranslations('c32q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c32r')) {
-                                resourceData = $('#' + commandsFnTranslations('c33', commands[commandID], dbname, tablename, calledSlot) + '').val();
-                            } else if (commandsFnTranslations('c34q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c34r')) {
-                                resourceData = commandsFnTranslations('c35', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c36q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c36r')) {
-                                resourceData = commandsFnTranslations('c37', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c38q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c38r')) {
-                                resourceData = commandsFnTranslations('c39', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            } else if (commandsFnTranslations('c40q', commands[commandID], dbname, tablename, calledSlot) == commandsFnTranslations('c40r')) {
-                                resourceData = commandsFnTranslations('c41', commands[commandID], dbname, tablename, calledSlot, resourceSlot);
-                            }
-                            $.ajax({
-                                method: 'POST',
-                                url: '../res/PHP/DBRead.php',
-                                data: {
-                                    servername: sessionStorage.dbhost,
-                                    username: sessionStorage.dbusername,
-                                    password: sessionStorage.dbpassword,
-                                    dbname: dbname,
-                                    tablename: tablename,
-                                    calledSlot: calledSlot,
-                                    resourceSlot: resourceSlot,
-                                    resourceData: resourceData
-                                }
-                            }).done(function (returnedValue) {
-                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(returnedValue);
+                        $('#' + elementName + '').click(function () {
+                            var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                            dbRef.on('value', function (snapshot) {
+                                $('#' + commandsFnTranslations('c42', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
                     })(commandID);
@@ -5225,17 +4456,141 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
-                $.fn[databaseCenterTranslations[lang]] = function (options) {
+                $.fn[firebaseCenterTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
-                        [centerLocationTranslations[lang]]: 'localhost',
-                        [usernameTranslations[lang]]: 'root',
-                        [passwordTranslations[lang]]: 'root'
+                        [usernameTranslations[lang]]: null,
+                        [passwordTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
-                        sessionStorage.dbhost = settings[centerLocationTranslations[lang]];
-                        sessionStorage.dbusername = settings[usernameTranslations[lang]];
-                        sessionStorage.dbpassword = settings[passwordTranslations[lang]];
+                        sessionStorage.firebaseID = settings[usernameTranslations[lang]];
+                        sessionStorage.firebaseKey = settings[passwordTranslations[lang]];
+                        var config = {
+                            apiKey: sessionStorage.firebaseKey,
+                            authDomain: sessionStorage.firebaseID + ".firebaseapp.com",
+                            databaseURL: "https://" + sessionStorage.firebaseID + ".firebaseio.com",
+                            storageBucket: sessionStorage.firebaseID + ".appspot.com",
+                        };
+                        firebase.initializeApp(config);
+                        var database = firebase.database();
+                    });
+                };
+                $.fn[loginFormTranslations[lang]] = function (options) {
+                    // Establish our default settings
+                    var settings = $.extend({}, options);
+                    return this.each(function () {
+                        $('body').append('<div id="firebaseui-container"></div>');
+
+                        function getRecaptchaMode() {
+                            // Quick way of checking query params in the fragment. If we add more config
+                            // we might want to actually parse the fragment as a query string.
+                            return location.hash.indexOf('recaptcha=invisible') !== -1 ? 'invisible' : 'normal';
+                        }
+
+                        function getUiConfig() {
+                            return {
+                                'callbacks': {
+                                    // Called when the user has been successfully signed in.
+                                    'signInSuccess': function (user, credential, redirectUrl) {
+                                        handleSignedInUser(user);
+                                        // Do not redirect.
+                                        return false;
+                                    }
+                                },
+                                // Opens IDP Providers sign-in flow in a popup.
+                                'signInFlow': 'popup',
+                                'signInOptions': [
+                                    // TODO(developer): Remove the providers you don't need for your app.
+                                    {
+                                        provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                                        scopes: ['https://www.googleapis.com/auth/plus.login']
+                                    }, {
+                                        provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+                                        scopes: ['public_profile', 'email', 'user_likes', 'user_friends']
+                                    },
+                                    firebase.auth.TwitterAuthProvider.PROVIDER_ID, {
+                                        provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+                                        recaptchaParameters: {
+                                            size: getRecaptchaMode()
+                                        }
+                                    }
+                                ],
+                                // Terms of service url.
+                                'tosUrl': 'https://www.google.com'
+                            };
+                        }
+                        // Initialize the FirebaseUI Widget using Firebase.
+                        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+                        /**
+                         * @return {string} The URL of the FirebaseUI standalone widget.
+                         */
+                        function getWidgetUrl() {
+                            return '/widget#recaptcha=' + getRecaptchaMode();
+                        }
+                        /**
+                         * Redirects to the FirebaseUI widget.
+                         */
+                        var signInWithRedirect = function () {
+                            window.location.assign(getWidgetUrl());
+                        };
+                        /**
+                         * Open a popup with the FirebaseUI widget.
+                         */
+                        var signInWithPopup = function () {
+                            window.open(getWidgetUrl(), 'Sign In', 'width=985,height=735');
+                        };
+                        /**
+                         * Displays the UI for a signed in user.
+                         * @param {!firebase.User} user
+                         */
+                        var handleSignedInUser = function (user) {
+                            console.log(user.uid);
+                            sessionStorage.displayName = user.displayName;
+                            sessionStorage.email = user.email;
+                            sessionStorage.phoneNumber = user.phoneNumber;
+                            if (user.photoURL) {
+                                sessionStorage.profilePhoto = user.photoURL;
+                            }
+                        };
+                        /**
+                         * Displays the UI for a signed out user.
+                         */
+                        var handleSignedOutUser = function () {
+                            ui.start('#firebaseui-container', getUiConfig());
+                            $('contents').hide();
+                        };
+                        // Listen to change in auth state so it displays the correct UI for when
+                        // the user is signed in or not.
+                        firebase.auth().onAuthStateChanged(function (user) {
+                            user ? handleSignedInUser(user) : handleSignedOutUser();
+                        });
+                        /**
+                         * Deletes the user's account.
+                         */
+                        var deleteAccount = function () {
+                            firebase.auth().currentUser.delete().catch(function (error) {
+                                if (error.code == 'auth/requires-recent-login') {
+                                    // The user's credential is too old. She needs to sign in again.
+                                    firebase.auth().signOut().then(function () {
+                                        // The timeout allows the message to be displayed after the UI has
+                                        // changed to the signed out state.
+                                        setTimeout(function () {
+                                            alert('Please sign in again to delete your account.');
+                                        }, 1);
+                                    });
+                                }
+                            });
+                        };
+                        /**
+                         * Handles when the user changes the reCAPTCHA config.
+                         */
+                        function handleRecaptchaConfigChange() {
+                            var newRecaptchaValue = document.querySelector('input[name="recaptcha"]:checked').value;
+                            location.replace(location.pathname + '#recaptcha=' + newRecaptchaValue);
+                            // Reset the inline widget so the config changes are reflected.
+                            ui.reset();
+                            ui.start('#firebaseui-container', getUiConfig());
+                        }
                     });
                 };
                 $.fn[buttonTranslations[lang]] = function (options) {
