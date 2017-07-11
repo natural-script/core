@@ -1,26 +1,43 @@
 <link rel="import" href="https://reviaco.os/res/Res.html">
-<code>
+<en-uk>
 
-            put.setup({
+            add.setup({
                 mode: 'site',
                 title: 'Google'
             });
 
-            put.database_centre();
-
-            put.slider({
+            add.firebase_centre({
+                password: 'AIzaSyDMGk_SFlEto93zfGHUbVLwxYiSq00aknk',
+                username: 'jste-9584c'
+            });
+            add.login_form();
+            
+            add.slider({
                 title: 'Plz enter a text here',
                 pin: 'yes',
                 name: 'slider',
                 max: '100',
                 commands: 'When double clicked, redirect to https://google.com'
             });
-            put.slider({
+            add.slider({
                 title: 'You will see the magic here',
                 pin: 'yes',
                 name: 'anotherSlider',
                 max: '200',
                 commands: 'When double clicked, go to the database test the branch test and then get the value of the slot B which has the same class of the value 500 in the slot A and then set it as the value of slider'
             });
-
-    </code>
+            add.slider({
+                title: 'You will see the magic here',
+                pin: 'yes',
+                name: 'ok',
+                max: '200',
+                commands: 'When focused, go to the database test the branch ahmedd and then get the value of the slot A and set it as the value of anotherSlider'
+            });
+            add.image({
+                title: 'You will see the magic here',
+                name: 'test',
+                image_length: '195px',
+                image_width: '259px',
+                source: 'https://www.shahjahanmosque.org.uk/sites/default/files/styles/frontpage_slider/public/media-gallery/shah-jahan-mosque-gallery/shah-jahan-mosque-gallery_2.jpg?itok=Hjm0owkx'
+            });
+        </en-uk>
