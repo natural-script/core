@@ -52,6 +52,53 @@ function showImageB(name) {
     $('#' + name + '').css('-webkit-filter', 'blur(0px)');
     $('#showImage_' + name + '_containerB').fadeOut();
 }
+
+function showVideoA(name, source) {
+    $('#' + name + '').attr('src', source);
+    var v = document.getElementById(name);
+    v.muted = true;
+    v.addEventListener("loadeddata", function () {
+        console.log('done');
+        var videoDuration = v.duration;
+        var scanningTimes = parseInt(videoDuration / 60);
+        for (i = 0; i <= scanningTimes; i++) {
+            (function (i) {
+                window.setTimeout(function () {
+                    var nextTime = i * 60;
+                    v.currentTime = nextTime;
+                    v.pause();
+                    nude.load(name);
+                    // Scan it
+                    if (i < scanningTimes) {
+                        nude.scan(function (result) {
+                            if (result) {
+                                $('#showVideo_' + name + '_containerA').fadeOut();
+                                $('#showVideo_' + name + '_containerB').fadeIn();
+                            }
+                        });
+                    } else if (i == scanningTimes) {
+                        nude.scan(function (result) {
+                            if (result) {
+                                $('#showVideo_' + name + '_containerA').fadeOut();
+                                $('#showVideo_' + name + '_containerB').fadeIn();
+                            } else {
+                                $('#' + name + '').css('-webkit-filter', 'blur(0px)');
+                                $('#showVideo_' + name + '_containerA').fadeOut();
+                                v.currentTime = 0;
+                                $('#video_' + name + '_controls > #container > #videoControls').show();
+                            }
+                        });
+                    }
+                }, i * 500);
+            }(i));
+        }
+    });
+}
+
+function showVideoB(name) {
+    $('#' + name + '').css('-webkit-filter', 'blur(0px)');
+    $('#showVideo_' + name + '_containerB').fadeOut();
+}
 var yesTranslations = ['yes', 'yup', 'oui', 'نعم', 'ايوه', 'はい'];
 var noTranslations = ['no', 'nope', 'non', 'لا', 'لأ', 'いいえ'];
 var blackTranslations = ['black', 'black', 'noir', 'اسود', 'اسود', '黒'];
@@ -5020,8 +5067,57 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var name = settings[nameTranslations[lang]];
                         var source = settings[sourceTranslations[lang]];
                         window.analyseImage(name, source);
-                        var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; length: ' + settings[imageLengthTranslations[lang]] + ';"><img id="' + name + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /><div id="showImage_' + name + '_containerA"><p id="' + name + '_imageData" style="position: absolute; color: #FFFFFF; top: 25%; left: 50%; transform: translate(-50%, -50%); font-size: x-small; text-align: center; width: 85%;"></p><button style="position: absolute; top: 75%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showImageA(\'' + name + '\', \'' + source + '\');">View Image</button></div><div id="showImage_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showImageB(\'' + name + '\');">Continue</button></div></div>';
+                        var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; height: ' + settings[imageLengthTranslations[lang]] + ';"><img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /><div id="showImage_' + name + '_containerA"><p id="' + name + '_imageData" style="position: absolute; color: #FFFFFF; top: 25%; left: 50%; transform: translate(-50%, -50%); font-size: x-small; text-align: center; width: 85%;"></p><button style="position: absolute; top: 75%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showImageA(\'' + name + '\', \'' + source + '\');">View Image</button></div><div id="showImage_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showImageB(\'' + name + '\');">Continue</button></div></div>';
                         $('contents').append(out);
+                        if (settings[backgroundTranslations[lang]]) {
+                            setBG(name, settings[backgroundTranslations[lang]]);
+                        }
+                        if (settings[imageWidthTranslations[lang]]) {
+                            $('#' + name + '').attr('width', settings[imageWidthTranslations[lang]]);
+                        }
+                        if (settings[imageLengthTranslations[lang]]) {
+                            $('#' + name + '').attr('length', settings[imageLengthTranslations[lang]]);
+                        }
+                        if (settings[titleTranslations[lang]]) {
+                            $('#' + name + '').attr('alt', settings[titleTranslations[lang]]);
+                        }
+                        if (settings[widthTranslations[lang]]) {
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
+                        }
+                        if (settings[lengthTranslations[lang]]) {
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
+                        }
+                        if (settings[animationTranslations[lang]]) {
+                            setAnimation(name, settings[animationTranslations[lang]]);
+                        }
+                        if (settings[transparencyTranslations[lang]]) {
+                            $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[transparencyTranslations[lang]] + '%)');
+                        }
+                    });
+                };
+                $.fn[videoTranslations[lang]] = function (options) {
+                    // Establish our default settings
+                    var settings = $.extend({
+                        [titleTranslations[lang]]: null,
+                        [sourceTranslations[lang]]: null,
+                        [imageWidthTranslations[lang]]: null,
+                        [imageLengthTranslations[lang]]: null,
+                        [nameTranslations[lang]]: null,
+                        [widthTranslations[lang]]: null,
+                        [lengthTranslations[lang]]: null,
+                        [animationTranslations[lang]]: null,
+                        [transparencyTranslations[lang]]: null,
+                        [backgroundTranslations[lang]]: null,
+                        [commandsTranslations[lang]]: null
+                    }, options);
+                    return this.each(function () {
+                        var name = settings[nameTranslations[lang]];
+                        var source = settings[sourceTranslations[lang]];
+                        var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; height: ' + settings[imageLengthTranslations[lang]] + ';"><paper-video-controls id="video_' + name + '_controls"><video id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" autoplay /></paper-video-controls><div id="showVideo_' + name + '_containerA"><button style="position: absolute; top: 50%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoA(\'' + name + '\', \'' + source + '\');">View Video</button></div><div id="showVideo_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></div></div>';
+                        $('contents').append(out);
+                        window.onload = function () {
+                            $('#video_' + name + '_controls > #container > #videoControls').hide();
+                        }
                         if (settings[backgroundTranslations[lang]]) {
                             setBG(name, settings[backgroundTranslations[lang]]);
                         }
