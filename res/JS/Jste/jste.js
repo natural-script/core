@@ -32,31 +32,54 @@ $(function () {
 });
 
 function showImageA(name, source) {
-    $('#' + name + '').attr('src', source);
-    $('#' + name + '').on('load', function () {
-        nude.load(name);
-        // Scan it
-        nude.scan(function (result) {
-            if (result) {
-                $('#showImage_' + name + '_containerA').fadeOut();
-                $('#showImage_' + name + '_containerB').fadeIn();
-            } else {
-                $('#' + name + '').css('-webkit-filter', 'blur(0px)');
-                $('#showImage_' + name + '_containerA').fadeOut();
-            }
+    var nudity = $('#' + name + '').attr('nude');
+    if (typeof nudity !== typeof undefined && nudity !== false) {
+        $('#showImage_' + name + '_containerA').fadeOut();
+        $('#showImage_' + name + '_containerB').fadeIn();
+    } else {
+        $('#' + name + '').attr('src', 'https://cors-anywhere.herokuapp.com/' + source);
+        $('#' + name + '').on('load', function () {
+            $('#' + name + '').css('-webkit-filter', 'blur(0px)');
+            $('#showImage_' + name + '_containerA').fadeOut();
         });
+    }
+
+
+
+}
+
+function showImageB(name, source) {
+    $('#' + name + '').attr('src', 'https://cors-anywhere.herokuapp.com/' + source);
+    $('#' + name + '').on('load', function () {
+
+        $('#showImage_' + name + '_containerB').fadeOut();
+        $('#showImage_' + name + '_containerC').fadeIn();
+    });
+
+
+}
+
+function showImageC(name, source) {
+    $('#' + name + '').attr('src', 'https://cors-anywhere.herokuapp.com/' + source);
+    $('#' + name + '').on('load', function () {
+        $('#' + name + '').css('-webkit-filter', 'blur(0px)');
+        $('#showImage_' + name + '_containerB').fadeOut();
     });
 }
 
-function showImageB(name) {
+function showImageD(name) {
+
     $('#' + name + '').css('-webkit-filter', 'blur(0px)');
-    $('#showImage_' + name + '_containerB').fadeOut();
+    $('#showImage_' + name + '_containerC').fadeOut();
+
 }
 
 function showVideoA(name, source) {
     $('#' + name + '').attr('src', source);
     var v = document.getElementById(name);
     v.muted = true;
+    
+
     v.addEventListener("loadeddata", function () {
         console.log('done');
         var videoDuration = v.duration;
@@ -67,10 +90,20 @@ function showVideoA(name, source) {
                     var nextTime = i * 60;
                     v.currentTime = nextTime;
                     v.pause();
+                    window.setTimeout(function () {
+                        var c = document.createElement('canvas'); // canvas
+                        var ctx = c.getContext('2d'); // context
+                        c.width = v.videoWidth || v.width;
+                        c.height = v.videoHeight || v.height;
+                        ctx.drawImage(v, 0, 0, c.width, c.height);
+                        console.log(c.toDataURL());
+
+                    }, 1000);
                     nude.load(name);
                     // Scan it
                     if (i < scanningTimes) {
                         nude.scan(function (result) {
+                            
                             if (result) {
                                 $('#showVideo_' + name + '_containerA').fadeOut();
                                 $('#showVideo_' + name + '_containerB').fadeIn();
@@ -89,7 +122,7 @@ function showVideoA(name, source) {
                             }
                         });
                     }
-                }, i * 500);
+                }, i * 2000);
             }(i));
         }
     });
@@ -4673,13 +4706,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('disabled', true);
+                            $('#' + name + '').attr('disabled', '');
                         }
                         if (settings[raisedTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('raised', true);
+                            $('#' + name + '').attr('raised', '');
                         }
                         if (settings[switchedTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('toggled', true);
+                            $('#' + name + '').attr('toggled', '');
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == 'thick') {
@@ -5032,7 +5065,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             setBG(name, settings[backgroundTranslations[lang]]);
                         }
                         if (settings[loadingTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('active', true);
+                            $('#' + name + '').attr('active', '');
                         }
                         if (settings[widthTranslations[lang]]) {
                             $('#' + name + '').css('width', settings[widthTranslations[lang]]);
@@ -5067,7 +5100,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var name = settings[nameTranslations[lang]];
                         var source = settings[sourceTranslations[lang]];
                         window.analyseImage(name, source);
-                        var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; height: ' + settings[imageLengthTranslations[lang]] + ';"><img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /><div id="showImage_' + name + '_containerA"><p id="' + name + '_imageData" style="position: absolute; color: #FFFFFF; top: 25%; left: 50%; transform: translate(-50%, -50%); font-size: x-small; text-align: center; width: 85%;"></p><button style="position: absolute; top: 75%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showImageA(\'' + name + '\', \'' + source + '\');">View Image</button></div><div id="showImage_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showImageB(\'' + name + '\');">Continue</button></div></div>';
+                        var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; height: ' + settings[imageLengthTranslations[lang]] + ';"><img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /><div id="showImage_' + name + '_containerA"><p id="' + name + '_imageData" style="position: absolute; color: #FFFFFF; top: 25%; left: 50%; transform: translate(-50%, -50%); font-size: x-small; text-align: center; width: 85%;"></p><button style="position: absolute; top: 75%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showImageA(\'' + name + '\', \'' + source + '\');">View Image</button></div><div id="showImage_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 25%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 35%; height: 20%; transform: translate(-50%, -50%); font-size: 60%;" onclick="showImageC(\'' + name + '\', \'' + source + '\');">Continue</button><button style="position: absolute; top: 65%; left: 75%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 35%; height: 20%; transform: translate(-50%, -50%); font-size: 60%;" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div><div id="showImage_' + name + '_containerC" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 25%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 85%;">Show the full content ?</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showImageD(\'' + name + '\');">Continue</button></div></div>';
                         $('contents').append(out);
                         if (settings[backgroundTranslations[lang]]) {
                             setBG(name, settings[backgroundTranslations[lang]]);
@@ -5243,13 +5276,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             setBG(name, settings[backgroundTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('disabled', true);
+                            $('#' + name + '').attr('disabled', '');
                         }
                         if (settings.checked == yesTranslations[lang]) {
-                            $('#' + name + '').prop('checked', true);
+                            $('#' + name + '').attr('checked', '');
                         }
                         if (settings[rippleTranslations[lang]]) {
-                            $('#' + name + '').prop('noink', true);
+                            $('#' + name + '').attr('noink', '');
                         }
                         if (settings[descriptionTranslations[lang]]) {
                             $('#' + name + '').append('<span class="subtitle">' + settings[descriptionTranslations[lang]] + '</span>');
@@ -5414,10 +5447,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('disabled', true);
+                            $('#' + name + '').attr('disabled', '');
                         }
                         if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
-                            $('#' + name + '').prop('noink', true);
+                            $('#' + name + '').attr('noink', '');
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == 'thick') {
@@ -5501,10 +5534,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('disabled', true);
+                            $('#' + name + '').attr('disabled', '');
                         }
                         if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
-                            $('#' + name + '').prop('noink', true);
+                            $('#' + name + '').attr('noink', '');
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == 'thick') {
@@ -5649,10 +5682,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('disabled', true);
+                            $('#' + name + '').attr('disabled', '');
                         }
                         if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
-                            $('#' + name + '').prop('noink', true);
+                            $('#' + name + '').attr('noink', '');
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == 'thick') {
@@ -5746,10 +5779,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('disabled', true);
+                            $('#' + name + '').attr('disabled', '');
                         }
                         if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
-                            $('#' + name + '').prop('noink', true);
+                            $('#' + name + '').attr('noink', '');
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == 'thick') {
@@ -5815,20 +5848,55 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             const app = new Clarifai.App({
                 apiKey: 'cd0b92362c304e0e87046ed8dccac9b8'
             });
-            // predict the contents of an image by passing in a url
-            app.models.predict(Clarifai.GENERAL_MODEL, source).then(function (response) {
-                var imageData = '';
-                for (i = 0; i < response.rawData.outputs[0].data.concepts.length; i++) {
-                    if (i == response.rawData.outputs[0].data.concepts.length - 1) {
-                        imageData += response.rawData.outputs[0].data.concepts[i].name;
+            var ref = firebase.database().ref("clarifai");
+            ref.once("value")
+                .then(function (snapshot) {
+                    if (snapshot.child(encodeURIComponent(source).replace(/\./g, '%2E')).exists()) {
+                        ref.on('value', function (snapshot) {
+                            var imageData = snapshot.val();
+                            var encodedSource = encodeURIComponent(source).replace(/\./g, '%2E');
+                            var nudityRate = imageData[encodedSource].nfsw.rawData.outputs[0].data.concepts[1].value;
+                            if (nudityRate > 0.85) {
+                                $('#' + name + '').attr('nude', '')
+                            }
+                            detectedObjectsRaw = imageData[encodedSource].general;
+                            var detectedObjects;
+                            for (i = 0; i < detectedObjectsRaw.rawData.outputs[0].data.concepts.length; i++) {
+                                if (i == detectedObjectsRaw.rawData.outputs[0].data.concepts.length - 1) {
+                                    detectedObjects += detectedObjectsRaw.rawData.outputs[0].data.concepts[i].name;
+                                } else {
+                                    detectedObjects += detectedObjectsRaw.rawData.outputs[0].data.concepts[i].name + ', ';
+                                }
+                            }
+
+                            $('#' + name + '_imageData').text(detectedObjects);
+
+
+                        });
                     } else {
-                        imageData += response.rawData.outputs[0].data.concepts[i].name + ', ';
+                        // predict the contents of an image by passing in a url
+                        app.models.predict("aaa03c23b3724a16a56b629203edc62c", source).then(function (response) {
+                            firebase.database().ref('clarifai/' + encodeURIComponent(source).replace(/\./g, '%2E') + '/general').set(response);
+                            var imageData = '';
+                            for (i = 0; i < response.rawData.outputs[0].data.concepts.length; i++) {
+                                if (i == response.rawData.outputs[0].data.concepts.length - 1) {
+                                    imageData += response.rawData.outputs[0].data.concepts[i].name;
+                                } else {
+                                    imageData += response.rawData.outputs[0].data.concepts[i].name + ', ';
+                                }
+                            }
+                            $('#' + name + '_imageData').text(imageData);
+                        }, function (err) {
+                            console.error(err);
+                        });
+                        app.models.predict("e9576d86d2004ed1a38ba0cf39ecb4b1", source).then(function (response) {
+                            firebase.database().ref('clarifai/' + encodeURIComponent(source).replace(/\./g, '%2E') + '/nfsw').set(response);
+
+                        }, function (err) {
+                            console.error(err);
+                        });
                     }
-                }
-                $('#' + name + '_imageData').text(imageData);
-            }, function (err) {
-                console.error(err);
-            });
+                });
         }
     }, {
         "clarifai": 32
