@@ -1,4 +1,5 @@
 var lang;
+var corsPolicy = 'https://cors-anywhere.herokuapp.com/';
 var code = "jQuery(document).ready(function ($) { var ";
 if ($('en-uk').length) {
     $('en-uk').hide();
@@ -31,13 +32,40 @@ $(function () {
     $('<script>').attr('type', 'text/javascript').text(code).appendTo('head');
 });
 
+function getFileSize(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("HEAD", corsPolicy + url, true); // Notice "HEAD" instead of "GET",
+    //  to get only the header
+    xhr.onreadystatechange = function () {
+        if (this.readyState == this.DONE) {
+            size = parseInt(xhr.getResponseHeader("Content-Length"));
+            if (size < 1000){
+            callback(size + ' Bytes');
+            }else if(size < 1000000){
+                callback(Math.round( size / 1000 * 10 ) / 10 + ' kb');
+                
+            }else if(size < 1000000000){
+                callback(Math.round( size / 1000000 * 10 ) / 10 + ' mb');
+                
+            }else if(size < 1000000000000){
+                callback(Math.round( size / 1000000000 * 10 ) / 10 + ' gb');
+                
+            }
+        
+
+        }
+    };
+    xhr.send();
+}
+
+
 function showImageA(name, source) {
     var nudity = $('#' + name + '').attr('nude');
     if (typeof nudity !== typeof undefined && nudity !== false) {
         $('#showImage_' + name + '_containerA').fadeOut();
         $('#showImage_' + name + '_containerB').fadeIn();
     } else {
-        $('#' + name + '').attr('src', 'https://cors-anywhere.herokuapp.com/' + source);
+        $('#' + name + '').attr('src', corsPolicy + source);
         $('#' + name + '').on('load', function () {
             $('#' + name + '').css('-webkit-filter', 'blur(0px)');
             $('#showImage_' + name + '_containerA').fadeOut();
@@ -49,7 +77,7 @@ function showImageA(name, source) {
 }
 
 function showImageB(name, source) {
-    $('#' + name + '').attr('src', 'https://cors-anywhere.herokuapp.com/' + source);
+    $('#' + name + '').attr('src', corsPolicy + source);
     $('#' + name + '').on('load', function () {
 
         $('#showImage_' + name + '_containerB').fadeOut();
@@ -60,7 +88,7 @@ function showImageB(name, source) {
 }
 
 function showImageC(name, source) {
-    $('#' + name + '').attr('src', 'https://cors-anywhere.herokuapp.com/' + source);
+    $('#' + name + '').attr('src', corsPolicy + source);
     $('#' + name + '').on('load', function () {
         $('#' + name + '').css('-webkit-filter', 'blur(0px)');
         $('#showImage_' + name + '_containerB').fadeOut();
@@ -77,55 +105,6 @@ function showImageD(name) {
 function showVideoA(name, source) {
     $('#' + name + '').attr('src', source);
     var v = document.getElementById(name);
-    v.muted = true;
-    
-
-    v.addEventListener("loadeddata", function () {
-        console.log('done');
-        var videoDuration = v.duration;
-        var scanningTimes = parseInt(videoDuration / 60);
-        for (i = 0; i <= scanningTimes; i++) {
-            (function (i) {
-                window.setTimeout(function () {
-                    var nextTime = i * 60;
-                    v.currentTime = nextTime;
-                    v.pause();
-                    window.setTimeout(function () {
-                        var c = document.createElement('canvas'); // canvas
-                        var ctx = c.getContext('2d'); // context
-                        c.width = v.videoWidth || v.width;
-                        c.height = v.videoHeight || v.height;
-                        ctx.drawImage(v, 0, 0, c.width, c.height);
-                        console.log(c.toDataURL());
-
-                    }, 1000);
-                    nude.load(name);
-                    // Scan it
-                    if (i < scanningTimes) {
-                        nude.scan(function (result) {
-                            
-                            if (result) {
-                                $('#showVideo_' + name + '_containerA').fadeOut();
-                                $('#showVideo_' + name + '_containerB').fadeIn();
-                            }
-                        });
-                    } else if (i == scanningTimes) {
-                        nude.scan(function (result) {
-                            if (result) {
-                                $('#showVideo_' + name + '_containerA').fadeOut();
-                                $('#showVideo_' + name + '_containerB').fadeIn();
-                            } else {
-                                $('#' + name + '').css('-webkit-filter', 'blur(0px)');
-                                $('#showVideo_' + name + '_containerA').fadeOut();
-                                v.currentTime = 0;
-                                $('#video_' + name + '_controls > #container > #videoControls').show();
-                            }
-                        });
-                    }
-                }, i * 2000);
-            }(i));
-        }
-    });
 }
 
 function showVideoB(name) {
@@ -223,6 +202,7 @@ var itemsTranslations = ['items', 'items', "articles", 'العناصر', 'الع
 var descriptionTranslations = ['description', 'description', "la_description", 'الوصف', 'الوصف', '説明'];
 var privateTranslations = ['private', 'private', "privé", 'خاص', 'خاص', 'プライベート'];
 var loginFormTranslations = ['login_form', 'login_form', "formulaire_de_connexion", 'خاص', 'خاص', 'ログインフォーム'];
+var targetTranslations = ['target', 'target', "cible", 'الهدف', 'الهدف', 'ターゲット'];
 
 function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, para4) {
     if (lang == 0) {
@@ -5100,8 +5080,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var name = settings[nameTranslations[lang]];
                         var source = settings[sourceTranslations[lang]];
                         window.analyseImage(name, source);
-                        var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; height: ' + settings[imageLengthTranslations[lang]] + ';"><img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /><div id="showImage_' + name + '_containerA"><p id="' + name + '_imageData" style="position: absolute; color: #FFFFFF; top: 25%; left: 50%; transform: translate(-50%, -50%); font-size: x-small; text-align: center; width: 85%;"></p><button style="position: absolute; top: 75%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showImageA(\'' + name + '\', \'' + source + '\');">View Image</button></div><div id="showImage_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 25%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 35%; height: 20%; transform: translate(-50%, -50%); font-size: 60%;" onclick="showImageC(\'' + name + '\', \'' + source + '\');">Continue</button><button style="position: absolute; top: 65%; left: 75%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 35%; height: 20%; transform: translate(-50%, -50%); font-size: 60%;" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div><div id="showImage_' + name + '_containerC" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 25%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 85%;">Show the full content ?</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showImageD(\'' + name + '\');">Continue</button></div></div>';
+                        var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; height: ' + settings[imageLengthTranslations[lang]] + ';"><img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /><div id="showImage_' + name + '_containerA"><p id="' + name + '_imageData" style="position: absolute; color: #FFFFFF; top: 25%; left: 50%; transform: translate(-50%, -50%); font-size: x-small; text-align: center; width: 85%;"></p><button id="image_' + name + '_mainButton" style="position: absolute; top: 75%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showImageA(\'' + name + '\', \'' + source + '\');"></button></div><div id="showImage_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 25%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 35%; height: 20%; transform: translate(-50%, -50%); font-size: 60%;" onclick="showImageC(\'' + name + '\', \'' + source + '\');">Continue</button><button style="position: absolute; top: 65%; left: 75%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 35%; height: 20%; transform: translate(-50%, -50%); font-size: 60%;" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div><div id="showImage_' + name + '_containerC" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 25%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 85%;">Show the full content ?</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showImageD(\'' + name + '\');">Continue</button></div></div>';
                         $('contents').append(out);
+                        getFileSize(source, function(size){
+                          $('#image_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
+                        })
                         if (settings[backgroundTranslations[lang]]) {
                             setBG(name, settings[backgroundTranslations[lang]]);
                         }
@@ -5146,8 +5129,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var source = settings[sourceTranslations[lang]];
-                        var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; height: ' + settings[imageLengthTranslations[lang]] + ';"><paper-video-controls id="video_' + name + '_controls"><video id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" autoplay /></paper-video-controls><div id="showVideo_' + name + '_containerA"><button style="position: absolute; top: 50%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoA(\'' + name + '\', \'' + source + '\');">View Video</button></div><div id="showVideo_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></div></div>';
+                        var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; height: ' + settings[imageLengthTranslations[lang]] + ';"><paper-video-controls id="video_' + name + '_controls"><video id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" autoplay /></paper-video-controls><div id="showVideo_' + name + '_containerA"><button id="video_' + name + '_mainButton" style="position: absolute; top: 50%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoA(\'' + name + '\', \'' + source + '\');"></button></div><div id="showVideo_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></div></div>';
                         $('contents').append(out);
+                        getFileSize(source, function(size){
+                            $('#video_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
+                          })
                         window.onload = function () {
                             $('#video_' + name + '_controls > #container > #videoControls').hide();
                         }
@@ -5182,7 +5168,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var settings = $.extend({
                         [textTranslations[lang]]: 'It seems that you have typed nothing',
                         [iconTranslations[lang]]: null,
-                        target: null,
+                        [targetTranslations[lang]]: null,
                         [fontColourTranslations[lang]]: null,
                         [sizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
@@ -5197,7 +5183,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
-                        var out = '<paper-badge id="' + name + '" for="' + target + '"></paper-badge>';
+                        var out = '<paper-badge id="' + name + '" for="' + targetTranslations[lang] + '"></paper-badge>';
                         $('contents').append(out);
                         if (settings[fontColourTranslations[lang]]) {
                             setFontColour(name, settings[fontColourTranslations[lang]]);
@@ -5855,8 +5841,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         ref.on('value', function (snapshot) {
                             var imageData = snapshot.val();
                             var encodedSource = encodeURIComponent(source).replace(/\./g, '%2E');
-                            var nudityRate = imageData[encodedSource].nfsw.rawData.outputs[0].data.concepts[1].value;
-                            if (nudityRate > 0.85) {
+                            if (imageData[encodedSource].nfsw.rawData.outputs[0].data.concepts[0].name == 'nfsw') {
                                 $('#' + name + '').attr('nude', '')
                             }
                             detectedObjectsRaw = imageData[encodedSource].general;
@@ -5869,7 +5854,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 }
                             }
 
-                            $('#' + name + '_imageData').text(detectedObjects);
+
+
+                            $('#' + name + '_imageData').text(detectedObjects.split('undefined')[1]);
 
 
                         });
@@ -5891,7 +5878,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         });
                         app.models.predict("e9576d86d2004ed1a38ba0cf39ecb4b1", source).then(function (response) {
                             firebase.database().ref('clarifai/' + encodeURIComponent(source).replace(/\./g, '%2E') + '/nfsw').set(response);
-
+                            if (response.rawData.outputs[0].data.concepts[0].name == 'nfsw') {
+                                $('#' + name + '').attr('nude', '')
+                            }
                         }, function (err) {
                             console.error(err);
                         });
