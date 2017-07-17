@@ -1,105 +1,125 @@
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------Declaring Some Variables------------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 var lang;
+var corsPolicy = 'https://cors-anywhere.herokuapp.com/';
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------Script Initialization------------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 var code = "jQuery(document).ready(function ($) { var ";
 if ($('en-uk').length) {
     $('en-uk').hide();
     lang = 0;
     code += "add = $('body');" + $('en-uk').html();
+    $('en-uk').remove();
 } else if ($('en-us').length) {
     $('en-us').hide();
     lang = 1;
     code += "add = $('body');" + $('en-us').html();
+    $('en-us').remove();
 } else if ($('fr-fr').length) {
     $('fr-fr').hide();
     lang = 2;
     code += "ajouter = $('body');" + $('fr-fr').html();
+    $('fr-fr').remove();
 } else if ($('ar-ar').length) {
     $('ar-ar').hide();
+    $('html').attr('dir', 'rtl').attr('lang', 'ar');
     lang = 3;
     code += "اضف = $('body');" + $('ar-ar').html();
+    $('ar-ar').remove();
 } else if ($('ar-eg').length) {
     $('ar-eg').hide();
+    $('html').attr('dir', 'rtl').attr('lang', 'ar');
     lang = 4;
     code += "ضيف = $('body');" + $('ar-eg').html();
+    $('ar-eg').remove();
 } else if ($('jp-jp').length) {
     $('jp-jp').hide();
     lang = 5;
-    code += "追加する = $('body');" + $('jp-jp').html();
+    code += "追加する = $('body');" + $('ja-ja').html();
+    $('ja-ja').remove();
 }
 code += "});";
 $(function () {
-    $('<meta>').attr('charset', 'UTF-8').appendTo('head');
     $('<script>').attr('type', 'text/javascript').text(code).appendTo('head');
 });
-
-function showImageA(name, source) {
-    $('#' + name + '').attr('src', source);
-    $('#' + name + '').on('load', function () {
-        nude.load(name);
-        // Scan it
-        nude.scan(function (result) {
-            if (result) {
-                $('#showImage_' + name + '_containerA').fadeOut();
-                $('#showImage_' + name + '_containerB').fadeIn();
-            } else {
-                $('#' + name + '').css('-webkit-filter', 'blur(0px)');
-                $('#showImage_' + name + '_containerA').fadeOut();
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//------------------------------------------------Requesting The Files Sizes------------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+function getFileSize(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("HEAD", corsPolicy + url, true); // Notice "HEAD" instead of "GET",
+    //  to get only the header
+    xhr.onreadystatechange = function () {
+        if (this.readyState == this.DONE) {
+            size = parseInt(xhr.getResponseHeader("Content-Length"));
+            if (size < 1000) {
+                callback(size + ' Bytes');
+            } else if (size < 1000000) {
+                callback(Math.round(size / 1000 * 10) / 10 + ' kb');
+            } else if (size < 1000000000) {
+                callback(Math.round(size / 1000000 * 10) / 10 + ' mb');
+            } else if (size < 1000000000000) {
+                callback(Math.round(size / 1000000000 * 10) / 10 + ' gb');
             }
+        }
+    };
+    xhr.send();
+}
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------Images Related Functions------------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+function showImageA(name, source) {
+    var nudity = $('#' + name + '').attr('nude');
+    if (typeof nudity !== typeof undefined && nudity !== false) {
+        $('#showImage_' + name + '_containerA').fadeOut();
+        $('#showImage_' + name + '_containerB').fadeIn();
+    } else {
+        $('#' + name + '').attr('src', corsPolicy + source);
+        $('#' + name + '').on('load', function () {
+            $('#' + name + '').css('-webkit-filter', 'blur(0px)');
+            $('#showImage_' + name + '_containerA').fadeOut();
         });
+    }
+}
+
+function showImageB(name, source) {
+    $('#' + name + '').attr('src', corsPolicy + source);
+    $('#' + name + '').on('load', function () {
+        $('#showImage_' + name + '_containerB').fadeOut();
+        $('#showImage_' + name + '_containerC').fadeIn();
     });
 }
 
-function showImageB(name) {
-    $('#' + name + '').css('-webkit-filter', 'blur(0px)');
-    $('#showImage_' + name + '_containerB').fadeOut();
+function showImageC(name, source) {
+    $('#' + name + '').attr('src', corsPolicy + source);
+    $('#' + name + '').on('load', function () {
+        $('#' + name + '').css('-webkit-filter', 'blur(0px)');
+        $('#showImage_' + name + '_containerB').fadeOut();
+    });
 }
 
+function showImageD(name) {
+    $('#' + name + '').css('-webkit-filter', 'blur(0px)');
+    $('#showImage_' + name + '_containerC').fadeOut();
+}
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------Videos Related Functions------------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 function showVideoA(name, source) {
     $('#' + name + '').attr('src', source);
     var v = document.getElementById(name);
-    v.muted = true;
-    v.addEventListener("loadeddata", function () {
-        console.log('done');
-        var videoDuration = v.duration;
-        var scanningTimes = parseInt(videoDuration / 60);
-        for (i = 0; i <= scanningTimes; i++) {
-            (function (i) {
-                window.setTimeout(function () {
-                    var nextTime = i * 60;
-                    v.currentTime = nextTime;
-                    v.pause();
-                    nude.load(name);
-                    // Scan it
-                    if (i < scanningTimes) {
-                        nude.scan(function (result) {
-                            if (result) {
-                                $('#showVideo_' + name + '_containerA').fadeOut();
-                                $('#showVideo_' + name + '_containerB').fadeIn();
-                            }
-                        });
-                    } else if (i == scanningTimes) {
-                        nude.scan(function (result) {
-                            if (result) {
-                                $('#showVideo_' + name + '_containerA').fadeOut();
-                                $('#showVideo_' + name + '_containerB').fadeIn();
-                            } else {
-                                $('#' + name + '').css('-webkit-filter', 'blur(0px)');
-                                $('#showVideo_' + name + '_containerA').fadeOut();
-                                v.currentTime = 0;
-                                $('#video_' + name + '_controls > #container > #videoControls').show();
-                            }
-                        });
-                    }
-                }, i * 500);
-            }(i));
-        }
-    });
 }
 
 function showVideoB(name) {
     $('#' + name + '').css('-webkit-filter', 'blur(0px)');
     $('#showVideo_' + name + '_containerB').fadeOut();
 }
-var yesTranslations = ['yes', 'yup', 'oui', 'نعم', 'ايوه', 'はい'];
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//---------------------------------------------------Properties Translations------------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+var yesTranslations = ['yes', 'yup', 'oui', 'نعم', 'ايوة', 'はい'];
 var noTranslations = ['no', 'nope', 'non', 'لا', 'لأ', 'いいえ'];
 var blackTranslations = ['black', 'black', 'noir', 'اسود', 'اسود', '黒'];
 var redTranslations = ['red', 'red', 'rouge', 'احمر', 'احمر', '赤'];
@@ -118,7 +138,7 @@ var colorTranslations = ['colour', 'color', 'couleur', 'اللون', 'اللون
 var pinTranslations = ['pin', 'pin', 'épingle', 'دبوس', 'دبوس', 'ピン'];
 var animationTranslations = ['aniamtion', 'aniamtion', 'animation', 'الحركة', 'الحركة', 'アニメーション'];
 var commandsTranslations = ['commands', 'commands', 'commandes', 'الأوامر', 'الأوامر', 'コマンド'];
-var sliderTranslations = ['slider', 'slider', 'curseur', 'دبوس', 'دبوس', 'スライダー'];
+var sliderTranslations = ['slider', 'slider', 'curseur', 'منزلق', 'منزلق', 'スライダー'];
 var buttonTranslations = ['button', 'button', 'curseur', 'زر', 'زرار', 'ボタン'];
 var FABTranslations = ['FAB', 'FAB', 'épingle', 'دبوس', 'دبوس', 'ピン'];
 var colorsPaletteTranslations = ['colours_palette', 'colors_palette', 'palette_de_couleurs', 'لوحة_الوان', 'بلتة_الوان', 'カラーパレット'];
@@ -147,31 +167,31 @@ var distanceFromLeftTranslations = ['distance_from_the_left', 'distance_from_the
 var distanceFromRightTranslations = ['distance_from_the_right', 'distance_from_the_right', 'distance_à_partir_de_la_droit', 'المسافة_من_اليمين', 'المسافة_من_اللمين', '右からの距離'];
 var distanceFromTopTranslations = ['distance_from_the_top', 'distance_from_the_top', 'distance_à_partir_de_le_haut', 'المسافة_من_أعلى', 'المسافة_من_فوق', '上からの距離'];
 var distanceFromBottomTranslations = ['distance_from_the_bottom', 'distance_from_the_bottom', 'distance_à_partir_de_le_fond', 'المسافة_من_اسفل', 'المسافة_من_تحت', '底からの距離'];
-var firebaseCenterTranslations = ['firebase_centre', 'firebase_center', 'emplacement_central', 'مقر_المركز', 'مقر_المركز', 'ピン'];
+var firebaseCenterTranslations = ['firebase_centre', 'firebase_center', 'emplacement_central', 'مركز_البيانات', 'مركز_البيانات', 'ピン'];
 var usernameTranslations = ['username', 'username', "nom_d'utilisateur", 'اسم_المستخدم', 'اسم_المستخدم', 'ピン'];
 var passwordTranslations = ['password', 'password', 'mot_de_passe', 'كلمة_المرور', 'كلمة_السر', 'ピン'];
-var setupTranslations = ['setup', 'setup', 'installer', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン'];
+var setupTranslations = ['setup', 'setup', 'installer', 'الإعدادات', 'الإعدادات', 'セットアップ'];
 var logoTranslations = ['logo', 'logo', 'logo', 'الشعار', 'اللوجو', 'ロゴ'];
 var titleTranslations = ['title', 'title', 'titre', 'العنوان', 'العنوان', 'タイトル'];
 var modeTranslations = ['mode', 'mode', 'mode', 'الوضعية', 'المود', 'モード'];
 var pageTranslations = ['page', 'page', 'page', 'صفحة', 'صفحة', 'ページ'];
 var nameTranslations = ['name', 'name', 'prénom', 'الاسم', 'الاسم', '名'];
 var transparencyTranslations = ['transparency', 'transparency', 'transparence', 'الشفافية', 'الشفافية', '透明性'];
-var sizeTranslations = ['size', 'size', 'taille', 'الحجم', 'الحجم', 'サイズ'];
-var thicknessTranslations = ['thickness', 'thickness', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン'];
-var switchedTranslations = ['switched', 'switched', 'commuté', 'المكان_من_تحت', 'المكان_من_تحت', 'スイッチされる'];
+var fontSizeTranslations = ['font_size', 'font_size', 'taille_de_la_police', 'حجم_الخط', 'حجم_الخط', 'フォントサイズ'];
+var thicknessTranslations = ['thickness', 'thickness', 'épaisseur', 'السمك', 'الطخن', '厚さ'];
+var switchedTranslations = ['switched', 'switched', 'commuté', 'مفتوح', 'مفتوح', 'スイッチされる'];
 var raisedTranslations = ['raised', 'raised', 'élevé', 'مرفوع', 'مرفوع', '育てられる'];
 var disabledTranslations = ['disabled', 'disabled', 'désactivée', 'معطل', 'مقفول', '無効'];
 var fontStyleTranslations = ['font_style', 'font_style', 'le_style_de_police', 'شكل_الخط', 'شكل_الخط', 'フォントスタイル'];
 var fontColourTranslations = ['font_ colour', 'font_color', 'couleur_de_la_police', 'لون_الخط', 'لون_الخط', 'フォントの色'];
 var bodyTranslations = ['body', 'body', 'corps', 'جسم', 'جسم', '体'];
 var rippleTranslations = ['ripple', 'ripple', 'ondulation', 'تموج', 'تموج', '波紋'];
-var minTranslations = ['min', 'min', 'min', 'الحد_الأدنى', 'المكان_من_تحت', '最小'];
-var maxTranslations = ['max', 'max', 'max', 'الحد_الأقصى', 'المكان_من_تحت', '最大'];
+var minTranslations = ['min', 'min', 'min', 'الحد_الأدنى', 'الحد_الأدنى', '最小'];
+var maxTranslations = ['max', 'max', 'max', 'الحد_الأقصى', 'الحد_الأقصى', '最大'];
 var requirementTranslations = ['requirement', 'requirement', 'exigence', 'المطلوب', 'المطلوب', '要件'];
 var typeTranslations = ['type', 'type', 'type', 'النوع', 'النوع', 'タイプ'];
 var dynamicSizeTranslations = ['dynamic_size', 'dynamic_size', 'taille_dynamique', 'مقاس_متغير', 'مقاس_متغير', '動的なサイズ'];
-var clearButtonTranslations = ['clear_button', 'clear_button', 'épingle', 'المكان_من_تحت', 'المكان_من_تحت', 'ピン'];
+var clearButtonTranslations = ['clear_button', 'clear_button', 'bouton_de_suppression', 'زر_الحذف', 'زرار_المسح', '削除ボタン'];
 var suffixTranslations = ['suffix', 'suffix', 'suffixe', 'النهاية', 'النهاية', 'サフィックス'];
 var prefixTranslations = ['prefix', 'prefix', 'préfixe', 'البداية', 'البداية', 'プレフィックス'];
 var stepTranslations = ['step', 'step', 'étape', 'الخطوة', 'الخطوة', 'ステップ'];
@@ -189,43 +209,46 @@ var sourceTranslations = ['source', 'source', "la_source", 'المصدر', 'ال
 var itemsTranslations = ['items', 'items', "articles", 'العناصر', 'العناصر', 'アイテム'];
 var descriptionTranslations = ['description', 'description', "la_description", 'الوصف', 'الوصف', '説明'];
 var privateTranslations = ['private', 'private', "privé", 'خاص', 'خاص', 'プライベート'];
-var loginFormTranslations = ['login_form', 'login_form', "formulaire_de_connexion", 'خاص', 'خاص', 'ログインフォーム'];
-
+var loginFormTranslations = ['login_form', 'login_form', "formulaire_de_connexion", 'خاص', 'فورم_الدخول', 'ログインフォーム'];
+var targetTranslations = ['target', 'target', "cible", 'الهدف', 'الهدف', 'ターゲット'];
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------------Commands Translations------------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, para4) {
     if (lang == 0) {
-        var E1 = 'When clicked, ';
-        var E2 = 'When the mouse pointer moved over it, ';
-        var E3 = 'When the mouse pointer moved away from it, ';
+        var E1 = 'When it has been clicked, ';
+        var E2 = 'When the mouse pointer has been moved over it, ';
+        var E3 = 'When the mouse pointer has been moved away from it, ';
         var E4 = 'When the mouse pointer is being moved out of it, ';
         var E5 = 'When the mouse pointer is being moved over it, ';
         var E6 = 'When it is no longer clicked, ';
-        var E7 = 'When double clicked, ';
-        var E8 = 'When right clicked,';
-        var E9 = 'When a key pressed while focusing it, ';
+        var E7 = 'When it has been double clicked, ';
+        var E8 = 'When it has been right clicked, ';
+        var E9 = 'When a key has been pressed while focusing it, ';
         var E10 = 'When a key is being pressed while focusing it, ';
         var E11 = 'When its contents have been modified, ';
-        var E12 = 'When focused, ';
+        var E12 = 'When it has been focused, ';
         var E13 = 'When it is being focused, ';
         var E14 = 'When slept, ';
         var E15 = 'When the data of this form has been sent, ';
-        var E16 = 'When scrolled,';
+        var E16 = 'When it has been scrolled, ';
     } else if (lang == 1) {
-        var E1 = 'When clicked, ';
-        var E2 = 'When the mouse pointer moved over it, ';
-        var E3 = 'When the mouse pointer moved away from it, ';
+        var E1 = 'When it has been clicked, ';
+        var E2 = 'When the mouse pointer has been moved over it, ';
+        var E3 = 'When the mouse pointer has been moved away from it, ';
         var E4 = 'When the mouse pointer is being moved out of it, ';
         var E5 = 'When the mouse pointer is being moved over it, ';
         var E6 = 'When it is no longer clicked, ';
-        var E7 = 'When double clicked, ';
-        var E8 = 'When right clicked,';
-        var E9 = 'When a key pressed while focusing it, ';
+        var E7 = 'When it has been double clicked, ';
+        var E8 = 'When it has been right clicked, ';
+        var E9 = 'When a key has been pressed while focusing it, ';
         var E10 = 'When a key is being pressed while focusing it, ';
         var E11 = 'When its contents have been modified, ';
-        var E12 = 'When focused, ';
+        var E12 = 'When it has been focused, ';
         var E13 = 'When it is being focused, ';
         var E14 = 'When slept, ';
         var E15 = 'When the data of this form has been sent, ';
-        var E16 = 'When scrolled,';
+        var E16 = 'When it has been scrolled, ';
     } else if (lang == 2) {
         var E1 = 'Quand il a été cliqué, ';
         var E2 = "Lorsque le pointeur de souris a été déplacé au dessus, ";
@@ -244,56 +267,56 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         var E15 = 'Lorsque les données de ce formulaire ont été envoyées, ';
         var E16 = "Lorsqu'il s'a été déroulé, ";
     } else if (lang == 3) {
-        var E1 = 'When clicked, ';
-        var E2 = 'When the mouse pointer moved over it, ';
-        var E3 = 'When the mouse pointer moved away from it, ';
-        var E4 = 'When the mouse pointer is being moved out of it, ';
-        var E5 = 'When the mouse pointer is being moved over it, ';
-        var E6 = 'When it is no longer clicked, ';
-        var E7 = 'When double clicked, ';
-        var E8 = 'When right clicked,';
-        var E9 = 'When a key pressed while focusing it, ';
-        var E10 = 'When a key is being pressed while focusing it, ';
-        var E11 = 'When its contents have been modified, ';
-        var E12 = 'When focused, ';
-        var E13 = 'When it is being focused, ';
-        var E14 = 'When slept, ';
-        var E15 = 'When the data of this form has been sent, ';
-        var E16 = 'When scrolled,';
+        var E1 = 'إذا نقر عليه, ';
+        var E2 = 'إذا مر به مؤشر الفأرة, ';
+        var E3 = 'إذا خرج مؤشر الفأرة منه, ';
+        var E4 = 'إذا كان مؤشر الفأرة يمر خارجه, ';
+        var E5 = 'إذا كان مؤشر الفأرة يمر به, ';
+        var E6 = 'إذا تم الإنتهاء من النقر عليه, ';
+        var E7 = 'إذا نقر عليه نقرتين مزدوجتين, ';
+        var E8 = 'إذا نقر عليه بالزر الأيمن,';
+        var E9 = 'إذا ضغط على زر اثناء نشاطه, ';
+        var E10 = 'إذا كان هناك زر يتم الضغط عليه اثناء نشاطه, ';
+        var E11 = 'إذا تغيرت محتوياته, ';
+        var E12 = 'إن أصبح نشطا, ';
+        var E13 = 'إذا كان نشطا, ';
+        var E14 = 'إن أصبح خاملا, ';
+        var E15 = 'إذا ارسلت بيانات هذه الإستمارة, ';
+        var E16 = 'إن تم تمريره, ';
     } else if (lang == 4) {
-        var E1 = 'When clicked, ';
-        var E2 = 'When the mouse pointer moved over it, ';
-        var E3 = 'When the mouse pointer moved away from it, ';
-        var E4 = 'When the mouse pointer is being moved out of it, ';
-        var E5 = 'When the mouse pointer is being moved over it, ';
-        var E6 = 'When it is no longer clicked, ';
-        var E7 = 'When double clicked, ';
-        var E8 = 'When right clicked,';
-        var E9 = 'When a key pressed while focusing it, ';
-        var E10 = 'When a key is being pressed while focusing it, ';
-        var E11 = 'When its contents have been modified, ';
-        var E12 = 'When focused, ';
-        var E13 = 'When it is being focused, ';
-        var E14 = 'When slept, ';
-        var E15 = 'When the data of this form has been sent, ';
-        var E16 = 'When scrolled,';
+        var E1 = 'لما يضغط عليه, ';
+        var E2 = 'لما الماوس يعدى من فوقيه, ';
+        var E3 = 'لما الماوس يطلع منه, ';
+        var E4 = 'لما الماوس يكون بيمشى براه, ';
+        var E5 = 'لما الماوس يكون بيمشى فوقيه, ';
+        var E6 = 'لما يخلص الدوس عليه, ';
+        var E7 = 'لما يضغط عليه دبل كليك, ';
+        var E8 = 'لما يضغط عليك كليك لمين, ';
+        var E9 = 'لو زرار اضغط و هوة نشط, ';
+        var E10 = 'لما زرار يكون بيضغط و هوة نشط, ';
+        var E11 = 'لما محتوياته تتغير, ';
+        var E12 = 'لما يبقى نشط, ';
+        var E13 = 'لما يكون نشط, ';
+        var E14 = 'لما ينام, ';
+        var E15 = 'لما الداتا بتاعت الفورم دة تتبعت, ';
+        var E16 = 'لما يتمرر, ';
     } else if (lang == 5) {
-        var E1 = 'When clicked, ';
-        var E2 = 'When the mouse pointer moved over it, ';
-        var E3 = 'When the mouse pointer moved away from it, ';
+        var E1 = 'それがクリックされた場合には、 ';
+        var E2 = 'マウスポインタがその上に移動されると、 ';
+        var E3 = 'マウスポインタがそれを離れると、 ';
         var E4 = 'When the mouse pointer is being moved out of it, ';
         var E5 = 'When the mouse pointer is being moved over it, ';
-        var E6 = 'When it is no longer clicked, ';
-        var E7 = 'When double clicked, ';
-        var E8 = 'When right clicked,';
+        var E6 = 'それがもはやクリックされないと、 ';
+        var E7 = 'それがダブルクリックされたときに、 ';
+        var E8 = 'それが右クリックされたときに、 ';
         var E9 = 'When a key pressed while focusing it, ';
         var E10 = 'When a key is being pressed while focusing it, ';
-        var E11 = 'When its contents have been modified, ';
-        var E12 = 'When focused, ';
+        var E11 = 'その内容が変更されたとき、';
+        var E12 = 'それがフォーカスされたときに、 ';
         var E13 = 'When it is being focused, ';
         var E14 = 'When slept, ';
-        var E15 = 'When the data of this form has been sent, ';
-        var E16 = 'When scrolled,';
+        var E15 = 'この形式のデータが送られたときに、 ';
+        var E16 = 'それがスクロールされると、';
     }
     if (commandCode == 'c1A') {
         if (lang == 0) {
@@ -384,13 +407,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             return commandValue.split(E7);
         } else if (lang == 1) {
             return commandValue.split(E7);
-        } else if (lang == 1) {
+        } else if (lang == 2) {
             return commandValue.split(E7);
-        } else if (lang == 1) {
+        } else if (lang == 3) {
             return commandValue.split(E7);
-        } else if (lang == 1) {
+        } else if (lang == 4) {
             return commandValue.split(E7);
-        } else if (lang == 1) {
+        } else if (lang == 5) {
             return commandValue.split(E7);
         }
     } else if (commandCode == 'c1H') {
@@ -527,9 +550,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E1)[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split(E1)[1].split(' ')[0];
+            return commandValue.split(E1)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 4) {
-            return commandValue.split(E1)[1].split(' ')[0];
+            return commandValue.split(E1)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E1)[1].split(' ')[0];
         }
@@ -541,9 +564,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E2)[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split(E2)[1].split(' ')[0];
+            return commandValue.split(E2)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 4) {
-            return commandValue.split(E2)[1].split(' ')[0];
+            return commandValue.split(E2)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E2)[1].split(' ')[0];
         }
@@ -555,9 +578,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E3)[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split(E3)[1].split(' ')[0];
+            return commandValue.split(E3)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 4) {
-            return commandValue.split(E3)[1].split(' ')[0];
+            return commandValue.split(E3)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E3)[1].split(' ')[0];
         }
@@ -569,9 +592,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E4)[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split(E4)[1].split(' ')[0];
+            return commandValue.split(E4)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 4) {
-            return commandValue.split(E4)[1].split(' ')[0];
+            return commandValue.split(E4)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E4)[1].split(' ')[0];
         }
@@ -583,9 +606,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E5)[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split(E5)[1].split(' ')[0];
+            return commandValue.split(E5)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 4) {
-            return commandValue.split(E5)[1].split(' ')[0];
+            return commandValue.split(E5)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E5)[1].split(' ')[0];
         }
@@ -597,9 +620,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E6)[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split(E6)[1].split(' ')[0];
+            return commandValue.split(E6)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 4) {
-            return commandValue.split(E6)[1].split(' ')[0];
+            return commandValue.split(E6)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E6)[1].split(' ')[0];
         }
@@ -611,9 +634,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E7)[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split(E7)[1].split(' ')[0];
+            return commandValue.split(E7)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 4) {
-            return commandValue.split(E7)[1].split(' ')[0];
+            return commandValue.split(E7)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E7)[1].split(' ')[0];
         }
@@ -625,9 +648,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E8)[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split(E8)[1].split(' ')[0];
+            return commandValue.split(E8)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 4) {
-            return commandValue.split(E8)[1].split(' ')[0];
+            return commandValue.split(E8)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E8)[1].split(' ')[0];
         }
@@ -639,9 +662,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E9)[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split(E9)[1].split(' ')[0];
+            return commandValue.split(E9)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 4) {
-            return commandValue.split(E9)[1].split(' ')[0];
+            return commandValue.split(E9)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E9)[1].split(' ')[0];
         }
@@ -653,9 +676,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E10)[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split(E10)[1].split(' ')[0];
+            return commandValue.split(E10)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 4) {
-            return commandValue.split(E10)[1].split(' ')[0];
+            return commandValue.split(E10)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E10)[1].split(' ')[0];
         }
@@ -667,9 +690,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E11)[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split(E11)[1].split(' ')[0];
+            return commandValue.split(E11)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 4) {
-            return commandValue.split(E11)[1].split(' ')[0];
+            return commandValue.split(E11)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E11)[1].split(' ')[0];
         }
@@ -681,9 +704,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E12)[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split(E12)[1].split(' ')[0];
+            return commandValue.split(E12)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 4) {
-            return commandValue.split(E12)[1].split(' ')[0];
+            return commandValue.split(E12)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E12)[1].split(' ')[0];
         }
@@ -695,9 +718,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E13)[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split(E13)[1].split(' ')[0];
+            return commandValue.split(E13)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 4) {
-            return commandValue.split(E13)[1].split(' ')[0];
+            return commandValue.split(E13)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E13)[1].split(' ')[0];
         }
@@ -709,9 +732,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E14)[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split(E14)[1].split(' ')[0];
+            return commandValue.split(E14)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 4) {
-            return commandValue.split(E14)[1].split(' ')[0];
+            return commandValue.split(E14)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E14)[1].split(' ')[0];
         }
@@ -723,9 +746,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E15)[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split(E15)[1].split(' ')[0];
+            return commandValue.split(E15)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 4) {
-            return commandValue.split(E15)[1].split(' ')[0];
+            return commandValue.split(E15)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E15)[1].split(' ')[0];
         }
@@ -737,9 +760,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E16)[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split(E16)[1].split(' ')[0];
+            return commandValue.split(E16)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 4) {
-            return commandValue.split(E16)[1].split(' ')[0];
+            return commandValue.split(E16)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E16)[1].split(' ')[0];
         }
@@ -751,11 +774,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return 'supprimer';
         } else if (lang == 3) {
-            return 'supprimer';
+            return 'احذف';
         } else if (lang == 4) {
-            return 'supprimer';
+            return 'امسح';
         } else if (lang == 5) {
-            return 'supprimer';
+            return 'を削除';
         }
     } else if (commandCode == 'c2ruB') {
         if (lang == 0) {
@@ -765,9 +788,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return 'lecture';
         } else if (lang == 3) {
-            return 'lecture';
+            return 'شغل';
         } else if (lang == 4) {
-            return 'lecture';
+            return 'شغل';
         } else if (lang == 5) {
             return 'lecture';
         }
@@ -779,9 +802,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return 'pause';
         } else if (lang == 3) {
-            return 'pause';
+            return 'أوقف';
         } else if (lang == 4) {
-            return 'pause';
+            return 'وقف';
         } else if (lang == 5) {
             return 'pause';
         }
@@ -793,9 +816,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('supprimer ')[1];
         } else if (lang == 3) {
-            return commandValue.split('supprimer ')[1];
+            return commandValue.split('احذف')[1].split('')[0];
         } else if (lang == 4) {
-            return commandValue.split('supprimer ')[1];
+            return commandValue.split('امسح')[1].split('')[0];
         } else if (lang == 5) {
             return commandValue.split('supprimer ')[1];
         }
@@ -807,11 +830,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return 'il';
         } else if (lang == 3) {
-            return 'il';
+            return 'ه';
         } else if (lang == 4) {
-            return 'il';
+            return 'ه';
         } else if (lang == 5) {
-            return 'il';
+            return 'それ';
         }
     } else if (commandCode == 'c4') {
         if (lang == 0) {
@@ -821,11 +844,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('supprimer ')[1];
         } else if (lang == 3) {
-            return commandValue.split('supprimer ')[1];
+            return commandValue.split('احذف ')[1];
         } else if (lang == 4) {
-            return commandValue.split('supprimer ')[1];
+            return commandValue.split('امسح ')[1];
         } else if (lang == 5) {
-            return commandValue.split('supprimer ')[1];
+            return commandValue.split('を削除')[0].split('、 ')[1];
         }
     } else if (commandCode == 'c5qA') {
         if (lang == 0) {
@@ -1059,11 +1082,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return 'rediriger vers';
         } else if (lang == 3) {
-            return 'rediriger vers';
+            return 'اذهب إلى';
         } else if (lang == 4) {
-            return 'rediriger vers';
+            return 'روح ل';
         } else if (lang == 5) {
-            return 'rediriger vers';
+            return 'にリダイレクトする';
         }
     } else if (commandCode == 'c6') {
         if (lang == 0) {
@@ -1073,11 +1096,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('rediriger vers ')[1];
         } else if (lang == 3) {
-            return commandValue.split('rediriger vers ')[1];
+            return commandValue.split('اذهب إلى ')[1];
         } else if (lang == 4) {
-            return commandValue.split('rediriger vers ')[1];
+            return commandValue.split(' روح ل')[1];
         } else if (lang == 5) {
-            return commandValue.split('rediriger vers ')[1];
+            return commandValue.split('にリダイレクトする')[0].split('、 ')[1];
         }
     } else if (commandCode == 'c7') {
         if (lang == 0) {
@@ -1087,11 +1110,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('lecture ')[1];
         } else if (lang == 3) {
-            return commandValue.split('lecture ')[1];
+            return commandValue.split('شغل ')[1];
         } else if (lang == 4) {
-            return commandValue.split('lecture ')[1];
+            return commandValue.split('شغل ')[1];
         } else if (lang == 5) {
-            return commandValue.split('lecture ')[1];
+            return commandValue.split('を再生する')[0].split('、 ')[1];
         }
     } else if (commandCode == 'c8') {
         if (lang == 0) {
@@ -1101,11 +1124,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('pause ')[1];
         } else if (lang == 3) {
-            return commandValue.split('pause ')[1];
+            return commandValue.split('أوقف ')[1];
         } else if (lang == 4) {
-            return commandValue.split('pause ')[1];
+            return commandValue.split('وقف ')[1];
         } else if (lang == 5) {
-            return commandValue.split('pause ')[1];
+            return commandValue.split('一時停止')[0].split('、 ')[1];
         }
     } else if (commandCode == 'c9qA') {
         if (lang == 0) {
@@ -1115,9 +1138,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3];
         } else if (lang == 3) {
-            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3];
+            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2];
         } else if (lang == 4) {
-            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3];
+            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3];
         }
@@ -1129,9 +1152,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3];
         } else if (lang == 3) {
-            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3];
+            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2];
         } else if (lang == 4) {
-            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3];
+            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3];
         }
@@ -1143,9 +1166,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3];
         } else if (lang == 3) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2];
         } else if (lang == 4) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3];
         }
@@ -1157,9 +1180,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3];
         } else if (lang == 3) {
-            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3];
+            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2];
         } else if (lang == 4) {
-            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3];
+            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3];
         }
@@ -1171,9 +1194,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3];
         } else if (lang == 3) {
-            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3];
+            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2];
         } else if (lang == 4) {
-            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3];
+            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3];
         }
@@ -1185,9 +1208,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3];
         } else if (lang == 3) {
-            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3];
+            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2];
         } else if (lang == 4) {
-            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3];
+            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3];
         }
@@ -1199,9 +1222,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3];
         } else if (lang == 3) {
-            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3];
+            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2];
         } else if (lang == 4) {
-            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3];
+            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3];
         }
@@ -1213,9 +1236,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3];
         } else if (lang == 3) {
-            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3];
+            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2];
         } else if (lang == 4) {
-            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3];
+            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3];
         }
@@ -1227,9 +1250,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3];
         } else if (lang == 3) {
-            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3];
+            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2];
         } else if (lang == 4) {
-            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3];
+            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3];
         }
@@ -1241,9 +1264,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3];
         } else if (lang == 3) {
-            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3];
+            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2];
         } else if (lang == 4) {
-            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3];
+            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3];
         }
@@ -1255,9 +1278,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3];
         } else if (lang == 3) {
-            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3];
+            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2];
         } else if (lang == 4) {
-            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3];
+            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3];
         }
@@ -1269,9 +1292,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3];
         } else if (lang == 3) {
-            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3];
+            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2];
         } else if (lang == 4) {
-            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3];
+            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3];
         }
@@ -1283,9 +1306,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3];
         } else if (lang == 3) {
-            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3];
+            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2];
         } else if (lang == 4) {
-            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3];
+            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3];
         }
@@ -1297,9 +1320,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3];
         } else if (lang == 3) {
-            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3];
+            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2];
         } else if (lang == 4) {
-            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3];
+            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3];
         }
@@ -1311,9 +1334,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3];
         } else if (lang == 3) {
-            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3];
+            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2];
         } else if (lang == 4) {
-            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3];
+            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3];
         }
@@ -1325,9 +1348,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3];
         } else if (lang == 3) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3];
+            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2];
         } else if (lang == 4) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3];
+            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3];
         }
@@ -1339,11 +1362,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return 'définir sa valeur à';
         } else if (lang == 3) {
-            return 'définir sa valeur à';
+            return 'غير قيمته إلى';
         } else if (lang == 4) {
-            return 'définir sa valeur à';
+            return 'غير قيمته إلى';
         } else if (lang == 5) {
-            return 'définir sa valeur à';
+            return 'にその値を設定';
         }
     } else if (commandCode == 'c10q') {
         if (lang == 0) {
@@ -1353,9 +1376,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
         } else if (lang == 3) {
-            return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
+            return commandValue.split('غير قيمته إلى ')[1].split(' ')[0];
         } else if (lang == 4) {
-            return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
+            return commandValue.split('غير قيمته إلى ')[1].split(' ')[0];
         } else if (lang == 5) {
             return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
         }
@@ -1367,11 +1390,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return 'la valeur de';
         } else if (lang == 3) {
-            return 'la valeur de';
+            return 'قيمة';
         } else if (lang == 4) {
-            return 'la valeur de';
+            return 'قيمة';
         } else if (lang == 5) {
-            return 'la valeur de';
+            return 'の価値';
         }
     } else if (commandCode == 'c11') {
         if (lang == 0) {
@@ -1381,9 +1404,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('définir sa valeur à la valeur de ')[1];
         } else if (lang == 3) {
-            return commandValue.split('définir sa valeur à la valeur de ')[1];
+            return commandValue.split('غير قيمته إلى قيمة ')[1];
         } else if (lang == 4) {
-            return commandValue.split('définir sa valeur à la valeur de ')[1];
+            return commandValue.split('غير قيمته إلى قيمة ')[1];
         } else if (lang == 5) {
             return commandValue.split('définir sa valeur à la valeur de ')[1];
         }
@@ -1395,11 +1418,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('définir sa valeur à ')[1];
         } else if (lang == 3) {
-            return commandValue.split('définir sa valeur à ')[1];
+            return commandValue.split('غير قيمته إلى ')[1];
         } else if (lang == 4) {
-            return commandValue.split('définir sa valeur à ')[1];
+            return commandValue.split('غير قيمته إلى ')[1];
         } else if (lang == 5) {
-            return commandValue.split('définir sa valeur à ')[1];
+            return commandValue.split('にその値を設定')[0].split('、 ')[1];
         }
     } else if (commandCode == 'c13qA') {
         if (lang == 0) {
@@ -1647,9 +1670,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('définir la valeur de ')[1].split(' ')[1];
         } else if (lang == 3) {
-            return commandValue.split('définir la valeur de ')[1].split(' ')[1];
+            return commandValue.split('غير قيمة ')[1].split(' ')[1];
         } else if (lang == 4) {
-            return commandValue.split('définir la valeur de ')[1].split(' ')[1];
+            return commandValue.split('غير قيمة ')[1].split(' ')[1];
         } else if (lang == 5) {
             return commandValue.split('définir la valeur de ')[1].split(' ')[1];
         }
@@ -1661,9 +1684,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('définir la valeur de ' + para1 + ' à ')[1];
         } else if (lang == 3) {
-            return commandValue.split('définir la valeur de ' + para1 + ' à ')[1];
+            return commandValue.split('غير قيمة ' + para1 + ' ألى ')[1];
         } else if (lang == 4) {
-            return commandValue.split('définir la valeur de ' + para1 + ' à ')[1];
+            return commandValue.split('غير قيمة ' + para1 + ' ل')[1];
         } else if (lang == 5) {
             return commandValue.split('définir la valeur de ' + para1 + ' à ')[1];
         }
@@ -1689,9 +1712,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return 'la valeur de';
         } else if (lang == 3) {
-            return 'la valeur de';
+            return 'قيمة';
         } else if (lang == 4) {
-            return 'la valeur de';
+            return 'قيمة';
         } else if (lang == 5) {
             return 'la valeur de';
         }
@@ -1703,9 +1726,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('définir la valeur de ' + para1 + ' à ')[1];
         } else if (lang == 3) {
-            return commandValue.split('définir la valeur de ' + para1 + ' à ')[1];
+            return commandValue.split('غير قيمة ' + para1 + ' إلى')[1];
         } else if (lang == 4) {
-            return commandValue.split('définir la valeur de ' + para1 + ' à ')[1];
+            return commandValue.split('غير قيمة ' + para1 + ' ل')[1];
         } else if (lang == 5) {
             return commandValue.split('définir la valeur de ' + para1 + ' à ')[1];
         }
@@ -1969,9 +1992,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('définir la valeur de ' + para1 + ' à la valeur de ')[1];
         } else if (lang == 3) {
-            return commandValue.split('définir la valeur de ' + para1 + ' à la valeur de ')[1];
+            return commandValue.split('غير قيمة ' + para1 + ' إلى قيمة ')[1];
         } else if (lang == 4) {
-            return commandValue.split('définir la valeur de ' + para1 + ' à la valeur de ')[1];
+            return commandValue.split('définir la valeur de ' + para1 + ' لقيمة ')[1];
         } else if (lang == 5) {
             return commandValue.split('définir la valeur de ' + para1 + ' à la valeur de ')[1];
         }
@@ -1997,9 +2020,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return 'la valeur de';
         } else if (lang == 3) {
-            return 'la valeur de';
+            return 'قيمة';
         } else if (lang == 4) {
-            return 'la valeur de';
+            return 'قيمة';
         } else if (lang == 5) {
             return 'la valeur de';
         }
@@ -2249,9 +2272,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return 'aller à la base de données la branche et ensuite insérer les données suivantes:';
         } else if (lang == 3) {
-            return 'aller à la base de données la branche et ensuite insérer les données suivantes:';
+            return 'اذهب إلى قاعدة البيانات الفرع ثم قم بإدخال البيانات التالية:';
         } else if (lang == 4) {
-            return 'aller à la base de données la branche et ensuite insérer les données suivantes:';
+            return 'روح لقاعدة البيانات الفرع و بعد كدة دخل البيانات دى:';
         } else if (lang == 5) {
             return 'aller à la base de données la branche et ensuite insérer les données suivantes:';
         }
@@ -2263,9 +2286,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('aller à la base de données ')[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split('aller à la base de données ')[1].split(' ')[0];
+            return commandValue.split('اذهب إلى قاعدة البيانات ')[1].split(' ')[0];
         } else if (lang == 4) {
-            return commandValue.split('aller à la base de données ')[1].split(' ')[0];
+            return commandValue.split('روح لقاعدة البيانات ')[1].split(' ')[0];
         } else if (lang == 5) {
             return commandValue.split('aller à la base de données ')[1].split(' ')[0];
         }
@@ -2277,9 +2300,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('la branche ')[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split('la branche ')[1].split(' ')[0];
+            return commandValue.split('الفرع ')[1].split(' ')[0];
         } else if (lang == 4) {
-            return commandValue.split('la branche ')[1].split(' ')[0];
+            return commandValue.split('الفرع ')[1].split(' ')[0];
         } else if (lang == 5) {
             return commandValue.split('la branche ')[1].split(' ')[0];
         }
@@ -2291,9 +2314,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' et ensuite insérer les données suivantes: ')[1].split(', ');
         } else if (lang == 3) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' et ensuite insérer les données suivantes: ')[1].split(', ');
+            return commandValue.split('اذهب إلى قاعدة البيانات ' + para1 + ' الفرع ' + para2 + ' ثم قم بإدخال البيانات التالية: ')[1].split(', ');
         } else if (lang == 4) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' et ensuite insérer les données suivantes: ')[1].split(', ');
+            return commandValue.split('روج لقاعدة البيانات ' + para1 + ' الفرع ' + para2 + ' و بعد كدة دخل البيانات دى: ')[1].split(', ');
         } else if (lang == 5) {
             return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' et ensuite insérer les données suivantes: ')[1].split(', ');
         }
@@ -2543,9 +2566,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('aller à la base de données ')[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split('aller à la base de données ')[1].split(' ')[0];
+            return commandValue.split('اذهب إلى قاعدة البيانات ')[1].split(' ')[0];
         } else if (lang == 4) {
-            return commandValue.split('aller à la base de données ')[1].split(' ')[0];
+            return commandValue.split('روح لفاعدة البيانات ')[1].split(' ')[0];
         } else if (lang == 5) {
             return commandValue.split('aller à la base de données ')[1].split(' ')[0];
         }
@@ -2557,9 +2580,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('la branche ')[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split('la branche ')[1].split(' ')[0];
+            return commandValue.split('الفرع ')[1].split(' ')[0];
         } else if (lang == 4) {
-            return commandValue.split('la branche ')[1].split(' ')[0];
+            return commandValue.split('الفرع ')[1].split(' ')[0];
         } else if (lang == 5) {
             return commandValue.split('la branche ')[1].split(' ')[0];
         }
@@ -2613,9 +2636,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return para1.split('la valeur de ')[1].split(' ')[0];
         } else if (lang == 3) {
-            return para1.split('la valeur de ')[1].split(' ')[0];
+            return para1.split('قيمة ')[1].split(' ')[0];
         } else if (lang == 4) {
-            return para1.split('la valeur de ')[1].split(' ')[0];
+            return para1.split('قيمة ')[1].split(' ')[0];
         } else if (lang == 5) {
             return para1.split('la valeur de ')[1].split(' ')[0];
         }
@@ -2627,9 +2650,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return para1.split('in the slot ')[1];
         } else if (lang == 3) {
-            return para1.split('in the slot ')[1];
+            return para1.split('فى الشريحة ')[1];
         } else if (lang == 4) {
-            return para1.split('in the slot ')[1];
+            return para1.split('فى الشريحة ')[1];
         } else if (lang == 5) {
             return para1.split('in the slot ')[1];
         }
@@ -2644,11 +2667,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             });
         }
     });
-
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    //--------------------------------------------------------Maths Translations------------------------------------------------------------------------------------------------------------------------------------------//
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     function mathOperation(expression) {
         return math.eval(expression);
     }
-
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    //-------------------------------------------------------Colors Translations------------------------------------------------------------------------------------------------------------------------------------------//
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     function setFontColour(elementName, colour) {
         if (colour == blackTranslations[lang]) {
             $('#' + elementName + '').css('color', '#000000');
@@ -2714,7 +2741,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             $('#' + elementName + '').css('background-image', 'url(' + background + ')');
         }
     }
-
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    //---------------------------------------------------Animations Translations------------------------------------------------------------------------------------------------------------------------------------------//
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     function setAnimation(elementName, animation) {
         if (animation == 'jumping') {
             $('#' + elementName + '').animateCss('bounce');
@@ -2872,12 +2901,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             $('#' + elementName + '').animateCss(animation);
         }
     }
-
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+    //-----------------------------------------------------Commands Functions------------------------------------------------------------------------------------------------------------------------------------------//
+    //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     function execute(elementName, command) {
         var commands = command.split(' &&& ');
         var commandID;
         for (commandID = 0; commandID < commands.length; commandID++) {
             if (commandsFnTranslations('c1A', commands[commandID]).length > 1) {
+                console.log('hello');
                 if (commandsFnTranslations('c2qA', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
                         $('#' + elementName + '').click(function () {
@@ -2906,9 +2938,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else if (commandsFnTranslations('c9qA', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations(c11, commands[commandID]) + '').val();
+                        var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').click(function () {
-                            $('#' + elementName + '').val(newVal);
+                            $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
@@ -3002,7 +3034,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else if (commandsFnTranslations('c9qB', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations(c11, commands[commandID]) + '').val();
+                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
                         $('#' + elementName + '').mouseenter(function () {
                             $('#' + elementName + '').val(newVal);
                         });
@@ -3098,7 +3130,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else if (commandsFnTranslations('c9qC', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations(c11, commands[commandID]) + '').val();
+                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
                         $('#' + elementName + '').mouseleave(function () {
                             $('#' + elementName + '').val(newVal);
                         });
@@ -3194,7 +3226,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else if (commandsFnTranslations('c9qD', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations(c11, commands[commandID]) + '').val();
+                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
                         $('#' + elementName + '').mouseout(function () {
                             $('#' + elementName + '').val(newVal);
                         });
@@ -3290,7 +3322,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else if (commandsFnTranslations('c9qE', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations(c11, commands[commandID]) + '').val();
+                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
                         $('#' + elementName + '').mousemove(function () {
                             $('#' + elementName + '').val(newVal);
                         });
@@ -3386,7 +3418,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else if (commandsFnTranslations('c9qF', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations(c11, commands[commandID]) + '').val();
+                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
                         $('#' + elementName + '').mouseup(function () {
                             $('#' + elementName + '').val(newVal);
                         });
@@ -3482,7 +3514,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else if (commandsFnTranslations('c9qG', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations(c11, commands[commandID]) + '').val();
+                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
                         $('#' + elementName + '').dblclick(function () {
                             $('#' + elementName + '').val(newVal);
                         });
@@ -3578,7 +3610,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else if (commandsFnTranslations('c9qH', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations(c11, commands[commandID]) + '').val();
+                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
                         $('#' + elementName + '').contextmenu(function () {
                             $('#' + elementName + '').val(newVal);
                         });
@@ -3674,7 +3706,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else if (commandsFnTranslations('c9qI', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations(c11, commands[commandID]) + '').val();
+                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
                         $('#' + elementName + '').keypress(function () {
                             $('#' + elementName + '').val(newVal);
                         });
@@ -3770,7 +3802,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else if (commandsFnTranslations('c9qJ', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations(c11, commands[commandID]) + '').val();
+                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
                         $('#' + elementName + '').keydown(function () {
                             $('#' + elementName + '').val(newVal);
                         });
@@ -3866,7 +3898,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else if (commandsFnTranslations('c9qK', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations(c11, commands[commandID]) + '').val();
+                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
                         $('#' + elementName + '').change(function () {
                             $('#' + elementName + '').val(newVal);
                         });
@@ -3962,7 +3994,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else if (commandsFnTranslations('c9qL', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations(c11, commands[commandID]) + '').val();
+                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
                         $('#' + elementName + '').focus(function () {
                             $('#' + elementName + '').val(newVal);
                         });
@@ -4058,7 +4090,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else if (commandsFnTranslations('c9qM', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations(c11, commands[commandID]) + '').val();
+                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
                         $('#' + elementName + '').focusin(function () {
                             $('#' + elementName + '').val(newVal);
                         });
@@ -4154,7 +4186,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else if (commandsFnTranslations('c9qN', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations(c11, commands[commandID]) + '').val();
+                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
                         $('#' + elementName + '').focusout(function () {
                             $('#' + elementName + '').val(newVal);
                         });
@@ -4250,7 +4282,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else if (commandsFnTranslations('c9qO', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations(c11, commands[commandID]) + '').val();
+                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
                         $('#' + elementName + '').submit(function () {
                             $('#' + elementName + '').val(newVal);
                         });
@@ -4346,7 +4378,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else if (commandsFnTranslations('c9qP', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations(c11, commands[commandID]) + '').val();
+                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
                         $('#' + elementName + '').scroll(function () {
                             $('#' + elementName + '').val(newVal);
                         });
@@ -4417,6 +4449,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         }
     }
     $(function () {
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        //---------------------------------------------------------------------Setup------------------------------------------------------------------------------------------------------------------------------------------//
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         $.fn[setupTranslations[lang]] = function (options) {
             // Establish our default settings
             var settings = $.extend({
@@ -4451,12 +4486,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         $('' + location.hash + '').fadeIn(500);
                     })
                 }
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //----------------------------------------------------------------------Text------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[textFnTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [textTranslations[lang]]: 'It seems that you have typed nothing',
                         [colorTranslations[lang]]: null,
-                        [sizeTranslations[lang]]: null,
+                        [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
                         [lengthTranslations[lang]]: null,
@@ -4465,6 +4503,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [animationTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
@@ -4485,8 +4528,25 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
                             }
                         }
-                        if (settings[sizeTranslations[lang]]) {
-                            $('#' + name + '').css('font-[sizeTranslations[lang]]', settings[sizeTranslations[lang]]);
+                        if (settings[fontSizeTranslations[lang]]) {
+                            $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
+                        }
+                        if (settings[positionTranslations[lang]]) {
+                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
+                        } else {
+                            $('#' + name + '').css('position', 'relative');
+                        }
+                        if (settings[distanceFromBottomTranslations[lang]]) {
+                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                        }
+                        if (settings[distanceFromTopTranslations[lang]]) {
+                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                        }
+                        if (settings[distanceFromLeftTranslations[lang]]) {
+                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                        }
+                        if (settings[distanceFromRightTranslations[lang]]) {
+                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -4505,6 +4565,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //-----------------------------------------------------------Firebase Center------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[firebaseCenterTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
@@ -4524,6 +4587,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var database = firebase.database();
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //----------------------------------------------------------------Login Form------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[loginFormTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({}, options);
@@ -4642,23 +4708,31 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------Button------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[buttonTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [textTranslations[lang]]: 'It seems that you have typed nothing',
                         [fontColourTranslations[lang]]: null,
-                        [sizeTranslations[lang]]: null,
+                        [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
                         [lengthTranslations[lang]]: null,
                         [thicknessTranslations[lang]]: null,
                         [fontStyleTranslations[lang]]: null,
                         [disabledTranslations[lang]]: null,
-                        raised: null,
-                        switched: null,
+                        [raisedTranslations[lang]]: null,
+                        [switchedTranslations[lang]]: null,
                         [animationTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
@@ -4673,13 +4747,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('disabled', true);
+                            $('#' + name + '').attr('disabled', '');
                         }
                         if (settings[raisedTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('raised', true);
+                            $('#' + name + '').attr('raised', '');
                         }
                         if (settings[switchedTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('toggled', true);
+                            $('#' + name + '').attr('toggled', '');
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == 'thick') {
@@ -4688,8 +4762,25 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
                             }
                         }
-                        if (settings[sizeTranslations[lang]]) {
-                            $('#' + name + '').css('font-[sizeTranslations[lang]]', settings[sizeTranslations[lang]]);
+                        if (settings[fontSizeTranslations[lang]]) {
+                            $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
+                        }
+                        if (settings[positionTranslations[lang]]) {
+                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
+                        } else {
+                            $('#' + name + '').css('position', 'relative');
+                        }
+                        if (settings[distanceFromBottomTranslations[lang]]) {
+                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                        }
+                        if (settings[distanceFromTopTranslations[lang]]) {
+                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                        }
+                        if (settings[distanceFromLeftTranslations[lang]]) {
+                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                        }
+                        if (settings[distanceFromRightTranslations[lang]]) {
+                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -4708,18 +4799,26 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //----------------------------------------------------------------------Icon------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[iconTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [iconColorTranslations[lang]]: null,
                         [iconTranslations[lang]]: null,
-                        [sizeTranslations[lang]]: null,
+                        [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
                         [lengthTranslations[lang]]: null,
                         [animationTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
@@ -4758,8 +4857,25 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 $('#' + name + '').css('color', settings[iconColorTranslations[lang]]);
                             }
                         }
-                        if (settings[sizeTranslations[lang]]) {
-                            $('#' + name + '').css('font-[sizeTranslations[lang]]', settings[sizeTranslations[lang]]);
+                        if (settings[fontSizeTranslations[lang]]) {
+                            $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
+                        }
+                        if (settings[positionTranslations[lang]]) {
+                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
+                        } else {
+                            $('#' + name + '').css('position', 'relative');
+                        }
+                        if (settings[distanceFromBottomTranslations[lang]]) {
+                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                        }
+                        if (settings[distanceFromTopTranslations[lang]]) {
+                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                        }
+                        if (settings[distanceFromLeftTranslations[lang]]) {
+                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                        }
+                        if (settings[distanceFromRightTranslations[lang]]) {
+                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -4778,18 +4894,26 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //-------------------------------------------------------Button With An Icon------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[buttonWithAnIconTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [iconColorTranslations[lang]]: null,
                         [iconTranslations[lang]]: null,
-                        [sizeTranslations[lang]]: null,
+                        [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
                         [lengthTranslations[lang]]: null,
                         [animationTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
@@ -4828,8 +4952,25 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 $('#' + name + '').css('color', settings[iconColorTranslations[lang]]);
                             }
                         }
-                        if (settings[sizeTranslations[lang]]) {
-                            $('#' + name + '').css('font-[sizeTranslations[lang]]', settings[sizeTranslations[lang]]);
+                        if (settings[fontSizeTranslations[lang]]) {
+                            $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
+                        }
+                        if (settings[positionTranslations[lang]]) {
+                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
+                        } else {
+                            $('#' + name + '').css('position', 'relative');
+                        }
+                        if (settings[distanceFromBottomTranslations[lang]]) {
+                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                        }
+                        if (settings[distanceFromTopTranslations[lang]]) {
+                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                        }
+                        if (settings[distanceFromLeftTranslations[lang]]) {
+                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                        }
+                        if (settings[distanceFromRightTranslations[lang]]) {
+                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -4848,13 +4989,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //----------------------------------------------------------------------Card------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[sectionTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [textTranslations[lang]]: 'It seems that you have typed nothing',
                         [fontColourTranslations[lang]]: null,
                         [FXTranslations[lang]]: null,
-                        [sizeTranslations[lang]]: null,
+                        [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
                         [lengthTranslations[lang]]: null,
@@ -4863,6 +5007,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [animationTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
@@ -4874,6 +5023,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                         if (settings[imageSourceTranslations[lang]]) {
                             $('#' + name + '').attr('image', settings[imageSourceTranslations[lang]]);
+                        }
+                        if (settings[positionTranslations[lang]]) {
+                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
+                        } else {
+                            $('#' + name + '').css('position', 'relative');
+                        }
+                        if (settings[distanceFromBottomTranslations[lang]]) {
+                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                        }
+                        if (settings[distanceFromTopTranslations[lang]]) {
+                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                        }
+                        if (settings[distanceFromLeftTranslations[lang]]) {
+                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                        }
+                        if (settings[distanceFromRightTranslations[lang]]) {
+                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
                         }
                         if (settings[widthTranslations[lang]]) {
                             $('#' + name + '').css('width', settings[widthTranslations[lang]]);
@@ -4902,12 +5068,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //-------------------------------------------------------------------ToolTip------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[tooltipTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [textTranslations[lang]]: 'It seems that you have typed nothing',
                         [fontColourTranslations[lang]]: null,
-                        [sizeTranslations[lang]]: null,
+                        [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
                         [lengthTranslations[lang]]: null,
@@ -4918,6 +5087,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [animationTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
@@ -4940,8 +5114,25 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
                             }
                         }
-                        if (settings[sizeTranslations[lang]]) {
-                            $('#' + name + '').css('font-[sizeTranslations[lang]]', settings[sizeTranslations[lang]]);
+                        if (settings[fontSizeTranslations[lang]]) {
+                            $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
+                        }
+                        if (settings[positionTranslations[lang]]) {
+                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
+                        } else {
+                            $('#' + name + '').css('position', 'relative');
+                        }
+                        if (settings[distanceFromBottomTranslations[lang]]) {
+                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                        }
+                        if (settings[distanceFromTopTranslations[lang]]) {
+                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                        }
+                        if (settings[distanceFromLeftTranslations[lang]]) {
+                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                        }
+                        if (settings[distanceFromRightTranslations[lang]]) {
+                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -4969,6 +5160,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //------------------------------------------------------------Colors Palette------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[colorsPaletteTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
@@ -4978,6 +5172,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [animationTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
@@ -5004,6 +5203,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------Loader------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[loaderTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
@@ -5014,6 +5216,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [animationTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [typeTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -5032,7 +5239,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             setBG(name, settings[backgroundTranslations[lang]]);
                         }
                         if (settings[loadingTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('active', true);
+                            $('#' + name + '').attr('active', '');
                         }
                         if (settings[widthTranslations[lang]]) {
                             $('#' + name + '').css('width', settings[widthTranslations[lang]]);
@@ -5048,6 +5255,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //---------------------------------------------------------------------Image------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[imageTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
@@ -5060,6 +5270,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [lengthTranslations[lang]]: null,
                         [animationTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -5067,8 +5282,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var name = settings[nameTranslations[lang]];
                         var source = settings[sourceTranslations[lang]];
                         window.analyseImage(name, source);
-                        var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; height: ' + settings[imageLengthTranslations[lang]] + ';"><img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /><div id="showImage_' + name + '_containerA"><p id="' + name + '_imageData" style="position: absolute; color: #FFFFFF; top: 25%; left: 50%; transform: translate(-50%, -50%); font-size: x-small; text-align: center; width: 85%;"></p><button style="position: absolute; top: 75%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showImageA(\'' + name + '\', \'' + source + '\');">View Image</button></div><div id="showImage_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showImageB(\'' + name + '\');">Continue</button></div></div>';
+                        var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; height: ' + settings[imageLengthTranslations[lang]] + ';"><img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /><div id="showImage_' + name + '_containerA"><p id="' + name + '_imageData" class="imageData"></p><button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + source + '\');"></button></div><div id="showImage_' + name + '_containerB" style="display: none;"><p class="nudesFoundWarningText">Nudes found</p><button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + source + '\');">Continue</button><button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div><div id="showImage_' + name + '_containerC" style="display: none;"><p class="showTheFullContentWarning">Show the full content ?</p><button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></div></div>';
                         $('contents').append(out);
+                        getFileSize(source, function (size) {
+                            $('#image_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
+                        })
                         if (settings[backgroundTranslations[lang]]) {
                             setBG(name, settings[backgroundTranslations[lang]]);
                         }
@@ -5095,6 +5313,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //---------------------------------------------------------------------Video------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[videoTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
@@ -5107,14 +5328,22 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [lengthTranslations[lang]]: null,
                         [animationTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var source = settings[sourceTranslations[lang]];
-                        var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; height: ' + settings[imageLengthTranslations[lang]] + ';"><paper-video-controls id="video_' + name + '_controls"><video id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" autoplay /></paper-video-controls><div id="showVideo_' + name + '_containerA"><button style="position: absolute; top: 50%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoA(\'' + name + '\', \'' + source + '\');">View Video</button></div><div id="showVideo_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></div></div>';
+                        var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; height: ' + settings[imageLengthTranslations[lang]] + ';"><paper-video-controls id="video_' + name + '_controls"><video id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" autoplay /></paper-video-controls><div id="showVideo_' + name + '_containerA"><button id="video_' + name + '_mainButton" class="videoMainButton" onclick="showVideoA(\'' + name + '\', \'' + source + '\');"></button></div><div id="showVideo_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></div></div>';
                         $('contents').append(out);
+                        getFileSize(source, function (size) {
+                            $('#video_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
+                        })
                         window.onload = function () {
                             $('#video_' + name + '_controls > #container > #videoControls').hide();
                         }
@@ -5144,14 +5373,17 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------Notification Count------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[notificationCountTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [textTranslations[lang]]: 'It seems that you have typed nothing',
                         [iconTranslations[lang]]: null,
-                        target: null,
+                        [targetTranslations[lang]]: null,
                         [fontColourTranslations[lang]]: null,
-                        [sizeTranslations[lang]]: null,
+                        [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
                         [lengthTranslations[lang]]: null,
@@ -5159,12 +5391,17 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [fontStyleTranslations[lang]]: null,
                         [animationTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
-                        var out = '<paper-badge id="' + name + '" for="' + target + '"></paper-badge>';
+                        var out = '<paper-badge id="' + name + '" for="' + targetTranslations[lang] + '"></paper-badge>';
                         $('contents').append(out);
                         if (settings[fontColourTranslations[lang]]) {
                             setFontColour(name, settings[fontColourTranslations[lang]]);
@@ -5188,8 +5425,25 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
                             }
                         }
-                        if (settings[sizeTranslations[lang]]) {
-                            $('#' + name + '').css('font-[sizeTranslations[lang]]', settings[sizeTranslations[lang]]);
+                        if (settings[fontSizeTranslations[lang]]) {
+                            $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
+                        }
+                        if (settings[positionTranslations[lang]]) {
+                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
+                        } else {
+                            $('#' + name + '').css('position', 'relative');
+                        }
+                        if (settings[distanceFromBottomTranslations[lang]]) {
+                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                        }
+                        if (settings[distanceFromTopTranslations[lang]]) {
+                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                        }
+                        if (settings[distanceFromLeftTranslations[lang]]) {
+                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                        }
+                        if (settings[distanceFromRightTranslations[lang]]) {
+                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -5208,6 +5462,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //------------------------------------------------------------------Checkbox------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[checkboxTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
@@ -5218,7 +5475,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         checked: null,
                         [rippleTranslations[lang]]: null,
                         [fontColourTranslations[lang]]: null,
-                        [sizeTranslations[lang]]: null,
+                        [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
                         [lengthTranslations[lang]]: null,
@@ -5226,6 +5483,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [fontStyleTranslations[lang]]: null,
                         [animationTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -5243,13 +5505,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             setBG(name, settings[backgroundTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('disabled', true);
+                            $('#' + name + '').attr('disabled', '');
                         }
                         if (settings.checked == yesTranslations[lang]) {
-                            $('#' + name + '').prop('checked', true);
+                            $('#' + name + '').attr('checked', '');
                         }
                         if (settings[rippleTranslations[lang]]) {
-                            $('#' + name + '').prop('noink', true);
+                            $('#' + name + '').attr('noink', '');
                         }
                         if (settings[descriptionTranslations[lang]]) {
                             $('#' + name + '').append('<span class="subtitle">' + settings[descriptionTranslations[lang]] + '</span>');
@@ -5261,8 +5523,25 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
                             }
                         }
-                        if (settings[sizeTranslations[lang]]) {
-                            $('#' + name + '').css('font-[sizeTranslations[lang]]', settings[sizeTranslations[lang]]);
+                        if (settings[fontSizeTranslations[lang]]) {
+                            $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
+                        }
+                        if (settings[positionTranslations[lang]]) {
+                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
+                        } else {
+                            $('#' + name + '').css('position', 'relative');
+                        }
+                        if (settings[distanceFromBottomTranslations[lang]]) {
+                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                        }
+                        if (settings[distanceFromTopTranslations[lang]]) {
+                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                        }
+                        if (settings[distanceFromLeftTranslations[lang]]) {
+                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                        }
+                        if (settings[distanceFromRightTranslations[lang]]) {
+                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -5281,6 +5560,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //----------------------------------------------------------------Dialog Box------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[dialogBoxTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
@@ -5291,7 +5573,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [emitterTranslations[lang]]: null,
                         scrollable: null,
                         [fontColourTranslations[lang]]: null,
-                        [sizeTranslations[lang]]: null,
+                        [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
                         [lengthTranslations[lang]]: null,
@@ -5299,6 +5581,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [fontStyleTranslations[lang]]: null,
                         [animationTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -5349,8 +5636,25 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
                             }
                         }
-                        if (settings[sizeTranslations[lang]]) {
-                            $('#' + name + '').css('font-[sizeTranslations[lang]]', settings[sizeTranslations[lang]]);
+                        if (settings[fontSizeTranslations[lang]]) {
+                            $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
+                        }
+                        if (settings[positionTranslations[lang]]) {
+                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
+                        } else {
+                            $('#' + name + '').css('position', 'relative');
+                        }
+                        if (settings[distanceFromBottomTranslations[lang]]) {
+                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                        }
+                        if (settings[distanceFromTopTranslations[lang]]) {
+                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                        }
+                        if (settings[distanceFromLeftTranslations[lang]]) {
+                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                        }
+                        if (settings[distanceFromRightTranslations[lang]]) {
+                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -5369,6 +5673,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //------------------------------------------------------------------Dropdown------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[dropdownTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
@@ -5378,7 +5685,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         preselected: null,
                         [disabledTranslations[lang]]: null,
                         [fontColourTranslations[lang]]: null,
-                        [sizeTranslations[lang]]: null,
+                        [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
                         [lengthTranslations[lang]]: null,
@@ -5386,6 +5693,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [fontStyleTranslations[lang]]: null,
                         [animationTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -5414,10 +5726,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('disabled', true);
+                            $('#' + name + '').attr('disabled', '');
                         }
                         if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
-                            $('#' + name + '').prop('noink', true);
+                            $('#' + name + '').attr('noink', '');
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == 'thick') {
@@ -5426,8 +5738,25 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
                             }
                         }
-                        if (settings[sizeTranslations[lang]]) {
-                            $('#' + name + '').css('font-[sizeTranslations[lang]]', settings[sizeTranslations[lang]]);
+                        if (settings[fontSizeTranslations[lang]]) {
+                            $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
+                        }
+                        if (settings[positionTranslations[lang]]) {
+                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
+                        } else {
+                            $('#' + name + '').css('position', 'relative');
+                        }
+                        if (settings[distanceFromBottomTranslations[lang]]) {
+                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                        }
+                        if (settings[distanceFromTopTranslations[lang]]) {
+                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                        }
+                        if (settings[distanceFromLeftTranslations[lang]]) {
+                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                        }
+                        if (settings[distanceFromRightTranslations[lang]]) {
+                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -5449,6 +5778,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //-----------------------------------------------------------------------FAB------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[FABTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
@@ -5460,7 +5792,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [disabledTranslations[lang]]: null,
                         [rippleTranslations[lang]]: null,
                         [fontColourTranslations[lang]]: null,
-                        [sizeTranslations[lang]]: null,
+                        [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
                         [lengthTranslations[lang]]: null,
@@ -5468,6 +5800,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [fontStyleTranslations[lang]]: null,
                         [animationTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -5501,10 +5838,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('disabled', true);
+                            $('#' + name + '').attr('disabled', '');
                         }
                         if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
-                            $('#' + name + '').prop('noink', true);
+                            $('#' + name + '').attr('noink', '');
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == 'thick') {
@@ -5513,8 +5850,25 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
                             }
                         }
-                        if (settings[sizeTranslations[lang]]) {
-                            $('#' + name + '').css('font-[sizeTranslations[lang]]', settings[sizeTranslations[lang]]);
+                        if (settings[fontSizeTranslations[lang]]) {
+                            $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
+                        }
+                        if (settings[positionTranslations[lang]]) {
+                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
+                        } else {
+                            $('#' + name + '').css('position', 'relative');
+                        }
+                        if (settings[distanceFromBottomTranslations[lang]]) {
+                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                        }
+                        if (settings[distanceFromTopTranslations[lang]]) {
+                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                        }
+                        if (settings[distanceFromLeftTranslations[lang]]) {
+                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                        }
+                        if (settings[distanceFromRightTranslations[lang]]) {
+                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -5536,6 +5890,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //-------------------------------------------------------------------TextBox------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[textboxTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
@@ -5553,7 +5910,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [disabledTranslations[lang]]: null,
                         [rippleTranslations[lang]]: null,
                         [fontColourTranslations[lang]]: null,
-                        [sizeTranslations[lang]]: null,
+                        [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
                         [lengthTranslations[lang]]: null,
@@ -5561,6 +5918,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [fontStyleTranslations[lang]]: null,
                         [animationTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -5649,10 +6011,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('disabled', true);
+                            $('#' + name + '').attr('disabled', '');
                         }
                         if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
-                            $('#' + name + '').prop('noink', true);
+                            $('#' + name + '').attr('noink', '');
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == 'thick') {
@@ -5661,8 +6023,25 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
                             }
                         }
-                        if (settings[sizeTranslations[lang]]) {
-                            $('#' + name + '').css('font-[sizeTranslations[lang]]', settings[sizeTranslations[lang]]);
+                        if (settings[fontSizeTranslations[lang]]) {
+                            $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
+                        }
+                        if (settings[positionTranslations[lang]]) {
+                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
+                        } else {
+                            $('#' + name + '').css('position', 'relative');
+                        }
+                        if (settings[distanceFromBottomTranslations[lang]]) {
+                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                        }
+                        if (settings[distanceFromTopTranslations[lang]]) {
+                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                        }
+                        if (settings[distanceFromLeftTranslations[lang]]) {
+                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                        }
+                        if (settings[distanceFromRightTranslations[lang]]) {
+                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -5684,6 +6063,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------Slider------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[sliderTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
@@ -5697,7 +6079,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [pinTranslations[lang]]: null,
                         [disabledTranslations[lang]]: null,
                         [fontColourTranslations[lang]]: null,
-                        [sizeTranslations[lang]]: null,
+                        [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
                         [lengthTranslations[lang]]: null,
@@ -5705,6 +6087,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [fontStyleTranslations[lang]]: null,
                         [animationTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -5746,10 +6133,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
                         if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').prop('disabled', true);
+                            $('#' + name + '').attr('disabled', '');
                         }
                         if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
-                            $('#' + name + '').prop('noink', true);
+                            $('#' + name + '').attr('noink', '');
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == 'thick') {
@@ -5758,8 +6145,25 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
                             }
                         }
-                        if (settings[sizeTranslations[lang]]) {
-                            $('#' + name + '').css('font-[sizeTranslations[lang]]', settings[sizeTranslations[lang]]);
+                        if (settings[fontSizeTranslations[lang]]) {
+                            $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
+                        }
+                        if (settings[positionTranslations[lang]]) {
+                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
+                        } else {
+                            $('#' + name + '').css('position', 'relative');
+                        }
+                        if (settings[distanceFromBottomTranslations[lang]]) {
+                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                        }
+                        if (settings[distanceFromTopTranslations[lang]]) {
+                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                        }
+                        if (settings[distanceFromLeftTranslations[lang]]) {
+                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                        }
+                        if (settings[distanceFromRightTranslations[lang]]) {
+                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -5785,6 +6189,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         };
     });
 }(jQuery));
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//------------------------------------------------------NodeJS Based Scripts------------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 (function e(t, n, r) {
     function s(o, u) {
         if (!n[o]) {
@@ -5810,24 +6217,59 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
     return s
 })({
     1: [function (require, module, exports) {
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        //-------------------------------------------------Images Analysis Functions------------------------------------------------------------------------------------------------------------------------------------------//
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         const Clarifai = require('clarifai');
         window.analyseImage = function (name, source) {
             const app = new Clarifai.App({
                 apiKey: 'cd0b92362c304e0e87046ed8dccac9b8'
             });
-            // predict the contents of an image by passing in a url
-            app.models.predict(Clarifai.GENERAL_MODEL, source).then(function (response) {
-                var imageData = '';
-                for (i = 0; i < response.rawData.outputs[0].data.concepts.length; i++) {
-                    if (i == response.rawData.outputs[0].data.concepts.length - 1) {
-                        imageData += response.rawData.outputs[0].data.concepts[i].name;
-                    } else {
-                        imageData += response.rawData.outputs[0].data.concepts[i].name + ', ';
-                    }
+            var ref = firebase.database().ref("clarifai");
+            ref.once("value").then(function (snapshot) {
+                if (snapshot.child(encodeURIComponent(source).replace(/\./g, '%2E')).exists()) {
+                    ref.on('value', function (snapshot) {
+                        var imageData = snapshot.val();
+                        var encodedSource = encodeURIComponent(source).replace(/\./g, '%2E');
+                        if (imageData[encodedSource].nfsw.rawData.outputs[0].data.concepts[0].name == 'nfsw') {
+                            $('#' + name + '').attr('nude', '')
+                        }
+                        detectedObjectsRaw = imageData[encodedSource].general;
+                        var detectedObjects;
+                        for (i = 0; i < detectedObjectsRaw.rawData.outputs[0].data.concepts.length; i++) {
+                            if (i == detectedObjectsRaw.rawData.outputs[0].data.concepts.length - 1) {
+                                detectedObjects += detectedObjectsRaw.rawData.outputs[0].data.concepts[i].name;
+                            } else {
+                                detectedObjects += detectedObjectsRaw.rawData.outputs[0].data.concepts[i].name + ', ';
+                            }
+                        }
+                        $('#' + name + '_imageData').text(detectedObjects.split('undefined')[1]);
+                    });
+                } else {
+                    // predict the contents of an image by passing in a url
+                    app.models.predict("aaa03c23b3724a16a56b629203edc62c", source).then(function (response) {
+                        firebase.database().ref('clarifai/' + encodeURIComponent(source).replace(/\./g, '%2E') + '/general').set(response);
+                        var imageData = '';
+                        for (i = 0; i < response.rawData.outputs[0].data.concepts.length; i++) {
+                            if (i == response.rawData.outputs[0].data.concepts.length - 1) {
+                                imageData += response.rawData.outputs[0].data.concepts[i].name;
+                            } else {
+                                imageData += response.rawData.outputs[0].data.concepts[i].name + ', ';
+                            }
+                        }
+                        $('#' + name + '_imageData').text(imageData);
+                    }, function (err) {
+                        console.error(err);
+                    });
+                    app.models.predict("e9576d86d2004ed1a38ba0cf39ecb4b1", source).then(function (response) {
+                        firebase.database().ref('clarifai/' + encodeURIComponent(source).replace(/\./g, '%2E') + '/nfsw').set(response);
+                        if (response.rawData.outputs[0].data.concepts[0].name == 'nfsw') {
+                            $('#' + name + '').attr('nude', '')
+                        }
+                    }, function (err) {
+                        console.error(err);
+                    });
                 }
-                $('#' + name + '_imageData').text(imageData);
-            }, function (err) {
-                console.error(err);
             });
         }
     }, {

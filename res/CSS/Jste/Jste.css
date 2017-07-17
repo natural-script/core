@@ -1,0 +1,110 @@
+.imageData {
+    position: absolute !important;
+    color: #FFFFFF !important;
+    top: 25% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    font-size: x-small !important;
+    text-align: center !important;
+    width: 85% !important;
+}
+
+.imageMainButton {
+    position: absolute !important;
+    top: 75% !important;
+    left: 50% !important;
+    background-color: #c0c0c0 !important;
+    opacity: 0.5 !important;
+    border-radius: 100px !important;
+    border: 5px solid !important;
+    color: #FFFFFF !important;
+    max-width: 200px !important;
+    max-height: 60px !important;
+    width: 50% !important;
+    height: 30% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.nudesFOundWarningText {
+    position: absolute !important;
+    color: #FFFFFF !important;
+    top: 20% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.yesShowTheNudes {
+    position: absolute !important;
+    top: 65% !important;
+    left: 25% !important;
+    background-color: #c0c0c0 !important;
+    opacity: 0.5 !important;
+    border-radius: 100px !important;
+    border: 5px solid !important;
+    color: #FFFFFF !important;
+    max-width: 200px !important;
+    max-height: 60px !important;
+    width: 35% !important;
+    height: 20% !important;
+    transform: translate(-50%, -50%) !important;
+    font-size: 60% !important;
+}
+
+.showBlurredNudes {
+    position: absolute !important;
+    top: 65% !important;
+    left: 75% !important;
+    background-color: #c0c0c0 !important;
+    opacity: 0.5 !important;
+    border-radius: 100px !important;
+    border: 5px solid !important;
+    color: #FFFFFF !important;
+    max-width: 200px !important;
+    max-height: 60px !important;
+    width: 35% !important;
+    height: 20% !important;
+    transform: translate(-50%, -50%) !important;
+    font-size: 60% !important;
+}
+
+.yesRemoveTheBlur {
+    position: absolute !important;
+    top: 65% !important;
+    left: 50% !important;
+    background-color: #c0c0c0 !important;
+    opacity: 0.5 !important;
+    border-radius: 100px !important;
+    border: 5px solid !important;
+    color: #FFFFFF !important;
+    max-width: 200px !important;
+    max-height: 60px !important;
+    width: 50% !important;
+    height: 30% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.showTheFullContentWarninga {
+    position: absolute !important;
+    color: #FFFFFF !important;
+    top: 25% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    width: 85% !important;
+}
+
+.videoMainButton {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    background-color: #c0c0c0 !important;
+    opacity: 0.5 !important;
+    border-radius: 100px !important;
+    border: 5px solid !important;
+    color: #FFFFFF !important;
+    max-width: 200px !important;
+    max-height: 60px !important;
+    width: 50% !important;
+    height: 30% !important;
+    transform: translate(-50%, -50%) !important;
+}
