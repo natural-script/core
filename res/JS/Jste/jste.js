@@ -211,6 +211,20 @@ var descriptionTranslations = ['description', 'description', "la_description", '
 var privateTranslations = ['private', 'private', "privé", 'خاص', 'خاص', 'プライベート'];
 var loginFormTranslations = ['login_form', 'login_form', "formulaire_de_connexion", 'خاص', 'فورم_الدخول', 'ログインフォーム'];
 var targetTranslations = ['target', 'target', "cible", 'الهدف', 'الهدف', 'ターゲット'];
+var containerTranslations = ['container', 'container', "récipient", 'حاوية', 'طبق', 'コンテナ'];
+var shapeTranslations = ['shape', 'shape', "forme", 'الشكل', 'الشكل', '形状'];
+var triangleTranslations = ['triangle', 'triangle', "triangle", 'مثلث', 'مثلث', '三角形'];
+var trapezoidTranslations = ['trapezoid', 'trapezoid', "trapézoïdal", 'شبه_منحرف', 'شبه_منحرف', '台形'];
+var parallelogramTranslations = ['parallelogram', 'parallelogram', "parallélogramme", 'متوازى_الأضلاع', 'متوازى_الأضلاع', '平行四辺形'];
+var rhombusTranslations = ['rhombus', 'rhombus', "rhombe", 'معين', 'معين', '菱形'];
+var pentagonTranslations = ['pentagon', 'pentagon', "pentagone", 'خماسى_الأضلاع', 'خماسى_الأضلاع', '五角形'];
+var hexagonTranslations = ['hexagon', 'hexagon', "hexagone", 'سداسى_الأضلاع', 'سداسى_الأضلاع', '六角形'];
+var heptagonTranslations = ['heptagon', 'heptagon', "heptagone", 'سباعى_الأضلاع', 'سباعى_الأضلاع', 'ヘプタゴン'];
+var octagonTranslations = ['octagon', 'octagon', "octagone", 'ثمانى_الأضلاع', 'ثمانى_الأضلاع', '八角形'];
+var decagonTranslations = ['decagon', 'decagon', "décagone", 'معشر_الأضلاع', 'معشر_الأضلاع', 'デカゴン'];
+var circleranslations = ['circle', 'circle', "cercle", 'دائرة', 'دايرة', 'サークル'];
+var ellipseTranslations = ['ellipse', 'ellipse', "ellipse", 'بيضاوى', 'بيضاوى', '楕円'];
+
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------------Commands Translations------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -4508,12 +4522,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<p id="' + name + '"></p>';
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+
+                        } else {
+                            $('contents').append(out);
+                        }
                         $('#' + name + '').text(settings[textTranslations[lang]]);
                         if (settings[colorTranslations[lang]]) {
                             setFontColour(name, settings[colorTranslations[lang]]);
@@ -4522,7 +4542,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
                         if (settings[thicknessTranslations[lang]]) {
-                            if (settings[thicknessTranslations[lang]] == 'thick') {
+                            if (settings[thicknessTranslations[lang]] == thickTranslations[lang]) {
                                 $('#' + name + '').css('font-weight', 'bold');
                             } else {
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
@@ -4733,12 +4753,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<paper-button id="' + name + '"></paper-button>';
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+
+                        } else {
+                            $('contents').append(out);
+                        }
                         $('#' + name + '').text(settings[textTranslations[lang]]);
                         if (settings[fontColourTranslations[lang]]) {
                             setFontColour(name, settings[fontColourTranslations[lang]]);
@@ -4756,7 +4782,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').attr('toggled', '');
                         }
                         if (settings[thicknessTranslations[lang]]) {
-                            if (settings[thicknessTranslations[lang]] == 'thick') {
+                            if (settings[thicknessTranslations[lang]] == thickTranslations[lang]) {
                                 $('#' + name + '').css('font-weight', 'bold');
                             } else {
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
@@ -4819,13 +4845,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var icon = settings[iconTranslations[lang]];
                         var out = '<iron-icon id="' + name + '" icon="' + icon + '"></iron-icon>';
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+
+                        } else {
+                            $('contents').append(out);
+                        }
                         if (settings[iconColorTranslations[lang]]) {
                             if (settings[iconColorTranslations[lang]] == blackTranslations[lang]) {
                                 $('#' + name + '').css('color', '#000000');
@@ -4914,13 +4946,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var icon = settings[iconTranslations[lang]];
                         var out = '<paper-icon-button id="' + name + '" icon="' + icon + '"></paper-icon-button>';
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+
+                        } else {
+                            $('contents').append(out);
+                        }
                         if (settings[iconColorTranslations[lang]]) {
                             if (settings[iconColorTranslations[lang]] == blackTranslations[lang]) {
                                 $('#' + name + '').css('color', '#000000');
@@ -5012,12 +5050,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<paper-card id="' + name + '"><div id="الحاجات_اللى_جوة_السيكشن" class="card-content"></div></paper-card>';
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+
+                        } else {
+                            $('contents').append(out);
+                        }
                         if (settings[backgroundTranslations[lang]]) {
                             setBG(name, settings[backgroundTranslations[lang]]);
                         }
@@ -5092,12 +5136,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<paper-tooltip id="' + name + '" for="' + settings[emitterTranslations[lang]] + '">' + settings[textTranslations[lang]] + '</paper-tooltip>';
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+
+                        } else {
+                            $('contents').append(out);
+                        }
                         if (settings[fontColourTranslations[lang]]) {
                             setFontColour(name, settings[fontColourTranslations[lang]]);
                         }
@@ -5108,7 +5158,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             setBG(name, settings[backgroundTranslations[lang]]);
                         }
                         if (settings[thicknessTranslations[lang]]) {
-                            if (settings[thicknessTranslations[lang]] == 'thick') {
+                            if (settings[thicknessTranslations[lang]] == thickTranslations[lang]) {
                                 $('#' + name + '').css('font-weight', 'bold');
                             } else {
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
@@ -5177,12 +5227,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<paper-swatch-picker id="' + name + '" color="{{selectedColor}}"></paper-swatch-picker>';
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+
+                        } else {
+                            $('contents').append(out);
+                        }
                         if (settings[fontColourTranslations[lang]]) {
                             setFontColour(name, settings[fontColourTranslations[lang]]);
                         }
@@ -5221,6 +5277,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [typeTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -5231,7 +5288,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else if (settings[typeTranslations[lang]] == settings[spinnerTranslations[lang]]) {
                             var out = '<paper-spinner id="' + name + '"></paper-spinner>';
                         }
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+
+                        } else {
+                            $('contents').append(out);
+                        }
                         if (settings[fontColourTranslations[lang]]) {
                             setFontColour(name, settings[fontColourTranslations[lang]]);
                         }
@@ -5275,6 +5337,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -5283,7 +5346,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var source = settings[sourceTranslations[lang]];
                         window.analyseImage(name, source);
                         var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; height: ' + settings[imageLengthTranslations[lang]] + ';"><img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /><div id="showImage_' + name + '_containerA"><p id="' + name + '_imageData" class="imageData"></p><button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + source + '\');"></button></div><div id="showImage_' + name + '_containerB" style="display: none;"><p class="nudesFoundWarningText">Nudes found</p><button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + source + '\');">Continue</button><button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div><div id="showImage_' + name + '_containerC" style="display: none;"><p class="showTheFullContentWarning">Show the full content ?</p><button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></div></div>';
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+
+                        } else {
+                            $('contents').append(out);
+                        }
                         getFileSize(source, function (size) {
                             $('#image_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
                         })
@@ -5333,6 +5401,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -5340,7 +5409,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var name = settings[nameTranslations[lang]];
                         var source = settings[sourceTranslations[lang]];
                         var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; height: ' + settings[imageLengthTranslations[lang]] + ';"><paper-video-controls id="video_' + name + '_controls"><video id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" autoplay /></paper-video-controls><div id="showVideo_' + name + '_containerA"><button id="video_' + name + '_mainButton" class="videoMainButton" onclick="showVideoA(\'' + name + '\', \'' + source + '\');"></button></div><div id="showVideo_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></div></div>';
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+
+                        } else {
+                            $('contents').append(out);
+                        }
                         getFileSize(source, function (size) {
                             $('#video_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
                         })
@@ -5396,13 +5470,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<paper-badge id="' + name + '" for="' + targetTranslations[lang] + '"></paper-badge>';
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+
+                        } else {
+                            $('contents').append(out);
+                        }
                         if (settings[fontColourTranslations[lang]]) {
                             setFontColour(name, settings[fontColourTranslations[lang]]);
                         }
@@ -5419,7 +5499,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').attr('icon', settings[iconTranslations[lang]]);
                         }
                         if (settings[thicknessTranslations[lang]]) {
-                            if (settings[thicknessTranslations[lang]] == 'thick') {
+                            if (settings[thicknessTranslations[lang]] == thickTranslations[lang]) {
                                 $('#' + name + '').css('font-weight', 'bold');
                             } else {
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
@@ -5488,13 +5568,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<paper-checkbox id="' + name + '">' + text + '</paper-checkbox>';
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+
+                        } else {
+                            $('contents').append(out);
+                        }
                         if (settings[fontColourTranslations[lang]]) {
                             setFontColour(name, settings[fontColourTranslations[lang]]);
                         }
@@ -5517,7 +5603,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').append('<span class="subtitle">' + settings[descriptionTranslations[lang]] + '</span>');
                         }
                         if (settings[thicknessTranslations[lang]]) {
-                            if (settings[thicknessTranslations[lang]] == 'thick') {
+                            if (settings[thicknessTranslations[lang]] == thickTranslations[lang]) {
                                 $('#' + name + '').css('font-weight', 'bold');
                             } else {
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
@@ -5586,6 +5672,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -5616,7 +5703,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             out += '</div>';
                         }
                         out += '</paper-dialog>';
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+
+                        } else {
+                            $('contents').append(out);
+                        }
                         if (settings[fontColourTranslations[lang]]) {
                             setFontColour(name, settings[fontColourTranslations[lang]]);
                         }
@@ -5630,7 +5722,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             setBG(name, settings[backgroundTranslations[lang]]);
                         }
                         if (settings[thicknessTranslations[lang]]) {
-                            if (settings[thicknessTranslations[lang]] == 'thick') {
+                            if (settings[thicknessTranslations[lang]] == thickTranslations[lang]) {
                                 $('#' + name + '').css('font-weight', 'bold');
                             } else {
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
@@ -5698,6 +5790,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -5718,7 +5811,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             out += '</paper-listbox>';
                         }
                         out += '</paper-dropdown-menu>';
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+
+                        } else {
+                            $('contents').append(out);
+                        }
                         if (settings[fontColourTranslations[lang]]) {
                             setFontColour(name, settings[fontColourTranslations[lang]]);
                         }
@@ -5732,7 +5830,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').attr('noink', '');
                         }
                         if (settings[thicknessTranslations[lang]]) {
-                            if (settings[thicknessTranslations[lang]] == 'thick') {
+                            if (settings[thicknessTranslations[lang]] == thickTranslations[lang]) {
                                 $('#' + name + '').css('font-weight', 'bold');
                             } else {
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
@@ -5805,6 +5903,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -5830,7 +5929,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             out += 'title="' + settings[descriptionTranslations[lang]] + '" ';
                         }
                         out += 'id="' + name + '"></paper-fab>';
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+
+                        } else {
+                            $('contents').append(out);
+                        }
                         if (settings[fontColourTranslations[lang]]) {
                             setFontColour(name, settings[fontColourTranslations[lang]]);
                         }
@@ -5844,7 +5948,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').attr('noink', '');
                         }
                         if (settings[thicknessTranslations[lang]]) {
-                            if (settings[thicknessTranslations[lang]] == 'thick') {
+                            if (settings[thicknessTranslations[lang]] == thickTranslations[lang]) {
                                 $('#' + name + '').css('font-weight', 'bold');
                             } else {
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
@@ -5923,6 +6027,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -6003,7 +6108,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             out += '</paper-input>'
                         }
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+                        } else {
+                            $('contents').append(out);
+                        }
                         if (settings[fontColourTranslations[lang]]) {
                             setFontColour(name, settings[fontColourTranslations[lang]]);
                         }
@@ -6017,7 +6126,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').attr('noink', '');
                         }
                         if (settings[thicknessTranslations[lang]]) {
-                            if (settings[thicknessTranslations[lang]] == 'thick') {
+                            if (settings[thicknessTranslations[lang]] == thickTranslations[lang]) {
                                 $('#' + name + '').css('font-weight', 'bold');
                             } else {
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
@@ -6069,6 +6178,111 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 $.fn[sliderTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
+                        [fontColourTranslations[lang]]: null,
+                        [fontSizeTranslations[lang]]: null,
+                        [nameTranslations[lang]]: null,
+                        [widthTranslations[lang]]: null,
+                        [lengthTranslations[lang]]: null,
+                        [thicknessTranslations[lang]]: null,
+                        [fontStyleTranslations[lang]]: null,
+                        [animationTranslations[lang]]: null,
+                        [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
+                        [backgroundTranslations[lang]]: null,
+                        [commandsTranslations[lang]]: null
+                    }, options);
+                    return this.each(function () {
+                        var name = settings[nameTranslations[lang]];
+                        $('<div>').attr('id', name).appendTo('contents');
+                        if (settings[fontColourTranslations[lang]]) {
+                            setFontColour(name, settings[fontColourTranslations[lang]]);
+                        }
+                        if (settings[fontStyleTranslations[lang]]) {
+                            $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
+                        }
+                        if (settings[shapeTranslations[lang]]) {
+                            if (settings[shapeTranslations[lang]] == triangleTranslations[lang]) {
+                                $('#' + name + '').addClass('triangle');
+                            } else if (settings[shapeTranslations[lang]] == trapezoidTranslations[lang]) {
+                                $('#' + name + '').addClass('trapezoid');
+                            } else if (settings[shapeTranslations[lang]] == parallelogramTranslations[lang]) {
+                                $('#' + name + '').addClass('parallelogram');
+                            } else if (settings[shapeTranslations[lang]] == rhombusTranslations[lang]) {
+                                $('#' + name + '').addClass('rhombus');
+                            } else if (settings[shapeTranslations[lang]] == pentagonTranslations[lang]) {
+                                $('#' + name + '').addClass('pentagon');
+                            } else if (settings[shapeTranslations[lang]] == hexagonTranslations[lang]) {
+                                $('#' + name + '').addClass('hexagon');
+                            } else if (settings[shapeTranslations[lang]] == heptagonTranslations[lang]) {
+                                $('#' + name + '').addClass('heptagon');
+                            } else if (settings[shapeTranslations[lang]] == octagonTranslations[lang]) {
+                                $('#' + name + '').addClass('octagon');
+                            } else if (settings[shapeTranslations[lang]] == decagonTranslations[lang]) {
+                                $('#' + name + '').addClass('decagon');
+                            } else if (settings[shapeTranslations[lang]] == circleTranslations[lang]) {
+                                $('#' + name + '').addClass('circle');
+                            } else if (settings[shapeTranslations[lang]] == ellipseTranslations[lang]) {
+                                $('#' + name + '').addClass('ellipse');
+                            }
+                        }
+                        if (settings[thicknessTranslations[lang]]) {
+                            if (settings[thicknessTranslations[lang]] == thickTranslations[lang]) {
+                                $('#' + name + '').css('font-weight', 'bold');
+                            } else {
+                                $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
+                            }
+                        }
+                        if (settings[fontSizeTranslations[lang]]) {
+                            $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
+                        }
+                        if (settings[positionTranslations[lang]]) {
+                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
+                        } else {
+                            $('#' + name + '').css('position', 'relative');
+                        }
+                        if (settings[distanceFromBottomTranslations[lang]]) {
+                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                        }
+                        if (settings[distanceFromTopTranslations[lang]]) {
+                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                        }
+                        if (settings[distanceFromLeftTranslations[lang]]) {
+                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                        }
+                        if (settings[distanceFromRightTranslations[lang]]) {
+                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                        }
+                        if (settings[commandsTranslations[lang]]) {
+                            execute(name, settings[commandsTranslations[lang]]);
+                        }
+                        if (settings[widthTranslations[lang]]) {
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
+                        }
+                        if (settings[backgroundTranslations[lang]]) {
+                            setBG(name, settings[backgroundTranslations[lang]]);
+                        }
+                        if (settings[lengthTranslations[lang]]) {
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
+                        }
+                        if (settings[animationTranslations[lang]]) {
+                            setAnimation(name, settings[animationTranslations[lang]]);
+                        }
+                        if (settings[transparencyTranslations[lang]]) {
+                            $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[transparencyTranslations[lang]] + '%)');
+                        }
+                    });
+                };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //-----------------------------------------------------------------Container------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                $.fn[containerTranslations[lang]] = function (options) {
+                    // Establish our default settings
+                    var settings = $.extend({
                         [titleTranslations[lang]]: null,
                         [maxTranslations[lang]]: null,
                         [minTranslations[lang]]: null,
@@ -6092,6 +6306,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromLeftTranslations[lang]]: null,
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -6125,7 +6340,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                         out += 'id="' + name + '">';
                         out += '</paper-slider>'
-                        $('contents').append(out);
+                        if (settings[containerTranslations[lang]]) {
+                            $('contents').append(containerTranslations[lang]);
+
+                        } else {
+                            $('contents').append(out);
+                        }
                         if (settings[fontColourTranslations[lang]]) {
                             setFontColour(name, settings[fontColourTranslations[lang]]);
                         }
@@ -6139,7 +6359,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').attr('noink', '');
                         }
                         if (settings[thicknessTranslations[lang]]) {
-                            if (settings[thicknessTranslations[lang]] == 'thick') {
+                            if (settings[thicknessTranslations[lang]] == thickTranslations[lang]) {
                                 $('#' + name + '').css('font-weight', 'bold');
                             } else {
                                 $('#' + name + '').css('font-weight', settings[thicknessTranslations[lang]]);
