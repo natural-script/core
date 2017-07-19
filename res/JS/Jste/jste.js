@@ -183,7 +183,7 @@ var switchedTranslations = ['switched', 'switched', 'commuté', 'مفتوح', '�
 var raisedTranslations = ['raised', 'raised', 'élevé', 'مرفوع', 'مرفوع', '育てられる'];
 var disabledTranslations = ['disabled', 'disabled', 'désactivée', 'معطل', 'مقفول', '無効'];
 var fontStyleTranslations = ['font_style', 'font_style', 'le_style_de_police', 'شكل_الخط', 'شكل_الخط', 'フォントスタイル'];
-var fontColourTranslations = ['font_ colour', 'font_color', 'couleur_de_la_police', 'لون_الخط', 'لون_الخط', 'フォントの色'];
+var fontColorTranslations = ['font_colour', 'font_color', 'couleur_de_la_police', 'لون_الخط', 'لون_الخط', 'フォントの色'];
 var bodyTranslations = ['body', 'body', 'corps', 'جسم', 'جسم', '体'];
 var rippleTranslations = ['ripple', 'ripple', 'ondulation', 'تموج', 'تموج', '波紋'];
 var minTranslations = ['min', 'min', 'min', 'الحد_الأدنى', 'الحد_الأدنى', '最小'];
@@ -224,7 +224,10 @@ var octagonTranslations = ['octagon', 'octagon', "octagone", 'ثمانى_الأ�
 var decagonTranslations = ['decagon', 'decagon', "décagone", 'معشر_الأضلاع', 'معشر_الأضلاع', 'デカゴン'];
 var circleranslations = ['circle', 'circle', "cercle", 'دائرة', 'دايرة', 'サークル'];
 var ellipseTranslations = ['ellipse', 'ellipse', "ellipse", 'بيضاوى', 'بيضاوى', '楕円'];
-
+var fromTheRightTranslations = ['from_the_right', 'from_the_right', "à_partir_de_la_droite", 'من_اليمين', 'من_اللمين', '右から'];
+var fromTheLeftTranslations = ['from_the_left', 'from_the_left', "à_partir_de_la_gauche", 'من_الشمال', 'من_الشمال', '左から'];
+var fromTheTopTranslations = ['from_the_top', 'from_the_top', "à_partir_de_le_haut", 'من_فوق', 'من_فوق', '上から'];
+var fromTheBottomTranslations = ['from_the_bottom', 'from_the_bottom', "à_partir_de_le_fond", 'من_أسفل', 'من_أسفل', '下から'];
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------------Commands Translations------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -243,7 +246,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         var E11 = 'When its contents have been modified, ';
         var E12 = 'When it has been focused, ';
         var E13 = 'When it is being focused, ';
-        var E14 = 'When slept, ';
+        var E14 = 'When it is no longer focused, ';
         var E15 = 'When the data of this form has been sent, ';
         var E16 = 'When it has been scrolled, ';
     } else if (lang == 1) {
@@ -260,7 +263,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         var E11 = 'When its contents have been modified, ';
         var E12 = 'When it has been focused, ';
         var E13 = 'When it is being focused, ';
-        var E14 = 'When slept, ';
+        var E14 = 'When it is no longer focused, ';
         var E15 = 'When the data of this form has been sent, ';
         var E16 = 'When it has been scrolled, ';
     } else if (lang == 2) {
@@ -328,7 +331,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         var E11 = 'その内容が変更されたとき、';
         var E12 = 'それがフォーカスされたときに、 ';
         var E13 = 'When it is being focused, ';
-        var E14 = 'When slept, ';
+        var E14 = 'When it is no longer focused, ';
         var E15 = 'この形式のデータが送られたときに、 ';
         var E16 = 'それがスクロールされると、';
     }
@@ -4507,7 +4510,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     // Establish our default settings
                     var settings = $.extend({
                         [textTranslations[lang]]: 'It seems that you have typed nothing',
-                        [colorTranslations[lang]]: null,
+                        [fontColorTranslations[lang]]: null,
                         [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
@@ -4535,8 +4538,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('contents').append(out);
                         }
                         $('#' + name + '').text(settings[textTranslations[lang]]);
-                        if (settings[colorTranslations[lang]]) {
-                            setFontColour(name, settings[colorTranslations[lang]]);
+                        if (settings[fontColorTranslations[lang]]) {
+                            setFontColour(name, settings[fontColorTranslations[lang]]);
                         }
                         if (settings[fontStyleTranslations[lang]]) {
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
@@ -4735,7 +4738,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     // Establish our default settings
                     var settings = $.extend({
                         [textTranslations[lang]]: 'It seems that you have typed nothing',
-                        [fontColourTranslations[lang]]: null,
+                        [fontColorTranslations[lang]]: null,
                         [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
@@ -4766,8 +4769,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('contents').append(out);
                         }
                         $('#' + name + '').text(settings[textTranslations[lang]]);
-                        if (settings[fontColourTranslations[lang]]) {
-                            setFontColour(name, settings[fontColourTranslations[lang]]);
+                        if (settings[fontColorTranslations[lang]]) {
+                            setFontColour(name, settings[fontColorTranslations[lang]]);
                         }
                         if (settings[fontStyleTranslations[lang]]) {
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
@@ -4831,7 +4834,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 $.fn[iconTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
-                        [iconColorTranslations[lang]]: null,
+                        [fontColorTranslations[lang]]: null,
                         [iconTranslations[lang]]: null,
                         [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
@@ -4858,36 +4861,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             $('contents').append(out);
                         }
-                        if (settings[iconColorTranslations[lang]]) {
-                            if (settings[iconColorTranslations[lang]] == blackTranslations[lang]) {
-                                $('#' + name + '').css('color', '#000000');
-                            } else if (settings[iconColorTranslations[lang]] == redTranslations[lang]) {
-                                $('#' + name + '').css('color', '#F44336');
-                            } else if (settings[iconColorTranslations[lang]] == blueTranslations[lang]) {
-                                $('#' + name + '').css('color', '#2196F3');
-                            } else if (settings[iconColorTranslations[lang]] == cyanTranslations[lang]) {
-                                $('#' + name + '').css('color', '#00BCD4');
-                            } else if (settings[iconColorTranslations[lang]] == grayTranslations[lang]) {
-                                $('#' + name + '').css('color', '#9E9E9E');
-                            } else if (settings[iconColorTranslations[lang]] == greenTranslations[lang]) {
-                                $('#' + name + '').css('color', '#4CAF50');
-                            } else if (settings[iconColorTranslations[lang]] == whiteTranslations[lang]) {
-                                $('#' + name + '').css('color', '#FFFFFF');
-                            } else if (settings[iconColorTranslations[lang]] == orangeTranslations[lang]) {
-                                $('#' + name + '').css('color', '#FF9800');
-                            } else if (settings[iconColorTranslations[lang]] == yellowTranslations[lang]) {
-                                $('#' + name + '').css('color', '#FFEB3B');
-                            } else if (settings[iconColorTranslations[lang]] == brownTranslations[lang]) {
-                                $('#' + name + '').css('color', '#795548');
-                            } else if (settings[iconColorTranslations[lang]] == tealTranslations[lang]) {
-                                $('#' + name + '').css('color', '#009688');
-                            } else if (settings[iconColorTranslations[lang]] == pinkTranslations[lang]) {
-                                $('#' + name + '').css('color', '#E91E63');
-                            } else if (settings[iconColorTranslations[lang]] == lightGreenTranslations[lang]) {
-                                $('#' + name + '').css('color', '#8BC34A');
-                            } else {
-                                $('#' + name + '').css('color', settings[iconColorTranslations[lang]]);
-                            }
+                        if (settings[fontColorTranslations[lang]]) {
+                            setFontColour(name, settings[fontColorTranslations[lang]]);
                         }
                         if (settings[fontSizeTranslations[lang]]) {
                             $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
@@ -4932,7 +4907,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 $.fn[buttonWithAnIconTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
-                        [iconColorTranslations[lang]]: null,
+                        [fontColorTranslations[lang]]: null,
                         [iconTranslations[lang]]: null,
                         [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
@@ -4959,36 +4934,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             $('contents').append(out);
                         }
-                        if (settings[iconColorTranslations[lang]]) {
-                            if (settings[iconColorTranslations[lang]] == blackTranslations[lang]) {
-                                $('#' + name + '').css('color', '#000000');
-                            } else if (settings[iconColorTranslations[lang]] == redTranslations[lang]) {
-                                $('#' + name + '').css('color', '#F44336');
-                            } else if (settings[iconColorTranslations[lang]] == blueTranslations[lang]) {
-                                $('#' + name + '').css('color', '#2196F3');
-                            } else if (settings[iconColorTranslations[lang]] == cyanTranslations[lang]) {
-                                $('#' + name + '').css('color', '#00BCD4');
-                            } else if (settings[iconColorTranslations[lang]] == grayTranslations[lang]) {
-                                $('#' + name + '').css('color', '#9E9E9E');
-                            } else if (settings[iconColorTranslations[lang]] == greenTranslations[lang]) {
-                                $('#' + name + '').css('color', '#4CAF50');
-                            } else if (settings[iconColorTranslations[lang]] == whiteTranslations[lang]) {
-                                $('#' + name + '').css('color', '#FFFFFF');
-                            } else if (settings[iconColorTranslations[lang]] == orangeTranslations[lang]) {
-                                $('#' + name + '').css('color', '#FF9800');
-                            } else if (settings[iconColorTranslations[lang]] == yellowTranslations[lang]) {
-                                $('#' + name + '').css('color', '#FFEB3B');
-                            } else if (settings[iconColorTranslations[lang]] == brownTranslations[lang]) {
-                                $('#' + name + '').css('color', '#795548');
-                            } else if (settings[iconColorTranslations[lang]] == tealTranslations[lang]) {
-                                $('#' + name + '').css('color', '#009688');
-                            } else if (settings[iconColorTranslations[lang]] == pinkTranslations[lang]) {
-                                $('#' + name + '').css('color', '#E91E63');
-                            } else if (settings[iconColorTranslations[lang]] == lightGreenTranslations[lang]) {
-                                $('#' + name + '').css('color', '#8BC34A');
-                            } else {
-                                $('#' + name + '').css('color', settings[iconColorTranslations[lang]]);
-                            }
+                        if (settings[fontColorTranslations[lang]]) {
+                            setFontColour(name, settings[fontColorTranslations[lang]]);
                         }
                         if (settings[fontSizeTranslations[lang]]) {
                             $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
@@ -5034,7 +4981,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     // Establish our default settings
                     var settings = $.extend({
                         [textTranslations[lang]]: 'It seems that you have typed nothing',
-                        [fontColourTranslations[lang]]: null,
+                        [fontColorTranslations[lang]]: null,
                         [FXTranslations[lang]]: null,
                         [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
@@ -5119,7 +5066,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     // Establish our default settings
                     var settings = $.extend({
                         [textTranslations[lang]]: 'It seems that you have typed nothing',
-                        [fontColourTranslations[lang]]: null,
+                        [fontColorTranslations[lang]]: null,
                         [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
@@ -5127,15 +5074,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [thicknessTranslations[lang]]: null,
                         [fontStyleTranslations[lang]]: null,
                         [emitterTranslations[lang]]: null,
-                        [directionTranslations[lang]]: null,
+                        [directionTranslations[lang]]: fromTheBottom[lang],
                         [animationTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
                         [transparencyTranslations[lang]]: null,
-                        [distanceFromBottomTranslations[lang]]: null,
-                        [distanceFromTopTranslations[lang]]: null,
-                        [distanceFromLeftTranslations[lang]]: null,
-                        [distanceFromRightTranslations[lang]]: null,
-                        [positionTranslations[lang]]: null,
                         [containerTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
@@ -5148,8 +5090,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             $('contents').append(out);
                         }
-                        if (settings[fontColourTranslations[lang]]) {
-                            setFontColour(name, settings[fontColourTranslations[lang]]);
+                        if (settings[fontColorTranslations[lang]]) {
+                            setFontColour(name, settings[fontColorTranslations[lang]]);
                         }
                         if (settings[fontStyleTranslations[lang]]) {
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
@@ -5172,18 +5114,6 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             $('#' + name + '').css('position', 'relative');
                         }
-                        if (settings[distanceFromBottomTranslations[lang]]) {
-                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
-                        }
-                        if (settings[distanceFromTopTranslations[lang]]) {
-                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
-                        }
-                        if (settings[distanceFromLeftTranslations[lang]]) {
-                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
-                        }
-                        if (settings[distanceFromRightTranslations[lang]]) {
-                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
-                        }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
                         }
@@ -5196,13 +5126,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[animationTranslations[lang]]) {
                             setAnimation(name, settings[animationTranslations[lang]]);
                         }
-                        if (settings[directionTranslations[lang]] == 'fromRight') {
+                        if (settings[directionTranslations[lang]] == fromTheRightTranslations[lang]) {
                             $('#' + name + '').attr('position', 'right');
-                        } else if (settings[directionTranslations[lang]] == 'fromLeft') {
+                        } else if (settings[directionTranslations[lang]] == fromTheLeftTranslations[lang]) {
                             $('#' + name + '').attr('position', 'left');
-                        } else if (settings[directionTranslations[lang]] == 'fromUp') {
+                        } else if (settings[directionTranslations[lang]] == fromTheTopTranslations[lang]) {
                             $('#' + name + '').attr('position', 'top');
-                        } else if (settings[directionTranslations[lang]] == 'fromDown') {
+                        } else if (settings[directionTranslations[lang]] == fromTheBottomTranslations[lang]) {
                             $('#' + name + '').attr('position', 'bottom');
                         } else {}
                         if (settings[transparencyTranslations[lang]]) {
@@ -5239,8 +5169,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             $('contents').append(out);
                         }
-                        if (settings[fontColourTranslations[lang]]) {
-                            setFontColour(name, settings[fontColourTranslations[lang]]);
+                        if (settings[fontColorTranslations[lang]]) {
+                            setFontColour(name, settings[fontColorTranslations[lang]]);
                         }
                         if (settings[backgroundTranslations[lang]]) {
                             setBG(name, settings[backgroundTranslations[lang]]);
@@ -5294,8 +5224,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             $('contents').append(out);
                         }
-                        if (settings[fontColourTranslations[lang]]) {
-                            setFontColour(name, settings[fontColourTranslations[lang]]);
+                        if (settings[fontColorTranslations[lang]]) {
+                            setFontColour(name, settings[fontColorTranslations[lang]]);
                         }
                         if (settings[backgroundTranslations[lang]]) {
                             setBG(name, settings[backgroundTranslations[lang]]);
@@ -5456,7 +5386,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [textTranslations[lang]]: 'It seems that you have typed nothing',
                         [iconTranslations[lang]]: null,
                         [targetTranslations[lang]]: null,
-                        [fontColourTranslations[lang]]: null,
+                        [fontColorTranslations[lang]]: null,
                         [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
@@ -5483,8 +5413,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             $('contents').append(out);
                         }
-                        if (settings[fontColourTranslations[lang]]) {
-                            setFontColour(name, settings[fontColourTranslations[lang]]);
+                        if (settings[fontColorTranslations[lang]]) {
+                            setFontColour(name, settings[fontColorTranslations[lang]]);
                         }
                         if (settings[backgroundTranslations[lang]]) {
                             setBG(name, settings[backgroundTranslations[lang]]);
@@ -5554,7 +5484,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [disabledTranslations[lang]]: null,
                         checked: null,
                         [rippleTranslations[lang]]: null,
-                        [fontColourTranslations[lang]]: null,
+                        [fontColorTranslations[lang]]: null,
                         [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
@@ -5581,8 +5511,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             $('contents').append(out);
                         }
-                        if (settings[fontColourTranslations[lang]]) {
-                            setFontColour(name, settings[fontColourTranslations[lang]]);
+                        if (settings[fontColorTranslations[lang]]) {
+                            setFontColour(name, settings[fontColorTranslations[lang]]);
                         }
                         if (settings[fontStyleTranslations[lang]]) {
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
@@ -5658,7 +5588,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         cancelButton: null,
                         [emitterTranslations[lang]]: null,
                         scrollable: null,
-                        [fontColourTranslations[lang]]: null,
+                        [fontColorTranslations[lang]]: null,
                         [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
@@ -5709,8 +5639,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             $('contents').append(out);
                         }
-                        if (settings[fontColourTranslations[lang]]) {
-                            setFontColour(name, settings[fontColourTranslations[lang]]);
+                        if (settings[fontColorTranslations[lang]]) {
+                            setFontColour(name, settings[fontColorTranslations[lang]]);
                         }
                         if (settings[fontStyleTranslations[lang]]) {
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
@@ -5776,7 +5706,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [rippleTranslations[lang]]: null,
                         preselected: null,
                         [disabledTranslations[lang]]: null,
-                        [fontColourTranslations[lang]]: null,
+                        [fontColorTranslations[lang]]: null,
                         [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
@@ -5817,8 +5747,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             $('contents').append(out);
                         }
-                        if (settings[fontColourTranslations[lang]]) {
-                            setFontColour(name, settings[fontColourTranslations[lang]]);
+                        if (settings[fontColorTranslations[lang]]) {
+                            setFontColour(name, settings[fontColorTranslations[lang]]);
                         }
                         if (settings[fontStyleTranslations[lang]]) {
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
@@ -5889,7 +5819,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         mini: null,
                         [disabledTranslations[lang]]: null,
                         [rippleTranslations[lang]]: null,
-                        [fontColourTranslations[lang]]: null,
+                        [fontColorTranslations[lang]]: null,
                         [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
@@ -5935,8 +5865,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             $('contents').append(out);
                         }
-                        if (settings[fontColourTranslations[lang]]) {
-                            setFontColour(name, settings[fontColourTranslations[lang]]);
+                        if (settings[fontColorTranslations[lang]]) {
+                            setFontColour(name, settings[fontColorTranslations[lang]]);
                         }
                         if (settings[fontStyleTranslations[lang]]) {
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
@@ -6013,7 +5943,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [dynamicSizeTranslations[lang]]: null,
                         [disabledTranslations[lang]]: null,
                         [rippleTranslations[lang]]: null,
-                        [fontColourTranslations[lang]]: null,
+                        [fontColorTranslations[lang]]: null,
                         [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
@@ -6113,8 +6043,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             $('contents').append(out);
                         }
-                        if (settings[fontColourTranslations[lang]]) {
-                            setFontColour(name, settings[fontColourTranslations[lang]]);
+                        if (settings[fontColorTranslations[lang]]) {
+                            setFontColour(name, settings[fontColorTranslations[lang]]);
                         }
                         if (settings[fontStyleTranslations[lang]]) {
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
@@ -6178,7 +6108,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 $.fn[sliderTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
-                        [fontColourTranslations[lang]]: null,
+                        [fontColorTranslations[lang]]: null,
                         [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
@@ -6199,8 +6129,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         $('<div>').attr('id', name).appendTo('contents');
-                        if (settings[fontColourTranslations[lang]]) {
-                            setFontColour(name, settings[fontColourTranslations[lang]]);
+                        if (settings[fontColorTranslations[lang]]) {
+                            setFontColour(name, settings[fontColorTranslations[lang]]);
                         }
                         if (settings[fontStyleTranslations[lang]]) {
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
@@ -6292,7 +6222,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [valueBoxTranslations[lang]]: null,
                         [pinTranslations[lang]]: null,
                         [disabledTranslations[lang]]: null,
-                        [fontColourTranslations[lang]]: null,
+                        [fontColorTranslations[lang]]: null,
                         [fontSizeTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
@@ -6346,8 +6276,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             $('contents').append(out);
                         }
-                        if (settings[fontColourTranslations[lang]]) {
-                            setFontColour(name, settings[fontColourTranslations[lang]]);
+                        if (settings[fontColorTranslations[lang]]) {
+                            setFontColour(name, settings[fontColorTranslations[lang]]);
                         }
                         if (settings[fontStyleTranslations[lang]]) {
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
