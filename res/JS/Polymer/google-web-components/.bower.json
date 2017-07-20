@@ -1,6 +1,6 @@
 {
   "name": "google-web-components",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "homepage": "https://github.com/GoogleWebComponents/google-web-components",
   "authors": [
     "The Polymer Authors"
@@ -25,6 +25,7 @@
   ],
   "dependencies": {
     "google-apis": "GoogleWebComponents/google-apis#^1.0.0",
+    "google-drive": "GoogleWebComponents/google-drive#^1.0.1",
     "google-feeds": "GoogleWebComponents/google-feeds#^1.0.0",
     "google-map": "GoogleWebComponents/google-map#^1.0.0",
     "google-signin": "GoogleWebComponents/google-signin#^1.0.0",
@@ -45,14 +46,13 @@
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0"
   },
   "main": "google-web-components.html",
-  "_release": "1.1.1",
+  "_release": "1.1.2",
   "_resolution": {
     "type": "version",
-    "tag": "v1.1.1",
-    "commit": "ea471e8e7d8dbf0d8748692d4e4c9c68b90a90f7"
+    "tag": "v1.1.2",
+    "commit": "6fcb2ebeab34716712a5a988de716426b6dd4488"
   },
   "_source": "https://github.com/GoogleWebComponents/google-web-components.git",
   "_target": "^1.1.1",
-  "_originalSource": "GoogleWebComponents/google-web-components",
-  "_direct": true
+  "_originalSource": "GoogleWebComponents/google-web-components"
 }

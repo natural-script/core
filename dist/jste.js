@@ -8,34 +8,28 @@ var corsPolicy = 'https://cors-anywhere.herokuapp.com/';
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 var code = "jQuery(document).ready(function ($) { var ";
 if ($('en-uk').length) {
-    $('en-uk').hide();
     lang = 0;
     code += "add = $('body');" + $('en-uk').html();
     $('en-uk').remove();
 } else if ($('en-us').length) {
-    $('en-us').hide();
     lang = 1;
     code += "add = $('body');" + $('en-us').html();
     $('en-us').remove();
 } else if ($('fr-fr').length) {
-    $('fr-fr').hide();
     lang = 2;
     code += "ajouter = $('body');" + $('fr-fr').html();
     $('fr-fr').remove();
 } else if ($('ar-ar').length) {
-    $('ar-ar').hide();
     $('html').attr('dir', 'rtl').attr('lang', 'ar');
     lang = 3;
     code += "اضف = $('body');" + $('ar-ar').html();
     $('ar-ar').remove();
 } else if ($('ar-eg').length) {
-    $('ar-eg').hide();
     $('html').attr('dir', 'rtl').attr('lang', 'ar');
     lang = 4;
     code += "ضيف = $('body');" + $('ar-eg').html();
     $('ar-eg').remove();
 } else if ($('jp-jp').length) {
-    $('jp-jp').hide();
     lang = 5;
     code += "追加する = $('body');" + $('ja-ja').html();
     $('ja-ja').remove();
@@ -108,8 +102,10 @@ function showImageD(name) {
 //--------------------------------------------------Videos Related Functions------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 function showVideoA(name, source) {
-    $('#' + name + '').attr('src', source);
+    $('#' + name + '').attr('src', corsPolicy + source);
     var v = document.getElementById(name);
+    $('#showVideo_' + name + '_containerA').fadeOut();
+    $('#' + name + '').css('-webkit-filter', 'blur(0px)');
 }
 
 function showVideoB(name) {
@@ -203,8 +199,10 @@ var FXTranslations = ['FX', 'FX', 'FX', 'FX', 'FX', 'FX'];
 var emitterTranslations = ['emitter', 'emitter', 'émetteur', 'باعث', 'باعث', 'エミッタ'];
 var directionTranslations = ['direction', 'direction', 'direction', 'الإتجاه', 'الإتجاه', '方向'];
 var loadingTranslations = ['loading', 'loading', 'chargement', 'يحمل', 'بيحمل', '読み込み中'];
-var imageWidthTranslations = ['image_width', 'image_width', "largeur de l'image", 'عرض_الصورة', 'عرض_الصورة', '画像の幅'];
-var imageLengthTranslations = ['image_length', 'image_length', "longueur de l'image", 'طول_الصورة', 'طول_الصورة', '画像の長さ'];
+var imageWidthTranslations = ['image_width', 'image_width', "largeur_de_l'image", 'عرض_الصورة', 'عرض_الصورة', '画像の幅'];
+var imageLengthTranslations = ['image_length', 'image_length', "longueur_de_l'image", 'طول_الصورة', 'طول_الصورة', '画像の長さ'];
+var videoWidthTranslations = ['video_width', 'video_width', "largeur_de_la_vidéo", 'عرض_الفيديو', 'عرض_الفيديو', 'ビデオの幅'];
+var videoLengthTranslations = ['video_length', 'video_length', "longueur_de_la_vidéo", 'طول_الفيديو', 'طول_الفيديو', 'ビデオの長さ'];
 var sourceTranslations = ['source', 'source', "la_source", 'المصدر', 'المصدر', 'ソース'];
 var itemsTranslations = ['items', 'items', "articles", 'العناصر', 'العناصر', 'アイテム'];
 var descriptionTranslations = ['description', 'description', "la_description", 'الوصف', 'الوصف', '説明'];
@@ -228,6 +226,7 @@ var fromTheRightTranslations = ['from_the_right', 'from_the_right', "à_partir_d
 var fromTheLeftTranslations = ['from_the_left', 'from_the_left', "à_partir_de_la_gauche", 'من_الشمال', 'من_الشمال', '左から'];
 var fromTheTopTranslations = ['from_the_top', 'from_the_top', "à_partir_de_le_haut", 'من_فوق', 'من_فوق', '上から'];
 var fromTheBottomTranslations = ['from_the_bottom', 'from_the_bottom', "à_partir_de_le_fond", 'من_أسفل', 'من_أسفل', '下から'];
+var propertiesTranslations = ['properties', 'properties', "propriétés", 'الخواص', 'الخواص', 'プロパティ'];
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------------Commands Translations------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -1449,9 +1448,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5];
         } else if (lang == 3) {
-            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5];
+            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[3];
         } else if (lang == 4) {
-            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5];
+            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[3];
         } else if (lang == 2) {
             return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5];
         }
@@ -1463,9 +1462,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 5) {
             return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5];
         } else if (lang == 3) {
-            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5];
+            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[3];
         } else if (lang == 2) {
-            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5];
+            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[3];
         } else if (lang == 5) {
             return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5];
         }
@@ -1477,9 +1476,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 5) {
             return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5];
         } else if (lang == 3) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[3];
         } else if (lang == 4) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[3];
         } else if (lang == 2) {
             return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5];
         }
@@ -1491,9 +1490,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5];
         } else if (lang == 3) {
-            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5];
+            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[3];
         } else if (lang == 4) {
-            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5];
+            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[3];
         } else if (lang == 5) {
             return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5];
         }
@@ -1505,9 +1504,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5];
         } else if (lang == 3) {
-            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5];
+            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[3];
         } else if (lang == 4) {
-            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5];
+            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[3];
         } else if (lang == 5) {
             return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5];
         }
@@ -1519,9 +1518,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5];
         } else if (lang == 3) {
-            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5];
+            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[3];
         } else if (lang == 4) {
-            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5];
+            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[3];
         } else if (lang == 5) {
             return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5];
         }
@@ -1533,9 +1532,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5];
         } else if (lang == 3) {
-            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5];
+            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[3];
         } else if (lang == 4) {
-            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5];
+            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[3];
         } else if (lang == 5) {
             return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5];
         }
@@ -1547,9 +1546,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5];
         } else if (lang == 3) {
-            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5];
+            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[3];
         } else if (lang == 4) {
-            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5];
+            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[3];
         } else if (lang == 5) {
             return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5];
         }
@@ -1561,9 +1560,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5];
         } else if (lang == 3) {
-            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5];
+            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[3];
         } else if (lang == 4) {
-            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5];
+            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[3];
         } else if (lang == 5) {
             return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5];
         }
@@ -1575,9 +1574,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5];
         } else if (lang == 3) {
-            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5];
+            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[3];
         } else if (lang == 4) {
-            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5];
+            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[3];
         } else if (lang == 5) {
             return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5];
         }
@@ -1589,9 +1588,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5];
         } else if (lang == 3) {
-            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5];
+            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[3];
         } else if (lang == 4) {
-            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5];
+            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[3];
         } else if (lang == 5) {
             return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5];
         }
@@ -1603,9 +1602,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5];
         } else if (lang == 3) {
-            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5];
+            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[3];
         } else if (lang == 4) {
-            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5];
+            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[3];
         } else if (lang == 5) {
             return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5];
         }
@@ -1617,9 +1616,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5];
         } else if (lang == 3) {
-            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5];
+            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[3];
         } else if (lang == 4) {
-            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5];
+            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[3];
         } else if (lang == 5) {
             return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5];
         }
@@ -1631,9 +1630,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5];
         } else if (lang == 3) {
-            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5];
+            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[3];
         } else if (lang == 4) {
-            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5];
+            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[3];
         } else if (lang == 5) {
             return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5];
         }
@@ -1645,9 +1644,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5];
         } else if (lang == 3) {
-            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5];
+            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[3];
         } else if (lang == 4) {
-            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5];
+            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[3];
         } else if (lang == 5) {
             return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5];
         }
@@ -1659,9 +1658,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5];
         } else if (lang == 3) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5];
+            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[3];
         } else if (lang == 4) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5];
+            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[3];
         } else if (lang == 5) {
             return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5];
         }
@@ -1673,25 +1672,25 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return 'définir la valeur de à';
         } else if (lang == 3) {
-            return 'définir la valeur de à';
+            return 'غير قيمة إلى';
         } else if (lang == 4) {
-            return 'définir la valeur de à';
+            return 'غير قيمة إلى';
         } else if (lang == 5) {
             return 'définir la valeur de à';
         }
     } else if (commandCode == 'c14') {
         if (lang == 0) {
-            return commandValue.split('set the value of ')[1].split(' ')[1];
+            return commandValue.split('set the value of ')[1].split(' ')[0];
         } else if (lang == 1) {
-            return commandValue.split('set the value of ')[1].split(' ')[1];
+            return commandValue.split('set the value of ')[1].split(' ')[0];
         } else if (lang == 2) {
-            return commandValue.split('définir la valeur de ')[1].split(' ')[1];
+            return commandValue.split('définir la valeur de ')[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split('غير قيمة ')[1].split(' ')[1];
+            return commandValue.split('غير قيمة ')[1].split(' ')[0];
         } else if (lang == 4) {
-            return commandValue.split('غير قيمة ')[1].split(' ')[1];
+            return commandValue.split('غير قيمة ')[1].split(' ')[0];
         } else if (lang == 5) {
-            return commandValue.split('définir la valeur de ')[1].split(' ')[1];
+            return commandValue.split('définir la valeur de ')[1].split(' ')[0];
         }
     } else if (commandCode == 'c15') {
         if (lang == 0) {
@@ -1699,13 +1698,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 1) {
             return commandValue.split('set the value of ' + para1 + ' to the value of ')[1];
         } else if (lang == 2) {
-            return commandValue.split('définir la valeur de ' + para1 + ' à ')[1];
+            return commandValue.split('définir la valeur de ' + para1 + ' à la valeur de ')[1];
         } else if (lang == 3) {
-            return commandValue.split('غير قيمة ' + para1 + ' ألى ')[1];
+            return commandValue.split('غير قيمة ' + para1 + ' إلى قيمة ')[1];
         } else if (lang == 4) {
-            return commandValue.split('غير قيمة ' + para1 + ' ل')[1];
+            return commandValue.split('غير قيمة ' + para1 + ' إلى قيمة ')[1];
         } else if (lang == 5) {
-            return commandValue.split('définir la valeur de ' + para1 + ' à ')[1];
+            return commandValue.split('définir la valeur de ' + para1 + ' à la valeur de ')[1];
         }
     } else if (commandCode == 'c16q') {
         if (lang == 0) {
@@ -1715,9 +1714,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[2];
         } else if (lang == 3) {
-            return commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[2];
+            return commandValue.split('غير قيمة ' + para1 + ' إلى ')[1].split(' ')[0];
         } else if (lang == 4) {
-            return commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[2];
+            return commandValue.split('غير قيمة ' + para1 + ' إلى ')[1].split(' ')[0];
         } else if (lang == 5) {
             return commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[2];
         }
@@ -1743,9 +1742,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('définir la valeur de ' + para1 + ' à ')[1];
         } else if (lang == 3) {
-            return commandValue.split('غير قيمة ' + para1 + ' إلى')[1];
+            return commandValue.split('غير قيمة ' + para1 + ' إلى ')[1];
         } else if (lang == 4) {
-            return commandValue.split('غير قيمة ' + para1 + ' ل')[1];
+            return commandValue.split('غير قيمة ' + para1 + ' إلى ')[1];
         } else if (lang == 5) {
             return commandValue.split('définir la valeur de ' + para1 + ' à ')[1];
         }
@@ -2011,7 +2010,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 3) {
             return commandValue.split('غير قيمة ' + para1 + ' إلى قيمة ')[1];
         } else if (lang == 4) {
-            return commandValue.split('définir la valeur de ' + para1 + ' لقيمة ')[1];
+            return commandValue.split('غير قيمة ' + para1 + ' إلى قيمة ')[1];
         } else if (lang == 5) {
             return commandValue.split('définir la valeur de ' + para1 + ' à la valeur de ')[1];
         }
@@ -2065,9 +2064,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13];
+            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[7] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13];
         } else if (lang == 4) {
-            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13];
+            return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[4] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[7] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13];
         } else if (lang == 5) {
             return commandValue.split(E1)[1].split(' ')[0] + ' ' + commandValue.split(E1)[1].split(' ')[1] + ' ' + commandValue.split(E1)[1].split(' ')[2] + ' ' + commandValue.split(E1)[1].split(' ')[3] + ' ' + commandValue.split(E1)[1].split(' ')[5] + ' ' + commandValue.split(E1)[1].split(' ')[6] + ' ' + commandValue.split(E1)[1].split(' ')[8] + ' ' + commandValue.split(E1)[1].split(' ')[9] + ' ' + commandValue.split(E1)[1].split(' ')[10] + ' ' + commandValue.split(E1)[1].split(' ')[11] + ' ' + commandValue.split(E1)[1].split(' ')[12] + ' ' + commandValue.split(E1)[1].split(' ')[13];
         }
@@ -2079,9 +2078,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13];
+            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[7] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13];
         } else if (lang == 4) {
-            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13];
+            return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[4] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[7] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13];
         } else if (lang == 5) {
             return commandValue.split(E2)[1].split(' ')[0] + ' ' + commandValue.split(E2)[1].split(' ')[1] + ' ' + commandValue.split(E2)[1].split(' ')[2] + ' ' + commandValue.split(E2)[1].split(' ')[3] + ' ' + commandValue.split(E2)[1].split(' ')[5] + ' ' + commandValue.split(E2)[1].split(' ')[6] + ' ' + commandValue.split(E2)[1].split(' ')[8] + ' ' + commandValue.split(E2)[1].split(' ')[9] + ' ' + commandValue.split(E2)[1].split(' ')[10] + ' ' + commandValue.split(E2)[1].split(' ')[11] + ' ' + commandValue.split(E2)[1].split(' ')[12] + ' ' + commandValue.split(E2)[1].split(' ')[13];
         }
@@ -2093,9 +2092,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer 10oved away from it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer11moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer 10oved away from it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer11moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[7] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer 10oved away from it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer11moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13];
         } else if (lang == 4) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer 10oved away from it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer11moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[4] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[7] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer 10oved away from it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer11moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13];
         } else if (lang == 5) {
             return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split('When the mouse pointer 10oved away from it, ')[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer11moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13];
         }
@@ -2107,9 +2106,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11] + ' ' + commandValue.split(E4)[1].split(' ')[12] + ' ' + commandValue.split(E4)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11] + ' ' + commandValue.split(E4)[1].split(' ')[12] + ' ' + commandValue.split(E4)[1].split(' ')[13];
+            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[7] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11];
         } else if (lang == 4) {
-            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11] + ' ' + commandValue.split(E4)[1].split(' ')[12] + ' ' + commandValue.split(E4)[1].split(' ')[13];
+            return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[4] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[7] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11];
         } else if (lang == 5) {
             return commandValue.split(E4)[1].split(' ')[0] + ' ' + commandValue.split(E4)[1].split(' ')[1] + ' ' + commandValue.split(E4)[1].split(' ')[2] + ' ' + commandValue.split(E4)[1].split(' ')[3] + ' ' + commandValue.split(E4)[1].split(' ')[5] + ' ' + commandValue.split(E4)[1].split(' ')[6] + ' ' + commandValue.split(E4)[1].split(' ')[8] + ' ' + commandValue.split(E4)[1].split(' ')[9] + ' ' + commandValue.split(E4)[1].split(' ')[10] + ' ' + commandValue.split(E4)[1].split(' ')[11] + ' ' + commandValue.split(E4)[1].split(' ')[12] + ' ' + commandValue.split(E4)[1].split(' ')[13];
         }
@@ -2121,9 +2120,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11] + ' ' + commandValue.split(E5)[1].split(' ')[12] + ' ' + commandValue.split(E5)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11] + ' ' + commandValue.split(E5)[1].split(' ')[12] + ' ' + commandValue.split(E5)[1].split(' ')[13];
+            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[7] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11];
         } else if (lang == 4) {
-            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11] + ' ' + commandValue.split(E5)[1].split(' ')[12] + ' ' + commandValue.split(E5)[1].split(' ')[13];
+            return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[4] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[7] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11];
         } else if (lang == 5) {
             return commandValue.split(E5)[1].split(' ')[0] + ' ' + commandValue.split(E5)[1].split(' ')[1] + ' ' + commandValue.split(E5)[1].split(' ')[2] + ' ' + commandValue.split(E5)[1].split(' ')[3] + ' ' + commandValue.split(E5)[1].split(' ')[5] + ' ' + commandValue.split(E5)[1].split(' ')[6] + ' ' + commandValue.split(E5)[1].split(' ')[8] + ' ' + commandValue.split(E5)[1].split(' ')[9] + ' ' + commandValue.split(E5)[1].split(' ')[10] + ' ' + commandValue.split(E5)[1].split(' ')[11] + ' ' + commandValue.split(E5)[1].split(' ')[12] + ' ' + commandValue.split(E5)[1].split(' ')[13];
         }
@@ -2135,9 +2134,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11] + ' ' + commandValue.split(E6)[1].split(' ')[12] + ' ' + commandValue.split(E6)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11] + ' ' + commandValue.split(E6)[1].split(' ')[12] + ' ' + commandValue.split(E6)[1].split(' ')[13];
+            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[7] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11];
         } else if (lang == 4) {
-            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11] + ' ' + commandValue.split(E6)[1].split(' ')[12] + ' ' + commandValue.split(E6)[1].split(' ')[13];
+            return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[4] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[7] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11];
         } else if (lang == 5) {
             return commandValue.split(E6)[1].split(' ')[0] + ' ' + commandValue.split(E6)[1].split(' ')[1] + ' ' + commandValue.split(E6)[1].split(' ')[2] + ' ' + commandValue.split(E6)[1].split(' ')[3] + ' ' + commandValue.split(E6)[1].split(' ')[5] + ' ' + commandValue.split(E6)[1].split(' ')[6] + ' ' + commandValue.split(E6)[1].split(' ')[8] + ' ' + commandValue.split(E6)[1].split(' ')[9] + ' ' + commandValue.split(E6)[1].split(' ')[10] + ' ' + commandValue.split(E6)[1].split(' ')[11] + ' ' + commandValue.split(E6)[1].split(' ')[12] + ' ' + commandValue.split(E6)[1].split(' ')[13];
         }
@@ -2149,9 +2148,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11] + ' ' + commandValue.split(E7)[1].split(' ')[12] + ' ' + commandValue.split(E7)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11] + ' ' + commandValue.split(E7)[1].split(' ')[12] + ' ' + commandValue.split(E7)[1].split(' ')[13];
+            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[7] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11];
         } else if (lang == 4) {
-            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11] + ' ' + commandValue.split(E7)[1].split(' ')[12] + ' ' + commandValue.split(E7)[1].split(' ')[13];
+            return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[4] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[7] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11];
         } else if (lang == 5) {
             return commandValue.split(E7)[1].split(' ')[0] + ' ' + commandValue.split(E7)[1].split(' ')[1] + ' ' + commandValue.split(E7)[1].split(' ')[2] + ' ' + commandValue.split(E7)[1].split(' ')[3] + ' ' + commandValue.split(E7)[1].split(' ')[5] + ' ' + commandValue.split(E7)[1].split(' ')[6] + ' ' + commandValue.split(E7)[1].split(' ')[8] + ' ' + commandValue.split(E7)[1].split(' ')[9] + ' ' + commandValue.split(E7)[1].split(' ')[10] + ' ' + commandValue.split(E7)[1].split(' ')[11] + ' ' + commandValue.split(E7)[1].split(' ')[12] + ' ' + commandValue.split(E7)[1].split(' ')[13];
         }
@@ -2163,9 +2162,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11] + ' ' + commandValue.split(E8)[1].split(' ')[12] + ' ' + commandValue.split(E8)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11] + ' ' + commandValue.split(E8)[1].split(' ')[12] + ' ' + commandValue.split(E8)[1].split(' ')[13];
+            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[7] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11];
         } else if (lang == 4) {
-            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11] + ' ' + commandValue.split(E8)[1].split(' ')[12] + ' ' + commandValue.split(E8)[1].split(' ')[13];
+            return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[4] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[7] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11];
         } else if (lang == 5) {
             return commandValue.split(E8)[1].split(' ')[0] + ' ' + commandValue.split(E8)[1].split(' ')[1] + ' ' + commandValue.split(E8)[1].split(' ')[2] + ' ' + commandValue.split(E8)[1].split(' ')[3] + ' ' + commandValue.split(E8)[1].split(' ')[5] + ' ' + commandValue.split(E8)[1].split(' ')[6] + ' ' + commandValue.split(E8)[1].split(' ')[8] + ' ' + commandValue.split(E8)[1].split(' ')[9] + ' ' + commandValue.split(E8)[1].split(' ')[10] + ' ' + commandValue.split(E8)[1].split(' ')[11] + ' ' + commandValue.split(E8)[1].split(' ')[12] + ' ' + commandValue.split(E8)[1].split(' ')[13];
         }
@@ -2177,9 +2176,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11] + ' ' + commandValue.split(E9)[1].split(' ')[12] + ' ' + commandValue.split(E9)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11] + ' ' + commandValue.split(E9)[1].split(' ')[12] + ' ' + commandValue.split(E9)[1].split(' ')[13];
+            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[7] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11];
         } else if (lang == 4) {
-            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11] + ' ' + commandValue.split(E9)[1].split(' ')[12] + ' ' + commandValue.split(E9)[1].split(' ')[13];
+            return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[4] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[7] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11];
         } else if (lang == 5) {
             return commandValue.split(E9)[1].split(' ')[0] + ' ' + commandValue.split(E9)[1].split(' ')[1] + ' ' + commandValue.split(E9)[1].split(' ')[2] + ' ' + commandValue.split(E9)[1].split(' ')[3] + ' ' + commandValue.split(E9)[1].split(' ')[5] + ' ' + commandValue.split(E9)[1].split(' ')[6] + ' ' + commandValue.split(E9)[1].split(' ')[8] + ' ' + commandValue.split(E9)[1].split(' ')[9] + ' ' + commandValue.split(E9)[1].split(' ')[10] + ' ' + commandValue.split(E9)[1].split(' ')[11] + ' ' + commandValue.split(E9)[1].split(' ')[12] + ' ' + commandValue.split(E9)[1].split(' ')[13];
         }
@@ -2191,9 +2190,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11] + ' ' + commandValue.split(E10)[1].split(' ')[12] + ' ' + commandValue.split(E10)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11] + ' ' + commandValue.split(E10)[1].split(' ')[12] + ' ' + commandValue.split(E10)[1].split(' ')[13];
+            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[7] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11];
         } else if (lang == 4) {
-            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11] + ' ' + commandValue.split(E10)[1].split(' ')[12] + ' ' + commandValue.split(E10)[1].split(' ')[13];
+            return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[4] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[7] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11];
         } else if (lang == 5) {
             return commandValue.split(E10)[1].split(' ')[0] + ' ' + commandValue.split(E10)[1].split(' ')[1] + ' ' + commandValue.split(E10)[1].split(' ')[2] + ' ' + commandValue.split(E10)[1].split(' ')[3] + ' ' + commandValue.split(E10)[1].split(' ')[5] + ' ' + commandValue.split(E10)[1].split(' ')[6] + ' ' + commandValue.split(E10)[1].split(' ')[8] + ' ' + commandValue.split(E10)[1].split(' ')[9] + ' ' + commandValue.split(E10)[1].split(' ')[10] + ' ' + commandValue.split(E10)[1].split(' ')[11] + ' ' + commandValue.split(E10)[1].split(' ')[12] + ' ' + commandValue.split(E10)[1].split(' ')[13];
         }
@@ -2205,9 +2204,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11] + ' ' + commandValue.split(E11)[1].split(' ')[12] + ' ' + commandValue.split(E11)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11] + ' ' + commandValue.split(E11)[1].split(' ')[12] + ' ' + commandValue.split(E11)[1].split(' ')[13];
+            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[7] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11];
         } else if (lang == 4) {
-            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11] + ' ' + commandValue.split(E11)[1].split(' ')[12] + ' ' + commandValue.split(E11)[1].split(' ')[13];
+            return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[4] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[7] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11];
         } else if (lang == 5) {
             return commandValue.split(E11)[1].split(' ')[0] + ' ' + commandValue.split(E11)[1].split(' ')[1] + ' ' + commandValue.split(E11)[1].split(' ')[2] + ' ' + commandValue.split(E11)[1].split(' ')[3] + ' ' + commandValue.split(E11)[1].split(' ')[5] + ' ' + commandValue.split(E11)[1].split(' ')[6] + ' ' + commandValue.split(E11)[1].split(' ')[8] + ' ' + commandValue.split(E11)[1].split(' ')[9] + ' ' + commandValue.split(E11)[1].split(' ')[10] + ' ' + commandValue.split(E11)[1].split(' ')[11] + ' ' + commandValue.split(E11)[1].split(' ')[12] + ' ' + commandValue.split(E11)[1].split(' ')[13];
         }
@@ -2219,9 +2218,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11] + ' ' + commandValue.split(E12)[1].split(' ')[12] + ' ' + commandValue.split(E12)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11] + ' ' + commandValue.split(E12)[1].split(' ')[12] + ' ' + commandValue.split(E12)[1].split(' ')[13];
+            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[7] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11];
         } else if (lang == 4) {
-            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11] + ' ' + commandValue.split(E12)[1].split(' ')[12] + ' ' + commandValue.split(E12)[1].split(' ')[13];
+            return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[4] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[7] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11];
         } else if (lang == 5) {
             return commandValue.split(E12)[1].split(' ')[0] + ' ' + commandValue.split(E12)[1].split(' ')[1] + ' ' + commandValue.split(E12)[1].split(' ')[2] + ' ' + commandValue.split(E12)[1].split(' ')[3] + ' ' + commandValue.split(E12)[1].split(' ')[5] + ' ' + commandValue.split(E12)[1].split(' ')[6] + ' ' + commandValue.split(E12)[1].split(' ')[8] + ' ' + commandValue.split(E12)[1].split(' ')[9] + ' ' + commandValue.split(E12)[1].split(' ')[10] + ' ' + commandValue.split(E12)[1].split(' ')[11] + ' ' + commandValue.split(E12)[1].split(' ')[12] + ' ' + commandValue.split(E12)[1].split(' ')[13];
         }
@@ -2233,9 +2232,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11] + ' ' + commandValue.split(E13)[1].split(' ')[12] + ' ' + commandValue.split(E13)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11] + ' ' + commandValue.split(E13)[1].split(' ')[12] + ' ' + commandValue.split(E13)[1].split(' ')[13];
+            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[7] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11];
         } else if (lang == 4) {
-            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11] + ' ' + commandValue.split(E13)[1].split(' ')[12] + ' ' + commandValue.split(E13)[1].split(' ')[13];
+            return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[4] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[7] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11];
         } else if (lang == 5) {
             return commandValue.split(E13)[1].split(' ')[0] + ' ' + commandValue.split(E13)[1].split(' ')[1] + ' ' + commandValue.split(E13)[1].split(' ')[2] + ' ' + commandValue.split(E13)[1].split(' ')[3] + ' ' + commandValue.split(E13)[1].split(' ')[5] + ' ' + commandValue.split(E13)[1].split(' ')[6] + ' ' + commandValue.split(E13)[1].split(' ')[8] + ' ' + commandValue.split(E13)[1].split(' ')[9] + ' ' + commandValue.split(E13)[1].split(' ')[10] + ' ' + commandValue.split(E13)[1].split(' ')[11] + ' ' + commandValue.split(E13)[1].split(' ')[12] + ' ' + commandValue.split(E13)[1].split(' ')[13];
         }
@@ -2247,9 +2246,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11] + ' ' + commandValue.split(E14)[1].split(' ')[12] + ' ' + commandValue.split(E14)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11] + ' ' + commandValue.split(E14)[1].split(' ')[12] + ' ' + commandValue.split(E14)[1].split(' ')[13];
+            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[7] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11];
         } else if (lang == 4) {
-            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11] + ' ' + commandValue.split(E14)[1].split(' ')[12] + ' ' + commandValue.split(E14)[1].split(' ')[13];
+            return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[4] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[7] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11];
         } else if (lang == 5) {
             return commandValue.split(E14)[1].split(' ')[0] + ' ' + commandValue.split(E14)[1].split(' ')[1] + ' ' + commandValue.split(E14)[1].split(' ')[2] + ' ' + commandValue.split(E14)[1].split(' ')[3] + ' ' + commandValue.split(E14)[1].split(' ')[5] + ' ' + commandValue.split(E14)[1].split(' ')[6] + ' ' + commandValue.split(E14)[1].split(' ')[8] + ' ' + commandValue.split(E14)[1].split(' ')[9] + ' ' + commandValue.split(E14)[1].split(' ')[10] + ' ' + commandValue.split(E14)[1].split(' ')[11] + ' ' + commandValue.split(E14)[1].split(' ')[12] + ' ' + commandValue.split(E14)[1].split(' ')[13];
         }
@@ -2261,9 +2260,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11] + ' ' + commandValue.split(E15)[1].split(' ')[12] + ' ' + commandValue.split(E15)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11] + ' ' + commandValue.split(E15)[1].split(' ')[12] + ' ' + commandValue.split(E15)[1].split(' ')[13];
+            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[7] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11];
         } else if (lang == 4) {
-            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11] + ' ' + commandValue.split(E15)[1].split(' ')[12] + ' ' + commandValue.split(E15)[1].split(' ')[13];
+            return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[4] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[7] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11];
         } else if (lang == 5) {
             return commandValue.split(E15)[1].split(' ')[0] + ' ' + commandValue.split(E15)[1].split(' ')[1] + ' ' + commandValue.split(E15)[1].split(' ')[2] + ' ' + commandValue.split(E15)[1].split(' ')[3] + ' ' + commandValue.split(E15)[1].split(' ')[5] + ' ' + commandValue.split(E15)[1].split(' ')[6] + ' ' + commandValue.split(E15)[1].split(' ')[8] + ' ' + commandValue.split(E15)[1].split(' ')[9] + ' ' + commandValue.split(E15)[1].split(' ')[10] + ' ' + commandValue.split(E15)[1].split(' ')[11] + ' ' + commandValue.split(E15)[1].split(' ')[12] + ' ' + commandValue.split(E15)[1].split(' ')[13];
         }
@@ -2275,9 +2274,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13];
+            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[7] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11];
         } else if (lang == 4) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13];
+            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[4] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[7] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11];
         } else if (lang == 5) {
             return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13];
         }
@@ -2569,9 +2568,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return 'aller à la base de données la branche et ensuite obtenir la valeur de la fente';
         } else if (lang == 3) {
-            return 'aller à la base de données la branche et ensuite obtenir la valeur de la fente';
+            return 'اذهب إلى قاعدة البيانات الفرع ثم قم بالحصول على قيمة الشريحة';
         } else if (lang == 4) {
-            return 'aller à la base de données la branche et ensuite obtenir la valeur de la fente';
+            return 'روح لقاعدة البيانات الفرع و بعد كدة هات قيمة الشريحة';
         } else if (lang == 5) {
             return 'aller à la base de données la branche et ensuite obtenir la valeur de la fente';
         }
@@ -2611,9 +2610,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('obtenir la valeur de la fente ')[1].split(' ')[0];
         } else if (lang == 3) {
-            return commandValue.split('obtenir la valeur de la fente ')[1].split(' ')[0];
+            return commandValue.split('قم بالحصول على قيمة الشريحة ')[1].split(' ')[0];
         } else if (lang == 4) {
-            return commandValue.split('obtenir la valeur de la fente ')[1].split(' ')[0];
+            return commandValue.split('هات قيمة الشريحة ')[1].split(' ')[0];
         } else if (lang == 5) {
             return commandValue.split('obtenir la valeur de la fente ')[1].split(' ')[0];
         }
@@ -2625,9 +2624,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value ')[1].split(' in the slot ' + para4 + '')[0];
         } else if (lang == 3) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value ')[1].split(' in the slot ' + para4 + '')[0];
+            return commandValue.split('اذهب إلى قاعدة البيانات ' + para1 + ' الفرع ' + para2 + ' ثم قم بالحصول على قيمة الشريحة ' + para3 + ' which has the same class of the value ')[1].split(' in the slot ' + para4 + '')[0];
         } else if (lang == 4) {
-            return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value ')[1].split(' in the slot ' + para4 + '')[0];
+            return commandValue.split('روح لقاعدة البيانات ' + para1 + ' الفرع ' + para2 + 'و بعد كدة هات قيمة الشريحة ' + para3 + ' which has the same class of the value ')[1].split(' in the slot ' + para4 + '')[0];
         } else if (lang == 5) {
             return commandValue.split('aller à la base de données ' + para1 + ' la branche ' + para2 + ' and then get the value of the slot ' + para3 + ' which has the same class of the value ')[1].split(' in the slot ' + para4 + '')[0];
         }
@@ -2639,9 +2638,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split('définissez-le comme valeur de ')[1];
         } else if (lang == 3) {
-            return commandValue.split('définissez-le comme valeur de ')[1];
+            return commandValue.split('و اجعلها قيمة ')[1];
         } else if (lang == 4) {
-            return commandValue.split('définissez-le comme valeur de ')[1];
+            return commandValue.split('و خليها قيمة ')[1];
         } else if (lang == 5) {
             return commandValue.split('définissez-le comme valeur de ')[1];
         }
@@ -2946,12 +2945,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c2qA', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
                     $('#' + elementName + '').click(function () {
-                        $('#' + targetElement + '').play();
+                        document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qA', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
                     $('#' + elementName + '').click(function () {
-                        $('#' + targetElement + '').pause();
+                        document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qA', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
@@ -2962,7 +2961,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').click(function () {
-                            $('#' + targetName + '').val(newVal);
+                            $('#' + elementName + '').val(newVal);
                         });
                     }
                 } else if (commandsFnTranslations('c13qA', commands[commandID]) == commandsFnTranslations('c13r')) {
@@ -2983,12 +2982,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
                         $('#' + elementName + '').click(function () {
-                            $('#' + targetElement + '').currentTime = $('#' + resource + '').val();
+                            document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').click(function () {
-                            $('#' + targetElement + '').currentTime = newTimePosition;
+                            document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
                 } else if (commandsFnTranslations('c23qA', commands[commandID]) == commandsFnTranslations('c23r')) {
@@ -3042,12 +3041,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c2qB', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
                     $('#' + elementName + '').mouseenter(function () {
-                        $('#' + targetElement + '').play();
+                        document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qB', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
                     $('#' + elementName + '').mouseenter(function () {
-                        $('#' + targetElement + '').pause();
+                        document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qB', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
@@ -3058,7 +3057,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').mouseenter(function () {
-                            $('#' + targetName + '').val(newVal);
+                            $('#' + elementName + '').val(newVal);
                         });
                     }
                 } else if (commandsFnTranslations('c13qB', commands[commandID]) == commandsFnTranslations('c13r')) {
@@ -3079,12 +3078,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
                         $('#' + elementName + '').mouseenter(function () {
-                            $('#' + targetElement + '').currentTime = $('#' + resource + '').val();
+                            document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').mouseenter(function () {
-                            $('#' + targetElement + '').currentTime = newTimePosition;
+                            document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
                 } else if (commandsFnTranslations('c23qB', commands[commandID]) == commandsFnTranslations('c23r')) {
@@ -3138,12 +3137,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c2qC', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
                     $('#' + elementName + '').mouseleave(function () {
-                        $('#' + targetElement + '').play();
+                        document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qC', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
                     $('#' + elementName + '').mouseleave(function () {
-                        $('#' + targetElement + '').pause();
+                        document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qC', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
@@ -3154,7 +3153,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').mouseleave(function () {
-                            $('#' + targetName + '').val(newVal);
+                            $('#' + elementName + '').val(newVal);
                         });
                     }
                 } else if (commandsFnTranslations('c13qC', commands[commandID]) == commandsFnTranslations('c13r')) {
@@ -3175,12 +3174,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
                         $('#' + elementName + '').mouseleave(function () {
-                            $('#' + targetElement + '').currentTime = $('#' + resource + '').val();
+                            document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').mouseleave(function () {
-                            $('#' + targetElement + '').currentTime = newTimePosition;
+                            document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
                 } else if (commandsFnTranslations('c23qC', commands[commandID]) == commandsFnTranslations('c23r')) {
@@ -3234,12 +3233,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c2qD', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
                     $('#' + elementName + '').mouseout(function () {
-                        $('#' + targetElement + '').play();
+                        document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qD', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
                     $('#' + elementName + '').mouseout(function () {
-                        $('#' + targetElement + '').pause();
+                        document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qD', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
@@ -3250,7 +3249,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').mouseout(function () {
-                            $('#' + targetName + '').val(newVal);
+                            $('#' + elementName + '').val(newVal);
                         });
                     }
                 } else if (commandsFnTranslations('c13qD', commands[commandID]) == commandsFnTranslations('c13r')) {
@@ -3271,12 +3270,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
                         $('#' + elementName + '').mouseout(function () {
-                            $('#' + targetElement + '').currentTime = $('#' + resource + '').val();
+                            document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').mouseout(function () {
-                            $('#' + targetElement + '').currentTime = newTimePosition;
+                            document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
                 } else if (commandsFnTranslations('c23qD', commands[commandID]) == commandsFnTranslations('c23r')) {
@@ -3330,12 +3329,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c2qE', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
                     $('#' + elementName + '').mousemove(function () {
-                        $('#' + targetElement + '').play();
+                        document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qE', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
                     $('#' + elementName + '').mousemove(function () {
-                        $('#' + targetElement + '').pause();
+                        document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qE', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
@@ -3346,7 +3345,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').mousemove(function () {
-                            $('#' + targetName + '').val(newVal);
+                            $('#' + elementName + '').val(newVal);
                         });
                     }
                 } else if (commandsFnTranslations('c13qE', commands[commandID]) == commandsFnTranslations('c13r')) {
@@ -3367,12 +3366,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
                         $('#' + elementName + '').mousemove(function () {
-                            $('#' + targetElement + '').currentTime = $('#' + resource + '').val();
+                            document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').mousemove(function () {
-                            $('#' + targetElement + '').currentTime = newTimePosition;
+                            document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
                 } else if (commandsFnTranslations('c23qE', commands[commandID]) == commandsFnTranslations('c23r')) {
@@ -3426,12 +3425,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c2qF', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
                     $('#' + elementName + '').mouseup(function () {
-                        $('#' + targetElement + '').play();
+                        document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qF', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
                     $('#' + elementName + '').mouseup(function () {
-                        $('#' + targetElement + '').pause();
+                        document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qF', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
@@ -3442,7 +3441,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').mouseup(function () {
-                            $('#' + targetName + '').val(newVal);
+                            $('#' + elementName + '').val(newVal);
                         });
                     }
                 } else if (commandsFnTranslations('c13qF', commands[commandID]) == commandsFnTranslations('c13r')) {
@@ -3463,12 +3462,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
                         $('#' + elementName + '').mouseup(function () {
-                            $('#' + targetElement + '').currentTime = $('#' + resource + '').val();
+                            document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').mouseup(function () {
-                            $('#' + targetElement + '').currentTime = newTimePosition;
+                            document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
                 } else if (commandsFnTranslations('c23qF', commands[commandID]) == commandsFnTranslations('c23r')) {
@@ -3522,12 +3521,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c2qG', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
                     $('#' + elementName + '').dblclick(function () {
-                        $('#' + targetElement + '').play();
+                        document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qG', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
                     $('#' + elementName + '').dblclick(function () {
-                        $('#' + targetElement + '').pause();
+                        document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qG', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
@@ -3538,7 +3537,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').dblclick(function () {
-                            $('#' + targetName + '').val(newVal);
+                            $('#' + elementName + '').val(newVal);
                         });
                     }
                 } else if (commandsFnTranslations('c13qG', commands[commandID]) == commandsFnTranslations('c13r')) {
@@ -3559,12 +3558,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
                         $('#' + elementName + '').dblclick(function () {
-                            $('#' + targetElement + '').currentTime = $('#' + resource + '').val();
+                            document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').dblclick(function () {
-                            $('#' + targetElement + '').currentTime = newTimePosition;
+                            document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
                 } else if (commandsFnTranslations('c23qG', commands[commandID]) == commandsFnTranslations('c23r')) {
@@ -3618,12 +3617,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c2qH', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
                     $('#' + elementName + '').contextmenu(function () {
-                        $('#' + targetElement + '').play();
+                        document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qH', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
                     $('#' + elementName + '').contextmenu(function () {
-                        $('#' + targetElement + '').pause();
+                        document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qH', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
@@ -3634,7 +3633,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').contextmenu(function () {
-                            $('#' + targetName + '').val(newVal);
+                            $('#' + elementName + '').val(newVal);
                         });
                     }
                 } else if (commandsFnTranslations('c13qH', commands[commandID]) == commandsFnTranslations('c13r')) {
@@ -3655,12 +3654,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
                         $('#' + elementName + '').contextmenu(function () {
-                            $('#' + targetElement + '').currentTime = $('#' + resource + '').val();
+                            document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').contextmenu(function () {
-                            $('#' + targetElement + '').currentTime = newTimePosition;
+                            document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
                 } else if (commandsFnTranslations('c23qH', commands[commandID]) == commandsFnTranslations('c23r')) {
@@ -3714,12 +3713,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c2qI', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
                     $('#' + elementName + '').keypress(function () {
-                        $('#' + targetElement + '').play();
+                        document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qI', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
                     $('#' + elementName + '').keypress(function () {
-                        $('#' + targetElement + '').pause();
+                        document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qI', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
@@ -3730,7 +3729,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').keypress(function () {
-                            $('#' + targetName + '').val(newVal);
+                            $('#' + elementName + '').val(newVal);
                         });
                     }
                 } else if (commandsFnTranslations('c13qI', commands[commandID]) == commandsFnTranslations('c13r')) {
@@ -3751,12 +3750,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
                         $('#' + elementName + '').keypress(function () {
-                            $('#' + targetElement + '').currentTime = $('#' + resource + '').val();
+                            document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').keypress(function () {
-                            $('#' + targetElement + '').currentTime = newTimePosition;
+                            document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
                 } else if (commandsFnTranslations('c23qI', commands[commandID]) == commandsFnTranslations('c23r')) {
@@ -3810,12 +3809,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c2qJ', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
                     $('#' + elementName + '').keydown(function () {
-                        $('#' + targetElement + '').play();
+                        document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qJ', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
                     $('#' + elementName + '').keydown(function () {
-                        $('#' + targetElement + '').pause();
+                        document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qJ', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
@@ -3826,7 +3825,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').keydown(function () {
-                            $('#' + targetName + '').val(newVal);
+                            $('#' + elementName + '').val(newVal);
                         });
                     }
                 } else if (commandsFnTranslations('c13qJ', commands[commandID]) == commandsFnTranslations('c13r')) {
@@ -3847,12 +3846,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
                         $('#' + elementName + '').keydown(function () {
-                            $('#' + targetElement + '').currentTime = $('#' + resource + '').val();
+                            document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').keydown(function () {
-                            $('#' + targetElement + '').currentTime = newTimePosition;
+                            document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
                 } else if (commandsFnTranslations('c23qJ', commands[commandID]) == commandsFnTranslations('c23r')) {
@@ -3906,12 +3905,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c2qK', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
                     $('#' + elementName + '').change(function () {
-                        $('#' + targetElement + '').play();
+                        document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qK', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
                     $('#' + elementName + '').change(function () {
-                        $('#' + targetElement + '').pause();
+                        document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qK', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
@@ -3922,7 +3921,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').change(function () {
-                            $('#' + targetName + '').val(newVal);
+                            $('#' + elementName + '').val(newVal);
                         });
                     }
                 } else if (commandsFnTranslations('c13qK', commands[commandID]) == commandsFnTranslations('c13r')) {
@@ -3943,12 +3942,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
                         $('#' + elementName + '').change(function () {
-                            $('#' + targetElement + '').currentTime = $('#' + resource + '').val();
+                            document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').change(function () {
-                            $('#' + targetElement + '').currentTime = newTimePosition;
+                            document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
                 } else if (commandsFnTranslations('c23qK', commands[commandID]) == commandsFnTranslations('c23r')) {
@@ -4002,12 +4001,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c2qL', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
                     $('#' + elementName + '').focus(function () {
-                        $('#' + targetElement + '').play();
+                        document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qL', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
                     $('#' + elementName + '').focus(function () {
-                        $('#' + targetElement + '').pause();
+                        document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qL', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
@@ -4018,7 +4017,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').focus(function () {
-                            $('#' + targetName + '').val(newVal);
+                            $('#' + elementName + '').val(newVal);
                         });
                     }
                 } else if (commandsFnTranslations('c13qL', commands[commandID]) == commandsFnTranslations('c13r')) {
@@ -4039,12 +4038,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
                         $('#' + elementName + '').focus(function () {
-                            $('#' + targetElement + '').currentTime = $('#' + resource + '').val();
+                            document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').focus(function () {
-                            $('#' + targetElement + '').currentTime = newTimePosition;
+                            document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
                 } else if (commandsFnTranslations('c23qL', commands[commandID]) == commandsFnTranslations('c23r')) {
@@ -4098,12 +4097,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c2qM', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
                     $('#' + elementName + '').focusin(function () {
-                        $('#' + targetElement + '').play();
+                        document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qM', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
                     $('#' + elementName + '').focusin(function () {
-                        $('#' + targetElement + '').pause();
+                        document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qM', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
@@ -4114,7 +4113,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').focusin(function () {
-                            $('#' + targetName + '').val(newVal);
+                            $('#' + elementName + '').val(newVal);
                         });
                     }
                 } else if (commandsFnTranslations('c13qM', commands[commandID]) == commandsFnTranslations('c13r')) {
@@ -4135,12 +4134,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
                         $('#' + elementName + '').focusin(function () {
-                            $('#' + targetElement + '').currentTime = $('#' + resource + '').val();
+                            document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').focusin(function () {
-                            $('#' + targetElement + '').currentTime = newTimePosition;
+                            document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
                 } else if (commandsFnTranslations('c23qM', commands[commandID]) == commandsFnTranslations('c23r')) {
@@ -4194,12 +4193,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c2qN', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
                     $('#' + elementName + '').focusout(function () {
-                        $('#' + targetElement + '').play();
+                        document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qN', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
                     $('#' + elementName + '').focusout(function () {
-                        $('#' + targetElement + '').pause();
+                        document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qN', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
@@ -4210,7 +4209,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').focusout(function () {
-                            $('#' + targetName + '').val(newVal);
+                            $('#' + elementName + '').val(newVal);
                         });
                     }
                 } else if (commandsFnTranslations('c13qN', commands[commandID]) == commandsFnTranslations('c13r')) {
@@ -4231,12 +4230,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
                         $('#' + elementName + '').focusout(function () {
-                            $('#' + targetElement + '').currentTime = $('#' + resource + '').val();
+                            document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').focusout(function () {
-                            $('#' + targetElement + '').currentTime = newTimePosition;
+                            document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
                 } else if (commandsFnTranslations('c23qN', commands[commandID]) == commandsFnTranslations('c23r')) {
@@ -4290,12 +4289,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c2qO', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
                     $('#' + elementName + '').submit(function () {
-                        $('#' + targetElement + '').play();
+                        document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qO', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
                     $('#' + elementName + '').submit(function () {
-                        $('#' + targetElement + '').pause();
+                        document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qO', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
@@ -4306,7 +4305,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').submit(function () {
-                            $('#' + targetName + '').val(newVal);
+                            $('#' + elementName + '').val(newVal);
                         });
                     }
                 } else if (commandsFnTranslations('c13qO', commands[commandID]) == commandsFnTranslations('c13r')) {
@@ -4327,12 +4326,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
                         $('#' + elementName + '').submit(function () {
-                            $('#' + targetElement + '').currentTime = $('#' + resource + '').val();
+                            document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').submit(function () {
-                            $('#' + targetElement + '').currentTime = newTimePosition;
+                            document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
                 } else if (commandsFnTranslations('c23qO', commands[commandID]) == commandsFnTranslations('c23r')) {
@@ -4386,12 +4385,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c2qP', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
                     $('#' + elementName + '').scroll(function () {
-                        $('#' + targetElement + '').play();
+                        document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qP', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
                     $('#' + elementName + '').scroll(function () {
-                        $('#' + targetElement + '').pause();
+                        document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qP', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
@@ -4402,7 +4401,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').scroll(function () {
-                            $('#' + targetName + '').val(newVal);
+                            $('#' + elementName + '').val(newVal);
                         });
                     }
                 } else if (commandsFnTranslations('c13qP', commands[commandID]) == commandsFnTranslations('c13r')) {
@@ -4423,12 +4422,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
                         $('#' + elementName + '').scroll(function () {
-                            $('#' + targetElement + '').currentTime = $('#' + resource + '').val();
+                            document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').scroll(function () {
-                            $('#' + targetElement + '').currentTime = newTimePosition;
+                            document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
                 } else if (commandsFnTranslations('c23qP', commands[commandID]) == commandsFnTranslations('c23r')) {
@@ -4530,10 +4529,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
-                        var out = '<p id="' + name + '"></p>';
+                        var out = '<div id="' + name + '_container" style="position: absolute;"><p id="' + name + '"></p></div>';
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
-
                         } else {
                             $('contents').append(out);
                         }
@@ -4560,16 +4558,36 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('position', 'relative');
                         }
                         if (settings[distanceFromBottomTranslations[lang]]) {
-                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromTopTranslations[lang]]) {
-                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromLeftTranslations[lang]]) {
-                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromRightTranslations[lang]]) {
-                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
+                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            }
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -4757,14 +4775,14 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [distanceFromRightTranslations[lang]]: null,
                         [positionTranslations[lang]]: null,
                         [containerTranslations[lang]]: null,
+                        [propertiesTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
-                        var out = '<paper-button id="' + name + '"></paper-button>';
+                        var out = '<div id="' + name + '_container" style="position: absolute;"><paper-button id="' + name + '"></paper-button></div>';
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
-
                         } else {
                             $('contents').append(out);
                         }
@@ -4775,14 +4793,17 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[fontStyleTranslations[lang]]) {
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
-                        if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('disabled', '');
-                        }
-                        if (settings[raisedTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('raised', '');
-                        }
-                        if (settings[switchedTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('toggled', '');
+                        if (settings[propertiesTranslations[lang]]) {
+                            var propertiesArray = settings[propertiesTranslations[lang]].split(' &&& ');
+                            for (i = 0; i < propertiesArray.length; i++) {
+                                if (propertiesArray[i] == disabledTranslations[lang]) {
+                                    $('#' + name + '').attr('disabled', '');
+                                } else if (propertiesArray[i] == raisedTranslations[lang]) {
+                                    $('#' + name + '').attr('raised', '');
+                                } else if (propertiesArray[i] == switchedTranslations[lang]) {
+                                    $('#' + name + '').attr('toggled', '');
+                                }
+                            }
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == thickTranslations[lang]) {
@@ -4800,16 +4821,36 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('position', 'relative');
                         }
                         if (settings[distanceFromBottomTranslations[lang]]) {
-                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromTopTranslations[lang]]) {
-                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromLeftTranslations[lang]]) {
-                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromRightTranslations[lang]]) {
-                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
+                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            }
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -4854,10 +4895,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var icon = settings[iconTranslations[lang]];
-                        var out = '<iron-icon id="' + name + '" icon="' + icon + '"></iron-icon>';
+                        var out = '<div id="' + name + '_container" style="position: absolute;"><iron-icon id="' + name + '" icon="' + icon + '"></iron-icon></div>';
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
-
                         } else {
                             $('contents').append(out);
                         }
@@ -4873,16 +4913,36 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('position', 'relative');
                         }
                         if (settings[distanceFromBottomTranslations[lang]]) {
-                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromTopTranslations[lang]]) {
-                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromLeftTranslations[lang]]) {
-                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromRightTranslations[lang]]) {
-                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
+                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            }
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -4927,10 +4987,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var icon = settings[iconTranslations[lang]];
-                        var out = '<paper-icon-button id="' + name + '" icon="' + icon + '"></paper-icon-button>';
+                        var out = '<div id="' + name + '_container" style="position: absolute;"><paper-icon-button id="' + name + '" icon="' + icon + '"></paper-icon-button></div>';
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
-
                         } else {
                             $('contents').append(out);
                         }
@@ -4946,16 +5005,36 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('position', 'relative');
                         }
                         if (settings[distanceFromBottomTranslations[lang]]) {
-                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromTopTranslations[lang]]) {
-                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromLeftTranslations[lang]]) {
-                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromRightTranslations[lang]]) {
-                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
+                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            }
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -5002,10 +5081,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
-                        var out = '<paper-card id="' + name + '"><div id="الحاجات_اللى_جوة_السيكشن" class="card-content"></div></paper-card>';
+                        var out = '<div id="' + name + '_container" style="position: absolute;"><paper-card id="' + name + '"><div id="الحاجات_اللى_جوة_السيكشن" class="card-content"></div></paper-card></div>';
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
-
                         } else {
                             $('contents').append(out);
                         }
@@ -5021,16 +5099,36 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('position', 'relative');
                         }
                         if (settings[distanceFromBottomTranslations[lang]]) {
-                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromTopTranslations[lang]]) {
-                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromLeftTranslations[lang]]) {
-                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromRightTranslations[lang]]) {
-                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
+                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            }
                         }
                         if (settings[widthTranslations[lang]]) {
                             $('#' + name + '').css('width', settings[widthTranslations[lang]]);
@@ -5083,10 +5181,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
-                        var out = '<paper-tooltip id="' + name + '" for="' + settings[emitterTranslations[lang]] + '">' + settings[textTranslations[lang]] + '</paper-tooltip>';
+                        var out = '<div id="' + name + '_container" style="position: absolute;"><paper-tooltip id="' + name + '" for="' + settings[emitterTranslations[lang]] + '">' + settings[textTranslations[lang]] + '</paper-tooltip></div>';
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
-
                         } else {
                             $('contents').append(out);
                         }
@@ -5162,10 +5259,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
-                        var out = '<paper-swatch-picker id="' + name + '" color="{{selectedColor}}"></paper-swatch-picker>';
+                        var out = '<div id="' + name + '_container" style="position: absolute;"><paper-swatch-picker id="' + name + '" color="{{selectedColor}}"></paper-swatch-picker></div>';
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
-
                         } else {
                             $('contents').append(out);
                         }
@@ -5209,18 +5305,18 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [positionTranslations[lang]]: null,
                         [containerTranslations[lang]]: null,
                         [typeTranslations[lang]]: null,
+                        [propertiesTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         if (settings[typeTranslations[lang]] == settings[barTranslations[lang]]) {
-                            var out = '<paper-progress id="' + name + '"></paper-progress>';
+                            var out = '<div id="' + name + '_container" style="position: absolute;"><paper-progress id="' + name + '"></paper-progress></div>';
                         } else if (settings[typeTranslations[lang]] == settings[spinnerTranslations[lang]]) {
-                            var out = '<paper-spinner id="' + name + '"></paper-spinner>';
+                            var out = '<div id="' + name + '_container" style="position: absolute;"><paper-spinner id="' + name + '"></paper-spinner></div>';
                         }
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
-
                         } else {
                             $('contents').append(out);
                         }
@@ -5230,8 +5326,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[backgroundTranslations[lang]]) {
                             setBG(name, settings[backgroundTranslations[lang]]);
                         }
-                        if (settings[loadingTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('active', '');
+                        if (settings[propertiesTranslations[lang]]) {
+                            var propertiesArray = settings[propertiesTranslations[lang]].split(' &&& ');
+                            for (i = 0; i < propertiesArray.length; i++) {
+                                if (propertiesArray[i] == loadingTranslations[lang]) {
+                                    $('#' + name + '').attr('active', '');
+                                }
+                            }
                         }
                         if (settings[widthTranslations[lang]]) {
                             $('#' + name + '').css('width', settings[widthTranslations[lang]]);
@@ -5278,7 +5379,6 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; height: ' + settings[imageLengthTranslations[lang]] + ';"><img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /><div id="showImage_' + name + '_containerA"><p id="' + name + '_imageData" class="imageData"></p><button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + source + '\');"></button></div><div id="showImage_' + name + '_containerB" style="display: none;"><p class="nudesFoundWarningText">Nudes found</p><button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + source + '\');">Continue</button><button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div><div id="showImage_' + name + '_containerC" style="display: none;"><p class="showTheFullContentWarning">Show the full content ?</p><button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></div></div>';
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
-
                         } else {
                             $('contents').append(out);
                         }
@@ -5319,8 +5419,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var settings = $.extend({
                         [titleTranslations[lang]]: null,
                         [sourceTranslations[lang]]: null,
-                        [imageWidthTranslations[lang]]: null,
-                        [imageLengthTranslations[lang]]: null,
+                        [videoWidthTranslations[lang]]: null,
+                        [videoLengthTranslations[lang]]: null,
                         [nameTranslations[lang]]: null,
                         [widthTranslations[lang]]: null,
                         [lengthTranslations[lang]]: null,
@@ -5338,10 +5438,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var source = settings[sourceTranslations[lang]];
-                        var out = '<div style="position: relative; overflow: hidden; width: ' + settings[imageWidthTranslations[lang]] + '; height: ' + settings[imageLengthTranslations[lang]] + ';"><paper-video-controls id="video_' + name + '_controls"><video id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" autoplay /></paper-video-controls><div id="showVideo_' + name + '_containerA"><button id="video_' + name + '_mainButton" class="videoMainButton" onclick="showVideoA(\'' + name + '\', \'' + source + '\');"></button></div><div id="showVideo_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></div></div>';
+                        var out = '<div style="position: relative; overflow: hidden; width: ' + settings[videoWidthTranslations[lang]] + '; height: ' + settings[videoLengthTranslations[lang]] + ';"><paper-video-controls id="video_' + name + '_controls"><video id="' + name + '" width="' + settings[videoWidthTranslations[lang]] + '" height="' + settings[videoLengthTranslations[lang]] + '" src="https://reviaco.os/res/Media/img/blurred.jpg" crossorigin="anonymous" style="-webkit-filter: blur(10px);" preload="auto" /></paper-video-controls><div id="showVideo_' + name + '_containerA"><button id="video_' + name + '_mainButton" class="videoMainButton" onclick="showVideoA(\'' + name + '\', \'' + source + '\');"></button></div><div id="showVideo_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></div></div>';
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
-
                         } else {
                             $('contents').append(out);
                         }
@@ -5406,10 +5505,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
-                        var out = '<paper-badge id="' + name + '" for="' + targetTranslations[lang] + '"></paper-badge>';
+                        var out = '<div id="' + name + '_container" style="position: absolute;"><paper-badge id="' + name + '" for="' + targetTranslations[lang] + '"></paper-badge></div>';
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
-
                         } else {
                             $('contents').append(out);
                         }
@@ -5444,16 +5542,36 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('position', 'relative');
                         }
                         if (settings[distanceFromBottomTranslations[lang]]) {
-                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromTopTranslations[lang]]) {
-                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromLeftTranslations[lang]]) {
-                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromRightTranslations[lang]]) {
-                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
+                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            }
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -5500,14 +5618,14 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [positionTranslations[lang]]: null,
                         [containerTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
+                        [propertiesTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
-                        var out = '<paper-checkbox id="' + name + '">' + text + '</paper-checkbox>';
+                        var out = '<div id="' + name + '_container" style="position: absolute;"><paper-checkbox id="' + name + '">' + text + '</paper-checkbox></div>';
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
-
                         } else {
                             $('contents').append(out);
                         }
@@ -5520,14 +5638,17 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[backgroundTranslations[lang]]) {
                             setBG(name, settings[backgroundTranslations[lang]]);
                         }
-                        if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('disabled', '');
-                        }
-                        if (settings.checked == yesTranslations[lang]) {
-                            $('#' + name + '').attr('checked', '');
-                        }
-                        if (settings[rippleTranslations[lang]]) {
-                            $('#' + name + '').attr('noink', '');
+                        if (settings[propertiesTranslations[lang]]) {
+                            var propertiesArray = settings[propertiesTranslations[lang]].split(' &&& ');
+                            for (i = 0; i < propertiesArray.length; i++) {
+                                if (propertiesArray[i] == disabledTranslations[lang]) {
+                                    $('#' + name + '').attr('disabled', '');
+                                } else if (settings.checked == yesTranslations[lang]) {
+                                    $('#' + name + '').attr('checked', '');
+                                } else if (propertiesArray[i] == rippleTranslations[lang]) {
+                                    $('#' + name + '').attr('noink', '');
+                                }
+                            }
                         }
                         if (settings[descriptionTranslations[lang]]) {
                             $('#' + name + '').append('<span class="subtitle">' + settings[descriptionTranslations[lang]] + '</span>');
@@ -5548,16 +5669,36 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('position', 'relative');
                         }
                         if (settings[distanceFromBottomTranslations[lang]]) {
-                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromTopTranslations[lang]]) {
-                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromLeftTranslations[lang]]) {
-                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromRightTranslations[lang]]) {
-                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
+                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            }
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -5609,7 +5750,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var body = settings[bodyTranslations[lang]].split('&&&');
-                        var out = '<paper-dialog id="' + name + '">';
+                        var out = '<div id="' + name + '_container" style="position: absolute;"><paper-dialog id="' + name + '">';
                         if (settings[titleTranslations[lang]]) {
                             out += '<h2>' + settings[titleTranslations[lang]] + '</h2>';
                         }
@@ -5632,10 +5773,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }
                             out += '</div>';
                         }
-                        out += '</paper-dialog>';
+                        out += '</paper-dialog></div>';
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
-
                         } else {
                             $('contents').append(out);
                         }
@@ -5667,16 +5807,36 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('position', 'relative');
                         }
                         if (settings[distanceFromBottomTranslations[lang]]) {
-                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromTopTranslations[lang]]) {
-                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromLeftTranslations[lang]]) {
-                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromRightTranslations[lang]]) {
-                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
+                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            }
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -5722,11 +5882,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [positionTranslations[lang]]: null,
                         [containerTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
+                        [propertiesTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
-                        var out = '<paper-dropdown-menu id="' + name + '" label="' + settings[titleTranslations[lang]] + '">';
+                        var out = '<div id="' + name + '_container" style="position: absolute;"><paper-dropdown-menu id="' + name + '" label="' + settings[titleTranslations[lang]] + '">';
                         if (settings[itemsTranslations[lang]]) {
                             var items = settings[itemsTranslations[lang]].split(' &&& ');
                             out += '<paper-listbox id="' + name + '-contents" class="dropdown-content" '
@@ -5740,10 +5901,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }
                             out += '</paper-listbox>';
                         }
-                        out += '</paper-dropdown-menu>';
+                        out += '</paper-dropdown-menu></div>';
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
-
                         } else {
                             $('contents').append(out);
                         }
@@ -5753,11 +5913,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[fontStyleTranslations[lang]]) {
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
-                        if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('disabled', '');
-                        }
-                        if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
-                            $('#' + name + '').attr('noink', '');
+                        if (settings[propertiesTranslations[lang]]) {
+                            var propertiesArray = settings[propertiesTranslations[lang]].split(' &&& ');
+                            for (i = 0; i < propertiesArray.length; i++) {
+                                if (propertiesArray[i] == disabledTranslations[lang]) {
+                                    $('#' + name + '').attr('disabled', '');
+                                } else if (propertiesArray[i] == rippleTranslations[lang]) {
+                                    $('#' + name + '').attr('noink', '');
+                                }
+                            }
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == thickTranslations[lang]) {
@@ -5775,16 +5939,36 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('position', 'relative');
                         }
                         if (settings[distanceFromBottomTranslations[lang]]) {
-                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromTopTranslations[lang]]) {
-                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromLeftTranslations[lang]]) {
-                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromRightTranslations[lang]]) {
-                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
+                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            }
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -5835,16 +6019,21 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [positionTranslations[lang]]: null,
                         [containerTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
+                        [propertiesTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
-                        var out = '<paper-fab ';
-                        if (settings.mini == yesTranslations[lang]) {
-                            out += 'mini ';
-                        }
-                        if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            out += 'disabled ';
+                        var out = '<div id="' + name + '_container" style="position: absolute;"><paper-fab ';
+                        if (settings[propertiesTranslations[lang]]) {
+                            var propertiesArray = settings[propertiesTranslations[lang]].split(' &&& ');
+                            for (i = 0; i < propertiesArray.length; i++) {
+                                if (settings.mini == yesTranslations[lang]) {
+                                    out += 'mini ';
+                                } else if (propertiesArray[i] == disabledTranslations[lang]) {
+                                    out += 'disabled ';
+                                }
+                            }
                         }
                         if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
                             out += 'noink ';
@@ -5858,10 +6047,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[descriptionTranslations[lang]]) {
                             out += 'title="' + settings[descriptionTranslations[lang]] + '" ';
                         }
-                        out += 'id="' + name + '"></paper-fab>';
+                        out += 'id="' + name + '"></paper-fab></div>';
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
-
                         } else {
                             $('contents').append(out);
                         }
@@ -5871,8 +6059,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[fontStyleTranslations[lang]]) {
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
-                        if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('disabled', '');
+                        if (settings[propertiesTranslations[lang]]) {
+                            var propertiesArray = settings[propertiesTranslations[lang]].split(' &&& ');
+                            for (i = 0; i < propertiesArray.length; i++) {
+                                if (propertiesArray[i] == disabledTranslations[lang]) {
+                                    $('#' + name + '').attr('disabled', '');
+                                }
+                            }
                         }
                         if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
                             $('#' + name + '').attr('noink', '');
@@ -5893,16 +6086,36 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('position', 'relative');
                         }
                         if (settings[distanceFromBottomTranslations[lang]]) {
-                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromTopTranslations[lang]]) {
-                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromLeftTranslations[lang]]) {
-                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromRightTranslations[lang]]) {
-                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
+                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            }
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -5959,14 +6172,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [positionTranslations[lang]]: null,
                         [containerTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
+                        [propertiesTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         if (settings[dynamicSizeTranslations[lang]] == yesTranslations[lang]) {
-                            var out = '<paper-textarea ';
+                            var out = '<div id="' + name + '_container" style="position: absolute;"><paper-textarea ';
                         } else {
-                            var out = '<paper-input '
+                            var out = '<div id="' + name + '_container" style="position: absolute;"><paper-input '
                         }
                         if (settings[titleTranslations[lang]]) {
                             out += 'label="' + settings[titleTranslations[lang]] + '" ';
@@ -5991,11 +6205,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[minTranslations[lang]]) {
                             out += 'minlength="' + settings[minTranslations[lang]] + '" ';
                         }
-                        if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            out += 'disabled ';
-                        }
-                        if (settings[counterTranslations[lang]] == yesTranslations[lang]) {
-                            out += 'char-counter ';
+                        if (settings[propertiesTranslations[lang]]) {
+                            var propertiesArray = settings[propertiesTranslations[lang]].split(' &&& ');
+                            for (i = 0; i < propertiesArray.length; i++) {
+                                if (propertiesArray[i] == disabledTranslations[lang]) {
+                                    out += 'disabled ';
+                                } else if (propertiesArray[i] == counterTranslations[lang]) {
+                                    out += 'char-counter ';
+                                }
+                            }
                         }
                         if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
                             out += 'noink ';
@@ -6034,9 +6252,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             out += '<paper-icon-button suffix onclick="clearInput()" icon="clear" alt="clear" title="clear"></paper-icon-button>';
                         }
                         if (settings[dynamicSizeTranslations[lang]] == yesTranslations[lang]) {
-                            out += '</paper-textarea>';
+                            out += '</paper-textarea></div>';
                         } else {
-                            out += '</paper-input>'
+                            out += '</paper-input></div>'
                         }
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
@@ -6049,8 +6267,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[fontStyleTranslations[lang]]) {
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
-                        if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('disabled', '');
+                        if (settings[propertiesTranslations[lang]]) {
+                            var propertiesArray = settings[propertiesTranslations[lang]].split(' &&& ');
+                            for (i = 0; i < propertiesArray.length; i++) {
+                                if (propertiesArray[i] == disabledTranslations[lang]) {
+                                    $('#' + name + '').attr('disabled', '');
+                                }
+                            }
                         }
                         if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
                             $('#' + name + '').attr('noink', '');
@@ -6071,16 +6294,36 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('position', 'relative');
                         }
                         if (settings[distanceFromBottomTranslations[lang]]) {
-                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromTopTranslations[lang]]) {
-                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromLeftTranslations[lang]]) {
-                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromRightTranslations[lang]]) {
-                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
+                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            }
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -6103,9 +6346,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 };
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                //--------------------------------------------------------------------Slider------------------------------------------------------------------------------------------------------------------------------------------//
+                //-----------------------------------------------------------------Container------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[sliderTranslations[lang]] = function (options) {
+                $.fn[containerTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [fontColorTranslations[lang]]: null,
@@ -6176,16 +6419,36 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('position', 'relative');
                         }
                         if (settings[distanceFromBottomTranslations[lang]]) {
-                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromTopTranslations[lang]]) {
-                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromLeftTranslations[lang]]) {
-                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromRightTranslations[lang]]) {
-                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
+                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            }
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
@@ -6208,9 +6471,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 };
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                //-----------------------------------------------------------------Container------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------Slider------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[containerTranslations[lang]] = function (options) {
+                $.fn[sliderTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [titleTranslations[lang]]: null,
@@ -6238,6 +6501,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [positionTranslations[lang]]: null,
                         [containerTranslations[lang]]: null,
                         [backgroundTranslations[lang]]: null,
+                        [propertiesTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
@@ -6259,20 +6523,22 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[stepTranslations[lang]]) {
                             out += 'step="' + settings[stepTranslations[lang]] + '" ';
                         }
-                        if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            out += 'disabled ';
-                        }
-                        if (settings[pinTranslations[lang]] == yesTranslations[lang]) {
-                            out += 'pin ';
-                        }
-                        if (settings[valueBoxTranslations[lang]] == yesTranslations[lang]) {
-                            out += 'editable ';
+                        if (settings[propertiesTranslations[lang]]) {
+                            var propertiesArray = settings[propertiesTranslations[lang]].split(' &&& ');
+                            for (i = 0; i < propertiesArray.length; i++) {
+                                if (propertiesArray[i] == disabledTranslations[lang]) {
+                                    out += 'disabled ';
+                                } else if (propertiesArray[i] == pinTranslations[lang]) {
+                                    out += 'pin ';
+                                } else if (propertiesArray[i] == valueBoxTranslations[lang]) {
+                                    out += 'editable ';
+                                }
+                            }
                         }
                         out += 'id="' + name + '">';
                         out += '</paper-slider>'
                         if (settings[containerTranslations[lang]]) {
                             $('contents').append(containerTranslations[lang]);
-
                         } else {
                             $('contents').append(out);
                         }
@@ -6282,11 +6548,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[fontStyleTranslations[lang]]) {
                             $('#' + name + '').css('font-style', settings[fontStyleTranslations[lang]]);
                         }
-                        if (settings[disabledTranslations[lang]] == yesTranslations[lang]) {
-                            $('#' + name + '').attr('disabled', '');
-                        }
-                        if (settings[rippleTranslations[lang]] == noTranslations[lang]) {
-                            $('#' + name + '').attr('noink', '');
+                        if (settings[propertiesTranslations[lang]]) {
+                            var propertiesArray = settings[propertiesTranslations[lang]].split(' &&& ');
+                            for (i = 0; i < propertiesArray.length; i++) {
+                                if (propertiesArray[i] == disabledTranslations[lang]) {
+                                    $('#' + name + '').attr('disabled', '');
+                                } else if (propertiesArray[i] == rippleTranslations[lang]) {
+                                    $('#' + name + '').removeAttr('noink');
+                                }
+                            }
                         }
                         if (settings[thicknessTranslations[lang]]) {
                             if (settings[thicknessTranslations[lang]] == thickTranslations[lang]) {
@@ -6304,16 +6574,36 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').css('position', 'relative');
                         }
                         if (settings[distanceFromBottomTranslations[lang]]) {
-                            $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromTopTranslations[lang]]) {
-                            $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromLeftTranslations[lang]]) {
-                            $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            }
                         }
                         if (settings[distanceFromRightTranslations[lang]]) {
-                            $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
+                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            }
                         }
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);

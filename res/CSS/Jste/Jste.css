@@ -208,3 +208,22 @@
     -webkit-clip-path: ellipse(25% 40% at 50% 50%) !important;
     clip-path: ellipse(25% 40% at 50% 50%) !important;
 }
+
+en-uk {
+    display: none !important;
+}
+en-us {
+    display: none !important;
+}
+fr-fr {
+    display: none !important;
+}
+ar-ar {
+    display: none !important;
+}
+ar-eg {
+    display: none !important;
+}
+ja-ja {
+    display: none !important;
+}
