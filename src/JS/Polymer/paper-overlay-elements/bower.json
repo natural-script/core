@@ -1,0 +1,16 @@
+{
+  "name": "paper-overlay-elements",
+  "authors": [
+    "The Polymer Authors"
+  ],
+  "keywords": [
+    "element-collection"
+  ],
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "dependencies": {
+    "paper-dialog": "PolymerElements/paper-dialog#*",
+    "paper-dialog-behavior": "PolymerElements/paper-dialog-behavior#*",
+    "paper-dialog-scrollable": "PolymerElements/paper-dialog-scrollable#*",
+    "paper-fab": "PolymerElements/paper-fab#*"
+  }
+}

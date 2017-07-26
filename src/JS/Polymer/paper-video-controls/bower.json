@@ -1,0 +1,19 @@
+{
+  "name": "paper-video-controls",
+  "description": "A video container element that will provide material design controls for the video.",
+  "main": "paper-video-controls.html",
+  "keywords": [
+    "web-components"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "paper-slider": "Inrego/paper-slider#^1.0.13",
+    "paper-material": "PolymerElements/paper-material#^1.0.6"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}

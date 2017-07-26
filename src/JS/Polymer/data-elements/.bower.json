@@ -1,0 +1,28 @@
+{
+  "name": "data-elements",
+  "authors": [
+    "The Polymer Authors"
+  ],
+  "keywords": [
+    "element-collection"
+  ],
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "dependencies": {
+    "app-pouchdb": "PolymerElements/app-pouchdb",
+    "app-storage": "PolymerElements/app-storage",
+    "iron-ajax": "PolymerElements/iron-ajax",
+    "iron-jsonp-library": "PolymerElements/iron-jsonp-library",
+    "polymerfire": "firebase/polymerfire"
+  },
+  "homepage": "https://github.com/PolymerElements/data-elements",
+  "_release": "bf63480e7e",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "bf63480e7e9ba7a997e0dea6cb0bc9bc9c2473f2"
+  },
+  "_source": "https://github.com/PolymerElements/data-elements.git",
+  "_target": "*",
+  "_originalSource": "PolymerElements/data-elements",
+  "_direct": true
+}

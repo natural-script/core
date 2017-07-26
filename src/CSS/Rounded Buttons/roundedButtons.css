@@ -1,0 +1,226 @@
+@font-face {
+	font-family: "Flaticon";
+	src: url("flaticon.eot");
+	src: url("flaticon.eot#iefix") format("embedded-opentype"),
+	url("flaticon.woff") format("woff"),
+	url("flaticon.ttf") format("truetype"),
+	url("flaticon.svg") format("svg");
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+	font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}.flaticon-add130:before {
+	content: "\e000";
+}
+.flaticon-arroba14:before {
+	content: "\e001";
+}
+.flaticon-arrow589:before {
+	content: "\e002";
+}
+.flaticon-arrow590:before {
+	content: "\e003";
+}
+.flaticon-attach6:before {
+	content: "\e004";
+}
+.flaticon-book183:before {
+	content: "\e005";
+}
+.flaticon-bookmark25:before {
+	content: "\e006";
+}
+.flaticon-cellphone53:before {
+	content: "\e007";
+}
+.flaticon-chat47:before {
+	content: "\e008";
+}
+.flaticon-checkmark11:before {
+	content: "\e009";
+}
+.flaticon-circular206:before {
+	content: "\e00a";
+}
+.flaticon-circular208:before {
+	content: "\e00b";
+}
+.flaticon-close38:before {
+	content: "\e00c";
+}
+.flaticon-cloud244:before {
+	content: "\e00d";
+}
+.flaticon-coffee54:before {
+	content: "\e00e";
+}
+.flaticon-compass77:before {
+	content: "\e00f";
+}
+.flaticon-contrast20:before {
+	content: "\e010";
+}
+.flaticon-copy17:before {
+	content: "\e011";
+}
+.flaticon-copy19:before {
+	content: "\e012";
+}
+.flaticon-drawer8:before {
+	content: "\e013";
+}
+.flaticon-edit40:before {
+	content: "\e014";
+}
+.flaticon-equalization1:before {
+	content: "\e015";
+}
+.flaticon-fast31:before {
+	content: "\e016";
+}
+.flaticon-favorites1:before {
+	content: "\e017";
+}
+.flaticon-flash21:before {
+	content: "\e018";
+}
+.flaticon-folder161:before {
+	content: "\e019";
+}
+.flaticon-geolocalization2:before {
+	content: "\e01a";
+}
+.flaticon-gps18:before {
+	content: "\e01b";
+}
+.flaticon-gps20:before {
+	content: "\e01c";
+}
+.flaticon-headphones27:before {
+	content: "\e01d";
+}
+.flaticon-infinite6:before {
+	content: "\e01e";
+}
+.flaticon-left140:before {
+	content: "\e01f";
+}
+.flaticon-lifeguard2:before {
+	content: "\e020";
+}
+.flaticon-line42:before {
+	content: "\e021";
+}
+.flaticon-magnifier31:before {
+	content: "\e022";
+}
+.flaticon-menu37:before {
+	content: "\e023";
+}
+.flaticon-microphone73:before {
+	content: "\e024";
+}
+.flaticon-minus73:before {
+	content: "\e025";
+}
+.flaticon-monitor66:before {
+	content: "\e026";
+}
+.flaticon-monitor68:before {
+	content: "\e027";
+}
+.flaticon-mouse42:before {
+	content: "\e028";
+}
+.flaticon-move24:before {
+	content: "\e029";
+}
+.flaticon-musical94:before {
+	content: "\e02a";
+}
+.flaticon-new69:before {
+	content: "\e02b";
+}
+.flaticon-numeral4:before {
+	content: "\e02c";
+}
+.flaticon-pause33:before {
+	content: "\e02d";
+}
+.flaticon-pencil78:before {
+	content: "\e02e";
+}
+.flaticon-phone342:before {
+	content: "\e02f";
+}
+.flaticon-photo167:before {
+	content: "\e030";
+}
+.flaticon-play74:before {
+	content: "\e031";
+}
+.flaticon-power94:before {
+	content: "\e032";
+}
+.flaticon-print30:before {
+	content: "\e033";
+}
+.flaticon-projector6:before {
+	content: "\e034";
+}
+.flaticon-radio45:before {
+	content: "\e035";
+}
+.flaticon-rewind34:before {
+	content: "\e036";
+}
+.flaticon-right131:before {
+	content: "\e037";
+}
+.flaticon-share24:before {
+	content: "\e038";
+}
+.flaticon-shower11:before {
+	content: "\e039";
+}
+.flaticon-speaker72:before {
+	content: "\e03a";
+}
+.flaticon-statistics7:before {
+	content: "\e03b";
+}
+.flaticon-tablet77:before {
+	content: "\e03c";
+}
+.flaticon-trash55:before {
+	content: "\e03d";
+}
+.flaticon-tray13:before {
+	content: "\e03e";
+}
+.flaticon-two290:before {
+	content: "\e03f";
+}
+.flaticon-two292:before {
+	content: "\e040";
+}
+.flaticon-upload80:before {
+	content: "\e041";
+}
+.flaticon-visible4:before {
+	content: "\e042";
+}
+.flaticon-wallet23:before {
+	content: "\e043";
+}
+.flaticon-webcam7:before {
+	content: "\e044";
+}
+.flaticon-weekly12:before {
+	content: "\e045";
+}

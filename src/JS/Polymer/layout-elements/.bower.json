@@ -1,0 +1,31 @@
+{
+  "name": "layout-elements",
+  "authors": [
+    "The Polymer Authors"
+  ],
+  "keywords": [
+    "element-collection"
+  ],
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "dependencies": {
+    "app-layout": "PolymerElements/app-layout",
+    "iron-collapse": "PolymerElements/iron-collapse",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout",
+    "iron-fit-behavior": "PolymerElements/iron-fit-behavior",
+    "iron-list": "PolymerElements/iron-list",
+    "iron-media-query": "PolymerElements/iron-media-query",
+    "iron-overlay-behavior": "PolymerElements/iron-overlay-behavior",
+    "iron-swipeable-container": "PolymerElements/iron-swipeable-container"
+  },
+  "homepage": "https://github.com/PolymerElements/layout-elements",
+  "_release": "2d840ab79c",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "2d840ab79cb5393ac6e0c164dc58429bd5c6a863"
+  },
+  "_source": "https://github.com/PolymerElements/layout-elements.git",
+  "_target": "*",
+  "_originalSource": "PolymerElements/layout-elements",
+  "_direct": true
+}
