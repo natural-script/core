@@ -7,25 +7,31 @@ gold-cc-input.html
 Edit those files, and our readme bot will duplicate them over here!
 Edit this file, and the bot will squash your changes :)
 
+The bot does some handling of markdown. Please file a bug if it does the wrong
+thing! https://github.com/PolymerLabs/tedium/issues
+
 -->
 
-[![Build Status](https://travis-ci.org/PolymerElements/gold-cc-input.svg?branch=master)](https://travis-ci.org/PolymerElements/gold-cc-input)
+[![Build status](https://travis-ci.org/PolymerElements/gold-cc-input.svg?branch=master)](https://travis-ci.org/PolymerElements/gold-cc-input)
 
-_[Demo and API Docs](https://elements.polymer-project.org/elements/gold-cc-input)_
+_[Demo and API docs](https://elements.polymer-project.org/elements/gold-cc-input)_
 
 
 ##&lt;gold-cc-input&gt;
-
 
 `gold-cc-input` is a single-line text field with Material Design styling
 for entering a credit card number. As the user types, the number will be
 formatted by adding a space every 4 digits.
 
-    <gold-cc-input></gold-cc-input>
+```html
+<gold-cc-input></gold-cc-input>
+```
 
 It may include an optional label, which by default is "Card number".
 
-    <gold-cc-input label="CC"></gold-cc-input>
+```html
+<gold-cc-input label="CC"></gold-cc-input>
+```
 
 ### Validation
 
@@ -38,11 +44,19 @@ the `auto-validate` and `required` attributes. For manual validation, the
 element also has a `validate()` method, which returns the validity of the
 input as well sets any appropriate error messages and styles.
 
+A list of allowable credit card types can be provided via the `cardTypes`
+property. Possible options, from `cc-validator.js`, are: `amex`, `diners_club`,
+`discover`, `jcb`, `laser`, `maestro`, `mastercard`, `visa`, `visa_electron`.
+
 See `Polymer.PaperInputBehavior` for more API docs.
 
 ### Styling
 
 See `Polymer.PaperInputContainer` for a list of custom properties used to
 style this element.
+
+| Custom property | Description | Default  |
+| --- | --- | --- |
+| `----gold-cc-input-icon-container` | Mixin applied to the icon container | `{}` |
 
 

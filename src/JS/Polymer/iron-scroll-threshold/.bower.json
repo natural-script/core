@@ -5,7 +5,6 @@
     "web-components",
     "polymer"
   ],
-  "version": "1.0.3",
   "homepage": "https://github.com/PolymerElements/iron-scroll-threshold",
   "authors": [
     "The Polymer Authors"
@@ -18,21 +17,34 @@
   "license": "http://polymer.github.io/LICENSE.txt",
   "ignore": [],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.1.0",
-    "iron-scroll-target-behavior": "PolymerElements/iron-scroll-target-behavior#^1.0.0"
+    "polymer": "Polymer/polymer#^2.0.0-rc.1",
+    "iron-scroll-target-behavior": "PolymerElements/iron-scroll-target-behavior#2.0-preview"
   },
   "devDependencies": {
-    "iron-component-page": "polymerelements/iron-component-page#^1.0.0",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.2",
-    "web-component-tester": "^4.0.0"
+    "iron-component-page": "polymerelements/iron-component-page#2.0-preview",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.1",
+    "web-component-tester": "^6.0.0-prerelease.6"
   },
-  "_release": "1.0.3",
+  "variants": {
+    "1.x": {
+      "dependencies": {
+        "polymer": "Polymer/polymer#^1.1.0",
+        "iron-scroll-target-behavior": "PolymerElements/iron-scroll-target-behavior#^1.0.0"
+      },
+      "devDependencies": {
+        "iron-component-page": "polymerelements/iron-component-page#^1.0.0",
+        "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+      }
+    }
+  },
+  "_release": "c7ef460e5c",
   "_resolution": {
-    "type": "version",
-    "tag": "v1.0.3",
-    "commit": "77e1c4bf204e26ed07d670374608f3a050b9206c"
+    "type": "branch",
+    "branch": "2.0-preview",
+    "commit": "c7ef460e5cf29099886ed1d45debdbb715d119e2"
   },
   "_source": "https://github.com/PolymerElements/iron-scroll-threshold.git",
-  "_target": "^1.0.0",
-  "_originalSource": "PolymerElements/iron-scroll-threshold"
+  "_target": "2.0-preview",
+  "_originalSource": "PolymerElements/iron-scroll-threshold",
+  "_direct": true
 }

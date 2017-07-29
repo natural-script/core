@@ -21,17 +21,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           return scripts[scripts.length - 1];
         })();
 
-    var BASE_URI = (function() {
-      // Polymer 2 baseURI polyfill for IE and Safari
-      if (Polymer.Element && window.HTMLImports && HTMLImports.importForElement) {
-        return HTMLImports.importForElement(
-            /** @type {!HTMLScriptElement} */(document.currentScript)).baseURI;
-      }
+    // fallback baseURI
+    var BASE_URI = document.currentScript ? document.currentScript.baseURI : './';
+
+    // Polymer 2 baseURI polyfill for IE and Safari
+    if (Polymer.Element && window.HTMLImports && HTMLImports.importForElement) {
+      BASE_URI = HTMLImports.importForElement(document.currentScript).baseURI;
+
       // Polymer 1 or no HTML Imports
-      currentScript = document._currentScript ? document._currentScript :
+    } else {
+      var currentScript = document._currentScript ? document._currentScript :
           document.currentScript;
-      return currentScript.ownerDocument.baseURI;
-    })();
+      BASE_URI = currentScript.ownerDocument.baseURI;
+    }
 
     var WORKER_SCOPE_URL =
         Polymer.ResolveUrl.resolveUrl('common-worker-scope.js', BASE_URI);
@@ -110,10 +112,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        * A proxy method that forwards all calls to the backing `WebWorker`
        * instance.
        *
-       * @param {...*} removeEventListenerArgs The arguments to call the same
+       * @param {...} removeEventListenerArgs The arguments to call the same
        * method on the `WebWorker` with.
        */
-      removeEventListener: function(removeEventListenerArgs) {
+      removeEventListener: function() {
         if (this.webWorker) {
           return this.webWorker
               .removeEventListener.apply(this.webWorker, arguments);

@@ -1,6 +1,5 @@
 {
   "name": "google-map",
-  "version": "1.2.0",
   "description": "Google Maps web components",
   "homepage": "https://elements.polymer-project.org/elements/google-map",
   "main": [
@@ -28,22 +27,37 @@
     "maps"
   ],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.7.1",
-    "google-apis": "GoogleWebComponents/google-apis#^1.1.7",
-    "iron-resizable-behavior": "PolymerElements/iron-resizable-behavior#^1.0.5",
-    "iron-selector": "PolymerElements/iron-selector#^1.5.2"
+    "polymer": "Polymer/polymer#1.9 - 2",
+    "google-apis": "GoogleWebComponents/google-apis#2.0-preview",
+    "iron-resizable-behavior": "PolymerElements/iron-resizable-behavior#1 - 2",
+    "iron-selector": "PolymerElements/iron-selector#1 - 2"
   },
   "devDependencies": {
-    "web-component-tester": "*",
-    "iron-component-page": "PolymerElements/iron-component-page#^1.1.7"
+    "web-component-tester": "^6.0.0",
+    "iron-component-page": "PolymerElements/iron-component-page#^1 - 2"
   },
-  "_release": "1.2.0",
+  "variants": {
+    "1.x": {
+      "dependencies": {
+        "polymer": "Polymer/polymer#^1.8.0",
+        "google-apis": "GoogleWebComponents/google-apis#^1.1.7",
+        "iron-resizable-behavior": "PolymerElements/iron-resizable-behavior#^1.0.5",
+        "iron-selector": "PolymerElements/iron-selector#^1.5.2"
+      },
+      "devDependencies": {
+        "web-component-tester": "^4.0.0",
+        "iron-component-page": "PolymerElements/iron-component-page#^1.1.7"
+      }
+    }
+  },
+  "_release": "1ba6a7ff62",
   "_resolution": {
-    "type": "version",
-    "tag": "1.2.0",
-    "commit": "b598af8af3a1d340cea27c5d2c2dc15665815468"
+    "type": "branch",
+    "branch": "2.0-preview",
+    "commit": "1ba6a7ff6248428d485d9fc822c3a921e5be9419"
   },
   "_source": "https://github.com/GoogleWebComponents/google-map.git",
-  "_target": "^1.0.0",
-  "_originalSource": "GoogleWebComponents/google-map"
+  "_target": "2.0-preview",
+  "_originalSource": "GoogleWebComponents/google-map",
+  "_direct": true
 }

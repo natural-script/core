@@ -1,6 +1,5 @@
 {
   "name": "gold-phone-input",
-  "version": "1.1.0",
   "description": "A validating input for a phone number",
   "authors": [
     "The Polymer Authors"
@@ -21,27 +20,47 @@
   "homepage": "https://github.com/PolymerElements/gold-phone-input",
   "ignore": [],
   "dependencies": {
-    "iron-input": "PolymerElements/iron-input#^1.0.0",
-    "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.0.0",
-    "iron-form-element-behavior": "PolymerElements/iron-form-element-behavior#^1.0.0",
-    "paper-input": "PolymerElements/paper-input#^1.0.0",
-    "paper-styles": "PolymerElements/paper-styles#^1.0.0",
-    "polymer": "Polymer/polymer#^1.2.0"
+    "iron-input": "PolymerElements/iron-input#2.0-preview",
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#2.0-preview",
+    "iron-form-element-behavior": "PolymerElements/iron-form-element-behavior#2.0-preview",
+    "paper-input": "PolymerElements/paper-input#2.0-preview",
+    "paper-styles": "PolymerElements/paper-styles#2.0-preview",
+    "polymer": "Polymer/polymer#^2.0.0-rc.2"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-    "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
-    "test-fixture": "PolymerElements/test-fixture#^1.0.0",
-    "web-component-tester": "^4.0.0",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+    "iron-component-page": "PolymerElements/iron-component-page#2.0-preview",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#2.0-preview",
+    "test-fixture": "PolymerElements/test-fixture#^3.0.0-rc.1",
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0-prerelease.6",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.1"
   },
-  "_release": "1.1.0",
+  "variants": {
+    "1.x": {
+      "dependencies": {
+        "iron-input": "PolymerElements/iron-input#^1.0.0",
+        "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.0.0",
+        "iron-form-element-behavior": "PolymerElements/iron-form-element-behavior#^1.0.0",
+        "paper-input": "PolymerElements/paper-input#^1.0.0",
+        "paper-styles": "PolymerElements/paper-styles#^1.0.0",
+        "polymer": "Polymer/polymer#^1.2.0"
+      },
+      "devDependencies": {
+        "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+        "iron-test-helpers": "PolymerElements/iron-test-helpers#^1.0.0",
+        "test-fixture": "PolymerElements/test-fixture#^1.0.0",
+        "web-component-tester": "^4.0.0",
+        "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+      }
+    }
+  },
+  "_release": "b99107d5fe",
   "_resolution": {
-    "type": "version",
-    "tag": "v1.1.0",
-    "commit": "144ce24f365aa6c8c5e649f56fa49707cd7358a8"
+    "type": "branch",
+    "branch": "2.0-preview",
+    "commit": "b99107d5fe474b3461c83e3e3b36719c64ecf9e3"
   },
   "_source": "https://github.com/PolymerElements/gold-phone-input.git",
-  "_target": "^1.0.0",
-  "_originalSource": "PolymerElements/gold-phone-input"
+  "_target": "2.0-preview",
+  "_originalSource": "PolymerElements/gold-phone-input",
+  "_direct": true
 }

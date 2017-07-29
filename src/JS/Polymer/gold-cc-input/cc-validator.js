@@ -1,3 +1,12 @@
+/**
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
 /*
 jQuery Credit Card Validator 1.0
 
@@ -20,7 +29,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
  */
 
- (function(global) {
+var CreditCardValidator = (function(global) {
   'use strict';
 
   function validateCreditCard (input) {
@@ -186,7 +195,7 @@ IN THE SOFTWARE.
     return validate(input);
   };
 
-  global.CreditCardValidator = {
+  return {
     validate: validateCreditCard
   };
  })(this);

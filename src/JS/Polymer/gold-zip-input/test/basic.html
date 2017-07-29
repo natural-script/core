@@ -33,16 +33,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </test-fixture>
 
   <script>
+    function getIronInput(paperInput) {
+      return paperInput.inputElement;
+    }
+    function getNativeInput(paperInput) {
+      return Polymer.Element ?
+          paperInput.inputElement.inputElement : paperInput.inputElement;
+    }
 
     suite('basic', function() {
-      test('invalid input is not ok', function() {
+      test('invalid input is not ok', function(done) {
         var input = fixture('basic');
-        input.value='1234';
-        forceXIfStamp(input);
 
-        var container = Polymer.dom(input.root).querySelector('paper-input-container');
-        assert.ok(container, 'paper-input-container exists');
-        assert.isTrue(container.invalid);
+        // Mutation observer is async, so wait one tick.
+        Polymer.Base.async(function() {
+          input.value='1234';
+          forceXIfStamp(input);
+          var container = Polymer.dom(input.root)
+              .querySelector('paper-input-container');
+          assert.ok(container, 'paper-input-container exists');
+          assert.isTrue(container.invalid);
+          done();
+        }, 1);
       });
 
       test('input is formatted ok', function() {
@@ -51,14 +63,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         assert.equal(input.value, '90210-1111');
       });
 
-      test('spaces instead of dashes are not ok', function() {
+      test('spaces instead of dashes are not ok', function(done) {
         var input = fixture('basic');
-        input.value='90210 1111';
-        forceXIfStamp(input);
 
-        var container = Polymer.dom(input.root).querySelector('paper-input-container');
-        assert.ok(container, 'paper-input-container exists');
-        assert.isTrue(container.invalid);
+        // Mutation observer is async, so wait one tick.
+        Polymer.Base.async(function() {
+          input.value='90210 1111';
+          forceXIfStamp(input);
+          var container = Polymer.dom(input.root)
+              .querySelector('paper-input-container');
+          assert.ok(container, 'paper-input-container exists');
+          assert.isTrue(container.invalid);
+          done();
+        }, 1);
       });
 
       test('short zipcodes are ok', function() {
@@ -66,7 +83,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         input.value='94109';
         forceXIfStamp(input);
 
-        var container = Polymer.dom(input.root).querySelector('paper-input-container');
+        var container = Polymer.dom(input.root)
+            .querySelector('paper-input-container');
         assert.ok(container, 'paper-input-container exists');
         assert.isFalse(container.invalid);
       });
@@ -76,7 +94,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         input.value='94109-1234';
         forceXIfStamp(input);
 
-        var container = Polymer.dom(input.root).querySelector('paper-input-container');
+        var container = Polymer.dom(input.root)
+            .querySelector('paper-input-container');
         assert.ok(container, 'paper-input-container exists');
         assert.isFalse(container.invalid);
       });
@@ -87,29 +106,42 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         var error = Polymer.dom(input.root).querySelector('paper-input-error');
         assert.ok(error, 'paper-input-error exists');
-        assert.notEqual(getComputedStyle(error).display, 'none', 'error is not display:none');
+        assert.notEqual(getComputedStyle(error).display, 'none',
+            'error is not display:none');
       });
 
-      test('caret position is preserved', function() {
+      test('caret position is preserved', function(done) {
         var input = fixture('basic');
-        var ironInput = Polymer.dom(input.root).querySelector('input[is="iron-input"]');
-        input.value='11111-11';
-        ironInput.selectionStart = 2;
-        ironInput.selectionEnd = 2;
-        input._computeValue('11221-1111');
 
-        assert.equal(ironInput.selectionStart, 2, 'selectionStart is preserved');
-        assert.equal(ironInput.selectionEnd, 2, 'selectionEnd is preserved');
+        // Mutation observer is async, so wait one tick.
+        Polymer.Base.async(function() {
+          var ironInput = getIronInput(input);;
+          input.value='11111-11';
+          ironInput.selectionStart = 2;
+          ironInput.selectionEnd = 2;
+          input._computeValue('11221-1111');
+
+          assert.equal(ironInput.selectionStart, 2,
+              'selectionStart is preserved');
+          assert.equal(ironInput.selectionEnd, 2, 'selectionEnd is preserved');
+          done();
+        }, 1);
       });
-
     });
 
     suite('a11y', function() {
 
-      test('has aria-labelledby', function() {
+      test('has aria-labelledby', function(done) {
         var input = fixture('basic');
-        assert.isTrue(input.inputElement.hasAttribute('aria-labelledby'))
-        assert.equal(input.inputElement.getAttribute('aria-labelledby'), Polymer.dom(input.root).querySelector('label').id, 'aria-labelledby points to the label');
+        // Mutation observer is async, so wait one tick.
+        Polymer.Base.async(function() {
+          var label = Polymer.dom(input.root).querySelector('label').id;
+          var nativeInput = getNativeInput(input);
+          assert.isTrue(nativeInput.hasAttribute('aria-labelledby'))
+          assert.equal(nativeInput.getAttribute('aria-labelledby'), label,
+              'aria-labelledby points to the label');
+          done();
+        }, 1);
       });
 
     });

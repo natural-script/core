@@ -12,7 +12,7 @@ var emailSharer = window.ShareThisViaEmail;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //------------------------------------------------------------Text Operators------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-function customText(siteContents, keywordA, keywordB, keywordC, keywordD, keywordE, keywordF, keywordG, keywordH, keywordI, keywordJ, keywordK, keywordL, keywordM, keywordN, keywordO) {
+function customText(siteContents, keywordA, keywordB, keywordC, keywordD, keywordE, keywordF, keywordG, keywordH, keywordI, keywordJ, keywordK, keywordL, keywordM, keywordN, keywordO, keywordP, keywordQ, keywordR, keywordS) {
     var customTextsArrayA = siteContents.split('&lt;&lt; ' + keywordA + ': ');
     for (i = 1; i < customTextsArrayA.length; i++) {
         var customTextA = customTextsArrayA[i].split(' &gt;&gt;')[0];
@@ -88,6 +88,26 @@ function customText(siteContents, keywordA, keywordB, keywordC, keywordD, keywor
         var customTextO = customTextsArrayO[i].split(' &gt;&gt;')[0];
         siteContents = siteContents.replace('&lt;&lt; ' + keywordO + ': ' + customTextO + ' &gt;&gt;', '<u><b><i>' + customTextO + '</u></b></i>');
     }
+    var customTextsArrayP = siteContents.split('&lt;&lt; ' + keywordP + ': ');
+    for (i = 1; i < customTextsArrayP.length; i++) {
+        var customTextP = customTextsArrayP[i].split(' &gt;&gt;')[0];
+        siteContents = siteContents.replace('&lt;&lt; ' + keywordP + ' &gt;&gt;', window.innerHeight);
+    }
+    var customTextsArrayQ = siteContents.split('&lt;&lt; ' + keywordQ + ': ');
+    for (i = 1; i < customTextsArrayQ.length; i++) {
+        var customTextQ = customTextsArrayQ[i].split(' &gt;&gt;')[0];
+        siteContents = siteContents.replace('&lt;&lt; ' + keywordQ + ' &gt;&gt;', window.innerWidth);
+    }
+    var customTextsArrayR = siteContents.split('&lt;&lt; ' + keywordR + ': ');
+    for (i = 1; i < customTextsArrayR.length; i++) {
+        var customTextR = customTextsArrayR[i].split(' &gt;&gt;')[0];
+        siteContents = siteContents.replace('&lt;&lt; ' + keywordR + ' &gt;&gt;', window.width);
+    }
+    var customTextsArrayS = siteContents.split('&lt;&lt; ' + keywordS + ': ');
+    for (i = 1; i < customTextsArrayS.length; i++) {
+        var customTextS = customTextsArrayS[i].split(' &gt;&gt;')[0];
+        siteContents = siteContents.replace('&lt;&lt; ' + keywordS + ' &gt;&gt;', screen.height);
+    }
     return siteContents;
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -102,7 +122,7 @@ if ($('en-uk').length) {
     code = code.replace(/add an /g, "add.");
     code = code.replace(/ with the following properties:/g, "({");
     code = code.replace(/'\./g, "'});");
-    code = customText(code, 'write this in a bold font', 'write this in an italic font', 'write this in an underlined font', 'write this in a bold and italic font', 'write this in an italic and bold font', 'write this in a bold and underlined font', 'write this in an underlined and bold font', 'write this in an underlined and italic font', 'write this in an italic and underlined font', 'write this in a bold, italic and underlined font', 'write this in a bold, underlined and italic font', 'write this in an italic, bold and underlined font', 'write this in an italic, underlined and bold font', 'write this in an underlined, italic and bold font', 'write this in an underlined, bold and italic font');
+    code = customText(code, 'write this in a bold font', 'write this in an italic font', 'write this in an underlined font', 'write this in a bold and italic font', 'write this in an italic and bold font', 'write this in a bold and underlined font', 'write this in an underlined and bold font', 'write this in an underlined and italic font', 'write this in an italic and underlined font', 'write this in a bold, italic and underlined font', 'write this in a bold, underlined and italic font', 'write this in an italic, bold and underlined font', 'write this in an italic, underlined and bold font', 'write this in an underlined, italic and bold font', 'write this in an underlined, bold and italic font', 'The window length', 'The window width', 'The screen length', 'The screen width');
     $('en-uk').remove();
 } else if ($('en-us').length) {
     lang = 1;
@@ -112,7 +132,7 @@ if ($('en-uk').length) {
     code = code.replace(/add an /g, "add.");
     code = code.replace(/ with the following properties:/g, "({");
     code = code.replace(/'\./g, "'});");
-    code = customText(code, 'write this in a bold font', 'write this in an italic font', 'write this in an underlined font', 'write this in a bold and italic font', 'write this in an italic and bold font', 'write this in a bold and underlined font', 'write this in an underlined and bold font', 'write this in an underlined and italic font', 'write this in an italic and underlined font', 'write this in a bold, italic and underlined font', 'write this in a bold, underlined and italic font', 'write this in an italic, bold and underlined font', 'write this in an italic, underlined and bold font', 'write this in an underlined, italic and bold font', 'write this in an underlined, bold and italic font');
+    code = customText(code, 'write this in a bold font', 'write this in an italic font', 'write this in an underlined font', 'write this in a bold and italic font', 'write this in an italic and bold font', 'write this in a bold and underlined font', 'write this in an underlined and bold font', 'write this in an underlined and italic font', 'write this in an italic and underlined font', 'write this in a bold, italic and underlined font', 'write this in a bold, underlined and italic font', 'write this in an italic, bold and underlined font', 'write this in an italic, underlined and bold font', 'write this in an underlined, italic and bold font', 'write this in an underlined, bold and italic font', 'The window length', 'The window width', 'The screen length', 'The screen width');
     $('en-us').remove();
 } else if ($('fr-fr').length) {
     lang = 2;
@@ -143,6 +163,85 @@ code += "});";
 customText(code);
 $(function () {
     $('<script>').attr('type', 'text/javascript').text(code).appendTo('head');
+});
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//----------------------------------------------------Getting The URL Params------------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+function getAllUrlParams(url) {
+
+    // get query string from url (optional) or window
+    var queryString = url ? url.split('?')[1] : window.location.search.slice(1);
+
+    // we'll store the parameters here
+    var obj = {};
+
+    // if query string exists
+    if (queryString) {
+
+        // stuff after # is not part of query string, so get rid of it
+        queryString = queryString.split('#')[0];
+
+        // split our query string into its component parts
+        var arr = queryString.split('&');
+
+        for (var i = 0; i < arr.length; i++) {
+            // separate the keys and the values
+            var a = arr[i].split('=');
+
+            // in case params look like: list[]=thing1&list[]=thing2
+            var paramNum = undefined;
+            var paramName = a[0].replace(/\[\d*\]/, function (v) {
+                paramNum = v.slice(1, -1);
+                return '';
+            });
+
+            // set parameter value (use 'true' if empty)
+            var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
+
+            // (optional) keep case consistent
+            paramName = paramName.toLowerCase();
+            paramValue = paramValue.toLowerCase();
+
+            // if parameter name already exists
+            if (obj[paramName]) {
+                // convert value to array (if still string)
+                if (typeof obj[paramName] === 'string') {
+                    obj[paramName] = [obj[paramName]];
+                }
+                // if no array index number specified...
+                if (typeof paramNum === 'undefined') {
+                    // put the value on the end of the array
+                    obj[paramName].push(paramValue);
+                }
+                // if array index number specified...
+                else {
+                    // put the value at that index number
+                    obj[paramName][paramNum] = paramValue;
+                }
+            }
+            // if param name doesn't exist yet, set it
+            else {
+                obj[paramName] = paramValue;
+            }
+        }
+    }
+
+    return obj;
+}
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//----------------------------------------------------------Smooth Scrolling------------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+$('a').click(function () {
+    if ($(this).attr('href').indexOf('#') > -1) {
+
+        $('html, body').animate({
+
+            scrollTop: $($(this).attr('href')).offset().top
+
+
+        }, 500);
+    }
+    return false;
 });
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //------------------------------------------------Requesting The Files Sizes------------------------------------------------------------------------------------------------------------------------------------------//
@@ -335,44 +434,48 @@ var fromTheBottomTranslations = ['from_the_bottom', 'from_the_bottom', "à_parti
 var attributesTranslations = ['attributes', 'attributes', "les_attributs", 'الصفات', 'الصفات', '属性'];
 var gridTranslations = ['grid', 'grid', "les_attributs", 'الصفات', 'الصفات', '属性'];
 var shareableTranslations = ['shareable', 'shareable', "les_attributs", 'الصفات', 'الصفات', '属性'];
+var remoteScrollingTranslations = ['remote scrolling', 'remote scrolling', "défilement à distance", 'الصفات', 'الصفات', '属性'];
+var parallaxTranslations = ['parallax', 'parallax', "les_attributs", 'الصفات', 'الصفات', '属性'];
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------------Commands Translations------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, para4) {
     if (lang == 0) {
-        var E1 = 'When it has been clicked, ';
-        var E2 = 'When the mouse pointer has been moved over it, ';
-        var E3 = 'When the mouse pointer has been moved away from it, ';
-        var E4 = 'When the mouse pointer is being moved out of it, ';
-        var E5 = 'When the mouse pointer is being moved over it, ';
-        var E6 = 'When it is no longer clicked, ';
-        var E7 = 'When it has been double clicked, ';
-        var E8 = 'When it has been right clicked, ';
-        var E9 = 'When a key has been pressed while focusing it, ';
-        var E10 = 'When a key is being pressed while focusing it, ';
-        var E11 = 'When its contents have been modified, ';
-        var E12 = 'When it has been focused, ';
-        var E13 = 'When it is being focused, ';
-        var E14 = 'When it is no longer focused, ';
-        var E15 = 'When the data of this form has been sent, ';
-        var E16 = 'When it has been scrolled, ';
+        var E1 = 'If it has been clicked, ';
+        var E2 = 'If the mouse pointer has been moved over it, ';
+        var E3 = 'If the mouse pointer has been moved away from it, ';
+        var E4 = 'If the mouse pointer is being moved out of it, ';
+        var E5 = 'If the mouse pointer is being moved over it, ';
+        var E6 = 'If it is no longer clicked, ';
+        var E7 = 'If it has been double clicked, ';
+        var E8 = 'If it has been right clicked, ';
+        var E9 = 'If a key has been pressed while focusing it, ';
+        var E10 = 'If a key is being pressed while focusing it, ';
+        var E11 = 'If its contents have been modified, ';
+        var E12 = 'If it has been focused, ';
+        var E13 = 'If it is being focused, ';
+        var E14 = 'If it is no longer focused, ';
+        var E15 = 'If the data of this form has been sent, ';
+        var E16 = 'If it has been scrolled, ';
+        var E17 = 'If the user said: ';
     } else if (lang == 1) {
-        var E1 = 'When it has been clicked, ';
-        var E2 = 'When the mouse pointer has been moved over it, ';
-        var E3 = 'When the mouse pointer has been moved away from it, ';
-        var E4 = 'When the mouse pointer is being moved out of it, ';
-        var E5 = 'When the mouse pointer is being moved over it, ';
-        var E6 = 'When it is no longer clicked, ';
-        var E7 = 'When it has been double clicked, ';
-        var E8 = 'When it has been right clicked, ';
-        var E9 = 'When a key has been pressed while focusing it, ';
-        var E10 = 'When a key is being pressed while focusing it, ';
-        var E11 = 'When its contents have been modified, ';
-        var E12 = 'When it has been focused, ';
-        var E13 = 'When it is being focused, ';
-        var E14 = 'When it is no longer focused, ';
-        var E15 = 'When the data of this form has been sent, ';
-        var E16 = 'When it has been scrolled, ';
+        var E1 = 'If it has been clicked, ';
+        var E2 = 'If the mouse pointer has been moved over it, ';
+        var E3 = 'If the mouse pointer has been moved away from it, ';
+        var E4 = 'If the mouse pointer is being moved out of it, ';
+        var E5 = 'If the mouse pointer is being moved over it, ';
+        var E6 = 'If it is no longer clicked, ';
+        var E7 = 'If it has been double clicked, ';
+        var E8 = 'If it has been right clicked, ';
+        var E9 = 'If a key has been pressed while focusing it, ';
+        var E10 = 'If a key is being pressed while focusing it, ';
+        var E11 = 'If its contents have been modified, ';
+        var E12 = 'If it has been focused, ';
+        var E13 = 'If it is being focused, ';
+        var E14 = 'If it is no longer focused, ';
+        var E15 = 'If the data of this form has been sent, ';
+        var E16 = 'If it has been scrolled, ';
+        var E17 = 'If the user said: ';
     } else if (lang == 2) {
         var E1 = 'Quand il a été cliqué, ';
         var E2 = "Lorsque le pointeur de souris a été déplacé au dessus, ";
@@ -390,6 +493,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         var E14 = 'Quand il a dormi, ';
         var E15 = 'Lorsque les données de ce formulaire ont été envoyées, ';
         var E16 = "Lorsqu'il s'a été déroulé, ";
+        var E17 = "Si l'utilisateur a dit: ";
     } else if (lang == 3) {
         var E1 = 'إذا نقر عليه, ';
         var E2 = 'إذا مر به مؤشر الفأرة, ';
@@ -407,6 +511,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         var E14 = 'إن أصبح خاملا, ';
         var E15 = 'إذا ارسلت بيانات هذه الإستمارة, ';
         var E16 = 'إن تم تمريره, ';
+        var E17 = 'إذا قال المستخدم: ';
     } else if (lang == 4) {
         var E1 = 'لما يضغط عليه, ';
         var E2 = 'لما الماوس يعدى من فوقيه, ';
@@ -424,23 +529,25 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         var E14 = 'لما ينام, ';
         var E15 = 'لما الداتا بتاعت الفورم دة تتبعت, ';
         var E16 = 'لما يتمرر, ';
+        var E17 = 'لو المستخدم قال: ';
     } else if (lang == 5) {
         var E1 = 'それがクリックされた場合には、 ';
         var E2 = 'マウスポインタがその上に移動されると、 ';
         var E3 = 'マウスポインタがそれを離れると、 ';
-        var E4 = 'When the mouse pointer is being moved out of it, ';
-        var E5 = 'When the mouse pointer is being moved over it, ';
+        var E4 = 'If the mouse pointer is being moved out of it, ';
+        var E5 = 'If the mouse pointer is being moved over it, ';
         var E6 = 'それがもはやクリックされないと、 ';
         var E7 = 'それがダブルクリックされたときに、 ';
         var E8 = 'それが右クリックされたときに、 ';
-        var E9 = 'When a key pressed while focusing it, ';
-        var E10 = 'When a key is being pressed while focusing it, ';
+        var E9 = 'If a key pressed while focusing it, ';
+        var E10 = 'If a key is being pressed while focusing it, ';
         var E11 = 'その内容が変更されたとき、';
         var E12 = 'それがフォーカスされたときに、 ';
-        var E13 = 'When it is being focused, ';
-        var E14 = 'When it is no longer focused, ';
+        var E13 = 'If it is being focused, ';
+        var E14 = 'If it is no longer focused, ';
         var E15 = 'この形式のデータが送られたときに、 ';
         var E16 = 'それがスクロールされると、';
+        var E17 = 'ユーザーが言った場合：';
     }
     if (commandCode == 'c1A') {
         if (lang == 0) {
@@ -666,6 +773,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 5) {
             return commandValue.split(E16);
         }
+    } else if (commandCode == 'c1Q') {
+        if (lang == 0) {
+            return commandValue.split(E17);
+        } else if (lang == 1) {
+            return commandValue.split(E17);
+        } else if (lang == 2) {
+            return commandValue.split(E17);
+        } else if (lang == 3) {
+            return commandValue.split(E17);
+        } else if (lang == 4) {
+            return commandValue.split(E17);
+        } else if (lang == 5) {
+            return commandValue.split(E17);
+        }
     } else if (commandCode == 'c2qA') {
         if (lang == 0) {
             return commandValue.split(E1)[1].split(' ')[0];
@@ -889,6 +1010,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             return commandValue.split(E16)[1].split(' ')[0].split('ه')[0];
         } else if (lang == 5) {
             return commandValue.split(E16)[1].split(' ')[0];
+        }
+    } else if (commandCode == 'c2qQ') {
+        if (lang == 0) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0];
+        } else if (lang == 1) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0];
+        } else if (lang == 2) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0];
+        } else if (lang == 3) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0].split('ه')[0];
+        } else if (lang == 4) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0].split('ه')[0];
+        } else if (lang == 5) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0];
         }
     } else if (commandCode == 'c2ruA') {
         if (lang == 0) {
@@ -1198,6 +1333,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 5) {
             return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1];
         }
+    } else if (commandCode == 'c5qQ') {
+        if (lang == 0) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1];
+        } else if (lang == 1) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1];
+        } else if (lang == 2) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1];
+        } else if (lang == 3) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1];
+        } else if (lang == 4) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1];
+        } else if (lang == 5) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1];
+        }
     } else if (commandCode == 'c5r') {
         if (lang == 0) {
             return 'redirect to';
@@ -1477,6 +1626,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2];
         } else if (lang == 5) {
             return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3];
+        }
+    } else if (commandCode == 'c9qQ') {
+        if (lang == 0) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3];
+        } else if (lang == 1) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3];
+        } else if (lang == 2) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3];
+        } else if (lang == 3) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2];
+        } else if (lang == 4) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2];
+        } else if (lang == 5) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3];
         }
     } else if (commandCode == 'c9r') {
         if (lang == 0) {
@@ -1771,6 +1934,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[3];
         } else if (lang == 5) {
             return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5];
+        }
+    } else if (commandCode == 'c13qQ') {
+        if (lang == 0) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5];
+        } else if (lang == 1) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5];
+        } else if (lang == 2) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5];
+        } else if (lang == 3) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3];
+        } else if (lang == 4) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3];
+        } else if (lang == 5) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5];
         }
     } else if (commandCode == 'c13r') {
         if (lang == 0) {
@@ -2080,6 +2257,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 2) {
             return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[4] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[7];
         }
+    } else if (commandCode == 'c18qQ') {
+        if (lang == 0) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[4] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[6];
+        } else if (lang == 1) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[4] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[6];
+        } else if (lang == 2) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[4] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[7];
+        } else if (lang == 3) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[4] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[7];
+        } else if (lang == 4) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[4] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[7];
+        } else if (lang == 2) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[4] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[7];
+        }
     } else if (commandCode == 'c18r') {
         if (lang == 0) {
             return 'set the time position of to';
@@ -2196,15 +2387,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         if (lang == 0) {
             return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split(E3)[1].split(' ')[9] + ' ' + commandValue.split(E3)[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split(E3)[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13];
         } else if (lang == 1) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer11moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split('If the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('If the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split('If the mouse pointer11moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13];
         } else if (lang == 2) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer11moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split('If the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('If the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split('If the mouse pointer11moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13];
         } else if (lang == 3) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[7] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[7] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split('If the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('If the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11];
         } else if (lang == 4) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[4] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[7] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[4] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[7] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split('If the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('If the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11];
         } else if (lang == 5) {
-            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split('When the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('When the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split('When the mouse pointer11moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13];
+            return commandValue.split(E3)[1].split(' ')[0] + ' ' + commandValue.split(E3)[1].split(' ')[1] + ' ' + commandValue.split(E3)[1].split(' ')[2] + ' ' + commandValue.split(E3)[1].split(' ')[3] + ' ' + commandValue.split(E3)[1].split(' ')[5] + ' ' + commandValue.split(E3)[1].split(' ')[6] + ' ' + commandValue.split(E3)[1].split(' ')[8] + ' ' + commandValue.split('If the mouse pointer m8ved away from it, ')[1].split(' ')[9] + ' ' + commandValue.split('If the mouse pointer m9ved away from it, ')[1].split(' ')[10] + ' ' + commandValue.split(E3)[1].split(' ')[11] + ' ' + commandValue.split('If the mouse pointer11moved away from it, ')[1].split(' ')[12] + ' ' + commandValue.split(E3)[1].split(' ')[13];
         }
     } else if (commandCode == 'c23qD') {
         if (lang == 0) {
@@ -2387,6 +2578,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[4] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[7] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11];
         } else if (lang == 5) {
             return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13];
+        }
+    } else if (commandCode == 'c23qQ') {
+        if (lang == 0) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[6] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[8] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[9] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[10] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[11] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[12] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[13];
+        } else if (lang == 1) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[6] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[8] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[9] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[10] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[11] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[12] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[13];
+        } else if (lang == 2) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[6] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[8] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[9] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[10] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[11] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[12] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[13];
+        } else if (lang == 3) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[7] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[8] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[9] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[10] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[11];
+        } else if (lang == 4) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[4] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[6] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[7] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[8] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[9] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[10] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[11];
+        } else if (lang == 5) {
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[6] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[8] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[9] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[10] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[11] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[12] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[13];
         }
     } else if (commandCode == 'c23r') {
         if (lang == 0) {
@@ -2656,17 +2861,17 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         }
     } else if (commandCode == 'c27qP') {
         if (lang == 0) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15];
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[6] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[8] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[9] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[10] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[11] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[12] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[13] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[14] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[15];
         } else if (lang == 1) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15];
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[6] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[8] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[9] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[10] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[11] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[12] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[13] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[14] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[15];
         } else if (lang == 2) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15];
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[6] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[8] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[9] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[10] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[11] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[12] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[13] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[14] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[15];
         } else if (lang == 3) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15];
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[6] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[8] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[9] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[10] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[11] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[12] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[13] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[14] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[15];
         } else if (lang == 4) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15];
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[6] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[8] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[9] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[10] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[11] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[12] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[13] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[14] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[15];
         } else if (lang == 5) {
-            return commandValue.split(E16)[1].split(' ')[0] + ' ' + commandValue.split(E16)[1].split(' ')[1] + ' ' + commandValue.split(E16)[1].split(' ')[2] + ' ' + commandValue.split(E16)[1].split(' ')[3] + ' ' + commandValue.split(E16)[1].split(' ')[5] + ' ' + commandValue.split(E16)[1].split(' ')[6] + ' ' + commandValue.split(E16)[1].split(' ')[8] + ' ' + commandValue.split(E16)[1].split(' ')[9] + ' ' + commandValue.split(E16)[1].split(' ')[10] + ' ' + commandValue.split(E16)[1].split(' ')[11] + ' ' + commandValue.split(E16)[1].split(' ')[12] + ' ' + commandValue.split(E16)[1].split(' ')[13] + ' ' + commandValue.split(E16)[1].split(' ')[14] + ' ' + commandValue.split(E16)[1].split(' ')[15];
+            return commandValue.split(E17 + para1 + ', ')[1].split(' ')[0] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[1] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[2] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[3] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[5] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[6] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[8] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[9] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[10] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[11] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[12] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[13] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[14] + ' ' + commandValue.split(E17 + para1 + ', ')[1].split(' ')[15];
         }
     } else if (commandCode == 'c27r') {
         if (lang == 0) {
@@ -3090,6 +3295,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 86400000;
             }
         }
+    } else if (commandCode == 'c40') {
+        if (lang == 0) {
+            return commandValue.split(E17)[1].split(', ')[0];
+        } else if (lang == 1) {
+            return commandValue.split(E17)[1].split(', ')[0];
+        } else if (lang == 2) {
+            return commandValue.split(E17)[1].split(', ')[0];
+        } else if (lang == 3) {
+            return commandValue.split(E17)[1].split(', ')[0];
+        } else if (lang == 4) {
+            return commandValue.split(E17)[1].split(', ')[0];
+        } else if (lang == 5) {
+            return commandValue.split(E17)[1].split(', ')[0];
+        }
     }
 }
 (function ($) {
@@ -3348,9 +3567,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             if (commandsFnTranslations('c34', commands[commandID]).length > 1) {
                 var timeoutCommand = commandsFnTranslations('c35', commands[commandID]);
                 var timeoutPeriod = commandsFnTranslations('c36', commands[commandID]);
-                console.log(timeoutPeriod);
                 if (commandsFnTranslations('c1A', timeoutCommand).length > 1) {
-                    console.log('hello');
                     if (commandsFnTranslations('c2qA', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
                             $('#' + elementName + '').click(function () {
@@ -5509,14 +5726,162 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             });
                         })(commandID);
                     }
+                } else if (commandsFnTranslations('c1Q', timeoutCommand).length > 1) {
+                    annyang.start();
+                    var voiceCommand = commandsFnTranslations('c40', timeoutCommand);
+                    if (commandsFnTranslations('c2qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c2ruA')) {
+                        if (commandsFnTranslations('c3q', timeoutCommand, voiceCommand) == commandsFnTranslations('c3r')) {
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
+                                        $('#' + elementName + '').remove();
+                                    }, timeoutPeriod);
+                                }
+                            });
+                        } else {
+                            var targetName = commandsFnTranslations('c4', timeoutCommand, voiceCommand);
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
+                                        $('#' + targetName + '').remove();
+                                    }, timeoutPeriod);
+                                }
+                            });
+                        }
+                    } else if (commandsFnTranslations('c5qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c5r')) {
+                        targetURL = commandsFnTranslations('c6', timeoutCommand, voiceCommand);
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                setTimeout(function () {
+                                    window.location = targetURL;
+                                }, timeoutPeriod);
+                            }
+                        });
+                    } else if (commandsFnTranslations('c2qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c2ruB')) {
+                        var targetElement = commandsFnTranslations('c7', timeoutCommand, voiceCommand);
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                setTimeout(function () {
+                                    document.getElementById(targetElement).play();
+                                }, timeoutPeriod);
+                            }
+                        });
+                    } else if (commandsFnTranslations('c2qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c2ruC')) {
+                        var targetElement = commandsFnTranslations('c8', timeoutCommand, voiceCommand);
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                setTimeout(function () {
+                                    document.getElementById(targetElement).pause();
+                                }, timeoutPeriod);
+                            }
+                        });
+                    } else if (commandsFnTranslations('c9qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c9r')) {
+                        if (commandsFnTranslations('c10q', timeoutCommand, voiceCommand) == commandsFnTranslations('c10r')) {
+                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand, voiceCommand) + '').val();
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
+                                        $('#' + elementName + '').val(newVal);
+                                    }, timeoutPeriod);
+                                }
+                            });
+                        } else {
+                            var newVal = commandsFnTranslations('c12', timeoutCommand, voiceCommand);
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
+                                        $('#' + elementName + '').val(newVal);
+                                    }, timeoutPeriod);
+                                }
+                            });
+                        }
+                    } else if (commandsFnTranslations('c13qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c13r')) {
+                        var targetElement = commandsFnTranslations('c14', timeoutCommand, voiceCommand);
+                        var resource = commandsFnTranslations('c15', timeoutCommand, voiceCommand, targetElement);
+                        if (commandsFnTranslations('c16q', timeoutCommand, voiceCommand, targetElement) == commandsFnTranslations('c16r')) {
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
+                                        $('#' + targetElement + '').val($('#' + resource + '').val());
+                                    }, timeoutPeriod);
+                                }
+                            });
+                        } else {
+                            var newVal = commandsFnTranslations('c17', timeoutCommand, voiceCommand, targetElement);
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
+                                        $('#' + targetElement + '').val(newVal);
+                                    }, timeoutPeriod);
+                                }
+                            });
+                        }
+                    } else if (commandsFnTranslations('c18qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c18r')) {
+                        var targetElement = commandsFnTranslations('c19', timeoutCommand, voiceCommand);
+                        var resource = commandsFnTranslations('c20', timeoutCommand, voiceCommand, targetElement);
+                        if (commandsFnTranslations('c21q', timeoutCommand, voiceCommand, targetElement) == commandsFnTranslations('c21r')) {
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
+                                        document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
+                                    }, timeoutPeriod);
+                                }
+                            });
+                        } else {
+                            var newTimePosition = commandsFnTranslations('c22', timeoutCommand, voiceCommand);
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
+                                        document.getElementById(targetElement).currentTime = newTimePosition;
+                                    }, timeoutPeriod);
+                                }
+                            });
+                        }
+                    } else if (commandsFnTranslations('c23qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c23r')) {
+                        var dbname = commandsFnTranslations('c24', timeoutCommand, voiceCommand);
+                        var tablename = commandsFnTranslations('c25', timeoutCommand, voiceCommand);
+                        var dataRaw = commandsFnTranslations('c26', timeoutCommand, voiceCommand, dbname, tablename);
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                setTimeout(function () {
+                                    var data = '{';
+                                    for (i = 0; i < dataRaw.length; i++) {
+                                        var resource = commandsFnTranslations('c32', '', dataRaw[i]);
+                                        var slot = commandsFnTranslations('c33', '', dataRaw[i]);
+                                        if (i != dataRaw.length - 1) {
+                                            data += '"' + slot + '":"' + $('#' + resource + '').val() + '", ';
+                                        } else {
+                                            data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
+                                        }
+                                    }
+                                    data = JSON.parse(data);
+                                    firebase.database().ref(dbname + '/' + tablename).set(data);
+                                }, timeoutPeriod);
+                            }
+                        });
+                    } else if (commandsFnTranslations('c27qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c27r')) {
+                        var dbname = commandsFnTranslations('c28', timeoutCommand, voiceCommand);
+                        var tablename = commandsFnTranslations('c29', timeoutCommand, voiceCommand);
+                        var calledSlot = commandsFnTranslations('c30', timeoutCommand, voiceCommand);
+                        (function (commandID) {
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
+                                        var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                                        dbRef.on('value', function (snapshot) {
+                                            $('#' + commandsFnTranslations('c31', timeoutCommand, voiceCommand) + '').val(snapshot.val()[calledSlot]);
+                                        });
+                                    }, timeoutPeriod);
+                                }
+                            });
+                        })(commandID);
+                    }
                 }
 
             } else if (commandsFnTranslations('c37', commands[commandID]).length > 1) {
                 var intervalCommand = commandsFnTranslations('c38', commands[commandID]);
                 var intervalPeriod = commandsFnTranslations('c39', commands[commandID]);
-                console.log('there is an interval');
                 if (commandsFnTranslations('c1A', intervalCommand).length > 1) {
-                    console.log('hello');
                     if (commandsFnTranslations('c2qA', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
                             $('#' + elementName + '').click(function () {
@@ -7675,10 +8040,159 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             });
                         })(commandID);
                     }
+                } else if (commandsFnTranslations('c1Q', intervalCommand).length > 1) {
+                    annyang.start();
+                    var voiceCommand = commandsFnTranslations('c40', intervalCommand);
+                    if (commandsFnTranslations('c2qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c2ruA')) {
+                        if (commandsFnTranslations('c3q', intervalCommand, voiceCommand) == commandsFnTranslations('c3r')) {
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
+                                        $('#' + elementName + '').remove();
+                                    }, intervalPeriod);
+                                }
+                            });
+                        } else {
+                            var targetName = commandsFnTranslations('c4', intervalCommand, voiceCommand);
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
+                                        $('#' + targetName + '').remove();
+                                    }, intervalPeriod);
+                                }
+                            });
+                        }
+                    } else if (commandsFnTranslations('c5qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c5r')) {
+                        targetURL = commandsFnTranslations('c6', intervalCommand, voiceCommand);
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                setInterval(function () {
+                                    window.location = targetURL;
+                                }, intervalPeriod);
+                            }
+                        });
+                    } else if (commandsFnTranslations('c2qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c2ruB')) {
+                        var targetElement = commandsFnTranslations('c7', intervalCommand, voiceCommand);
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                setInterval(function () {
+                                    document.getElementById(targetElement).play();
+                                }, intervalPeriod);
+                            }
+                        });
+                    } else if (commandsFnTranslations('c2qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c2ruC')) {
+                        var targetElement = commandsFnTranslations('c8', intervalCommand, voiceCommand);
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                setInterval(function () {
+                                    document.getElementById(targetElement).pause();
+                                }, intervalPeriod);
+                            }
+                        });
+                    } else if (commandsFnTranslations('c9qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c9r')) {
+                        if (commandsFnTranslations('c10q', intervalCommand, voiceCommand) == commandsFnTranslations('c10r')) {
+                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand, voiceCommand) + '').val();
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
+                                        $('#' + elementName + '').val(newVal);
+                                    }, intervalPeriod);
+                                }
+                            });
+                        } else {
+                            var newVal = commandsFnTranslations('c12', intervalCommand, voiceCommand);
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
+                                        $('#' + elementName + '').val(newVal);
+                                    }, intervalPeriod);
+                                }
+                            });
+                        }
+                    } else if (commandsFnTranslations('c13qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c13r')) {
+                        var targetElement = commandsFnTranslations('c14', intervalCommand, voiceCommand);
+                        var resource = commandsFnTranslations('c15', intervalCommand, voiceCommand, targetElement);
+                        if (commandsFnTranslations('c16q', intervalCommand, voiceCommand, targetElement) == commandsFnTranslations('c16r')) {
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
+                                        $('#' + targetElement + '').val($('#' + resource + '').val());
+                                    }, intervalPeriod);
+                                }
+                            });
+                        } else {
+                            var newVal = commandsFnTranslations('c17', intervalCommand, voiceCommand, targetElement);
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
+                                        $('#' + targetElement + '').val(newVal);
+                                    }, intervalPeriod);
+                                }
+                            });
+                        }
+                    } else if (commandsFnTranslations('c18qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c18r')) {
+                        var targetElement = commandsFnTranslations('c19', intervalCommand, voiceCommand);
+                        var resource = commandsFnTranslations('c20', intervalCommand, voiceCommand, targetElement);
+                        if (commandsFnTranslations('c21q', intervalCommand, voiceCommand, targetElement) == commandsFnTranslations('c21r')) {
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
+                                        document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
+                                    }, intervalPeriod);
+                                }
+                            });
+                        } else {
+                            var newTimePosition = commandsFnTranslations('c22', intervalCommand, voiceCommand);
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
+                                        document.getElementById(targetElement).currentTime = newTimePosition;
+                                    }, intervalPeriod);
+                                }
+                            });
+                        }
+                    } else if (commandsFnTranslations('c23qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c23r')) {
+                        var dbname = commandsFnTranslations('c24', intervalCommand, voiceCommand);
+                        var tablename = commandsFnTranslations('c25', intervalCommand, voiceCommand);
+                        var dataRaw = commandsFnTranslations('c26', intervalCommand, voiceCommand, dbname, tablename);
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                setInterval(function () {
+                                    var data = '{';
+                                    for (i = 0; i < dataRaw.length; i++) {
+                                        var resource = commandsFnTranslations('c32', '', dataRaw[i]);
+                                        var slot = commandsFnTranslations('c33', '', dataRaw[i]);
+                                        if (i != dataRaw.length - 1) {
+                                            data += '"' + slot + '":"' + $('#' + resource + '').val() + '", ';
+                                        } else {
+                                            data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
+                                        }
+                                    }
+                                    data = JSON.parse(data);
+                                    firebase.database().ref(dbname + '/' + tablename).set(data);
+                                }, intervalPeriod);
+                            }
+                        });
+                    } else if (commandsFnTranslations('c27qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c27r')) {
+                        var dbname = commandsFnTranslations('c28', intervalCommand, voiceCommand);
+                        var tablename = commandsFnTranslations('c29', intervalCommand, voiceCommand);
+                        var calledSlot = commandsFnTranslations('c30', intervalCommand, voiceCommand);
+                        (function (commandID) {
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
+                                        var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                                        dbRef.on('value', function (snapshot) {
+                                            $('#' + commandsFnTranslations('c31', intervalCommand, voiceCommand) + '').val(snapshot.val()[calledSlot]);
+                                        });
+                                    }, intervalPeriod);
+                                }
+                            });
+                        })(commandID);
+                    }
                 }
 
             } else if (commandsFnTranslations('c1A', commands[commandID]).length > 1) {
-                console.log('hello');
                 if (commandsFnTranslations('c2qA', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
                         $('#' + elementName + '').click(function () {
@@ -9214,6 +9728,130 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         });
                     })(commandID);
                 }
+            } else if (commandsFnTranslations('c1Q', commands[commandID]).length > 1) {
+                annyang.start();
+                var voiceCommand = commandsFnTranslations('c40', commands[commandID]);
+                if (commandsFnTranslations('c2qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c2ruA')) {
+                    if (commandsFnTranslations('c3q', commands[commandID], voiceCommand) == commandsFnTranslations('c3r')) {
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                $('#' + elementName + '').remove();
+                            }
+                        });
+                    } else {
+                        var targetName = commandsFnTranslations('c4', commands[commandID], voiceCommand);
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                $('#' + targetName + '').remove();
+                            }
+                        });
+                    }
+                } else if (commandsFnTranslations('c5qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c5r')) {
+                    targetURL = commandsFnTranslations('c6', commands[commandID], voiceCommand);
+                    annyang.addCommands({
+                        [voiceCommand]: function () {
+                            window.location = targetURL;
+                        }
+                    });
+                } else if (commandsFnTranslations('c2qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c2ruB')) {
+                    var targetElement = commandsFnTranslations('c7', commands[commandID], voiceCommand);
+                    annyang.addCommands({
+                        [voiceCommand]: function () {
+                            document.getElementById(targetElement).play();
+                        }
+                    });
+                } else if (commandsFnTranslations('c2qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c2ruC')) {
+                    var targetElement = commandsFnTranslations('c8', commands[commandID], voiceCommand);
+                    annyang.addCommands({
+                        [voiceCommand]: function () {
+                            document.getElementById(targetElement).pause();
+                        }
+                    });
+                } else if (commandsFnTranslations('c9qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c9r')) {
+                    if (commandsFnTranslations('c10q', commands[commandID], voiceCommand) == commandsFnTranslations('c10r')) {
+                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID], voiceCommand) + '').val();
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                $('#' + elementName + '').val(newVal);
+                            }
+                        });
+                    } else {
+                        var newVal = commandsFnTranslations('c12', commands[commandID], voiceCommand);
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                $('#' + elementName + '').val(newVal);
+                            }
+                        });
+                    }
+                } else if (commandsFnTranslations('c13qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c13r')) {
+                    var targetElement = commandsFnTranslations('c14', commands[commandID], voiceCommand);
+                    var resource = commandsFnTranslations('c15', commands[commandID], voiceCommand, targetElement);
+                    if (commandsFnTranslations('c16q', commands[commandID], voiceCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                $('#' + targetElement + '').val($('#' + resource + '').val());
+                            }
+                        });
+                    } else {
+                        var newVal = commandsFnTranslations('c17', commands[commandID], voiceCommand, targetElement);
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                $('#' + targetElement + '').val(newVal);
+                            }
+                        });
+                    }
+                } else if (commandsFnTranslations('c18qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c18r')) {
+                    var targetElement = commandsFnTranslations('c19', commands[commandID], voiceCommand);
+                    var resource = commandsFnTranslations('c20', commands[commandID], voiceCommand, targetElement);
+                    if (commandsFnTranslations('c21q', commands[commandID], voiceCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
+                            }
+                        });
+                    } else {
+                        var newTimePosition = commandsFnTranslations('c22', commands[commandID], voiceCommand);
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                document.getElementById(targetElement).currentTime = newTimePosition;
+                            }
+                        });
+                    }
+                } else if (commandsFnTranslations('c23qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c23r')) {
+                    var dbname = commandsFnTranslations('c24', commands[commandID], voiceCommand);
+                    var tablename = commandsFnTranslations('c25', commands[commandID], voiceCommand);
+                    var dataRaw = commandsFnTranslations('c26', commands[commandID], voiceCommand, dbname, tablename);
+                    annyang.addCommands({
+                        [voiceCommand]: function () {
+                            var data = '{';
+                            for (i = 0; i < dataRaw.length; i++) {
+                                var resource = commandsFnTranslations('c32', '', dataRaw[i]);
+                                var slot = commandsFnTranslations('c33', '', dataRaw[i]);
+                                if (i != dataRaw.length - 1) {
+                                    data += '"' + slot + '":"' + $('#' + resource + '').val() + '", ';
+                                } else {
+                                    data += '"' + slot + '":"' + $('#' + resource + '').val() + '"}';
+                                }
+                            }
+                            data = JSON.parse(data);
+                            firebase.database().ref(dbname + '/' + tablename).set(data);
+                        }
+                    });
+                } else if (commandsFnTranslations('c27qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c27r')) {
+                    var dbname = commandsFnTranslations('c28', commands[commandID], voiceCommand);
+                    var tablename = commandsFnTranslations('c29', commands[commandID], voiceCommand);
+                    var calledSlot = commandsFnTranslations('c30', commands[commandID], voiceCommand);
+                    (function (commandID) {
+                        annyang.addCommands({
+                            [voiceCommand]: function () {
+                                var dbRef = firebase.database().ref(dbname + '/' + tablename);
+                                dbRef.on('value', function (snapshot) {
+                                    $('#' + commandsFnTranslations('c31', commands[commandID], voiceCommand) + '').val(snapshot.val()[calledSlot]);
+                                });
+                            }
+                        });
+                    })(commandID);
+                }
             }
         }
     }
@@ -9226,7 +9864,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             var settings = $.extend({
                 [logoTranslations[lang]]: null,
                 [titleTranslations[lang]]: null,
-                [modeTranslations[lang]]: null
+                [modeTranslations[lang]]: null,
+                [attributesTranslations[lang]]: null
             }, options);
             return this.each(function () {
                 if (settings[modeTranslations[lang]] == 'site') {
@@ -9240,6 +9879,95 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 if (settings[titleTranslations[lang]]) {
                     $('head').append('<title>' + settings[titleTranslations[lang]] + '</title>');
                 }
+                if (settings[attributesTranslations[lang]]) {
+                    var propertiesArray = settings[attributesTranslations[lang]].split(' &&& ');
+                    for (i = 0; i < propertiesArray.length; i++) {
+                        if (propertiesArray[i] == remoteScrollingTranslations[lang]) {
+
+                            var canvas = $('<canvas style="display: none;">').get(0),
+                                context = canvas.getContext('2d'),
+                                video = document.createElement('video'),
+                                fist_pos_old,
+                                detector;
+
+                            document.getElementsByTagName('body')[0].appendChild(canvas);
+
+                            try {
+                                compatibility.getUserMedia({
+                                    video: true
+                                }, function (stream) {
+                                    try {
+                                        video.src = compatibility.URL.createObjectURL(stream);
+                                    } catch (error) {
+                                        video.src = stream;
+                                    }
+                                    compatibility.requestAnimationFrame(play);
+                                }, function (error) {
+                                    alert("WebRTC not available");
+                                });
+                            } catch (error) {
+                                alert(error);
+                            }
+
+                            function play() {
+                                compatibility.requestAnimationFrame(play);
+                                if (video.paused) video.play();
+
+                                if (video.readyState === video.HAVE_ENOUGH_DATA && video.videoWidth > 0) {
+
+                                    /* Prepare the detector once the video dimensions are known: */
+                                    if (!detector) {
+                                        var width = ~~(80 * video.videoWidth / video.videoHeight);
+                                        var height = 80;
+                                        detector = new objectdetect.detector(width, height, 1.1, objectdetect.handfist);
+                                    }
+
+                                    /* Draw video overlay: */
+                                    canvas.width = ~~(100 * video.videoWidth / video.videoHeight);
+                                    canvas.height = 100;
+                                    context.drawImage(video, 0, 0, canvas.clientWidth, canvas.clientHeight);
+
+                                    var coords = detector.detect(video, 1);
+                                    if (coords[0]) {
+                                        var coord = coords[0];
+
+                                        /* Rescale coordinates from detector to video coordinate space: */
+                                        coord[0] *= video.videoWidth / detector.canvas.width;
+                                        coord[1] *= video.videoHeight / detector.canvas.height;
+                                        coord[2] *= video.videoWidth / detector.canvas.width;
+                                        coord[3] *= video.videoHeight / detector.canvas.height;
+
+                                        /* Find coordinates with maximum confidence: */
+                                        var coord = coords[0];
+                                        for (var i = coords.length - 1; i >= 0; --i)
+                                            if (coords[i][4] > coord[4]) coord = coords[i];
+
+                                        /* Scroll window: */
+                                        var fist_pos = [coord[0] + coord[2] / 2, coord[1] + coord[3] / 2];
+                                        if (fist_pos_old) {
+                                            var dx = (fist_pos[0] - fist_pos_old[0]) / video.videoWidth,
+                                                dy = (fist_pos[1] - fist_pos_old[1]) / video.videoHeight;
+
+                                            window.scrollBy(dx * 200, dy * 200);
+                                        } else fist_pos_old = fist_pos;
+
+                                        /* Draw coordinates on video overlay: */
+                                        context.beginPath();
+                                        context.lineWidth = '2';
+                                        context.fillStyle = 'rgba(0, 255, 255, 0.5)';
+                                        context.fillRect(
+                                            coord[0] / video.videoWidth * canvas.clientWidth,
+                                            coord[1] / video.videoHeight * canvas.clientHeight,
+                                            coord[2] / video.videoWidth * canvas.clientWidth,
+                                            coord[3] / video.videoHeight * canvas.clientHeight);
+                                        context.stroke();
+                                    } else fist_pos_old = null;
+                                }
+                            }
+
+                        }
+                    }
+                }
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //---------------------------------------------------------------------Page------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -9249,13 +9977,14 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [nameTranslations[lang]]: null
                     }, options);
                     return this.each(function () {
+
                         $('contents').append('<page id="' + settings[nameTranslations[lang]] + '" style="display: none;"></page>');
                         $(window).on('hashchange', function (e) {
                             $('page').fadeOut(500);
-                            $('' + location.hash + '').fadeIn(500);
+                            $('#' + getAllUrlParams().page + '').fadeIn(500);
                         })
                         $('page').fadeOut(500);
-                        $('' + location.hash + '').fadeIn(500);
+                        $('#' + getAllUrlParams().page + '').fadeIn(500);
                     })
                 }
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -11171,11 +11900,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }, options);
                     return this.each(function () {
                         var name = settings[nameTranslations[lang]];
+
                         if (settings[containerTranslations[lang]]) {
-                            $('<div>').attr('id', name).appendTo('#' + settings[containerTranslations[lang]] + '');
+                            $('<div>').attr('id', name).addClass(name).appendTo('#' + settings[containerTranslations[lang]] + '');
                         } else {
-                            $('<div>').attr('id', name).appendTo('contents');
+                            $('<div>').attr('id', name).addClass(name).appendTo('contents');
                         }
+
                         if (settings[attributesTranslations[lang]]) {
                             var propertiesArray = settings[attributesTranslations[lang]].split(' &&& ');
                             for (i = 0; i < propertiesArray.length; i++) {
@@ -11184,7 +11915,6 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 }
                             }
                         }
-
                         if (settings[fontColorTranslations[lang]]) {
                             setFontColour(name, settings[fontColorTranslations[lang]]);
                         }
@@ -11269,8 +11999,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[widthTranslations[lang]]) {
                             $('#' + name + '').css('width', settings[widthTranslations[lang]]);
                         }
-                        if (settings[backgroundTranslations[lang]]) {
-                            setBG(name, settings[backgroundTranslations[lang]]);
+                        if (settings[attributesTranslations[lang]]) {
+                            if (settings[attributesTranslations[lang]].indexOf(parallaxTranslations[lang]) > -1) {
+                                if (settings[backgroundTranslations[lang]]) {
+                                    $('#' + name + '').css('background', 'url(' + settings[backgroundTranslations[lang]] + ') 50% 0 no-repeat fixed');
+                                }
+                            } else {
+                                if (settings[backgroundTranslations[lang]]) {
+                                    setBG(name, settings[backgroundTranslations[lang]]);
+                                }
+                            }
+                        } else {
+                            if (settings[backgroundTranslations[lang]]) {
+                                setBG(name, settings[backgroundTranslations[lang]]);
+                            }
                         }
                         if (settings[lengthTranslations[lang]]) {
                             $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
@@ -12742,7 +13484,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
          * Accepts varargs expecting each argument to be an object, then
          * immutably merges the properties of each object and returns result.
          *
-         * When multiple objects contain the same key the later object in
+         * If multiple objects contain the same key the later object in
          * the arguments list will take precedence.
          *
          * Example:
@@ -15844,7 +16586,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 return cachedSetTimeout(fun, 0);
             } catch (e) {
                 try {
-                    // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+                    // If we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
                     return cachedSetTimeout.call(null, fun, 0);
                 } catch (e) {
                     // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
@@ -15868,7 +16610,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 return cachedClearTimeout(marker);
             } catch (e) {
                 try {
-                    // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+                    // If we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
                     return cachedClearTimeout.call(null, marker);
                 } catch (e) {
                     // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.

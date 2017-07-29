@@ -54,6 +54,37 @@ style this element.
       :host {
         display: block;
       }
+      input
+      {
+        position: relative; /* to make a stacking context */
+        outline: none;
+        box-shadow: none;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        background: transparent;
+        border: none;
+        color: var(--paper-input-container-input-color, var(--primary-text-color));
+        -webkit-appearance: none;
+        text-align: inherit;
+        vertical-align: bottom;
+        /* Firefox sets a min-width on the input, which can cause layout issues */
+        min-width: 0;
+        @apply --paper-font-subhead;
+        @apply --paper-input-container-input;
+      }
+      input::-webkit-input-placeholder {
+        color: var(--paper-input-container-color, var(--secondary-text-color));
+      }
+      input:-moz-placeholder {
+        color: var(--paper-input-container-color, var(--secondary-text-color));
+      }
+      input::-moz-placeholder {
+        color: var(--paper-input-container-color, var(--secondary-text-color));
+      }
+      input:-ms-input-placeholder {
+        color: var(--paper-input-container-color, var(--secondary-text-color));
+      }
     </style>
 
     <paper-input-container id="container"
@@ -64,11 +95,24 @@ style this element.
         always-float-label="[[_computeAlwaysFloatLabel(alwaysFloatLabel,placeholder)]]"
         invalid="[[invalid]]">
 
-      <label hidden$="[[!label]]">[[label]]</label>
+      <label slot="label" hidden$="[[!label]]">[[label]]</label>
 
       <zip-validator></zip-validator>
 
-      <input is="iron-input" id="input"
+      <span id="template-placeholder"></span>
+
+      <template is="dom-if" if="[[errorMessage]]">
+        <paper-input-error  slot="add-on" id="error">
+          [[errorMessage]]
+        </paper-input-error>
+      </template>
+
+    </paper-input-container>
+  </template>
+
+  <template id="v0">
+    <input is="iron-input" id="input"
+          slot="input"
           aria-labelledby$="[[_ariaLabelledBy]]"
           aria-describedby$="[[_ariaDescribedBy]]"
           required$="[[required]]"
@@ -87,12 +131,30 @@ style this element.
           placeholder$="[[placeholder]]"
           readonly$="[[readonly]]"
           size$="[[size]]">
+  </template>
 
-      <template is="dom-if" if="[[errorMessage]]">
-        <paper-input-error id="error">[[errorMessage]]</paper-input-error>
-      </template>
-
-    </paper-input-container>
+  <template id="v1">
+    <iron-input id="input" slot="input"
+        allowed-pattern="[0-9\-]"
+        bind-value="{{value}}"
+        invalid="{{invalid}}"
+        validator="zip-validator">
+      <input id="nativeInput"
+          aria-labelledby$="[[_ariaLabelledBy]]"
+          aria-describedby$="[[_ariaDescribedBy]]"
+          required$="[[required]]"
+          type="tel"
+          prevent-invalid-input
+          maxlength="10"
+          autocomplete="postal-code"
+          name$="[[name]]"
+          disabled$="[[disabled]]"
+          autofocus$="[[autofocus]]"
+          inputmode$="[[inputmode]]"
+          placeholder$="[[placeholder]]"
+          readonly$="[[readonly]]"
+          size$="[[size]]">
+    </iron-input>
   </template>
 
   <script>
@@ -113,13 +175,48 @@ style this element.
           label: {
             type: String,
             value: "Zip Code"
-          }
+          },
         },
 
         observers: [
           '_computeValue(value)'
         ],
 
+        // TODO: remove this when 2.0 adds beforeRegister back to legacy
+        registered: function() {
+          if (Polymer.Element) {
+            this._beforeRegister();
+          }
+        },
+        beforeRegister: function() {
+          this._beforeRegister();
+        },
+        _beforeRegister: function() {
+          var template = Polymer.DomModule.import('gold-zip-input', 'template');
+          var version = Polymer.Element ? 'v1' : 'v0';
+          var inputTemplate = Polymer.DomModule.import('gold-zip-input', 'template#' + version);
+          var inputPlaceholder = template.content.querySelector('#template-placeholder');
+          inputPlaceholder.parentNode.replaceChild(inputTemplate.content, inputPlaceholder);
+        },
+        /**
+        * Returns a reference to the focusable element. Overridden from PaperInputBehavior
+        * to correctly focus the native input.
+        */
+        get _focusableElement() {
+          return Polymer.Element ? this.inputElement._inputElement : this.inputElement;
+        },
+        // Note: This event is only available in the 1.0 version of this element.
+        // In 2.0, the functionality of `_onIronInputReady` is done in
+        // PaperInputBehavior::attached.
+        listeners: {
+          'iron-input-ready': '_onIronInputReady'
+        },
+        _onIronInputReady: function() {
+          // Only validate when attached if the input already has a value.
+          if (!!this.inputElement.bindValue) {
+            this.$.container._handleValueAndAutoValidate(this.inputElement);
+          }
+        },
         _computeValue: function(value) {
           value = String(value);
           var start = this.$.input.selectionStart;

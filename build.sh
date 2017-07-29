@@ -13,6 +13,6 @@ echo "                                                                        "
 
 echo " Starting building Jste Framework "
 
-dir=$(cd -P -- "$(dirname -- "$0")" && vulcanize ./src/Res.html  --strip-comments --inline-scripts --inline-css > ./dist/index.html)
+dir=$(cd -P -- "$(dirname -- "$0")" && rm -rf ./dist/* && vulcanize ./src/Res.html  --strip-comments --inline-scripts --inline-css > ./dist/index.html && cp -ar ./src/Fonts/ ./dist/Fonts/ && cp -ar  ./src/Media ./dist/Media/)
 
 echo " Jste Framework has been built properly ;) "

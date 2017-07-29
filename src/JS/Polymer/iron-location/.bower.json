@@ -1,6 +1,5 @@
 {
   "name": "iron-location",
-  "version": "0.8.11",
   "description": "Bidirectional data binding into the page's URL.",
   "private": true,
   "authors": [
@@ -23,27 +22,43 @@
   "homepage": "https://github.com/PolymerElements/iron-location",
   "ignore": [],
   "dependencies": {
-    "polymer": "Polymer/polymer#^1.0.0"
+    "polymer": "Polymer/polymer#^2.0.0-rc.1"
   },
   "devDependencies": {
-    "promise-polyfill": "polymerlabs/promise-polyfill#^1.0.0",
-    "iron-component-page": "polymerelements/iron-component-page#^1.0.0",
-    "iron-flex-layout": "polymerelements/iron-flex-layout#^1.0.0",
-    "paper-input": "polymerelements/paper-input#^1.0.0",
-    "paper-slider": "polymerelements/paper-slider#^1.0.0",
-    "paper-styles": "polymerelements/paper-styles#^1.0.0",
-    "test-fixture": "polymerelements/test-fixture#^1.0.0",
-    "web-component-tester": "^4.0.0",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.3"
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#2.0-preview",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#2.0-preview",
+    "iron-component-page": "PolymerElements/iron-component-page#2.0-preview",
+    "promise-polyfill": "polymerlabs/promise-polyfill#2.0-preview",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.1",
+    "test-fixture": "PolymerElements/test-fixture#^3.0.0-rc.1",
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0-prerelease.6"
   },
-  "_release": "0.8.11",
+  "variants": {
+    "1.x": {
+      "dependencies": {
+        "polymer": "Polymer/polymer#^1.0.0"
+      },
+      "devDependencies": {
+        "iron-component-page": "polymerelements/iron-component-page#^1.0.0",
+        "iron-flex-layout": "polymerelements/iron-flex-layout#^1.0.0",
+        "paper-input": "polymerelements/paper-input#^1.0.0",
+        "paper-slider": "polymerelements/paper-slider#^1.0.0",
+        "paper-styles": "polymerelements/paper-styles#^1.0.0",
+        "promise-polyfill": "polymerlabs/promise-polyfill#^1.0.0",
+        "test-fixture": "polymerelements/test-fixture#^1.0.0",
+        "web-component-tester": "^4.0.0",
+        "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
+        "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.2.3"
+      }
+    }
+  },
+  "_release": "b2da948497",
   "_resolution": {
-    "type": "version",
-    "tag": "v0.8.11",
-    "commit": "0df572a3ba0a6f81cd624693b1486bde0d187100"
+    "type": "branch",
+    "branch": "2.0-preview",
+    "commit": "b2da9484978404499cce7d1f97139025d514e569"
   },
   "_source": "https://github.com/PolymerElements/iron-location.git",
-  "_target": "^0.8.0",
+  "_target": "2.0-preview",
   "_originalSource": "PolymerElements/iron-location"
 }

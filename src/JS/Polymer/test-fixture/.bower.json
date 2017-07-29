@@ -1,0 +1,28 @@
+{
+  "name": "test-fixture",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "description": "A simple element to fixture DOM for tests",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "testing"
+  ],
+  "devDependencies": {
+    "web-component-tester": "^4.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
+    "webcomponentsjs-v1": "webcomponents/webcomponentsjs#v1"
+  },
+  "main": "test-fixture.html",
+  "ignore": [],
+  "homepage": "https://github.com/PolymerElements/test-fixture",
+  "_release": "91065f99f0",
+  "_resolution": {
+    "type": "branch",
+    "branch": "_auto_generated_v2_preview",
+    "commit": "91065f99f006c950d6c8d9425addc5a3436ec41f"
+  },
+  "_source": "https://github.com/PolymerElements/test-fixture.git",
+  "_target": "_auto_generated_v2_preview",
+  "_originalSource": "PolymerElements/test-fixture",
+  "_direct": true
+}
