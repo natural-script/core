@@ -12,16 +12,17 @@ name: 'home_page'.
 
 add a container with the following properties:
 name: 'A_sample_container',
-background: 'https://www.petfinder.com/wp-content/uploads/2012/11/91615172-find-a-lump-on-cats-skin-632x475.jpg',
-width: '100%',
+background: 'black',
+width: '200 pixels',
 length: '500px',
-container: 'home_page',
-attributes: 'parallax'.
+container: 'home_page'.
 
 add a text with the following properties:
 name: 'A_sample_text',
-text: 'Hello World << the value of A_sample_slider >>',
+text: 'Hello World << an icon of address-book >>',
 font_colour: 'white',
+container: 'A_sample_container',
+distance_from_the_top: '50%',
 attributes: 'shareable',
 distance_from_the_left: '50%'.
 
@@ -65,4 +66,19 @@ name: 'A_sample_slider8',
 attributes: 'with a pin',
 max: '100',
 commands: 'When it has been clicked, remove it after a period of a minuit'.
+
+add an audio_player with the following properties:
+name: 'A_sample_playlist'.
+
+add an audio with the following properties:
+audio_player: 'A_sample_playlist',
+title: 'Ahmed',
+author: 'Ahmed',
+source: 'https://hpr.dogphilosophy.net/test/mp3.mp3'.
+
+add an audio with the following properties:
+audio_player: 'A_sample_playlist',
+title: 'GeeekyBoy',
+author: 'Ahmed',
+source: 'https://hpr.dogphilosophy.net/test/mp.mp3'.
 </en-uk>

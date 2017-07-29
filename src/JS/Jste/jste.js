@@ -12,7 +12,7 @@ var emailSharer = window.ShareThisViaEmail;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //------------------------------------------------------------Text Operators------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-function customText(siteContents, keywordA, keywordB, keywordC, keywordD, keywordE, keywordF, keywordG, keywordH, keywordI, keywordJ, keywordK, keywordL, keywordM, keywordN, keywordO, keywordP, keywordQ, keywordR, keywordS) {
+function customText(siteContents, keywordA, keywordB, keywordC, keywordD, keywordE, keywordF, keywordG, keywordH, keywordI, keywordJ, keywordK, keywordL, keywordM, keywordN, keywordO, keywordP, keywordQ, keywordR, keywordS, keywordT) {
     var customTextsArrayA = siteContents.split('&lt;&lt; ' + keywordA + ': ');
     for (i = 1; i < customTextsArrayA.length; i++) {
         var customTextA = customTextsArrayA[i].split(' &gt;&gt;')[0];
@@ -108,6 +108,11 @@ function customText(siteContents, keywordA, keywordB, keywordC, keywordD, keywor
         var customTextS = customTextsArrayS[i].split(' &gt;&gt;')[0];
         siteContents = siteContents.replace('&lt;&lt; ' + keywordS + ' &gt;&gt;', screen.height);
     }
+    var customTextsArrayT = siteContents.split('&lt;&lt; ' + keywordT + ' ');
+    for (i = 1; i < customTextsArrayT.length; i++) {
+        var customTextT = customTextsArrayT[i].split(' &gt;&gt;')[0];
+        siteContents = siteContents.replace('&lt;&lt; ' + keywordT + ' ' + customTextT + ' &gt;&gt;', '<i class="fa fa-' + customTextT + '" aria-hidden="true"></i>');
+    }
     return siteContents;
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -122,7 +127,7 @@ if ($('en-uk').length) {
     code = code.replace(/add an /g, "add.");
     code = code.replace(/ with the following properties:/g, "({");
     code = code.replace(/'\./g, "'});");
-    code = customText(code, 'write this in a bold font', 'write this in an italic font', 'write this in an underlined font', 'write this in a bold and italic font', 'write this in an italic and bold font', 'write this in a bold and underlined font', 'write this in an underlined and bold font', 'write this in an underlined and italic font', 'write this in an italic and underlined font', 'write this in a bold, italic and underlined font', 'write this in a bold, underlined and italic font', 'write this in an italic, bold and underlined font', 'write this in an italic, underlined and bold font', 'write this in an underlined, italic and bold font', 'write this in an underlined, bold and italic font', 'The window length', 'The window width', 'The screen length', 'The screen width');
+    code = customText(code, 'write this in a bold font', 'write this in an italic font', 'write this in an underlined font', 'write this in a bold and italic font', 'write this in an italic and bold font', 'write this in a bold and underlined font', 'write this in an underlined and bold font', 'write this in an underlined and italic font', 'write this in an italic and underlined font', 'write this in a bold, italic and underlined font', 'write this in a bold, underlined and italic font', 'write this in an italic, bold and underlined font', 'write this in an italic, underlined and bold font', 'write this in an underlined, italic and bold font', 'write this in an underlined, bold and italic font', 'The window length', 'The window width', 'The screen length', 'The screen width', 'an icon of');
     $('en-uk').remove();
 } else if ($('en-us').length) {
     lang = 1;
@@ -132,7 +137,7 @@ if ($('en-uk').length) {
     code = code.replace(/add an /g, "add.");
     code = code.replace(/ with the following properties:/g, "({");
     code = code.replace(/'\./g, "'});");
-    code = customText(code, 'write this in a bold font', 'write this in an italic font', 'write this in an underlined font', 'write this in a bold and italic font', 'write this in an italic and bold font', 'write this in a bold and underlined font', 'write this in an underlined and bold font', 'write this in an underlined and italic font', 'write this in an italic and underlined font', 'write this in a bold, italic and underlined font', 'write this in a bold, underlined and italic font', 'write this in an italic, bold and underlined font', 'write this in an italic, underlined and bold font', 'write this in an underlined, italic and bold font', 'write this in an underlined, bold and italic font', 'The window length', 'The window width', 'The screen length', 'The screen width');
+    code = customText(code, 'write this in a bold font', 'write this in an italic font', 'write this in an underlined font', 'write this in a bold and italic font', 'write this in an italic and bold font', 'write this in a bold and underlined font', 'write this in an underlined and bold font', 'write this in an underlined and italic font', 'write this in an italic and underlined font', 'write this in a bold, italic and underlined font', 'write this in a bold, underlined and italic font', 'write this in an italic, bold and underlined font', 'write this in an italic, underlined and bold font', 'write this in an underlined, italic and bold font', 'write this in an underlined, bold and italic font', 'The window length', 'The window width', 'The screen length', 'The screen width', 'an icon of');
     $('en-us').remove();
 } else if ($('fr-fr').length) {
     lang = 2;
@@ -436,6 +441,22 @@ var gridTranslations = ['grid', 'grid', "les_attributs", 'الصفات', 'الص
 var shareableTranslations = ['shareable', 'shareable', "les_attributs", 'الصفات', 'الصفات', '属性'];
 var remoteScrollingTranslations = ['remote scrolling', 'remote scrolling', "défilement à distance", 'الصفات', 'الصفات', '属性'];
 var parallaxTranslations = ['parallax', 'parallax', "les_attributs", 'الصفات', 'الصفات', '属性'];
+var centimeterTranslations = ['centimeter', 'centimeter', "centimètre", 'سنتيمتر', 'سنتيمتر', 'センチメートル'];
+var millimeterTranslations = ['millimeter', 'millimeter', "millimètre", 'ملليمتر', 'ملليمتر', 'ミリメートル'];
+var inchTranslations = ['inch', 'inch', "pouce", 'بوصة', 'بوصة', 'インチ'];
+var pixelTranslations = ['pixel', 'pixel', "pixel", 'بكسل', 'بكسل', 'ピクセル'];
+var pointTranslations = ['point', 'point', "point", 'نقطة', 'نقطة', 'ポイント'];
+var picaTranslations = ['pica', 'pica', "pica", 'بيكا', 'بيكا', 'パイカ'];
+var centimetersTranslations = ['centimeters', 'centimeters', "centimètres", 'سنتيمتر', 'سنتيمتر', 'センチメートル'];
+var millimetersTranslations = ['millimeters', 'millimeters', "millimètres", 'ملليمتر', 'ملليمتر', 'ミリメートル'];
+var inchesTranslations = ['inches', 'inches', "pouces", 'بوصة', 'بوصة', 'インチ'];
+var pixelsTranslations = ['pixels', 'pixels', "pixels", 'بكسل', 'بكسل', 'ピクセル'];
+var pointsTranslations = ['points', 'points', "points", 'نقطة', 'نقطة', 'ポイント'];
+var picasTranslations = ['picas', 'picas', "picas", 'بيكا', 'بيكا', 'パイカ'];
+var authorTranslations = ['author', 'author', "auteur", 'المؤلف', 'المؤلف', '著者'];
+var coverTranslations = ['cover', 'cover', "couverture", 'الغلاف', 'الغلاف', 'カバー'];
+var autoplayTranslations = ['autoplay', 'autoplay', "couverture", 'الغلاف', 'الغلاف', 'カバー'];
+var audioPlayerTranslations = ['audio_player', 'audio_player', "lecteur_audio", 'مشغل_الصوت', 'مشغل_الصوت', 'オーディオプレーヤー'];
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------------Commands Translations------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -10398,190 +10419,6 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 };
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                //----------------------------------------------------------------------Icon------------------------------------------------------------------------------------------------------------------------------------------//
-                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[iconTranslations[lang]] = function (options) {
-                    // Establish our default settings
-                    var settings = $.extend({
-                        [fontColorTranslations[lang]]: null,
-                        [iconTranslations[lang]]: null,
-                        [fontSizeTranslations[lang]]: null,
-                        [nameTranslations[lang]]: null,
-                        [widthTranslations[lang]]: null,
-                        [lengthTranslations[lang]]: null,
-                        [animationTranslations[lang]]: null,
-                        [backgroundTranslations[lang]]: null,
-                        [transparencyTranslations[lang]]: null,
-                        [distanceFromBottomTranslations[lang]]: null,
-                        [distanceFromTopTranslations[lang]]: null,
-                        [distanceFromLeftTranslations[lang]]: null,
-                        [distanceFromRightTranslations[lang]]: null,
-                        [positionTranslations[lang]]: null,
-                        [containerTranslations[lang]]: null,
-                        [commandsTranslations[lang]]: null
-                    }, options);
-                    return this.each(function () {
-                        var name = settings[nameTranslations[lang]];
-                        var icon = settings[iconTranslations[lang]];
-                        var out = '<div id="' + name + '_container" style="position: absolute;"><iron-icon id="' + name + '" icon="' + icon + '"></iron-icon></div>';
-                        if (settings[containerTranslations[lang]]) {
-                            $('#' + settings[containerTranslations[lang]] + '').append(out);
-                        } else {
-                            $('contents').append(out);
-                        }
-                        if (settings[fontColorTranslations[lang]]) {
-                            setFontColour(name, settings[fontColorTranslations[lang]]);
-                        }
-                        if (settings[fontSizeTranslations[lang]]) {
-                            $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
-                        }
-                        if (settings[positionTranslations[lang]]) {
-                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
-                        } else {
-                            $('#' + name + '').css('position', 'relative');
-                        }
-                        if (settings[distanceFromBottomTranslations[lang]]) {
-                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
-                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
-                                $('#' + name + '_container').css('bottom', settings[distanceFromBottomTranslations[lang]]);
-                            } else {
-                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
-                            }
-                        }
-                        if (settings[distanceFromTopTranslations[lang]]) {
-                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
-                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
-                                $('#' + name + '_container').css('top', settings[distanceFromTopTranslations[lang]]);
-                            } else {
-                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
-                            }
-                        }
-                        if (settings[distanceFromLeftTranslations[lang]]) {
-                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
-                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
-                                $('#' + name + '_container').css('left', settings[distanceFromLeftTranslations[lang]]);
-                            } else {
-                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
-                            }
-                        }
-                        if (settings[distanceFromRightTranslations[lang]]) {
-                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
-                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
-                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
-                            } else {
-                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
-                            }
-                        }
-                        if (settings[commandsTranslations[lang]]) {
-                            execute(name, settings[commandsTranslations[lang]]);
-                        }
-                        if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
-                        }
-                        if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
-                        }
-                        if (settings[animationTranslations[lang]]) {
-                            setAnimation(name, settings[animationTranslations[lang]]);
-                        }
-                        if (settings[transparencyTranslations[lang]]) {
-                            $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[transparencyTranslations[lang]] + '%)');
-                        }
-                    });
-                };
-                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                //-------------------------------------------------------Button With An Icon------------------------------------------------------------------------------------------------------------------------------------------//
-                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[buttonWithAnIconTranslations[lang]] = function (options) {
-                    // Establish our default settings
-                    var settings = $.extend({
-                        [fontColorTranslations[lang]]: null,
-                        [iconTranslations[lang]]: null,
-                        [fontSizeTranslations[lang]]: null,
-                        [nameTranslations[lang]]: null,
-                        [widthTranslations[lang]]: null,
-                        [lengthTranslations[lang]]: null,
-                        [animationTranslations[lang]]: null,
-                        [backgroundTranslations[lang]]: null,
-                        [transparencyTranslations[lang]]: null,
-                        [distanceFromBottomTranslations[lang]]: null,
-                        [distanceFromTopTranslations[lang]]: null,
-                        [distanceFromLeftTranslations[lang]]: null,
-                        [distanceFromRightTranslations[lang]]: null,
-                        [positionTranslations[lang]]: null,
-                        [containerTranslations[lang]]: null,
-                        [commandsTranslations[lang]]: null
-                    }, options);
-                    return this.each(function () {
-                        var name = settings[nameTranslations[lang]];
-                        var icon = settings[iconTranslations[lang]];
-                        var out = '<div id="' + name + '_container" style="position: absolute;"><paper-icon-button id="' + name + '" icon="' + icon + '"></paper-icon-button></div>';
-                        if (settings[containerTranslations[lang]]) {
-                            $('#' + settings[containerTranslations[lang]] + '').append(out);
-                        } else {
-                            $('contents').append(out);
-                        }
-                        if (settings[fontColorTranslations[lang]]) {
-                            setFontColour(name, settings[fontColorTranslations[lang]]);
-                        }
-                        if (settings[fontSizeTranslations[lang]]) {
-                            $('#' + name + '').css('font-size', settings[fontSizeTranslations[lang]]);
-                        }
-                        if (settings[positionTranslations[lang]]) {
-                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
-                        } else {
-                            $('#' + name + '').css('position', 'relative');
-                        }
-                        if (settings[distanceFromBottomTranslations[lang]]) {
-                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
-                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
-                                $('#' + name + '_container').css('bottom', settings[distanceFromBottomTranslations[lang]]);
-                            } else {
-                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
-                            }
-                        }
-                        if (settings[distanceFromTopTranslations[lang]]) {
-                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
-                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
-                                $('#' + name + '_container').css('top', settings[distanceFromTopTranslations[lang]]);
-                            } else {
-                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
-                            }
-                        }
-                        if (settings[distanceFromLeftTranslations[lang]]) {
-                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
-                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
-                                $('#' + name + '_container').css('left', settings[distanceFromLeftTranslations[lang]]);
-                            } else {
-                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
-                            }
-                        }
-                        if (settings[distanceFromRightTranslations[lang]]) {
-                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
-                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
-                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
-                            } else {
-                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
-                            }
-                        }
-                        if (settings[commandsTranslations[lang]]) {
-                            execute(name, settings[commandsTranslations[lang]]);
-                        }
-                        if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
-                        }
-                        if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
-                        }
-                        if (settings[animationTranslations[lang]]) {
-                            setAnimation(name, settings[animationTranslations[lang]]);
-                        }
-                        if (settings[transparencyTranslations[lang]]) {
-                            $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[transparencyTranslations[lang]] + '%)');
-                        }
-                    });
-                };
-                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //----------------------------------------------------------------------Card------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[sectionTranslations[lang]] = function (options) {
@@ -10659,10 +10496,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }
                         }
                         if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[animationTranslations[lang]]) {
                             setAnimation(name, settings[animationTranslations[lang]]);
@@ -10743,10 +10580,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             execute(name, settings[commandsTranslations[lang]]);
                         }
                         if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[animationTranslations[lang]]) {
                             setAnimation(name, settings[animationTranslations[lang]]);
@@ -10800,10 +10637,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             setBG(name, settings[backgroundTranslations[lang]]);
                         }
                         if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[animationTranslations[lang]]) {
                             setAnimation(name, settings[animationTranslations[lang]]);
@@ -10863,10 +10700,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }
                         }
                         if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[animationTranslations[lang]]) {
                             setAnimation(name, settings[animationTranslations[lang]]);
@@ -10926,10 +10763,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').attr('alt', settings[titleTranslations[lang]]);
                         }
                         if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[animationTranslations[lang]]) {
                             setAnimation(name, settings[animationTranslations[lang]]);
@@ -10991,10 +10828,210 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             $('#' + name + '').attr('alt', settings[titleTranslations[lang]]);
                         }
                         if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
+                        }
+                        if (settings[animationTranslations[lang]]) {
+                            setAnimation(name, settings[animationTranslations[lang]]);
+                        }
+                        if (settings[transparencyTranslations[lang]]) {
+                            $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[transparencyTranslations[lang]] + '%)');
+                        }
+                    });
+                };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------ِAuido Player------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                $.fn[audioPlayerTranslations[lang]] = function (options) {
+                    // Establish our default settings
+                    var settings = $.extend({
+                        [titleTranslations[lang]]: null,
+                        [authorTranslations[lang]]: null,
+                        [coverTranslations[lang]]: null,
+                        [autoplayTranslations[lang]]: null,
+                        [sourceTranslations[lang]]: null,
+                        [nameTranslations[lang]]: null,
+                        [widthTranslations[lang]]: null,
+                        [lengthTranslations[lang]]: null,
+                        [animationTranslations[lang]]: null,
+                        [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
+                        [backgroundTranslations[lang]]: null,
+                        [commandsTranslations[lang]]: null
+                    }, options);
+                    return this.each(function () {
+                        var name = settings[nameTranslations[lang]];
+                        var source = settings[sourceTranslations[lang]];
+                        var out = '<div id="' + name + '_container" style="position: absolute;"><div id="' + name + '" class="aplayer"></div></div>';
+                        if (settings[containerTranslations[lang]]) {
+                            $('#' + settings[containerTranslations[lang]] + '').append(out);
+                        } else {
+                            $('contents').append(out);
+                        }
+                        document.initializeAudioPlayer = [];
+                        document.initializeAudioPlayer[name] =  new Function("title, author, url", "document." + name + " = new APlayer({element: document.getElementById('" + name + "'), narrow: false, autoplay: true, showlrc: 0, mutex: true, theme: '#e6d0b2', mode: 'random', preload: 'metadata', listmaxheight: '513px', music: {title: title, author: author, url: url}});");
+                        if (settings[positionTranslations[lang]]) {
+                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
+                        } else {
+                            $('#' + name + '').css('position', 'relative');
+                        }
+                        if (settings[distanceFromBottomTranslations[lang]]) {
+                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
+                                $('#' + name + '_container').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            }
+                        }
+                        if (settings[distanceFromTopTranslations[lang]]) {
+                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
+                                $('#' + name + '_container').css('top', settings[distanceFromTopTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            }
+                        }
+                        if (settings[distanceFromLeftTranslations[lang]]) {
+                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
+                                $('#' + name + '_container').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            }
+                        }
+                        if (settings[distanceFromRightTranslations[lang]]) {
+                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
+                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            }
+                        }
+                        if (settings[backgroundTranslations[lang]]) {
+                            setBG(name, settings[backgroundTranslations[lang]]);
+                        }
+                        if (settings[imageWidthTranslations[lang]]) {
+                            $('#' + name + '').attr('width', settings[imageWidthTranslations[lang]]);
+                        }
+                        if (settings[imageLengthTranslations[lang]]) {
+                            $('#' + name + '').attr('length', settings[imageLengthTranslations[lang]]);
+                        }
+                        if (settings[titleTranslations[lang]]) {
+                            $('#' + name + '').attr('alt', settings[titleTranslations[lang]]);
+                        }
+                        if (settings[widthTranslations[lang]]) {
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
+                        }
+                        if (settings[lengthTranslations[lang]]) {
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
+                        }
+                        if (settings[animationTranslations[lang]]) {
+                            setAnimation(name, settings[animationTranslations[lang]]);
+                        }
+                        if (settings[transparencyTranslations[lang]]) {
+                            $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[transparencyTranslations[lang]] + '%)');
+                        }
+                    });
+                };
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                //---------------------------------------------------------------------Audio------------------------------------------------------------------------------------------------------------------------------------------//
+                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+                $.fn[audioTranslations[lang]] = function (options) {
+                    // Establish our default settings
+                    var settings = $.extend({
+                        [titleTranslations[lang]]: null,
+                        [authorTranslations[lang]]: null,
+                        [coverTranslations[lang]]: null,
+                        [autoplayTranslations[lang]]: null,
+                        [audioPlayerTranslations]: null,
+                        [sourceTranslations[lang]]: null,
+                        [nameTranslations[lang]]: null,
+                        [widthTranslations[lang]]: null,
+                        [lengthTranslations[lang]]: null,
+                        [animationTranslations[lang]]: null,
+                        [transparencyTranslations[lang]]: null,
+                        [distanceFromBottomTranslations[lang]]: null,
+                        [distanceFromTopTranslations[lang]]: null,
+                        [distanceFromLeftTranslations[lang]]: null,
+                        [distanceFromRightTranslations[lang]]: null,
+                        [positionTranslations[lang]]: null,
+                        [containerTranslations[lang]]: null,
+                        [backgroundTranslations[lang]]: null,
+                        [commandsTranslations[lang]]: null
+                    }, options);
+                    return this.each(function () {
+                        var name = settings[nameTranslations[lang]];
+                        var source = settings[sourceTranslations[lang]];
+                        var audioInfo = [{title: settings[titleTranslations[lang]], author: settings[authorTranslations[lang]], url: settings[sourceTranslations[lang]]}];
+                        if ($('#' + settings[audioPlayerTranslations[lang]]).html().trim() != "") { 
+                            document[settings[audioPlayerTranslations[lang]]].addMusic(audioInfo);
+                            
+                         } else {
+                        document.initializeAudioPlayer[settings[audioPlayerTranslations[lang]]](settings[titleTranslations[lang]], settings[authorTranslations[lang]], settings[sourceTranslations[lang]]);
+                        
+                            }
+         
+                        if (settings[positionTranslations[lang]]) {
+                            $('#' + name + '').css('position', settings[positionTranslations[lang]]);
+                        } else {
+                            $('#' + name + '').css('position', 'relative');
+                        }
+                        if (settings[distanceFromBottomTranslations[lang]]) {
+                            if (settings[distanceFromBottomTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('bottom', '-' + settings[distanceFromBottomTranslations[lang]]);
+                                $('#' + name + '_container').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('bottom', settings[distanceFromBottomTranslations[lang]]);
+                            }
+                        }
+                        if (settings[distanceFromTopTranslations[lang]]) {
+                            if (settings[distanceFromTopTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('top', '-' + settings[distanceFromTopTranslations[lang]]);
+                                $('#' + name + '_container').css('top', settings[distanceFromTopTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('top', settings[distanceFromTopTranslations[lang]]);
+                            }
+                        }
+                        if (settings[distanceFromLeftTranslations[lang]]) {
+                            if (settings[distanceFromLeftTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('left', '-' + settings[distanceFromLeftTranslations[lang]]);
+                                $('#' + name + '_container').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('left', settings[distanceFromLeftTranslations[lang]]);
+                            }
+                        }
+                        if (settings[distanceFromRightTranslations[lang]]) {
+                            if (settings[distanceFromRightTranslations[lang]].split('%').length > 1) {
+                                $('#' + name + '').css('right', '-' + settings[distanceFromRightTranslations[lang]]);
+                                $('#' + name + '_container').css('right', settings[distanceFromRightTranslations[lang]]);
+                            } else {
+                                $('#' + name + '').css('right', settings[distanceFromRightTranslations[lang]]);
+                            }
+                        }
+                        if (settings[backgroundTranslations[lang]]) {
+                            setBG(name, settings[backgroundTranslations[lang]]);
+                        }
+                        if (settings[imageWidthTranslations[lang]]) {
+                            $('#' + name + '').attr('width', settings[imageWidthTranslations[lang]]);
+                        }
+                        if (settings[imageLengthTranslations[lang]]) {
+                            $('#' + name + '').attr('length', settings[imageLengthTranslations[lang]]);
+                        }
+                        if (settings[titleTranslations[lang]]) {
+                            $('#' + name + '').attr('alt', settings[titleTranslations[lang]]);
+                        }
+                        if (settings[widthTranslations[lang]]) {
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
+                        }
+                        if (settings[lengthTranslations[lang]]) {
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[animationTranslations[lang]]) {
                             setAnimation(name, settings[animationTranslations[lang]]);
@@ -11105,10 +11142,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             execute(name, settings[commandsTranslations[lang]]);
                         }
                         if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[animationTranslations[lang]]) {
                             setAnimation(name, settings[animationTranslations[lang]]);
@@ -11232,10 +11269,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             execute(name, settings[commandsTranslations[lang]]);
                         }
                         if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[animationTranslations[lang]]) {
                             setAnimation(name, settings[animationTranslations[lang]]);
@@ -11370,10 +11407,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             execute(name, settings[commandsTranslations[lang]]);
                         }
                         if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[animationTranslations[lang]]) {
                             setAnimation(name, settings[animationTranslations[lang]]);
@@ -11501,14 +11538,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
                         }
+
                         if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
+                        }
+                        if (settings[lengthTranslations[lang]]) {
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[backgroundTranslations[lang]]) {
                             setBG(name, settings[backgroundTranslations[lang]]);
-                        }
-                        if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
                         }
                         if (settings[animationTranslations[lang]]) {
                             setAnimation(name, settings[animationTranslations[lang]]);
@@ -11648,14 +11686,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
                         }
+
                         if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
+                        }
+                        if (settings[lengthTranslations[lang]]) {
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[backgroundTranslations[lang]]) {
                             setBG(name, settings[backgroundTranslations[lang]]);
-                        }
-                        if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
                         }
                         if (settings[animationTranslations[lang]]) {
                             setAnimation(name, settings[animationTranslations[lang]]);
@@ -11856,11 +11895,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (settings[commandsTranslations[lang]]) {
                             execute(name, settings[commandsTranslations[lang]]);
                         }
+
                         if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[animationTranslations[lang]]) {
                             setAnimation(name, settings[animationTranslations[lang]]);
@@ -11997,7 +12037,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             execute(name, settings[commandsTranslations[lang]]);
                         }
                         if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
+                        }
+                        if (settings[lengthTranslations[lang]]) {
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[attributesTranslations[lang]]) {
                             if (settings[attributesTranslations[lang]].indexOf(parallaxTranslations[lang]) > -1) {
@@ -12013,9 +12056,6 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             if (settings[backgroundTranslations[lang]]) {
                                 setBG(name, settings[backgroundTranslations[lang]]);
                             }
-                        }
-                        if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
                         }
                         if (settings[animationTranslations[lang]]) {
                             setAnimation(name, settings[animationTranslations[lang]]);
@@ -12164,13 +12204,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             execute(name, settings[commandsTranslations[lang]]);
                         }
                         if (settings[widthTranslations[lang]]) {
-                            $('#' + name + '').css('width', settings[widthTranslations[lang]]);
+                            $('#' + name + '').css('width', settings[widthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
+                        }
+                        if (settings[lengthTranslations[lang]]) {
+                            $('#' + name + '').css('height', settings[lengthTranslations[lang]].replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm"));
                         }
                         if (settings[backgroundTranslations[lang]]) {
                             setBG(name, settings[backgroundTranslations[lang]]);
-                        }
-                        if (settings[lengthTranslations[lang]]) {
-                            $('#' + name + '').css('height', settings[lengthTranslations[lang]]);
                         }
                         if (settings[animationTranslations[lang]]) {
                             setAnimation(name, settings[animationTranslations[lang]]);
