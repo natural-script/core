@@ -290,40 +290,41 @@ function evaluateExpression(expression) {
     var finalExpression = expression;
     var valueResource = '';
     var finalValue = '';
+    if (valNo != null) {
+        if (valNo.length > -1) {
+            for (i = 0; i < valNo.length; i++) {
+                if (lang == 0) {
+                    valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
+                    finalValue = $('#' + valueResource + '').val();
+                    finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
 
-    if (valNo.length > -1) {
-        for (i = 0; i < valNo.length; i++) {
-            if (lang == 0) {
-                valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
-                finalValue = $('#' + valueResource + '').val();
-                finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
+                } else if (lang == 2) {
+                    valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
+                    finalValue = $('#' + valueResource + '').val();
+                    finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
 
-            } else if (lang == 2) {
-                valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
-                finalValue = $('#' + valueResource + '').val();
-                finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
+                } else if (lang == 3) {
+                    valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
+                    finalValue = $('#' + valueResource + '').val();
+                    finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
 
-            } else if (lang == 3) {
-                valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
-                finalValue = $('#' + valueResource + '').val();
-                finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
-
-            } else if (lang == 4) {
-                valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
-                finalValue = $('#' + valueResource + '').val();
-                finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
+                } else if (lang == 4) {
+                    valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
+                    finalValue = $('#' + valueResource + '').val();
+                    finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
 
 
-            } else if (lang == 5) {
-                valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
-                finalValue = $('#' + valueResource + '').val();
-                finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
+                } else if (lang == 5) {
+                    valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
+                    finalValue = $('#' + valueResource + '').val();
+                    finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
 
+                }
             }
-        }
 
+        }
     }
-    finalExpression = finalExpression.replace(/square root/g, 'sqrt').replace(/جذر/g, 'sqrt').replace(/multiplied by/g, '*').replace(/ضرب/g, '*').replace(/divided by/g, '/').replace(/على/g, '/').replace(/جا/g, 'sin').replace(/جتا/g, 'cos').replace(/ظا/g, 'tan');
+    finalExpression = finalExpression.replace(/square root/g, 'sqrt').replace(/جذر/g, 'sqrt').replace(/multiplied by/g, '*').replace(/ضرب/g, '*').replace(/divided/g, '/').replace(/على/g, '/').replace(/جا/g, 'sin').replace(/جتا/g, 'cos').replace(/ظا/g, 'tan');
 
 
     return math.eval(finalExpression);
@@ -1757,7 +1758,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 5) {
             return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
         }
-    } else if (commandCode == 'c10r') {
+    } else if (commandCode == 'c10rA') {
         if (lang == 0) {
             return 'the value of';
         } else if (lang == 1) {
@@ -1768,6 +1769,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             return 'قيمة';
         } else if (lang == 4) {
             return 'قيمة';
+        } else if (lang == 5) {
+            return 'の価値';
+        }
+    } else if (commandCode == 'c10rB') {
+        if (lang == 0) {
+            return 'the result of';
+        } else if (lang == 1) {
+            return 'the result of';
+        } else if (lang == 2) {
+            return "le résultat de";
+        } else if (lang == 3) {
+            return 'ناتج';
+        } else if (lang == 4) {
+            return 'ناتج';
         } else if (lang == 5) {
             return 'の価値';
         }
@@ -2093,7 +2108,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 5) {
             return commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[2];
         }
-    } else if (commandCode == 'c16r') {
+    } else if (commandCode == 'c16rA') {
         if (lang == 0) {
             return 'the value of';
         } else if (lang == 1) {
@@ -2106,6 +2121,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             return 'قيمة';
         } else if (lang == 5) {
             return 'la valeur de';
+        }
+    } else if (commandCode == 'c16rB') {
+        if (lang == 0) {
+            return 'the result of';
+        } else if (lang == 1) {
+            return 'the result of';
+        } else if (lang == 2) {
+            return "le résultat de";
+        } else if (lang == 3) {
+            return 'ناتج';
+        } else if (lang == 4) {
+            return 'ناتج';
+        } else if (lang == 5) {
+            return 'the result of';
         }
     } else if (commandCode == 'c17') {
         if (lang == 0) {
@@ -2415,7 +2444,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 5) {
             return commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[2];
         }
-    } else if (commandCode == 'c21r') {
+    } else if (commandCode == 'c21rA') {
         if (lang == 0) {
             return 'the value of';
         } else if (lang == 1) {
@@ -2428,6 +2457,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             return 'قيمة';
         } else if (lang == 5) {
             return 'la valeur de';
+        }
+    } else if (commandCode == 'c21rB') {
+        if (lang == 0) {
+            return 'the result of';
+        } else if (lang == 1) {
+            return 'the result of';
+        } else if (lang == 2) {
+            return "le résultat de";
+        } else if (lang == 3) {
+            return 'ناتج';
+        } else if (lang == 4) {
+            return 'ناتج';
+        } else if (lang == 5) {
+            return 'the result of';
         }
     } else if (commandCode == 'c22') {
         if (lang == 0) {
@@ -3397,6 +3440,48 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         } else if (lang == 5) {
             return commandValue.split(E17)[1].split(', ')[0];
         }
+    } else if (commandCode == 'c41') {
+        if (lang == 0) {
+            return evaluateExpression(commandValue.split('the result of ')[1]);
+        } else if (lang == 1) {
+            return evaluateExpression(commandValue.split('the result of ')[1]);
+        } else if (lang == 2) {
+            return evaluateExpression(commandValue.split("le résultat de ")[1]);
+        } else if (lang == 3) {
+            return evaluateExpression(commandValue.split('ناتج ')[1]);
+        } else if (lang == 4) {
+            return cevaluateExpression(ommandValue.split('ناتج ')[1]);
+        } else if (lang == 5) {
+            return evaluateExpression(commandValue.split('the result of ')[1]);
+        }
+    } else if (commandCode == 'c42') {
+        if (lang == 0) {
+            return evaluateExpression(commandValue.split('set the value of ' + para1 + ' to the result of ')[1]);
+        } else if (lang == 1) {
+            return evaluateExpression(commandValue.split('set the value of ' + para1 + ' to the result of ')[1]);
+        } else if (lang == 2) {
+            return evaluateExpression(commandValue.split("définir la valeur de ' + para1 + ' à le résultat de ")[1]);
+        } else if (lang == 3) {
+            return evaluateExpression(commandValue.split('غير قيمة ' + para1 + ' إلى ناتج ')[1]);
+        } else if (lang == 4) {
+            return evaluateExpression(commandValue.split('غير قيمة ' + para1 + ' إلى ناتج ')[1]);
+        } else if (lang == 5) {
+            return evaluateExpression(commandValue.split('set the value of ' + para1 + ' to the result of ')[1]);
+        }
+    } else if (commandCode == 'c43') {
+        if (lang == 0) {
+            return evaluateExpression(commandValue.split('set the value of ' + para1 + ' to the result of ')[1]);
+        } else if (lang == 1) {
+            return evaluateExpression(commandValue.split('set the value of ' + para1 + ' to the result of ')[1]);
+        } else if (lang == 2) {
+            return evaluateExpression(commandValue.split("définir la valeur de ' + para1 + ' à le résultat de ")[1]);
+        } else if (lang == 3) {
+            return evaluateExpression(commandValue.split('غير قيمة ' + para1 + ' إلى ناتج ')[1]);
+        } else if (lang == 4) {
+            return evaluateExpression(commandValue.split('غير قيمة ' + para1 + ' إلى ناتج ')[1]);
+        } else if (lang == 5) {
+            return evaluateExpression(commandValue.split('set the value of ' + para1 + ' to the result of ')[1]);
+        }
     }
 }
 (function ($) {
@@ -3698,7 +3783,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c9qA', timeoutCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
+                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rA')) {
                             var targetElement = commandsFnTranslations('c11', timeoutCommand);
                             $('#' + elementName + '').click(function () {
                                 setTimeout(function () {
@@ -3706,6 +3791,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').click(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
                             $('#' + elementName + '').click(function () {
@@ -3717,14 +3812,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qA', timeoutCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             $('#' + elementName + '').click(function () {
                                 setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').click(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, timeoutPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             $('#' + elementName + '').click(function () {
@@ -3736,14 +3840,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qA', timeoutCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             $('#' + elementName + '').click(function () {
                                 setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').click(function () {
+                                    setTimeout(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
                             $('#' + elementName + '').click(function () {
@@ -3778,7 +3892,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
                             $('#' + elementName + '').click(function () {
                                 setTimeout(function () {
 
@@ -3788,7 +3902,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, timeoutPeriod);
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 } else if (commandsFnTranslations('c1B', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qB', timeoutCommand) == commandsFnTranslations('c2ruA')) {
@@ -3833,14 +3947,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c9qB', timeoutCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
+                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', timeoutCommand);
                             $('#' + elementName + '').mouseenter(function () {
                                 setTimeout(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').mouseenter(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
                             $('#' + elementName + '').mouseenter(function () {
@@ -3852,14 +3976,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qB', timeoutCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             $('#' + elementName + '').mouseenter(function () {
                                 setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').mouseenter(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, timeoutPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             $('#' + elementName + '').mouseenter(function () {
@@ -3871,14 +4004,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qB', timeoutCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             $('#' + elementName + '').mouseenter(function () {
                                 setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').mouseenter(function () {
+                                    setTimeout(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
                             $('#' + elementName + '').mouseenter(function () {
@@ -3913,7 +4056,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
                             $('#' + elementName + '').mouseenter(function () {
                                 setTimeout(function () {
 
@@ -3923,7 +4066,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, timeoutPeriod);
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 } else if (commandsFnTranslations('c1C', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qC', timeoutCommand) == commandsFnTranslations('c2ruA')) {
@@ -3968,14 +4111,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c9qC', timeoutCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
+                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', timeoutCommand);
                             $('#' + elementName + '').mouseleave(function () {
                                 setTimeout(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').mouseleave(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
                             $('#' + elementName + '').mouseleave(function () {
@@ -3987,14 +4140,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qC', timeoutCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             $('#' + elementName + '').mouseleave(function () {
                                 setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').mouseleave(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, timeoutPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             $('#' + elementName + '').mouseleave(function () {
@@ -4006,14 +4168,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qC', timeoutCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             $('#' + elementName + '').mouseleave(function () {
                                 setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').mouseleave(function () {
+                                    setTimeout(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
                             $('#' + elementName + '').mouseleave(function () {
@@ -4048,7 +4220,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
                             $('#' + elementName + '').mouseleave(function () {
                                 setTimeout(function () {
 
@@ -4058,7 +4230,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, timeoutPeriod);
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 } else if (commandsFnTranslations('c1D', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qD', timeoutCommand) == commandsFnTranslations('c2ruA')) {
@@ -4103,14 +4275,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c9qD', timeoutCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
+                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', timeoutCommand);
                             $('#' + elementName + '').mouseout(function () {
                                 setTimeout(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').mouseout(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
                             $('#' + elementName + '').mouseout(function () {
@@ -4122,14 +4304,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qD', timeoutCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             $('#' + elementName + '').mouseout(function () {
                                 setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').mouseout(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, timeoutPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             $('#' + elementName + '').mouseout(function () {
@@ -4141,14 +4332,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qD', timeoutCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             $('#' + elementName + '').mouseout(function () {
                                 setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').mouseout(function () {
+                                    setTimeout(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
                             $('#' + elementName + '').mouseout(function () {
@@ -4183,7 +4384,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
                             $('#' + elementName + '').mouseout(function () {
                                 setTimeout(function () {
 
@@ -4193,7 +4394,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, timeoutPeriod);
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 } else if (commandsFnTranslations('c1E', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qE', timeoutCommand) == commandsFnTranslations('c2ruA')) {
@@ -4238,14 +4439,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c9qE', timeoutCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
+                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', timeoutCommand);
                             $('#' + elementName + '').mousemove(function () {
                                 setTimeout(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').mousemove(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
                             $('#' + elementName + '').mousemove(function () {
@@ -4257,14 +4468,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qE', timeoutCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             $('#' + elementName + '').mousemove(function () {
                                 setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').mousemove(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, timeoutPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             $('#' + elementName + '').mousemove(function () {
@@ -4276,14 +4496,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qE', timeoutCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             $('#' + elementName + '').mousemove(function () {
                                 setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').mousemove(function () {
+                                    setTimeout(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
                             $('#' + elementName + '').mousemove(function () {
@@ -4318,7 +4548,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
                             $('#' + elementName + '').mousemove(function () {
                                 setTimeout(function () {
 
@@ -4328,7 +4558,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, timeoutPeriod);
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 } else if (commandsFnTranslations('c1F', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qF', timeoutCommand) == commandsFnTranslations('c2ruA')) {
@@ -4373,14 +4603,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c9qF', timeoutCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
+                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', timeoutCommand);
                             $('#' + elementName + '').mouseup(function () {
                                 setTimeout(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').mouseup(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
                             $('#' + elementName + '').mouseup(function () {
@@ -4392,14 +4632,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qF', timeoutCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             $('#' + elementName + '').mouseup(function () {
                                 setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').mouseup(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, timeoutPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             $('#' + elementName + '').mouseup(function () {
@@ -4411,14 +4660,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qF', timeoutCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             $('#' + elementName + '').mouseup(function () {
                                 setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').mouseup(function () {
+                                    setTimeout(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
                             $('#' + elementName + '').mouseup(function () {
@@ -4453,7 +4712,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
                             $('#' + elementName + '').mouseup(function () {
                                 setTimeout(function () {
 
@@ -4463,7 +4722,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, timeoutPeriod);
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 } else if (commandsFnTranslations('c1G', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qG', timeoutCommand) == commandsFnTranslations('c2ruA')) {
@@ -4508,14 +4767,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c9qG', timeoutCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
+                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', timeoutCommand);
                             $('#' + elementName + '').dblclick(function () {
                                 setTimeout(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').dblclick(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
                             $('#' + elementName + '').dblclick(function () {
@@ -4527,14 +4796,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qG', timeoutCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             $('#' + elementName + '').dblclick(function () {
                                 setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').dblclick(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, timeoutPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             $('#' + elementName + '').dblclick(function () {
@@ -4546,14 +4824,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qG', timeoutCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             $('#' + elementName + '').dblclick(function () {
                                 setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').dblclick(function () {
+                                    setTimeout(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
                             $('#' + elementName + '').dblclick(function () {
@@ -4588,7 +4876,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
                             $('#' + elementName + '').dblclick(function () {
                                 setTimeout(function () {
 
@@ -4598,7 +4886,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, timeoutPeriod);
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 } else if (commandsFnTranslations('c1H', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qH', timeoutCommand) == commandsFnTranslations('c2ruA')) {
@@ -4643,14 +4931,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c9qH', timeoutCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
+                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', timeoutCommand);
                             $('#' + elementName + '').contextmenu(function () {
                                 setTimeout(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').contextmenu(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
                             $('#' + elementName + '').contextmenu(function () {
@@ -4662,14 +4960,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qH', timeoutCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             $('#' + elementName + '').contextmenu(function () {
                                 setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').contextmenu(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, timeoutPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             $('#' + elementName + '').contextmenu(function () {
@@ -4681,14 +4988,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qH', timeoutCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             $('#' + elementName + '').contextmenu(function () {
                                 setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').contextmenu(function () {
+                                    setTimeout(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
                             $('#' + elementName + '').contextmenu(function () {
@@ -4723,7 +5040,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
                             $('#' + elementName + '').contextmenu(function () {
                                 setTimeout(function () {
 
@@ -4733,7 +5050,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, timeoutPeriod);
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 } else if (commandsFnTranslations('c1I', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qI', timeoutCommand) == commandsFnTranslations('c2ruA')) {
@@ -4778,14 +5095,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c9qI', timeoutCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
+                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', timeoutCommand);
                             $('#' + elementName + '').keypress(function () {
                                 setTimeout(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').keypress(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
                             $('#' + elementName + '').keypress(function () {
@@ -4797,14 +5124,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qI', timeoutCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             $('#' + elementName + '').keypress(function () {
                                 setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').keypress(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, timeoutPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             $('#' + elementName + '').keypress(function () {
@@ -4816,14 +5152,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qI', timeoutCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             $('#' + elementName + '').keypress(function () {
                                 setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').keypress(function () {
+                                    setTimeout(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
                             $('#' + elementName + '').keypress(function () {
@@ -4858,7 +5204,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
                             $('#' + elementName + '').keypress(function () {
                                 setTimeout(function () {
 
@@ -4868,7 +5214,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, timeoutPeriod);
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 } else if (commandsFnTranslations('c1J', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qJ', timeoutCommand) == commandsFnTranslations('c2ruA')) {
@@ -4913,14 +5259,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c9qJ', timeoutCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
+                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', timeoutCommand);
                             $('#' + elementName + '').keydown(function () {
                                 setTimeout(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').keydown(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
                             $('#' + elementName + '').keydown(function () {
@@ -4932,14 +5288,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qJ', timeoutCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             $('#' + elementName + '').keydown(function () {
                                 setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').keydown(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, timeoutPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             $('#' + elementName + '').keydown(function () {
@@ -4951,14 +5316,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qJ', timeoutCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             $('#' + elementName + '').keydown(function () {
                                 setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').keydown(function () {
+                                    setTimeout(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
                             $('#' + elementName + '').keydown(function () {
@@ -4993,7 +5368,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
                             $('#' + elementName + '').keydown(function () {
                                 setTimeout(function () {
 
@@ -5003,7 +5378,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, timeoutPeriod);
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 } else if (commandsFnTranslations('c1K', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qK', timeoutCommand) == commandsFnTranslations('c2ruA')) {
@@ -5048,14 +5423,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c9qK', timeoutCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
+                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', timeoutCommand);
                             $('#' + elementName + '').change(function () {
                                 setTimeout(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').change(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
                             $('#' + elementName + '').change(function () {
@@ -5067,14 +5452,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qK', timeoutCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             $('#' + elementName + '').change(function () {
                                 setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').change(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, timeoutPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             $('#' + elementName + '').change(function () {
@@ -5086,14 +5480,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qK', timeoutCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             $('#' + elementName + '').change(function () {
                                 setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').change(function () {
+                                    setTimeout(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
                             $('#' + elementName + '').change(function () {
@@ -5128,7 +5532,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
                             $('#' + elementName + '').change(function () {
                                 setTimeout(function () {
 
@@ -5138,7 +5542,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, timeoutPeriod);
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 } else if (commandsFnTranslations('c1L', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qL', timeoutCommand) == commandsFnTranslations('c2ruA')) {
@@ -5183,14 +5587,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c9qL', timeoutCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
+                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', timeoutCommand);
                             $('#' + elementName + '').focus(function () {
                                 setTimeout(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').focus(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
                             $('#' + elementName + '').focus(function () {
@@ -5202,14 +5616,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qL', timeoutCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             $('#' + elementName + '').focus(function () {
                                 setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').focus(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, timeoutPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             $('#' + elementName + '').focus(function () {
@@ -5221,14 +5644,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qL', timeoutCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             $('#' + elementName + '').focus(function () {
                                 setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').focus(function () {
+                                    setTimeout(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
                             $('#' + elementName + '').focus(function () {
@@ -5263,7 +5696,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
                             $('#' + elementName + '').focus(function () {
                                 setTimeout(function () {
 
@@ -5273,7 +5706,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, timeoutPeriod);
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 } else if (commandsFnTranslations('c1M', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qM', timeoutCommand) == commandsFnTranslations('c2ruA')) {
@@ -5318,14 +5751,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c9qM', timeoutCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
+                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', timeoutCommand);
                             $('#' + elementName + '').focusin(function () {
                                 setTimeout(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').focusin(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
                             $('#' + elementName + '').focusin(function () {
@@ -5337,14 +5780,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qM', timeoutCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             $('#' + elementName + '').focusin(function () {
                                 setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').focusin(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, timeoutPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             $('#' + elementName + '').focusin(function () {
@@ -5356,14 +5808,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qM', timeoutCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             $('#' + elementName + '').focusin(function () {
                                 setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').focusin(function () {
+                                    setTimeout(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
                             $('#' + elementName + '').focusin(function () {
@@ -5398,7 +5860,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
                             $('#' + elementName + '').focusin(function () {
                                 setTimeout(function () {
 
@@ -5408,7 +5870,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, timeoutPeriod);
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 } else if (commandsFnTranslations('c1N', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qN', timeoutCommand) == commandsFnTranslations('c2ruA')) {
@@ -5453,14 +5915,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c9qN', timeoutCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
+                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', timeoutCommand);
                             $('#' + elementName + '').focusout(function () {
                                 setTimeout(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').focusout(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
                             $('#' + elementName + '').focusout(function () {
@@ -5472,14 +5944,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qN', timeoutCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             $('#' + elementName + '').focusout(function () {
                                 setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').focusout(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, timeoutPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             $('#' + elementName + '').focusout(function () {
@@ -5491,14 +5972,25 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qN', timeoutCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             $('#' + elementName + '').focusout(function () {
                                 setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                $('#' + elementName + '').focusout(function () {
+                                    setTimeout(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
                             $('#' + elementName + '').focusout(function () {
@@ -5533,7 +6025,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
                             $('#' + elementName + '').focusout(function () {
                                 setTimeout(function () {
 
@@ -5543,7 +6035,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, timeoutPeriod);
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 } else if (commandsFnTranslations('c1O', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qO', timeoutCommand) == commandsFnTranslations('c2ruA')) {
@@ -5588,14 +6080,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c9qO', timeoutCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
+                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', timeoutCommand);
                             $('#' + elementName + '').submit(function () {
                                 setTimeout(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').submit(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
                             $('#' + elementName + '').submit(function () {
@@ -5607,14 +6109,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qO', timeoutCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             $('#' + elementName + '').submit(function () {
                                 setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').submit(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, timeoutPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             $('#' + elementName + '').submit(function () {
@@ -5626,14 +6137,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qO', timeoutCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             $('#' + elementName + '').submit(function () {
                                 setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').submit(function () {
+                                    setTimeout(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
                             $('#' + elementName + '').submit(function () {
@@ -5668,7 +6189,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
                             $('#' + elementName + '').submit(function () {
                                 setTimeout(function () {
 
@@ -5678,7 +6199,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, timeoutPeriod);
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 } else if (commandsFnTranslations('c1P', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qP', timeoutCommand) == commandsFnTranslations('c2ruA')) {
@@ -5723,14 +6244,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c9qP', timeoutCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
+                        if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', timeoutCommand);
                             $('#' + elementName + '').scroll(function () {
                                 setTimeout(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').scroll(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
                             $('#' + elementName + '').scroll(function () {
@@ -5742,14 +6273,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qP', timeoutCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             $('#' + elementName + '').scroll(function () {
                                 setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').scroll(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, timeoutPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             $('#' + elementName + '').scroll(function () {
@@ -5761,14 +6301,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qP', timeoutCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             $('#' + elementName + '').scroll(function () {
                                 setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                $('#' + elementName + '').scroll(function () {
+                                    setTimeout(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                    }, timeoutPeriod);
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
                             $('#' + elementName + '').scroll(function () {
@@ -5802,7 +6352,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
 
                             $('#' + elementName + '').scroll(function () {
                                 setTimeout(function () {
@@ -5812,7 +6362,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, timeoutPeriod);
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 } else if (commandsFnTranslations('c1Q', timeoutCommand).length > 1) {
                     annyang.start();
@@ -5864,15 +6414,28 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }
                         });
                     } else if (commandsFnTranslations('c9qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', timeoutCommand, voiceCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand, voiceCommand) + '').val();
+                        if (commandsFnTranslations('c10q', timeoutCommand, voiceCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', timeoutCommand, voiceCommand);
                             annyang.addCommands({
                                 [voiceCommand]: function () {
                                     setTimeout(function () {
-                                        $('#' + elementName + '').val(newVal);
+
+                                        $('#' + elementName + '').val($('#' + targetElement + '').val());
                                     }, timeoutPeriod);
                                 }
                             });
+                        } else if (commandsFnTranslations('c10q', timeoutCommand, voiceCommand) == commandsFnTranslations('c10rB')) {
+                            (function (timeoutCommand) {
+                                annyang.addCommands({
+                                    [voiceCommand]: function () {
+                                        setTimeout(function () {
+
+                                            $('#' + elementName + '').val(commandsFnTranslations('c41', timeoutCommand));
+                                        }, timeoutPeriod);
+                                    }
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand, voiceCommand);
                             annyang.addCommands({
@@ -5885,17 +6448,31 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', timeoutCommand, voiceCommand);
-                        var resource = commandsFnTranslations('c15', timeoutCommand, voiceCommand, targetElement);
-                        if (commandsFnTranslations('c16q', timeoutCommand, voiceCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                             annyang.addCommands({
                                 [voiceCommand]: function () {
                                     setTimeout(function () {
+
                                         $('#' + targetElement + '').val($('#' + resource + '').val());
                                     }, timeoutPeriod);
                                 }
                             });
+
+                        } else if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                annyang.addCommands({
+                                    [voiceCommand]: function () {
+                                        setTimeout(function () {
+
+                                            $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                        }, timeoutPeriod);
+                                    }
+                                });
+                            })(commandID, targetElement);
+
                         } else {
-                            var newVal = commandsFnTranslations('c17', timeoutCommand, voiceCommand, targetElement);
+                            var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
                             annyang.addCommands({
                                 [voiceCommand]: function () {
                                     setTimeout(function () {
@@ -5906,15 +6483,29 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', timeoutCommand, voiceCommand);
-                        var resource = commandsFnTranslations('c20', timeoutCommand, voiceCommand, targetElement);
-                        if (commandsFnTranslations('c21q', timeoutCommand, voiceCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                             annyang.addCommands({
                                 [voiceCommand]: function () {
                                     setTimeout(function () {
+
                                         document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                     }, timeoutPeriod);
                                 }
                             });
+
+                        } else if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (timeoutCommand) {
+                                annyang.addCommands({
+                                    [voiceCommand]: function () {
+                                        setTimeout(function () {
+
+                                            document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', timeoutCommand, targetElement);
+                                        }, timeoutPeriod);
+                                    }
+                                });
+                            })(timeoutCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand, voiceCommand);
                             annyang.addCommands({
@@ -5928,7 +6519,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c23qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c23r')) {
                         var dbname = commandsFnTranslations('c24', timeoutCommand, voiceCommand);
                         var tablename = commandsFnTranslations('c25', timeoutCommand, voiceCommand);
-                        var dataRaw = commandsFnTranslations('c26', timeoutCommand, voiceCommand, dbname, tablename);
+                        var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
                         annyang.addCommands({
                             [voiceCommand]: function () {
                                 setTimeout(function () {
@@ -5951,7 +6542,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand, voiceCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand, voiceCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand, voiceCommand);
-                        (function (commandID) {
+                        (function (timeoutCommand) {
                             annyang.addCommands({
                                 [voiceCommand]: function () {
                                     setTimeout(function () {
@@ -5962,10 +6553,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     }, timeoutPeriod);
                                 }
                             });
-                        })(commandID);
+                        })(timeoutCommand);
                     }
                 }
-
             } else if (commandsFnTranslations('c37', commands[commandID]).length > 1) {
                 var intervalCommand = commandsFnTranslations('c38', commands[commandID]);
                 var intervalPeriod = commandsFnTranslations('c39', commands[commandID]);
@@ -6012,7 +6602,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c9qA', intervalCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
+                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rA')) {
                             var targetElement = commandsFnTranslations('c11', intervalCommand);
                             $('#' + elementName + '').click(function () {
                                 setInterval(function () {
@@ -6020,6 +6610,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').click(function () {
+                                    setInterval(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
                             $('#' + elementName + '').click(function () {
@@ -6031,14 +6631,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qA', intervalCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             $('#' + elementName + '').click(function () {
                                 setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').click(function () {
+                                    setInterval(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, intervalPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             $('#' + elementName + '').click(function () {
@@ -6050,14 +6659,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qA', intervalCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                             $('#' + elementName + '').click(function () {
                                 setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').click(function () {
+                                    setInterval(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
                             $('#' + elementName + '').click(function () {
@@ -6092,7 +6711,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
                             $('#' + elementName + '').click(function () {
                                 setInterval(function () {
 
@@ -6102,7 +6721,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, intervalPeriod);
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 } else if (commandsFnTranslations('c1B', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qB', intervalCommand) == commandsFnTranslations('c2ruA')) {
@@ -6147,14 +6766,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c9qB', intervalCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
+                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', intervalCommand);
                             $('#' + elementName + '').mouseenter(function () {
                                 setInterval(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').mouseenter(function () {
+                                    setInterval(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
                             $('#' + elementName + '').mouseenter(function () {
@@ -6166,14 +6795,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qB', intervalCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             $('#' + elementName + '').mouseenter(function () {
                                 setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').mouseenter(function () {
+                                    setInterval(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, intervalPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             $('#' + elementName + '').mouseenter(function () {
@@ -6185,14 +6823,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qB', intervalCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                             $('#' + elementName + '').mouseenter(function () {
                                 setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').mouseenter(function () {
+                                    setInterval(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
                             $('#' + elementName + '').mouseenter(function () {
@@ -6227,7 +6875,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
                             $('#' + elementName + '').mouseenter(function () {
                                 setInterval(function () {
 
@@ -6237,7 +6885,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, intervalPeriod);
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 } else if (commandsFnTranslations('c1C', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qC', intervalCommand) == commandsFnTranslations('c2ruA')) {
@@ -6282,14 +6930,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c9qC', intervalCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
+                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', intervalCommand);
                             $('#' + elementName + '').mouseleave(function () {
                                 setInterval(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').mouseleave(function () {
+                                    setInterval(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
                             $('#' + elementName + '').mouseleave(function () {
@@ -6301,14 +6959,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qC', intervalCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             $('#' + elementName + '').mouseleave(function () {
                                 setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').mouseleave(function () {
+                                    setInterval(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, intervalPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             $('#' + elementName + '').mouseleave(function () {
@@ -6320,14 +6987,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qC', intervalCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                             $('#' + elementName + '').mouseleave(function () {
                                 setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').mouseleave(function () {
+                                    setInterval(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
                             $('#' + elementName + '').mouseleave(function () {
@@ -6362,7 +7039,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
                             $('#' + elementName + '').mouseleave(function () {
                                 setInterval(function () {
 
@@ -6372,7 +7049,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, intervalPeriod);
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 } else if (commandsFnTranslations('c1D', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qD', intervalCommand) == commandsFnTranslations('c2ruA')) {
@@ -6417,14 +7094,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c9qD', intervalCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
+                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', intervalCommand);
                             $('#' + elementName + '').mouseout(function () {
                                 setInterval(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').mouseout(function () {
+                                    setInterval(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
                             $('#' + elementName + '').mouseout(function () {
@@ -6436,14 +7123,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qD', intervalCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             $('#' + elementName + '').mouseout(function () {
                                 setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').mouseout(function () {
+                                    setInterval(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, intervalPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             $('#' + elementName + '').mouseout(function () {
@@ -6455,14 +7151,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qD', intervalCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                             $('#' + elementName + '').mouseout(function () {
                                 setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').mouseout(function () {
+                                    setInterval(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
                             $('#' + elementName + '').mouseout(function () {
@@ -6497,7 +7203,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
                             $('#' + elementName + '').mouseout(function () {
                                 setInterval(function () {
 
@@ -6507,7 +7213,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, intervalPeriod);
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 } else if (commandsFnTranslations('c1E', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qE', intervalCommand) == commandsFnTranslations('c2ruA')) {
@@ -6552,14 +7258,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c9qE', intervalCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
+                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', intervalCommand);
                             $('#' + elementName + '').mousemove(function () {
                                 setInterval(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').mousemove(function () {
+                                    setInterval(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
                             $('#' + elementName + '').mousemove(function () {
@@ -6571,14 +7287,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qE', intervalCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             $('#' + elementName + '').mousemove(function () {
                                 setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').mousemove(function () {
+                                    setInterval(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, intervalPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             $('#' + elementName + '').mousemove(function () {
@@ -6590,14 +7315,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qE', intervalCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                             $('#' + elementName + '').mousemove(function () {
                                 setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').mousemove(function () {
+                                    setInterval(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
                             $('#' + elementName + '').mousemove(function () {
@@ -6632,7 +7367,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
                             $('#' + elementName + '').mousemove(function () {
                                 setInterval(function () {
 
@@ -6642,7 +7377,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, intervalPeriod);
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 } else if (commandsFnTranslations('c1F', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qF', intervalCommand) == commandsFnTranslations('c2ruA')) {
@@ -6687,14 +7422,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c9qF', intervalCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
+                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', intervalCommand);
                             $('#' + elementName + '').mouseup(function () {
                                 setInterval(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').mouseup(function () {
+                                    setInterval(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
                             $('#' + elementName + '').mouseup(function () {
@@ -6706,14 +7451,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qF', intervalCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             $('#' + elementName + '').mouseup(function () {
                                 setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').mouseup(function () {
+                                    setInterval(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, intervalPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             $('#' + elementName + '').mouseup(function () {
@@ -6725,14 +7479,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qF', intervalCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                             $('#' + elementName + '').mouseup(function () {
                                 setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').mouseup(function () {
+                                    setInterval(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
                             $('#' + elementName + '').mouseup(function () {
@@ -6767,7 +7531,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
                             $('#' + elementName + '').mouseup(function () {
                                 setInterval(function () {
 
@@ -6777,7 +7541,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, intervalPeriod);
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 } else if (commandsFnTranslations('c1G', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qG', intervalCommand) == commandsFnTranslations('c2ruA')) {
@@ -6822,14 +7586,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c9qG', intervalCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
+                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', intervalCommand);
                             $('#' + elementName + '').dblclick(function () {
                                 setInterval(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').dblclick(function () {
+                                    setInterval(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
                             $('#' + elementName + '').dblclick(function () {
@@ -6841,14 +7615,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qG', intervalCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             $('#' + elementName + '').dblclick(function () {
                                 setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').dblclick(function () {
+                                    setInterval(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, intervalPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             $('#' + elementName + '').dblclick(function () {
@@ -6860,14 +7643,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qG', intervalCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                             $('#' + elementName + '').dblclick(function () {
                                 setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').dblclick(function () {
+                                    setInterval(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
                             $('#' + elementName + '').dblclick(function () {
@@ -6902,7 +7695,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
                             $('#' + elementName + '').dblclick(function () {
                                 setInterval(function () {
 
@@ -6912,7 +7705,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, intervalPeriod);
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 } else if (commandsFnTranslations('c1H', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qH', intervalCommand) == commandsFnTranslations('c2ruA')) {
@@ -6957,14 +7750,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c9qH', intervalCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
+                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', intervalCommand);
                             $('#' + elementName + '').contextmenu(function () {
                                 setInterval(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').contextmenu(function () {
+                                    setInterval(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
                             $('#' + elementName + '').contextmenu(function () {
@@ -6976,14 +7779,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qH', intervalCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             $('#' + elementName + '').contextmenu(function () {
                                 setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').contextmenu(function () {
+                                    setInterval(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, intervalPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             $('#' + elementName + '').contextmenu(function () {
@@ -6995,14 +7807,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qH', intervalCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                             $('#' + elementName + '').contextmenu(function () {
                                 setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').contextmenu(function () {
+                                    setInterval(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
                             $('#' + elementName + '').contextmenu(function () {
@@ -7037,7 +7859,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
                             $('#' + elementName + '').contextmenu(function () {
                                 setInterval(function () {
 
@@ -7047,7 +7869,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, intervalPeriod);
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 } else if (commandsFnTranslations('c1I', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qI', intervalCommand) == commandsFnTranslations('c2ruA')) {
@@ -7092,14 +7914,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c9qI', intervalCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
+                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', intervalCommand);
                             $('#' + elementName + '').keypress(function () {
                                 setInterval(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').keypress(function () {
+                                    setInterval(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
                             $('#' + elementName + '').keypress(function () {
@@ -7111,14 +7943,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qI', intervalCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             $('#' + elementName + '').keypress(function () {
                                 setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').keypress(function () {
+                                    setInterval(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, intervalPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             $('#' + elementName + '').keypress(function () {
@@ -7130,14 +7971,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qI', intervalCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c42', intervalCommand, targetElement);
                             $('#' + elementName + '').keypress(function () {
                                 setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').keypress(function () {
+                                    setInterval(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
                             $('#' + elementName + '').keypress(function () {
@@ -7172,7 +8023,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
                             $('#' + elementName + '').keypress(function () {
                                 setInterval(function () {
 
@@ -7182,7 +8033,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, intervalPeriod);
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 } else if (commandsFnTranslations('c1J', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qJ', intervalCommand) == commandsFnTranslations('c2ruA')) {
@@ -7227,14 +8078,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c9qJ', intervalCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
+                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', intervalCommand);
                             $('#' + elementName + '').keydown(function () {
                                 setInterval(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').keydown(function () {
+                                    setInterval(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
                             $('#' + elementName + '').keydown(function () {
@@ -7246,14 +8107,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qJ', intervalCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             $('#' + elementName + '').keydown(function () {
                                 setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').keydown(function () {
+                                    setInterval(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, intervalPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             $('#' + elementName + '').keydown(function () {
@@ -7265,14 +8135,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qJ', intervalCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                             $('#' + elementName + '').keydown(function () {
                                 setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').keydown(function () {
+                                    setInterval(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
                             $('#' + elementName + '').keydown(function () {
@@ -7307,7 +8187,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
                             $('#' + elementName + '').keydown(function () {
                                 setInterval(function () {
 
@@ -7317,7 +8197,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, intervalPeriod);
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 } else if (commandsFnTranslations('c1K', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qK', intervalCommand) == commandsFnTranslations('c2ruA')) {
@@ -7362,14 +8242,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c9qK', intervalCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
+                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', intervalCommand);
                             $('#' + elementName + '').change(function () {
                                 setInterval(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').change(function () {
+                                    setInterval(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
                             $('#' + elementName + '').change(function () {
@@ -7381,14 +8271,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qK', intervalCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             $('#' + elementName + '').change(function () {
                                 setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').change(function () {
+                                    setInterval(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, intervalPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             $('#' + elementName + '').change(function () {
@@ -7400,14 +8299,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qK', intervalCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                             $('#' + elementName + '').change(function () {
                                 setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').change(function () {
+                                    setInterval(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
                             $('#' + elementName + '').change(function () {
@@ -7442,7 +8351,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
                             $('#' + elementName + '').change(function () {
                                 setInterval(function () {
 
@@ -7452,7 +8361,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, intervalPeriod);
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 } else if (commandsFnTranslations('c1L', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qL', intervalCommand) == commandsFnTranslations('c2ruA')) {
@@ -7497,14 +8406,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c9qL', intervalCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
+                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', intervalCommand);
                             $('#' + elementName + '').focus(function () {
                                 setInterval(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').focus(function () {
+                                    setInterval(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
                             $('#' + elementName + '').focus(function () {
@@ -7516,14 +8435,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qL', intervalCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             $('#' + elementName + '').focus(function () {
                                 setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').focus(function () {
+                                    setInterval(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, intervalPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             $('#' + elementName + '').focus(function () {
@@ -7535,14 +8463,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qL', intervalCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                             $('#' + elementName + '').focus(function () {
                                 setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').focus(function () {
+                                    setInterval(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
                             $('#' + elementName + '').focus(function () {
@@ -7577,7 +8515,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
                             $('#' + elementName + '').focus(function () {
                                 setInterval(function () {
 
@@ -7587,7 +8525,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, intervalPeriod);
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 } else if (commandsFnTranslations('c1M', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qM', intervalCommand) == commandsFnTranslations('c2ruA')) {
@@ -7632,14 +8570,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c9qM', intervalCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
+                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', intervalCommand);
                             $('#' + elementName + '').focusin(function () {
                                 setInterval(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').focusin(function () {
+                                    setInterval(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
                             $('#' + elementName + '').focusin(function () {
@@ -7651,14 +8599,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qM', intervalCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             $('#' + elementName + '').focusin(function () {
                                 setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').focusin(function () {
+                                    setInterval(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, intervalPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             $('#' + elementName + '').focusin(function () {
@@ -7670,14 +8627,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qM', intervalCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                             $('#' + elementName + '').focusin(function () {
                                 setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').focusin(function () {
+                                    setInterval(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
                             $('#' + elementName + '').focusin(function () {
@@ -7712,7 +8679,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
                             $('#' + elementName + '').focusin(function () {
                                 setInterval(function () {
 
@@ -7722,7 +8689,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, intervalPeriod);
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 } else if (commandsFnTranslations('c1N', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qN', intervalCommand) == commandsFnTranslations('c2ruA')) {
@@ -7767,14 +8734,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c9qN', intervalCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
+                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', intervalCommand);
                             $('#' + elementName + '').focusout(function () {
                                 setInterval(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').focusout(function () {
+                                    setInterval(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
                             $('#' + elementName + '').focusout(function () {
@@ -7786,14 +8763,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qN', intervalCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             $('#' + elementName + '').focusout(function () {
                                 setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').focusout(function () {
+                                    setInterval(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, intervalPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             $('#' + elementName + '').focusout(function () {
@@ -7805,14 +8791,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qN', intervalCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                             $('#' + elementName + '').focusout(function () {
                                 setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').focusout(function () {
+                                    setInterval(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
                             $('#' + elementName + '').focusout(function () {
@@ -7847,7 +8843,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
                             $('#' + elementName + '').focusout(function () {
                                 setInterval(function () {
 
@@ -7857,7 +8853,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, intervalPeriod);
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 } else if (commandsFnTranslations('c1O', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qO', intervalCommand) == commandsFnTranslations('c2ruA')) {
@@ -7902,14 +8898,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c9qO', intervalCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
+                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', intervalCommand);
                             $('#' + elementName + '').submit(function () {
                                 setInterval(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').submit(function () {
+                                    setInterval(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
                             $('#' + elementName + '').submit(function () {
@@ -7921,14 +8927,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qO', intervalCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             $('#' + elementName + '').submit(function () {
                                 setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').submit(function () {
+                                    setInterval(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, intervalPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             $('#' + elementName + '').submit(function () {
@@ -7940,14 +8955,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qO', intervalCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                             $('#' + elementName + '').submit(function () {
                                 setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').submit(function () {
+                                    setInterval(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
                             $('#' + elementName + '').submit(function () {
@@ -7982,7 +9007,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
                             $('#' + elementName + '').submit(function () {
                                 setInterval(function () {
 
@@ -7992,7 +9017,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, intervalPeriod);
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 } else if (commandsFnTranslations('c1P', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qP', intervalCommand) == commandsFnTranslations('c2ruA')) {
@@ -8037,14 +9062,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c9qP', intervalCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
+                        if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', intervalCommand);
                             $('#' + elementName + '').scroll(function () {
                                 setInterval(function () {
 
-                                    $('#' + elementName + '').val(newVal);
+                                    $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').scroll(function () {
+                                    setInterval(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
                             $('#' + elementName + '').scroll(function () {
@@ -8056,14 +9091,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qP', intervalCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             $('#' + elementName + '').scroll(function () {
                                 setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                $('#' + elementName + '').scroll(function () {
+                                    setInterval(function () {
+
+                                        $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                    }, intervalPeriod);
+                                });
+                            })(commandID, targetElement);
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             $('#' + elementName + '').scroll(function () {
@@ -8075,14 +9119,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qP', intervalCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                             $('#' + elementName + '').scroll(function () {
                                 setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').scroll(function () {
+                                    setInterval(function () {
+
+                                        document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                    }, intervalPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
                             $('#' + elementName + '').scroll(function () {
@@ -8116,7 +9170,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
 
                             $('#' + elementName + '').scroll(function () {
                                 setInterval(function () {
@@ -8126,7 +9180,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     });
                                 }, intervalPeriod);
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 } else if (commandsFnTranslations('c1Q', intervalCommand).length > 1) {
                     annyang.start();
@@ -8178,15 +9232,26 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }
                         });
                     } else if (commandsFnTranslations('c9qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c9r')) {
-                        if (commandsFnTranslations('c10q', intervalCommand, voiceCommand) == commandsFnTranslations('c10r')) {
-                            var newVal = $('#' + commandsFnTranslations('c11', intervalCommand, voiceCommand) + '').val();
+                        if (commandsFnTranslations('c10q', intervalCommand, voiceCommand) == commandsFnTranslations('c10rA')) {
+                            var targetElement = commandsFnTranslations('c11', intervalCommand, voiceCommand);
                             annyang.addCommands({
                                 [voiceCommand]: function () {
                                     setInterval(function () {
-                                        $('#' + elementName + '').val(newVal);
+
+                                        $('#' + elementName + '').val($('#' + targetElement + '').val());
                                     }, intervalPeriod);
                                 }
                             });
+                        } else if (commandsFnTranslations('c10q', intervalCommand, voiceCommand) == commandsFnTranslations('c10rB')) {
+                            (function (intervalCommand) {
+                                $('#' + elementName + '').click(function () {
+                                    setTimeout(function () {
+
+                                        $('#' + elementName + '').val(commandsFnTranslations('c41', intervalCommand));
+                                    }, timeoutPeriod);
+                                });
+                            })(intervalCommand);
+
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand, voiceCommand);
                             annyang.addCommands({
@@ -8199,17 +9264,31 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c13qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c13r')) {
                         var targetElement = commandsFnTranslations('c14', intervalCommand, voiceCommand);
-                        var resource = commandsFnTranslations('c15', intervalCommand, voiceCommand, targetElement);
-                        if (commandsFnTranslations('c16q', intervalCommand, voiceCommand, targetElement) == commandsFnTranslations('c16r')) {
+                        if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rA')) {
+                            var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                             annyang.addCommands({
                                 [voiceCommand]: function () {
                                     setInterval(function () {
+
                                         $('#' + targetElement + '').val($('#' + resource + '').val());
                                     }, intervalPeriod);
                                 }
                             });
+
+                        } else if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16rB')) {
+                            (function (commandID, targetElement) {
+                                annyang.addCommands({
+                                    [voiceCommand]: function () {
+                                        setInterval(function () {
+
+                                            $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                        }, intervalPeriod);
+                                    }
+                                });
+                            })(commandID, targetElement);
+
                         } else {
-                            var newVal = commandsFnTranslations('c17', intervalCommand, voiceCommand, targetElement);
+                            var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
                             annyang.addCommands({
                                 [voiceCommand]: function () {
                                     setInterval(function () {
@@ -8220,15 +9299,30 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c18qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c18r')) {
                         var targetElement = commandsFnTranslations('c19', intervalCommand, voiceCommand);
-                        var resource = commandsFnTranslations('c20', intervalCommand, voiceCommand, targetElement);
-                        if (commandsFnTranslations('c21q', intervalCommand, voiceCommand, targetElement) == commandsFnTranslations('c21r')) {
+                        if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rA')) {
+                            var resource = commandsFnTranslations('c42', intervalCommand, targetElement);
                             annyang.addCommands({
                                 [voiceCommand]: function () {
                                     setInterval(function () {
+
                                         document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                     }, intervalPeriod);
                                 }
                             });
+
+                        } else if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21rB')) {
+                            (function (intervalCommand) {
+                                annyang.addCommands({
+                                    [voiceCommand]: function () {
+                                        setInterval(function () {
+
+                                            document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', intervalCommand, targetElement);
+                                        }, intervalPeriod);
+                                    }
+                                });
+                            })(intervalCommand);
+
+
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand, voiceCommand);
                             annyang.addCommands({
@@ -8242,7 +9336,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c23qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c23r')) {
                         var dbname = commandsFnTranslations('c24', intervalCommand, voiceCommand);
                         var tablename = commandsFnTranslations('c25', intervalCommand, voiceCommand);
-                        var dataRaw = commandsFnTranslations('c26', intervalCommand, voiceCommand, dbname, tablename);
+                        var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
                         annyang.addCommands({
                             [voiceCommand]: function () {
                                 setInterval(function () {
@@ -8265,7 +9359,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand, voiceCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand, voiceCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand, voiceCommand);
-                        (function (commandID) {
+                        (function (intervalCommand) {
                             annyang.addCommands({
                                 [voiceCommand]: function () {
                                     setInterval(function () {
@@ -8276,10 +9370,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                     }, intervalPeriod);
                                 }
                             });
-                        })(commandID);
+                        })(intervalCommand);
                     }
                 }
-
             } else if (commandsFnTranslations('c1A', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qA', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
@@ -8308,11 +9401,22 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qA', commands[commandID]) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
+                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rA')) {
                         var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').click(function () {
+
                             $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rB')) {
+
+                        (function (commandID) {
+
+                            $('#' + elementName + '').click(function () {
+                                $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').click(function () {
@@ -8321,11 +9425,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qA', commands[commandID]) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
-                    var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         $('#' + elementName + '').click(function () {
+
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            $('#' + elementName + '').click(function () {
+
+                                $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                            });
+                        })(commandID, targetElement);
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         $('#' + elementName + '').click(function () {
@@ -8334,11 +9446,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qA', commands[commandID]) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
-                    var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                         $('#' + elementName + '').click(function () {
+
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').click(function () {
+
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').click(function () {
@@ -8404,11 +9525,21 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qB', commands[commandID]) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
+                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rA')) {
+                        var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').mouseenter(function () {
-                            $('#' + elementName + '').val(newVal);
+
+                            $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rB')) {
+                        (function (commandID) {
+
+                            $('#' + elementName + '').mouseenter(function () {
+
+                                $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').mouseenter(function () {
@@ -8417,11 +9548,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qB', commands[commandID]) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
-                    var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         $('#' + elementName + '').mouseenter(function () {
+
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            $('#' + elementName + '').mouseenter(function () {
+
+                                $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                            });
+                        })(commandID, targetElement);
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         $('#' + elementName + '').mouseenter(function () {
@@ -8430,11 +9569,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qB', commands[commandID]) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
-                    var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                         $('#' + elementName + '').mouseenter(function () {
+
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').mouseenter(function () {
+
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').mouseenter(function () {
@@ -8500,11 +9648,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qC', commands[commandID]) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
+                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rA')) {
+                        var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').mouseleave(function () {
-                            $('#' + elementName + '').val(newVal);
+
+                            $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').mouseleave(function () {
+
+                                $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').mouseleave(function () {
@@ -8513,11 +9670,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qC', commands[commandID]) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
-                    var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         $('#' + elementName + '').mouseleave(function () {
+
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            $('#' + elementName + '').mouseleave(function () {
+
+                                $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                            });
+                        })(commandID, targetElement);
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         $('#' + elementName + '').mouseleave(function () {
@@ -8526,11 +9691,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qC', commands[commandID]) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
-                    var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                         $('#' + elementName + '').mouseleave(function () {
+
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').mouseleave(function () {
+
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').mouseleave(function () {
@@ -8596,11 +9770,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qD', commands[commandID]) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
+                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rA')) {
+                        var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').mouseout(function () {
-                            $('#' + elementName + '').val(newVal);
+
+                            $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').mouseout(function () {
+
+                                $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').mouseout(function () {
@@ -8609,11 +9792,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qD', commands[commandID]) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
-                    var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         $('#' + elementName + '').mouseout(function () {
+
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            $('#' + elementName + '').mouseout(function () {
+
+                                $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                            });
+                        })(commandID, targetElement);
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         $('#' + elementName + '').mouseout(function () {
@@ -8622,11 +9813,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qD', commands[commandID]) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
-                    var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                         $('#' + elementName + '').mouseout(function () {
+
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').mouseout(function () {
+
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').mouseout(function () {
@@ -8692,11 +9892,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qE', commands[commandID]) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
+                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rA')) {
+                        var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').mousemove(function () {
-                            $('#' + elementName + '').val(newVal);
+
+                            $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').mousemove(function () {
+
+                                $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').mousemove(function () {
@@ -8705,11 +9914,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qE', commands[commandID]) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
-                    var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         $('#' + elementName + '').mousemove(function () {
+
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            $('#' + elementName + '').mousemove(function () {
+
+                                $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                            });
+                        })(commandID, targetElement);
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         $('#' + elementName + '').mousemove(function () {
@@ -8718,11 +9935,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qE', commands[commandID]) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
-                    var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                         $('#' + elementName + '').mousemove(function () {
+
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').mousemove(function () {
+
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').mousemove(function () {
@@ -8788,11 +10014,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qF', commands[commandID]) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
+                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rA')) {
+                        var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').mouseup(function () {
-                            $('#' + elementName + '').val(newVal);
+
+                            $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').mouseup(function () {
+
+                                $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').mouseup(function () {
@@ -8801,11 +10036,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qF', commands[commandID]) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
-                    var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         $('#' + elementName + '').mouseup(function () {
+
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            $('#' + elementName + '').mouseup(function () {
+
+                                $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                            });
+                        })(commandID, targetElement);
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         $('#' + elementName + '').mouseup(function () {
@@ -8814,11 +10057,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qF', commands[commandID]) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
-                    var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                         $('#' + elementName + '').mouseup(function () {
+
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').mouseup(function () {
+
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').mouseup(function () {
@@ -8884,11 +10136,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qG', commands[commandID]) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
+                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rA')) {
+                        var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').dblclick(function () {
-                            $('#' + elementName + '').val(newVal);
+
+                            $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').dblclick(function () {
+
+                                $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').dblclick(function () {
@@ -8897,11 +10158,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qG', commands[commandID]) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
-                    var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         $('#' + elementName + '').dblclick(function () {
+
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            $('#' + elementName + '').dblclick(function () {
+
+                                $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                            });
+                        })(commandID, targetElement);
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         $('#' + elementName + '').dblclick(function () {
@@ -8910,11 +10179,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qG', commands[commandID]) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
-                    var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                         $('#' + elementName + '').dblclick(function () {
+
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').dblclick(function () {
+
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').dblclick(function () {
@@ -8980,11 +10258,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qH', commands[commandID]) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
+                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rA')) {
+                        var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').contextmenu(function () {
-                            $('#' + elementName + '').val(newVal);
+
+                            $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').contextmenu(function () {
+
+                                $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').contextmenu(function () {
@@ -8993,11 +10280,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qH', commands[commandID]) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
-                    var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         $('#' + elementName + '').contextmenu(function () {
+
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            $('#' + elementName + '').contextmenu(function () {
+
+                                $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                            });
+                        })(commandID, targetElement);
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         $('#' + elementName + '').contextmenu(function () {
@@ -9006,11 +10301,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qH', commands[commandID]) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
-                    var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                         $('#' + elementName + '').contextmenu(function () {
+
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').contextmenu(function () {
+
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').contextmenu(function () {
@@ -9076,11 +10380,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qI', commands[commandID]) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
+                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rA')) {
+                        var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').keypress(function () {
-                            $('#' + elementName + '').val(newVal);
+
+                            $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').keypress(function () {
+
+                                $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').keypress(function () {
@@ -9089,11 +10402,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qI', commands[commandID]) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
-                    var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         $('#' + elementName + '').keypress(function () {
+
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            $('#' + elementName + '').keypress(function () {
+
+                                $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                            });
+                        })(commandID, targetElement);
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         $('#' + elementName + '').keypress(function () {
@@ -9102,11 +10423,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qI', commands[commandID]) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
-                    var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                         $('#' + elementName + '').keypress(function () {
+
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').keypress(function () {
+
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').keypress(function () {
@@ -9172,11 +10502,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qJ', commands[commandID]) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
+                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rA')) {
+                        var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').keydown(function () {
-                            $('#' + elementName + '').val(newVal);
+
+                            $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').keydown(function () {
+
+                                $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').keydown(function () {
@@ -9185,11 +10524,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qJ', commands[commandID]) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
-                    var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         $('#' + elementName + '').keydown(function () {
+
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            $('#' + elementName + '').keydown(function () {
+
+                                $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                            });
+                        })(commandID, targetElement);
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         $('#' + elementName + '').keydown(function () {
@@ -9198,11 +10545,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qJ', commands[commandID]) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
-                    var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                         $('#' + elementName + '').keydown(function () {
+
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').keydown(function () {
+
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').keydown(function () {
@@ -9268,11 +10624,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qK', commands[commandID]) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
+                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rA')) {
+                        var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').change(function () {
-                            $('#' + elementName + '').val(newVal);
+
+                            $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').change(function () {
+
+                                $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').change(function () {
@@ -9281,11 +10646,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qK', commands[commandID]) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
-                    var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         $('#' + elementName + '').change(function () {
+
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            $('#' + elementName + '').change(function () {
+
+                                $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                            });
+                        })(commandID, targetElement);
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         $('#' + elementName + '').change(function () {
@@ -9294,11 +10667,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qK', commands[commandID]) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
-                    var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                         $('#' + elementName + '').change(function () {
+
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').change(function () {
+
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').change(function () {
@@ -9364,11 +10746,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qL', commands[commandID]) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
+                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rA')) {
+                        var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').focus(function () {
-                            $('#' + elementName + '').val(newVal);
+
+                            $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').focus(function () {
+
+                                $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').focus(function () {
@@ -9377,11 +10768,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qL', commands[commandID]) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
-                    var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         $('#' + elementName + '').focus(function () {
+
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            $('#' + elementName + '').focus(function () {
+
+                                $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                            });
+                        })(commandID, targetElement);
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         $('#' + elementName + '').focus(function () {
@@ -9390,11 +10789,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qL', commands[commandID]) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
-                    var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                         $('#' + elementName + '').focus(function () {
+
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').focus(function () {
+
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').focus(function () {
@@ -9460,11 +10868,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qM', commands[commandID]) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
+                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rA')) {
+                        var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').focusin(function () {
-                            $('#' + elementName + '').val(newVal);
+
+                            $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').focusin(function () {
+
+                                $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').focusin(function () {
@@ -9473,11 +10890,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qM', commands[commandID]) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
-                    var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         $('#' + elementName + '').focusin(function () {
+
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            $('#' + elementName + '').focusin(function () {
+
+                                $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                            });
+                        })(commandID, targetElement);
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         $('#' + elementName + '').focusin(function () {
@@ -9486,11 +10911,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qM', commands[commandID]) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
-                    var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                         $('#' + elementName + '').focusin(function () {
+
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').focusin(function () {
+
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').focusin(function () {
@@ -9556,11 +10990,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qN', commands[commandID]) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
+                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rA')) {
+                        var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').focusout(function () {
-                            $('#' + elementName + '').val(newVal);
+
+                            $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').focusout(function () {
+
+                                $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').focusout(function () {
@@ -9569,11 +11012,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qN', commands[commandID]) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
-                    var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         $('#' + elementName + '').focusout(function () {
+
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            $('#' + elementName + '').focusout(function () {
+
+                                $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                            });
+                        })(commandID, targetElement);
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         $('#' + elementName + '').focusout(function () {
@@ -9582,11 +11033,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qN', commands[commandID]) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
-                    var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                         $('#' + elementName + '').focusout(function () {
+
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').focusout(function () {
+
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').focusout(function () {
@@ -9652,11 +11112,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qO', commands[commandID]) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
+                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rA')) {
+                        var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').submit(function () {
-                            $('#' + elementName + '').val(newVal);
+
+                            $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').submit(function () {
+
+                                $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').submit(function () {
@@ -9665,11 +11134,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qO', commands[commandID]) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
-                    var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         $('#' + elementName + '').submit(function () {
+
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            $('#' + elementName + '').submit(function () {
+
+                                $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                            });
+                        })(commandID, targetElement);
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         $('#' + elementName + '').submit(function () {
@@ -9678,11 +11155,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qO', commands[commandID]) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
-                    var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                         $('#' + elementName + '').submit(function () {
+
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').submit(function () {
+
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').submit(function () {
@@ -9748,11 +11234,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qP', commands[commandID]) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
+                    if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rA')) {
+                        var targetElement = commandsFnTranslations('c11', commands[commandID]);
                         $('#' + elementName + '').scroll(function () {
-                            $('#' + elementName + '').val(newVal);
+
+                            $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').scroll(function () {
+
+                                $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
                         $('#' + elementName + '').scroll(function () {
@@ -9761,11 +11256,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qP', commands[commandID]) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
-                    var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         $('#' + elementName + '').scroll(function () {
+
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            $('#' + elementName + '').scroll(function () {
+
+                                $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                            });
+                        })(commandID, targetElement);
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         $('#' + elementName + '').scroll(function () {
@@ -9774,11 +11277,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qP', commands[commandID]) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
-                    var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                         $('#' + elementName + '').scroll(function () {
+
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            $('#' + elementName + '').scroll(function () {
+
+                                document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
                         $('#' + elementName + '').scroll(function () {
@@ -9856,13 +11368,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     });
                 } else if (commandsFnTranslations('c9qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c9r')) {
-                    if (commandsFnTranslations('c10q', commands[commandID], voiceCommand) == commandsFnTranslations('c10r')) {
-                        var newVal = $('#' + commandsFnTranslations('c11', commands[commandID], voiceCommand) + '').val();
+                    if (commandsFnTranslations('c10q', commands[commandID], voiceCommand) == commandsFnTranslations('c10rA')) {
+                        var targetElement = commandsFnTranslations('c11', commands[commandID], voiceCommand);
                         annyang.addCommands({
                             [voiceCommand]: function () {
-                                $('#' + elementName + '').val(newVal);
+
+                                $('#' + elementName + '').val($('#' + targetElement + '').val());
                             }
                         });
+                    } else if (commandsFnTranslations('c10q', commands[commandID], voiceCommand) == commandsFnTranslations('c10rB')) {
+                        (function (commandID) {
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+
+                                    $('#' + elementName + '').val(commandsFnTranslations('c41', commands[commandID]));
+                                }
+                            });
+                        })(commandID);
+
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID], voiceCommand);
                         annyang.addCommands({
@@ -9873,15 +11396,26 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c13qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c13r')) {
                     var targetElement = commandsFnTranslations('c14', commands[commandID], voiceCommand);
-                    var resource = commandsFnTranslations('c15', commands[commandID], voiceCommand, targetElement);
-                    if (commandsFnTranslations('c16q', commands[commandID], voiceCommand, targetElement) == commandsFnTranslations('c16r')) {
+                    if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rA')) {
+                        var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                         annyang.addCommands({
                             [voiceCommand]: function () {
+
                                 $('#' + targetElement + '').val($('#' + resource + '').val());
                             }
                         });
+
+                    } else if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16rB')) {
+                        (function (commandID, targetElement) {
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    $('#' + targetElement + '').val(commandsFnTranslations('c43', commands[commandID], targetElement));
+                                }
+                            });
+                        })(commandID, targetElement);
+
                     } else {
-                        var newVal = commandsFnTranslations('c17', commands[commandID], voiceCommand, targetElement);
+                        var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
                         annyang.addCommands({
                             [voiceCommand]: function () {
                                 $('#' + targetElement + '').val(newVal);
@@ -9890,13 +11424,23 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                 } else if (commandsFnTranslations('c18qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c18r')) {
                     var targetElement = commandsFnTranslations('c19', commands[commandID], voiceCommand);
-                    var resource = commandsFnTranslations('c20', commands[commandID], voiceCommand, targetElement);
-                    if (commandsFnTranslations('c21q', commands[commandID], voiceCommand, targetElement) == commandsFnTranslations('c21r')) {
+                    if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rA')) {
+                        var resource = commandsFnTranslations('c42', commands[commandID], targetElement);
                         annyang.addCommands({
                             [voiceCommand]: function () {
                                 document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                             }
                         });
+
+                    } else if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21rB')) {
+                        (function (commandID) {
+                            annyang.addCommands({
+                                [voiceCommand]: function () {
+                                    document.getElementById(targetElement).currentTime = commandsFnTranslations('c42', commands[commandID], targetElement);
+                                }
+                            });
+                        })(commandID);
+
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID], voiceCommand);
                         annyang.addCommands({
@@ -9908,7 +11452,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c23qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c23r')) {
                     var dbname = commandsFnTranslations('c24', commands[commandID], voiceCommand);
                     var tablename = commandsFnTranslations('c25', commands[commandID], voiceCommand);
-                    var dataRaw = commandsFnTranslations('c26', commands[commandID], voiceCommand, dbname, tablename);
+                    var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
                     annyang.addCommands({
                         [voiceCommand]: function () {
                             var data = '{';
