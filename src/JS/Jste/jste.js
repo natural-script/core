@@ -176,7 +176,7 @@ if ($('en-uk').length) {
 }
 code += "});";
 customText(code);
-$(function() {
+$(function () {
     $('<script>').attr('type', 'text/javascript').text(code).appendTo('head');
 });
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -205,13 +205,13 @@ function getAllUrlParams(url) {
 
             // in case params look like: list[]=thing1&list[]=thing2
             var paramNum = undefined;
-            var paramName = a[0].replace(/\[\d*\]/, function(v) {
+            var paramName = a[0].replace(/\[\d*\]/, function (v) {
                 paramNum = v.slice(1, -1);
                 return '';
             });
 
             // set parameter value (use 'true' if empty)
-            var paramValue = typeof(a[1]) === 'undefined' ? true : a[1];
+            var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
 
             // (optional) keep case consistent
             paramName = paramName.toLowerCase();
@@ -246,7 +246,7 @@ function getAllUrlParams(url) {
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //----------------------------------------------------------Smooth Scrolling------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-$('a').click(function() {
+$('a').click(function () {
     if ($(this).attr('href').indexOf('#') > -1) {
 
         $('html, body').animate({
@@ -265,7 +265,7 @@ function getFileSize(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open("HEAD", corsPolicy + url, true); // Notice "HEAD" instead of "GET",
     //  to get only the header
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (this.readyState == this.DONE) {
             size = parseInt(xhr.getResponseHeader("Content-Length"));
             if (size < 1000) {
@@ -321,9 +321,9 @@ function evaluateExpression(expression) {
 
             }
         }
-		
+
     }
-		finalExpression = finalExpression.replace(/square root/g, 'sqrt').replace(/جذر/g, 'sqrt').replace(/multiplied by/g, '*').replace(/ضرب/g, '*').replace(/divided by/g, '/').replace(/على/g, '/').replace(/جا/g, 'sin').replace(/جتا/g, 'cos').replace(/ظا/g, 'tan');
+    finalExpression = finalExpression.replace(/square root/g, 'sqrt').replace(/جذر/g, 'sqrt').replace(/multiplied by/g, '*').replace(/ضرب/g, '*').replace(/divided by/g, '/').replace(/على/g, '/').replace(/جا/g, 'sin').replace(/جتا/g, 'cos').replace(/ظا/g, 'tan');
 
 
     return math.eval(finalExpression);
@@ -332,10 +332,10 @@ function evaluateExpression(expression) {
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------Length Units Converter For CSS------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-function convertLengthCSS (propertyValue) {
-	
-return propertyValue.replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm");	
-	
+function convertLengthCSS(propertyValue) {
+
+    return propertyValue.replace(RegExp(' ' + centimetersTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimetersTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchesTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelsTranslations[lang], "g"), "px").replace(RegExp(' ' + pointsTranslations[lang], "g"), "pt").replace(RegExp(' ' + picasTranslations[lang], "g"), "pc").replace(RegExp(' ' + centimeterTranslations[lang], "g"), "cm").replace(RegExp(' ' + millimeterTranslations[lang], "g"), "mm").replace(RegExp(' ' + inchTranslations[lang], "g"), "in").replace(RegExp(' ' + pixelTranslations[lang], "g"), "px").replace(RegExp(' ' + pointTranslations[lang], "g"), "pt").replace(RegExp(' ' + picaTranslations[lang], "g"), "pc").replace(RegExp(' سم', "g"), "cm").replace(RegExp(' مم', "g"), "mm");
+
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------Images Related Functions------------------------------------------------------------------------------------------------------------------------------------------//
@@ -347,7 +347,7 @@ function showImageA(name, source) {
         $('#showImage_' + name + '_containerB').fadeIn();
     } else {
         $('#' + name + '').attr('src', corsPolicy + source);
-        $('#' + name + '').on('load', function() {
+        $('#' + name + '').on('load', function () {
             $('#' + name + '').css('-webkit-filter', 'blur(0px)');
             $('#showImage_' + name + '_containerA').fadeOut();
         });
@@ -356,7 +356,7 @@ function showImageA(name, source) {
 
 function showImageB(name, source) {
     $('#' + name + '').attr('src', corsPolicy + source);
-    $('#' + name + '').on('load', function() {
+    $('#' + name + '').on('load', function () {
         $('#showImage_' + name + '_containerB').fadeOut();
         $('#showImage_' + name + '_containerC').fadeIn();
     });
@@ -364,7 +364,7 @@ function showImageB(name, source) {
 
 function showImageC(name, source) {
     $('#' + name + '').attr('src', corsPolicy + source);
-    $('#' + name + '').on('load', function() {
+    $('#' + name + '').on('load', function () {
         $('#' + name + '').css('-webkit-filter', 'blur(0px)');
         $('#showImage_' + name + '_containerB').fadeOut();
     });
@@ -3399,14 +3399,14 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         }
     }
 }
-(function($) {
+(function ($) {
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     //--------------------------------------------------------Animate.CSS Script------------------------------------------------------------------------------------------------------------------------------------------//
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
     $.fn.extend({
-        animateCss: function(animationName) {
+        animateCss: function (animationName) {
             var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-            this.addClass('animated ' + animationName).one(animationEnd, function() {
+            this.addClass('animated ' + animationName).one(animationEnd, function () {
                 $(this).removeClass('animated ' + animationName);
             });
         }
@@ -3658,16 +3658,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 if (commandsFnTranslations('c1A', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qA', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').click(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').click(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand);
-                            $('#' + elementName + '').click(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').click(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, timeoutPeriod);
@@ -3675,24 +3675,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qA', timeoutCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand);
-                        $('#' + elementName + '').click(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').click(function () {
+                            setTimeout(function () {
 
                                 window.location = targetURL;
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qA', timeoutCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand);
-                        $('#' + elementName + '').click(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').click(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).play();
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qA', timeoutCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand);
-                        $('#' + elementName + '').click(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').click(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, timeoutPeriod);
@@ -3700,16 +3700,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qA', timeoutCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
                             var targetElement = commandsFnTranslations('c11', timeoutCommand);
-                            $('#' + elementName + '').click(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').click(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
-                            $('#' + elementName + '').click(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').click(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
@@ -3719,16 +3719,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
                         var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').click(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').click(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
-                            $('#' + elementName + '').click(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').click(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, timeoutPeriod);
@@ -3738,16 +3738,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
                         var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').click(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').click(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
-                            $('#' + elementName + '').click(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').click(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, timeoutPeriod);
@@ -3757,8 +3757,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', timeoutCommand);
                         var tablename = commandsFnTranslations('c25', timeoutCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
-                        $('#' + elementName + '').click(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').click(function () {
+                            setTimeout(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -3778,12 +3778,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').click(function() {
-                                setTimeout(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').click(function () {
+                                setTimeout(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', timeoutCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, timeoutPeriod);
@@ -3793,16 +3793,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1B', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qB', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').mouseenter(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand);
-                            $('#' + elementName + '').mouseenter(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, timeoutPeriod);
@@ -3810,24 +3810,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qB', timeoutCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand);
-                        $('#' + elementName + '').mouseenter(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mouseenter(function () {
+                            setTimeout(function () {
 
                                 window.location = targetURL;
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qB', timeoutCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand);
-                        $('#' + elementName + '').mouseenter(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mouseenter(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).play();
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qB', timeoutCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand);
-                        $('#' + elementName + '').mouseenter(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mouseenter(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, timeoutPeriod);
@@ -3835,16 +3835,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qB', timeoutCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
-                            $('#' + elementName + '').mouseenter(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
-                            $('#' + elementName + '').mouseenter(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
@@ -3854,16 +3854,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
                         var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').mouseenter(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
-                            $('#' + elementName + '').mouseenter(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, timeoutPeriod);
@@ -3873,16 +3873,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
                         var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').mouseenter(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
-                            $('#' + elementName + '').mouseenter(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, timeoutPeriod);
@@ -3892,8 +3892,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', timeoutCommand);
                         var tablename = commandsFnTranslations('c25', timeoutCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
-                        $('#' + elementName + '').mouseenter(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mouseenter(function () {
+                            setTimeout(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -3913,12 +3913,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').mouseenter(function() {
-                                setTimeout(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setTimeout(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', timeoutCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, timeoutPeriod);
@@ -3928,16 +3928,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1C', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qC', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').mouseleave(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand);
-                            $('#' + elementName + '').mouseleave(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, timeoutPeriod);
@@ -3945,24 +3945,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qC', timeoutCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand);
-                        $('#' + elementName + '').mouseleave(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mouseleave(function () {
+                            setTimeout(function () {
 
                                 window.location = targetURL;
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qC', timeoutCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand);
-                        $('#' + elementName + '').mouseleave(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mouseleave(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).play();
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qC', timeoutCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand);
-                        $('#' + elementName + '').mouseleave(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mouseleave(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, timeoutPeriod);
@@ -3970,16 +3970,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qC', timeoutCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
-                            $('#' + elementName + '').mouseleave(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
-                            $('#' + elementName + '').mouseleave(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
@@ -3989,16 +3989,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
                         var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').mouseleave(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
-                            $('#' + elementName + '').mouseleave(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, timeoutPeriod);
@@ -4008,16 +4008,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
                         var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').mouseleave(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
-                            $('#' + elementName + '').mouseleave(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, timeoutPeriod);
@@ -4027,8 +4027,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', timeoutCommand);
                         var tablename = commandsFnTranslations('c25', timeoutCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
-                        $('#' + elementName + '').mouseleave(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mouseleave(function () {
+                            setTimeout(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -4048,12 +4048,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').mouseleave(function() {
-                                setTimeout(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setTimeout(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', timeoutCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, timeoutPeriod);
@@ -4063,16 +4063,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1D', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qD', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').mouseout(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseout(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand);
-                            $('#' + elementName + '').mouseout(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseout(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, timeoutPeriod);
@@ -4080,24 +4080,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qD', timeoutCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand);
-                        $('#' + elementName + '').mouseout(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mouseout(function () {
+                            setTimeout(function () {
 
                                 window.location = targetURL;
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qD', timeoutCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand);
-                        $('#' + elementName + '').mouseout(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mouseout(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).play();
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qD', timeoutCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand);
-                        $('#' + elementName + '').mouseout(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mouseout(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, timeoutPeriod);
@@ -4105,16 +4105,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qD', timeoutCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
-                            $('#' + elementName + '').mouseout(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseout(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
-                            $('#' + elementName + '').mouseout(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseout(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
@@ -4124,16 +4124,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
                         var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').mouseout(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseout(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
-                            $('#' + elementName + '').mouseout(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseout(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, timeoutPeriod);
@@ -4143,16 +4143,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
                         var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').mouseout(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseout(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
-                            $('#' + elementName + '').mouseout(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseout(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, timeoutPeriod);
@@ -4162,8 +4162,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', timeoutCommand);
                         var tablename = commandsFnTranslations('c25', timeoutCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
-                        $('#' + elementName + '').mouseout(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mouseout(function () {
+                            setTimeout(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -4183,12 +4183,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').mouseout(function() {
-                                setTimeout(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').mouseout(function () {
+                                setTimeout(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', timeoutCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, timeoutPeriod);
@@ -4198,16 +4198,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1E', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qE', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').mousemove(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mousemove(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand);
-                            $('#' + elementName + '').mousemove(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mousemove(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, timeoutPeriod);
@@ -4215,24 +4215,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qE', timeoutCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand);
-                        $('#' + elementName + '').mousemove(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mousemove(function () {
+                            setTimeout(function () {
 
                                 window.location = targetURL;
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qE', timeoutCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand);
-                        $('#' + elementName + '').mousemove(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mousemove(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).play();
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qE', timeoutCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand);
-                        $('#' + elementName + '').mousemove(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mousemove(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, timeoutPeriod);
@@ -4240,16 +4240,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qE', timeoutCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
-                            $('#' + elementName + '').mousemove(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mousemove(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
-                            $('#' + elementName + '').mousemove(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mousemove(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
@@ -4259,16 +4259,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
                         var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').mousemove(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mousemove(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
-                            $('#' + elementName + '').mousemove(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mousemove(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, timeoutPeriod);
@@ -4278,16 +4278,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
                         var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').mousemove(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mousemove(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
-                            $('#' + elementName + '').mousemove(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mousemove(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, timeoutPeriod);
@@ -4297,8 +4297,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', timeoutCommand);
                         var tablename = commandsFnTranslations('c25', timeoutCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
-                        $('#' + elementName + '').mousemove(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mousemove(function () {
+                            setTimeout(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -4318,12 +4318,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').mousemove(function() {
-                                setTimeout(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').mousemove(function () {
+                                setTimeout(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', timeoutCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, timeoutPeriod);
@@ -4333,16 +4333,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1F', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qF', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').mouseup(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseup(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand);
-                            $('#' + elementName + '').mouseup(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseup(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, timeoutPeriod);
@@ -4350,24 +4350,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qF', timeoutCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand);
-                        $('#' + elementName + '').mouseup(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mouseup(function () {
+                            setTimeout(function () {
 
                                 window.location = targetURL;
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qF', timeoutCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand);
-                        $('#' + elementName + '').mouseup(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mouseup(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).play();
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qF', timeoutCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand);
-                        $('#' + elementName + '').mouseup(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mouseup(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, timeoutPeriod);
@@ -4375,16 +4375,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qF', timeoutCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
-                            $('#' + elementName + '').mouseup(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseup(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
-                            $('#' + elementName + '').mouseup(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseup(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
@@ -4394,16 +4394,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
                         var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').mouseup(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseup(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
-                            $('#' + elementName + '').mouseup(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseup(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, timeoutPeriod);
@@ -4413,16 +4413,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
                         var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').mouseup(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseup(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
-                            $('#' + elementName + '').mouseup(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').mouseup(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, timeoutPeriod);
@@ -4432,8 +4432,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', timeoutCommand);
                         var tablename = commandsFnTranslations('c25', timeoutCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
-                        $('#' + elementName + '').mouseup(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').mouseup(function () {
+                            setTimeout(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -4453,12 +4453,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').mouseup(function() {
-                                setTimeout(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').mouseup(function () {
+                                setTimeout(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', timeoutCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, timeoutPeriod);
@@ -4468,16 +4468,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1G', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qG', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').dblclick(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').dblclick(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand);
-                            $('#' + elementName + '').dblclick(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').dblclick(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, timeoutPeriod);
@@ -4485,24 +4485,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qG', timeoutCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand);
-                        $('#' + elementName + '').dblclick(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').dblclick(function () {
+                            setTimeout(function () {
 
                                 window.location = targetURL;
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qG', timeoutCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand);
-                        $('#' + elementName + '').dblclick(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').dblclick(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).play();
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qG', timeoutCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand);
-                        $('#' + elementName + '').dblclick(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').dblclick(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, timeoutPeriod);
@@ -4510,16 +4510,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qG', timeoutCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
-                            $('#' + elementName + '').dblclick(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').dblclick(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
-                            $('#' + elementName + '').dblclick(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').dblclick(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
@@ -4529,16 +4529,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
                         var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').dblclick(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').dblclick(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
-                            $('#' + elementName + '').dblclick(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').dblclick(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, timeoutPeriod);
@@ -4548,16 +4548,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
                         var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').dblclick(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').dblclick(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
-                            $('#' + elementName + '').dblclick(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').dblclick(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, timeoutPeriod);
@@ -4567,8 +4567,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', timeoutCommand);
                         var tablename = commandsFnTranslations('c25', timeoutCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
-                        $('#' + elementName + '').dblclick(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').dblclick(function () {
+                            setTimeout(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -4588,12 +4588,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').dblclick(function() {
-                                setTimeout(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').dblclick(function () {
+                                setTimeout(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', timeoutCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, timeoutPeriod);
@@ -4603,16 +4603,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1H', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qH', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').contextmenu(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand);
-                            $('#' + elementName + '').contextmenu(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, timeoutPeriod);
@@ -4620,24 +4620,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qH', timeoutCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand);
-                        $('#' + elementName + '').contextmenu(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').contextmenu(function () {
+                            setTimeout(function () {
 
                                 window.location = targetURL;
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qH', timeoutCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand);
-                        $('#' + elementName + '').contextmenu(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').contextmenu(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).play();
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qH', timeoutCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand);
-                        $('#' + elementName + '').contextmenu(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').contextmenu(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, timeoutPeriod);
@@ -4645,16 +4645,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qH', timeoutCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
-                            $('#' + elementName + '').contextmenu(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
-                            $('#' + elementName + '').contextmenu(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
@@ -4664,16 +4664,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
                         var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').contextmenu(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
-                            $('#' + elementName + '').contextmenu(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, timeoutPeriod);
@@ -4683,16 +4683,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
                         var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').contextmenu(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
-                            $('#' + elementName + '').contextmenu(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, timeoutPeriod);
@@ -4702,8 +4702,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', timeoutCommand);
                         var tablename = commandsFnTranslations('c25', timeoutCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
-                        $('#' + elementName + '').contextmenu(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').contextmenu(function () {
+                            setTimeout(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -4723,12 +4723,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').contextmenu(function() {
-                                setTimeout(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setTimeout(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', timeoutCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, timeoutPeriod);
@@ -4738,16 +4738,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1I', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qI', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').keypress(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').keypress(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand);
-                            $('#' + elementName + '').keypress(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').keypress(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, timeoutPeriod);
@@ -4755,24 +4755,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qI', timeoutCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand);
-                        $('#' + elementName + '').keypress(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').keypress(function () {
+                            setTimeout(function () {
 
                                 window.location = targetURL;
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qI', timeoutCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand);
-                        $('#' + elementName + '').keypress(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').keypress(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).play();
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qI', timeoutCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand);
-                        $('#' + elementName + '').keypress(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').keypress(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, timeoutPeriod);
@@ -4780,16 +4780,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qI', timeoutCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
-                            $('#' + elementName + '').keypress(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').keypress(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
-                            $('#' + elementName + '').keypress(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').keypress(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
@@ -4799,16 +4799,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
                         var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').keypress(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').keypress(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
-                            $('#' + elementName + '').keypress(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').keypress(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, timeoutPeriod);
@@ -4818,16 +4818,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
                         var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').keypress(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').keypress(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
-                            $('#' + elementName + '').keypress(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').keypress(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, timeoutPeriod);
@@ -4837,8 +4837,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', timeoutCommand);
                         var tablename = commandsFnTranslations('c25', timeoutCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
-                        $('#' + elementName + '').keypress(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').keypress(function () {
+                            setTimeout(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -4858,12 +4858,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').keypress(function() {
-                                setTimeout(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').keypress(function () {
+                                setTimeout(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', timeoutCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, timeoutPeriod);
@@ -4873,16 +4873,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1J', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qJ', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').keydown(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').keydown(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand);
-                            $('#' + elementName + '').keydown(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').keydown(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, timeoutPeriod);
@@ -4890,24 +4890,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qJ', timeoutCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand);
-                        $('#' + elementName + '').keydown(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').keydown(function () {
+                            setTimeout(function () {
 
                                 window.location = targetURL;
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qJ', timeoutCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand);
-                        $('#' + elementName + '').keydown(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').keydown(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).play();
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qJ', timeoutCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand);
-                        $('#' + elementName + '').keydown(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').keydown(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, timeoutPeriod);
@@ -4915,16 +4915,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qJ', timeoutCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
-                            $('#' + elementName + '').keydown(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').keydown(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
-                            $('#' + elementName + '').keydown(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').keydown(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
@@ -4934,16 +4934,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
                         var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').keydown(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').keydown(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
-                            $('#' + elementName + '').keydown(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').keydown(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, timeoutPeriod);
@@ -4953,16 +4953,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
                         var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').keydown(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').keydown(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
-                            $('#' + elementName + '').keydown(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').keydown(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, timeoutPeriod);
@@ -4972,8 +4972,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', timeoutCommand);
                         var tablename = commandsFnTranslations('c25', timeoutCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
-                        $('#' + elementName + '').keydown(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').keydown(function () {
+                            setTimeout(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -4993,12 +4993,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').keydown(function() {
-                                setTimeout(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').keydown(function () {
+                                setTimeout(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', timeoutCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, timeoutPeriod);
@@ -5008,16 +5008,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1K', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qK', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').change(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').change(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand);
-                            $('#' + elementName + '').change(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').change(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, timeoutPeriod);
@@ -5025,24 +5025,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qK', timeoutCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand);
-                        $('#' + elementName + '').change(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').change(function () {
+                            setTimeout(function () {
 
                                 window.location = targetURL;
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qK', timeoutCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand);
-                        $('#' + elementName + '').change(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').change(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).play();
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qK', timeoutCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand);
-                        $('#' + elementName + '').change(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').change(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, timeoutPeriod);
@@ -5050,16 +5050,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qK', timeoutCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
-                            $('#' + elementName + '').change(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').change(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
-                            $('#' + elementName + '').change(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').change(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
@@ -5069,16 +5069,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
                         var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').change(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').change(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
-                            $('#' + elementName + '').change(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').change(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, timeoutPeriod);
@@ -5088,16 +5088,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
                         var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').change(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').change(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
-                            $('#' + elementName + '').change(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').change(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, timeoutPeriod);
@@ -5107,8 +5107,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', timeoutCommand);
                         var tablename = commandsFnTranslations('c25', timeoutCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
-                        $('#' + elementName + '').change(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').change(function () {
+                            setTimeout(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -5128,12 +5128,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').change(function() {
-                                setTimeout(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').change(function () {
+                                setTimeout(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', timeoutCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, timeoutPeriod);
@@ -5143,16 +5143,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1L', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qL', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').focus(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focus(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand);
-                            $('#' + elementName + '').focus(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focus(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, timeoutPeriod);
@@ -5160,24 +5160,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qL', timeoutCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand);
-                        $('#' + elementName + '').focus(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').focus(function () {
+                            setTimeout(function () {
 
                                 window.location = targetURL;
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qL', timeoutCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand);
-                        $('#' + elementName + '').focus(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').focus(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).play();
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qL', timeoutCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand);
-                        $('#' + elementName + '').focus(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').focus(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, timeoutPeriod);
@@ -5185,16 +5185,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qL', timeoutCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
-                            $('#' + elementName + '').focus(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focus(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
-                            $('#' + elementName + '').focus(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focus(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
@@ -5204,16 +5204,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
                         var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').focus(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focus(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
-                            $('#' + elementName + '').focus(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focus(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, timeoutPeriod);
@@ -5223,16 +5223,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
                         var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').focus(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focus(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
-                            $('#' + elementName + '').focus(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focus(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, timeoutPeriod);
@@ -5242,8 +5242,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', timeoutCommand);
                         var tablename = commandsFnTranslations('c25', timeoutCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
-                        $('#' + elementName + '').focus(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').focus(function () {
+                            setTimeout(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -5263,12 +5263,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').focus(function() {
-                                setTimeout(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').focus(function () {
+                                setTimeout(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', timeoutCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, timeoutPeriod);
@@ -5278,16 +5278,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1M', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qM', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').focusin(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focusin(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand);
-                            $('#' + elementName + '').focusin(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focusin(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, timeoutPeriod);
@@ -5295,24 +5295,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qM', timeoutCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand);
-                        $('#' + elementName + '').focusin(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').focusin(function () {
+                            setTimeout(function () {
 
                                 window.location = targetURL;
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qM', timeoutCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand);
-                        $('#' + elementName + '').focusin(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').focusin(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).play();
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qM', timeoutCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand);
-                        $('#' + elementName + '').focusin(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').focusin(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, timeoutPeriod);
@@ -5320,16 +5320,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qM', timeoutCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
-                            $('#' + elementName + '').focusin(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focusin(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
-                            $('#' + elementName + '').focusin(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focusin(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
@@ -5339,16 +5339,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
                         var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').focusin(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focusin(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
-                            $('#' + elementName + '').focusin(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focusin(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, timeoutPeriod);
@@ -5358,16 +5358,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
                         var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').focusin(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focusin(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
-                            $('#' + elementName + '').focusin(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focusin(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, timeoutPeriod);
@@ -5377,8 +5377,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', timeoutCommand);
                         var tablename = commandsFnTranslations('c25', timeoutCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
-                        $('#' + elementName + '').focusin(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').focusin(function () {
+                            setTimeout(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -5398,12 +5398,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').focusin(function() {
-                                setTimeout(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').focusin(function () {
+                                setTimeout(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', timeoutCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, timeoutPeriod);
@@ -5413,16 +5413,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1N', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qN', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').focusout(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focusout(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand);
-                            $('#' + elementName + '').focusout(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focusout(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, timeoutPeriod);
@@ -5430,24 +5430,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qN', timeoutCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand);
-                        $('#' + elementName + '').focusout(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').focusout(function () {
+                            setTimeout(function () {
 
                                 window.location = targetURL;
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qN', timeoutCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand);
-                        $('#' + elementName + '').focusout(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').focusout(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).play();
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qN', timeoutCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand);
-                        $('#' + elementName + '').focusout(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').focusout(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, timeoutPeriod);
@@ -5455,16 +5455,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qN', timeoutCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
-                            $('#' + elementName + '').focusout(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focusout(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
-                            $('#' + elementName + '').focusout(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focusout(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
@@ -5474,16 +5474,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
                         var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').focusout(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focusout(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
-                            $('#' + elementName + '').focusout(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focusout(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, timeoutPeriod);
@@ -5493,16 +5493,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
                         var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').focusout(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focusout(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
-                            $('#' + elementName + '').focusout(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').focusout(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, timeoutPeriod);
@@ -5512,8 +5512,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', timeoutCommand);
                         var tablename = commandsFnTranslations('c25', timeoutCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
-                        $('#' + elementName + '').focusout(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').focusout(function () {
+                            setTimeout(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -5533,12 +5533,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').focusout(function() {
-                                setTimeout(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').focusout(function () {
+                                setTimeout(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', timeoutCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, timeoutPeriod);
@@ -5548,16 +5548,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1O', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qO', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').submit(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').submit(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand);
-                            $('#' + elementName + '').submit(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').submit(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, timeoutPeriod);
@@ -5565,24 +5565,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qO', timeoutCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand);
-                        $('#' + elementName + '').submit(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').submit(function () {
+                            setTimeout(function () {
 
                                 window.location = targetURL;
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qO', timeoutCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand);
-                        $('#' + elementName + '').submit(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').submit(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).play();
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qO', timeoutCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand);
-                        $('#' + elementName + '').submit(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').submit(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, timeoutPeriod);
@@ -5590,16 +5590,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qO', timeoutCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
-                            $('#' + elementName + '').submit(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').submit(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
-                            $('#' + elementName + '').submit(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').submit(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
@@ -5609,16 +5609,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
                         var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').submit(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').submit(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
-                            $('#' + elementName + '').submit(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').submit(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, timeoutPeriod);
@@ -5628,16 +5628,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
                         var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').submit(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').submit(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
-                            $('#' + elementName + '').submit(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').submit(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, timeoutPeriod);
@@ -5647,8 +5647,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', timeoutCommand);
                         var tablename = commandsFnTranslations('c25', timeoutCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
-                        $('#' + elementName + '').submit(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').submit(function () {
+                            setTimeout(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -5668,12 +5668,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').submit(function() {
-                                setTimeout(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').submit(function () {
+                                setTimeout(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', timeoutCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, timeoutPeriod);
@@ -5683,16 +5683,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1P', timeoutCommand).length > 1) {
                     if (commandsFnTranslations('c2qP', timeoutCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').scroll(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand);
-                            $('#' + elementName + '').scroll(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, timeoutPeriod);
@@ -5700,24 +5700,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qP', timeoutCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand);
-                        $('#' + elementName + '').scroll(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').scroll(function () {
+                            setTimeout(function () {
 
                                 window.location = targetURL;
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qP', timeoutCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand);
-                        $('#' + elementName + '').scroll(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').scroll(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).play();
                             }, timeoutPeriod);
                         });
                     } else if (commandsFnTranslations('c2qP', timeoutCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand);
-                        $('#' + elementName + '').scroll(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').scroll(function () {
+                            setTimeout(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, timeoutPeriod);
@@ -5725,16 +5725,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qP', timeoutCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', timeoutCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand) + '').val();
-                            $('#' + elementName + '').scroll(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand);
-                            $('#' + elementName + '').scroll(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setTimeout(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, timeoutPeriod);
@@ -5744,16 +5744,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', timeoutCommand);
                         var resource = commandsFnTranslations('c15', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').scroll(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, targetElement);
-                            $('#' + elementName + '').scroll(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setTimeout(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, timeoutPeriod);
@@ -5763,16 +5763,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', timeoutCommand);
                         var resource = commandsFnTranslations('c20', timeoutCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').scroll(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setTimeout(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, timeoutPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand);
-                            $('#' + elementName + '').scroll(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setTimeout(function () {
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, timeoutPeriod);
                             });
@@ -5782,8 +5782,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var tablename = commandsFnTranslations('c25', timeoutCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, dbname, tablename);
 
-                        $('#' + elementName + '').scroll(function() {
-                            setTimeout(function() {
+                        $('#' + elementName + '').scroll(function () {
+                            setTimeout(function () {
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
                                     var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -5802,12 +5802,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand);
-                        (function(commandID) {
+                        (function (commandID) {
 
-                            $('#' + elementName + '').scroll(function() {
-                                setTimeout(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setTimeout(function () {
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', timeoutCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, timeoutPeriod);
@@ -5820,8 +5820,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     if (commandsFnTranslations('c2qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', timeoutCommand, voiceCommand) == commandsFnTranslations('c3r')) {
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setTimeout(function() {
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
                                         $('#' + elementName + '').remove();
                                     }, timeoutPeriod);
                                 }
@@ -5829,8 +5829,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             var targetName = commandsFnTranslations('c4', timeoutCommand, voiceCommand);
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setTimeout(function() {
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
                                         $('#' + targetName + '').remove();
                                     }, timeoutPeriod);
                                 }
@@ -5839,8 +5839,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c5qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', timeoutCommand, voiceCommand);
                         annyang.addCommands({
-                            [voiceCommand]: function() {
-                                setTimeout(function() {
+                            [voiceCommand]: function () {
+                                setTimeout(function () {
                                     window.location = targetURL;
                                 }, timeoutPeriod);
                             }
@@ -5848,8 +5848,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c2qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', timeoutCommand, voiceCommand);
                         annyang.addCommands({
-                            [voiceCommand]: function() {
-                                setTimeout(function() {
+                            [voiceCommand]: function () {
+                                setTimeout(function () {
                                     document.getElementById(targetElement).play();
                                 }, timeoutPeriod);
                             }
@@ -5857,8 +5857,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c2qQ', timeoutCommand, voiceCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', timeoutCommand, voiceCommand);
                         annyang.addCommands({
-                            [voiceCommand]: function() {
-                                setTimeout(function() {
+                            [voiceCommand]: function () {
+                                setTimeout(function () {
                                     document.getElementById(targetElement).pause();
                                 }, timeoutPeriod);
                             }
@@ -5867,8 +5867,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (commandsFnTranslations('c10q', timeoutCommand, voiceCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', timeoutCommand, voiceCommand) + '').val();
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setTimeout(function() {
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
                                         $('#' + elementName + '').val(newVal);
                                     }, timeoutPeriod);
                                 }
@@ -5876,8 +5876,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             var newVal = commandsFnTranslations('c12', timeoutCommand, voiceCommand);
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setTimeout(function() {
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
                                         $('#' + elementName + '').val(newVal);
                                     }, timeoutPeriod);
                                 }
@@ -5888,8 +5888,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var resource = commandsFnTranslations('c15', timeoutCommand, voiceCommand, targetElement);
                         if (commandsFnTranslations('c16q', timeoutCommand, voiceCommand, targetElement) == commandsFnTranslations('c16r')) {
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setTimeout(function() {
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
                                         $('#' + targetElement + '').val($('#' + resource + '').val());
                                     }, timeoutPeriod);
                                 }
@@ -5897,8 +5897,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             var newVal = commandsFnTranslations('c17', timeoutCommand, voiceCommand, targetElement);
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setTimeout(function() {
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
                                         $('#' + targetElement + '').val(newVal);
                                     }, timeoutPeriod);
                                 }
@@ -5909,8 +5909,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var resource = commandsFnTranslations('c20', timeoutCommand, voiceCommand, targetElement);
                         if (commandsFnTranslations('c21q', timeoutCommand, voiceCommand, targetElement) == commandsFnTranslations('c21r')) {
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setTimeout(function() {
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
                                         document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                     }, timeoutPeriod);
                                 }
@@ -5918,8 +5918,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', timeoutCommand, voiceCommand);
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setTimeout(function() {
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
                                         document.getElementById(targetElement).currentTime = newTimePosition;
                                     }, timeoutPeriod);
                                 }
@@ -5930,8 +5930,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var tablename = commandsFnTranslations('c25', timeoutCommand, voiceCommand);
                         var dataRaw = commandsFnTranslations('c26', timeoutCommand, voiceCommand, dbname, tablename);
                         annyang.addCommands({
-                            [voiceCommand]: function() {
-                                setTimeout(function() {
+                            [voiceCommand]: function () {
+                                setTimeout(function () {
                                     var data = '{';
                                     for (i = 0; i < dataRaw.length; i++) {
                                         var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -5951,12 +5951,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', timeoutCommand, voiceCommand);
                         var tablename = commandsFnTranslations('c29', timeoutCommand, voiceCommand);
                         var calledSlot = commandsFnTranslations('c30', timeoutCommand, voiceCommand);
-                        (function(commandID) {
+                        (function (commandID) {
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setTimeout(function() {
+                                [voiceCommand]: function () {
+                                    setTimeout(function () {
                                         var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                        dbRef.on('value', function(snapshot) {
+                                        dbRef.on('value', function (snapshot) {
                                             $('#' + commandsFnTranslations('c31', timeoutCommand, voiceCommand) + '').val(snapshot.val()[calledSlot]);
                                         });
                                     }, timeoutPeriod);
@@ -5972,16 +5972,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 if (commandsFnTranslations('c1A', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qA', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').click(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').click(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, intervalPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand);
-                            $('#' + elementName + '').click(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').click(function () {
+                                setInterval(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, intervalPeriod);
@@ -5989,24 +5989,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qA', intervalCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand);
-                        $('#' + elementName + '').click(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').click(function () {
+                            setInterval(function () {
 
                                 window.location = targetURL;
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qA', intervalCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand);
-                        $('#' + elementName + '').click(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').click(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).play();
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qA', intervalCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand);
-                        $('#' + elementName + '').click(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').click(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, intervalPeriod);
@@ -6014,16 +6014,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qA', intervalCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
                             var targetElement = commandsFnTranslations('c11', intervalCommand);
-                            $('#' + elementName + '').click(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').click(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val($('#' + targetElement + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
-                            $('#' + elementName + '').click(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').click(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
@@ -6033,16 +6033,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
                         var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').click(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').click(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
-                            $('#' + elementName + '').click(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').click(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, intervalPeriod);
@@ -6052,16 +6052,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
                         var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').click(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').click(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
-                            $('#' + elementName + '').click(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').click(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, intervalPeriod);
@@ -6071,8 +6071,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', intervalCommand);
                         var tablename = commandsFnTranslations('c25', intervalCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
-                        $('#' + elementName + '').click(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').click(function () {
+                            setInterval(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -6092,12 +6092,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').click(function() {
-                                setInterval(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').click(function () {
+                                setInterval(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', intervalCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, intervalPeriod);
@@ -6107,16 +6107,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1B', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qB', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').mouseenter(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, intervalPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand);
-                            $('#' + elementName + '').mouseenter(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setInterval(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, intervalPeriod);
@@ -6124,24 +6124,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qB', intervalCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand);
-                        $('#' + elementName + '').mouseenter(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mouseenter(function () {
+                            setInterval(function () {
 
                                 window.location = targetURL;
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qB', intervalCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand);
-                        $('#' + elementName + '').mouseenter(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mouseenter(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).play();
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qB', intervalCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand);
-                        $('#' + elementName + '').mouseenter(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mouseenter(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, intervalPeriod);
@@ -6149,16 +6149,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qB', intervalCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
-                            $('#' + elementName + '').mouseenter(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
-                            $('#' + elementName + '').mouseenter(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
@@ -6168,16 +6168,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
                         var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').mouseenter(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
-                            $('#' + elementName + '').mouseenter(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, intervalPeriod);
@@ -6187,16 +6187,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
                         var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').mouseenter(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
-                            $('#' + elementName + '').mouseenter(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, intervalPeriod);
@@ -6206,8 +6206,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', intervalCommand);
                         var tablename = commandsFnTranslations('c25', intervalCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
-                        $('#' + elementName + '').mouseenter(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mouseenter(function () {
+                            setInterval(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -6227,12 +6227,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').mouseenter(function() {
-                                setInterval(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').mouseenter(function () {
+                                setInterval(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', intervalCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, intervalPeriod);
@@ -6242,16 +6242,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1C', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qC', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').mouseleave(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, intervalPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand);
-                            $('#' + elementName + '').mouseleave(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setInterval(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, intervalPeriod);
@@ -6259,24 +6259,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qC', intervalCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand);
-                        $('#' + elementName + '').mouseleave(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mouseleave(function () {
+                            setInterval(function () {
 
                                 window.location = targetURL;
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qC', intervalCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand);
-                        $('#' + elementName + '').mouseleave(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mouseleave(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).play();
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qC', intervalCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand);
-                        $('#' + elementName + '').mouseleave(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mouseleave(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, intervalPeriod);
@@ -6284,16 +6284,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qC', intervalCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
-                            $('#' + elementName + '').mouseleave(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
-                            $('#' + elementName + '').mouseleave(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
@@ -6303,16 +6303,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
                         var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').mouseleave(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
-                            $('#' + elementName + '').mouseleave(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, intervalPeriod);
@@ -6322,16 +6322,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
                         var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').mouseleave(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
-                            $('#' + elementName + '').mouseleave(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, intervalPeriod);
@@ -6341,8 +6341,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', intervalCommand);
                         var tablename = commandsFnTranslations('c25', intervalCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
-                        $('#' + elementName + '').mouseleave(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mouseleave(function () {
+                            setInterval(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -6362,12 +6362,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').mouseleave(function() {
-                                setInterval(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').mouseleave(function () {
+                                setInterval(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', intervalCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, intervalPeriod);
@@ -6377,16 +6377,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1D', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qD', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').mouseout(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseout(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, intervalPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand);
-                            $('#' + elementName + '').mouseout(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseout(function () {
+                                setInterval(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, intervalPeriod);
@@ -6394,24 +6394,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qD', intervalCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand);
-                        $('#' + elementName + '').mouseout(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mouseout(function () {
+                            setInterval(function () {
 
                                 window.location = targetURL;
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qD', intervalCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand);
-                        $('#' + elementName + '').mouseout(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mouseout(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).play();
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qD', intervalCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand);
-                        $('#' + elementName + '').mouseout(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mouseout(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, intervalPeriod);
@@ -6419,16 +6419,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qD', intervalCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
-                            $('#' + elementName + '').mouseout(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseout(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
-                            $('#' + elementName + '').mouseout(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseout(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
@@ -6438,16 +6438,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
                         var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').mouseout(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseout(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
-                            $('#' + elementName + '').mouseout(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseout(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, intervalPeriod);
@@ -6457,16 +6457,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
                         var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').mouseout(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseout(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
-                            $('#' + elementName + '').mouseout(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseout(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, intervalPeriod);
@@ -6476,8 +6476,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', intervalCommand);
                         var tablename = commandsFnTranslations('c25', intervalCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
-                        $('#' + elementName + '').mouseout(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mouseout(function () {
+                            setInterval(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -6497,12 +6497,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').mouseout(function() {
-                                setInterval(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').mouseout(function () {
+                                setInterval(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', intervalCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, intervalPeriod);
@@ -6512,16 +6512,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1E', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qE', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').mousemove(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mousemove(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, intervalPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand);
-                            $('#' + elementName + '').mousemove(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mousemove(function () {
+                                setInterval(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, intervalPeriod);
@@ -6529,24 +6529,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qE', intervalCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand);
-                        $('#' + elementName + '').mousemove(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mousemove(function () {
+                            setInterval(function () {
 
                                 window.location = targetURL;
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qE', intervalCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand);
-                        $('#' + elementName + '').mousemove(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mousemove(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).play();
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qE', intervalCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand);
-                        $('#' + elementName + '').mousemove(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mousemove(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, intervalPeriod);
@@ -6554,16 +6554,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qE', intervalCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
-                            $('#' + elementName + '').mousemove(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mousemove(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
-                            $('#' + elementName + '').mousemove(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mousemove(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
@@ -6573,16 +6573,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
                         var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').mousemove(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mousemove(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
-                            $('#' + elementName + '').mousemove(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mousemove(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, intervalPeriod);
@@ -6592,16 +6592,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
                         var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').mousemove(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mousemove(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
-                            $('#' + elementName + '').mousemove(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mousemove(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, intervalPeriod);
@@ -6611,8 +6611,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', intervalCommand);
                         var tablename = commandsFnTranslations('c25', intervalCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
-                        $('#' + elementName + '').mousemove(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mousemove(function () {
+                            setInterval(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -6632,12 +6632,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').mousemove(function() {
-                                setInterval(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').mousemove(function () {
+                                setInterval(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', intervalCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, intervalPeriod);
@@ -6647,16 +6647,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1F', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qF', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').mouseup(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseup(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, intervalPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand);
-                            $('#' + elementName + '').mouseup(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseup(function () {
+                                setInterval(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, intervalPeriod);
@@ -6664,24 +6664,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qF', intervalCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand);
-                        $('#' + elementName + '').mouseup(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mouseup(function () {
+                            setInterval(function () {
 
                                 window.location = targetURL;
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qF', intervalCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand);
-                        $('#' + elementName + '').mouseup(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mouseup(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).play();
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qF', intervalCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand);
-                        $('#' + elementName + '').mouseup(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mouseup(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, intervalPeriod);
@@ -6689,16 +6689,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qF', intervalCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
-                            $('#' + elementName + '').mouseup(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseup(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
-                            $('#' + elementName + '').mouseup(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseup(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
@@ -6708,16 +6708,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
                         var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').mouseup(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseup(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
-                            $('#' + elementName + '').mouseup(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseup(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, intervalPeriod);
@@ -6727,16 +6727,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
                         var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').mouseup(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseup(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
-                            $('#' + elementName + '').mouseup(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').mouseup(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, intervalPeriod);
@@ -6746,8 +6746,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', intervalCommand);
                         var tablename = commandsFnTranslations('c25', intervalCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
-                        $('#' + elementName + '').mouseup(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').mouseup(function () {
+                            setInterval(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -6767,12 +6767,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').mouseup(function() {
-                                setInterval(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').mouseup(function () {
+                                setInterval(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', intervalCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, intervalPeriod);
@@ -6782,16 +6782,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1G', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qG', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').dblclick(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').dblclick(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, intervalPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand);
-                            $('#' + elementName + '').dblclick(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').dblclick(function () {
+                                setInterval(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, intervalPeriod);
@@ -6799,24 +6799,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qG', intervalCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand);
-                        $('#' + elementName + '').dblclick(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').dblclick(function () {
+                            setInterval(function () {
 
                                 window.location = targetURL;
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qG', intervalCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand);
-                        $('#' + elementName + '').dblclick(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').dblclick(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).play();
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qG', intervalCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand);
-                        $('#' + elementName + '').dblclick(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').dblclick(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, intervalPeriod);
@@ -6824,16 +6824,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qG', intervalCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
-                            $('#' + elementName + '').dblclick(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').dblclick(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
-                            $('#' + elementName + '').dblclick(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').dblclick(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
@@ -6843,16 +6843,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
                         var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').dblclick(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').dblclick(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
-                            $('#' + elementName + '').dblclick(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').dblclick(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, intervalPeriod);
@@ -6862,16 +6862,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
                         var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').dblclick(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').dblclick(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
-                            $('#' + elementName + '').dblclick(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').dblclick(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, intervalPeriod);
@@ -6881,8 +6881,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', intervalCommand);
                         var tablename = commandsFnTranslations('c25', intervalCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
-                        $('#' + elementName + '').dblclick(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').dblclick(function () {
+                            setInterval(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -6902,12 +6902,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').dblclick(function() {
-                                setInterval(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').dblclick(function () {
+                                setInterval(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', intervalCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, intervalPeriod);
@@ -6917,16 +6917,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1H', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qH', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').contextmenu(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, intervalPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand);
-                            $('#' + elementName + '').contextmenu(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setInterval(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, intervalPeriod);
@@ -6934,24 +6934,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qH', intervalCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand);
-                        $('#' + elementName + '').contextmenu(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').contextmenu(function () {
+                            setInterval(function () {
 
                                 window.location = targetURL;
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qH', intervalCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand);
-                        $('#' + elementName + '').contextmenu(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').contextmenu(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).play();
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qH', intervalCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand);
-                        $('#' + elementName + '').contextmenu(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').contextmenu(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, intervalPeriod);
@@ -6959,16 +6959,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qH', intervalCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
-                            $('#' + elementName + '').contextmenu(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
-                            $('#' + elementName + '').contextmenu(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
@@ -6978,16 +6978,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
                         var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').contextmenu(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
-                            $('#' + elementName + '').contextmenu(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, intervalPeriod);
@@ -6997,16 +6997,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
                         var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').contextmenu(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
-                            $('#' + elementName + '').contextmenu(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, intervalPeriod);
@@ -7016,8 +7016,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', intervalCommand);
                         var tablename = commandsFnTranslations('c25', intervalCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
-                        $('#' + elementName + '').contextmenu(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').contextmenu(function () {
+                            setInterval(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -7037,12 +7037,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').contextmenu(function() {
-                                setInterval(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').contextmenu(function () {
+                                setInterval(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', intervalCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, intervalPeriod);
@@ -7052,16 +7052,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1I', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qI', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').keypress(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').keypress(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, intervalPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand);
-                            $('#' + elementName + '').keypress(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').keypress(function () {
+                                setInterval(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, intervalPeriod);
@@ -7069,24 +7069,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qI', intervalCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand);
-                        $('#' + elementName + '').keypress(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').keypress(function () {
+                            setInterval(function () {
 
                                 window.location = targetURL;
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qI', intervalCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand);
-                        $('#' + elementName + '').keypress(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').keypress(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).play();
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qI', intervalCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand);
-                        $('#' + elementName + '').keypress(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').keypress(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, intervalPeriod);
@@ -7094,16 +7094,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qI', intervalCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
-                            $('#' + elementName + '').keypress(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').keypress(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
-                            $('#' + elementName + '').keypress(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').keypress(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
@@ -7113,16 +7113,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
                         var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').keypress(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').keypress(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
-                            $('#' + elementName + '').keypress(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').keypress(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, intervalPeriod);
@@ -7132,16 +7132,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
                         var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').keypress(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').keypress(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
-                            $('#' + elementName + '').keypress(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').keypress(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, intervalPeriod);
@@ -7151,8 +7151,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', intervalCommand);
                         var tablename = commandsFnTranslations('c25', intervalCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
-                        $('#' + elementName + '').keypress(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').keypress(function () {
+                            setInterval(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -7172,12 +7172,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').keypress(function() {
-                                setInterval(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').keypress(function () {
+                                setInterval(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', intervalCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, intervalPeriod);
@@ -7187,16 +7187,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1J', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qJ', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').keydown(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').keydown(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, intervalPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand);
-                            $('#' + elementName + '').keydown(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').keydown(function () {
+                                setInterval(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, intervalPeriod);
@@ -7204,24 +7204,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qJ', intervalCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand);
-                        $('#' + elementName + '').keydown(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').keydown(function () {
+                            setInterval(function () {
 
                                 window.location = targetURL;
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qJ', intervalCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand);
-                        $('#' + elementName + '').keydown(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').keydown(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).play();
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qJ', intervalCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand);
-                        $('#' + elementName + '').keydown(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').keydown(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, intervalPeriod);
@@ -7229,16 +7229,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qJ', intervalCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
-                            $('#' + elementName + '').keydown(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').keydown(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
-                            $('#' + elementName + '').keydown(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').keydown(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
@@ -7248,16 +7248,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
                         var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').keydown(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').keydown(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
-                            $('#' + elementName + '').keydown(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').keydown(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, intervalPeriod);
@@ -7267,16 +7267,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
                         var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').keydown(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').keydown(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
-                            $('#' + elementName + '').keydown(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').keydown(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, intervalPeriod);
@@ -7286,8 +7286,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', intervalCommand);
                         var tablename = commandsFnTranslations('c25', intervalCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
-                        $('#' + elementName + '').keydown(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').keydown(function () {
+                            setInterval(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -7307,12 +7307,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').keydown(function() {
-                                setInterval(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').keydown(function () {
+                                setInterval(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', intervalCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, intervalPeriod);
@@ -7322,16 +7322,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1K', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qK', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').change(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').change(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, intervalPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand);
-                            $('#' + elementName + '').change(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').change(function () {
+                                setInterval(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, intervalPeriod);
@@ -7339,24 +7339,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qK', intervalCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand);
-                        $('#' + elementName + '').change(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').change(function () {
+                            setInterval(function () {
 
                                 window.location = targetURL;
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qK', intervalCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand);
-                        $('#' + elementName + '').change(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').change(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).play();
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qK', intervalCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand);
-                        $('#' + elementName + '').change(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').change(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, intervalPeriod);
@@ -7364,16 +7364,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qK', intervalCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
-                            $('#' + elementName + '').change(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').change(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
-                            $('#' + elementName + '').change(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').change(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
@@ -7383,16 +7383,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
                         var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').change(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').change(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
-                            $('#' + elementName + '').change(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').change(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, intervalPeriod);
@@ -7402,16 +7402,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
                         var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').change(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').change(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
-                            $('#' + elementName + '').change(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').change(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, intervalPeriod);
@@ -7421,8 +7421,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', intervalCommand);
                         var tablename = commandsFnTranslations('c25', intervalCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
-                        $('#' + elementName + '').change(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').change(function () {
+                            setInterval(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -7442,12 +7442,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').change(function() {
-                                setInterval(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').change(function () {
+                                setInterval(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', intervalCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, intervalPeriod);
@@ -7457,16 +7457,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1L', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qL', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').focus(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focus(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, intervalPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand);
-                            $('#' + elementName + '').focus(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focus(function () {
+                                setInterval(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, intervalPeriod);
@@ -7474,24 +7474,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qL', intervalCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand);
-                        $('#' + elementName + '').focus(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').focus(function () {
+                            setInterval(function () {
 
                                 window.location = targetURL;
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qL', intervalCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand);
-                        $('#' + elementName + '').focus(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').focus(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).play();
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qL', intervalCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand);
-                        $('#' + elementName + '').focus(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').focus(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, intervalPeriod);
@@ -7499,16 +7499,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qL', intervalCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
-                            $('#' + elementName + '').focus(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focus(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
-                            $('#' + elementName + '').focus(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focus(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
@@ -7518,16 +7518,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
                         var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').focus(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focus(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
-                            $('#' + elementName + '').focus(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focus(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, intervalPeriod);
@@ -7537,16 +7537,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
                         var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').focus(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focus(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
-                            $('#' + elementName + '').focus(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focus(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, intervalPeriod);
@@ -7556,8 +7556,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', intervalCommand);
                         var tablename = commandsFnTranslations('c25', intervalCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
-                        $('#' + elementName + '').focus(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').focus(function () {
+                            setInterval(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -7577,12 +7577,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').focus(function() {
-                                setInterval(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').focus(function () {
+                                setInterval(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', intervalCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, intervalPeriod);
@@ -7592,16 +7592,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1M', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qM', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').focusin(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focusin(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, intervalPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand);
-                            $('#' + elementName + '').focusin(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focusin(function () {
+                                setInterval(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, intervalPeriod);
@@ -7609,24 +7609,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qM', intervalCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand);
-                        $('#' + elementName + '').focusin(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').focusin(function () {
+                            setInterval(function () {
 
                                 window.location = targetURL;
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qM', intervalCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand);
-                        $('#' + elementName + '').focusin(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').focusin(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).play();
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qM', intervalCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand);
-                        $('#' + elementName + '').focusin(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').focusin(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, intervalPeriod);
@@ -7634,16 +7634,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qM', intervalCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
-                            $('#' + elementName + '').focusin(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focusin(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
-                            $('#' + elementName + '').focusin(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focusin(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
@@ -7653,16 +7653,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
                         var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').focusin(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focusin(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
-                            $('#' + elementName + '').focusin(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focusin(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, intervalPeriod);
@@ -7672,16 +7672,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
                         var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').focusin(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focusin(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
-                            $('#' + elementName + '').focusin(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focusin(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, intervalPeriod);
@@ -7691,8 +7691,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', intervalCommand);
                         var tablename = commandsFnTranslations('c25', intervalCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
-                        $('#' + elementName + '').focusin(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').focusin(function () {
+                            setInterval(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -7712,12 +7712,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').focusin(function() {
-                                setInterval(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').focusin(function () {
+                                setInterval(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', intervalCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, intervalPeriod);
@@ -7727,16 +7727,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1N', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qN', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').focusout(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focusout(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, intervalPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand);
-                            $('#' + elementName + '').focusout(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focusout(function () {
+                                setInterval(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, intervalPeriod);
@@ -7744,24 +7744,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qN', intervalCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand);
-                        $('#' + elementName + '').focusout(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').focusout(function () {
+                            setInterval(function () {
 
                                 window.location = targetURL;
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qN', intervalCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand);
-                        $('#' + elementName + '').focusout(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').focusout(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).play();
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qN', intervalCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand);
-                        $('#' + elementName + '').focusout(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').focusout(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, intervalPeriod);
@@ -7769,16 +7769,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qN', intervalCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
-                            $('#' + elementName + '').focusout(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focusout(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
-                            $('#' + elementName + '').focusout(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focusout(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
@@ -7788,16 +7788,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
                         var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').focusout(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focusout(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
-                            $('#' + elementName + '').focusout(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focusout(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, intervalPeriod);
@@ -7807,16 +7807,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
                         var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').focusout(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focusout(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
-                            $('#' + elementName + '').focusout(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').focusout(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, intervalPeriod);
@@ -7826,8 +7826,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', intervalCommand);
                         var tablename = commandsFnTranslations('c25', intervalCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
-                        $('#' + elementName + '').focusout(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').focusout(function () {
+                            setInterval(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -7847,12 +7847,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').focusout(function() {
-                                setInterval(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').focusout(function () {
+                                setInterval(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', intervalCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, intervalPeriod);
@@ -7862,16 +7862,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1O', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qO', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').submit(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').submit(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, intervalPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand);
-                            $('#' + elementName + '').submit(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').submit(function () {
+                                setInterval(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, intervalPeriod);
@@ -7879,24 +7879,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qO', intervalCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand);
-                        $('#' + elementName + '').submit(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').submit(function () {
+                            setInterval(function () {
 
                                 window.location = targetURL;
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qO', intervalCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand);
-                        $('#' + elementName + '').submit(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').submit(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).play();
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qO', intervalCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand);
-                        $('#' + elementName + '').submit(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').submit(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, intervalPeriod);
@@ -7904,16 +7904,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qO', intervalCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
-                            $('#' + elementName + '').submit(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').submit(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
-                            $('#' + elementName + '').submit(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').submit(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
@@ -7923,16 +7923,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
                         var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').submit(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').submit(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
-                            $('#' + elementName + '').submit(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').submit(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, intervalPeriod);
@@ -7942,16 +7942,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
                         var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').submit(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').submit(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
-                            $('#' + elementName + '').submit(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').submit(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, intervalPeriod);
@@ -7961,8 +7961,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c24', intervalCommand);
                         var tablename = commandsFnTranslations('c25', intervalCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
-                        $('#' + elementName + '').submit(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').submit(function () {
+                            setInterval(function () {
 
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
@@ -7982,12 +7982,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function(commandID) {
-                            $('#' + elementName + '').submit(function() {
-                                setInterval(function() {
+                        (function (commandID) {
+                            $('#' + elementName + '').submit(function () {
+                                setInterval(function () {
 
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', intervalCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, intervalPeriod);
@@ -7997,16 +7997,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c1P', intervalCommand).length > 1) {
                     if (commandsFnTranslations('c2qP', intervalCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand) == commandsFnTranslations('c3r')) {
-                            $('#' + elementName + '').scroll(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').remove();
                                 }, intervalPeriod);
                             });
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand);
-                            $('#' + elementName + '').scroll(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setInterval(function () {
 
                                     $('#' + targetName + '').remove();
                                 }, intervalPeriod);
@@ -8014,24 +8014,24 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
                     } else if (commandsFnTranslations('c5qP', intervalCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand);
-                        $('#' + elementName + '').scroll(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').scroll(function () {
+                            setInterval(function () {
 
                                 window.location = targetURL;
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qP', intervalCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand);
-                        $('#' + elementName + '').scroll(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').scroll(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).play();
                             }, intervalPeriod);
                         });
                     } else if (commandsFnTranslations('c2qP', intervalCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand);
-                        $('#' + elementName + '').scroll(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').scroll(function () {
+                            setInterval(function () {
 
                                 document.getElementById(targetElement).pause();
                             }, intervalPeriod);
@@ -8039,16 +8039,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c9qP', intervalCommand) == commandsFnTranslations('c9r')) {
                         if (commandsFnTranslations('c10q', intervalCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', intervalCommand) + '').val();
-                            $('#' + elementName + '').scroll(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand);
-                            $('#' + elementName + '').scroll(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setInterval(function () {
 
                                     $('#' + elementName + '').val(newVal);
                                 }, intervalPeriod);
@@ -8058,16 +8058,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c14', intervalCommand);
                         var resource = commandsFnTranslations('c15', intervalCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, targetElement) == commandsFnTranslations('c16r')) {
-                            $('#' + elementName + '').scroll(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val($('#' + resource + '').val());
                                 }, intervalPeriod);
                             });
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, targetElement);
-                            $('#' + elementName + '').scroll(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setInterval(function () {
 
                                     $('#' + targetElement + '').val(newVal);
                                 }, intervalPeriod);
@@ -8077,16 +8077,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var targetElement = commandsFnTranslations('c19', intervalCommand);
                         var resource = commandsFnTranslations('c20', intervalCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, targetElement) == commandsFnTranslations('c21r')) {
-                            $('#' + elementName + '').scroll(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setInterval(function () {
 
                                     document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                 }, intervalPeriod);
                             });
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand);
-                            $('#' + elementName + '').scroll(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setInterval(function () {
                                     document.getElementById(targetElement).currentTime = newTimePosition;
                                 }, intervalPeriod);
                             });
@@ -8096,8 +8096,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var tablename = commandsFnTranslations('c25', intervalCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, dbname, tablename);
 
-                        $('#' + elementName + '').scroll(function() {
-                            setInterval(function() {
+                        $('#' + elementName + '').scroll(function () {
+                            setInterval(function () {
                                 var data = '{';
                                 for (i = 0; i < dataRaw.length; i++) {
                                     var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -8116,12 +8116,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand);
-                        (function(commandID) {
+                        (function (commandID) {
 
-                            $('#' + elementName + '').scroll(function() {
-                                setInterval(function() {
+                            $('#' + elementName + '').scroll(function () {
+                                setInterval(function () {
                                     var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                    dbRef.on('value', function(snapshot) {
+                                    dbRef.on('value', function (snapshot) {
                                         $('#' + commandsFnTranslations('c31', intervalCommand) + '').val(snapshot.val()[calledSlot]);
                                     });
                                 }, intervalPeriod);
@@ -8134,8 +8134,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     if (commandsFnTranslations('c2qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c2ruA')) {
                         if (commandsFnTranslations('c3q', intervalCommand, voiceCommand) == commandsFnTranslations('c3r')) {
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setInterval(function() {
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
                                         $('#' + elementName + '').remove();
                                     }, intervalPeriod);
                                 }
@@ -8143,8 +8143,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             var targetName = commandsFnTranslations('c4', intervalCommand, voiceCommand);
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setInterval(function() {
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
                                         $('#' + targetName + '').remove();
                                     }, intervalPeriod);
                                 }
@@ -8153,8 +8153,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c5qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c5r')) {
                         targetURL = commandsFnTranslations('c6', intervalCommand, voiceCommand);
                         annyang.addCommands({
-                            [voiceCommand]: function() {
-                                setInterval(function() {
+                            [voiceCommand]: function () {
+                                setInterval(function () {
                                     window.location = targetURL;
                                 }, intervalPeriod);
                             }
@@ -8162,8 +8162,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c2qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c2ruB')) {
                         var targetElement = commandsFnTranslations('c7', intervalCommand, voiceCommand);
                         annyang.addCommands({
-                            [voiceCommand]: function() {
-                                setInterval(function() {
+                            [voiceCommand]: function () {
+                                setInterval(function () {
                                     document.getElementById(targetElement).play();
                                 }, intervalPeriod);
                             }
@@ -8171,8 +8171,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     } else if (commandsFnTranslations('c2qQ', intervalCommand, voiceCommand) == commandsFnTranslations('c2ruC')) {
                         var targetElement = commandsFnTranslations('c8', intervalCommand, voiceCommand);
                         annyang.addCommands({
-                            [voiceCommand]: function() {
-                                setInterval(function() {
+                            [voiceCommand]: function () {
+                                setInterval(function () {
                                     document.getElementById(targetElement).pause();
                                 }, intervalPeriod);
                             }
@@ -8181,8 +8181,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         if (commandsFnTranslations('c10q', intervalCommand, voiceCommand) == commandsFnTranslations('c10r')) {
                             var newVal = $('#' + commandsFnTranslations('c11', intervalCommand, voiceCommand) + '').val();
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setInterval(function() {
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
                                         $('#' + elementName + '').val(newVal);
                                     }, intervalPeriod);
                                 }
@@ -8190,8 +8190,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             var newVal = commandsFnTranslations('c12', intervalCommand, voiceCommand);
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setInterval(function() {
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
                                         $('#' + elementName + '').val(newVal);
                                     }, intervalPeriod);
                                 }
@@ -8202,8 +8202,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var resource = commandsFnTranslations('c15', intervalCommand, voiceCommand, targetElement);
                         if (commandsFnTranslations('c16q', intervalCommand, voiceCommand, targetElement) == commandsFnTranslations('c16r')) {
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setInterval(function() {
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
                                         $('#' + targetElement + '').val($('#' + resource + '').val());
                                     }, intervalPeriod);
                                 }
@@ -8211,8 +8211,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             var newVal = commandsFnTranslations('c17', intervalCommand, voiceCommand, targetElement);
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setInterval(function() {
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
                                         $('#' + targetElement + '').val(newVal);
                                     }, intervalPeriod);
                                 }
@@ -8223,8 +8223,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var resource = commandsFnTranslations('c20', intervalCommand, voiceCommand, targetElement);
                         if (commandsFnTranslations('c21q', intervalCommand, voiceCommand, targetElement) == commandsFnTranslations('c21r')) {
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setInterval(function() {
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
                                         document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                                     }, intervalPeriod);
                                 }
@@ -8232,8 +8232,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             var newTimePosition = commandsFnTranslations('c22', intervalCommand, voiceCommand);
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setInterval(function() {
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
                                         document.getElementById(targetElement).currentTime = newTimePosition;
                                     }, intervalPeriod);
                                 }
@@ -8244,8 +8244,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var tablename = commandsFnTranslations('c25', intervalCommand, voiceCommand);
                         var dataRaw = commandsFnTranslations('c26', intervalCommand, voiceCommand, dbname, tablename);
                         annyang.addCommands({
-                            [voiceCommand]: function() {
-                                setInterval(function() {
+                            [voiceCommand]: function () {
+                                setInterval(function () {
                                     var data = '{';
                                     for (i = 0; i < dataRaw.length; i++) {
                                         var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -8265,12 +8265,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         var dbname = commandsFnTranslations('c28', intervalCommand, voiceCommand);
                         var tablename = commandsFnTranslations('c29', intervalCommand, voiceCommand);
                         var calledSlot = commandsFnTranslations('c30', intervalCommand, voiceCommand);
-                        (function(commandID) {
+                        (function (commandID) {
                             annyang.addCommands({
-                                [voiceCommand]: function() {
-                                    setInterval(function() {
+                                [voiceCommand]: function () {
+                                    setInterval(function () {
                                         var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                        dbRef.on('value', function(snapshot) {
+                                        dbRef.on('value', function (snapshot) {
                                             $('#' + commandsFnTranslations('c31', intervalCommand, voiceCommand) + '').val(snapshot.val()[calledSlot]);
                                         });
                                     }, intervalPeriod);
@@ -8283,39 +8283,39 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             } else if (commandsFnTranslations('c1A', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qA', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
-                        $('#' + elementName + '').click(function() {
+                        $('#' + elementName + '').click(function () {
                             $('#' + elementName + '').remove();
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID]);
-                        $('#' + elementName + '').click(function() {
+                        $('#' + elementName + '').click(function () {
                             $('#' + targetName + '').remove();
                         });
                     }
                 } else if (commandsFnTranslations('c5qA', commands[commandID]) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID]);
-                    $('#' + elementName + '').click(function() {
+                    $('#' + elementName + '').click(function () {
                         window.location = targetURL;
                     });
                 } else if (commandsFnTranslations('c2qA', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
-                    $('#' + elementName + '').click(function() {
+                    $('#' + elementName + '').click(function () {
                         document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qA', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
-                    $('#' + elementName + '').click(function() {
+                    $('#' + elementName + '').click(function () {
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qA', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
                         var targetElement = commandsFnTranslations('c11', commands[commandID]);
-                        $('#' + elementName + '').click(function() {
+                        $('#' + elementName + '').click(function () {
                             $('#' + elementName + '').val($('#' + targetElement + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
-                        $('#' + elementName + '').click(function() {
+                        $('#' + elementName + '').click(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     }
@@ -8323,12 +8323,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
                     var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
-                        $('#' + elementName + '').click(function() {
+                        $('#' + elementName + '').click(function () {
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
-                        $('#' + elementName + '').click(function() {
+                        $('#' + elementName + '').click(function () {
                             $('#' + targetElement + '').val(newVal);
                         });
                     }
@@ -8336,12 +8336,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
-                        $('#' + elementName + '').click(function() {
+                        $('#' + elementName + '').click(function () {
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
-                        $('#' + elementName + '').click(function() {
+                        $('#' + elementName + '').click(function () {
                             document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
@@ -8349,7 +8349,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').click(function() {
+                    $('#' + elementName + '').click(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -8367,10 +8367,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    (function(commandID) {
-                        $('#' + elementName + '').click(function() {
+                    (function (commandID) {
+                        $('#' + elementName + '').click(function () {
                             var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                            dbRef.on('value', function(snapshot) {
+                            dbRef.on('value', function (snapshot) {
                                 $('#' + commandsFnTranslations('c31', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
@@ -8379,39 +8379,39 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             } else if (commandsFnTranslations('c1B', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qB', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
-                        $('#' + elementName + '').mouseenter(function() {
+                        $('#' + elementName + '').mouseenter(function () {
                             $('#' + elementName + '').remove();
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID]);
-                        $('#' + elementName + '').mouseenter(function() {
+                        $('#' + elementName + '').mouseenter(function () {
                             $('#' + targetName + '').remove();
                         });
                     }
                 } else if (commandsFnTranslations('c5qB', commands[commandID]) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID]);
-                    $('#' + elementName + '').mouseenter(function() {
+                    $('#' + elementName + '').mouseenter(function () {
                         window.location = targetURL;
                     });
                 } else if (commandsFnTranslations('c2qB', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
-                    $('#' + elementName + '').mouseenter(function() {
+                    $('#' + elementName + '').mouseenter(function () {
                         document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qB', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
-                    $('#' + elementName + '').mouseenter(function() {
+                    $('#' + elementName + '').mouseenter(function () {
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qB', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
                         var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
-                        $('#' + elementName + '').mouseenter(function() {
+                        $('#' + elementName + '').mouseenter(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
-                        $('#' + elementName + '').mouseenter(function() {
+                        $('#' + elementName + '').mouseenter(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     }
@@ -8419,12 +8419,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
                     var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
-                        $('#' + elementName + '').mouseenter(function() {
+                        $('#' + elementName + '').mouseenter(function () {
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
-                        $('#' + elementName + '').mouseenter(function() {
+                        $('#' + elementName + '').mouseenter(function () {
                             $('#' + targetElement + '').val(newVal);
                         });
                     }
@@ -8432,12 +8432,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
-                        $('#' + elementName + '').mouseenter(function() {
+                        $('#' + elementName + '').mouseenter(function () {
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
-                        $('#' + elementName + '').mouseenter(function() {
+                        $('#' + elementName + '').mouseenter(function () {
                             document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
@@ -8445,7 +8445,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').mouseenter(function() {
+                    $('#' + elementName + '').mouseenter(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -8463,10 +8463,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    (function(commandID) {
-                        $('#' + elementName + '').mouseenter(function() {
+                    (function (commandID) {
+                        $('#' + elementName + '').mouseenter(function () {
                             var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                            dbRef.on('value', function(snapshot) {
+                            dbRef.on('value', function (snapshot) {
                                 $('#' + commandsFnTranslations('c31', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
@@ -8475,39 +8475,39 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             } else if (commandsFnTranslations('c1C', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qC', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
-                        $('#' + elementName + '').mouseleave(function() {
+                        $('#' + elementName + '').mouseleave(function () {
                             $('#' + elementName + '').remove();
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID]);
-                        $('#' + elementName + '').mouseleave(function() {
+                        $('#' + elementName + '').mouseleave(function () {
                             $('#' + targetName + '').remove();
                         });
                     }
                 } else if (commandsFnTranslations('c5qC', commands[commandID]) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID]);
-                    $('#' + elementName + '').mouseleave(function() {
+                    $('#' + elementName + '').mouseleave(function () {
                         window.location = targetURL;
                     });
                 } else if (commandsFnTranslations('c2qC', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
-                    $('#' + elementName + '').mouseleave(function() {
+                    $('#' + elementName + '').mouseleave(function () {
                         document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qC', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
-                    $('#' + elementName + '').mouseleave(function() {
+                    $('#' + elementName + '').mouseleave(function () {
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qC', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
                         var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
-                        $('#' + elementName + '').mouseleave(function() {
+                        $('#' + elementName + '').mouseleave(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
-                        $('#' + elementName + '').mouseleave(function() {
+                        $('#' + elementName + '').mouseleave(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     }
@@ -8515,12 +8515,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
                     var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
-                        $('#' + elementName + '').mouseleave(function() {
+                        $('#' + elementName + '').mouseleave(function () {
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
-                        $('#' + elementName + '').mouseleave(function() {
+                        $('#' + elementName + '').mouseleave(function () {
                             $('#' + targetElement + '').val(newVal);
                         });
                     }
@@ -8528,12 +8528,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
-                        $('#' + elementName + '').mouseleave(function() {
+                        $('#' + elementName + '').mouseleave(function () {
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
-                        $('#' + elementName + '').mouseleave(function() {
+                        $('#' + elementName + '').mouseleave(function () {
                             document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
@@ -8541,7 +8541,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').mouseleave(function() {
+                    $('#' + elementName + '').mouseleave(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -8559,10 +8559,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    (function(commandID) {
-                        $('#' + elementName + '').mouseleave(function() {
+                    (function (commandID) {
+                        $('#' + elementName + '').mouseleave(function () {
                             var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                            dbRef.on('value', function(snapshot) {
+                            dbRef.on('value', function (snapshot) {
                                 $('#' + commandsFnTranslations('c31', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
@@ -8571,39 +8571,39 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             } else if (commandsFnTranslations('c1D', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qD', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
-                        $('#' + elementName + '').mouseout(function() {
+                        $('#' + elementName + '').mouseout(function () {
                             $('#' + elementName + '').remove();
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID]);
-                        $('#' + elementName + '').mouseout(function() {
+                        $('#' + elementName + '').mouseout(function () {
                             $('#' + targetName + '').remove();
                         });
                     }
                 } else if (commandsFnTranslations('c5qD', commands[commandID]) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID]);
-                    $('#' + elementName + '').mouseout(function() {
+                    $('#' + elementName + '').mouseout(function () {
                         window.location = targetURL;
                     });
                 } else if (commandsFnTranslations('c2qD', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
-                    $('#' + elementName + '').mouseout(function() {
+                    $('#' + elementName + '').mouseout(function () {
                         document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qD', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
-                    $('#' + elementName + '').mouseout(function() {
+                    $('#' + elementName + '').mouseout(function () {
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qD', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
                         var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
-                        $('#' + elementName + '').mouseout(function() {
+                        $('#' + elementName + '').mouseout(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
-                        $('#' + elementName + '').mouseout(function() {
+                        $('#' + elementName + '').mouseout(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     }
@@ -8611,12 +8611,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
                     var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
-                        $('#' + elementName + '').mouseout(function() {
+                        $('#' + elementName + '').mouseout(function () {
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
-                        $('#' + elementName + '').mouseout(function() {
+                        $('#' + elementName + '').mouseout(function () {
                             $('#' + targetElement + '').val(newVal);
                         });
                     }
@@ -8624,12 +8624,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
-                        $('#' + elementName + '').mouseout(function() {
+                        $('#' + elementName + '').mouseout(function () {
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
-                        $('#' + elementName + '').mouseout(function() {
+                        $('#' + elementName + '').mouseout(function () {
                             document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
@@ -8637,7 +8637,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').mouseout(function() {
+                    $('#' + elementName + '').mouseout(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -8655,10 +8655,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    (function(commandID) {
-                        $('#' + elementName + '').mouseout(function() {
+                    (function (commandID) {
+                        $('#' + elementName + '').mouseout(function () {
                             var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                            dbRef.on('value', function(snapshot) {
+                            dbRef.on('value', function (snapshot) {
                                 $('#' + commandsFnTranslations('c31', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
@@ -8667,39 +8667,39 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             } else if (commandsFnTranslations('c1E', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qE', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
-                        $('#' + elementName + '').mousemove(function() {
+                        $('#' + elementName + '').mousemove(function () {
                             $('#' + elementName + '').remove();
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID]);
-                        $('#' + elementName + '').mousemove(function() {
+                        $('#' + elementName + '').mousemove(function () {
                             $('#' + targetName + '').remove();
                         });
                     }
                 } else if (commandsFnTranslations('c5qE', commands[commandID]) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID]);
-                    $('#' + elementName + '').mousemove(function() {
+                    $('#' + elementName + '').mousemove(function () {
                         window.location = targetURL;
                     });
                 } else if (commandsFnTranslations('c2qE', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
-                    $('#' + elementName + '').mousemove(function() {
+                    $('#' + elementName + '').mousemove(function () {
                         document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qE', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
-                    $('#' + elementName + '').mousemove(function() {
+                    $('#' + elementName + '').mousemove(function () {
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qE', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
                         var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
-                        $('#' + elementName + '').mousemove(function() {
+                        $('#' + elementName + '').mousemove(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
-                        $('#' + elementName + '').mousemove(function() {
+                        $('#' + elementName + '').mousemove(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     }
@@ -8707,12 +8707,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
                     var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
-                        $('#' + elementName + '').mousemove(function() {
+                        $('#' + elementName + '').mousemove(function () {
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
-                        $('#' + elementName + '').mousemove(function() {
+                        $('#' + elementName + '').mousemove(function () {
                             $('#' + targetElement + '').val(newVal);
                         });
                     }
@@ -8720,12 +8720,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
-                        $('#' + elementName + '').mousemove(function() {
+                        $('#' + elementName + '').mousemove(function () {
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
-                        $('#' + elementName + '').mousemove(function() {
+                        $('#' + elementName + '').mousemove(function () {
                             document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
@@ -8733,7 +8733,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').mousemove(function() {
+                    $('#' + elementName + '').mousemove(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -8751,10 +8751,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    (function(commandID) {
-                        $('#' + elementName + '').mousemove(function() {
+                    (function (commandID) {
+                        $('#' + elementName + '').mousemove(function () {
                             var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                            dbRef.on('value', function(snapshot) {
+                            dbRef.on('value', function (snapshot) {
                                 $('#' + commandsFnTranslations('c31', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
@@ -8763,39 +8763,39 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             } else if (commandsFnTranslations('c1F', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qF', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
-                        $('#' + elementName + '').mouseup(function() {
+                        $('#' + elementName + '').mouseup(function () {
                             $('#' + elementName + '').remove();
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID]);
-                        $('#' + elementName + '').mouseup(function() {
+                        $('#' + elementName + '').mouseup(function () {
                             $('#' + targetName + '').remove();
                         });
                     }
                 } else if (commandsFnTranslations('c5qF', commands[commandID]) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID]);
-                    $('#' + elementName + '').mouseup(function() {
+                    $('#' + elementName + '').mouseup(function () {
                         window.location = targetURL;
                     });
                 } else if (commandsFnTranslations('c2qF', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
-                    $('#' + elementName + '').mouseup(function() {
+                    $('#' + elementName + '').mouseup(function () {
                         document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qF', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
-                    $('#' + elementName + '').mouseup(function() {
+                    $('#' + elementName + '').mouseup(function () {
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qF', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
                         var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
-                        $('#' + elementName + '').mouseup(function() {
+                        $('#' + elementName + '').mouseup(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
-                        $('#' + elementName + '').mouseup(function() {
+                        $('#' + elementName + '').mouseup(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     }
@@ -8803,12 +8803,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
                     var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
-                        $('#' + elementName + '').mouseup(function() {
+                        $('#' + elementName + '').mouseup(function () {
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
-                        $('#' + elementName + '').mouseup(function() {
+                        $('#' + elementName + '').mouseup(function () {
                             $('#' + targetElement + '').val(newVal);
                         });
                     }
@@ -8816,12 +8816,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
-                        $('#' + elementName + '').mouseup(function() {
+                        $('#' + elementName + '').mouseup(function () {
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
-                        $('#' + elementName + '').mouseup(function() {
+                        $('#' + elementName + '').mouseup(function () {
                             document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
@@ -8829,7 +8829,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').mouseup(function() {
+                    $('#' + elementName + '').mouseup(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -8847,10 +8847,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    (function(commandID) {
-                        $('#' + elementName + '').mouseup(function() {
+                    (function (commandID) {
+                        $('#' + elementName + '').mouseup(function () {
                             var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                            dbRef.on('value', function(snapshot) {
+                            dbRef.on('value', function (snapshot) {
                                 $('#' + commandsFnTranslations('c31', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
@@ -8859,39 +8859,39 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             } else if (commandsFnTranslations('c1G', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qG', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
-                        $('#' + elementName + '').dblclick(function() {
+                        $('#' + elementName + '').dblclick(function () {
                             $('#' + elementName + '').remove();
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID]);
-                        $('#' + elementName + '').dblclick(function() {
+                        $('#' + elementName + '').dblclick(function () {
                             $('#' + targetName + '').remove();
                         });
                     }
                 } else if (commandsFnTranslations('c5qG', commands[commandID]) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID]);
-                    $('#' + elementName + '').dblclick(function() {
+                    $('#' + elementName + '').dblclick(function () {
                         window.location = targetURL;
                     });
                 } else if (commandsFnTranslations('c2qG', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
-                    $('#' + elementName + '').dblclick(function() {
+                    $('#' + elementName + '').dblclick(function () {
                         document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qG', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
-                    $('#' + elementName + '').dblclick(function() {
+                    $('#' + elementName + '').dblclick(function () {
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qG', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
                         var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
-                        $('#' + elementName + '').dblclick(function() {
+                        $('#' + elementName + '').dblclick(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
-                        $('#' + elementName + '').dblclick(function() {
+                        $('#' + elementName + '').dblclick(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     }
@@ -8899,12 +8899,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
                     var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
-                        $('#' + elementName + '').dblclick(function() {
+                        $('#' + elementName + '').dblclick(function () {
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
-                        $('#' + elementName + '').dblclick(function() {
+                        $('#' + elementName + '').dblclick(function () {
                             $('#' + targetElement + '').val(newVal);
                         });
                     }
@@ -8912,12 +8912,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
-                        $('#' + elementName + '').dblclick(function() {
+                        $('#' + elementName + '').dblclick(function () {
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
-                        $('#' + elementName + '').dblclick(function() {
+                        $('#' + elementName + '').dblclick(function () {
                             document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
@@ -8925,7 +8925,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').dblclick(function() {
+                    $('#' + elementName + '').dblclick(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -8943,10 +8943,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    (function(commandID) {
-                        $('#' + elementName + '').dblclick(function() {
+                    (function (commandID) {
+                        $('#' + elementName + '').dblclick(function () {
                             var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                            dbRef.on('value', function(snapshot) {
+                            dbRef.on('value', function (snapshot) {
                                 $('#' + commandsFnTranslations('c31', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
@@ -8955,39 +8955,39 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             } else if (commandsFnTranslations('c1H', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qH', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
-                        $('#' + elementName + '').contextmenu(function() {
+                        $('#' + elementName + '').contextmenu(function () {
                             $('#' + elementName + '').remove();
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID]);
-                        $('#' + elementName + '').contextmenu(function() {
+                        $('#' + elementName + '').contextmenu(function () {
                             $('#' + targetName + '').remove();
                         });
                     }
                 } else if (commandsFnTranslations('c5qH', commands[commandID]) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID]);
-                    $('#' + elementName + '').contextmenu(function() {
+                    $('#' + elementName + '').contextmenu(function () {
                         window.location = targetURL;
                     });
                 } else if (commandsFnTranslations('c2qH', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
-                    $('#' + elementName + '').contextmenu(function() {
+                    $('#' + elementName + '').contextmenu(function () {
                         document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qH', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
-                    $('#' + elementName + '').contextmenu(function() {
+                    $('#' + elementName + '').contextmenu(function () {
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qH', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
                         var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
-                        $('#' + elementName + '').contextmenu(function() {
+                        $('#' + elementName + '').contextmenu(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
-                        $('#' + elementName + '').contextmenu(function() {
+                        $('#' + elementName + '').contextmenu(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     }
@@ -8995,12 +8995,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
                     var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
-                        $('#' + elementName + '').contextmenu(function() {
+                        $('#' + elementName + '').contextmenu(function () {
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
-                        $('#' + elementName + '').contextmenu(function() {
+                        $('#' + elementName + '').contextmenu(function () {
                             $('#' + targetElement + '').val(newVal);
                         });
                     }
@@ -9008,12 +9008,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
-                        $('#' + elementName + '').contextmenu(function() {
+                        $('#' + elementName + '').contextmenu(function () {
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
-                        $('#' + elementName + '').contextmenu(function() {
+                        $('#' + elementName + '').contextmenu(function () {
                             document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
@@ -9021,7 +9021,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').contextmenu(function() {
+                    $('#' + elementName + '').contextmenu(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -9039,10 +9039,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    (function(commandID) {
-                        $('#' + elementName + '').contextmenu(function() {
+                    (function (commandID) {
+                        $('#' + elementName + '').contextmenu(function () {
                             var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                            dbRef.on('value', function(snapshot) {
+                            dbRef.on('value', function (snapshot) {
                                 $('#' + commandsFnTranslations('c31', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
@@ -9051,39 +9051,39 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             } else if (commandsFnTranslations('c1I', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qI', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
-                        $('#' + elementName + '').keypress(function() {
+                        $('#' + elementName + '').keypress(function () {
                             $('#' + elementName + '').remove();
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID]);
-                        $('#' + elementName + '').keypress(function() {
+                        $('#' + elementName + '').keypress(function () {
                             $('#' + targetName + '').remove();
                         });
                     }
                 } else if (commandsFnTranslations('c5qI', commands[commandID]) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID]);
-                    $('#' + elementName + '').keypress(function() {
+                    $('#' + elementName + '').keypress(function () {
                         window.location = targetURL;
                     });
                 } else if (commandsFnTranslations('c2qI', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
-                    $('#' + elementName + '').keypress(function() {
+                    $('#' + elementName + '').keypress(function () {
                         document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qI', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
-                    $('#' + elementName + '').keypress(function() {
+                    $('#' + elementName + '').keypress(function () {
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qI', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
                         var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
-                        $('#' + elementName + '').keypress(function() {
+                        $('#' + elementName + '').keypress(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
-                        $('#' + elementName + '').keypress(function() {
+                        $('#' + elementName + '').keypress(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     }
@@ -9091,12 +9091,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
                     var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
-                        $('#' + elementName + '').keypress(function() {
+                        $('#' + elementName + '').keypress(function () {
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
-                        $('#' + elementName + '').keypress(function() {
+                        $('#' + elementName + '').keypress(function () {
                             $('#' + targetElement + '').val(newVal);
                         });
                     }
@@ -9104,12 +9104,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
-                        $('#' + elementName + '').keypress(function() {
+                        $('#' + elementName + '').keypress(function () {
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
-                        $('#' + elementName + '').keypress(function() {
+                        $('#' + elementName + '').keypress(function () {
                             document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
@@ -9117,7 +9117,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').keypress(function() {
+                    $('#' + elementName + '').keypress(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -9135,10 +9135,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    (function(commandID) {
-                        $('#' + elementName + '').keypress(function() {
+                    (function (commandID) {
+                        $('#' + elementName + '').keypress(function () {
                             var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                            dbRef.on('value', function(snapshot) {
+                            dbRef.on('value', function (snapshot) {
                                 $('#' + commandsFnTranslations('c31', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
@@ -9147,39 +9147,39 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             } else if (commandsFnTranslations('c1J', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qJ', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
-                        $('#' + elementName + '').keydown(function() {
+                        $('#' + elementName + '').keydown(function () {
                             $('#' + elementName + '').remove();
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID]);
-                        $('#' + elementName + '').keydown(function() {
+                        $('#' + elementName + '').keydown(function () {
                             $('#' + targetName + '').remove();
                         });
                     }
                 } else if (commandsFnTranslations('c5qJ', commands[commandID]) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID]);
-                    $('#' + elementName + '').keydown(function() {
+                    $('#' + elementName + '').keydown(function () {
                         window.location = targetURL;
                     });
                 } else if (commandsFnTranslations('c2qJ', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
-                    $('#' + elementName + '').keydown(function() {
+                    $('#' + elementName + '').keydown(function () {
                         document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qJ', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
-                    $('#' + elementName + '').keydown(function() {
+                    $('#' + elementName + '').keydown(function () {
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qJ', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
                         var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
-                        $('#' + elementName + '').keydown(function() {
+                        $('#' + elementName + '').keydown(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
-                        $('#' + elementName + '').keydown(function() {
+                        $('#' + elementName + '').keydown(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     }
@@ -9187,12 +9187,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
                     var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
-                        $('#' + elementName + '').keydown(function() {
+                        $('#' + elementName + '').keydown(function () {
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
-                        $('#' + elementName + '').keydown(function() {
+                        $('#' + elementName + '').keydown(function () {
                             $('#' + targetElement + '').val(newVal);
                         });
                     }
@@ -9200,12 +9200,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
-                        $('#' + elementName + '').keydown(function() {
+                        $('#' + elementName + '').keydown(function () {
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
-                        $('#' + elementName + '').keydown(function() {
+                        $('#' + elementName + '').keydown(function () {
                             document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
@@ -9213,7 +9213,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').keydown(function() {
+                    $('#' + elementName + '').keydown(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -9231,10 +9231,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    (function(commandID) {
-                        $('#' + elementName + '').keydown(function() {
+                    (function (commandID) {
+                        $('#' + elementName + '').keydown(function () {
                             var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                            dbRef.on('value', function(snapshot) {
+                            dbRef.on('value', function (snapshot) {
                                 $('#' + commandsFnTranslations('c31', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
@@ -9243,39 +9243,39 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             } else if (commandsFnTranslations('c1K', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qK', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
-                        $('#' + elementName + '').change(function() {
+                        $('#' + elementName + '').change(function () {
                             $('#' + elementName + '').remove();
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID]);
-                        $('#' + elementName + '').change(function() {
+                        $('#' + elementName + '').change(function () {
                             $('#' + targetName + '').remove();
                         });
                     }
                 } else if (commandsFnTranslations('c5qK', commands[commandID]) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID]);
-                    $('#' + elementName + '').change(function() {
+                    $('#' + elementName + '').change(function () {
                         window.location = targetURL;
                     });
                 } else if (commandsFnTranslations('c2qK', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
-                    $('#' + elementName + '').change(function() {
+                    $('#' + elementName + '').change(function () {
                         document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qK', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
-                    $('#' + elementName + '').change(function() {
+                    $('#' + elementName + '').change(function () {
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qK', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
                         var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
-                        $('#' + elementName + '').change(function() {
+                        $('#' + elementName + '').change(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
-                        $('#' + elementName + '').change(function() {
+                        $('#' + elementName + '').change(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     }
@@ -9283,12 +9283,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
                     var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
-                        $('#' + elementName + '').change(function() {
+                        $('#' + elementName + '').change(function () {
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
-                        $('#' + elementName + '').change(function() {
+                        $('#' + elementName + '').change(function () {
                             $('#' + targetElement + '').val(newVal);
                         });
                     }
@@ -9296,12 +9296,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
-                        $('#' + elementName + '').change(function() {
+                        $('#' + elementName + '').change(function () {
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
-                        $('#' + elementName + '').change(function() {
+                        $('#' + elementName + '').change(function () {
                             document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
@@ -9309,7 +9309,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').change(function() {
+                    $('#' + elementName + '').change(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -9327,10 +9327,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    (function(commandID) {
-                        $('#' + elementName + '').change(function() {
+                    (function (commandID) {
+                        $('#' + elementName + '').change(function () {
                             var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                            dbRef.on('value', function(snapshot) {
+                            dbRef.on('value', function (snapshot) {
                                 $('#' + commandsFnTranslations('c31', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
@@ -9339,39 +9339,39 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             } else if (commandsFnTranslations('c1L', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qL', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
-                        $('#' + elementName + '').focus(function() {
+                        $('#' + elementName + '').focus(function () {
                             $('#' + elementName + '').remove();
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID]);
-                        $('#' + elementName + '').focus(function() {
+                        $('#' + elementName + '').focus(function () {
                             $('#' + targetName + '').remove();
                         });
                     }
                 } else if (commandsFnTranslations('c5qL', commands[commandID]) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID]);
-                    $('#' + elementName + '').focus(function() {
+                    $('#' + elementName + '').focus(function () {
                         window.location = targetURL;
                     });
                 } else if (commandsFnTranslations('c2qL', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
-                    $('#' + elementName + '').focus(function() {
+                    $('#' + elementName + '').focus(function () {
                         document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qL', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
-                    $('#' + elementName + '').focus(function() {
+                    $('#' + elementName + '').focus(function () {
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qL', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
                         var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
-                        $('#' + elementName + '').focus(function() {
+                        $('#' + elementName + '').focus(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
-                        $('#' + elementName + '').focus(function() {
+                        $('#' + elementName + '').focus(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     }
@@ -9379,12 +9379,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
                     var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
-                        $('#' + elementName + '').focus(function() {
+                        $('#' + elementName + '').focus(function () {
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
-                        $('#' + elementName + '').focus(function() {
+                        $('#' + elementName + '').focus(function () {
                             $('#' + targetElement + '').val(newVal);
                         });
                     }
@@ -9392,12 +9392,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
-                        $('#' + elementName + '').focus(function() {
+                        $('#' + elementName + '').focus(function () {
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
-                        $('#' + elementName + '').focus(function() {
+                        $('#' + elementName + '').focus(function () {
                             document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
@@ -9405,7 +9405,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').focus(function() {
+                    $('#' + elementName + '').focus(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -9423,10 +9423,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    (function(commandID) {
-                        $('#' + elementName + '').focus(function() {
+                    (function (commandID) {
+                        $('#' + elementName + '').focus(function () {
                             var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                            dbRef.on('value', function(snapshot) {
+                            dbRef.on('value', function (snapshot) {
                                 $('#' + commandsFnTranslations('c31', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
@@ -9435,39 +9435,39 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             } else if (commandsFnTranslations('c1M', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qM', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
-                        $('#' + elementName + '').focusin(function() {
+                        $('#' + elementName + '').focusin(function () {
                             $('#' + elementName + '').remove();
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID]);
-                        $('#' + elementName + '').focusin(function() {
+                        $('#' + elementName + '').focusin(function () {
                             $('#' + targetName + '').remove();
                         });
                     }
                 } else if (commandsFnTranslations('c5qM', commands[commandID]) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID]);
-                    $('#' + elementName + '').focusin(function() {
+                    $('#' + elementName + '').focusin(function () {
                         window.location = targetURL;
                     });
                 } else if (commandsFnTranslations('c2qM', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
-                    $('#' + elementName + '').focusin(function() {
+                    $('#' + elementName + '').focusin(function () {
                         document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qM', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
-                    $('#' + elementName + '').focusin(function() {
+                    $('#' + elementName + '').focusin(function () {
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qM', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
                         var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
-                        $('#' + elementName + '').focusin(function() {
+                        $('#' + elementName + '').focusin(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
-                        $('#' + elementName + '').focusin(function() {
+                        $('#' + elementName + '').focusin(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     }
@@ -9475,12 +9475,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
                     var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
-                        $('#' + elementName + '').focusin(function() {
+                        $('#' + elementName + '').focusin(function () {
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
-                        $('#' + elementName + '').focusin(function() {
+                        $('#' + elementName + '').focusin(function () {
                             $('#' + targetElement + '').val(newVal);
                         });
                     }
@@ -9488,12 +9488,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
-                        $('#' + elementName + '').focusin(function() {
+                        $('#' + elementName + '').focusin(function () {
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
-                        $('#' + elementName + '').focusin(function() {
+                        $('#' + elementName + '').focusin(function () {
                             document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
@@ -9501,7 +9501,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').focusin(function() {
+                    $('#' + elementName + '').focusin(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -9519,10 +9519,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    (function(commandID) {
-                        $('#' + elementName + '').focusin(function() {
+                    (function (commandID) {
+                        $('#' + elementName + '').focusin(function () {
                             var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                            dbRef.on('value', function(snapshot) {
+                            dbRef.on('value', function (snapshot) {
                                 $('#' + commandsFnTranslations('c31', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
@@ -9531,39 +9531,39 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             } else if (commandsFnTranslations('c1N', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qN', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
-                        $('#' + elementName + '').focusout(function() {
+                        $('#' + elementName + '').focusout(function () {
                             $('#' + elementName + '').remove();
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID]);
-                        $('#' + elementName + '').focusout(function() {
+                        $('#' + elementName + '').focusout(function () {
                             $('#' + targetName + '').remove();
                         });
                     }
                 } else if (commandsFnTranslations('c5qN', commands[commandID]) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID]);
-                    $('#' + elementName + '').focusout(function() {
+                    $('#' + elementName + '').focusout(function () {
                         window.location = targetURL;
                     });
                 } else if (commandsFnTranslations('c2qN', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
-                    $('#' + elementName + '').focusout(function() {
+                    $('#' + elementName + '').focusout(function () {
                         document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qN', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
-                    $('#' + elementName + '').focusout(function() {
+                    $('#' + elementName + '').focusout(function () {
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qN', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
                         var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
-                        $('#' + elementName + '').focusout(function() {
+                        $('#' + elementName + '').focusout(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
-                        $('#' + elementName + '').focusout(function() {
+                        $('#' + elementName + '').focusout(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     }
@@ -9571,12 +9571,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
                     var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
-                        $('#' + elementName + '').focusout(function() {
+                        $('#' + elementName + '').focusout(function () {
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
-                        $('#' + elementName + '').focusout(function() {
+                        $('#' + elementName + '').focusout(function () {
                             $('#' + targetElement + '').val(newVal);
                         });
                     }
@@ -9584,12 +9584,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
-                        $('#' + elementName + '').focusout(function() {
+                        $('#' + elementName + '').focusout(function () {
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
-                        $('#' + elementName + '').focusout(function() {
+                        $('#' + elementName + '').focusout(function () {
                             document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
@@ -9597,7 +9597,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').focusout(function() {
+                    $('#' + elementName + '').focusout(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -9615,10 +9615,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    (function(commandID) {
-                        $('#' + elementName + '').focusout(function() {
+                    (function (commandID) {
+                        $('#' + elementName + '').focusout(function () {
                             var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                            dbRef.on('value', function(snapshot) {
+                            dbRef.on('value', function (snapshot) {
                                 $('#' + commandsFnTranslations('c31', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
@@ -9627,39 +9627,39 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             } else if (commandsFnTranslations('c1O', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qO', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
-                        $('#' + elementName + '').submit(function() {
+                        $('#' + elementName + '').submit(function () {
                             $('#' + elementName + '').remove();
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID]);
-                        $('#' + elementName + '').submit(function() {
+                        $('#' + elementName + '').submit(function () {
                             $('#' + targetName + '').remove();
                         });
                     }
                 } else if (commandsFnTranslations('c5qO', commands[commandID]) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID]);
-                    $('#' + elementName + '').submit(function() {
+                    $('#' + elementName + '').submit(function () {
                         window.location = targetURL;
                     });
                 } else if (commandsFnTranslations('c2qO', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
-                    $('#' + elementName + '').submit(function() {
+                    $('#' + elementName + '').submit(function () {
                         document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qO', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
-                    $('#' + elementName + '').submit(function() {
+                    $('#' + elementName + '').submit(function () {
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qO', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
                         var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
-                        $('#' + elementName + '').submit(function() {
+                        $('#' + elementName + '').submit(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
-                        $('#' + elementName + '').submit(function() {
+                        $('#' + elementName + '').submit(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     }
@@ -9667,12 +9667,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
                     var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
-                        $('#' + elementName + '').submit(function() {
+                        $('#' + elementName + '').submit(function () {
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
-                        $('#' + elementName + '').submit(function() {
+                        $('#' + elementName + '').submit(function () {
                             $('#' + targetElement + '').val(newVal);
                         });
                     }
@@ -9680,12 +9680,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
-                        $('#' + elementName + '').submit(function() {
+                        $('#' + elementName + '').submit(function () {
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
-                        $('#' + elementName + '').submit(function() {
+                        $('#' + elementName + '').submit(function () {
                             document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
@@ -9693,7 +9693,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').submit(function() {
+                    $('#' + elementName + '').submit(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -9711,10 +9711,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    (function(commandID) {
-                        $('#' + elementName + '').submit(function() {
+                    (function (commandID) {
+                        $('#' + elementName + '').submit(function () {
                             var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                            dbRef.on('value', function(snapshot) {
+                            dbRef.on('value', function (snapshot) {
                                 $('#' + commandsFnTranslations('c31', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
@@ -9723,39 +9723,39 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             } else if (commandsFnTranslations('c1P', commands[commandID]).length > 1) {
                 if (commandsFnTranslations('c2qP', commands[commandID]) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID]) == commandsFnTranslations('c3r')) {
-                        $('#' + elementName + '').scroll(function() {
+                        $('#' + elementName + '').scroll(function () {
                             $('#' + elementName + '').remove();
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID]);
-                        $('#' + elementName + '').scroll(function() {
+                        $('#' + elementName + '').scroll(function () {
                             $('#' + targetName + '').remove();
                         });
                     }
                 } else if (commandsFnTranslations('c5qP', commands[commandID]) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID]);
-                    $('#' + elementName + '').scroll(function() {
+                    $('#' + elementName + '').scroll(function () {
                         window.location = targetURL;
                     });
                 } else if (commandsFnTranslations('c2qP', commands[commandID]) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID]);
-                    $('#' + elementName + '').scroll(function() {
+                    $('#' + elementName + '').scroll(function () {
                         document.getElementById(targetElement).play();
                     });
                 } else if (commandsFnTranslations('c2qP', commands[commandID]) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID]);
-                    $('#' + elementName + '').scroll(function() {
+                    $('#' + elementName + '').scroll(function () {
                         document.getElementById(targetElement).pause();
                     });
                 } else if (commandsFnTranslations('c9qP', commands[commandID]) == commandsFnTranslations('c9r')) {
                     if (commandsFnTranslations('c10q', commands[commandID]) == commandsFnTranslations('c10r')) {
                         var newVal = $('#' + commandsFnTranslations('c11', commands[commandID]) + '').val();
-                        $('#' + elementName + '').scroll(function() {
+                        $('#' + elementName + '').scroll(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID]);
-                        $('#' + elementName + '').scroll(function() {
+                        $('#' + elementName + '').scroll(function () {
                             $('#' + elementName + '').val(newVal);
                         });
                     }
@@ -9763,12 +9763,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c14', commands[commandID]);
                     var resource = commandsFnTranslations('c15', commands[commandID], targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], targetElement) == commandsFnTranslations('c16r')) {
-                        $('#' + elementName + '').scroll(function() {
+                        $('#' + elementName + '').scroll(function () {
                             $('#' + targetElement + '').val($('#' + resource + '').val());
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], targetElement);
-                        $('#' + elementName + '').scroll(function() {
+                        $('#' + elementName + '').scroll(function () {
                             $('#' + targetElement + '').val(newVal);
                         });
                     }
@@ -9776,12 +9776,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var targetElement = commandsFnTranslations('c19', commands[commandID]);
                     var resource = commandsFnTranslations('c20', commands[commandID], targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], targetElement) == commandsFnTranslations('c21r')) {
-                        $('#' + elementName + '').scroll(function() {
+                        $('#' + elementName + '').scroll(function () {
                             document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID]);
-                        $('#' + elementName + '').scroll(function() {
+                        $('#' + elementName + '').scroll(function () {
                             document.getElementById(targetElement).currentTime = newTimePosition;
                         });
                     }
@@ -9789,7 +9789,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c24', commands[commandID]);
                     var tablename = commandsFnTranslations('c25', commands[commandID]);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], dbname, tablename);
-                    $('#' + elementName + '').scroll(function() {
+                    $('#' + elementName + '').scroll(function () {
                         var data = '{';
                         for (i = 0; i < dataRaw.length; i++) {
                             var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -9807,10 +9807,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID]);
                     var tablename = commandsFnTranslations('c29', commands[commandID]);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID]);
-                    (function(commandID) {
-                        $('#' + elementName + '').scroll(function() {
+                    (function (commandID) {
+                        $('#' + elementName + '').scroll(function () {
                             var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                            dbRef.on('value', function(snapshot) {
+                            dbRef.on('value', function (snapshot) {
                                 $('#' + commandsFnTranslations('c31', commands[commandID]) + '').val(snapshot.val()[calledSlot]);
                             });
                         });
@@ -9822,14 +9822,14 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 if (commandsFnTranslations('c2qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c2ruA')) {
                     if (commandsFnTranslations('c3q', commands[commandID], voiceCommand) == commandsFnTranslations('c3r')) {
                         annyang.addCommands({
-                            [voiceCommand]: function() {
+                            [voiceCommand]: function () {
                                 $('#' + elementName + '').remove();
                             }
                         });
                     } else {
                         var targetName = commandsFnTranslations('c4', commands[commandID], voiceCommand);
                         annyang.addCommands({
-                            [voiceCommand]: function() {
+                            [voiceCommand]: function () {
                                 $('#' + targetName + '').remove();
                             }
                         });
@@ -9837,21 +9837,21 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 } else if (commandsFnTranslations('c5qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c5r')) {
                     targetURL = commandsFnTranslations('c6', commands[commandID], voiceCommand);
                     annyang.addCommands({
-                        [voiceCommand]: function() {
+                        [voiceCommand]: function () {
                             window.location = targetURL;
                         }
                     });
                 } else if (commandsFnTranslations('c2qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c2ruB')) {
                     var targetElement = commandsFnTranslations('c7', commands[commandID], voiceCommand);
                     annyang.addCommands({
-                        [voiceCommand]: function() {
+                        [voiceCommand]: function () {
                             document.getElementById(targetElement).play();
                         }
                     });
                 } else if (commandsFnTranslations('c2qQ', commands[commandID], voiceCommand) == commandsFnTranslations('c2ruC')) {
                     var targetElement = commandsFnTranslations('c8', commands[commandID], voiceCommand);
                     annyang.addCommands({
-                        [voiceCommand]: function() {
+                        [voiceCommand]: function () {
                             document.getElementById(targetElement).pause();
                         }
                     });
@@ -9859,14 +9859,14 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     if (commandsFnTranslations('c10q', commands[commandID], voiceCommand) == commandsFnTranslations('c10r')) {
                         var newVal = $('#' + commandsFnTranslations('c11', commands[commandID], voiceCommand) + '').val();
                         annyang.addCommands({
-                            [voiceCommand]: function() {
+                            [voiceCommand]: function () {
                                 $('#' + elementName + '').val(newVal);
                             }
                         });
                     } else {
                         var newVal = commandsFnTranslations('c12', commands[commandID], voiceCommand);
                         annyang.addCommands({
-                            [voiceCommand]: function() {
+                            [voiceCommand]: function () {
                                 $('#' + elementName + '').val(newVal);
                             }
                         });
@@ -9876,14 +9876,14 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c15', commands[commandID], voiceCommand, targetElement);
                     if (commandsFnTranslations('c16q', commands[commandID], voiceCommand, targetElement) == commandsFnTranslations('c16r')) {
                         annyang.addCommands({
-                            [voiceCommand]: function() {
+                            [voiceCommand]: function () {
                                 $('#' + targetElement + '').val($('#' + resource + '').val());
                             }
                         });
                     } else {
                         var newVal = commandsFnTranslations('c17', commands[commandID], voiceCommand, targetElement);
                         annyang.addCommands({
-                            [voiceCommand]: function() {
+                            [voiceCommand]: function () {
                                 $('#' + targetElement + '').val(newVal);
                             }
                         });
@@ -9893,14 +9893,14 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var resource = commandsFnTranslations('c20', commands[commandID], voiceCommand, targetElement);
                     if (commandsFnTranslations('c21q', commands[commandID], voiceCommand, targetElement) == commandsFnTranslations('c21r')) {
                         annyang.addCommands({
-                            [voiceCommand]: function() {
+                            [voiceCommand]: function () {
                                 document.getElementById(targetElement).currentTime = $('#' + resource + '').val();
                             }
                         });
                     } else {
                         var newTimePosition = commandsFnTranslations('c22', commands[commandID], voiceCommand);
                         annyang.addCommands({
-                            [voiceCommand]: function() {
+                            [voiceCommand]: function () {
                                 document.getElementById(targetElement).currentTime = newTimePosition;
                             }
                         });
@@ -9910,7 +9910,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var tablename = commandsFnTranslations('c25', commands[commandID], voiceCommand);
                     var dataRaw = commandsFnTranslations('c26', commands[commandID], voiceCommand, dbname, tablename);
                     annyang.addCommands({
-                        [voiceCommand]: function() {
+                        [voiceCommand]: function () {
                             var data = '{';
                             for (i = 0; i < dataRaw.length; i++) {
                                 var resource = commandsFnTranslations('c32', '', dataRaw[i]);
@@ -9929,11 +9929,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var dbname = commandsFnTranslations('c28', commands[commandID], voiceCommand);
                     var tablename = commandsFnTranslations('c29', commands[commandID], voiceCommand);
                     var calledSlot = commandsFnTranslations('c30', commands[commandID], voiceCommand);
-                    (function(commandID) {
+                    (function (commandID) {
                         annyang.addCommands({
-                            [voiceCommand]: function() {
+                            [voiceCommand]: function () {
                                 var dbRef = firebase.database().ref(dbname + '/' + tablename);
-                                dbRef.on('value', function(snapshot) {
+                                dbRef.on('value', function (snapshot) {
                                     $('#' + commandsFnTranslations('c31', commands[commandID], voiceCommand) + '').val(snapshot.val()[calledSlot]);
                                 });
                             }
@@ -9943,11 +9943,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             }
         }
     }
-    $(function() {
+    $(function () {
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         //---------------------------------------------------------------------Setup------------------------------------------------------------------------------------------------------------------------------------------//
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-        $.fn[setupTranslations[lang]] = function(options) {
+        $.fn[setupTranslations[lang]] = function (options) {
             // Establish our default settings
             var settings = $.extend({
                 [logoTranslations[lang]]: null,
@@ -9955,7 +9955,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 [modeTranslations[lang]]: null,
                 [attributesTranslations[lang]]: null
             }, options);
-            return this.each(function() {
+            return this.each(function () {
                 if (settings[modeTranslations[lang]] == 'site') {
                     $('body').append('<contents></contents>');
                 } else if (settings[modeTranslations[lang]] == 'app') {
@@ -9983,14 +9983,14 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             try {
                                 compatibility.getUserMedia({
                                     video: true
-                                }, function(stream) {
+                                }, function (stream) {
                                     try {
                                         video.src = compatibility.URL.createObjectURL(stream);
                                     } catch (error) {
                                         video.src = stream;
                                     }
                                     compatibility.requestAnimationFrame(play);
-                                }, function(error) {
+                                }, function (error) {
                                     alert("WebRTC not available");
                                 });
                             } catch (error) {
@@ -10059,15 +10059,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //---------------------------------------------------------------------Page------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[pageTranslations[lang]] = function(options) {
+                $.fn[pageTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [nameTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
 
                         $('contents').append('<page id="' + settings[nameTranslations[lang]] + '" style="display: none;"></page>');
-                        $(window).on('hashchange', function(e) {
+                        $(window).on('hashchange', function (e) {
                             $('page').fadeOut(500);
                             $('#' + getAllUrlParams().page + '').fadeIn(500);
                         })
@@ -10078,7 +10078,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //----------------------------------------------------------------------Text------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[textFnTranslations[lang]] = function(options) {
+                $.fn[textFnTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [textTranslations[lang]]: 'It seems that you have typed nothing',
@@ -10101,7 +10101,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [attributesTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<div id="' + name + '_container" style="position: absolute;"><p id="' + name + '"></p></div>';
                         if (settings[containerTranslations[lang]]) {
@@ -10128,8 +10128,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         }
 
                         var dynamicTextsArrayA = settings[textTranslations[lang]].split('&lt;&lt; the value of ');
-                        (function(dynamicTextsArrayA, insertedText) {
-                            setInterval(function() {
+                        (function (dynamicTextsArrayA, insertedText) {
+                            setInterval(function () {
                                 for (i = 1; i < dynamicTextsArrayA.length; i++) {
                                     var textResourceA = dynamicTextsArrayA[i].split(' &gt;&gt;')[0];
                                     var newText = insertedText.replace('&lt;&lt; the value of ' + textResourceA + ' &gt;&gt;', $('#' + textResourceA + '').val());
@@ -10140,8 +10140,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         })(dynamicTextsArrayA, insertedText);
 
                         var dynamicTextsArrayB = settings[textTranslations[lang]].split('&lt;&lt; the text of ');
-                        (function(dynamicTextsArrayB, insertedText) {
-                            setInterval(function() {
+                        (function (dynamicTextsArrayB, insertedText) {
+                            setInterval(function () {
                                 for (i = 1; i < dynamicTextsArrayB.length; i++) {
                                     var textResourceB = dynamicTextsArrayB[i].split(' &gt;&gt;')[0];
                                     var newText = insertedText.replace('&lt;&lt; the text of ' + textResourceB + ' &gt;&gt;', $('#' + textResourceB + '').text());
@@ -10225,13 +10225,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //-----------------------------------------------------------Firebase Center------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[firebaseCenterTranslations[lang]] = function(options) {
+                $.fn[firebaseCenterTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [usernameTranslations[lang]]: null,
                         [passwordTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         sessionStorage.firebaseID = settings[usernameTranslations[lang]];
                         sessionStorage.firebaseKey = settings[passwordTranslations[lang]];
                         var config = {
@@ -10247,10 +10247,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //----------------------------------------------------------------Login Form------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[loginFormTranslations[lang]] = function(options) {
+                $.fn[loginFormTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({}, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         $('body').append('<div id="firebaseui-container"></div>');
 
                         function getRecaptchaMode() {
@@ -10263,7 +10263,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             return {
                                 'callbacks': {
                                     // Called when the user has been successfully signed in.
-                                    'signInSuccess': function(user, credential, redirectUrl) {
+                                    'signInSuccess': function (user, credential, redirectUrl) {
                                         handleSignedInUser(user);
                                         // Do not redirect.
                                         return false;
@@ -10302,20 +10302,20 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         /**
                          * Redirects to the FirebaseUI widget.
                          */
-                        var signInWithRedirect = function() {
+                        var signInWithRedirect = function () {
                             window.location.assign(getWidgetUrl());
                         };
                         /**
                          * Open a popup with the FirebaseUI widget.
                          */
-                        var signInWithPopup = function() {
+                        var signInWithPopup = function () {
                             window.open(getWidgetUrl(), 'Sign In', 'width=985,height=735');
                         };
                         /**
                          * Displays the UI for a signed in user.
                          * @param {!firebase.User} user
                          */
-                        var handleSignedInUser = function(user) {
+                        var handleSignedInUser = function (user) {
                             console.log(user.uid);
                             sessionStorage.displayName = user.displayName;
                             sessionStorage.email = user.email;
@@ -10327,26 +10327,26 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         /**
                          * Displays the UI for a signed out user.
                          */
-                        var handleSignedOutUser = function() {
+                        var handleSignedOutUser = function () {
                             ui.start('#firebaseui-container', getUiConfig());
                             $('contents').hide();
                         };
                         // Listen to change in auth state so it displays the correct UI for when
                         // the user is signed in or not.
-                        firebase.auth().onAuthStateChanged(function(user) {
+                        firebase.auth().onAuthStateChanged(function (user) {
                             user ? handleSignedInUser(user) : handleSignedOutUser();
                         });
                         /**
                          * Deletes the user's account.
                          */
-                        var deleteAccount = function() {
-                            firebase.auth().currentUser.delete().catch(function(error) {
+                        var deleteAccount = function () {
+                            firebase.auth().currentUser.delete().catch(function (error) {
                                 if (error.code == 'auth/requires-recent-login') {
                                     // The user's credential is too old. She needs to sign in again.
-                                    firebase.auth().signOut().then(function() {
+                                    firebase.auth().signOut().then(function () {
                                         // The timeout allows the message to be displayed after the UI has
                                         // changed to the signed out state.
-                                        setTimeout(function() {
+                                        setTimeout(function () {
                                             alert('Please sign in again to delete your account.');
                                         }, 1);
                                     });
@@ -10368,7 +10368,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------Button------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[buttonTranslations[lang]] = function(options) {
+                $.fn[buttonTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [textTranslations[lang]]: 'It seems that you have typed nothing',
@@ -10394,7 +10394,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [attributesTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<div id="' + name + '_container" style="position: absolute;"><paper-button id="' + name + '"></paper-button></div>';
                         if (settings[containerTranslations[lang]]) {
@@ -10488,7 +10488,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //----------------------------------------------------------------------Card------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[sectionTranslations[lang]] = function(options) {
+                $.fn[sectionTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [textTranslations[lang]]: 'It seems that you have typed nothing',
@@ -10511,7 +10511,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [containerTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<div id="' + name + '_container" style="position: absolute;"><paper-card id="' + name + '"><div id="الحاجات_اللى_جوة_السيكشن" class="card-content"></div></paper-card></div>';
                         if (settings[containerTranslations[lang]]) {
@@ -10592,7 +10592,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //-------------------------------------------------------------------ToolTip------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[tooltipTranslations[lang]] = function(options) {
+                $.fn[tooltipTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [textTranslations[lang]]: 'It seems that you have typed nothing',
@@ -10611,7 +10611,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [containerTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<div id="' + name + '_container" style="position: absolute;"><paper-tooltip id="' + name + '" for="' + settings[emitterTranslations[lang]] + '">' + settings[textTranslations[lang]] + '</paper-tooltip></div>';
                         if (settings[containerTranslations[lang]]) {
@@ -10672,7 +10672,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //------------------------------------------------------------Colors Palette------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[colorsPaletteTranslations[lang]] = function(options) {
+                $.fn[colorsPaletteTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [nameTranslations[lang]]: null,
@@ -10689,7 +10689,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [containerTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<div id="' + name + '_container" style="position: absolute;"><paper-swatch-picker id="' + name + '" color="{{selectedColor}}"></paper-swatch-picker></div>';
                         if (settings[containerTranslations[lang]]) {
@@ -10720,7 +10720,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------Loader------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[loaderTranslations[lang]] = function(options) {
+                $.fn[loaderTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [nameTranslations[lang]]: null,
@@ -10740,7 +10740,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [attributesTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         if (settings[typeTranslations[lang]] == settings[barTranslations[lang]]) {
                             var out = '<div id="' + name + '_container" style="position: absolute;"><paper-progress id="' + name + '"></paper-progress></div>';
@@ -10783,7 +10783,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //---------------------------------------------------------------------Image------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[imageTranslations[lang]] = function(options) {
+                $.fn[imageTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [titleTranslations[lang]]: null,
@@ -10804,7 +10804,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var source = settings[sourceTranslations[lang]];
                         window.analyseImage(name, source);
@@ -10814,7 +10814,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             $('contents').append(out);
                         }
-                        getFileSize(source, function(size) {
+                        getFileSize(source, function (size) {
                             $('#image_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
                         })
                         if (settings[backgroundTranslations[lang]]) {
@@ -10846,7 +10846,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //---------------------------------------------------------------------Video------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[videoTranslations[lang]] = function(options) {
+                $.fn[videoTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [titleTranslations[lang]]: null,
@@ -10867,7 +10867,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var source = settings[sourceTranslations[lang]];
                         var out = '<div style="position: relative; overflow: hidden; width: ' + settings[videoWidthTranslations[lang]] + '; height: ' + settings[videoLengthTranslations[lang]] + ';"><paper-video-controls id="video_' + name + '_controls"><video id="' + name + '" width="' + settings[videoWidthTranslations[lang]] + '" height="' + settings[videoLengthTranslations[lang]] + '" src="' + window.mediaImageBlurredA + '" crossorigin="anonymous" style="-webkit-filter: blur(10px);" preload="auto" /></paper-video-controls><div id="showVideo_' + name + '_containerA"><button id="video_' + name + '_mainButton" class="videoMainButton" onclick="showVideoA(\'' + name + '\', \'' + source + '\');"><i class="material-icons">file_download</i> Loading...</button></div><div id="showVideo_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></div></div>';
@@ -10876,10 +10876,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             $('contents').append(out);
                         }
-                        getFileSize(source, function(size) {
+                        getFileSize(source, function (size) {
                             $('#video_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
                         })
-                        window.onload = function() {
+                        window.onload = function () {
                             $('#video_' + name + '_controls > #container > #videoControls').hide();
                         }
                         if (settings[backgroundTranslations[lang]]) {
@@ -10911,7 +10911,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------ِAuido Player------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[audioPlayerTranslations[lang]] = function(options) {
+                $.fn[audioPlayerTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [titleTranslations[lang]]: null,
@@ -10933,7 +10933,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var source = settings[sourceTranslations[lang]];
                         var out = '<div id="' + name + '_container" style="position: absolute;"><div id="' + name + '" class="aplayer"></div></div>';
@@ -11010,7 +11010,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //---------------------------------------------------------------------Audio------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[audioTranslations[lang]] = function(options) {
+                $.fn[audioTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [titleTranslations[lang]]: null,
@@ -11033,7 +11033,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var source = settings[sourceTranslations[lang]];
                         var audioInfo = [{
@@ -11115,7 +11115,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------Notification Count------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[notificationCountTranslations[lang]] = function(options) {
+                $.fn[notificationCountTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [textTranslations[lang]]: 'It seems that you have typed nothing',
@@ -11139,7 +11139,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<div id="' + name + '_container" style="position: absolute;"><paper-badge id="' + name + '" for="' + targetTranslations[lang] + '"></paper-badge></div>';
                         if (settings[containerTranslations[lang]]) {
@@ -11229,7 +11229,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //------------------------------------------------------------------Checkbox------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[checkboxTranslations[lang]] = function(options) {
+                $.fn[checkboxTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [textTranslations[lang]]: null,
@@ -11257,7 +11257,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [attributesTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<div id="' + name + '_container" style="position: absolute;"><paper-checkbox id="' + name + '">' + text + '</paper-checkbox></div>';
                         if (settings[containerTranslations[lang]]) {
@@ -11356,7 +11356,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //----------------------------------------------------------------Dialog Box------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[dialogBoxTranslations[lang]] = function(options) {
+                $.fn[dialogBoxTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [titleTranslations[lang]]: null,
@@ -11383,7 +11383,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var body = settings[bodyTranslations[lang]].split('&&&');
                         var out = '<div id="' + name + '_container" style="position: absolute;"><paper-dialog id="' + name + '">';
@@ -11494,7 +11494,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //------------------------------------------------------------------Dropdown------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[dropdownTranslations[lang]] = function(options) {
+                $.fn[dropdownTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [titleTranslations[lang]]: null,
@@ -11521,7 +11521,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [attributesTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<div id="' + name + '_container" style="position: absolute;"><paper-dropdown-menu id="' + name + '" label="' + settings[titleTranslations[lang]] + '">';
                         if (settings[itemsTranslations[lang]]) {
@@ -11630,7 +11630,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //-----------------------------------------------------------------------FAB------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[FABTranslations[lang]] = function(options) {
+                $.fn[FABTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [descriptionTranslations[lang]]: null,
@@ -11659,7 +11659,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [attributesTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         var out = '<div id="' + name + '_container" style="position: absolute;"><paper-fab ';
                         if (settings[attributesTranslations[lang]]) {
@@ -11778,7 +11778,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //-------------------------------------------------------------------TextBox------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[writingZoneTranslations[lang]] = function(options) {
+                $.fn[writingZoneTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [typeTranslations[lang]]: null,
@@ -11813,7 +11813,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [attributesTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         if (settings[dynamicSizeTranslations[lang]] == yesTranslations[lang]) {
                             var out = '<div id="' + name + '_container" style="position: absolute;"><paper-textarea ';
@@ -11987,7 +11987,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //-----------------------------------------------------------------Container------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[containerTranslations[lang]] = function(options) {
+                $.fn[containerTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [fontColorTranslations[lang]]: null,
@@ -12009,7 +12009,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [backgroundTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
 
                         if (settings[containerTranslations[lang]]) {
@@ -12139,7 +12139,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------Slider------------------------------------------------------------------------------------------------------------------------------------------//
                 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                $.fn[sliderTranslations[lang]] = function(options) {
+                $.fn[sliderTranslations[lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [titleTranslations[lang]]: null,
@@ -12170,7 +12170,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         [attributesTranslations[lang]]: null,
                         [commandsTranslations[lang]]: null
                     }, options);
-                    return this.each(function() {
+                    return this.each(function () {
                         var name = settings[nameTranslations[lang]];
                         if (settings[titleTranslations[lang]]) {
                             var out = '<div>' + settings[titleTranslations[lang]] + '</div><br><paper-slider ';
@@ -12311,7 +12311,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             var l = n[o] = {
                 exports: {}
             };
-            t[o][0].call(l.exports, function(e) {
+            t[o][0].call(l.exports, function (e) {
                 var n = t[o][1][e];
                 return s(n ? n : e)
             }, l, l.exports, e, t, n, r)
@@ -12322,19 +12322,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
     for (var o = 0; o < r.length; o++) s(r[o]);
     return s
 })({
-    1: [function(require, module, exports) {
+    1: [function (require, module, exports) {
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         //-------------------------------------------------Images Analysis Functions------------------------------------------------------------------------------------------------------------------------------------------//
         //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         const Clarifai = require('clarifai');
-        window.analyseImage = function(name, source) {
+        window.analyseImage = function (name, source) {
             const app = new Clarifai.App({
                 apiKey: 'cd0b92362c304e0e87046ed8dccac9b8'
             });
             var ref = window.jsteFirebase.database().ref("clarifai");
-            ref.once("value").then(function(snapshot) {
+            ref.once("value").then(function (snapshot) {
                 if (snapshot.child(encodeURIComponent(source).replace(/\./g, '%2E')).exists()) {
-                    ref.on('value', function(snapshot) {
+                    ref.on('value', function (snapshot) {
                         var imageData = snapshot.val();
                         var encodedSource = encodeURIComponent(source).replace(/\./g, '%2E');
                         if (imageData[encodedSource].nfsw.rawData.outputs[0].data.concepts[0].name == 'nfsw') {
@@ -12353,7 +12353,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     });
                 } else {
                     // predict the contents of an image by passing in a url
-                    app.models.predict("aaa03c23b3724a16a56b629203edc62c", source).then(function(response) {
+                    app.models.predict("aaa03c23b3724a16a56b629203edc62c", source).then(function (response) {
                         window.jsteFirebase.database().ref('clarifai/' + encodeURIComponent(source).replace(/\./g, '%2E') + '/general').set(response);
                         var imageData = '';
                         for (i = 0; i < response.rawData.outputs[0].data.concepts.length; i++) {
@@ -12364,15 +12364,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }
                         }
                         $('#' + name + '_imageData').text(imageData);
-                    }, function(err) {
+                    }, function (err) {
                         console.error(err);
                     });
-                    app.models.predict("e9576d86d2004ed1a38ba0cf39ecb4b1", source).then(function(response) {
+                    app.models.predict("e9576d86d2004ed1a38ba0cf39ecb4b1", source).then(function (response) {
                         window.jsteFirebase.database().ref('clarifai/' + encodeURIComponent(source).replace(/\./g, '%2E') + '/nfsw').set(response);
                         if (response.rawData.outputs[0].data.concepts[0].name == 'nfsw') {
                             $('#' + name + '').attr('nude', '')
                         }
-                    }, function(err) {
+                    }, function (err) {
                         console.error(err);
                     });
                 }
@@ -12381,7 +12381,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
     }, {
         "clarifai": 32
     }],
-    2: [function(require, module, exports) {
+    2: [function (require, module, exports) {
         "use strict";
         // rawAsap provides everything we need except exception management.
         var rawAsap = require("./raw");
@@ -12424,7 +12424,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         }
         // The sole purpose of wrapping the task is to catch the exception and recycle
         // the task object after its single use.
-        RawTask.prototype.call = function() {
+        RawTask.prototype.call = function () {
             try {
                 this.task.call();
             } catch (error) {
@@ -12448,8 +12448,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
     }, {
         "./raw": 3
     }],
-    3: [function(require, module, exports) {
-        (function(global) {
+    3: [function (require, module, exports) {
+        (function (global) {
             "use strict";
             // Use the fastest means possible to execute a task in its own turn, with
             // priority over other events including IO, animation, reflow, and redraw
@@ -12656,13 +12656,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             // https://github.com/tildeio/rsvp.js/blob/cddf7232546a9cf858524b75cde6f9edf72620a7/lib/rsvp/asap.js
         }).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
     }, {}],
-    4: [function(require, module, exports) {
+    4: [function (require, module, exports) {
         module.exports = require('./lib/axios');
     }, {
         "./lib/axios": 6
     }],
-    5: [function(require, module, exports) {
-        (function(process) {
+    5: [function (require, module, exports) {
+        (function (process) {
             'use strict';
             var utils = require('./../utils');
             var buildURL = require('./../helpers/buildURL');
@@ -12805,7 +12805,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         "./../utils": 21,
         "_process": 43
     }],
-    6: [function(require, module, exports) {
+    6: [function (require, module, exports) {
         'use strict';
         var defaults = require('./defaults');
         var utils = require('./utils');
@@ -12881,7 +12881,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         // Provide aliases for supported request methods
         utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
             /*eslint func-names:0*/
-            Axios.prototype[method] = function(url, config) {
+            Axios.prototype[method] = function (url, config) {
                 return this.request(utils.merge(config || {}, {
                     method: method,
                     url: url
@@ -12891,7 +12891,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         });
         utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
             /*eslint func-names:0*/
-            Axios.prototype[method] = function(url, data, config) {
+            Axios.prototype[method] = function (url, data, config) {
                 return this.request(utils.merge(config || {}, {
                     method: method,
                     url: url,
@@ -12911,7 +12911,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         "./helpers/transformData": 20,
         "./utils": 21
     }],
-    7: [function(require, module, exports) {
+    7: [function (require, module, exports) {
         'use strict';
         var utils = require('./../utils');
 
@@ -12962,8 +12962,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
     }, {
         "./../utils": 21
     }],
-    8: [function(require, module, exports) {
-        (function(process) {
+    8: [function (require, module, exports) {
+        (function (process) {
             'use strict';
             /**
              * Dispatch a request to the server using whichever adapter
@@ -13000,7 +13000,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         "../adapters/xhr": 5,
         "_process": 43
     }],
-    9: [function(require, module, exports) {
+    9: [function (require, module, exports) {
         'use strict';
         var utils = require('./utils');
         var PROTECTION_PREFIX = /^\)\]\}',?\n/;
@@ -13060,7 +13060,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
     }, {
         "./utils": 21
     }],
-    10: [function(require, module, exports) {
+    10: [function (require, module, exports) {
         'use strict';
         module.exports = function bind(fn, thisArg) {
             return function wrap() {
@@ -13072,7 +13072,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             };
         };
     }, {}],
-    11: [function(require, module, exports) {
+    11: [function (require, module, exports) {
         'use strict';
         // btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
         var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
@@ -13106,7 +13106,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         }
         module.exports = btoa;
     }, {}],
-    12: [function(require, module, exports) {
+    12: [function (require, module, exports) {
         'use strict';
         var utils = require('./../utils');
 
@@ -13166,7 +13166,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
     }, {
         "./../utils": 21
     }],
-    13: [function(require, module, exports) {
+    13: [function (require, module, exports) {
         'use strict';
         /**
          * Creates a new URL by combining the specified URLs
@@ -13179,7 +13179,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             return baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '');
         };
     }, {}],
-    14: [function(require, module, exports) {
+    14: [function (require, module, exports) {
         'use strict';
         var utils = require('./../utils');
         module.exports = (utils.isStandardBrowserEnv() ?
@@ -13225,7 +13225,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
     }, {
         "./../utils": 21
     }],
-    15: [function(require, module, exports) {
+    15: [function (require, module, exports) {
         'use strict';
         /**
          * Determines whether the specified URL is absolute
@@ -13240,7 +13240,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
         };
     }, {}],
-    16: [function(require, module, exports) {
+    16: [function (require, module, exports) {
         'use strict';
         var utils = require('./../utils');
         module.exports = (utils.isStandardBrowserEnv() ?
@@ -13297,7 +13297,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
     }, {
         "./../utils": 21
     }],
-    17: [function(require, module, exports) {
+    17: [function (require, module, exports) {
         'use strict';
         var utils = require('./../utils');
         /**
@@ -13334,7 +13334,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
     }, {
         "./../utils": 21
     }],
-    18: [function(require, module, exports) {
+    18: [function (require, module, exports) {
         'use strict';
         /**
          * Resolve or reject a Promise based on response status.
@@ -13353,7 +13353,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             }
         };
     }, {}],
-    19: [function(require, module, exports) {
+    19: [function (require, module, exports) {
         'use strict';
         /**
          * Syntactic sugar for invoking a function and expanding an array for arguments.
@@ -13381,7 +13381,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             };
         };
     }, {}],
-    20: [function(require, module, exports) {
+    20: [function (require, module, exports) {
         'use strict';
         var utils = require('./../utils');
         /**
@@ -13402,7 +13402,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
     }, {
         "./../utils": 21
     }],
-    21: [function(require, module, exports) {
+    21: [function (require, module, exports) {
         'use strict';
         /*global toString:true*/
         // utils is a library of generic helper functions non-specific to axios
@@ -13643,15 +13643,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             trim: trim
         };
     }, {}],
-    22: [function(require, module, exports) {
-        (function(process) {
+    22: [function (require, module, exports) {
+        (function (process) {
             'use strict';
-            var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function(obj) {
+            var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
                 return typeof obj;
-            } : function(obj) {
+            } : function (obj) {
                 return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
             };
-            var _createClass = function() {
+            var _createClass = function () {
                 function defineProperties(target, props) {
                     for (var i = 0; i < props.length; i++) {
                         var descriptor = props[i];
@@ -13661,7 +13661,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         Object.defineProperty(target, descriptor.key, descriptor);
                     }
                 }
-                return function(Constructor, protoProps, staticProps) {
+                return function (Constructor, protoProps, staticProps) {
                     if (protoProps) defineProperties(Constructor.prototype, protoProps);
                     if (staticProps) defineProperties(Constructor, staticProps);
                     return Constructor;
@@ -13689,7 +13689,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
              * top-level class that allows access to models, inputs and concepts
              * @class
              */
-            var App = function() {
+            var App = function () {
                 function App(arg1, arg2, arg3) {
                     _classCallCheck(this, App);
                     var optionsObj = arg1;
@@ -13761,7 +13761,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             clientSecret: options.clientSecret,
                             apiKey: options.apiKey,
                             token: function token() {
-                                return new Promise(function(resolve, reject) {
+                                return new Promise(function (resolve, reject) {
                                     var now = new Date().getTime();
                                     if (checkType(/Object/, _this._config._token) && _this._config._token.expireTime > now) {
                                         resolve(_this._config._token);
@@ -13783,7 +13783,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     key: '_getToken',
                     value: function _getToken(resolve, reject) {
                         var _this2 = this;
-                        this._requestToken().then(function(response) {
+                        this._requestToken().then(function (response) {
                             if (response.status === 200) {
                                 _this2.setToken(response.data);
                                 resolve(_this2._config._token);
@@ -13823,7 +13823,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         "axios": 4,
         "promise": 35
     }],
-    23: [function(require, module, exports) {
+    23: [function (require, module, exports) {
         "use strict";
 
         function _classCallCheck(instance, Constructor) {
@@ -13847,9 +13847,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         };;
         module.exports = Concept;
     }, {}],
-    24: [function(require, module, exports) {
+    24: [function (require, module, exports) {
         'use strict';
-        var _createClass = function() {
+        var _createClass = function () {
             function defineProperties(target, props) {
                 for (var i = 0; i < props.length; i++) {
                     var descriptor = props[i];
@@ -13859,7 +13859,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     Object.defineProperty(target, descriptor.key, descriptor);
                 }
             }
-            return function(Constructor, protoProps, staticProps) {
+            return function (Constructor, protoProps, staticProps) {
                 if (protoProps) defineProperties(Constructor.prototype, protoProps);
                 if (staticProps) defineProperties(Constructor, staticProps);
                 return Constructor;
@@ -13889,14 +13889,14 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
          * class representing a collection of concepts
          * @class
          */
-        var Concepts = function() {
+        var Concepts = function () {
             function Concepts(_config) {
                 var _this = this;
                 var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
                 _classCallCheck(this, Concepts);
                 this._config = _config;
                 this.rawData = rawData;
-                rawData.forEach(function(conceptData, index) {
+                rawData.forEach(function (conceptData, index) {
                     _this[index] = new Concept(_this._config, conceptData);
                 });
                 this.length = rawData.length;
@@ -13917,15 +13917,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         perPage: 20
                     };
                     var url = '' + this._config.apiEndpoint + CONCEPTS_PATH;
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.get(url, {
                                 headers: headers,
                                 params: {
                                     'page': options.page,
                                     'per_page': options.perPage
                                 }
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     resolve(new Concepts(_this2._config, response.data.concepts));
                                 } else {
@@ -13945,11 +13945,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 value: function get(id) {
                     var _this3 = this;
                     var url = '' + this._config.apiEndpoint + replaceVars(CONCEPT_PATH, [id]);
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.get(url, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     resolve(new Concept(_this3._config, response.data.concept));
                                 } else {
@@ -13979,11 +13979,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         'concepts': concepts.map(formatConcept)
                     };
                     var url = '' + this._config.apiEndpoint + CONCEPTS_PATH;
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.post(url, data, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     resolve(new Concepts(_this4._config, response.data.concepts));
                                 } else {
@@ -14004,17 +14004,17 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var _this5 = this;
                     var language = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
                     var url = '' + this._config.apiEndpoint + CONCEPT_SEARCH_PATH;
-                    return wrapToken(this._config, function(headers) {
+                    return wrapToken(this._config, function (headers) {
                         var params = {
                             'concept_query': {
                                 name: name,
                                 language: language
                             }
                         };
-                        return new Promise(function(resolve, reject) {
+                        return new Promise(function (resolve, reject) {
                             axios.post(url, params, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     resolve(new Concepts(_this5._config, response.data.concepts));
                                 } else {
@@ -14035,9 +14035,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         "./utils": 33,
         "axios": 4
     }],
-    25: [function(require, module, exports) {
+    25: [function (require, module, exports) {
         'use strict';
-        var _createClass = function() {
+        var _createClass = function () {
             function defineProperties(target, props) {
                 for (var i = 0; i < props.length; i++) {
                     var descriptor = props[i];
@@ -14047,7 +14047,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     Object.defineProperty(target, descriptor.key, descriptor);
                 }
             }
-            return function(Constructor, protoProps, staticProps) {
+            return function (Constructor, protoProps, staticProps) {
                 if (protoProps) defineProperties(Constructor.prototype, protoProps);
                 if (staticProps) defineProperties(Constructor, staticProps);
                 return Constructor;
@@ -14068,7 +14068,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
          * class representing an input
          * @class
          */
-        var Input = function() {
+        var Input = function () {
             function Input(_config, data) {
                 _classCallCheck(this, Input);
                 this.id = data.id;
@@ -14147,11 +14147,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             data: inputData
                         }]
                     };
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             return axios.patch(url, data, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     resolve(new Input(response.data.input));
                                 } else {
@@ -14170,9 +14170,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         "./constants": 30,
         "axios": 4
     }],
-    26: [function(require, module, exports) {
+    26: [function (require, module, exports) {
         'use strict';
-        var _createClass = function() {
+        var _createClass = function () {
             function defineProperties(target, props) {
                 for (var i = 0; i < props.length; i++) {
                     var descriptor = props[i];
@@ -14182,7 +14182,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     Object.defineProperty(target, descriptor.key, descriptor);
                 }
             }
-            return function(Constructor, protoProps, staticProps) {
+            return function (Constructor, protoProps, staticProps) {
                 if (protoProps) defineProperties(Constructor.prototype, protoProps);
                 if (staticProps) defineProperties(Constructor, staticProps);
                 return Constructor;
@@ -14218,13 +14218,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
          * class representing a collection of inputs
          * @class
          */
-        var Inputs = function() {
+        var Inputs = function () {
             function Inputs(_config) {
                 var _this = this;
                 var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
                 _classCallCheck(this, Inputs);
                 this.rawData = rawData;
-                rawData.forEach(function(inputData, index) {
+                rawData.forEach(function (inputData, index) {
                     if (inputData.input && inputData.score) {
                         inputData.input.score = inputData.score;
                         inputData = inputData.input;
@@ -14250,15 +14250,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         perPage: 20
                     };
                     var url = '' + this._config.apiEndpoint + INPUTS_PATH;
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.get(url, {
                                 headers: headers,
                                 params: {
                                     page: options.page,
                                     per_page: options.perPage
                                 }
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     resolve(new Inputs(_this2._config, response.data.inputs));
                                 } else {
@@ -14296,14 +14296,14 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     if (inputs.length > MAX_BATCH_SIZE) {
                         throw ERRORS.MAX_INPUTS;
                     }
-                    return wrapToken(this._config, function(headers) {
+                    return wrapToken(this._config, function (headers) {
                         var data = {
                             inputs: inputs.map(formatInput)
                         };
-                        return new Promise(function(resolve, reject) {
+                        return new Promise(function (resolve, reject) {
                             axios.post(url, data, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     resolve(new Inputs(_this3._config, response.data.inputs));
                                 } else {
@@ -14323,11 +14323,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 value: function get(id) {
                     var _this4 = this;
                     var url = '' + this._config.apiEndpoint + replaceVars(INPUT_PATH, [id]);
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.get(url, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     resolve(new Input(_this4._config, response.data.input));
                                 } else {
@@ -14350,7 +14350,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     // delete an input
                     if (checkType(/String/, id)) {
                         var url = '' + this._config.apiEndpoint + replaceVars(INPUT_PATH, [id]);
-                        val = wrapToken(this._config, function(headers) {
+                        val = wrapToken(this._config, function (headers) {
                             return axios.delete(url, {
                                 headers: headers
                             });
@@ -14365,7 +14365,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 value: function _deleteInputs() {
                     var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
                     var url = '' + this._config.apiEndpoint + INPUTS_PATH;
-                    return wrapToken(this._config, function(headers) {
+                    return wrapToken(this._config, function (headers) {
                         var data = id === null ? {
                             delete_all: true
                         } : {
@@ -14455,15 +14455,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     }
                     var data = {
                         action: inputs.action,
-                        inputs: inputsList.map(function(input) {
+                        inputs: inputsList.map(function (input) {
                             return formatInput(input, false);
                         })
                     };
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.patch(url, data, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     resolve(new Inputs(_this5._config, response.data.inputs));
                                 } else {
@@ -14515,7 +14515,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         queries = [queries];
                     }
                     if (queries.length > 0) {
-                        queries.forEach(function(query) {
+                        queries.forEach(function (query) {
                             if (query.input) {
                                 formattedAnds = formattedAnds.concat(formatImagesSearch(query.input));
                             } else if (query.concept) {
@@ -14524,11 +14524,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         });
                         data.query.ands = formattedAnds;
                     }
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.post(url, data, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     var _data = clone(response.data);
                                     _data.rawData = clone(response.data);
@@ -14548,11 +14548,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 key: 'getStatus',
                 value: function getStatus() {
                     var url = '' + this._config.apiEndpoint + INPUTS_STATUS_PATH;
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.get(url, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     var data = clone(response.data);
                                     data.rawData = clone(response.data);
@@ -14575,9 +14575,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         "./utils": 33,
         "axios": 4
     }],
-    27: [function(require, module, exports) {
+    27: [function (require, module, exports) {
         'use strict';
-        var _createClass = function() {
+        var _createClass = function () {
             function defineProperties(target, props) {
                 for (var i = 0; i < props.length; i++) {
                     var descriptor = props[i];
@@ -14587,7 +14587,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     Object.defineProperty(target, descriptor.key, descriptor);
                 }
             }
-            return function(Constructor, protoProps, staticProps) {
+            return function (Constructor, protoProps, staticProps) {
                 if (protoProps) defineProperties(Constructor.prototype, protoProps);
                 if (staticProps) defineProperties(Constructor, staticProps);
                 return Constructor;
@@ -14631,7 +14631,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
          * class representing a model
          * @class
          */
-        var Model = function() {
+        var Model = function () {
             function Model(_config, data) {
                 _classCallCheck(this, Model);
                 this._config = _config;
@@ -14713,7 +14713,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var url = '' + this._config.apiEndpoint + MODELS_PATH;
                     var modelData = [obj];
                     var data = {
-                        models: modelData.map(function(m) {
+                        models: modelData.map(function (m) {
                             return formatModel(Object.assign(m, {
                                 id: _this.id
                             }));
@@ -14722,11 +14722,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     if (Array.isArray(obj.concepts)) {
                         data['action'] = obj.action || 'merge';
                     }
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.patch(url, data, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     resolve(new Model(_this._config, response.data.models[0]));
                                 } else {
@@ -14746,11 +14746,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 value: function train(sync) {
                     var _this2 = this;
                     var url = '' + this._config.apiEndpoint + replaceVars(MODEL_VERSIONS_PATH, [this.id]);
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.post(url, null, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     if (sync) {
                                         var timeStart = Date.now();
@@ -14776,10 +14776,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             message: 'Sync call timed out'
                         });
                     }
-                    this.getOutputInfo().then(function(model) {
+                    this.getOutputInfo().then(function (model) {
                         var modelStatusCode = model.modelVersion.status.code.toString();
                         if (modelStatusCode === MODEL_QUEUED_FOR_TRAINING || modelStatusCode === MODEL_TRAINING) {
-                            _this3.pollTimeout = setTimeout(function() {
+                            _this3.pollTimeout = setTimeout(function () {
                                 return _this3._pollTrain(timeStart, resolve, reject);
                             }, POLLTIME);
                         } else {
@@ -14823,9 +14823,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         inputs = [inputs];
                     }
                     var url = '' + this._config.apiEndpoint + (this.versionId ? replaceVars(VERSION_PREDICT_PATH, [this.id, this.versionId]) : replaceVars(PREDICT_PATH, [this.id]));
-                    return wrapToken(this._config, function(headers) {
+                    return wrapToken(this._config, function (headers) {
                         var params = {
-                            inputs: inputs.map(function(input) {
+                            inputs: inputs.map(function (input) {
                                 return formatMediaPredict(input, video ? 'video' : 'image');
                             })
                         };
@@ -14836,10 +14836,10 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 }
                             };
                         }
-                        return new Promise(function(resolve, reject) {
+                        return new Promise(function (resolve, reject) {
                             axios.post(url, params, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 var data = clone(response.data);
                                 data.rawData = clone(response.data);
                                 resolve(data);
@@ -14856,11 +14856,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 key: 'getVersion',
                 value: function getVersion(versionId) {
                     var url = '' + this._config.apiEndpoint + replaceVars(MODEL_VERSION_PATH, [this.id, versionId]);
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.get(url, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 var data = clone(response.data);
                                 data.rawData = clone(response.data);
                                 resolve(data);
@@ -14883,7 +14883,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         perPage: 20
                     };
                     var url = '' + this._config.apiEndpoint + replaceVars(MODEL_VERSIONS_PATH, [this.id]);
-                    return wrapToken(this._config, function(headers) {
+                    return wrapToken(this._config, function (headers) {
                         var data = {
                             headers: headers,
                             params: {
@@ -14891,8 +14891,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                                 'page': options.page
                             }
                         };
-                        return new Promise(function(resolve, reject) {
-                            axios.get(url, data).then(function(response) {
+                        return new Promise(function (resolve, reject) {
+                            axios.get(url, data).then(function (response) {
                                 var data = clone(response.data);
                                 data.rawData = clone(response.data);
                                 resolve(data);
@@ -14909,11 +14909,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 value: function getOutputInfo() {
                     var _this4 = this;
                     var url = '' + this._config.apiEndpoint + replaceVars(MODEL_OUTPUT_PATH, [this.id]);
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.get(url, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 resolve(new Model(_this4._config, response.data.model));
                             }, reject);
                         });
@@ -14934,15 +14934,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         perPage: 20
                     };
                     var url = '' + this._config.apiEndpoint + (this.versionId ? replaceVars(MODEL_VERSION_INPUTS_PATH, [this.id, this.versionId]) : replaceVars(MODEL_INPUTS_PATH, [this.id]));
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.get(url, {
                                 params: {
                                     'per_page': options.perPage,
                                     'page': options.page
                                 },
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 var data = clone(response.data);
                                 data.rawData = clone(response.data);
                                 resolve(data);
@@ -14975,11 +14975,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             'feedback_info': formatObjectForSnakeCase(info)
                         }
                     };
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.post(url, body, {
                                 headers: headers
-                            }).then(function(_ref2) {
+                            }).then(function (_ref2) {
                                 var data = _ref2.data;
                                 var d = clone(data);
                                 d.rawData = clone(data);
@@ -14998,9 +14998,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         "./utils": 33,
         "axios": 4
     }],
-    28: [function(require, module, exports) {
+    28: [function (require, module, exports) {
         'use strict';
-        var _createClass = function() {
+        var _createClass = function () {
             function defineProperties(target, props) {
                 for (var i = 0; i < props.length; i++) {
                     var descriptor = props[i];
@@ -15010,7 +15010,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     Object.defineProperty(target, descriptor.key, descriptor);
                 }
             }
-            return function(Constructor, protoProps, staticProps) {
+            return function (Constructor, protoProps, staticProps) {
                 if (protoProps) defineProperties(Constructor.prototype, protoProps);
                 if (staticProps) defineProperties(Constructor, staticProps);
                 return Constructor;
@@ -15045,14 +15045,14 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
          * class representing a collection of models
          * @class
          */
-        var Models = function() {
+        var Models = function () {
             function Models(_config) {
                 var _this = this;
                 var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
                 _classCallCheck(this, Models);
                 this._config = _config;
                 this.rawData = rawData;
-                rawData.forEach(function(modelData, index) {
+                rawData.forEach(function (modelData, index) {
                     _this[index] = new Model(_this._config, modelData);
                 });
                 this.length = rawData.length;
@@ -15083,9 +15083,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         };
                     } else {
                         fn = function fn(resolve, reject) {
-                            _this2.search(data.name, data.type).then(function(models) {
+                            _this2.search(data.name, data.type).then(function (models) {
                                 if (data.version) {
-                                    resolve(models.rawData.filter(function(model) {
+                                    resolve(models.rawData.filter(function (model) {
                                         return model.modelVersion.id === data.version;
                                     }));
                                 } else {
@@ -15124,8 +15124,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     if (model.language) {
                         config.language = model.language;
                     }
-                    return new Promise(function(resolve, reject) {
-                        _this3.initModel(model).then(function(modelObj) {
+                    return new Promise(function (resolve, reject) {
+                        _this3.initModel(model).then(function (modelObj) {
                             modelObj.predict(inputs, config).then(resolve, reject).catch(reject);
                         }, reject);
                     });
@@ -15145,8 +15145,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 value: function train(model) {
                     var _this4 = this;
                     var sync = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-                    return new Promise(function(resolve, reject) {
-                        _this4.initModel(model).then(function(model) {
+                    return new Promise(function (resolve, reject) {
+                        _this4.initModel(model).then(function (model) {
                             model.train(sync).then(resolve, reject).catch(reject);
                         }, reject);
                     });
@@ -15168,12 +15168,12 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 key: 'feedback',
                 value: function feedback(model, input, config) {
                     var _this5 = this;
-                    return new Promise(function(resolve, reject) {
-                        _this5.initModel(model).then(function(model) {
+                    return new Promise(function (resolve, reject) {
+                        _this5.initModel(model).then(function (model) {
                             return model.feedback(input, config);
-                        }).then(function(d) {
+                        }).then(function (d) {
                             return resolve(d);
-                        }).catch(function(e) {
+                        }).catch(function (e) {
                             return reject(e);
                         });
                     });
@@ -15192,8 +15192,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 key: 'getVersion',
                 value: function getVersion(model, versionId) {
                     var _this6 = this;
-                    return new Promise(function(resolve, reject) {
-                        _this6.initModel(model).then(function(model) {
+                    return new Promise(function (resolve, reject) {
+                        _this6.initModel(model).then(function (model) {
                             model.getVersion(versionId).then(resolve, reject).catch(reject);
                         }, reject);
                     });
@@ -15218,8 +15218,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         page: 1,
                         perPage: 20
                     };
-                    return new Promise(function(resolve, reject) {
-                        _this7.initModel(model).then(function(model) {
+                    return new Promise(function (resolve, reject) {
+                        _this7.initModel(model).then(function (model) {
                             model.getVersions().then(resolve, reject).catch(reject);
                         }, reject);
                     });
@@ -15237,8 +15237,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 key: 'getOutputInfo',
                 value: function getOutputInfo(model) {
                     var _this8 = this;
-                    return new Promise(function(resolve, reject) {
-                        _this8.initModel(model).then(function(model) {
+                    return new Promise(function (resolve, reject) {
+                        _this8.initModel(model).then(function (model) {
                             model.getOutputInfo().then(resolve, reject).catch(reject);
                         }, reject);
                     });
@@ -15259,15 +15259,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         perPage: 20
                     };
                     var url = '' + this._config.apiEndpoint + MODELS_PATH;
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.get(url, {
                                 params: {
                                     'per_page': options.perPage,
                                     'page': options.page
                                 },
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     resolve(new Models(_this9._config, response.data.models));
                                 } else {
@@ -15294,7 +15294,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var _this10 = this;
                     var conceptsData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
                     var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-                    var concepts = conceptsData instanceof Concepts ? conceptsData.toObject('id') : conceptsData.map(function(concept) {
+                    var concepts = conceptsData instanceof Concepts ? conceptsData.toObject('id') : conceptsData.map(function (concept) {
                         var val = concept;
                         if (checkType(/String/, concept)) {
                             val = {
@@ -15326,11 +15326,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             'closed_environment': !!options.closedEnvironment
                         }
                     };
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.post(url, data, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     resolve(new Model(_this10._config, response.data.model));
                                 } else {
@@ -15350,11 +15350,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 value: function get(id) {
                     var _this11 = this;
                     var url = '' + this._config.apiEndpoint + replaceVars(MODEL_PATH, [id]);
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.get(url, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     resolve(new Model(_this11._config, response.data.model));
                                 } else {
@@ -15387,11 +15387,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         models: modelsList.map(formatModel)
                     };
                     data['action'] = models.action || 'merge';
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.patch(url, data, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     resolve(new Models(_this12._config, response.data.models));
                                 } else {
@@ -15466,11 +15466,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             url = '' + this._config.apiEndpoint + replaceVars(MODEL_PATH, [id]);
                         }
-                        request = wrapToken(this._config, function(headers) {
-                            return new Promise(function(resolve, reject) {
+                        request = wrapToken(this._config, function (headers) {
+                            return new Promise(function (resolve, reject) {
                                 axios.delete(url, {
                                     headers: headers
-                                }).then(function(response) {
+                                }).then(function (response) {
                                     var data = clone(response.data);
                                     data.rawData = clone(response.data);
                                     resolve(data);
@@ -15491,14 +15491,14 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         } else {
                             throw ERRORS.INVALID_DELETE_ARGS;
                         }
-                        request = wrapToken(this._config, function(headers) {
-                            return new Promise(function(resolve, reject) {
+                        request = wrapToken(this._config, function (headers) {
+                            return new Promise(function (resolve, reject) {
                                 axios({
                                     method: 'delete',
                                     url: url,
                                     data: data,
                                     headers: headers
-                                }).then(function(response) {
+                                }).then(function (response) {
                                     var data = clone(response.data);
                                     data.rawData = clone(response.data);
                                     resolve(data);
@@ -15520,17 +15520,17 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     var _this13 = this;
                     var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
                     var url = '' + this._config.apiEndpoint + MODEL_SEARCH_PATH;
-                    return wrapToken(this._config, function(headers) {
+                    return wrapToken(this._config, function (headers) {
                         var params = {
                             'model_query': {
                                 name: name,
                                 type: type
                             }
                         };
-                        return new Promise(function(resolve, reject) {
+                        return new Promise(function (resolve, reject) {
                             axios.post(url, params, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 if (isSuccess(response)) {
                                     resolve(new Models(_this13._config, response.data.models));
                                 } else {
@@ -15553,9 +15553,9 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         "axios": 4,
         "promise": 35
     }],
-    29: [function(require, module, exports) {
+    29: [function (require, module, exports) {
         'use strict';
-        var _createClass = function() {
+        var _createClass = function () {
             function defineProperties(target, props) {
                 for (var i = 0; i < props.length; i++) {
                     var descriptor = props[i];
@@ -15565,7 +15565,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     Object.defineProperty(target, descriptor.key, descriptor);
                 }
             }
-            return function(Constructor, protoProps, staticProps) {
+            return function (Constructor, protoProps, staticProps) {
                 if (protoProps) defineProperties(Constructor.prototype, protoProps);
                 if (staticProps) defineProperties(Constructor, staticProps);
                 return Constructor;
@@ -15592,7 +15592,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
          * class representing a workflow
          * @class
          */
-        var Workflow = function() {
+        var Workflow = function () {
             function Workflow(_config) {
                 var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
                 _classCallCheck(this, Workflow);
@@ -15619,11 +15619,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }]
                         }]
                     };
-                    return wrapToken(this._config, function(headers) {
-                        return new Promise(function(resolve, reject) {
+                    return wrapToken(this._config, function (headers) {
+                        return new Promise(function (resolve, reject) {
                             axios.post(url, body, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 var workflowId = response.data.workflows[0].id;
                                 resolve(workflowId);
                             }, reject);
@@ -15644,14 +15644,14 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     if (checkType(/(Object|String)/, inputs)) {
                         inputs = [inputs];
                     }
-                    return wrapToken(this._config, function(headers) {
+                    return wrapToken(this._config, function (headers) {
                         var params = {
                             inputs: inputs.map(formatInput)
                         };
-                        return new Promise(function(resolve, reject) {
+                        return new Promise(function (resolve, reject) {
                             axios.post(url, params, {
                                 headers: headers
-                            }).then(function(response) {
+                            }).then(function (response) {
                                 var data = response.data;
                                 resolve(data);
                             }, reject);
@@ -15668,7 +15668,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         "./utils": 33,
         "axios": 4
     }],
-    30: [function(require, module, exports) {
+    30: [function (require, module, exports) {
         'use strict';
         var MAX_BATCH_SIZE = 128;
         var GEO_LIMIT_TYPES = ['withinMiles', 'withinKilometers', 'withinRadians', 'withinDegrees'];
@@ -15720,7 +15720,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             replaceVars: function replaceVars(path) {
                 var vars = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
                 var newPath = path;
-                vars.forEach(function(val, index) {
+                vars.forEach(function (val, index) {
                     if (index === 0) {
                         val = encodeURIComponent(val);
                     }
@@ -15735,7 +15735,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             POLLTIME: POLLTIME
         };
     }, {}],
-    31: [function(require, module, exports) {
+    31: [function (require, module, exports) {
         'use strict';
         var SUCCESS_CODES = [200, 201];
         module.exports = {
@@ -15744,7 +15744,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             },
             deleteEmpty: function deleteEmpty(obj) {
                 var strict = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-                Object.keys(obj).forEach(function(key) {
+                Object.keys(obj).forEach(function (key) {
                     if (obj[key] === null || obj[key] === undefined || strict === true && (obj[key] === '' || obj[key].length === 0 || Object.keys(obj[key]).length === 0)) {
                         delete obj[key];
                     }
@@ -15753,7 +15753,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             clone: function clone(obj) {
                 var keys = Object.keys(obj);
                 var copy = {};
-                keys.forEach(function(k) {
+                keys.forEach(function (k) {
                     copy[k] = obj[k];
                 });
                 return copy;
@@ -15766,8 +15766,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             }
         };
     }, {}],
-    32: [function(require, module, exports) {
-        (function(global) {
+    32: [function (require, module, exports) {
+        (function (global) {
             'use strict';
             var App = require('./App');
             var _require = require('./../package.json'),
@@ -15796,7 +15796,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         "./../package.json": 34,
         "./App": 22
     }],
-    33: [function(require, module, exports) {
+    33: [function (require, module, exports) {
         'use strict';
 
         function _defineProperty(obj, key, value) {
@@ -15824,7 +15824,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             VERSION = _require3.version;
         module.exports = {
             wrapToken: function wrapToken(_config, requestFn) {
-                return new Promise(function(resolve, reject) {
+                return new Promise(function (resolve, reject) {
                     if (_config.apiKey) {
                         var headers = {
                             Authorization: 'Key ' + _config.apiKey,
@@ -15832,7 +15832,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         };
                         return requestFn(headers).then(resolve, reject);
                     }
-                    _config.token().then(function(token) {
+                    _config.token().then(function (token) {
                         var headers = {
                             Authorization: 'Bearer ' + token.accessToken,
                             'X-Clarifai-Client': 'js:' + VERSION
@@ -15950,7 +15950,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 if (image.geo !== undefined) {
                     if (checkType(/Array/, image.geo)) {
                         input.input.data.geo = {
-                            geo_box: image.geo.map(function(p) {
+                            geo_box: image.geo.map(function (p) {
                                 return {
                                     geo_point: p
                                 };
@@ -16025,8 +16025,8 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 return v;
             },
             formatObjectForSnakeCase: function formatObjectForSnakeCase(obj) {
-                return Object.keys(obj).reduce(function(o, k) {
-                    o[k.replace(/([A-Z])/g, function(r) {
+                return Object.keys(obj).reduce(function (o, k) {
+                    o[k.replace(/([A-Z])/g, function (r) {
                         return '_' + r.toLowerCase();
                     })] = obj[k];
                     return o;
@@ -16039,7 +16039,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         "./helpers": 31,
         "promise": 35
     }],
-    34: [function(require, module, exports) {
+    34: [function (require, module, exports) {
         module.exports = {
             "_args": [
                 [{
@@ -16156,13 +16156,13 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             "version": "2.2.0"
         }
     }, {}],
-    35: [function(require, module, exports) {
+    35: [function (require, module, exports) {
         'use strict';
         module.exports = require('./lib')
     }, {
         "./lib": 40
     }],
-    36: [function(require, module, exports) {
+    36: [function (require, module, exports) {
         'use strict';
         var asap = require('asap/raw');
 
@@ -16229,7 +16229,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         Promise._10 = null;
         Promise._97 = null;
         Promise._61 = noop;
-        Promise.prototype.then = function(onFulfilled, onRejected) {
+        Promise.prototype.then = function (onFulfilled, onRejected) {
             if (this.constructor !== Promise) {
                 return safeThen(this, onFulfilled, onRejected);
             }
@@ -16239,7 +16239,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         };
 
         function safeThen(self, onFulfilled, onRejected) {
-            return new self.constructor(function(resolve, reject) {
+            return new self.constructor(function (resolve, reject) {
                 var res = new Promise(noop);
                 res.then(resolve, reject);
                 handle(self, new Handler(onFulfilled, onRejected, res));
@@ -16271,7 +16271,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         }
 
         function handleResolved(self, deferred) {
-            asap(function() {
+            asap(function () {
                 var cb = self._81 === 1 ? deferred.onFulfilled : deferred.onRejected;
                 if (cb === null) {
                     if (self._81 === 1) {
@@ -16350,11 +16350,11 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
          */
         function doResolve(fn, promise) {
             var done = false;
-            var res = tryCallTwo(fn, function(value) {
+            var res = tryCallTwo(fn, function (value) {
                 if (done) return;
                 done = true;
                 resolve(promise, value);
-            }, function(reason) {
+            }, function (reason) {
                 if (done) return;
                 done = true;
                 reject(promise, reason);
@@ -16367,14 +16367,14 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
     }, {
         "asap/raw": 3
     }],
-    37: [function(require, module, exports) {
+    37: [function (require, module, exports) {
         'use strict';
         var Promise = require('./core.js');
         module.exports = Promise;
-        Promise.prototype.done = function(onFulfilled, onRejected) {
+        Promise.prototype.done = function (onFulfilled, onRejected) {
             var self = arguments.length ? this.then.apply(this, arguments) : this;
-            self.then(null, function(err) {
-                setTimeout(function() {
+            self.then(null, function (err) {
+                setTimeout(function () {
                     throw err;
                 }, 0);
             });
@@ -16382,7 +16382,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
     }, {
         "./core.js": 36
     }],
-    38: [function(require, module, exports) {
+    38: [function (require, module, exports) {
         'use strict';
         //This file contains the ES6 extensions to the core Promises/A+ API
         var Promise = require('./core.js');
@@ -16401,7 +16401,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             p._65 = value;
             return p;
         }
-        Promise.resolve = function(value) {
+        Promise.resolve = function (value) {
             if (value instanceof Promise) return value;
             if (value === null) return NULL;
             if (value === undefined) return UNDEFINED;
@@ -16416,16 +16416,16 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                         return new Promise(then.bind(value));
                     }
                 } catch (ex) {
-                    return new Promise(function(resolve, reject) {
+                    return new Promise(function (resolve, reject) {
                         reject(ex);
                     });
                 }
             }
             return valuePromise(value);
         };
-        Promise.all = function(arr) {
+        Promise.all = function (arr) {
             var args = Array.prototype.slice.call(arr);
-            return new Promise(function(resolve, reject) {
+            return new Promise(function (resolve, reject) {
                 if (args.length === 0) return resolve([]);
                 var remaining = args.length;
 
@@ -16437,7 +16437,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             }
                             if (val._81 === 1) return res(i, val._65);
                             if (val._81 === 2) reject(val._65);
-                            val.then(function(val) {
+                            val.then(function (val) {
                                 res(i, val);
                             }, reject);
                             return;
@@ -16445,7 +16445,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                             var then = val.then;
                             if (typeof then === 'function') {
                                 var p = new Promise(then.bind(val));
-                                p.then(function(val) {
+                                p.then(function (val) {
                                     res(i, val);
                                 }, reject);
                                 return;
@@ -16462,36 +16462,36 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 }
             });
         };
-        Promise.reject = function(value) {
-            return new Promise(function(resolve, reject) {
+        Promise.reject = function (value) {
+            return new Promise(function (resolve, reject) {
                 reject(value);
             });
         };
-        Promise.race = function(values) {
-            return new Promise(function(resolve, reject) {
-                values.forEach(function(value) {
+        Promise.race = function (values) {
+            return new Promise(function (resolve, reject) {
+                values.forEach(function (value) {
                     Promise.resolve(value).then(resolve, reject);
                 });
             });
         };
         /* Prototype Methods */
-        Promise.prototype['catch'] = function(onRejected) {
+        Promise.prototype['catch'] = function (onRejected) {
             return this.then(null, onRejected);
         };
     }, {
         "./core.js": 36
     }],
-    39: [function(require, module, exports) {
+    39: [function (require, module, exports) {
         'use strict';
         var Promise = require('./core.js');
         module.exports = Promise;
-        Promise.prototype['finally'] = function(f) {
-            return this.then(function(value) {
-                return Promise.resolve(f()).then(function() {
+        Promise.prototype['finally'] = function (f) {
+            return this.then(function (value) {
+                return Promise.resolve(f()).then(function () {
                     return value;
                 });
-            }, function(err) {
-                return Promise.resolve(f()).then(function() {
+            }, function (err) {
+                return Promise.resolve(f()).then(function () {
                     throw err;
                 });
             });
@@ -16499,7 +16499,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
     }, {
         "./core.js": 36
     }],
-    40: [function(require, module, exports) {
+    40: [function (require, module, exports) {
         'use strict';
         module.exports = require('./core.js');
         require('./done.js');
@@ -16515,7 +16515,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         "./node-extensions.js": 41,
         "./synchronous.js": 42
     }],
-    41: [function(require, module, exports) {
+    41: [function (require, module, exports) {
         'use strict';
         // This file contains then/promise specific extensions that are only useful
         // for node.js interop
@@ -16523,7 +16523,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         var asap = require('asap');
         module.exports = Promise;
         /* Static Functions */
-        Promise.denodeify = function(fn, argumentCount) {
+        Promise.denodeify = function (fn, argumentCount) {
             if (typeof argumentCount === 'number' && argumentCount !== Infinity) {
                 return denodeifyWithCount(fn, argumentCount);
             } else {
@@ -16548,15 +16548,15 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 args.push('a' + i);
             }
             var body = ['return function (' + args.join(',') + ') {', 'var self = this;', 'var args;', 'var argLength = arguments.length;', 'if (arguments.length > ' + fnLength + ') {', 'args = new Array(arguments.length + 1);', 'for (var i = 0; i < arguments.length; i++) {', 'args[i] = arguments[i];', '}', '}', 'return new Promise(function (rs, rj) {', 'var cb = ' + callbackFn + ';', 'var res;', 'switch (argLength) {',
-                args.concat(['extra']).map(function(_, index) {
+                args.concat(['extra']).map(function (_, index) {
                     return ('case ' + (index) + ':' + 'res = fn.call(' + ['self'].concat(args.slice(0, index)).concat('cb').join(',') + ');' + 'break;');
                 }).join(''), 'default:', 'args[argLength] = cb;', 'res = fn.apply(self, args);', '}', 'if (res &&', '(typeof res === "object" || typeof res === "function") &&', 'typeof res.then === "function"', ') {rs(res);}', '});', '};'
             ].join('');
             return Function(
                 ['Promise', 'fn'], body)(Promise, fn);
         }
-        Promise.nodeify = function(fn) {
-            return function() {
+        Promise.nodeify = function (fn) {
+            return function () {
                 var args = Array.prototype.slice.call(arguments);
                 var callback = typeof args[args.length - 1] === 'function' ? args.pop() : null;
                 var ctx = this;
@@ -16564,25 +16564,25 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                     return fn.apply(this, arguments).nodeify(callback, ctx);
                 } catch (ex) {
                     if (callback === null || typeof callback == 'undefined') {
-                        return new Promise(function(resolve, reject) {
+                        return new Promise(function (resolve, reject) {
                             reject(ex);
                         });
                     } else {
-                        asap(function() {
+                        asap(function () {
                             callback.call(ctx, ex);
                         })
                     }
                 }
             }
         }
-        Promise.prototype.nodeify = function(callback, ctx) {
+        Promise.prototype.nodeify = function (callback, ctx) {
             if (typeof callback != 'function') return this;
-            this.then(function(value) {
-                asap(function() {
+            this.then(function (value) {
+                asap(function () {
                     callback.call(ctx, null, value);
                 });
-            }, function(err) {
-                asap(function() {
+            }, function (err) {
+                asap(function () {
                     callback.call(ctx, err);
                 });
             });
@@ -16591,21 +16591,21 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         "./core.js": 36,
         "asap": 2
     }],
-    42: [function(require, module, exports) {
+    42: [function (require, module, exports) {
         'use strict';
         var Promise = require('./core.js');
         module.exports = Promise;
-        Promise.enableSynchronous = function() {
-            Promise.prototype.isPending = function() {
+        Promise.enableSynchronous = function () {
+            Promise.prototype.isPending = function () {
                 return this.getState() == 0;
             };
-            Promise.prototype.isFulfilled = function() {
+            Promise.prototype.isFulfilled = function () {
                 return this.getState() == 1;
             };
-            Promise.prototype.isRejected = function() {
+            Promise.prototype.isRejected = function () {
                 return this.getState() == 2;
             };
-            Promise.prototype.getValue = function() {
+            Promise.prototype.getValue = function () {
                 if (this._81 === 3) {
                     return this._65.getValue();
                 }
@@ -16614,7 +16614,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 }
                 return this._65;
             };
-            Promise.prototype.getReason = function() {
+            Promise.prototype.getReason = function () {
                 if (this._81 === 3) {
                     return this._65.getReason();
                 }
@@ -16623,7 +16623,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 }
                 return this._65;
             };
-            Promise.prototype.getState = function() {
+            Promise.prototype.getState = function () {
                 if (this._81 === 3) {
                     return this._65.getState();
                 }
@@ -16633,7 +16633,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
                 return this._81;
             };
         };
-        Promise.disableSynchronous = function() {
+        Promise.disableSynchronous = function () {
             Promise.prototype.isPending = undefined;
             Promise.prototype.isFulfilled = undefined;
             Promise.prototype.isRejected = undefined;
@@ -16644,7 +16644,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
     }, {
         "./core.js": 36
     }],
-    43: [function(require, module, exports) {
+    43: [function (require, module, exports) {
         // shim for using process in browser
         var process = module.exports = {};
         // cached from whatever global is present so that test runners that stub it
@@ -16661,7 +16661,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         function defaultClearTimeout() {
             throw new Error('clearTimeout has not been defined');
         }
-        (function() {
+        (function () {
             try {
                 if (typeof setTimeout === 'function') {
                     cachedSetTimeout = setTimeout;
@@ -16772,7 +16772,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             draining = false;
             runClearTimeout(timeout);
         }
-        process.nextTick = function(fun) {
+        process.nextTick = function (fun) {
             var args = new Array(arguments.length - 1);
             if (arguments.length > 1) {
                 for (var i = 1; i < arguments.length; i++) {
@@ -16789,7 +16789,7 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
             this.fun = fun;
             this.array = array;
         }
-        Item.prototype.run = function() {
+        Item.prototype.run = function () {
             this.fun.apply(null, this.array);
         };
         process.title = 'browser';
@@ -16809,19 +16809,19 @@ function commandsFnTranslations(commandCode, commandValue, para1, para2, para3, 
         process.emit = noop;
         process.prependListener = noop;
         process.prependOnceListener = noop;
-        process.listeners = function(name) {
+        process.listeners = function (name) {
             return []
         }
-        process.binding = function(name) {
+        process.binding = function (name) {
             throw new Error('process.binding is not supported');
         };
-        process.cwd = function() {
+        process.cwd = function () {
             return '/'
         };
-        process.chdir = function(dir) {
+        process.chdir = function (dir) {
             throw new Error('process.chdir is not supported');
         };
-        process.umask = function() {
+        process.umask = function () {
             return 0;
         };
     }, {}]
