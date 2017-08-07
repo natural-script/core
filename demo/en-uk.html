@@ -1,32 +1,422 @@
 <meta charset="UTF-8">
-<script src="../loader.js"></script>
+<script src="http://0.0.0.0:5050/webcomponents-loader"></script>
+<link rel="import" href="http://0.0.0.0:5050/framework">
 <en-uk>
-
-add a setup with the following properties:
-title: 'Demo',
-mode: 'site'.
-
-add a page with the following properties:
-name: 'home_page'.
-
-add a container with the following properties:
-name: 'the_first_container',
-background: '#000000',
-width: '100px',
-length: '100px',
-container: 'home_page'.
-
-add a text with the following properties:
-name: 'A_sample_text',
-text: 'Hello World << the value of A_sample_slider >>',
-container: 'the_first_container',
-font_colour: 'white',
-attributes: 'shareable',
-distance_from_the_left: '50%'.
-
-add a slider with the following properties:
-name: 'A_sample_slider',
-attributes: 'with a pin',
-max: '100',
-commands: 'When it has been clicked, remove it after a period of a minuit'.
-</en-uk>
+    
+    add a setup with the following properties:
+    mode: 'site',
+    title: 'Jste Demo',
+    logo: 'https://github.com/project-jste/project-jste.github.io/raw/master/images/logo.png',
+    attributes: 'remote scrolling'.
+    
+    add a firebase_centre with the following properties:
+    username: 'jste-9584c',
+    password: 'AIzaSyDMGk_SFlEto93zfGHUbVLwxYiSq00aknk'.
+    
+    add a page with the following properties:
+    name: 'welcome',
+    commands: 'When the user said: please take me to the blog, go to the page blog'.
+    
+    add a page with the following properties:
+    name: 'blog'.
+    
+    add a page with the following properties:
+    name: 'post1'.
+    
+    add a page with the following properties:
+    name: 'post2'.
+    
+    add a page with the following properties:
+    name: 'tools'.
+        
+    add a text with the following properties:
+    name: 'screen_resolution_text',
+    text: '<< an icon of television >> Your screen resolution is << the screen width >> x << the screen length >>',
+    container: 'second_page',
+    background: 'black',
+    font_size: '30 pixels',
+    font_style: 'roboto',
+    thickness: 'thick',
+    animation: 'bounce',
+    transparency: '50',
+    distance_from_the_top: '40%',
+    distance_from_the_left: '50%'.
+    
+    add a text with the following properties:
+    name: 'window_resolution_text',
+    text: '<< an icon of television >> The site window resolution is << the window width >> x << the window length >>',
+    container: 'second_page',
+    background: 'black',
+    font_size: '30 pixels',
+    font_style: 'roboto',
+    thickness: 'thick',
+    animation: 'bounce',
+    transparency: '50',
+    distance_from_the_top: '50%',
+    distance_from_the_left: '50%'.
+    
+    add a container with the following properties:
+    name: 'shape1',
+    shape: 'triangle',
+    container: 'second_page',
+    width: '50 pixels',
+    length: '50 pixels',
+    animation: 'fadeInLeft',
+    distance_from_the_top: '45%',
+    distance_from_the_left: '10%',
+    background: 'red'.
+    
+    add a container with the following properties:
+    name: 'shape2',
+    shape: 'triangle',
+    container: 'second_page',
+    width: '50 pixels',
+    length: '50 pixels',
+    animation: 'fadeInRight',
+    distance_from_the_top: '45%',
+    distance_from_the_right: '10%',
+    background: 'red'.
+    
+    add a button with the following properties:
+    name: 'go_blog_button',
+    text: 'Go to the blog',
+    container: 'second_page',
+    width: '200 pixels',
+    length: '100 pixels',
+    attributes: 'raised',
+    font_colour: 'red',
+    thickness: 'thick',
+    animation: 'wobble',
+    distance_from_the_top: '70%',
+    distance_from_the_left: '50%',
+    commands: 'When it has been clicked, go to the page blog'.
+    
+    add a container with the following properties:
+    name: 'nav_bar',
+    shape: 'rectangle',
+    container: 'blog',
+    width: '80%',
+    attributes: 'grid',
+    length: '50 pixels',
+    animation: 'fadeIn',
+    distance_from_the_top: '50 pixels',
+    distance_from_the_right: '40 pixels',
+    background: 'orange'.
+    
+    add a text with the following properties:
+    name: 'page_title',
+    text: 'Blog',
+    container: 'blog',
+    font_colour: 'orange',
+    font_size: '40 pixels',
+    font_style: 'roboto',
+    thickness: 'thick',
+    animation: 'fadeInLeft',
+    distance_from_the_top: '45 pixels',
+    distance_from_the_left: '35 pixels'.
+    
+    add a text with the following properties:
+    name: 'nav_bar_item1',
+    text: 'Home',
+    font_colour: 'white',
+    container: 'nav_bar',
+    font_size: '40 pixels',
+    font_style: 'roboto',
+    commands: 'When it has been clicked, go to the page blog'.
+    
+    add a text with the following properties:
+    name: 'nav_bar_item2',
+    text: 'Tools',
+    font_colour: 'white',
+    container: 'nav_bar',
+    font_size: '40 pixels',
+    font_style: 'roboto',
+    commands: 'When it has been clicked, go to the page tools'.
+    
+    add a text with the following properties:
+    name: 'nav_bar_item3',
+    text: 'About',
+    font_colour: 'white',
+    container: 'nav_bar',
+    font_size: '40 pixels',
+    font_style: 'roboto'.
+    
+    
+    add a container with the following properties:
+    name: 'post1_link_container',
+    shape: 'rectangle',
+    container: 'blog',
+    width: '80%',
+    length: '50 pixels',
+    animation: 'fadeInLeft',
+    distance_from_the_top: '200 pixels',
+    distance_from_the_left: '35 pixels',
+    background: 'white'.
+    
+    add a container with the following properties:
+    name: 'post2_link_container',
+    shape: 'rectangle',
+    container: 'blog',
+    width: '80%',
+    length: '50 pixels',
+    animation: 'fadeInLeft',
+    distance_from_the_top: '280 pixels',
+    distance_from_the_left: '35 pixels',
+    background: 'white'.
+    
+    add a text with the following properties:
+    name: 'post1_link_title',
+    text: "Maher Zain has released his new album << write this text in a bold font: ONE >>",
+    container: 'post1_link_container',
+    font_colour: 'black',
+    font_size: '30 pixels',
+    font_style: 'roboto',
+    commands: 'When it has been clicked, go to the page post1'.
+    
+    add a text with the following properties:
+    name: 'post2_link_title',
+    container: 'post2_link_container',
+    text: "Now, watch the open source film << write this text in a bold and italic font: Big Buck Bunny >> on our blog",
+    font_colour: 'black',
+    font_size: '30 pixels',
+    font_style: 'roboto',
+    commands: 'When it has been clicked, go to the page post2'.
+    
+    add a container with the following properties:
+    name: 'post1_container',
+    shape: 'rectangle',
+    container: 'post1',
+    width: '80%',
+    length: '1000 pixels',
+    animation: 'fadeInUp',
+    distance_from_the_top: '50 pixels',
+    distance_from_the_left: '120 pixels',
+    background: 'white'.
+    
+    add a text with the following properties:
+    name: 'post1_title',
+    text: "Maher Zain has released his new album << write this text in a bold font: ONE >>",
+    container: 'post1_container',
+    distance_from_the_top: '20 pixels',
+    distance_from_the_left: '20 pixels',
+    font_colour: 'black',
+    font_size: '30 pixels',
+    font_style: 'roboto'.
+    
+    
+    add an image with the following properties:
+    name: 'Maher_Zain_One_Cover',
+    title: 'Maher Zain One Cover',
+    container: 'post1_container',
+    source: 'https://i.ytimg.com/vi/gnZjSui_Mc4/maxresdefault.jpg',
+    image_width: '980',
+    image_length: '500',
+    animation: 'bounce',
+    distance_from_the_top: '100 pixels',
+    distance_from_the_left: '50 pixels'.
+    
+    add a text with the following properties:
+    name: 'post1_back',
+    text: '<< an icon of chevron-left >>',
+    container: 'post1',
+    distance_from_the_top: '20 pixels',
+    distance_from_the_left: '20 pixels',
+    font_colour: 'black',
+    font_size: '30 pixels',
+    font_style: 'roboto',
+    commands: 'When it has been clicked, go to the page blog'.
+    
+    add a text with the following properties:
+    name: 'post1_text',
+    text: 'Finally, The lovely artist << write this text in a bold and italic font: Maher Zain >> has released a new album of his beautiful songs in three languages which are << write this text in a bold and underlined font: Arabic, English and Turkish >> and you can listen to it below !',
+    container: 'post1_container',
+    distance_from_the_top: '670 pixels',
+    distance_from_the_left: '50 pixels',
+    font_colour: 'black',
+    font_size: '20 pixels',
+    font_style: 'roboto'.
+    
+    add an audio_player with the following properties:
+    name: 'Maher_Zain_One_Playlist',
+    container: 'post1_container',
+    distance_from_the_top: '760 pixels',
+    distance_from_the_left: '50%'.
+    
+    add an audio with the following properties:
+    audio_player: 'Maher_Zain_One_Playlist',
+    source: 'https://server3.samaanetwork.net/full.albums/One(Vocals-Only)(International-Version)/09.Rabbee.Yebarik(Vocals-Only.English).mp3',
+    title: 'Rabbee Yebarik',
+    cover: 'https://anghamicoverart.akamaized.net/?id=3510779&size=320',
+    author: 'Maher Zain'.
+    
+    add an audio with the following properties:
+    audio_player: 'Maher_Zain_One_Playlist',
+    source: 'https://server3.samaanetwork.net/full.albums/One(Vocals-Only)(International-Version)/06.Jannah(Vocals-Only.English).mp3',
+    title: 'Jannah',
+    cover: 'https://anghamicoverart.akamaized.net/?id=3510779&size=320',
+    author: 'Maher Zain'.
+    
+    add a container with the following properties:
+    name: 'tools_container',
+    shape: 'rectangle',
+    container: 'tools',
+    width: '80%',
+    length: '250 pixels',
+    animation: 'fadeInUp',
+    distance_from_the_top: '50 pixels',
+    distance_from_the_left: '120 pixels',
+    background: 'white'.
+    
+    add a text with the following properties:
+    name: 'tools_title',
+    text: "Take a look at these awesome Math utilities",
+    container: 'tools_container',
+    distance_from_the_top: '20 pixels',
+    distance_from_the_left: '20 pixels',
+    font_colour: 'black',
+    font_size: '30 pixels',
+    font_style: 'roboto'.
+    
+    add a writing_zone with the following properties:
+    name: 'angle_input',
+    text: 'Enter the angle degree',
+    container: 'tools_container',
+    font_colour: 'blue',
+    font_size: '50 pixels',
+    font_style: 'roboto',
+    animation: 'wobble',
+    transparency: '50',
+    distance_from_the_top: '75 pixels',
+    distance_from_the_left: '25 pixels'.
+    
+    add a text with the following properties:
+    name: 'tools_back',
+    text: '<< an icon of chevron-left >>',
+    container: 'tools',
+    distance_from_the_top: '20 pixels',
+    distance_from_the_left: '20 pixels',
+    font_colour: 'black',
+    font_size: '30 pixels',
+    font_style: 'roboto',
+    commands: 'When it has been clicked, go to the page blog'.
+    
+    add a text with the following properties:
+    name: 'result_title_text',
+    text: 'The result is',
+    container: 'tools_container',
+    distance_from_the_top: '200 pixels',
+    distance_from_the_left: '25 pixels',
+    font_colour: 'black',
+    font_size: '20 pixels',
+    font_style: 'roboto'.
+    
+    add a text with the following properties:
+    name: 'result_text',
+    text: '0.0000000000000000',
+    container: 'tools_container',
+    distance_from_the_top: '200 pixels',
+    distance_from_the_left: '155 pixels',
+    font_colour: 'black',
+    font_size: '20 pixels',
+    font_style: 'roboto'.
+    
+    add a button with the following properties:
+    name: 'get_sin_button',
+    text: 'Get Sin',
+    container: 'tools_container',
+    width: '200 pixels',
+    length: '100 pixels',
+    attributes: 'raised',
+    font_colour: 'red',
+    thickness: 'thick',
+    animation: 'wobble',
+    distance_from_the_top: '95 pixels',
+    distance_from_the_left: '300 pixels',
+    commands: 'When it has been clicked, set the value of result_text to the result of sin( the value of angle_input )'.
+    
+    add a button with the following properties:
+    name: 'get_cos_button',
+    text: 'Get Cos',
+    container: 'tools_container',
+    width: '200 pixels',
+    length: '100 pixels',
+    attributes: 'raised',
+    font_colour: 'red',
+    thickness: 'thick',
+    animation: 'wobble',
+    distance_from_the_top: '95 pixels',
+    distance_from_the_left: '400 pixels',
+    commands: 'When it has been clicked, set the value of result_text to the result of cos( the value of angle_input )'.
+    
+    add a button with the following properties:
+    name: 'get_tan_button',
+    text: 'Get Tan',
+    container: 'tools_container',
+    width: '200 pixels',
+    length: '100 pixels',
+    attributes: 'raised',
+    font_colour: 'red',
+    thickness: 'thick',
+    animation: 'wobble',
+    distance_from_the_top: '95 pixels',
+    distance_from_the_left: '500 pixels',
+    commands: 'When it has been clicked, set the value of result_text to the result of tan( the value of angle_input )'.
+    
+    add a container with the following properties:
+    name: 'post2_container',
+    shape: 'rectangle',
+    container: 'post2',
+    width: '80%',
+    length: '700 pixels',
+    animation: 'fadeInUp',
+    distance_from_the_top: '50 pixels',
+    distance_from_the_left: '120 pixels',
+    background: 'white'.
+    
+    add a text with the following properties:
+    name: 'post2_title',
+    text: "Now, watch the open source film << write this text in a bold and italic font: Big Buck Bunny >> on our blog",
+    container: 'post2_container',
+    distance_from_the_top: '20 pixels',
+    distance_from_the_left: '20 pixels',
+    font_colour: 'black',
+    font_size: '30 pixels',
+    font_style: 'roboto'.
+    
+    add a text with the following properties:
+    name: 'post2_back',
+    text: '<< an icon of chevron-left >>',
+    container: 'post2',
+    distance_from_the_top: '20 pixels',
+    distance_from_the_left: '20 pixels',
+    font_colour: 'black',
+    font_size: '30 pixels',
+    font_style: 'roboto',
+    commands: 'When it has been clicked, go to the page blog'.
+    
+    add a video with the following properties:
+    name: 'big_buck_bunny_video',
+    title: 'Big Buck Bunny',
+    container: 'post2_container',
+    source: 'https://archive.org/download/BigBuckBunny_328/BigBuckBunny_512kb.mp4',
+    video_width: '980',
+    video_length: '500',
+    animation: 'bounce',
+    distance_from_the_top: '100 pixels',
+    distance_from_the_left: '50 pixels'.
+    
+    add a button with the following properties:
+    name: 'play_button',
+    text: 'Play',
+    container: 'post2_container',
+    width: '200 pixels',
+    length: '100 pixels',
+    attributes: 'raised',
+    font_colour: 'red',
+    thickness: 'thick',
+    animation: 'wobble',
+    distance_from_the_top: '620 pixels',
+    distance_from_the_left: '50%',
+    commands: 'When it has been clicked, play big_buck_bunny_video &&& When it has been double clicked, play big_buck_bunny_video every a period of 3 seconds'.
+    
+    </en-uk>
