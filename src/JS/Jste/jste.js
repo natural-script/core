@@ -193,14 +193,14 @@ if ($('en-uk').length) {
 }
 code += "});";
 customText(code);
-$(function () {
+$(function() {
 	$('<script>').attr('type', 'text/javascript').text(code).appendTo('head');
 });
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //----------------------------------------Vanillia Fading In & Out Functions------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 // fade out
-window.fadeOut = function (elementName) {
+window.fadeOut = function(elementName) {
 	var el = document.querySelector('#' + elementName + '');
 	el.style.opacity = 1;
 	(function fade() {
@@ -212,7 +212,7 @@ window.fadeOut = function (elementName) {
 	})();
 };
 // fade in
-window.fadeIn = function (elementName, display) {
+window.fadeIn = function(elementName, display) {
 	var el = document.querySelector('#' + elementName + '');
 	el.style.opacity = 0;
 	el.style.display = display || "block";
@@ -243,12 +243,12 @@ function getAllUrlParams(url) {
 			var a = arr[i].split('=');
 			// in case params look like: list[]=thing1&list[]=thing2
 			var paramNum = undefined;
-			var paramName = a[0].replace(/\[\d*\]/, function (v) {
+			var paramName = a[0].replace(/\[\d*\]/, function(v) {
 				paramNum = v.slice(1, -1);
 				return '';
 			});
 			// set parameter value (use 'true' if empty)
-			var paramValue = typeof (a[1]) === 'undefined' ? true : a[1];
+			var paramValue = typeof(a[1]) === 'undefined' ? true : a[1];
 			// if parameter name already exists
 			if (obj[paramName]) {
 				// convert value to array (if still string)
@@ -305,7 +305,7 @@ function changePage(pageName) {
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //----------------------------------------------------------Smooth Scrolling------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-$('a').click(function () {
+$('a').click(function() {
 	if ($(this).attr('href').indexOf('#') > -1) {
 		$('html, body').animate({
 			scrollTop: $($(this).attr('href')).offset().top
@@ -320,7 +320,7 @@ function getFileSize(url, callback) {
 	var xhr = new XMLHttpRequest();
 	xhr.open("HEAD", corsPolicy + url, true); // Notice "HEAD" instead of "GET",
 	//  to get only the header
-	xhr.onreadystatechange = function () {
+	xhr.onreadystatechange = function() {
 		if (this.readyState == this.DONE) {
 			size = parseInt(xhr.getResponseHeader("Content-Length"));
 			if (size < 1000) {
@@ -429,74 +429,176 @@ function setDistance(name, direction, value) {
 			$('#' + name + '').css({
 				'position': 'absolute',
 				'bottom': '50%',
-				'margin-bottom': function () {
+				'margin-bottom': function() {
 					return -$(this).outerHeight() / 2;
 				}
 			});
+			(function(name) {
+				window.addEventListener('resize', function() {
+					$('#' + name + '').css({
+						'position': 'absolute',
+						'bottom': '50%',
+						'margin-bottom': function() {
+							return -$(this).outerHeight() / 2;
+						}
+					});
+				});
+			})(name);
 		} else {
+			var bottomRatio = parseInt(value) / document.defaultWindowHeight;
 			$('#' + name + '').css('bottom', convertLengthCSS(value));
+			(function(bottomRatio, name) {
+				window.addEventListener('resize', function() {
+					$('#' + name + '').css('bottom', parseInt(bottomRatio * document.documentElement.clientHeight) + 'px');
+				});
+			})(bottomRatio, name);
 		}
 	} else if (direction == 'top') {
 		if (value.includes('center')) {
 			$('#' + name + '').css({
 				'position': 'absolute',
 				'top': '50%',
-				'margin-top': function () {
+				'margin-top': function() {
 					return -$(this).outerHeight() / 2;
 				}
 			});
+			(function(name) {
+				window.addEventListener('resize', function() {
+					$('#' + name + '').css({
+						'position': 'absolute',
+						'top': '50%',
+						'margin-top': function() {
+							return -$(this).outerHeight() / 2;
+						}
+					});
+				});
+			})(name);
 		} else {
+			var topRatio = parseInt(value) / document.defaultWindowHeight;
 			$('#' + name + '').css('top', convertLengthCSS(value));
+			(function(topRatio, name) {
+				window.addEventListener('resize', function() {
+					$('#' + name + '').css('top', parseInt(topRatio * document.documentElement.clientHeight) + 'px');
+				});
+			})(topRatio, name);
 		}
 	} else if (direction == 'left') {
 		if (value.includes('center')) {
 			$('#' + name + '').css({
 				'position': 'absolute',
 				'left': '50%',
-				'margin-left': function () {
+				'margin-left': function() {
 					return -$(this).outerWidth() / 2;
 				}
 			});
+			(function(name) {
+				window.addEventListener('resize', function() {
+					$('#' + name + '').css({
+						'position': 'absolute',
+						'left': '50%',
+						'margin-left': function() {
+							return -$(this).outerWidth() / 2;
+						}
+					});
+				});
+			})(name);
 		} else {
+			var leftRatio = parseInt(value) / document.defaultWindowWidth;
 			$('#' + name + '').css('left', convertLengthCSS(value));
+			(function(leftRatio, name) {
+				window.addEventListener('resize', function() {
+					$('#' + name + '').css('left', parseInt(leftRatio * document.documentElement.clientWidth) + 'px');
+				});
+			})(leftRatio, name);
 		}
 	} else if (direction == 'right') {
 		if (value.includes('center')) {
 			$('#' + name + '').css({
 				'position': 'absolute',
 				'right': '50%',
-				'margin-right': function () {
+				'margin-right': function() {
 					return -$(this).outerWidth() / 2;
 				}
 			});
+			(function(name) {
+				window.addEventListener('resize', function() {
+					$('#' + name + '').css({
+						'position': 'absolute',
+						'right': '50%',
+						'margin-right': function() {
+							return -$(this).outerWidth() / 2;
+						}
+					});
+				});
+			})(name);
 		} else {
+			var rightRatio = parseInt(value) / document.defaultWindowWidth;
 			$('#' + name + '').css('right', convertLengthCSS(value));
+			(function(rightRatio, name) {
+				window.addEventListener('resize', function() {
+					$('#' + name + '').css('right', parseInt(rightRatio * document.documentElement.clientWidth) + 'px');
+				});
+			})(rightRatio, name);
 		}
 	}
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------Setting The Dimensions Function------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-function setDimension(name, dimension, value) {
+function setDimension(name, dimension, value, type) {
 	if (dimension == 'length') {
-		$('#' + name + '').css('height', convertLengthCSS(value));
-		var lengthRatio = parseInt($('#' + name + '').outerHeight()) / document.documentElement.clientHeight;
-		if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
-			(function (lengthRatio, name) {
-				window.addEventListener('resize', function () {
-					$('#' + name + '').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 'px');
-				});
-			})(lengthRatio, name);
+		if (type == 'img' || type == 'vid') {
+			$('#' + name + '_container').css('height', convertLengthCSS(value));
+			$('#' + name + '').height(parseInt(convertLengthCSS(value)));
+			var lengthRatio = parseInt($('#' + name + '_container').outerHeight()) / document.defaultWindowLength;
+			$('#' + name + '_container').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 'px');
+			$('#' + name + '').height(parseInt(lengthRatio * document.documentElement.clientHeight));
+			if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
+				(function(lengthRatio, name) {
+					window.addEventListener('resize', function() {
+						$('#' + name + '_container').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 'px');
+						$('#' + name + '').height(parseInt(lengthRatio * document.documentElement.clientHeight));
+					});
+				})(lengthRatio, name);
+			}
+		} else {
+			$('#' + name + '').css('height', convertLengthCSS(value));
+			var lengthRatio = parseInt($('#' + name + '').outerHeight()) / document.defaultWindowLength;
+			if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
+				$('#' + name + '').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 'px');
+				(function(lengthRatio, name) {
+					window.addEventListener('resize', function() {
+						$('#' + name + '').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 'px');
+					});
+				})(lengthRatio, name);
+			}
 		}
 	} else if (dimension == 'width') {
-		$('#' + name + '').css('width', convertLengthCSS(value));
-		var widthRatio = parseInt($('#' + name + '').outerWidth()) / document.documentElement.clientWidth;
-		if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
-			(function (widthRatio, name) {
-				window.addEventListener('resize', function () {
-					$('#' + name + '').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
-				});
-			})(widthRatio, name);
+		if (type == 'img' || type == 'vid') {
+			$('#' + name + '_container').css('width', convertLengthCSS(value));
+			$('#' + name + '').width(parseInt(convertLengthCSS(value)));
+			var widthRatio = parseInt($('#' + name + '_container').outerWidth()) / document.defaultWindowWidth;
+			$('#' + name + '_container').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
+			$('#' + name + '').width(parseInt(widthRatio * document.documentElement.clientWidth));
+			if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
+				(function(widthRatio, name) {
+					window.addEventListener('resize', function() {
+						$('#' + name + '_container').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
+						$('#' + name + '').width(parseInt(widthRatio * document.documentElement.clientWidth));
+					});
+				})(widthRatio, name);
+			}
+		} else {
+			$('#' + name + '').css('width', convertLengthCSS(value));
+			var widthRatio = parseInt($('#' + name + '').outerWidth()) / document.defaultWindowWidth;
+			if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
+				$('#' + name + '').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
+				(function(widthRatio, name) {
+					window.addEventListener('resize', function() {
+						$('#' + name + '').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
+					});
+				})(widthRatio, name);
+			}
 		}
 	}
 }
@@ -510,7 +612,7 @@ function showImageA(name, source) {
 		window.fadeIn('showImage_' + name + '_containerB');
 	} else {
 		$('#' + name + '').attr('src', corsPolicy + source);
-		$('#' + name + '').on('load', function () {
+		$('#' + name + '').on('load', function() {
 			$('#' + name + '').css('-webkit-filter', 'blur(0px)');
 			window.fadeOut('showImage_' + name + '_containerA');
 		});
@@ -519,7 +621,7 @@ function showImageA(name, source) {
 
 function showImageB(name, source) {
 	$('#' + name + '').attr('src', corsPolicy + source);
-	$('#' + name + '').on('load', function () {
+	$('#' + name + '').on('load', function() {
 		window.fadeOut('showImage_' + name + '_containerB');
 		window.fadeIn('showImage_' + name + '_containerC');
 	});
@@ -527,7 +629,7 @@ function showImageB(name, source) {
 
 function showImageC(name, source) {
 	$('#' + name + '').attr('src', corsPolicy + source);
-	$('#' + name + '').on('load', function () {
+	$('#' + name + '').on('load', function() {
 		$('#' + name + '').css('-webkit-filter', 'blur(0px)');
 		window.fadeOut('showImage_' + name + '_containerB');
 	});
@@ -2108,14 +2210,14 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		}
 	}
 }
-(function ($) {
+(function($) {
 	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	//--------------------------------------------------------Animate.CSS Script------------------------------------------------------------------------------------------------------------------------------------------//
 	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	$.fn.extend({
-		animateCss: function (animationName) {
+		animateCss: function(animationName) {
 			var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-			this.addClass('animated ' + animationName).one(animationEnd, function () {
+			this.addClass('animated ' + animationName).one(animationEnd, function() {
 				$(this).removeClass('animated ' + animationName);
 			});
 		}
@@ -2197,176 +2299,176 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	//---------------------------------------------------Animations Translations------------------------------------------------------------------------------------------------------------------------------------------//
 	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-	document.setAnimation = function (elementName, animation) {
-		$('#' + elementName + '').visibilityChanged({
-			callback: function (element, visible) {
-				if (visible == true) {
-					if (animation == 'bounce') {
-						element.animateCss('bounce');
-					} else if (animation == 'jumping') {
-						element.animateCss('flash');
-					} else if (animation == 'jumping') {
-						element.animateCss('pulse');
-					} else if (animation == 'jumping') {
-						element.animateCss('rubberBand');
-					} else if (animation == 'jumping') {
-						element.animateCss('shake');
-					} else if (animation == 'jumping') {
-						element.animateCss('headShake');
-					} else if (animation == 'jumping') {
-						element.animateCss('swing');
-					} else if (animation == 'jumping') {
-						element.animateCss('tada');
-					} else if (animation == 'jumping') {
-						element.animateCss('wobble');
-					} else if (animation == 'jumping') {
-						element.animateCss('jello');
-					} else if (animation == 'jumping') {
-						element.animateCss('bounceIn');
-					} else if (animation == 'jumping') {
-						element.animateCss('bounceInDown');
-					} else if (animation == 'jumping') {
-						element.animateCss('bounceInLeft');
-					} else if (animation == 'jumping') {
-						element.animateCss('bounceInRight');
-					} else if (animation == 'jumping') {
-						element.animateCss('bounceInUp');
-					} else if (animation == 'jumping') {
-						element.animateCss('bounceOut');
-					} else if (animation == 'jumping') {
-						element.animateCss('bounceOutDown');
-					} else if (animation == 'jumping') {
-						element.animateCss('bounceOutLeft');
-					} else if (animation == 'jumping') {
-						element.animateCss('bounceOutRight');
-					} else if (animation == 'jumping') {
-						element.animateCss('bounceOutUp');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeIn');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeInDown');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeInDownBig');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeInLeft');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeInLeftBig');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeInRight');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeInRightBig');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeInUp');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeInUpBig');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeOut');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeOutDown');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeOutDownBig');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeOutLeft');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeOutLeftBig');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeOutRight');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeOutRightBig');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeOutUp');
-					} else if (animation == 'jumping') {
-						element.animateCss('fadeOutUpBig');
-					} else if (animation == 'jumping') {
-						element.animateCss('flipInX');
-					} else if (animation == 'jumping') {
-						element.animateCss('flipInY');
-					} else if (animation == 'jumping') {
-						element.animateCss('flipOutX');
-					} else if (animation == 'jumping') {
-						element.animateCss('flipOutY');
-					} else if (animation == 'jumping') {
-						element.animateCss('lightSpeedIn');
-					} else if (animation == 'jumping') {
-						element.animateCss('lightSpeedOut');
-					} else if (animation == 'jumping') {
-						element.animateCss('rotateIn');
-					} else if (animation == 'jumping') {
-						element.animateCss('rotateInDownLeft');
-					} else if (animation == 'jumping') {
-						element.animateCss('rotateInDownRight');
-					} else if (animation == 'jumping') {
-						element.animateCss('rotateInUpLeft');
-					} else if (animation == 'jumping') {
-						element.animateCss('rotateInUpRight');
-					} else if (animation == 'jumping') {
-						element.animateCss('rotateOut');
-					} else if (animation == 'jumping') {
-						element.animateCss('rotateOutDownLeft');
-					} else if (animation == 'jumping') {
-						element.animateCss('rotateOutDownRight');
-					} else if (animation == 'jumping') {
-						element.animateCss('rotateOutUpLeft');
-					} else if (animation == 'jumping') {
-						element.animateCss('rotateOutUpRight');
-					} else if (animation == 'jumping') {
-						element.animateCss('hinge');
-					} else if (animation == 'jumping') {
-						element.animateCss('jackInTheBox');
-					} else if (animation == 'jumping') {
-						element.animateCss('rollIn');
-					} else if (animation == 'jumping') {
-						element.animateCss('rollOut');
-					} else if (animation == 'jumping') {
-						element.animateCss('zoomIn');
-					} else if (animation == 'jumping') {
-						element.animateCss('zoomInDown');
-					} else if (animation == 'jumping') {
-						element.animateCss('zoomInLeft');
-					} else if (animation == 'jumping') {
-						element.animateCss('zoomInRight');
-					} else if (animation == 'jumping') {
-						element.animateCss('zoomInUp');
-					} else if (animation == 'jumping') {
-						element.animateCss('zoomOut');
-					} else if (animation == 'jumping') {
-						element.animateCss('zoomOutDown');
-					} else if (animation == 'jumping') {
-						element.animateCss('zoomOutLeft');
-					} else if (animation == 'jumping') {
-						element.animateCss('zoomOutRight');
-					} else if (animation == 'jumping') {
-						element.animateCss('zoomOutUp');
-					} else if (animation == 'jumping') {
-						element.animateCss('slideInDown');
-					} else if (animation == 'jumping') {
-						element.animateCss('slideInLeft');
-					} else if (animation == 'jumping') {
-						element.animateCss('slideInRight');
-					} else if (animation == 'jumping') {
-						element.animateCss('slideInUp');
-					} else if (animation == 'jumping') {
-						element.animateCss('slideOutDown');
-					} else if (animation == 'jumping') {
-						element.animateCss('slideOutLeft');
-					} else if (animation == 'jumping') {
-						element.animateCss('slideOutRight');
-					} else if (animation == 'jumping') {
-						element.animateCss('slideOutUp');
-					} else {
-						element.animateCss(animation);
+	document.setAnimation = function(elementName, animation) {
+			$('#' + elementName + '').visibilityChanged({
+				callback: function(element, visible) {
+					if (visible == true) {
+						if (animation == 'bounce') {
+							element.animateCss('bounce');
+						} else if (animation == 'jumping') {
+							element.animateCss('flash');
+						} else if (animation == 'jumping') {
+							element.animateCss('pulse');
+						} else if (animation == 'jumping') {
+							element.animateCss('rubberBand');
+						} else if (animation == 'jumping') {
+							element.animateCss('shake');
+						} else if (animation == 'jumping') {
+							element.animateCss('headShake');
+						} else if (animation == 'jumping') {
+							element.animateCss('swing');
+						} else if (animation == 'jumping') {
+							element.animateCss('tada');
+						} else if (animation == 'jumping') {
+							element.animateCss('wobble');
+						} else if (animation == 'jumping') {
+							element.animateCss('jello');
+						} else if (animation == 'jumping') {
+							element.animateCss('bounceIn');
+						} else if (animation == 'jumping') {
+							element.animateCss('bounceInDown');
+						} else if (animation == 'jumping') {
+							element.animateCss('bounceInLeft');
+						} else if (animation == 'jumping') {
+							element.animateCss('bounceInRight');
+						} else if (animation == 'jumping') {
+							element.animateCss('bounceInUp');
+						} else if (animation == 'jumping') {
+							element.animateCss('bounceOut');
+						} else if (animation == 'jumping') {
+							element.animateCss('bounceOutDown');
+						} else if (animation == 'jumping') {
+							element.animateCss('bounceOutLeft');
+						} else if (animation == 'jumping') {
+							element.animateCss('bounceOutRight');
+						} else if (animation == 'jumping') {
+							element.animateCss('bounceOutUp');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeIn');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeInDown');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeInDownBig');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeInLeft');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeInLeftBig');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeInRight');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeInRightBig');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeInUp');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeInUpBig');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeOut');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeOutDown');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeOutDownBig');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeOutLeft');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeOutLeftBig');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeOutRight');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeOutRightBig');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeOutUp');
+						} else if (animation == 'jumping') {
+							element.animateCss('fadeOutUpBig');
+						} else if (animation == 'jumping') {
+							element.animateCss('flipInX');
+						} else if (animation == 'jumping') {
+							element.animateCss('flipInY');
+						} else if (animation == 'jumping') {
+							element.animateCss('flipOutX');
+						} else if (animation == 'jumping') {
+							element.animateCss('flipOutY');
+						} else if (animation == 'jumping') {
+							element.animateCss('lightSpeedIn');
+						} else if (animation == 'jumping') {
+							element.animateCss('lightSpeedOut');
+						} else if (animation == 'jumping') {
+							element.animateCss('rotateIn');
+						} else if (animation == 'jumping') {
+							element.animateCss('rotateInDownLeft');
+						} else if (animation == 'jumping') {
+							element.animateCss('rotateInDownRight');
+						} else if (animation == 'jumping') {
+							element.animateCss('rotateInUpLeft');
+						} else if (animation == 'jumping') {
+							element.animateCss('rotateInUpRight');
+						} else if (animation == 'jumping') {
+							element.animateCss('rotateOut');
+						} else if (animation == 'jumping') {
+							element.animateCss('rotateOutDownLeft');
+						} else if (animation == 'jumping') {
+							element.animateCss('rotateOutDownRight');
+						} else if (animation == 'jumping') {
+							element.animateCss('rotateOutUpLeft');
+						} else if (animation == 'jumping') {
+							element.animateCss('rotateOutUpRight');
+						} else if (animation == 'jumping') {
+							element.animateCss('hinge');
+						} else if (animation == 'jumping') {
+							element.animateCss('jackInTheBox');
+						} else if (animation == 'jumping') {
+							element.animateCss('rollIn');
+						} else if (animation == 'jumping') {
+							element.animateCss('rollOut');
+						} else if (animation == 'jumping') {
+							element.animateCss('zoomIn');
+						} else if (animation == 'jumping') {
+							element.animateCss('zoomInDown');
+						} else if (animation == 'jumping') {
+							element.animateCss('zoomInLeft');
+						} else if (animation == 'jumping') {
+							element.animateCss('zoomInRight');
+						} else if (animation == 'jumping') {
+							element.animateCss('zoomInUp');
+						} else if (animation == 'jumping') {
+							element.animateCss('zoomOut');
+						} else if (animation == 'jumping') {
+							element.animateCss('zoomOutDown');
+						} else if (animation == 'jumping') {
+							element.animateCss('zoomOutLeft');
+						} else if (animation == 'jumping') {
+							element.animateCss('zoomOutRight');
+						} else if (animation == 'jumping') {
+							element.animateCss('zoomOutUp');
+						} else if (animation == 'jumping') {
+							element.animateCss('slideInDown');
+						} else if (animation == 'jumping') {
+							element.animateCss('slideInLeft');
+						} else if (animation == 'jumping') {
+							element.animateCss('slideInRight');
+						} else if (animation == 'jumping') {
+							element.animateCss('slideInUp');
+						} else if (animation == 'jumping') {
+							element.animateCss('slideOutDown');
+						} else if (animation == 'jumping') {
+							element.animateCss('slideOutLeft');
+						} else if (animation == 'jumping') {
+							element.animateCss('slideOutRight');
+						} else if (animation == 'jumping') {
+							element.animateCss('slideOutUp');
+						} else {
+							element.animateCss(animation);
+						}
+					} else if (visible == false) {
+						element.removeClass('animated');
 					}
-				} else if (visible == false) {
-					element.removeClass('animated');
-				}
-			},
-			runOnLoad: true,
-			frequency: 100
-		});
-	}
-	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-	//--------------------------------------------------------Scripts Evaluation------------------------------------------------------------------------------------------------------------------------------------------//
-	//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+				},
+				runOnLoad: true,
+				frequency: 100
+			});
+		}
+		//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+		//--------------------------------------------------------Scripts Evaluation------------------------------------------------------------------------------------------------------------------------------------------//
+		//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 	function evaluateScript(script, event, type) {
 		var eventPrefix = '';
 		if (event == 'E1') {
@@ -3654,17 +3756,17 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			}
 		}
 	}
-	$(function () {
+	$(function() {
 		//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		//-----------------------------------------------------------Firebase Center------------------------------------------------------------------------------------------------------------------------------------------//
 		//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-		$.fn[firebaseCenterTranslations[lang]] = function (options) {
+		$.fn[firebaseCenterTranslations[lang]] = function(options) {
 			// Establish our default settings
 			var settings = $.extend({
 				[usernameTranslations[lang]]: null,
 				[passwordTranslations[lang]]: null
 			}, options);
-			return this.each(function () {
+			return this.each(function() {
 				sessionStorage.firebaseID = settings[usernameTranslations[lang]];
 				sessionStorage.firebaseKey = settings[passwordTranslations[lang]];
 				var config = {
@@ -3680,10 +3782,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		//----------------------------------------------------------------Login Form------------------------------------------------------------------------------------------------------------------------------------------//
 		//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-		$.fn[loginFormTranslations[lang]] = function (options) {
+		$.fn[loginFormTranslations[lang]] = function(options) {
 			// Establish our default settings
 			var settings = $.extend({}, options);
-			return this.each(function () {
+			return this.each(function() {
 				$('body').append('<div id="firebaseui-container"></div>');
 
 				function getRecaptchaMode() {
@@ -3696,7 +3798,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					return {
 						'callbacks': {
 							// Called when the user has been successfully signed in.
-							'signInSuccess': function (user, credential, redirectUrl) {
+							'signInSuccess': function(user, credential, redirectUrl) {
 								handleSignedInUser(user);
 								// Do not redirect.
 								return false;
@@ -3735,20 +3837,20 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				/**
 				 * Redirects to the FirebaseUI widget.
 				 */
-				var signInWithRedirect = function () {
+				var signInWithRedirect = function() {
 					window.location.assign(getWidgetUrl());
 				};
 				/**
 				 * Open a popup with the FirebaseUI widget.
 				 */
-				var signInWithPopup = function () {
+				var signInWithPopup = function() {
 					window.open(getWidgetUrl(), 'Sign In', 'width=985,height=735');
 				};
 				/**
 				 * Displays the UI for a signed in user.
 				 * @param {!firebase.User} user
 				 */
-				var handleSignedInUser = function (user) {
+				var handleSignedInUser = function(user) {
 					window.user = user;
 					console.log(user.uid);
 					sessionStorage.displayName = user.displayName;
@@ -3761,26 +3863,26 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				/**
 				 * Displays the UI for a signed out user.
 				 */
-				var handleSignedOutUser = function () {
+				var handleSignedOutUser = function() {
 					ui.start('#firebaseui-container', getUiConfig());
 					$('contents').hide();
 				};
 				// Listen to change in auth state so it displays the correct UI for when
 				// the user is signed in or not.
-				firebase.auth().onAuthStateChanged(function (user) {
+				firebase.auth().onAuthStateChanged(function(user) {
 					user ? handleSignedInUser(user) : handleSignedOutUser();
 				});
 				/**
 				 * Deletes the user's account.
 				 */
-				var deleteAccount = function () {
-					firebase.auth().currentUser.delete().catch(function (error) {
+				var deleteAccount = function() {
+					firebase.auth().currentUser.delete().catch(function(error) {
 						if (error.code == 'auth/requires-recent-login') {
 							// The user's credential is too old. She needs to sign in again.
-							firebase.auth().signOut().then(function () {
+							firebase.auth().signOut().then(function() {
 								// The timeout allows the message to be displayed after the UI has
 								// changed to the signed out state.
-								setTimeout(function () {
+								setTimeout(function() {
 									alert('Please sign in again to delete your account.');
 								}, 1);
 							});
@@ -3802,15 +3904,19 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		//---------------------------------------------------------------------Setup------------------------------------------------------------------------------------------------------------------------------------------//
 		//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-		$.fn[setupTranslations[lang]] = function (options) {
+		$.fn[setupTranslations[lang]] = function(options) {
 			// Establish our default settings
 			var settings = $.extend({
 				[logoTranslations[lang]]: null,
 				[titleTranslations[lang]]: null,
 				[modeTranslations[lang]]: null,
+				[widthTranslations[lang]]: document.documentElement.clientWidth,
+				[lengthTranslations[lang]]: document.documentElement.clientHeight,
 				[attributesTranslations[lang]]: null
 			}, options);
-			return this.each(function () {
+			return this.each(function() {
+				document.defaultWindowLength = settings[lengthTranslations[lang]];
+				document.defaultWindowWidth = settings[widthTranslations[lang]];
 				if (settings[modeTranslations[lang]] == 'site') {
 					$('body').append('<contents></contents>');
 				} else if (settings[modeTranslations[lang]] == 'app') {
@@ -3835,14 +3941,14 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							try {
 								compatibility.getUserMedia({
 									video: true
-								}, function (stream) {
+								}, function(stream) {
 									try {
 										video.src = compatibility.URL.createObjectURL(stream);
 									} catch (error) {
 										video.src = stream;
 									}
 									compatibility.requestAnimationFrame(play);
-								}, function (error) {
+								}, function(error) {
 									alert("WebRTC not available");
 								});
 							} catch (error) {
@@ -3875,7 +3981,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 										var coord = coords[0];
 										for (var i = coords.length - 1; i >= 0; --i)
 											if (coords[i][4] > coord[4]) coord = coords[i];
-										/* Scroll window: */
+											/* Scroll window: */
 										var fist_pos = [coord[0] + coord[2] / 2, coord[1] + coord[3] / 2];
 										if (fist_pos_old) {
 											var dx = (fist_pos[0] - fist_pos_old[0]) / video.videoWidth,
@@ -3897,24 +4003,24 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//---------------------------------------------------------------------Page------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[pageTranslations[lang]] = function (options) {
-					// Establish our default settings
-					var settings = $.extend({
-						[nameTranslations[lang]]: null,
-						[commandsTranslations[lang]]: null
-					}, options);
-					return this.each(function () {
-						$('contents').append('<page id="' + settings[nameTranslations[lang]] + '" style="display: none;"></page>');
-						$('#' + decodeURIComponent(getAllUrlParams().page) + '').fadeIn(500);
-						if (settings[commandsTranslations[lang]]) {
-							execute(name, settings[commandsTranslations[lang]]);
-						}
-					})
-				}
-				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				//----------------------------------------------------------------------Text------------------------------------------------------------------------------------------------------------------------------------------//
-				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[textFnTranslations[lang]] = function (options) {
+				$.fn[pageTranslations[lang]] = function(options) {
+						// Establish our default settings
+						var settings = $.extend({
+							[nameTranslations[lang]]: null,
+							[commandsTranslations[lang]]: null
+						}, options);
+						return this.each(function() {
+							$('contents').append('<page id="' + settings[nameTranslations[lang]] + '" style="display: none;"></page>');
+							$('#' + decodeURIComponent(getAllUrlParams().page) + '').fadeIn(500);
+							if (settings[commandsTranslations[lang]]) {
+								execute(name, settings[commandsTranslations[lang]]);
+							}
+						})
+					}
+					//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+					//----------------------------------------------------------------------Text------------------------------------------------------------------------------------------------------------------------------------------//
+					//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+				$.fn[textFnTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[textTranslations[lang]]: 'It seems that you have typed nothing',
@@ -3937,7 +4043,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[attributesTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						var out = '<p id="' + name + '"></p>';
 						if (settings[containerTranslations[lang]]) {
@@ -3958,8 +4064,8 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						}
 						var insertedText = settings[textTranslations[lang]];
 						var dynamicTextsArrayA = settings[textTranslations[lang]].split('&lt;&lt; the value of ');
-						(function (dynamicTextsArrayA, insertedText) {
-							setInterval(function () {
+						(function(dynamicTextsArrayA, insertedText) {
+							setInterval(function() {
 								for (i = 1; i < dynamicTextsArrayA.length; i++) {
 									var textResourceA = dynamicTextsArrayA[i].split(' &gt;&gt;')[0];
 									var newText = insertedText.replace('&lt;&lt; the value of ' + textResourceA + ' &gt;&gt;', $('#' + textResourceA + '').val());
@@ -3968,8 +4074,8 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							}, 5000);
 						})(dynamicTextsArrayA, insertedText);
 						var dynamicTextsArrayB = settings[textTranslations[lang]].split('&lt;&lt; the text of ');
-						(function (dynamicTextsArrayB, insertedText) {
-							setInterval(function () {
+						(function(dynamicTextsArrayB, insertedText) {
+							setInterval(function() {
 								for (i = 1; i < dynamicTextsArrayB.length; i++) {
 									var textResourceB = dynamicTextsArrayB[i].split(' &gt;&gt;')[0];
 									var newText = insertedText.replace('&lt;&lt; the text of ' + textResourceB + ' &gt;&gt;', $('#' + textResourceB + '').text());
@@ -3979,7 +4085,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						})(dynamicTextsArrayB, insertedText);
 						var customTextsArrayAB = insertedText.split('&lt;&lt; ' + "the user's name" + ' ');
 						if (customTextsArrayAB.length > 1) {
-							setTimeout(function () {
+							setTimeout(function() {
 								for (i = 1; i < customTextsArrayAB.length; i++) {
 									var customTextAB = customTextsArrayAB[i].split(' &gt;&gt;')[0];
 									insertedText = insertedText.replace('&lt;&lt; ' + "the user's name" + ' &gt;&gt;', window.user.displayName);
@@ -4045,7 +4151,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------Button------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[buttonTranslations[lang]] = function (options) {
+				$.fn[buttonTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[textTranslations[lang]]: 'It seems that you have typed nothing',
@@ -4071,7 +4177,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[attributesTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						var out = '<paper-button id="' + name + '"></paper-button>';
 						if (settings[containerTranslations[lang]]) {
@@ -4148,7 +4254,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//----------------------------------------------------------------------Card------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[sectionTranslations[lang]] = function (options) {
+				$.fn[sectionTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[textTranslations[lang]]: 'It seems that you have typed nothing',
@@ -4171,7 +4277,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[containerTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						var out = '<paper-card id="' + name + '"><div id="الحاجات_اللى_جوة_السيكشن" class="card-content"></div></paper-card>';
 						if (settings[containerTranslations[lang]]) {
@@ -4232,7 +4338,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//-------------------------------------------------------------------ToolTip------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[tooltipTranslations[lang]] = function (options) {
+				$.fn[tooltipTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[textTranslations[lang]]: 'It seems that you have typed nothing',
@@ -4252,7 +4358,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[containerTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						if (settings[directionTranslations[lang]] == fromTheRightTranslations[lang]) {
 							var position = 'right';
 						} else if (settings[directionTranslations[lang]] == fromTheLeftTranslations[lang]) {
@@ -4284,7 +4390,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//------------------------------------------------------------Colors Palette------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[colorsPaletteTranslations[lang]] = function (options) {
+				$.fn[colorsPaletteTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[nameTranslations[lang]]: null,
@@ -4301,7 +4407,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[containerTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						var out = '<paper-swatch-picker id="' + name + '" color="{{selectedColor}}"></paper-swatch-picker>';
 						if (settings[containerTranslations[lang]]) {
@@ -4332,7 +4438,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------Loader------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[loaderTranslations[lang]] = function (options) {
+				$.fn[loaderTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[nameTranslations[lang]]: null,
@@ -4352,7 +4458,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[attributesTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						if (settings[typeTranslations[lang]] == settings[barTranslations[lang]]) {
 							var out = '<paper-progress id="' + name + '"></paper-progress>';
@@ -4395,14 +4501,12 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//---------------------------------------------------------------------Image------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[imageTranslations[lang]] = function (options) {
+				$.fn[imageTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[titleTranslations[lang]]: null,
 						[typeTranslations[lang]]: null,
 						[sourceTranslations[lang]]: null,
-						[imageWidthTranslations[lang]]: null,
-						[imageLengthTranslations[lang]]: null,
 						[nameTranslations[lang]]: null,
 						[widthTranslations[lang]]: null,
 						[lengthTranslations[lang]]: null,
@@ -4417,13 +4521,13 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[backgroundTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var isLogo = false;
 						var name = settings[nameTranslations[lang]];
 						var source = settings[sourceTranslations[lang]];
 						window.analyseImage(name, source);
 						if (settings[typeTranslations[lang]] == iconTranslations[lang]) {
-							getFileSize(source, function (size) {
+							getFileSize(source, function(size) {
 								if (size.split(' kb')[0] < 100) {
 									isLogo = true;
 									var out = '<img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="' + source + '" />';
@@ -4445,8 +4549,8 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						} else {
 							if (settings[titleTranslations[lang]]) {
 								containerHeight = parseInt(settings[imageLengthTranslations[lang]]) + 40;
-								var out = '<paper-material elevation="2" id="' + name + '_container" style="position: relative; overflow: hidden; width: ' + convertLengthCSS(settings[imageWidthTranslations[lang]]) + '; height: ' + convertLengthCSS(settings[imageLengthTranslations[lang]]) + ';"> \
-								<img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="' + window.mediaImageBlurredA + '" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
+								var out = '<paper-material elevation="2" id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+								<img id="' + name + '" src="' + window.mediaImageBlurredA + '" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
 								<div id="showImage_' + name + '_containerA"> \
 								<p id="' + name + '_imageData" class="imageData"></p> \
 								<button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + source + '\');"> \
@@ -4477,7 +4581,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						} else {
 							$('contents').append(out);
 						}
-						getFileSize(source, function (size) {
+						getFileSize(source, function(size) {
 							$('#image_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
 						})
 						if (settings[backgroundTranslations[lang]]) {
@@ -4493,10 +4597,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').attr('alt', settings[titleTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							setDimension(name, 'width', settings[widthTranslations[lang]]);
+							setDimension(name, 'width', settings[widthTranslations[lang]], 'img');
 						}
 						if (settings[lengthTranslations[lang]]) {
-							setDimension(name, 'length', settings[lengthTranslations[lang]]);
+							setDimension(name, 'length', settings[lengthTranslations[lang]], 'img');
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
 							if (isLogo == true) {
@@ -4537,7 +4641,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//---------------------------------------------------------------------Video------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[videoTranslations[lang]] = function (options) {
+				$.fn[videoTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[titleTranslations[lang]]: null,
@@ -4558,7 +4662,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[backgroundTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						var source = settings[sourceTranslations[lang]];
 						var out = '<div id="' + name + '_container" style="position: relative; overflow: hidden; width: ' + convertLengthCSS(settings[videoWidthTranslations[lang]]) + '; height: ' + convertLengthCSS(settings[videoLengthTranslations[lang]]) + ';"> \
@@ -4574,7 +4678,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						} else {
 							$('contents').append(out);
 						}
-						getFileSize(source, function (size) {
+						getFileSize(source, function(size) {
 							$('#video_' + name + '_mainButton').html('<i class="material-icons">play_arrow</i> ' + size);
 						})
 						if (settings[backgroundTranslations[lang]]) {
@@ -4590,10 +4694,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').attr('alt', settings[titleTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							setDimension(name, 'width', settings[widthTranslations[lang]]);
+							setDimension(name, 'width', settings[widthTranslations[lang]], 'vid');
 						}
 						if (settings[lengthTranslations[lang]]) {
-							setDimension(name, 'length', settings[lengthTranslations[lang]]);
+							setDimension(name, 'length', settings[lengthTranslations[lang]], 'vid');
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
 							setDistance(name + '_container', 'bottom', settings[distanceFromBottomTranslations[lang]]);
@@ -4618,7 +4722,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------ِAuido Player------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[audioPlayerTranslations[lang]] = function (options) {
+				$.fn[audioPlayerTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[titleTranslations[lang]]: null,
@@ -4640,7 +4744,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[backgroundTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						var source = settings[sourceTranslations[lang]];
 						var out = '<div id="' + name + '" class="aplayer"></div>';
@@ -4699,7 +4803,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//---------------------------------------------------------------------Audio------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[audioTranslations[lang]] = function (options) {
+				$.fn[audioTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[titleTranslations[lang]]: null,
@@ -4722,7 +4826,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[backgroundTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						var source = settings[sourceTranslations[lang]];
 						if (settings[coverTranslations[lang]]) {
@@ -4795,7 +4899,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//-----------------------------------------------------------------ِSlideshow------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[slideShowTranslations[lang]] = function (options) {
+				$.fn[slideShowTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[autoplayTranslations[lang]]: null,
@@ -4813,7 +4917,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[backgroundTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						var source = settings[sourceTranslations[lang]];
 						var out = '<div id="' + name + '" class="owl-carousel owl-theme"></div>';
@@ -4830,7 +4934,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 								}
 							}
 						}
-						jQuery(document).ready(function ($) {
+						jQuery(document).ready(function($) {
 							$('#' + name + '').owlCarousel({
 								animateOut: 'slideOutDown',
 								animateIn: 'flipInX',
@@ -4893,7 +4997,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//---------------------------------------------------------------------Audio------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[slideShowItemTranslations[lang]] = function (options) {
+				$.fn[slideShowItemTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[slideShowTranslations[lang]]: null,
@@ -4913,7 +5017,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[backgroundTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						var source = settings[sourceTranslations[lang]];
 						if (settings[typeTranslations[lang]] == imageTranslations[lang]) {
@@ -4968,7 +5072,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------Notification Count------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[notificationCountTranslations[lang]] = function (options) {
+				$.fn[notificationCountTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[textTranslations[lang]]: 'It seems that you have typed nothing',
@@ -4992,7 +5096,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[backgroundTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						var out = '<paper-badge id="' + name + '" for="' + targetTranslations[lang] + '"></paper-badge>';
 						if (settings[containerTranslations[lang]]) {
@@ -5065,7 +5169,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//------------------------------------------------------------------Checkbox------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[checkboxTranslations[lang]] = function (options) {
+				$.fn[checkboxTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[textTranslations[lang]]: null,
@@ -5093,7 +5197,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[attributesTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						var out = '<paper-checkbox id="' + name + '">' + text + '</paper-checkbox>';
 						if (settings[containerTranslations[lang]]) {
@@ -5175,7 +5279,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//----------------------------------------------------------------Dialog Box------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[dialogBoxTranslations[lang]] = function (options) {
+				$.fn[dialogBoxTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[titleTranslations[lang]]: null,
@@ -5202,7 +5306,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[backgroundTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						var body = settings[bodyTranslations[lang]].split('&amp;&amp;&amp;');
 						var out = '<paper-dialog id="' + name + '">';
@@ -5296,7 +5400,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//------------------------------------------------------------------Dropdown------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[dropdownTranslations[lang]] = function (options) {
+				$.fn[dropdownTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[titleTranslations[lang]]: null,
@@ -5323,7 +5427,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[attributesTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						var out = '<div class="input-field"> \
 						<select id="' + name + '" style="display: block;"> \
@@ -5428,7 +5532,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//-----------------------------------------------------------------------FAB------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[FABTranslations[lang]] = function (options) {
+				$.fn[FABTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[descriptionTranslations[lang]]: null,
@@ -5457,7 +5561,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[attributesTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						var out = '<paper-fab ';
 						if (settings[attributesTranslations[lang]]) {
@@ -5558,7 +5662,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//-------------------------------------------------------------------TextBox------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[writingZoneTranslations[lang]] = function (options) {
+				$.fn[writingZoneTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[typeTranslations[lang]]: null,
@@ -5593,7 +5697,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[attributesTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						if (settings[dynamicSizeTranslations[lang]] == yesTranslations[lang]) {
 							var out = 'paper-textarea ';
@@ -5764,7 +5868,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//-----------------------------------------------------------------Container------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[containerTranslations[lang]] = function (options) {
+				$.fn[containerTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[fontColorTranslations[lang]]: null,
@@ -5786,7 +5890,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[backgroundTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						var out = '<paper-material elevation="2" id="' + name + '" class="' + name + '"></paper-material>'
 						if (settings[containerTranslations[lang]]) {
@@ -5898,7 +6002,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//---------------------------------------------------------------------Table------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[tableTranslations[lang]] = function (options) {
+				$.fn[tableTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[fontColorTranslations[lang]]: null,
@@ -5921,7 +6025,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[backgroundTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						var out = 'table id="' + name + '" class="responsive-table centered highlight"><thead></thead><tbody class="list"></tbody></table>'
 						if (settings[containerTranslations[lang]]) {
@@ -5957,7 +6061,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						var inputData = JSON.parse(inputDataRaw);
 						var keys = [];
 						for (var i = 0; i < inputData.length; i++) {
-							Object.keys(inputData[i]).forEach(function (key) {
+							Object.keys(inputData[i]).forEach(function(key) {
 								if (keys.indexOf(key) == -1) {
 									keys.push(key);
 								}
@@ -6053,7 +6157,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------Slider------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				$.fn[sliderTranslations[lang]] = function (options) {
+				$.fn[sliderTranslations[lang]] = function(options) {
 					// Establish our default settings
 					var settings = $.extend({
 						[titleTranslations[lang]]: null,
@@ -6083,7 +6187,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[attributesTranslations[lang]]: null,
 						[commandsTranslations[lang]]: null
 					}, options);
-					return this.each(function () {
+					return this.each(function() {
 						var name = settings[nameTranslations[lang]];
 						if (settings[titleTranslations[lang]]) {
 							var out = '<div>' + settings[titleTranslations[lang]] + '</div><br><paper-slider ';
@@ -6207,7 +6311,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			var l = n[o] = {
 				exports: {}
 			};
-			t[o][0].call(l.exports, function (e) {
+			t[o][0].call(l.exports, function(e) {
 				var n = t[o][1][e];
 				return s(n ? n : e)
 			}, l, l.exports, e, t, n, r)
@@ -6218,19 +6322,19 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 	for (var o = 0; o < r.length; o++) s(r[o]);
 	return s
 })({
-	1: [function (require, module, exports) {
+	1: [function(require, module, exports) {
 		//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		//-------------------------------------------------Images Analysis Functions------------------------------------------------------------------------------------------------------------------------------------------//
 		//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 		const Clarifai = require('clarifai');
-		window.analyseImage = function (name, source) {
+		window.analyseImage = function(name, source) {
 			const app = new Clarifai.App({
 				apiKey: 'cd0b92362c304e0e87046ed8dccac9b8'
 			});
 			var ref = window.jsteFirebase.database().ref("clarifai");
-			ref.once("value").then(function (snapshot) {
+			ref.once("value").then(function(snapshot) {
 				if (snapshot.child(encodeURIComponent(source).replace(/\./g, '%2E')).exists()) {
-					ref.on('value', function (snapshot) {
+					ref.on('value', function(snapshot) {
 						var imageData = snapshot.val();
 						var encodedSource = encodeURIComponent(source).replace(/\./g, '%2E');
 						if (imageData[encodedSource].nfsw.rawData.outputs[0].data.concepts[0].name == 'nfsw') {
@@ -6249,7 +6353,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					});
 				} else {
 					// predict the contents of an image by passing in a url
-					app.models.predict("aaa03c23b3724a16a56b629203edc62c", source).then(function (response) {
+					app.models.predict("aaa03c23b3724a16a56b629203edc62c", source).then(function(response) {
 						window.jsteFirebase.database().ref('clarifai/' + encodeURIComponent(source).replace(/\./g, '%2E') + '/general').set(response);
 						var imageData = '';
 						for (i = 0; i < response.rawData.outputs[0].data.concepts.length; i++) {
@@ -6260,15 +6364,15 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							}
 						}
 						$('#' + name + '_imageData').text(imageData);
-					}, function (err) {
+					}, function(err) {
 						console.error(err);
 					});
-					app.models.predict("e9576d86d2004ed1a38ba0cf39ecb4b1", source).then(function (response) {
+					app.models.predict("e9576d86d2004ed1a38ba0cf39ecb4b1", source).then(function(response) {
 						window.jsteFirebase.database().ref('clarifai/' + encodeURIComponent(source).replace(/\./g, '%2E') + '/nfsw').set(response);
 						if (response.rawData.outputs[0].data.concepts[0].name == 'nfsw') {
 							$('#' + name + '').attr('nude', '')
 						}
-					}, function (err) {
+					}, function(err) {
 						console.error(err);
 					});
 				}
@@ -6277,7 +6381,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 	}, {
 		"clarifai": 32
 	}],
-	2: [function (require, module, exports) {
+	2: [function(require, module, exports) {
 		"use strict";
 		// rawAsap provides everything we need except exception management.
 		var rawAsap = require("./raw");
@@ -6320,7 +6424,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		}
 		// The sole purpose of wrapping the task is to catch the exception and recycle
 		// the task object after its single use.
-		RawTask.prototype.call = function () {
+		RawTask.prototype.call = function() {
 			try {
 				this.task.call();
 			} catch (error) {
@@ -6344,8 +6448,8 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 	}, {
 		"./raw": 3
 	}],
-	3: [function (require, module, exports) {
-		(function (global) {
+	3: [function(require, module, exports) {
+		(function(global) {
 			"use strict";
 			// Use the fastest means possible to execute a task in its own turn, with
 			// priority over other events including IO, animation, reflow, and redraw
@@ -6552,13 +6656,13 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			// https://github.com/tildeio/rsvp.js/blob/cddf7232546a9cf858524b75cde6f9edf72620a7/lib/rsvp/asap.js
 		}).call(this, typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 	}, {}],
-	4: [function (require, module, exports) {
+	4: [function(require, module, exports) {
 		module.exports = require('./lib/axios');
 	}, {
 		"./lib/axios": 6
 	}],
-	5: [function (require, module, exports) {
-		(function (process) {
+	5: [function(require, module, exports) {
+		(function(process) {
 			'use strict';
 			var utils = require('./../utils');
 			var buildURL = require('./../helpers/buildURL');
@@ -6701,7 +6805,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		"./../utils": 21,
 		"_process": 43
 	}],
-	6: [function (require, module, exports) {
+	6: [function(require, module, exports) {
 		'use strict';
 		var defaults = require('./defaults');
 		var utils = require('./utils');
@@ -6777,7 +6881,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		// Provide aliases for supported request methods
 		utils.forEach(['delete', 'get', 'head'], function forEachMethodNoData(method) {
 			/*eslint func-names:0*/
-			Axios.prototype[method] = function (url, config) {
+			Axios.prototype[method] = function(url, config) {
 				return this.request(utils.merge(config || {}, {
 					method: method,
 					url: url
@@ -6787,7 +6891,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		});
 		utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 			/*eslint func-names:0*/
-			Axios.prototype[method] = function (url, data, config) {
+			Axios.prototype[method] = function(url, data, config) {
 				return this.request(utils.merge(config || {}, {
 					method: method,
 					url: url,
@@ -6807,7 +6911,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		"./helpers/transformData": 20,
 		"./utils": 21
 	}],
-	7: [function (require, module, exports) {
+	7: [function(require, module, exports) {
 		'use strict';
 		var utils = require('./../utils');
 
@@ -6858,8 +6962,8 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 	}, {
 		"./../utils": 21
 	}],
-	8: [function (require, module, exports) {
-		(function (process) {
+	8: [function(require, module, exports) {
+		(function(process) {
 			'use strict';
 			/**
 			 * Dispatch a request to the server using whichever adapter
@@ -6896,7 +7000,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		"../adapters/xhr": 5,
 		"_process": 43
 	}],
-	9: [function (require, module, exports) {
+	9: [function(require, module, exports) {
 		'use strict';
 		var utils = require('./utils');
 		var PROTECTION_PREFIX = /^\)\]\}',?\n/;
@@ -6956,7 +7060,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 	}, {
 		"./utils": 21
 	}],
-	10: [function (require, module, exports) {
+	10: [function(require, module, exports) {
 		'use strict';
 		module.exports = function bind(fn, thisArg) {
 			return function wrap() {
@@ -6968,7 +7072,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			};
 		};
 	}, {}],
-	11: [function (require, module, exports) {
+	11: [function(require, module, exports) {
 		'use strict';
 		// btoa polyfill for IE<10 courtesy https://github.com/davidchambers/Base64.js
 		var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
@@ -7002,7 +7106,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		}
 		module.exports = btoa;
 	}, {}],
-	12: [function (require, module, exports) {
+	12: [function(require, module, exports) {
 		'use strict';
 		var utils = require('./../utils');
 
@@ -7062,7 +7166,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 	}, {
 		"./../utils": 21
 	}],
-	13: [function (require, module, exports) {
+	13: [function(require, module, exports) {
 		'use strict';
 		/**
 		 * Creates a new URL by combining the specified URLs
@@ -7075,7 +7179,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			return baseURL.replace(/\/+$/, '') + '/' + relativeURL.replace(/^\/+/, '');
 		};
 	}, {}],
-	14: [function (require, module, exports) {
+	14: [function(require, module, exports) {
 		'use strict';
 		var utils = require('./../utils');
 		module.exports = (utils.isStandardBrowserEnv() ?
@@ -7121,7 +7225,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 	}, {
 		"./../utils": 21
 	}],
-	15: [function (require, module, exports) {
+	15: [function(require, module, exports) {
 		'use strict';
 		/**
 		 * Determines whether the specified URL is relative
@@ -7136,7 +7240,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
 		};
 	}, {}],
-	16: [function (require, module, exports) {
+	16: [function(require, module, exports) {
 		'use strict';
 		var utils = require('./../utils');
 		module.exports = (utils.isStandardBrowserEnv() ?
@@ -7193,7 +7297,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 	}, {
 		"./../utils": 21
 	}],
-	17: [function (require, module, exports) {
+	17: [function(require, module, exports) {
 		'use strict';
 		var utils = require('./../utils');
 		/**
@@ -7230,7 +7334,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 	}, {
 		"./../utils": 21
 	}],
-	18: [function (require, module, exports) {
+	18: [function(require, module, exports) {
 		'use strict';
 		/**
 		 * Resolve or reject a Promise based on response status.
@@ -7249,7 +7353,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			}
 		};
 	}, {}],
-	19: [function (require, module, exports) {
+	19: [function(require, module, exports) {
 		'use strict';
 		/**
 		 * Syntactic sugar for invoking a function and expanding an array for arguments.
@@ -7277,7 +7381,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			};
 		};
 	}, {}],
-	20: [function (require, module, exports) {
+	20: [function(require, module, exports) {
 		'use strict';
 		var utils = require('./../utils');
 		/**
@@ -7298,7 +7402,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 	}, {
 		"./../utils": 21
 	}],
-	21: [function (require, module, exports) {
+	21: [function(require, module, exports) {
 		'use strict';
 		/*global toString:true*/
 		// utils is a library of generic helper functions non-specific to axios
@@ -7539,15 +7643,15 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			trim: trim
 		};
 	}, {}],
-	22: [function (require, module, exports) {
-		(function (process) {
+	22: [function(require, module, exports) {
+		(function(process) {
 			'use strict';
-			var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+			var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function(obj) {
 				return typeof obj;
-			} : function (obj) {
+			} : function(obj) {
 				return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
 			};
-			var _createClass = function () {
+			var _createClass = function() {
 				function defineProperties(target, props) {
 					for (var i = 0; i < props.length; i++) {
 						var descriptor = props[i];
@@ -7557,7 +7661,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						Object.defineProperty(target, descriptor.key, descriptor);
 					}
 				}
-				return function (Constructor, protoProps, staticProps) {
+				return function(Constructor, protoProps, staticProps) {
 					if (protoProps) defineProperties(Constructor.prototype, protoProps);
 					if (staticProps) defineProperties(Constructor, staticProps);
 					return Constructor;
@@ -7585,7 +7689,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			 * top-level class that allows access to models, inputs and concepts
 			 * @class
 			 */
-			var App = function () {
+			var App = function() {
 				function App(arg1, arg2, arg3) {
 					_classCallCheck(this, App);
 					var optionsObj = arg1;
@@ -7604,13 +7708,13 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				_createClass(App, [{
 					key: 'getToken',
 					value: function getToken() {
-						return this._config.token();
-					}
-					/**
-					 * Sets the token to use for the API
-					 * @param {String}         _token    The token you are setting
-					 * @return {Boolean}                 true if token has valid fields, false if not
-					 */
+							return this._config.token();
+						}
+						/**
+						 * Sets the token to use for the API
+						 * @param {String}         _token    The token you are setting
+						 * @return {Boolean}                 true if token has valid fields, false if not
+						 */
 				}, {
 					key: 'setToken',
 					value: function setToken(_token) {
@@ -7657,7 +7761,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							clientSecret: options.clientSecret,
 							apiKey: options.apiKey,
 							token: function token() {
-								return new Promise(function (resolve, reject) {
+								return new Promise(function(resolve, reject) {
 									var now = new Date().getTime();
 									if (checkType(/Object/, _this._config._token) && _this._config._token.expireTime > now) {
 										resolve(_this._config._token);
@@ -7679,7 +7783,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					key: '_getToken',
 					value: function _getToken(resolve, reject) {
 						var _this2 = this;
-						this._requestToken().then(function (response) {
+						this._requestToken().then(function(response) {
 							if (response.status === 200) {
 								_this2.setToken(response.data);
 								resolve(_this2._config._token);
@@ -7719,7 +7823,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		"axios": 4,
 		"promise": 35
 	}],
-	23: [function (require, module, exports) {
+	23: [function(require, module, exports) {
 		"use strict";
 
 		function _classCallCheck(instance, Constructor) {
@@ -7743,9 +7847,9 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		};;
 		module.exports = Concept;
 	}, {}],
-	24: [function (require, module, exports) {
+	24: [function(require, module, exports) {
 		'use strict';
-		var _createClass = function () {
+		var _createClass = function() {
 			function defineProperties(target, props) {
 				for (var i = 0; i < props.length; i++) {
 					var descriptor = props[i];
@@ -7755,7 +7859,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					Object.defineProperty(target, descriptor.key, descriptor);
 				}
 			}
-			return function (Constructor, protoProps, staticProps) {
+			return function(Constructor, protoProps, staticProps) {
 				if (protoProps) defineProperties(Constructor.prototype, protoProps);
 				if (staticProps) defineProperties(Constructor, staticProps);
 				return Constructor;
@@ -7785,14 +7889,14 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		 * class representing a collection of concepts
 		 * @class
 		 */
-		var Concepts = function () {
+		var Concepts = function() {
 			function Concepts(_config) {
 				var _this = this;
 				var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 				_classCallCheck(this, Concepts);
 				this._config = _config;
 				this.rawData = rawData;
-				rawData.forEach(function (conceptData, index) {
+				rawData.forEach(function(conceptData, index) {
 					_this[index] = new Concept(_this._config, conceptData);
 				});
 				this.length = rawData.length;
@@ -7807,110 +7911,110 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			_createClass(Concepts, [{
 				key: 'list',
 				value: function list() {
-					var _this2 = this;
-					var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-						page: 1,
-						perPage: 20
-					};
-					var url = '' + this._config.apiEndpoint + CONCEPTS_PATH;
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
-							axios.get(url, {
-								headers: headers,
-								params: {
-									'page': options.page,
-									'per_page': options.perPage
-								}
-							}).then(function (response) {
-								if (isSuccess(response)) {
-									resolve(new Concepts(_this2._config, response.data.concepts));
-								} else {
-									reject(response);
-								}
-							}, reject);
+						var _this2 = this;
+						var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+							page: 1,
+							perPage: 20
+						};
+						var url = '' + this._config.apiEndpoint + CONCEPTS_PATH;
+						return wrapToken(this._config, function(headers) {
+							return new Promise(function(resolve, reject) {
+								axios.get(url, {
+									headers: headers,
+									params: {
+										'page': options.page,
+										'per_page': options.perPage
+									}
+								}).then(function(response) {
+									if (isSuccess(response)) {
+										resolve(new Concepts(_this2._config, response.data.concepts));
+									} else {
+										reject(response);
+									}
+								}, reject);
+							});
 						});
-					});
-				}
-				/**
-				 * List a single concept given an id
-				 * @param {String}     id          The concept's id
-				 * @return {Promise(Concept, error)} A Promise that is fulfilled with a Concept instance or rejected with an error
-				 */
+					}
+					/**
+					 * List a single concept given an id
+					 * @param {String}     id          The concept's id
+					 * @return {Promise(Concept, error)} A Promise that is fulfilled with a Concept instance or rejected with an error
+					 */
 			}, {
 				key: 'get',
 				value: function get(id) {
-					var _this3 = this;
-					var url = '' + this._config.apiEndpoint + replaceVars(CONCEPT_PATH, [id]);
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
-							axios.get(url, {
-								headers: headers
-							}).then(function (response) {
-								if (isSuccess(response)) {
-									resolve(new Concept(_this3._config, response.data.concept));
-								} else {
-									reject(response);
-								}
-							}, reject);
+						var _this3 = this;
+						var url = '' + this._config.apiEndpoint + replaceVars(CONCEPT_PATH, [id]);
+						return wrapToken(this._config, function(headers) {
+							return new Promise(function(resolve, reject) {
+								axios.get(url, {
+									headers: headers
+								}).then(function(response) {
+									if (isSuccess(response)) {
+										resolve(new Concept(_this3._config, response.data.concept));
+									} else {
+										reject(response);
+									}
+								}, reject);
+							});
 						});
-					});
-				}
-				/**
-				 * Add a list of concepts given an id and name
-				 * @param {object|object[]}   concepts       Can be a single media object or an array of media objects
-				 *   @param  {object|string}    concepts[].concept         If string, this is assumed to be the concept id. Otherwise, an object with the following attributes
-				 *     @param  {object}           concepts[].concept.id      The new concept's id (Required)
-				 *     @param  {object}           concepts[].concept.name    The new concept's name
-				 * @return {Promise(Concepts, error)}             A Promise that is fulfilled with a Concepts instance or rejected with an error
-				 */
+					}
+					/**
+					 * Add a list of concepts given an id and name
+					 * @param {object|object[]}   concepts       Can be a single media object or an array of media objects
+					 *   @param  {object|string}    concepts[].concept         If string, this is assumed to be the concept id. Otherwise, an object with the following attributes
+					 *     @param  {object}           concepts[].concept.id      The new concept's id (Required)
+					 *     @param  {object}           concepts[].concept.name    The new concept's name
+					 * @return {Promise(Concepts, error)}             A Promise that is fulfilled with a Concepts instance or rejected with an error
+					 */
 			}, {
 				key: 'create',
 				value: function create() {
-					var _this4 = this;
-					var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-					if (checkType(/(Object|String)/, concepts)) {
-						concepts = [concepts];
-					}
-					var data = {
-						'concepts': concepts.map(formatConcept)
-					};
-					var url = '' + this._config.apiEndpoint + CONCEPTS_PATH;
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
-							axios.post(url, data, {
-								headers: headers
-							}).then(function (response) {
-								if (isSuccess(response)) {
-									resolve(new Concepts(_this4._config, response.data.concepts));
-								} else {
-									reject(response);
-								}
-							}, reject);
+						var _this4 = this;
+						var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+						if (checkType(/(Object|String)/, concepts)) {
+							concepts = [concepts];
+						}
+						var data = {
+							'concepts': concepts.map(formatConcept)
+						};
+						var url = '' + this._config.apiEndpoint + CONCEPTS_PATH;
+						return wrapToken(this._config, function(headers) {
+							return new Promise(function(resolve, reject) {
+								axios.post(url, data, {
+									headers: headers
+								}).then(function(response) {
+									if (isSuccess(response)) {
+										resolve(new Concepts(_this4._config, response.data.concepts));
+									} else {
+										reject(response);
+									}
+								}, reject);
+							});
 						});
-					});
-				}
-				/**
-				 * Search for a concept given a name. A wildcard can be given (example: The name "bo*" will match with "boat" and "bow" given those concepts exist
-				 * @param  {string}   name  The name of the concept to search for
-				 * @return {Promise(Concepts, error)} A Promise that is fulfilled with a Concepts instance or rejected with an error
-				 */
+					}
+					/**
+					 * Search for a concept given a name. A wildcard can be given (example: The name "bo*" will match with "boat" and "bow" given those concepts exist
+					 * @param  {string}   name  The name of the concept to search for
+					 * @return {Promise(Concepts, error)} A Promise that is fulfilled with a Concepts instance or rejected with an error
+					 */
 			}, {
 				key: 'search',
 				value: function search(name) {
 					var _this5 = this;
 					var language = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 					var url = '' + this._config.apiEndpoint + CONCEPT_SEARCH_PATH;
-					return wrapToken(this._config, function (headers) {
+					return wrapToken(this._config, function(headers) {
 						var params = {
 							'concept_query': {
 								name: name,
 								language: language
 							}
 						};
-						return new Promise(function (resolve, reject) {
+						return new Promise(function(resolve, reject) {
 							axios.post(url, params, {
 								headers: headers
-							}).then(function (response) {
+							}).then(function(response) {
 								if (isSuccess(response)) {
 									resolve(new Concepts(_this5._config, response.data.concepts));
 								} else {
@@ -7931,9 +8035,9 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		"./utils": 33,
 		"axios": 4
 	}],
-	25: [function (require, module, exports) {
+	25: [function(require, module, exports) {
 		'use strict';
-		var _createClass = function () {
+		var _createClass = function() {
 			function defineProperties(target, props) {
 				for (var i = 0; i < props.length; i++) {
 					var descriptor = props[i];
@@ -7943,7 +8047,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					Object.defineProperty(target, descriptor.key, descriptor);
 				}
 			}
-			return function (Constructor, protoProps, staticProps) {
+			return function(Constructor, protoProps, staticProps) {
 				if (protoProps) defineProperties(Constructor.prototype, protoProps);
 				if (staticProps) defineProperties(Constructor, staticProps);
 				return Constructor;
@@ -7964,7 +8068,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		 * class representing an input
 		 * @class
 		 */
-		var Input = function () {
+		var Input = function() {
 			function Input(_config, data) {
 				_classCallCheck(this, Input);
 				this.id = data.id;
@@ -7993,31 +8097,31 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			_createClass(Input, [{
 				key: 'mergeConcepts',
 				value: function mergeConcepts(concepts, metadata) {
-					return this._update('merge', concepts, metadata);
-				}
-				/**
-				 * Delete concept from an input
-				 * @param {object[]}         concepts    Object with keys explained below:
-				 *   @param {object}           concepts[].concept
-				 *     @param {string}           concepts[].concept.id        The concept id (required)
-				 *     @param {boolean}          concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
-				 * @param {object}           metadata                      Object with key values to attach to the input (optional)
-				 * @return {Promise(Input, error)} A Promise that is fulfilled with an instance of Input or rejected with an error
-				 */
+						return this._update('merge', concepts, metadata);
+					}
+					/**
+					 * Delete concept from an input
+					 * @param {object[]}         concepts    Object with keys explained below:
+					 *   @param {object}           concepts[].concept
+					 *     @param {string}           concepts[].concept.id        The concept id (required)
+					 *     @param {boolean}          concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
+					 * @param {object}           metadata                      Object with key values to attach to the input (optional)
+					 * @return {Promise(Input, error)} A Promise that is fulfilled with an instance of Input or rejected with an error
+					 */
 			}, {
 				key: 'deleteConcepts',
 				value: function deleteConcepts(concepts, metadata) {
-					return this._update('remove', concepts, metadata);
-				}
-				/**
-				 * Overwrite inputs
-				 * @param {object[]}         concepts                      Array of object with keys explained below:
-				 *   @param {object}           concepts[].concept
-				 *     @param {string}           concepts[].concept.id         The concept id (required)
-				 *     @param {boolean}          concepts[].concept.value      Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
-				 * @param {object}           metadata                      Object with key values to attach to the input (optional)
-				 * @return {Promise(Input, error)} A Promise that is fulfilled with an instance of Input or rejected with an error
-				 */
+						return this._update('remove', concepts, metadata);
+					}
+					/**
+					 * Overwrite inputs
+					 * @param {object[]}         concepts                      Array of object with keys explained below:
+					 *   @param {object}           concepts[].concept
+					 *     @param {string}           concepts[].concept.id         The concept id (required)
+					 *     @param {boolean}          concepts[].concept.value      Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
+					 * @param {object}           metadata                      Object with key values to attach to the input (optional)
+					 * @return {Promise(Input, error)} A Promise that is fulfilled with an instance of Input or rejected with an error
+					 */
 			}, {
 				key: 'overwriteConcepts',
 				value: function overwriteConcepts(concepts, metadata) {
@@ -8043,11 +8147,11 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							data: inputData
 						}]
 					};
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
+					return wrapToken(this._config, function(headers) {
+						return new Promise(function(resolve, reject) {
 							return axios.patch(url, data, {
 								headers: headers
-							}).then(function (response) {
+							}).then(function(response) {
 								if (isSuccess(response)) {
 									resolve(new Input(response.data.input));
 								} else {
@@ -8066,9 +8170,9 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		"./constants": 30,
 		"axios": 4
 	}],
-	26: [function (require, module, exports) {
+	26: [function(require, module, exports) {
 		'use strict';
-		var _createClass = function () {
+		var _createClass = function() {
 			function defineProperties(target, props) {
 				for (var i = 0; i < props.length; i++) {
 					var descriptor = props[i];
@@ -8078,7 +8182,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					Object.defineProperty(target, descriptor.key, descriptor);
 				}
 			}
-			return function (Constructor, protoProps, staticProps) {
+			return function(Constructor, protoProps, staticProps) {
 				if (protoProps) defineProperties(Constructor.prototype, protoProps);
 				if (staticProps) defineProperties(Constructor, staticProps);
 				return Constructor;
@@ -8114,13 +8218,13 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		 * class representing a collection of inputs
 		 * @class
 		 */
-		var Inputs = function () {
+		var Inputs = function() {
 			function Inputs(_config) {
 				var _this = this;
 				var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 				_classCallCheck(this, Inputs);
 				this.rawData = rawData;
-				rawData.forEach(function (inputData, index) {
+				rawData.forEach(function(inputData, index) {
 					if (inputData.input && inputData.score) {
 						inputData.input.score = inputData.score;
 						inputData = inputData.input;
@@ -8140,104 +8244,104 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			_createClass(Inputs, [{
 				key: 'list',
 				value: function list() {
-					var _this2 = this;
-					var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-						page: 1,
-						perPage: 20
-					};
-					var url = '' + this._config.apiEndpoint + INPUTS_PATH;
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
-							axios.get(url, {
-								headers: headers,
-								params: {
-									page: options.page,
-									per_page: options.perPage
-								}
-							}).then(function (response) {
-								if (isSuccess(response)) {
-									resolve(new Inputs(_this2._config, response.data.inputs));
-								} else {
-									reject(response);
-								}
-							}, reject);
+						var _this2 = this;
+						var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+							page: 1,
+							perPage: 20
+						};
+						var url = '' + this._config.apiEndpoint + INPUTS_PATH;
+						return wrapToken(this._config, function(headers) {
+							return new Promise(function(resolve, reject) {
+								axios.get(url, {
+									headers: headers,
+									params: {
+										page: options.page,
+										per_page: options.perPage
+									}
+								}).then(function(response) {
+									if (isSuccess(response)) {
+										resolve(new Inputs(_this2._config, response.data.inputs));
+									} else {
+										reject(response);
+									}
+								}, reject);
+							});
 						});
-					});
-				}
-				/**
-				 * Adds an input or multiple inputs
-				 * @param {object|object[]}        inputs                                Can be a single media object or an array of media objects (max of 128 inputs/call; passing > 128 will throw an exception)
-				 *   @param {object|string}          inputs[].input                        If string, is given, this is assumed to be an image url
-				 *     @param {string}                 inputs[].input.(url|base64)           Can be a publicly accessibly url or base64 string representing image bytes (required)
-				 *     @param {string}                 inputs[].input.id                     ID of input (optional)
-				 *     @param {number[]}               inputs[].input.crop                   An array containing the percent to be cropped from top, left, bottom and right (optional)
-				 *     @param {object[]}               inputs[].input.metadata               Object with key and values pair (value can be string, array or other objects) to attach to the input (optional)
-				 *     @param {object}                 inputs[].input.geo                    Object with latitude and longitude coordinates to associate with an input. Can be used in search query as the proximity of an input to a reference point (optional)
-				 *       @param {number}                 inputs[].input.geo.latitude           +/- latitude val of geodata
-				 *       @param {number}                 inputs[].input.geo.longitude          +/- longitude val of geodata
-				 *     @param {object[]}               inputs[].input.concepts               An array of concepts to attach to media object (optional)
-				 *       @param {object|string}          inputs[].input.concepts[].concept     If string, is given, this is assumed to be concept id with value equals true
-				 *         @param {string}                 inputs[].input.concepts[].concept.id          The concept id (required)
-				 *         @param {boolean}                inputs[].input.concepts[].concept.value       Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
-				 * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
-				 */
+					}
+					/**
+					 * Adds an input or multiple inputs
+					 * @param {object|object[]}        inputs                                Can be a single media object or an array of media objects (max of 128 inputs/call; passing > 128 will throw an exception)
+					 *   @param {object|string}          inputs[].input                        If string, is given, this is assumed to be an image url
+					 *     @param {string}                 inputs[].input.(url|base64)           Can be a publicly accessibly url or base64 string representing image bytes (required)
+					 *     @param {string}                 inputs[].input.id                     ID of input (optional)
+					 *     @param {number[]}               inputs[].input.crop                   An array containing the percent to be cropped from top, left, bottom and right (optional)
+					 *     @param {object[]}               inputs[].input.metadata               Object with key and values pair (value can be string, array or other objects) to attach to the input (optional)
+					 *     @param {object}                 inputs[].input.geo                    Object with latitude and longitude coordinates to associate with an input. Can be used in search query as the proximity of an input to a reference point (optional)
+					 *       @param {number}                 inputs[].input.geo.latitude           +/- latitude val of geodata
+					 *       @param {number}                 inputs[].input.geo.longitude          +/- longitude val of geodata
+					 *     @param {object[]}               inputs[].input.concepts               An array of concepts to attach to media object (optional)
+					 *       @param {object|string}          inputs[].input.concepts[].concept     If string, is given, this is assumed to be concept id with value equals true
+					 *         @param {string}                 inputs[].input.concepts[].concept.id          The concept id (required)
+					 *         @param {boolean}                inputs[].input.concepts[].concept.value       Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
+					 * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
+					 */
 			}, {
 				key: 'create',
 				value: function create(inputs) {
-					var _this3 = this;
-					if (checkType(/(String|Object)/, inputs)) {
-						inputs = [inputs];
-					}
-					var url = '' + this._config.apiEndpoint + INPUTS_PATH;
-					if (inputs.length > MAX_BATCH_SIZE) {
-						throw ERRORS.MAX_INPUTS;
-					}
-					return wrapToken(this._config, function (headers) {
-						var data = {
-							inputs: inputs.map(formatInput)
-						};
-						return new Promise(function (resolve, reject) {
-							axios.post(url, data, {
-								headers: headers
-							}).then(function (response) {
-								if (isSuccess(response)) {
-									resolve(new Inputs(_this3._config, response.data.inputs));
-								} else {
-									reject(response);
-								}
-							}, reject);
+						var _this3 = this;
+						if (checkType(/(String|Object)/, inputs)) {
+							inputs = [inputs];
+						}
+						var url = '' + this._config.apiEndpoint + INPUTS_PATH;
+						if (inputs.length > MAX_BATCH_SIZE) {
+							throw ERRORS.MAX_INPUTS;
+						}
+						return wrapToken(this._config, function(headers) {
+							var data = {
+								inputs: inputs.map(formatInput)
+							};
+							return new Promise(function(resolve, reject) {
+								axios.post(url, data, {
+									headers: headers
+								}).then(function(response) {
+									if (isSuccess(response)) {
+										resolve(new Inputs(_this3._config, response.data.inputs));
+									} else {
+										reject(response);
+									}
+								}, reject);
+							});
 						});
-					});
-				}
-				/**
-				 * Get input by id
-				 * @param {String}    id  The input id
-				 * @return {Promise(Input, error)} A Promise that is fulfilled with an instance of Input or rejected with an error
-				 */
+					}
+					/**
+					 * Get input by id
+					 * @param {String}    id  The input id
+					 * @return {Promise(Input, error)} A Promise that is fulfilled with an instance of Input or rejected with an error
+					 */
 			}, {
 				key: 'get',
 				value: function get(id) {
-					var _this4 = this;
-					var url = '' + this._config.apiEndpoint + replaceVars(INPUT_PATH, [id]);
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
-							axios.get(url, {
-								headers: headers
-							}).then(function (response) {
-								if (isSuccess(response)) {
-									resolve(new Input(_this4._config, response.data.input));
-								} else {
-									reject(response);
-								}
-							}, reject);
+						var _this4 = this;
+						var url = '' + this._config.apiEndpoint + replaceVars(INPUT_PATH, [id]);
+						return wrapToken(this._config, function(headers) {
+							return new Promise(function(resolve, reject) {
+								axios.get(url, {
+									headers: headers
+								}).then(function(response) {
+									if (isSuccess(response)) {
+										resolve(new Input(_this4._config, response.data.input));
+									} else {
+										reject(response);
+									}
+								}, reject);
+							});
 						});
-					});
-				}
-				/**
-				 * Delete an input or a list of inputs by id or all inputs if no id is passed
-				 * @param {string|string[]}    id           The id of input to delete (optional)
-				 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-				 */
+					}
+					/**
+					 * Delete an input or a list of inputs by id or all inputs if no id is passed
+					 * @param {string|string[]}    id           The id of input to delete (optional)
+					 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+					 */
 			}, {
 				key: 'delete',
 				value: function _delete() {
@@ -8246,7 +8350,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					// delete an input
 					if (checkType(/String/, id)) {
 						var url = '' + this._config.apiEndpoint + replaceVars(INPUT_PATH, [id]);
-						val = wrapToken(this._config, function (headers) {
+						val = wrapToken(this._config, function(headers) {
 							return axios.delete(url, {
 								headers: headers
 							});
@@ -8259,196 +8363,196 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			}, {
 				key: '_deleteInputs',
 				value: function _deleteInputs() {
-					var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-					var url = '' + this._config.apiEndpoint + INPUTS_PATH;
-					return wrapToken(this._config, function (headers) {
-						var data = id === null ? {
-							delete_all: true
-						} : {
-							ids: id
-						};
-						return axios({
-							url: url,
-							method: 'delete',
-							headers: headers,
-							data: data
+						var id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+						var url = '' + this._config.apiEndpoint + INPUTS_PATH;
+						return wrapToken(this._config, function(headers) {
+							var data = id === null ? {
+								delete_all: true
+							} : {
+								ids: id
+							};
+							return axios({
+								url: url,
+								method: 'delete',
+								headers: headers,
+								data: data
+							});
 						});
-					});
-				}
-				/**
-				 * Merge concepts to inputs in bulk
-				 * @param {object[]}         inputs    List of concepts to update (max of 128 inputs/call; passing > 128 will throw an exception)
-				 *   @param {object}           inputs[].input
-				 *     @param {string}           inputs[].input.id        The id of the input to update
-				 *     @param {string}           inputs[].input.concepts  Object with keys explained below:
-				 *       @param {object}           inputs[].input.concepts[].concept
-				 *         @param {string}           inputs[].input.concepts[].concept.id        The concept id (required)
-				 *         @param {boolean}          inputs[].input.concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
-				 * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
-				 */
+					}
+					/**
+					 * Merge concepts to inputs in bulk
+					 * @param {object[]}         inputs    List of concepts to update (max of 128 inputs/call; passing > 128 will throw an exception)
+					 *   @param {object}           inputs[].input
+					 *     @param {string}           inputs[].input.id        The id of the input to update
+					 *     @param {string}           inputs[].input.concepts  Object with keys explained below:
+					 *       @param {object}           inputs[].input.concepts[].concept
+					 *         @param {string}           inputs[].input.concepts[].concept.id        The concept id (required)
+					 *         @param {boolean}          inputs[].input.concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
+					 * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
+					 */
 			}, {
 				key: 'mergeConcepts',
 				value: function mergeConcepts(inputs) {
-					inputs.action = 'merge';
-					return this.update(inputs);
-				}
-				/**
-				 * Delete concepts to inputs in bulk
-				 * @param {object[]}         inputs    List of concepts to update (max of 128 inputs/call; passing > 128 will throw an exception)
-				 *   @param {object}           inputs[].input
-				 *     @param {string}           inputs[].input.id                           The id of the input to update
-				 *     @param {string}           inputs[].input.concepts                     Object with keys explained below:
-				 *       @param {object}           inputs[].input.concepts[].concept
-				 *         @param {string}           inputs[].input.concepts[].concept.id        The concept id (required)
-				 *         @param {boolean}          inputs[].input.concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
-				 * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
-				 */
+						inputs.action = 'merge';
+						return this.update(inputs);
+					}
+					/**
+					 * Delete concepts to inputs in bulk
+					 * @param {object[]}         inputs    List of concepts to update (max of 128 inputs/call; passing > 128 will throw an exception)
+					 *   @param {object}           inputs[].input
+					 *     @param {string}           inputs[].input.id                           The id of the input to update
+					 *     @param {string}           inputs[].input.concepts                     Object with keys explained below:
+					 *       @param {object}           inputs[].input.concepts[].concept
+					 *         @param {string}           inputs[].input.concepts[].concept.id        The concept id (required)
+					 *         @param {boolean}          inputs[].input.concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
+					 * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
+					 */
 			}, {
 				key: 'deleteConcepts',
 				value: function deleteConcepts(inputs) {
-					inputs.action = 'remove';
-					return this.update(inputs);
-				}
-				/**
-				 * Overwrite inputs in bulk
-				 * @param {object[]}         inputs    List of concepts to update (max of 128 inputs/call; passing > 128 will throw an exception)
-				 *   @param {object}           inputs[].input
-				 *     @param {string}           inputs[].input.id                           The id of the input to update
-				 *     @param {string}           inputs[].input.concepts                     Object with keys explained below:
-				 *       @param {object}           inputs[].input.concepts[].concept
-				 *         @param {string}           inputs[].input.concepts[].concept.id        The concept id (required)
-				 *         @param {boolean}          inputs[].input.concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
-				 * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
-				 */
+						inputs.action = 'remove';
+						return this.update(inputs);
+					}
+					/**
+					 * Overwrite inputs in bulk
+					 * @param {object[]}         inputs    List of concepts to update (max of 128 inputs/call; passing > 128 will throw an exception)
+					 *   @param {object}           inputs[].input
+					 *     @param {string}           inputs[].input.id                           The id of the input to update
+					 *     @param {string}           inputs[].input.concepts                     Object with keys explained below:
+					 *       @param {object}           inputs[].input.concepts[].concept
+					 *         @param {string}           inputs[].input.concepts[].concept.id        The concept id (required)
+					 *         @param {boolean}          inputs[].input.concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
+					 * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
+					 */
 			}, {
 				key: 'overwriteConcepts',
 				value: function overwriteConcepts(inputs) {
-					inputs.action = 'overwrite';
-					return this.update(inputs);
-				}
-				/**
-				 * @param {object[]}         inputs    List of concepts to update (max of 128 inputs/call; passing > 128 will throw an exception)
-				 *   @param {object}           inputs[].input
-				 *     @param {string}           inputs[].input.id                           The id of the input to update
-				 *     @param {object}           inputs[].input.metadata                     Object with key values to attach to the input (optional)
-				 *     @param {object}           inputs[].input.geo                          Object with latitude and longitude coordinates to associate with an input. Can be used in search query as the proximity of an input to a reference point (optional)
-				 *       @param {number}           inputs[].input.geo.latitude                 +/- latitude val of geodata
-				 *       @param {number}           inputs[].input.geo.longitude                +/- longitude val of geodata
-				 *     @param {string}           inputs[].input.concepts                     Object with keys explained below (optional):
-				 *       @param {object}           inputs[].input.concepts[].concept
-				 *         @param {string}           inputs[].input.concepts[].concept.id        The concept id (required)
-				 *         @param {boolean}          inputs[].input.concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
-				 * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
-				 */
+						inputs.action = 'overwrite';
+						return this.update(inputs);
+					}
+					/**
+					 * @param {object[]}         inputs    List of concepts to update (max of 128 inputs/call; passing > 128 will throw an exception)
+					 *   @param {object}           inputs[].input
+					 *     @param {string}           inputs[].input.id                           The id of the input to update
+					 *     @param {object}           inputs[].input.metadata                     Object with key values to attach to the input (optional)
+					 *     @param {object}           inputs[].input.geo                          Object with latitude and longitude coordinates to associate with an input. Can be used in search query as the proximity of an input to a reference point (optional)
+					 *       @param {number}           inputs[].input.geo.latitude                 +/- latitude val of geodata
+					 *       @param {number}           inputs[].input.geo.longitude                +/- longitude val of geodata
+					 *     @param {string}           inputs[].input.concepts                     Object with keys explained below (optional):
+					 *       @param {object}           inputs[].input.concepts[].concept
+					 *         @param {string}           inputs[].input.concepts[].concept.id        The concept id (required)
+					 *         @param {boolean}          inputs[].input.concepts[].concept.value     Whether or not the input is a positive (true) or negative (false) example of the concept (default: true)
+					 * @return {Promise(Inputs, error)} A Promise that is fulfilled with an instance of Inputs or rejected with an error
+					 */
 			}, {
 				key: 'update',
 				value: function update(inputs) {
-					var _this5 = this;
-					var url = '' + this._config.apiEndpoint + INPUTS_PATH;
-					var inputsList = Array.isArray(inputs) ? inputs : [inputs];
-					if (inputsList.length > MAX_BATCH_SIZE) {
-						throw ERRORS.MAX_INPUTS;
-					}
-					var data = {
-						action: inputs.action,
-						inputs: inputsList.map(function (input) {
-							return formatInput(input, false);
-						})
-					};
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
-							axios.patch(url, data, {
-								headers: headers
-							}).then(function (response) {
-								if (isSuccess(response)) {
-									resolve(new Inputs(_this5._config, response.data.inputs));
-								} else {
-									reject(response);
-								}
-							}, reject);
+						var _this5 = this;
+						var url = '' + this._config.apiEndpoint + INPUTS_PATH;
+						var inputsList = Array.isArray(inputs) ? inputs : [inputs];
+						if (inputsList.length > MAX_BATCH_SIZE) {
+							throw ERRORS.MAX_INPUTS;
+						}
+						var data = {
+							action: inputs.action,
+							inputs: inputsList.map(function(input) {
+								return formatInput(input, false);
+							})
+						};
+						return wrapToken(this._config, function(headers) {
+							return new Promise(function(resolve, reject) {
+								axios.patch(url, data, {
+									headers: headers
+								}).then(function(response) {
+									if (isSuccess(response)) {
+										resolve(new Inputs(_this5._config, response.data.inputs));
+									} else {
+										reject(response);
+									}
+								}, reject);
+							});
 						});
-					});
-				}
-				/**
-				 * Search for inputs or outputs based on concepts or images
-				 *   @param {object[]}               queries          List of all predictions to match with
-				 *     @param {object}                 queries[].concept            An object with the following keys:
-				 *       @param {string}                 queries[].concept.id          The concept id
-				 *       @param {string}                 queries[].concept.type        Search over 'input' to get input matches to criteria or 'output' to get inputs that are visually similar to the criteria (default: 'output')
-				 *       @param {string}                 queries[].concept.name        The concept name
-				 *       @param {boolean}                queries[].concept.value       Indicates whether or not the term should match with the prediction returned (default: true)
-				 *     @param {object}                 queries[].input              An image object that contains the following keys:
-				 *       @param {string}                 queries[].input.id            The input id
-				 *       @param {string}                 queries[].input.type          Search over 'input' to get input matches to criteria or 'output' to get inputs that are visually similar to the criteria (default: 'output')
-				 *       @param {string}                 queries[].input.(base64|url)  Can be a publicly accessibly url or base64 string representing image bytes (required)
-				 *       @param {number[]}               queries[].input.crop          An array containing the percent to be cropped from top, left, bottom and right (optional)
-				 *       @param {object}                 queries[].input.metadata      An object with key and value specified by user to refine search with (optional)
-				 * @param {Object}                   options       Object with keys explained below: (optional)
-				 *    @param {Number}                  options.page          The page number (optional, default: 1)
-				 *    @param {Number}                  options.perPage       Number of images to return per page (optional, default: 20)
-				 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-				 */
+					}
+					/**
+					 * Search for inputs or outputs based on concepts or images
+					 *   @param {object[]}               queries          List of all predictions to match with
+					 *     @param {object}                 queries[].concept            An object with the following keys:
+					 *       @param {string}                 queries[].concept.id          The concept id
+					 *       @param {string}                 queries[].concept.type        Search over 'input' to get input matches to criteria or 'output' to get inputs that are visually similar to the criteria (default: 'output')
+					 *       @param {string}                 queries[].concept.name        The concept name
+					 *       @param {boolean}                queries[].concept.value       Indicates whether or not the term should match with the prediction returned (default: true)
+					 *     @param {object}                 queries[].input              An image object that contains the following keys:
+					 *       @param {string}                 queries[].input.id            The input id
+					 *       @param {string}                 queries[].input.type          Search over 'input' to get input matches to criteria or 'output' to get inputs that are visually similar to the criteria (default: 'output')
+					 *       @param {string}                 queries[].input.(base64|url)  Can be a publicly accessibly url or base64 string representing image bytes (required)
+					 *       @param {number[]}               queries[].input.crop          An array containing the percent to be cropped from top, left, bottom and right (optional)
+					 *       @param {object}                 queries[].input.metadata      An object with key and value specified by user to refine search with (optional)
+					 * @param {Object}                   options       Object with keys explained below: (optional)
+					 *    @param {Number}                  options.page          The page number (optional, default: 1)
+					 *    @param {Number}                  options.perPage       Number of images to return per page (optional, default: 20)
+					 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+					 */
 			}, {
 				key: 'search',
 				value: function search() {
-					var queries = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-					var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
-						page: 1,
-						perPage: 20
-					};
-					var formattedAnds = [];
-					var url = '' + this._config.apiEndpoint + SEARCH_PATH;
-					var data = {
-						query: {
-							ands: []
-						},
-						pagination: {
-							page: options.page,
-							per_page: options.perPage
-						}
-					};
-					if (!Array.isArray(queries)) {
-						queries = [queries];
-					}
-					if (queries.length > 0) {
-						queries.forEach(function (query) {
-							if (query.input) {
-								formattedAnds = formattedAnds.concat(formatImagesSearch(query.input));
-							} else if (query.concept) {
-								formattedAnds = formattedAnds.concat(formatConceptsSearch(query.concept));
+						var queries = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+						var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+							page: 1,
+							perPage: 20
+						};
+						var formattedAnds = [];
+						var url = '' + this._config.apiEndpoint + SEARCH_PATH;
+						var data = {
+							query: {
+								ands: []
+							},
+							pagination: {
+								page: options.page,
+								per_page: options.perPage
 							}
-						});
-						data.query.ands = formattedAnds;
-					}
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
-							axios.post(url, data, {
-								headers: headers
-							}).then(function (response) {
-								if (isSuccess(response)) {
-									var _data = clone(response.data);
-									_data.rawData = clone(response.data);
-									resolve(_data);
-								} else {
-									reject(response);
+						};
+						if (!Array.isArray(queries)) {
+							queries = [queries];
+						}
+						if (queries.length > 0) {
+							queries.forEach(function(query) {
+								if (query.input) {
+									formattedAnds = formattedAnds.concat(formatImagesSearch(query.input));
+								} else if (query.concept) {
+									formattedAnds = formattedAnds.concat(formatConceptsSearch(query.concept));
 								}
-							}, reject);
+							});
+							data.query.ands = formattedAnds;
+						}
+						return wrapToken(this._config, function(headers) {
+							return new Promise(function(resolve, reject) {
+								axios.post(url, data, {
+									headers: headers
+								}).then(function(response) {
+									if (isSuccess(response)) {
+										var _data = clone(response.data);
+										_data.rawData = clone(response.data);
+										resolve(_data);
+									} else {
+										reject(response);
+									}
+								}, reject);
+							});
 						});
-					});
-				}
-				/**
-				 * Get inputs status (number of uploaded, in process or failed inputs)
-				 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-				 */
+					}
+					/**
+					 * Get inputs status (number of uploaded, in process or failed inputs)
+					 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+					 */
 			}, {
 				key: 'getStatus',
 				value: function getStatus() {
 					var url = '' + this._config.apiEndpoint + INPUTS_STATUS_PATH;
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
+					return wrapToken(this._config, function(headers) {
+						return new Promise(function(resolve, reject) {
 							axios.get(url, {
 								headers: headers
-							}).then(function (response) {
+							}).then(function(response) {
 								if (isSuccess(response)) {
 									var data = clone(response.data);
 									data.rawData = clone(response.data);
@@ -8471,9 +8575,9 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		"./utils": 33,
 		"axios": 4
 	}],
-	27: [function (require, module, exports) {
+	27: [function(require, module, exports) {
 		'use strict';
-		var _createClass = function () {
+		var _createClass = function() {
 			function defineProperties(target, props) {
 				for (var i = 0; i < props.length; i++) {
 					var descriptor = props[i];
@@ -8483,7 +8587,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					Object.defineProperty(target, descriptor.key, descriptor);
 				}
 			}
-			return function (Constructor, protoProps, staticProps) {
+			return function(Constructor, protoProps, staticProps) {
 				if (protoProps) defineProperties(Constructor.prototype, protoProps);
 				if (staticProps) defineProperties(Constructor, staticProps);
 				return Constructor;
@@ -8527,7 +8631,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		 * class representing a model
 		 * @class
 		 */
-		var Model = function () {
+		var Model = function() {
 			function Model(_config, data) {
 				_classCallCheck(this, Model);
 				this._config = _config;
@@ -8553,100 +8657,100 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			_createClass(Model, [{
 				key: 'mergeConcepts',
 				value: function mergeConcepts() {
-					var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-					var conceptsArr = Array.isArray(concepts) ? concepts : [concepts];
-					return this.update({
-						action: 'merge',
-						concepts: conceptsArr
-					});
-				}
-				/**
-				 * Remove concepts from a model
-				 * @param {object[]}      concepts    List of concept objects with id
-				 * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
-				 */
+						var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+						var conceptsArr = Array.isArray(concepts) ? concepts : [concepts];
+						return this.update({
+							action: 'merge',
+							concepts: conceptsArr
+						});
+					}
+					/**
+					 * Remove concepts from a model
+					 * @param {object[]}      concepts    List of concept objects with id
+					 * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
+					 */
 			}, {
 				key: 'deleteConcepts',
 				value: function deleteConcepts() {
-					var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-					var conceptsArr = Array.isArray(concepts) ? concepts : [concepts];
-					return this.update({
-						action: 'remove',
-						concepts: conceptsArr
-					});
-				}
-				/**
-				 * Overwrite concepts in a model
-				 * @param {object[]}      concepts    List of concept objects with id
-				 * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
-				 */
+						var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+						var conceptsArr = Array.isArray(concepts) ? concepts : [concepts];
+						return this.update({
+							action: 'remove',
+							concepts: conceptsArr
+						});
+					}
+					/**
+					 * Overwrite concepts in a model
+					 * @param {object[]}      concepts    List of concept objects with id
+					 * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
+					 */
 			}, {
 				key: 'overwriteConcepts',
 				value: function overwriteConcepts() {
-					var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-					var conceptsArr = Array.isArray(concepts) ? concepts : [concepts];
-					return this.update({
-						action: 'overwrite',
-						concepts: conceptsArr
-					});
-				}
-				/**
-				 * Update a model's output config or concepts
-				 * @param {object}               model                                 An object with any of the following attrs:
-				 *   @param {string}               name                                  The new name of the model to update with
-				 *   @param {boolean}              conceptsMutuallyExclusive             Do you expect to see more than one of the concepts in this model in the SAME image? Set to false (default) if so. Otherwise, set to true.
-				 *   @param {boolean}              closedEnvironment                     Do you expect to run the trained model on images that do not contain ANY of the concepts in the model? Set to false (default) if so. Otherwise, set to true.
-				 *   @param {object[]}             concepts                              An array of concept objects or string
-				 *     @param {object|string}        concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
-				 *       @param {string}             concepts[].concept.id                   The id of the concept to attach to the model
-				 *   @param {object[]}             action                                The action to perform on the given concepts. Possible values are 'merge', 'remove', or 'overwrite'. Default: 'merge'
-				 * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
-				 */
+						var concepts = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+						var conceptsArr = Array.isArray(concepts) ? concepts : [concepts];
+						return this.update({
+							action: 'overwrite',
+							concepts: conceptsArr
+						});
+					}
+					/**
+					 * Update a model's output config or concepts
+					 * @param {object}               model                                 An object with any of the following attrs:
+					 *   @param {string}               name                                  The new name of the model to update with
+					 *   @param {boolean}              conceptsMutuallyExclusive             Do you expect to see more than one of the concepts in this model in the SAME image? Set to false (default) if so. Otherwise, set to true.
+					 *   @param {boolean}              closedEnvironment                     Do you expect to run the trained model on images that do not contain ANY of the concepts in the model? Set to false (default) if so. Otherwise, set to true.
+					 *   @param {object[]}             concepts                              An array of concept objects or string
+					 *     @param {object|string}        concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
+					 *       @param {string}             concepts[].concept.id                   The id of the concept to attach to the model
+					 *   @param {object[]}             action                                The action to perform on the given concepts. Possible values are 'merge', 'remove', or 'overwrite'. Default: 'merge'
+					 * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
+					 */
 			}, {
 				key: 'update',
 				value: function update(obj) {
-					var _this = this;
-					var url = '' + this._config.apiEndpoint + MODELS_PATH;
-					var modelData = [obj];
-					var data = {
-						models: modelData.map(function (m) {
-							return formatModel(Object.assign(m, {
-								id: _this.id
-							}));
-						})
-					};
-					if (Array.isArray(obj.concepts)) {
-						data['action'] = obj.action || 'merge';
-					}
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
-							axios.patch(url, data, {
-								headers: headers
-							}).then(function (response) {
-								if (isSuccess(response)) {
-									resolve(new Model(_this._config, response.data.models[0]));
-								} else {
-									reject(response);
-								}
-							}, reject);
+						var _this = this;
+						var url = '' + this._config.apiEndpoint + MODELS_PATH;
+						var modelData = [obj];
+						var data = {
+							models: modelData.map(function(m) {
+								return formatModel(Object.assign(m, {
+									id: _this.id
+								}));
+							})
+						};
+						if (Array.isArray(obj.concepts)) {
+							data['action'] = obj.action || 'merge';
+						}
+						return wrapToken(this._config, function(headers) {
+							return new Promise(function(resolve, reject) {
+								axios.patch(url, data, {
+									headers: headers
+								}).then(function(response) {
+									if (isSuccess(response)) {
+										resolve(new Model(_this._config, response.data.models[0]));
+									} else {
+										reject(response);
+									}
+								}, reject);
+							});
 						});
-					});
-				}
-				/**
-				 * Create a new model version
-				 * @param {boolean}       sync     If true, this returns after model has completely trained. If false, this immediately returns default api response.
-				 * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
-				 */
+					}
+					/**
+					 * Create a new model version
+					 * @param {boolean}       sync     If true, this returns after model has completely trained. If false, this immediately returns default api response.
+					 * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
+					 */
 			}, {
 				key: 'train',
 				value: function train(sync) {
 					var _this2 = this;
 					var url = '' + this._config.apiEndpoint + replaceVars(MODEL_VERSIONS_PATH, [this.id]);
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
+					return wrapToken(this._config, function(headers) {
+						return new Promise(function(resolve, reject) {
 							axios.post(url, null, {
 								headers: headers
-							}).then(function (response) {
+							}).then(function(response) {
 								if (isSuccess(response)) {
 									if (sync) {
 										var timeStart = Date.now();
@@ -8664,197 +8768,197 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			}, {
 				key: '_pollTrain',
 				value: function _pollTrain(timeStart, resolve, reject) {
-					var _this3 = this;
-					clearTimeout(this.pollTimeout);
-					if (Date.now() - timeStart >= SYNC_TIMEOUT) {
-						return reject({
-							status: 'Error',
-							message: 'Sync call timed out'
-						});
-					}
-					this.getOutputInfo().then(function (model) {
-						var modelStatusCode = model.modelVersion.status.code.toString();
-						if (modelStatusCode === MODEL_QUEUED_FOR_TRAINING || modelStatusCode === MODEL_TRAINING) {
-							_this3.pollTimeout = setTimeout(function () {
-								return _this3._pollTrain(timeStart, resolve, reject);
-							}, POLLTIME);
-						} else {
-							resolve(model);
+						var _this3 = this;
+						clearTimeout(this.pollTimeout);
+						if (Date.now() - timeStart >= SYNC_TIMEOUT) {
+							return reject({
+								status: 'Error',
+								message: 'Sync call timed out'
+							});
 						}
-					}, reject).catch(reject);
-				}
-				/**
-				 * Returns model ouputs according to inputs
-				 * @param {object[]|object|string}       inputs    An array of objects/object/string pointing to an image resource. A string can either be a url or base64 image bytes. Object keys explained below:
-				 *    @param {object}                      inputs[].image     Object with keys explained below:
-				 *       @param {string}                     inputs[].image.(url|base64)   Can be a publicly accessibly url or base64 string representing image bytes (required)
-				 *       @param {number[]}                   inputs[].image.crop           An array containing the percent to be cropped from top, left, bottom and right (optional)
-				 * @param {object|string} config An object with keys explained below. If a string is passed instead, it will be treated as the language (backwards compatibility)
-				 *   @param {string} config.language A string code representing the language to return results in (example: 'zh' for simplified Chinese, 'ru' for Russian, 'ja' for Japanese)
-				 *   @param {boolean} config.video indicates if the input should be processed as a video
-				 *   @param {object[]} config.selectConcepts An array of concepts to return. Each object in the array will have a form of {name: <CONCEPT_NAME>} or {id: CONCEPT_ID}
-				 *   @param {float} config.minValue The minimum confidence threshold that a result must meet. From 0.0 to 1.0
-				 *   @param {number} config.maxConcepts The maximum number of concepts to return
-				 * @param {boolean} isVideo  Deprecated: indicates if the input should be processed as a video (default false). Deprecated in favor of using config object
-				 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-				 */
+						this.getOutputInfo().then(function(model) {
+							var modelStatusCode = model.modelVersion.status.code.toString();
+							if (modelStatusCode === MODEL_QUEUED_FOR_TRAINING || modelStatusCode === MODEL_TRAINING) {
+								_this3.pollTimeout = setTimeout(function() {
+									return _this3._pollTrain(timeStart, resolve, reject);
+								}, POLLTIME);
+							} else {
+								resolve(model);
+							}
+						}, reject).catch(reject);
+					}
+					/**
+					 * Returns model ouputs according to inputs
+					 * @param {object[]|object|string}       inputs    An array of objects/object/string pointing to an image resource. A string can either be a url or base64 image bytes. Object keys explained below:
+					 *    @param {object}                      inputs[].image     Object with keys explained below:
+					 *       @param {string}                     inputs[].image.(url|base64)   Can be a publicly accessibly url or base64 string representing image bytes (required)
+					 *       @param {number[]}                   inputs[].image.crop           An array containing the percent to be cropped from top, left, bottom and right (optional)
+					 * @param {object|string} config An object with keys explained below. If a string is passed instead, it will be treated as the language (backwards compatibility)
+					 *   @param {string} config.language A string code representing the language to return results in (example: 'zh' for simplified Chinese, 'ru' for Russian, 'ja' for Japanese)
+					 *   @param {boolean} config.video indicates if the input should be processed as a video
+					 *   @param {object[]} config.selectConcepts An array of concepts to return. Each object in the array will have a form of {name: <CONCEPT_NAME>} or {id: CONCEPT_ID}
+					 *   @param {float} config.minValue The minimum confidence threshold that a result must meet. From 0.0 to 1.0
+					 *   @param {number} config.maxConcepts The maximum number of concepts to return
+					 * @param {boolean} isVideo  Deprecated: indicates if the input should be processed as a video (default false). Deprecated in favor of using config object
+					 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+					 */
 			}, {
 				key: 'predict',
 				value: function predict(inputs) {
-					var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-					var isVideo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-					if (checkType(/String/, config)) {
-						console.warn('passing the language as a string is deprecated, consider using the configuration object instead');
-						config = {
-							language: config
-						};
-					}
-					if (isVideo) {
-						console.warn('"isVideo" argument is deprecated, consider using the configuration object instead');
-						config.video = isVideo;
-					}
-					var video = config.video || false;
-					delete config.video;
-					if (checkType(/(Object|String)/, inputs)) {
-						inputs = [inputs];
-					}
-					var url = '' + this._config.apiEndpoint + (this.versionId ? replaceVars(VERSION_PREDICT_PATH, [this.id, this.versionId]) : replaceVars(PREDICT_PATH, [this.id]));
-					return wrapToken(this._config, function (headers) {
-						var params = {
-							inputs: inputs.map(function (input) {
-								return formatMediaPredict(input, video ? 'video' : 'image');
-							})
-						};
-						if (config && Object.getOwnPropertyNames(config).length > 0) {
-							params['model'] = {
-								output_info: {
-									output_config: formatObjectForSnakeCase(config)
-								}
+						var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+						var isVideo = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+						if (checkType(/String/, config)) {
+							console.warn('passing the language as a string is deprecated, consider using the configuration object instead');
+							config = {
+								language: config
 							};
 						}
-						return new Promise(function (resolve, reject) {
-							axios.post(url, params, {
-								headers: headers
-							}).then(function (response) {
-								var data = clone(response.data);
-								data.rawData = clone(response.data);
-								resolve(data);
-							}, reject);
+						if (isVideo) {
+							console.warn('"isVideo" argument is deprecated, consider using the configuration object instead');
+							config.video = isVideo;
+						}
+						var video = config.video || false;
+						delete config.video;
+						if (checkType(/(Object|String)/, inputs)) {
+							inputs = [inputs];
+						}
+						var url = '' + this._config.apiEndpoint + (this.versionId ? replaceVars(VERSION_PREDICT_PATH, [this.id, this.versionId]) : replaceVars(PREDICT_PATH, [this.id]));
+						return wrapToken(this._config, function(headers) {
+							var params = {
+								inputs: inputs.map(function(input) {
+									return formatMediaPredict(input, video ? 'video' : 'image');
+								})
+							};
+							if (config && Object.getOwnPropertyNames(config).length > 0) {
+								params['model'] = {
+									output_info: {
+										output_config: formatObjectForSnakeCase(config)
+									}
+								};
+							}
+							return new Promise(function(resolve, reject) {
+								axios.post(url, params, {
+									headers: headers
+								}).then(function(response) {
+									var data = clone(response.data);
+									data.rawData = clone(response.data);
+									resolve(data);
+								}, reject);
+							});
 						});
-					});
-				}
-				/**
-				 * Returns a version of the model specified by its id
-				 * @param {string}     versionId   The model's id
-				 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-				 */
+					}
+					/**
+					 * Returns a version of the model specified by its id
+					 * @param {string}     versionId   The model's id
+					 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+					 */
 			}, {
 				key: 'getVersion',
 				value: function getVersion(versionId) {
-					var url = '' + this._config.apiEndpoint + replaceVars(MODEL_VERSION_PATH, [this.id, versionId]);
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
-							axios.get(url, {
-								headers: headers
-							}).then(function (response) {
-								var data = clone(response.data);
-								data.rawData = clone(response.data);
-								resolve(data);
-							}, reject);
+						var url = '' + this._config.apiEndpoint + replaceVars(MODEL_VERSION_PATH, [this.id, versionId]);
+						return wrapToken(this._config, function(headers) {
+							return new Promise(function(resolve, reject) {
+								axios.get(url, {
+									headers: headers
+								}).then(function(response) {
+									var data = clone(response.data);
+									data.rawData = clone(response.data);
+									resolve(data);
+								}, reject);
+							});
 						});
-					});
-				}
-				/**
-				 * Returns a list of versions of the model
-				 * @param {object}     options     Object with keys explained below: (optional)
-				 *   @param {number}     options.page        The page number (optional, default: 1)
-				 *   @param {number}     options.perPage     Number of images to return per page (optional, default: 20)
-				 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-				 */
+					}
+					/**
+					 * Returns a list of versions of the model
+					 * @param {object}     options     Object with keys explained below: (optional)
+					 *   @param {number}     options.page        The page number (optional, default: 1)
+					 *   @param {number}     options.perPage     Number of images to return per page (optional, default: 20)
+					 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+					 */
 			}, {
 				key: 'getVersions',
 				value: function getVersions() {
-					var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-						page: 1,
-						perPage: 20
-					};
-					var url = '' + this._config.apiEndpoint + replaceVars(MODEL_VERSIONS_PATH, [this.id]);
-					return wrapToken(this._config, function (headers) {
-						var data = {
-							headers: headers,
-							params: {
-								'per_page': options.perPage,
-								'page': options.page
-							}
+						var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+							page: 1,
+							perPage: 20
 						};
-						return new Promise(function (resolve, reject) {
-							axios.get(url, data).then(function (response) {
-								var data = clone(response.data);
-								data.rawData = clone(response.data);
-								resolve(data);
-							}, reject);
-						});
-					});
-				}
-				/**
-				 * Returns all the model's output info
-				 * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
-				 */
-			}, {
-				key: 'getOutputInfo',
-				value: function getOutputInfo() {
-					var _this4 = this;
-					var url = '' + this._config.apiEndpoint + replaceVars(MODEL_OUTPUT_PATH, [this.id]);
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
-							axios.get(url, {
-								headers: headers
-							}).then(function (response) {
-								resolve(new Model(_this4._config, response.data.model));
-							}, reject);
-						});
-					});
-				}
-				/**
-				 * Returns all the model's inputs
-				 * @param {object}     options     Object with keys explained below: (optional)
-				 *   @param {number}     options.page        The page number (optional, default: 1)
-				 *   @param {number}     options.perPage     Number of images to return per page (optional, default: 20)
-				 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-				 */
-			}, {
-				key: 'getInputs',
-				value: function getInputs() {
-					var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-						page: 1,
-						perPage: 20
-					};
-					var url = '' + this._config.apiEndpoint + (this.versionId ? replaceVars(MODEL_VERSION_INPUTS_PATH, [this.id, this.versionId]) : replaceVars(MODEL_INPUTS_PATH, [this.id]));
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
-							axios.get(url, {
+						var url = '' + this._config.apiEndpoint + replaceVars(MODEL_VERSIONS_PATH, [this.id]);
+						return wrapToken(this._config, function(headers) {
+							var data = {
+								headers: headers,
 								params: {
 									'per_page': options.perPage,
 									'page': options.page
-								},
-								headers: headers
-							}).then(function (response) {
-								var data = clone(response.data);
-								data.rawData = clone(response.data);
-								resolve(data);
-							}, reject);
+								}
+							};
+							return new Promise(function(resolve, reject) {
+								axios.get(url, data).then(function(response) {
+									var data = clone(response.data);
+									data.rawData = clone(response.data);
+									resolve(data);
+								}, reject);
+							});
 						});
-					});
-				}
-				/**
-				 *
-				 * @param {string} input A string pointing to an image resource. A string must be a url
-				 * @param {object} config A configuration object consisting of the following required keys
-				 *   @param {string} config.id The id of the feedback request
-				 *   @param {object} config.data The feedback data to be sent
-				 *   @param {object} config.info Meta data related to the feedback request
-				 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-				 */
+					}
+					/**
+					 * Returns all the model's output info
+					 * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
+					 */
+			}, {
+				key: 'getOutputInfo',
+				value: function getOutputInfo() {
+						var _this4 = this;
+						var url = '' + this._config.apiEndpoint + replaceVars(MODEL_OUTPUT_PATH, [this.id]);
+						return wrapToken(this._config, function(headers) {
+							return new Promise(function(resolve, reject) {
+								axios.get(url, {
+									headers: headers
+								}).then(function(response) {
+									resolve(new Model(_this4._config, response.data.model));
+								}, reject);
+							});
+						});
+					}
+					/**
+					 * Returns all the model's inputs
+					 * @param {object}     options     Object with keys explained below: (optional)
+					 *   @param {number}     options.page        The page number (optional, default: 1)
+					 *   @param {number}     options.perPage     Number of images to return per page (optional, default: 20)
+					 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+					 */
+			}, {
+				key: 'getInputs',
+				value: function getInputs() {
+						var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+							page: 1,
+							perPage: 20
+						};
+						var url = '' + this._config.apiEndpoint + (this.versionId ? replaceVars(MODEL_VERSION_INPUTS_PATH, [this.id, this.versionId]) : replaceVars(MODEL_INPUTS_PATH, [this.id]));
+						return wrapToken(this._config, function(headers) {
+							return new Promise(function(resolve, reject) {
+								axios.get(url, {
+									params: {
+										'per_page': options.perPage,
+										'page': options.page
+									},
+									headers: headers
+								}).then(function(response) {
+									var data = clone(response.data);
+									data.rawData = clone(response.data);
+									resolve(data);
+								}, reject);
+							});
+						});
+					}
+					/**
+					 *
+					 * @param {string} input A string pointing to an image resource. A string must be a url
+					 * @param {object} config A configuration object consisting of the following required keys
+					 *   @param {string} config.id The id of the feedback request
+					 *   @param {object} config.data The feedback data to be sent
+					 *   @param {object} config.info Meta data related to the feedback request
+					 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+					 */
 			}, {
 				key: 'feedback',
 				value: function feedback(input, _ref) {
@@ -8871,11 +8975,11 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							'feedback_info': formatObjectForSnakeCase(info)
 						}
 					};
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
+					return wrapToken(this._config, function(headers) {
+						return new Promise(function(resolve, reject) {
 							axios.post(url, body, {
 								headers: headers
-							}).then(function (_ref2) {
+							}).then(function(_ref2) {
 								var data = _ref2.data;
 								var d = clone(data);
 								d.rawData = clone(data);
@@ -8894,9 +8998,9 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		"./utils": 33,
 		"axios": 4
 	}],
-	28: [function (require, module, exports) {
+	28: [function(require, module, exports) {
 		'use strict';
-		var _createClass = function () {
+		var _createClass = function() {
 			function defineProperties(target, props) {
 				for (var i = 0; i < props.length; i++) {
 					var descriptor = props[i];
@@ -8906,7 +9010,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					Object.defineProperty(target, descriptor.key, descriptor);
 				}
 			}
-			return function (Constructor, protoProps, staticProps) {
+			return function(Constructor, protoProps, staticProps) {
 				if (protoProps) defineProperties(Constructor.prototype, protoProps);
 				if (staticProps) defineProperties(Constructor, staticProps);
 				return Constructor;
@@ -8941,14 +9045,14 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		 * class representing a collection of models
 		 * @class
 		 */
-		var Models = function () {
+		var Models = function() {
 			function Models(_config) {
 				var _this = this;
 				var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 				_classCallCheck(this, Models);
 				this._config = _config;
 				this.rawData = rawData;
-				rawData.forEach(function (modelData, index) {
+				rawData.forEach(function(modelData, index) {
 					_this[index] = new Model(_this._config, modelData);
 				});
 				this.length = rawData.length;
@@ -8965,468 +9069,468 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			_createClass(Models, [{
 				key: 'initModel',
 				value: function initModel(model) {
-					var _this2 = this;
-					var data = {};
-					var fn = void 0;
-					if (checkType(/String/, model)) {
-						data.id = model;
-					} else {
-						data = model;
+						var _this2 = this;
+						var data = {};
+						var fn = void 0;
+						if (checkType(/String/, model)) {
+							data.id = model;
+						} else {
+							data = model;
+						}
+						if (data.id) {
+							fn = function fn(resolve, reject) {
+								resolve(new Model(_this2._config, data));
+							};
+						} else {
+							fn = function fn(resolve, reject) {
+								_this2.search(data.name, data.type).then(function(models) {
+									if (data.version) {
+										resolve(models.rawData.filter(function(model) {
+											return model.modelVersion.id === data.version;
+										}));
+									} else {
+										resolve(models[0]);
+									}
+								}, reject).catch(reject);
+							};
+						}
+						return new Promise(fn);
 					}
-					if (data.id) {
-						fn = function fn(resolve, reject) {
-							resolve(new Model(_this2._config, data));
-						};
-					} else {
-						fn = function fn(resolve, reject) {
-							_this2.search(data.name, data.type).then(function (models) {
-								if (data.version) {
-									resolve(models.rawData.filter(function (model) {
-										return model.modelVersion.id === data.version;
-									}));
-								} else {
-									resolve(models[0]);
-								}
-							}, reject).catch(reject);
-						};
-					}
-					return new Promise(fn);
-				}
-				/**
-				 * Calls predict given model info and inputs to predict on
-				 * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
-				 *   @param {string}                   model.id          Model id
-				 *   @param {string}                   model.name        Model name
-				 *   @param {string}                   model.version     Model version
-				 *   @param {string}                   model.language    Model language (only for Clarifai's public models)
-				 *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
-				 * @param {object[]|object|string}   inputs    An array of objects/object/string pointing to an image resource. A string can either be a url or base64 image bytes. Object keys explained below:
-				 *    @param {object}                  inputs[].image     Object with keys explained below:
-				 *       @param {string}                 inputs[].image.(url|base64)  Can be a publicly accessibly url or base64 string representing image bytes (required)
-				 * @param {boolean} isVideo  indicates if the input should be processed as a video (default false)
-				 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-				 */
+					/**
+					 * Calls predict given model info and inputs to predict on
+					 * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
+					 *   @param {string}                   model.id          Model id
+					 *   @param {string}                   model.name        Model name
+					 *   @param {string}                   model.version     Model version
+					 *   @param {string}                   model.language    Model language (only for Clarifai's public models)
+					 *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
+					 * @param {object[]|object|string}   inputs    An array of objects/object/string pointing to an image resource. A string can either be a url or base64 image bytes. Object keys explained below:
+					 *    @param {object}                  inputs[].image     Object with keys explained below:
+					 *       @param {string}                 inputs[].image.(url|base64)  Can be a publicly accessibly url or base64 string representing image bytes (required)
+					 * @param {boolean} isVideo  indicates if the input should be processed as a video (default false)
+					 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+					 */
 			}, {
 				key: 'predict',
 				value: function predict(model, inputs) {
-					var _this3 = this;
-					var config = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-					if (checkType(/Boolean/, config)) {
-						console.warn('"isVideo" argument is deprecated, consider using the configuration object instead');
-						config = {
-							video: config
-						};
+						var _this3 = this;
+						var config = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+						if (checkType(/Boolean/, config)) {
+							console.warn('"isVideo" argument is deprecated, consider using the configuration object instead');
+							config = {
+								video: config
+							};
+						}
+						if (model.language) {
+							config.language = model.language;
+						}
+						return new Promise(function(resolve, reject) {
+							_this3.initModel(model).then(function(modelObj) {
+								modelObj.predict(inputs, config).then(resolve, reject).catch(reject);
+							}, reject);
+						});
 					}
-					if (model.language) {
-						config.language = model.language;
-					}
-					return new Promise(function (resolve, reject) {
-						_this3.initModel(model).then(function (modelObj) {
-							modelObj.predict(inputs, config).then(resolve, reject).catch(reject);
-						}, reject);
-					});
-				}
-				/**
-				 * Calls train on a model and creates a new model version given model info
-				 * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
-				 *   @param {string}                   model.id          Model id
-				 *   @param {string}                   model.name        Model name
-				 *   @param {string}                   model.version     Model version
-				 *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
-				 * @param {boolean}                  sync        If true, this returns after model has completely trained. If false, this immediately returns default api response.
-				 * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
-				 */
+					/**
+					 * Calls train on a model and creates a new model version given model info
+					 * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
+					 *   @param {string}                   model.id          Model id
+					 *   @param {string}                   model.name        Model name
+					 *   @param {string}                   model.version     Model version
+					 *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
+					 * @param {boolean}                  sync        If true, this returns after model has completely trained. If false, this immediately returns default api response.
+					 * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
+					 */
 			}, {
 				key: 'train',
 				value: function train(model) {
-					var _this4 = this;
-					var sync = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-					return new Promise(function (resolve, reject) {
-						_this4.initModel(model).then(function (model) {
-							model.train(sync).then(resolve, reject).catch(reject);
-						}, reject);
-					});
-				}
-				/**
-				 *
-				 * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
-				 *   @param {string}                   model.id          Model id
-				 *   @param {string}                   model.name        Model name
-				 *   @param {string}                   model.version     Model version
-				 *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
-				 * @param {string} input A string pointing to an image resource. A string must be a url
-				 * @param {object} config A configuration object consisting of the following required keys
-				 *   @param {string} config.id The id of the feedback request
-				 *   @param {object} config.data The feedback data to be sent
-				 *   @param {object} config.info Meta data related to the feedback request
-				 */
+						var _this4 = this;
+						var sync = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+						return new Promise(function(resolve, reject) {
+							_this4.initModel(model).then(function(model) {
+								model.train(sync).then(resolve, reject).catch(reject);
+							}, reject);
+						});
+					}
+					/**
+					 *
+					 * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
+					 *   @param {string}                   model.id          Model id
+					 *   @param {string}                   model.name        Model name
+					 *   @param {string}                   model.version     Model version
+					 *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
+					 * @param {string} input A string pointing to an image resource. A string must be a url
+					 * @param {object} config A configuration object consisting of the following required keys
+					 *   @param {string} config.id The id of the feedback request
+					 *   @param {object} config.data The feedback data to be sent
+					 *   @param {object} config.info Meta data related to the feedback request
+					 */
 			}, {
 				key: 'feedback',
 				value: function feedback(model, input, config) {
-					var _this5 = this;
-					return new Promise(function (resolve, reject) {
-						_this5.initModel(model).then(function (model) {
-							return model.feedback(input, config);
-						}).then(function (d) {
-							return resolve(d);
-						}).catch(function (e) {
-							return reject(e);
+						var _this5 = this;
+						return new Promise(function(resolve, reject) {
+							_this5.initModel(model).then(function(model) {
+								return model.feedback(input, config);
+							}).then(function(d) {
+								return resolve(d);
+							}).catch(function(e) {
+								return reject(e);
+							});
 						});
-					});
-				}
-				/**
-				 * Returns a version of the model specified by its id
-				 * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
-				 *   @param {string}                   model.id          Model id
-				 *   @param {string}                   model.name        Model name
-				 *   @param {string}                   model.version     Model version
-				 *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
-				 * @param {string}     versionId   The model's id
-				 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-				 */
+					}
+					/**
+					 * Returns a version of the model specified by its id
+					 * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
+					 *   @param {string}                   model.id          Model id
+					 *   @param {string}                   model.name        Model name
+					 *   @param {string}                   model.version     Model version
+					 *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
+					 * @param {string}     versionId   The model's id
+					 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+					 */
 			}, {
 				key: 'getVersion',
 				value: function getVersion(model, versionId) {
-					var _this6 = this;
-					return new Promise(function (resolve, reject) {
-						_this6.initModel(model).then(function (model) {
-							model.getVersion(versionId).then(resolve, reject).catch(reject);
-						}, reject);
-					});
-				}
-				/**
-				 * Returns a list of versions of the model
-				 * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
-				 *   @param {string}                   model.id          Model id
-				 *   @param {string}                   model.name        Model name
-				 *   @param {string}                   model.version     Model version
-				 *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
-				 * @param {object}                   options     Object with keys explained below: (optional)
-				 *   @param {number}                   options.page        The page number (optional, default: 1)
-				 *   @param {number}                   options.perPage     Number of images to return per page (optional, default: 20)
-				 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-				 */
+						var _this6 = this;
+						return new Promise(function(resolve, reject) {
+							_this6.initModel(model).then(function(model) {
+								model.getVersion(versionId).then(resolve, reject).catch(reject);
+							}, reject);
+						});
+					}
+					/**
+					 * Returns a list of versions of the model
+					 * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
+					 *   @param {string}                   model.id          Model id
+					 *   @param {string}                   model.name        Model name
+					 *   @param {string}                   model.version     Model version
+					 *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
+					 * @param {object}                   options     Object with keys explained below: (optional)
+					 *   @param {number}                   options.page        The page number (optional, default: 1)
+					 *   @param {number}                   options.perPage     Number of images to return per page (optional, default: 20)
+					 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+					 */
 			}, {
 				key: 'getVersions',
 				value: function getVersions(model) {
-					var _this7 = this;
-					var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
-						page: 1,
-						perPage: 20
-					};
-					return new Promise(function (resolve, reject) {
-						_this7.initModel(model).then(function (model) {
-							model.getVersions().then(resolve, reject).catch(reject);
-						}, reject);
-					});
-				}
-				/**
-				 * Returns all the model's output info
-				 * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
-				 *   @param {string}                   model.id          Model id
-				 *   @param {string}                   model.name        Model name
-				 *   @param {string}                   model.version     Model version
-				 *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
-				 * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
-				 */
+						var _this7 = this;
+						var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
+							page: 1,
+							perPage: 20
+						};
+						return new Promise(function(resolve, reject) {
+							_this7.initModel(model).then(function(model) {
+								model.getVersions().then(resolve, reject).catch(reject);
+							}, reject);
+						});
+					}
+					/**
+					 * Returns all the model's output info
+					 * @param {string|object}            model       If string, it is assumed to be model id. Otherwise, if object is given, it can have any of the following keys:
+					 *   @param {string}                   model.id          Model id
+					 *   @param {string}                   model.name        Model name
+					 *   @param {string}                   model.version     Model version
+					 *   @param {string}                   model.type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
+					 * @return {Promise(Model, error)} A Promise that is fulfilled with a Model instance or rejected with an error
+					 */
 			}, {
 				key: 'getOutputInfo',
 				value: function getOutputInfo(model) {
-					var _this8 = this;
-					return new Promise(function (resolve, reject) {
-						_this8.initModel(model).then(function (model) {
-							model.getOutputInfo().then(resolve, reject).catch(reject);
-						}, reject);
-					});
-				}
-				/**
-				 * Returns all the models
-				 * @param {Object}     options     Object with keys explained below: (optional)
-				 *   @param {Number}     options.page        The page number (optional, default: 1)
-				 *   @param {Number}     options.perPage     Number of images to return per page (optional, default: 20)
-				 * @return {Promise(Models, error)} A Promise that is fulfilled with an instance of Models or rejected with an error
-				 */
+						var _this8 = this;
+						return new Promise(function(resolve, reject) {
+							_this8.initModel(model).then(function(model) {
+								model.getOutputInfo().then(resolve, reject).catch(reject);
+							}, reject);
+						});
+					}
+					/**
+					 * Returns all the models
+					 * @param {Object}     options     Object with keys explained below: (optional)
+					 *   @param {Number}     options.page        The page number (optional, default: 1)
+					 *   @param {Number}     options.perPage     Number of images to return per page (optional, default: 20)
+					 * @return {Promise(Models, error)} A Promise that is fulfilled with an instance of Models or rejected with an error
+					 */
 			}, {
 				key: 'list',
 				value: function list() {
-					var _this9 = this;
-					var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
-						page: 1,
-						perPage: 20
-					};
-					var url = '' + this._config.apiEndpoint + MODELS_PATH;
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
-							axios.get(url, {
-								params: {
-									'per_page': options.perPage,
-									'page': options.page
-								},
-								headers: headers
-							}).then(function (response) {
-								if (isSuccess(response)) {
-									resolve(new Models(_this9._config, response.data.models));
-								} else {
-									reject(response);
-								}
-							}, reject);
+						var _this9 = this;
+						var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+							page: 1,
+							perPage: 20
+						};
+						var url = '' + this._config.apiEndpoint + MODELS_PATH;
+						return wrapToken(this._config, function(headers) {
+							return new Promise(function(resolve, reject) {
+								axios.get(url, {
+									params: {
+										'per_page': options.perPage,
+										'page': options.page
+									},
+									headers: headers
+								}).then(function(response) {
+									if (isSuccess(response)) {
+										resolve(new Models(_this9._config, response.data.models));
+									} else {
+										reject(response);
+									}
+								}, reject);
+							});
 						});
-					});
-				}
-				/**
-				 * Create a model
-				 * @param {string|object}                  model                                  If string, it is assumed to be the model id. Otherwise, if object is given, it can have any of the following keys:
-				 *   @param {string}                         model.id                               Model id
-				 *   @param {string}                         model.name                             Model name
-				 * @param {object[]|string[]|Concepts[]}   conceptsData                           List of objects with ids, concept id strings or an instance of Concepts object
-				 * @param {Object}                         options                                Object with keys explained below:
-				 *   @param {boolean}                        options.conceptsMutuallyExclusive      Do you expect to see more than one of the concepts in this model in the SAME image? Set to false (default) if so. Otherwise, set to true.
-				 *   @param {boolean}                        options.closedEnvironment              Do you expect to run the trained model on images that do not contain ANY of the concepts in the model? Set to false (default) if so. Otherwise, set to true.
-				 * @return {Promise(Model, error)} A Promise that is fulfilled with an instance of Model or rejected with an error
-				 */
+					}
+					/**
+					 * Create a model
+					 * @param {string|object}                  model                                  If string, it is assumed to be the model id. Otherwise, if object is given, it can have any of the following keys:
+					 *   @param {string}                         model.id                               Model id
+					 *   @param {string}                         model.name                             Model name
+					 * @param {object[]|string[]|Concepts[]}   conceptsData                           List of objects with ids, concept id strings or an instance of Concepts object
+					 * @param {Object}                         options                                Object with keys explained below:
+					 *   @param {boolean}                        options.conceptsMutuallyExclusive      Do you expect to see more than one of the concepts in this model in the SAME image? Set to false (default) if so. Otherwise, set to true.
+					 *   @param {boolean}                        options.closedEnvironment              Do you expect to run the trained model on images that do not contain ANY of the concepts in the model? Set to false (default) if so. Otherwise, set to true.
+					 * @return {Promise(Model, error)} A Promise that is fulfilled with an instance of Model or rejected with an error
+					 */
 			}, {
 				key: 'create',
 				value: function create(model) {
-					var _this10 = this;
-					var conceptsData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-					var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-					var concepts = conceptsData instanceof Concepts ? conceptsData.toObject('id') : conceptsData.map(function (concept) {
-						var val = concept;
-						if (checkType(/String/, concept)) {
-							val = {
-								'id': concept
+						var _this10 = this;
+						var conceptsData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+						var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+						var concepts = conceptsData instanceof Concepts ? conceptsData.toObject('id') : conceptsData.map(function(concept) {
+							var val = concept;
+							if (checkType(/String/, concept)) {
+								val = {
+									'id': concept
+								};
+							}
+							return val;
+						});
+						var modelObj = model;
+						if (checkType(/String/, model)) {
+							modelObj = {
+								id: model,
+								name: model
 							};
 						}
-						return val;
-					});
-					var modelObj = model;
-					if (checkType(/String/, model)) {
-						modelObj = {
-							id: model,
-							name: model
-						};
-					}
-					if (modelObj.id === undefined) {
-						throw ERRORS.paramsRequired('Model ID');
-					}
-					var url = '' + this._config.apiEndpoint + MODELS_PATH;
-					var data = {
-						model: modelObj
-					};
-					data['model']['output_info'] = {
-						'data': {
-							concepts: concepts
-						},
-						'output_config': {
-							'concepts_mutually_exclusive': !!options.conceptsMutuallyExclusive,
-							'closed_environment': !!options.closedEnvironment
+						if (modelObj.id === undefined) {
+							throw ERRORS.paramsRequired('Model ID');
 						}
-					};
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
-							axios.post(url, data, {
-								headers: headers
-							}).then(function (response) {
-								if (isSuccess(response)) {
-									resolve(new Model(_this10._config, response.data.model));
-								} else {
-									reject(response);
-								}
-							}, reject);
+						var url = '' + this._config.apiEndpoint + MODELS_PATH;
+						var data = {
+							model: modelObj
+						};
+						data['model']['output_info'] = {
+							'data': {
+								concepts: concepts
+							},
+							'output_config': {
+								'concepts_mutually_exclusive': !!options.conceptsMutuallyExclusive,
+								'closed_environment': !!options.closedEnvironment
+							}
+						};
+						return wrapToken(this._config, function(headers) {
+							return new Promise(function(resolve, reject) {
+								axios.post(url, data, {
+									headers: headers
+								}).then(function(response) {
+									if (isSuccess(response)) {
+										resolve(new Model(_this10._config, response.data.model));
+									} else {
+										reject(response);
+									}
+								}, reject);
+							});
 						});
-					});
-				}
-				/**
-				 * Returns a model specified by ID
-				 * @param {String}     id          The model's id
-				 * @return {Promise(Model, error)} A Promise that is fulfilled with an instance of Model or rejected with an error
-				 */
+					}
+					/**
+					 * Returns a model specified by ID
+					 * @param {String}     id          The model's id
+					 * @return {Promise(Model, error)} A Promise that is fulfilled with an instance of Model or rejected with an error
+					 */
 			}, {
 				key: 'get',
 				value: function get(id) {
-					var _this11 = this;
-					var url = '' + this._config.apiEndpoint + replaceVars(MODEL_PATH, [id]);
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
-							axios.get(url, {
-								headers: headers
-							}).then(function (response) {
-								if (isSuccess(response)) {
-									resolve(new Model(_this11._config, response.data.model));
-								} else {
-									reject(response);
-								}
-							}, reject);
-						});
-					});
-				}
-				/**
-				 * Update a model's or a list of models' output config or concepts
-				 * @param {object|object[]}      models                                 Can be a single model object or list of model objects with the following attrs:
-				 *   @param {string}               models.id                                    The id of the model to apply changes to (Required)
-				 *   @param {string}               models.name                                  The new name of the model to update with
-				 *   @param {boolean}              models.conceptsMutuallyExclusive             Do you expect to see more than one of the concepts in this model in the SAME image? Set to false (default) if so. Otherwise, set to true.
-				 *   @param {boolean}              models.closedEnvironment                     Do you expect to run the trained model on images that do not contain ANY of the concepts in the model? Set to false (default) if so. Otherwise, set to true.
-				 *   @param {object[]}             models.concepts                              An array of concept objects or string
-				 *     @param {object|string}        models.concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
-				 *       @param {string}             models.concepts[].concept.id                   The id of the concept to attach to the model
-				 *   @param {object[]}             models.action                                The action to perform on the given concepts. Possible values are 'merge', 'remove', or 'overwrite'. Default: 'merge'
-				 * @return {Promise(Models, error)} A Promise that is fulfilled with an instance of Models or rejected with an error
-				 */
-			}, {
-				key: 'update',
-				value: function update(models) {
-					var _this12 = this;
-					var url = '' + this._config.apiEndpoint + MODELS_PATH;
-					var modelsList = Array.isArray(models) ? models : [models];
-					var data = {
-						models: modelsList.map(formatModel)
-					};
-					data['action'] = models.action || 'merge';
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
-							axios.patch(url, data, {
-								headers: headers
-							}).then(function (response) {
-								if (isSuccess(response)) {
-									resolve(new Models(_this12._config, response.data.models));
-								} else {
-									reject(response);
-								}
-							}, reject);
-						});
-					});
-				}
-				/**
-				 * Update model by merging concepts
-				 * @param {object|object[]}      model                                 Can be a single model object or list of model objects with the following attrs:
-				 *   @param {string}               model.id                                    The id of the model to apply changes to (Required)
-				 *   @param {object[]}             model.concepts                              An array of concept objects or string
-				 *     @param {object|string}        model.concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
-				 *       @param {string}             model.concepts[].concept.id                   The id of the concept to attach to the model
-				 */
-			}, {
-				key: 'mergeConcepts',
-				value: function mergeConcepts() {
-					var model = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-					model.action = 'merge';
-					return this.update(model);
-				}
-				/**
-				 * Update model by removing concepts
-				 * @param {object|object[]}      model                                 Can be a single model object or list of model objects with the following attrs:
-				 *   @param {string}               model.id                                    The id of the model to apply changes to (Required)
-				 *   @param {object[]}             model.concepts                              An array of concept objects or string
-				 *     @param {object|string}        model.concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
-				 *       @param {string}             model.concepts[].concept.id                   The id of the concept to attach to the model
-				 */
-			}, {
-				key: 'deleteConcepts',
-				value: function deleteConcepts() {
-					var model = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-					model.action = 'remove';
-					return this.update(model);
-				}
-				/**
-				 * Update model by overwriting concepts
-				 * @param {object|object[]}      model                                 Can be a single model object or list of model objects with the following attrs:
-				 *   @param {string}               model.id                                    The id of the model to apply changes to (Required)
-				 *   @param {object[]}             model.concepts                              An array of concept objects or string
-				 *     @param {object|string}        model.concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
-				 *       @param {string}             model.concepts[].concept.id                   The id of the concept to attach to the model
-				 */
-			}, {
-				key: 'overwriteConcepts',
-				value: function overwriteConcepts() {
-					var model = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-					model.action = 'overwrite';
-					return this.update(model);
-				}
-				/**
-				 * Deletes all models (if no ids and versionId given) or a model (if given id) or a model version (if given id and verion id)
-				 * @param {String|String[]}      ids         Can be a single string or an array of strings representing the model ids
-				 * @param {String}               versionId   The model's version id
-				 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
-				 */
-			}, {
-				key: 'delete',
-				value: function _delete(ids) {
-					var versionId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-					var request = void 0,
-						url = void 0,
-						data = void 0;
-					var id = ids;
-					if (checkType(/String/, ids) || checkType(/Array/, ids) && ids.length === 1) {
-						if (versionId) {
-							url = '' + this._config.apiEndpoint + replaceVars(MODEL_VERSION_PATH, [id, versionId]);
-						} else {
-							url = '' + this._config.apiEndpoint + replaceVars(MODEL_PATH, [id]);
-						}
-						request = wrapToken(this._config, function (headers) {
-							return new Promise(function (resolve, reject) {
-								axios.delete(url, {
+						var _this11 = this;
+						var url = '' + this._config.apiEndpoint + replaceVars(MODEL_PATH, [id]);
+						return wrapToken(this._config, function(headers) {
+							return new Promise(function(resolve, reject) {
+								axios.get(url, {
 									headers: headers
-								}).then(function (response) {
-									var data = clone(response.data);
-									data.rawData = clone(response.data);
-									resolve(data);
-								}, reject);
-							});
-						});
-					} else {
-						if (!ids && !versionId) {
-							url = '' + this._config.apiEndpoint + MODELS_PATH;
-							data = {
-								'delete_all': true
-							};
-						} else if (!versionId && ids.length > 1) {
-							url = '' + this._config.apiEndpoint + MODELS_PATH;
-							data = {
-								ids: ids
-							};
-						} else {
-							throw ERRORS.INVALID_DELETE_ARGS;
-						}
-						request = wrapToken(this._config, function (headers) {
-							return new Promise(function (resolve, reject) {
-								axios({
-									method: 'delete',
-									url: url,
-									data: data,
-									headers: headers
-								}).then(function (response) {
-									var data = clone(response.data);
-									data.rawData = clone(response.data);
-									resolve(data);
+								}).then(function(response) {
+									if (isSuccess(response)) {
+										resolve(new Model(_this11._config, response.data.model));
+									} else {
+										reject(response);
+									}
 								}, reject);
 							});
 						});
 					}
-					return request;
-				}
-				/**
-				 * Search for models by name or type
-				 * @param {String}     name        The model name
-				 * @param {String}     type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
-				 * @return {Promise(models, error)} A Promise that is fulfilled with an instance of Models or rejected with an error
-				 */
+					/**
+					 * Update a model's or a list of models' output config or concepts
+					 * @param {object|object[]}      models                                 Can be a single model object or list of model objects with the following attrs:
+					 *   @param {string}               models.id                                    The id of the model to apply changes to (Required)
+					 *   @param {string}               models.name                                  The new name of the model to update with
+					 *   @param {boolean}              models.conceptsMutuallyExclusive             Do you expect to see more than one of the concepts in this model in the SAME image? Set to false (default) if so. Otherwise, set to true.
+					 *   @param {boolean}              models.closedEnvironment                     Do you expect to run the trained model on images that do not contain ANY of the concepts in the model? Set to false (default) if so. Otherwise, set to true.
+					 *   @param {object[]}             models.concepts                              An array of concept objects or string
+					 *     @param {object|string}        models.concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
+					 *       @param {string}             models.concepts[].concept.id                   The id of the concept to attach to the model
+					 *   @param {object[]}             models.action                                The action to perform on the given concepts. Possible values are 'merge', 'remove', or 'overwrite'. Default: 'merge'
+					 * @return {Promise(Models, error)} A Promise that is fulfilled with an instance of Models or rejected with an error
+					 */
+			}, {
+				key: 'update',
+				value: function update(models) {
+						var _this12 = this;
+						var url = '' + this._config.apiEndpoint + MODELS_PATH;
+						var modelsList = Array.isArray(models) ? models : [models];
+						var data = {
+							models: modelsList.map(formatModel)
+						};
+						data['action'] = models.action || 'merge';
+						return wrapToken(this._config, function(headers) {
+							return new Promise(function(resolve, reject) {
+								axios.patch(url, data, {
+									headers: headers
+								}).then(function(response) {
+									if (isSuccess(response)) {
+										resolve(new Models(_this12._config, response.data.models));
+									} else {
+										reject(response);
+									}
+								}, reject);
+							});
+						});
+					}
+					/**
+					 * Update model by merging concepts
+					 * @param {object|object[]}      model                                 Can be a single model object or list of model objects with the following attrs:
+					 *   @param {string}               model.id                                    The id of the model to apply changes to (Required)
+					 *   @param {object[]}             model.concepts                              An array of concept objects or string
+					 *     @param {object|string}        model.concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
+					 *       @param {string}             model.concepts[].concept.id                   The id of the concept to attach to the model
+					 */
+			}, {
+				key: 'mergeConcepts',
+				value: function mergeConcepts() {
+						var model = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+						model.action = 'merge';
+						return this.update(model);
+					}
+					/**
+					 * Update model by removing concepts
+					 * @param {object|object[]}      model                                 Can be a single model object or list of model objects with the following attrs:
+					 *   @param {string}               model.id                                    The id of the model to apply changes to (Required)
+					 *   @param {object[]}             model.concepts                              An array of concept objects or string
+					 *     @param {object|string}        model.concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
+					 *       @param {string}             model.concepts[].concept.id                   The id of the concept to attach to the model
+					 */
+			}, {
+				key: 'deleteConcepts',
+				value: function deleteConcepts() {
+						var model = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+						model.action = 'remove';
+						return this.update(model);
+					}
+					/**
+					 * Update model by overwriting concepts
+					 * @param {object|object[]}      model                                 Can be a single model object or list of model objects with the following attrs:
+					 *   @param {string}               model.id                                    The id of the model to apply changes to (Required)
+					 *   @param {object[]}             model.concepts                              An array of concept objects or string
+					 *     @param {object|string}        model.concepts[].concept                    If string is given, this is interpreted as concept id. Otherwise, if object is given, client expects the following attributes
+					 *       @param {string}             model.concepts[].concept.id                   The id of the concept to attach to the model
+					 */
+			}, {
+				key: 'overwriteConcepts',
+				value: function overwriteConcepts() {
+						var model = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+						model.action = 'overwrite';
+						return this.update(model);
+					}
+					/**
+					 * Deletes all models (if no ids and versionId given) or a model (if given id) or a model version (if given id and verion id)
+					 * @param {String|String[]}      ids         Can be a single string or an array of strings representing the model ids
+					 * @param {String}               versionId   The model's version id
+					 * @return {Promise(response, error)} A Promise that is fulfilled with the API response or rejected with an error
+					 */
+			}, {
+				key: 'delete',
+				value: function _delete(ids) {
+						var versionId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+						var request = void 0,
+							url = void 0,
+							data = void 0;
+						var id = ids;
+						if (checkType(/String/, ids) || checkType(/Array/, ids) && ids.length === 1) {
+							if (versionId) {
+								url = '' + this._config.apiEndpoint + replaceVars(MODEL_VERSION_PATH, [id, versionId]);
+							} else {
+								url = '' + this._config.apiEndpoint + replaceVars(MODEL_PATH, [id]);
+							}
+							request = wrapToken(this._config, function(headers) {
+								return new Promise(function(resolve, reject) {
+									axios.delete(url, {
+										headers: headers
+									}).then(function(response) {
+										var data = clone(response.data);
+										data.rawData = clone(response.data);
+										resolve(data);
+									}, reject);
+								});
+							});
+						} else {
+							if (!ids && !versionId) {
+								url = '' + this._config.apiEndpoint + MODELS_PATH;
+								data = {
+									'delete_all': true
+								};
+							} else if (!versionId && ids.length > 1) {
+								url = '' + this._config.apiEndpoint + MODELS_PATH;
+								data = {
+									ids: ids
+								};
+							} else {
+								throw ERRORS.INVALID_DELETE_ARGS;
+							}
+							request = wrapToken(this._config, function(headers) {
+								return new Promise(function(resolve, reject) {
+									axios({
+										method: 'delete',
+										url: url,
+										data: data,
+										headers: headers
+									}).then(function(response) {
+										var data = clone(response.data);
+										data.rawData = clone(response.data);
+										resolve(data);
+									}, reject);
+								});
+							});
+						}
+						return request;
+					}
+					/**
+					 * Search for models by name or type
+					 * @param {String}     name        The model name
+					 * @param {String}     type        This can be "concept", "color", "embed", "facedetect", "cluster" or "blur"
+					 * @return {Promise(models, error)} A Promise that is fulfilled with an instance of Models or rejected with an error
+					 */
 			}, {
 				key: 'search',
 				value: function search(name) {
 					var _this13 = this;
 					var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
 					var url = '' + this._config.apiEndpoint + MODEL_SEARCH_PATH;
-					return wrapToken(this._config, function (headers) {
+					return wrapToken(this._config, function(headers) {
 						var params = {
 							'model_query': {
 								name: name,
 								type: type
 							}
 						};
-						return new Promise(function (resolve, reject) {
+						return new Promise(function(resolve, reject) {
 							axios.post(url, params, {
 								headers: headers
-							}).then(function (response) {
+							}).then(function(response) {
 								if (isSuccess(response)) {
 									resolve(new Models(_this13._config, response.data.models));
 								} else {
@@ -9449,9 +9553,9 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		"axios": 4,
 		"promise": 35
 	}],
-	29: [function (require, module, exports) {
+	29: [function(require, module, exports) {
 		'use strict';
-		var _createClass = function () {
+		var _createClass = function() {
 			function defineProperties(target, props) {
 				for (var i = 0; i < props.length; i++) {
 					var descriptor = props[i];
@@ -9461,7 +9565,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					Object.defineProperty(target, descriptor.key, descriptor);
 				}
 			}
-			return function (Constructor, protoProps, staticProps) {
+			return function(Constructor, protoProps, staticProps) {
 				if (protoProps) defineProperties(Constructor.prototype, protoProps);
 				if (staticProps) defineProperties(Constructor, staticProps);
 				return Constructor;
@@ -9488,7 +9592,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		 * class representing a workflow
 		 * @class
 		 */
-		var Workflow = function () {
+		var Workflow = function() {
 			function Workflow(_config) {
 				var rawData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 				_classCallCheck(this, Workflow);
@@ -9498,41 +9602,41 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			_createClass(Workflow, [{
 				key: 'create',
 				value: function create(name, config) {
-					var url = '' + this._config.apiEndpoint + CREATE_WORKFLOW_PATH;
-					var modelId = config.modelId;
-					var modelVersionId = config.modelVersionId;
-					var body = {
-						workflows: [{
-							id: name,
-							nodes: [{
-								id: 'concepts',
-								model: {
-									id: modelId,
-									model_version: {
-										id: modelVersionId
+						var url = '' + this._config.apiEndpoint + CREATE_WORKFLOW_PATH;
+						var modelId = config.modelId;
+						var modelVersionId = config.modelVersionId;
+						var body = {
+							workflows: [{
+								id: name,
+								nodes: [{
+									id: 'concepts',
+									model: {
+										id: modelId,
+										model_version: {
+											id: modelVersionId
+										}
 									}
-								}
+								}]
 							}]
-						}]
-					};
-					return wrapToken(this._config, function (headers) {
-						return new Promise(function (resolve, reject) {
-							axios.post(url, body, {
-								headers: headers
-							}).then(function (response) {
-								var workflowId = response.data.workflows[0].id;
-								resolve(workflowId);
-							}, reject);
+						};
+						return wrapToken(this._config, function(headers) {
+							return new Promise(function(resolve, reject) {
+								axios.post(url, body, {
+									headers: headers
+								}).then(function(response) {
+									var workflowId = response.data.workflows[0].id;
+									resolve(workflowId);
+								}, reject);
+							});
 						});
-					});
-				}
-				/**
-				 * Returns workflow output according to inputs
-				 * @param {string}                   workflowId    Workflow id
-				 * @param {object[]|object|string}   inputs    An array of objects/object/string pointing to an image resource. A string can either be a url or base64 image bytes. Object keys explained below:
-				 *    @param {object}                  inputs[].image     Object with keys explained below:
-				 *       @param {string}                 inputs[].image.(url|base64)  Can be a publicly accessibly url or base64 string representing image bytes (required)
-				 */
+					}
+					/**
+					 * Returns workflow output according to inputs
+					 * @param {string}                   workflowId    Workflow id
+					 * @param {object[]|object|string}   inputs    An array of objects/object/string pointing to an image resource. A string can either be a url or base64 image bytes. Object keys explained below:
+					 *    @param {object}                  inputs[].image     Object with keys explained below:
+					 *       @param {string}                 inputs[].image.(url|base64)  Can be a publicly accessibly url or base64 string representing image bytes (required)
+					 */
 			}, {
 				key: 'predict',
 				value: function predict(workflowId, inputs) {
@@ -9540,14 +9644,14 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					if (checkType(/(Object|String)/, inputs)) {
 						inputs = [inputs];
 					}
-					return wrapToken(this._config, function (headers) {
+					return wrapToken(this._config, function(headers) {
 						var params = {
 							inputs: inputs.map(formatInput)
 						};
-						return new Promise(function (resolve, reject) {
+						return new Promise(function(resolve, reject) {
 							axios.post(url, params, {
 								headers: headers
-							}).then(function (response) {
+							}).then(function(response) {
 								var data = response.data;
 								resolve(data);
 							}, reject);
@@ -9564,7 +9668,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		"./utils": 33,
 		"axios": 4
 	}],
-	30: [function (require, module, exports) {
+	30: [function(require, module, exports) {
 		'use strict';
 		var MAX_BATCH_SIZE = 128;
 		var GEO_LIMIT_TYPES = ['withinMiles', 'withinKilometers', 'withinRadians', 'withinDegrees'];
@@ -9616,7 +9720,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			replaceVars: function replaceVars(path) {
 				var vars = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
 				var newPath = path;
-				vars.forEach(function (val, index) {
+				vars.forEach(function(val, index) {
 					if (index === 0) {
 						val = encodeURIComponent(val);
 					}
@@ -9631,7 +9735,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			POLLTIME: POLLTIME
 		};
 	}, {}],
-	31: [function (require, module, exports) {
+	31: [function(require, module, exports) {
 		'use strict';
 		var SUCCESS_CODES = [200, 201];
 		module.exports = {
@@ -9640,7 +9744,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			},
 			deleteEmpty: function deleteEmpty(obj) {
 				var strict = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-				Object.keys(obj).forEach(function (key) {
+				Object.keys(obj).forEach(function(key) {
 					if (obj[key] === null || obj[key] === undefined || strict === true && (obj[key] === '' || obj[key].length === 0 || Object.keys(obj[key]).length === 0)) {
 						delete obj[key];
 					}
@@ -9649,7 +9753,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			clone: function clone(obj) {
 				var keys = Object.keys(obj);
 				var copy = {};
-				keys.forEach(function (k) {
+				keys.forEach(function(k) {
 					copy[k] = obj[k];
 				});
 				return copy;
@@ -9662,8 +9766,8 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			}
 		};
 	}, {}],
-	32: [function (require, module, exports) {
-		(function (global) {
+	32: [function(require, module, exports) {
+		(function(global) {
 			'use strict';
 			var App = require('./App');
 			var _require = require('./../package.json'),
@@ -9692,7 +9796,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		"./../package.json": 34,
 		"./App": 22
 	}],
-	33: [function (require, module, exports) {
+	33: [function(require, module, exports) {
 		'use strict';
 
 		function _defineProperty(obj, key, value) {
@@ -9720,7 +9824,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			VERSION = _require3.version;
 		module.exports = {
 			wrapToken: function wrapToken(_config, requestFn) {
-				return new Promise(function (resolve, reject) {
+				return new Promise(function(resolve, reject) {
 					if (_config.apiKey) {
 						var headers = {
 							Authorization: 'Key ' + _config.apiKey,
@@ -9728,7 +9832,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						};
 						return requestFn(headers).then(resolve, reject);
 					}
-					_config.token().then(function (token) {
+					_config.token().then(function(token) {
 						var headers = {
 							Authorization: 'Bearer ' + token.accessToken,
 							'X-Clarifai-Client': 'js:' + VERSION
@@ -9846,7 +9950,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				if (image.geo !== undefined) {
 					if (checkType(/Array/, image.geo)) {
 						input.input.data.geo = {
-							geo_box: image.geo.map(function (p) {
+							geo_box: image.geo.map(function(p) {
 								return {
 									geo_point: p
 								};
@@ -9921,8 +10025,8 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				return v;
 			},
 			formatObjectForSnakeCase: function formatObjectForSnakeCase(obj) {
-				return Object.keys(obj).reduce(function (o, k) {
-					o[k.replace(/([A-Z])/g, function (r) {
+				return Object.keys(obj).reduce(function(o, k) {
+					o[k.replace(/([A-Z])/g, function(r) {
 						return '_' + r.toLowerCase();
 					})] = obj[k];
 					return o;
@@ -9935,7 +10039,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		"./helpers": 31,
 		"promise": 35
 	}],
-	34: [function (require, module, exports) {
+	34: [function(require, module, exports) {
 		module.exports = {
 			"_args": [
 				[{
@@ -10052,13 +10156,13 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			"version": "2.2.0"
 		}
 	}, {}],
-	35: [function (require, module, exports) {
+	35: [function(require, module, exports) {
 		'use strict';
 		module.exports = require('./lib')
 	}, {
 		"./lib": 40
 	}],
-	36: [function (require, module, exports) {
+	36: [function(require, module, exports) {
 		'use strict';
 		var asap = require('asap/raw');
 
@@ -10125,7 +10229,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		Promise._10 = null;
 		Promise._97 = null;
 		Promise._61 = noop;
-		Promise.prototype.then = function (onFulfilled, onRejected) {
+		Promise.prototype.then = function(onFulfilled, onRejected) {
 			if (this.constructor !== Promise) {
 				return safeThen(this, onFulfilled, onRejected);
 			}
@@ -10135,7 +10239,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		};
 
 		function safeThen(self, onFulfilled, onRejected) {
-			return new self.constructor(function (resolve, reject) {
+			return new self.constructor(function(resolve, reject) {
 				var res = new Promise(noop);
 				res.then(resolve, reject);
 				handle(self, new Handler(onFulfilled, onRejected, res));
@@ -10167,7 +10271,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		}
 
 		function handleResolved(self, deferred) {
-			asap(function () {
+			asap(function() {
 				var cb = self._81 === 1 ? deferred.onFulfilled : deferred.onRejected;
 				if (cb === null) {
 					if (self._81 === 1) {
@@ -10246,11 +10350,11 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		 */
 		function doResolve(fn, promise) {
 			var done = false;
-			var res = tryCallTwo(fn, function (value) {
+			var res = tryCallTwo(fn, function(value) {
 				if (done) return;
 				done = true;
 				resolve(promise, value);
-			}, function (reason) {
+			}, function(reason) {
 				if (done) return;
 				done = true;
 				reject(promise, reason);
@@ -10263,14 +10367,14 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 	}, {
 		"asap/raw": 3
 	}],
-	37: [function (require, module, exports) {
+	37: [function(require, module, exports) {
 		'use strict';
 		var Promise = require('./core.js');
 		module.exports = Promise;
-		Promise.prototype.done = function (onFulfilled, onRejected) {
+		Promise.prototype.done = function(onFulfilled, onRejected) {
 			var self = arguments.length ? this.then.apply(this, arguments) : this;
-			self.then(null, function (err) {
-				setTimeout(function () {
+			self.then(null, function(err) {
+				setTimeout(function() {
 					throw err;
 				}, 0);
 			});
@@ -10278,7 +10382,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 	}, {
 		"./core.js": 36
 	}],
-	38: [function (require, module, exports) {
+	38: [function(require, module, exports) {
 		'use strict';
 		//This file contains the ES6 extensions to the core Promises/A+ API
 		var Promise = require('./core.js');
@@ -10297,7 +10401,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			p._65 = value;
 			return p;
 		}
-		Promise.resolve = function (value) {
+		Promise.resolve = function(value) {
 			if (value instanceof Promise) return value;
 			if (value === null) return NULL;
 			if (value === undefined) return UNDEFINED;
@@ -10312,16 +10416,16 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						return new Promise(then.bind(value));
 					}
 				} catch (ex) {
-					return new Promise(function (resolve, reject) {
+					return new Promise(function(resolve, reject) {
 						reject(ex);
 					});
 				}
 			}
 			return valuePromise(value);
 		};
-		Promise.all = function (arr) {
+		Promise.all = function(arr) {
 			var args = Array.prototype.slice.call(arr);
-			return new Promise(function (resolve, reject) {
+			return new Promise(function(resolve, reject) {
 				if (args.length === 0) return resolve([]);
 				var remaining = args.length;
 
@@ -10333,7 +10437,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							}
 							if (val._81 === 1) return res(i, val._65);
 							if (val._81 === 2) reject(val._65);
-							val.then(function (val) {
+							val.then(function(val) {
 								res(i, val);
 							}, reject);
 							return;
@@ -10341,7 +10445,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							var then = val.then;
 							if (typeof then === 'function') {
 								var p = new Promise(then.bind(val));
-								p.then(function (val) {
+								p.then(function(val) {
 									res(i, val);
 								}, reject);
 								return;
@@ -10358,36 +10462,36 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				}
 			});
 		};
-		Promise.reject = function (value) {
-			return new Promise(function (resolve, reject) {
+		Promise.reject = function(value) {
+			return new Promise(function(resolve, reject) {
 				reject(value);
 			});
 		};
-		Promise.race = function (values) {
-			return new Promise(function (resolve, reject) {
-				values.forEach(function (value) {
+		Promise.race = function(values) {
+			return new Promise(function(resolve, reject) {
+				values.forEach(function(value) {
 					Promise.resolve(value).then(resolve, reject);
 				});
 			});
 		};
 		/* Prototype Methods */
-		Promise.prototype['catch'] = function (onRejected) {
+		Promise.prototype['catch'] = function(onRejected) {
 			return this.then(null, onRejected);
 		};
 	}, {
 		"./core.js": 36
 	}],
-	39: [function (require, module, exports) {
+	39: [function(require, module, exports) {
 		'use strict';
 		var Promise = require('./core.js');
 		module.exports = Promise;
-		Promise.prototype['finally'] = function (f) {
-			return this.then(function (value) {
-				return Promise.resolve(f()).then(function () {
+		Promise.prototype['finally'] = function(f) {
+			return this.then(function(value) {
+				return Promise.resolve(f()).then(function() {
 					return value;
 				});
-			}, function (err) {
-				return Promise.resolve(f()).then(function () {
+			}, function(err) {
+				return Promise.resolve(f()).then(function() {
 					throw err;
 				});
 			});
@@ -10395,7 +10499,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 	}, {
 		"./core.js": 36
 	}],
-	40: [function (require, module, exports) {
+	40: [function(require, module, exports) {
 		'use strict';
 		module.exports = require('./core.js');
 		require('./done.js');
@@ -10411,7 +10515,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		"./node-extensions.js": 41,
 		"./synchronous.js": 42
 	}],
-	41: [function (require, module, exports) {
+	41: [function(require, module, exports) {
 		'use strict';
 		// This file contains then/promise specific extensions that are only useful
 		// for node.js interop
@@ -10419,7 +10523,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		var asap = require('asap');
 		module.exports = Promise;
 		/* Static Functions */
-		Promise.denodeify = function (fn, argumentCount) {
+		Promise.denodeify = function(fn, argumentCount) {
 			if (typeof argumentCount === 'number' && argumentCount !== Infinity) {
 				return denodeifyWithCount(fn, argumentCount);
 			} else {
@@ -10444,15 +10548,15 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				args.push('a' + i);
 			}
 			var body = ['return function (' + args.join(',') + ') {', 'var self = this;', 'var args;', 'var argLength = arguments.length;', 'if (arguments.length > ' + fnLength + ') {', 'args = new Array(arguments.length + 1);', 'for (var i = 0; i < arguments.length; i++) {', 'args[i] = arguments[i];', '}', '}', 'return new Promise(function (rs, rj) {', 'var cb = ' + callbackFn + ';', 'var res;', 'switch (argLength) {',
-				args.concat(['extra']).map(function (_, index) {
+				args.concat(['extra']).map(function(_, index) {
 					return ('case ' + (index) + ':' + 'res = fn.call(' + ['self'].concat(args.slice(0, index)).concat('cb').join(',') + ');' + 'break;');
 				}).join(''), 'default:', 'args[argLength] = cb;', 'res = fn.apply(self, args);', '}', 'if (res &&', '(typeof res === "object" || typeof res === "function") &&', 'typeof res.then === "function"', ') {rs(res);}', '});', '};'
 			].join('');
 			return Function(
 				['Promise', 'fn'], body)(Promise, fn);
 		}
-		Promise.nodeify = function (fn) {
-			return function () {
+		Promise.nodeify = function(fn) {
+			return function() {
 				var args = Array.prototype.slice.call(arguments);
 				var callback = typeof args[args.length - 1] === 'function' ? args.pop() : null;
 				var ctx = this;
@@ -10460,25 +10564,25 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					return fn.apply(this, arguments).nodeify(callback, ctx);
 				} catch (ex) {
 					if (callback === null || typeof callback == 'undefined') {
-						return new Promise(function (resolve, reject) {
+						return new Promise(function(resolve, reject) {
 							reject(ex);
 						});
 					} else {
-						asap(function () {
+						asap(function() {
 							callback.call(ctx, ex);
 						})
 					}
 				}
 			}
 		}
-		Promise.prototype.nodeify = function (callback, ctx) {
+		Promise.prototype.nodeify = function(callback, ctx) {
 			if (typeof callback != 'function') return this;
-			this.then(function (value) {
-				asap(function () {
+			this.then(function(value) {
+				asap(function() {
 					callback.call(ctx, null, value);
 				});
-			}, function (err) {
-				asap(function () {
+			}, function(err) {
+				asap(function() {
 					callback.call(ctx, err);
 				});
 			});
@@ -10487,21 +10591,21 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		"./core.js": 36,
 		"asap": 2
 	}],
-	42: [function (require, module, exports) {
+	42: [function(require, module, exports) {
 		'use strict';
 		var Promise = require('./core.js');
 		module.exports = Promise;
-		Promise.enableSynchronous = function () {
-			Promise.prototype.isPending = function () {
+		Promise.enableSynchronous = function() {
+			Promise.prototype.isPending = function() {
 				return this.getState() == 0;
 			};
-			Promise.prototype.isFulfilled = function () {
+			Promise.prototype.isFulfilled = function() {
 				return this.getState() == 1;
 			};
-			Promise.prototype.isRejected = function () {
+			Promise.prototype.isRejected = function() {
 				return this.getState() == 2;
 			};
-			Promise.prototype.getValue = function () {
+			Promise.prototype.getValue = function() {
 				if (this._81 === 3) {
 					return this._65.getValue();
 				}
@@ -10510,7 +10614,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				}
 				return this._65;
 			};
-			Promise.prototype.getReason = function () {
+			Promise.prototype.getReason = function() {
 				if (this._81 === 3) {
 					return this._65.getReason();
 				}
@@ -10519,7 +10623,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				}
 				return this._65;
 			};
-			Promise.prototype.getState = function () {
+			Promise.prototype.getState = function() {
 				if (this._81 === 3) {
 					return this._65.getState();
 				}
@@ -10529,7 +10633,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 				return this._81;
 			};
 		};
-		Promise.disableSynchronous = function () {
+		Promise.disableSynchronous = function() {
 			Promise.prototype.isPending = undefined;
 			Promise.prototype.isFulfilled = undefined;
 			Promise.prototype.isRejected = undefined;
@@ -10540,7 +10644,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 	}, {
 		"./core.js": 36
 	}],
-	43: [function (require, module, exports) {
+	43: [function(require, module, exports) {
 		// shim for using process in browser
 		var process = module.exports = {};
 		// cached from whatever global is present so that test runners that stub it
@@ -10557,7 +10661,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		function defaultClearTimeout() {
 			throw new Error('clearTimeout has not been defined');
 		}
-		(function () {
+		(function() {
 			try {
 				if (typeof setTimeout === 'function') {
 					cachedSetTimeout = setTimeout;
@@ -10668,7 +10772,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			draining = false;
 			runClearTimeout(timeout);
 		}
-		process.nextTick = function (fun) {
+		process.nextTick = function(fun) {
 			var args = new Array(arguments.length - 1);
 			if (arguments.length > 1) {
 				for (var i = 1; i < arguments.length; i++) {
@@ -10685,7 +10789,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 			this.fun = fun;
 			this.array = array;
 		}
-		Item.prototype.run = function () {
+		Item.prototype.run = function() {
 			this.fun.apply(null, this.array);
 		};
 		process.title = 'browser';
@@ -10705,19 +10809,19 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 		process.emit = noop;
 		process.prependListener = noop;
 		process.prependOnceListener = noop;
-		process.listeners = function (name) {
+		process.listeners = function(name) {
 			return []
 		}
-		process.binding = function (name) {
+		process.binding = function(name) {
 			throw new Error('process.binding is not supported');
 		};
-		process.cwd = function () {
+		process.cwd = function() {
 			return '/'
 		};
-		process.chdir = function (dir) {
+		process.chdir = function(dir) {
 			throw new Error('process.chdir is not supported');
 		};
-		process.umask = function () {
+		process.umask = function() {
 			return 0;
 		};
 	}, {}]
