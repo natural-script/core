@@ -216,8 +216,7 @@ source: 'https://i.ytimg.com/vi/gnZjSui_Mc4/maxresdefault.jpg',
 image_width: '980',
 image_length: '500',
 animation: 'bounce',
-distance_from_the_top: '100 pixels',
-distance_from_the_left: '50 pixels'.
+distance_from_the_left: 'center'.
 
 add a text with the following properties:
 name: 'post1_back',
@@ -234,7 +233,7 @@ add a text with the following properties:
 name: 'post1_text',
 text: 'Finally, The lovely artist << write this text in a bold and italic font: Maher Zain >> has released a new album of his beautiful songs in three languages which are << write this text in a bold and underlined font: Arabic, English and Turkish >> and you can listen to it below !',
 container: 'post1_container',
-distance_from_the_top: '670 pixels',
+distance_from_the_top: '500 pixels',
 distance_from_the_left: '50 pixels',
 font_colour: 'black',
 font_size: '20 pixels',
@@ -243,8 +242,9 @@ font_style: 'roboto'.
 add an audio_player with the following properties:
 name: 'Maher_Zain_One_Playlist',
 container: 'post1_container',
+width: '300',
 distance_from_the_top: '760 pixels',
-distance_from_the_left: '50%'.
+distance_from_the_left: 'center'.
 
 add an audio with the following properties:
 audio_player: 'Maher_Zain_One_Playlist',
@@ -437,17 +437,40 @@ distance_from_the_top: '620 pixels',
 distance_from_the_left: '50%',
 commands: 'When it has been clicked, play big_buck_bunny_video every a period of 5 seconds'.
 
-add a table with the following properties:
-name: 'test_table',
-container: 'test',
-data: 'Ahmed in the cell name &&& 18 in the cell age',
-width: '200 pixels',
-length: '100 pixels'.
-
 add a tooltip with the following properties:
 emitter: 'play_button',
 title: 'shit',
 text: 'Fuck',
 direction: 'from_the_right'.
+
+add a slideshow with the following properties:
+name: 'sample_slideshow',
+container: 'test'.
+
+add a slideshow_item with the following properties:
+name: 'sample_slideshow_item',
+type: 'image',
+slideshow: 'sample_slideshow',
+source: 'http://placehold.it/940x528'.
+
+add a slideshow_item with the following properties:
+name: 'sample_slideshow_item2',
+type: 'image',
+slideshow: 'sample_slideshow',
+source: 'http://placehold.it/1024x1024'.
+
+add a button with the following properties:
+name: 'test_button',
+text: 'Play',
+container: 'test',
+width: '200 pixels',
+length: '100 pixels',
+attributes: 'raised',
+font_colour: 'red',
+thickness: 'thick',
+animation: 'wobble',
+distance_from_the_top: '50 pixels',
+distance_from_the_left: '50%',
+commands: 'When it has been clicked, play big_buck_bunny_video every a period of 5 seconds'.
 
 </en-uk>

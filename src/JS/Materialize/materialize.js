@@ -8643,7 +8643,7 @@ if (jQuery) {
         hoursView = popover.find('.clockpicker-hours'),
         minutesView = popover.find('.clockpicker-minutes'),
         amPmBlock = popover.find('.clockpicker-am-pm-block'),
-        isInput = element.prop('tagName') === 'INPUT',
+        isInput = element.prop('tagName') === 'PAPER-INPUT',
         input = isInput ? element : element.find('input'),
         label = $("label[for=" + input.attr("id") + "]"),
         self = this;

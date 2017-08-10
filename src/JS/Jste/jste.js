@@ -2,6 +2,7 @@
 //--------------------------------------------------Declaring Some Variables------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 var lang;
+document.isRTL = false;
 var corsPolicy = 'https://cors-anywhere.herokuapp.com/';
 var shareThis = window.ShareThis;
 var twitterSharer = window.ShareThisViaTwitter;
@@ -163,6 +164,7 @@ if ($('en-uk').length) {
 	code = code.replace(/'\./g, "'});");
 	$('fr-fr').remove();
 } else if ($('ar-ar').length) {
+	document.isRTL = true;
 	$('html').attr('dir', 'rtl').attr('lang', 'ar');
 	lang = 3;
 	annyang.setLanguage('ar-AE');
@@ -173,6 +175,7 @@ if ($('en-uk').length) {
 	code = customText(code, 'اكتب هذا النص بخط سميك', 'اكتب هذا النص بخط مائل', 'اكتب هذا النص بخط مخطط', 'اكتب هذا النص بخط سميك و مائل', 'اكتب هذا النص بخط مائل و سميك', 'اكتب هذا النص بخط سميك و مخطط', 'اكتب هذا النص بخط مخطط و سميك', 'اكتب هذا النص بخط مخطط و مائل', 'اكتب هذا النص بخط مائل و مخطط', 'اكتب هذا النص بخط سميك, مائل و مخطط', 'اكتب هذا النص بخط سميك, مخطط و مائل', 'اكتب هذا النص بخط مائل, سميك و مخطط', 'اكتب هذا النص بخط مائل, مخطط و سميك', 'اكتب هذا النص بخط مخطط, مائل و سميك', 'اكتب هذا النص بخط مخطط, سميك و مائل', 'طول النافذة', 'عرض النافذة', 'طول الشاشة', 'عرض الشاشة', 'ايقونة', "اسم المستخدم");
 	$('ar-ar').remove();
 } else if ($('ar-eg').length) {
+	document.isRTL = true;
 	$('html').attr('dir', 'rtl').attr('lang', 'ar');
 	lang = 4;
 	annyang.setLanguage('ar-EG');
@@ -196,9 +199,7 @@ $(function () {
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //----------------------------------------Vanillia Fading In & Out Functions------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-
 // fade out
-
 window.fadeOut = function (elementName) {
 	var el = document.querySelector('#' + elementName + '');
 	el.style.opacity = 1;
@@ -209,15 +210,12 @@ window.fadeOut = function (elementName) {
 			requestAnimationFrame(fade);
 		}
 	})();
-}
-
+};
 // fade in
-
 window.fadeIn = function (elementName, display) {
 	var el = document.querySelector('#' + elementName + '');
 	el.style.opacity = 0;
 	el.style.display = display || "block";
-
 	(function fade() {
 		var val = parseFloat(el.style.opacity);
 		if (!((val += .1) > 1)) {
@@ -225,7 +223,7 @@ window.fadeIn = function (elementName, display) {
 			requestAnimationFrame(fade);
 		}
 	})();
-}
+};
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //----------------------------------------------------Getting The URL Params------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -295,14 +293,14 @@ function setURLParameter(paramName, paramValue) {
 	}
 	window.history.pushState("", "", url + hash);
 }
-
-
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //-------------------------------------------------Changing The Current Page------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 function changePage(pageName) {
-	window.fadeOut(decodeURIComponent(getAllUrlParams().page));
-	window.fadeIn(pageName, 'inline-block');
+	if (decodeURIComponent(getAllUrlParams().page) != pageName) {
+		window.fadeOut(decodeURIComponent(getAllUrlParams().page));
+		window.fadeIn(pageName, 'inline-block');
+	}
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //----------------------------------------------------------Smooth Scrolling------------------------------------------------------------------------------------------------------------------------------------------//
@@ -427,48 +425,78 @@ function convertLengthCSS(propertyValue) {
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 function setDistance(name, direction, value) {
 	if (direction == 'bottom') {
-		if (value.split('%').length > 1) {
-			$('#' + name + '').css('bottom', '-' + convertLengthCSS(value));
-			$('#' + name + '_container').css('bottom', convertLengthCSS(value));
-			$('#' + name + '_container').css('position', 'absolute');
-			$('#' + name + '').css('position', 'relative');
+		if (value.includes('center')) {
+			$('#' + name + '').css({
+				'position': 'absolute',
+				'bottom': '50%',
+				'margin-bottom': function () {
+					return -$(this).outerHeight() / 2;
+				}
+			});
 		} else {
 			$('#' + name + '').css('bottom', convertLengthCSS(value));
-			$('#' + name + '_container').css('position', '');
-			$('#' + name + '').css('position', 'absolute');
 		}
 	} else if (direction == 'top') {
-		if (value.split('%').length > 1) {
-			$('#' + name + '').css('top', '-' + convertLengthCSS(value));
-			$('#' + name + '_container').css('top', convertLengthCSS(value));
-			$('#' + name + '_container').css('position', 'absolute');
-			$('#' + name + '').css('position', 'relative');
+		if (value.includes('center')) {
+			$('#' + name + '').css({
+				'position': 'absolute',
+				'top': '50%',
+				'margin-top': function () {
+					return -$(this).outerHeight() / 2;
+				}
+			});
 		} else {
 			$('#' + name + '').css('top', convertLengthCSS(value));
-			$('#' + name + '_container').css('position', '');
-			$('#' + name + '').css('position', 'absolute');
 		}
 	} else if (direction == 'left') {
-		if (value.split('%').length > 1) {
-			$('#' + name + '').css('left', '-' + convertLengthCSS(value));
-			$('#' + name + '_container').css('left', convertLengthCSS(value));
-			$('#' + name + '_container').css('position', 'absolute');
-			$('#' + name + '').css('position', 'relative');
+		if (value.includes('center')) {
+			$('#' + name + '').css({
+				'position': 'absolute',
+				'left': '50%',
+				'margin-left': function () {
+					return -$(this).outerWidth() / 2;
+				}
+			});
 		} else {
 			$('#' + name + '').css('left', convertLengthCSS(value));
-			$('#' + name + '_container').css('position', '');
-			$('#' + name + '').css('position', 'absolute');
 		}
 	} else if (direction == 'right') {
-		if (value.split('%').length > 1) {
-			$('#' + name + '').css('right', '-' + convertLengthCSS(value));
-			$('#' + name + '_container').css('right', convertLengthCSS(value));
-			$('#' + name + '_container').css('position', 'absolute');
-			$('#' + name + '').css('position', 'relative');
+		if (value.includes('center')) {
+			$('#' + name + '').css({
+				'position': 'absolute',
+				'right': '50%',
+				'margin-right': function () {
+					return -$(this).outerWidth() / 2;
+				}
+			});
 		} else {
 			$('#' + name + '').css('right', convertLengthCSS(value));
-			$('#' + name + '_container').css('position', '');
-			$('#' + name + '').css('position', 'absolute');
+		}
+	}
+}
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------Setting The Dimensions Function------------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+function setDimension(name, dimension, value) {
+	if (dimension == 'length') {
+		$('#' + name + '').css('height', convertLengthCSS(value));
+		var lengthRatio = parseInt($('#' + name + '').outerHeight()) / document.documentElement.clientHeight;
+		if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
+			(function (lengthRatio, name) {
+				window.addEventListener('resize', function () {
+					$('#' + name + '').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 'px');
+				});
+			})(lengthRatio, name);
+		}
+	} else if (dimension == 'width') {
+		$('#' + name + '').css('width', convertLengthCSS(value));
+		var widthRatio = parseInt($('#' + name + '').outerWidth()) / document.documentElement.clientWidth;
+		if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
+			(function (widthRatio, name) {
+				window.addEventListener('resize', function () {
+					$('#' + name + '').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
+				});
+			})(widthRatio, name);
 		}
 	}
 }
@@ -673,6 +701,9 @@ var privateCTranslations = ['private', 'private', "privée", 'الخاصة', 'ا
 var tableTranslations = ['table', 'table', "tableau", 'جدول', 'جدول', '表'];
 var dataTranslations = ['data', 'data', "les_données", 'البيانات', 'البيانات', 'データ'];
 var inTheCellTranslations = ['in the cell', 'in the cell', "dans la cellule", 'فى الخلية', 'فى الخانة', 'セル'];
+var inTheGroupTranslations = ['in the group', 'in the group', "dans la cellule", 'فى الخلية', 'فى الخانة', 'セル'];
+var slideShowTranslations = ['slideshow', 'slideshow', "dans la cellule", 'فى الخلية', 'فى الخانة', 'セル'];
+var slideShowItemTranslations = ['slideshow_item', 'slideshow_item', "dans la cellule", 'فى الخلية', 'فى الخانة', 'セル'];
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------------Commands Translations------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -2431,6 +2462,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
             }";
 		} else if (script == 'S2') {
 			return "(function (" + commandVarB + ") { \
+				$('#' + elementName + '').css('cursor', 'pointer'); \
                 " + eventPrefix + typePrefix + " \
                     if (commandsFnTranslations('c44q', '" + event + "', " + commandVarA + ") == commandsFnTranslations('c44r')) { \
                         targetURL = commandsFnTranslations('c44t', '" + event + "', " + commandVarA + "); \
@@ -3907,7 +3939,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					}, options);
 					return this.each(function () {
 						var name = settings[nameTranslations[lang]];
-						var out = '<div id="' + name + '_container"><p id="' + name + '"></p></div>';
+						var out = '<p id="' + name + '"></p>';
 						if (settings[containerTranslations[lang]]) {
 							$('#' + settings[containerTranslations[lang]] + '').append(out);
 						} else {
@@ -3974,12 +4006,12 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').css('font-size', convertLengthCSS(settings[fontSizeTranslations[lang]]));
 						}
 						if ($('#' + settings[containerTranslations[lang]] + '').hasClass('row') == true) {
-							$('#' + name + '_container').addClass('col');
+							$('#' + name + '').addClass('col');
 						}
 						if (settings[positionTranslations[lang]]) {
 							$('#' + name + '').css('position', settings[positionTranslations[lang]]);
 						} else {
-							$('#' + name + '').css('position', 'absolute');
+							$('#' + name + '').css('position', 'relative');
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
 							setDistance(name, 'bottom', settings[distanceFromBottomTranslations[lang]]);
@@ -4041,7 +4073,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					}, options);
 					return this.each(function () {
 						var name = settings[nameTranslations[lang]];
-						var out = '<div id="' + name + '_container"><paper-button id="' + name + '"></paper-button></div>';
+						var out = '<paper-button id="' + name + '"></paper-button>';
 						if (settings[containerTranslations[lang]]) {
 							$('#' + settings[containerTranslations[lang]] + '').append(out);
 						} else {
@@ -4077,12 +4109,12 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').css('font-size', convertLengthCSS(settings[fontSizeTranslations[lang]]));
 						}
 						if ($('#' + settings[containerTranslations[lang]] + '').hasClass('row') == true) {
-							$('#' + name + '_container').addClass('col');
+							$('#' + name + '').addClass('col');
 						}
 						if (settings[positionTranslations[lang]]) {
 							$('#' + name + '').css('position', settings[positionTranslations[lang]]);
 						} else {
-							$('#' + name + '').css('position', 'absolute');
+							$('#' + name + '').css('position', 'relative');
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
 							setDistance(name, 'bottom', settings[distanceFromBottomTranslations[lang]]);
@@ -4141,7 +4173,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					}, options);
 					return this.each(function () {
 						var name = settings[nameTranslations[lang]];
-						var out = '<div id="' + name + '_container"><paper-card id="' + name + '"><div id="الحاجات_اللى_جوة_السيكشن" class="card-content"></div></paper-card></div>';
+						var out = '<paper-card id="' + name + '"><div id="الحاجات_اللى_جوة_السيكشن" class="card-content"></div></paper-card>';
 						if (settings[containerTranslations[lang]]) {
 							$('#' + settings[containerTranslations[lang]] + '').append(out);
 						} else {
@@ -4156,7 +4188,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						if (settings[positionTranslations[lang]]) {
 							$('#' + name + '').css('position', settings[positionTranslations[lang]]);
 						} else {
-							$('#' + name + '').css('position', 'absolute');
+							$('#' + name + '').css('position', 'relative');
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
 							setDistance(name, 'bottom', settings[distanceFromBottomTranslations[lang]]);
@@ -4171,10 +4203,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							setDistance(name, 'right', settings[distanceFromRightTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							$('#' + name + '').css('width', convertLengthCSS(settings[widthTranslations[lang]]));
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
 						}
 						if (settings[lengthTranslations[lang]]) {
-							$('#' + name + '').css('height', convertLengthCSS(settings[lengthTranslations[lang]]));
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
 						}
 						if (settings[animationTranslations[lang]]) {
 							document.setAnimation(name, settings[animationTranslations[lang]]);
@@ -4244,7 +4276,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 								background: '#FE5970'
 							});
 						}
-
 						if (settings[transparencyTranslations[lang]]) {
 							$('#' + name + '').css('-webkit-filter', 'opacity(' + settings[transparencyTranslations[lang]] + '%)');
 						}
@@ -4272,7 +4303,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					}, options);
 					return this.each(function () {
 						var name = settings[nameTranslations[lang]];
-						var out = '<div id="' + name + '_container"><paper-swatch-picker id="' + name + '" color="{{selectedColor}}"></paper-swatch-picker></div>';
+						var out = '<paper-swatch-picker id="' + name + '" color="{{selectedColor}}"></paper-swatch-picker>';
 						if (settings[containerTranslations[lang]]) {
 							$('#' + settings[containerTranslations[lang]] + '').append(out);
 						} else {
@@ -4285,10 +4316,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							setBG(name, settings[backgroundTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							$('#' + name + '').css('width', convertLengthCSS(settings[widthTranslations[lang]]));
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
 						}
 						if (settings[lengthTranslations[lang]]) {
-							$('#' + name + '').css('height', convertLengthCSS(settings[lengthTranslations[lang]]));
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
 						}
 						if (settings[animationTranslations[lang]]) {
 							document.setAnimation(name, settings[animationTranslations[lang]]);
@@ -4324,9 +4355,9 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					return this.each(function () {
 						var name = settings[nameTranslations[lang]];
 						if (settings[typeTranslations[lang]] == settings[barTranslations[lang]]) {
-							var out = '<div id="' + name + '_container"><paper-progress id="' + name + '"></paper-progress></div>';
+							var out = '<paper-progress id="' + name + '"></paper-progress>';
 						} else if (settings[typeTranslations[lang]] == settings[spinnerTranslations[lang]]) {
-							var out = '<div id="' + name + '_container"><paper-spinner id="' + name + '"></paper-spinner></div>';
+							var out = '<paper-spinner id="' + name + '"></paper-spinner>';
 						}
 						if (settings[containerTranslations[lang]]) {
 							$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -4348,10 +4379,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							}
 						}
 						if (settings[widthTranslations[lang]]) {
-							$('#' + name + '').css('width', convertLengthCSS(settings[widthTranslations[lang]]));
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
 						}
 						if (settings[lengthTranslations[lang]]) {
-							$('#' + name + '').css('height', convertLengthCSS(settings[lengthTranslations[lang]]));
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
 						}
 						if (settings[animationTranslations[lang]]) {
 							document.setAnimation(name, settings[animationTranslations[lang]]);
@@ -4368,6 +4399,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					// Establish our default settings
 					var settings = $.extend({
 						[titleTranslations[lang]]: null,
+						[typeTranslations[lang]]: null,
 						[sourceTranslations[lang]]: null,
 						[imageWidthTranslations[lang]]: null,
 						[imageLengthTranslations[lang]]: null,
@@ -4386,14 +4418,59 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						[commandsTranslations[lang]]: null
 					}, options);
 					return this.each(function () {
+						var isLogo = false;
 						var name = settings[nameTranslations[lang]];
 						var source = settings[sourceTranslations[lang]];
 						window.analyseImage(name, source);
-						if (settings[titleTranslations[lang]]) {
-							containerHeight = parseInt(settings[imageLengthTranslations[lang]]) + 40;
-							var out = '<div id="' + name + '_container_container"><paper-material elevation="2" id="' + name + '_container" style="position: relative; overflow: hidden; width: ' + convertLengthCSS(settings[imageWidthTranslations[lang]]) + '; height: ' + containerHeight + ';"><img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="' + window.mediaImageBlurredA + '" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /><div id="showImage_' + name + '_containerA"><p id="' + name + '_imageData" class="imageData"></p><button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + source + '\');"><i class="material-icons">file_download</i> Loading...</button></div><div id="showImage_' + name + '_containerB" style="display: none;"><p class="nudesFoundWarningText">Nudes found</p><button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + source + '\');">Continue</button><button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div><div id="showImage_' + name + '_containerC" style="display: none;"><p class="showTheFullContentWarning">Show the full content ?</p><button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></div><p style="margin: 10 0 0 45%">' + settings[titleTranslations[lang]] + '</p></paper-material></div>';
+						if (settings[typeTranslations[lang]] == iconTranslations[lang]) {
+							getFileSize(source, function (size) {
+								if (size.split(' kb')[0] < 100) {
+									isLogo = true;
+									var out = '<img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="' + source + '" />';
+								} else {
+									var out = '<paper-material elevation="2" id="' + name + '_container" style="position: relative; overflow: hidden; width: ' + convertLengthCSS(settings[imageWidthTranslations[lang]]) + '; height: ' + convertLengthCSS(settings[imageLengthTranslations[lang]]) + ';"> \
+								<img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="' + window.mediaImageBlurredA + '" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
+								<div id="showImage_' + name + '_containerA"> \
+								<p id="' + name + '_imageData" class="imageData"></p> \
+								<button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + source + '\');"> \
+								<i class="material-icons">file_download</i> Loading...</button></div> \
+								<div id="showImage_' + name + '_containerB" style="display: none;"> \
+								<p class="nudesFoundWarningText">Nudes found</p><button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + source + '\');">Continue</button> \
+								<button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div> \
+								<div id="showImage_' + name + '_containerC" style="display: none;"> \
+								<p class="showTheFullContentWarning">Show the full content ?</p> \
+								<button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></paper-container>';
+								}
+							});
 						} else {
-							var out = '<div id="' + name + '_container_container"><paper-material elevation="2" id="' + name + '_container" style="position: relative; overflow: hidden; width: ' + convertLengthCSS(settings[imageWidthTranslations[lang]]) + '; height: ' + convertLengthCSS(settings[imageLengthTranslations[lang]]) + ';"><img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="' + window.mediaImageBlurredA + '" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /><div id="showImage_' + name + '_containerA"><p id="' + name + '_imageData" class="imageData"></p><button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + source + '\');"><i class="material-icons">file_download</i> Loading...</button></div><div id="showImage_' + name + '_containerB" style="display: none;"><p class="nudesFoundWarningText">Nudes found</p><button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + source + '\');">Continue</button><button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div><div id="showImage_' + name + '_containerC" style="display: none;"><p class="showTheFullContentWarning">Show the full content ?</p><button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></paper-container></div>';
+							if (settings[titleTranslations[lang]]) {
+								containerHeight = parseInt(settings[imageLengthTranslations[lang]]) + 40;
+								var out = '<paper-material elevation="2" id="' + name + '_container" style="position: relative; overflow: hidden; width: ' + convertLengthCSS(settings[imageWidthTranslations[lang]]) + '; height: ' + convertLengthCSS(settings[imageLengthTranslations[lang]]) + ';"> \
+								<img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="' + window.mediaImageBlurredA + '" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
+								<div id="showImage_' + name + '_containerA"> \
+								<p id="' + name + '_imageData" class="imageData"></p> \
+								<button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + source + '\');"> \
+								<i class="material-icons">file_download</i> Loading...</button></div> \
+								<div id="showImage_' + name + '_containerB" style="display: none;"> \
+								<p class="nudesFoundWarningText">Nudes found</p><button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + source + '\');">Continue</button> \
+								<button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div> \
+								<div id="showImage_' + name + '_containerC" style="display: none;"> \
+								<p class="showTheFullContentWarning">Show the full content ?</p> \
+								<button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></paper-container>';
+							} else {
+								var out = '<paper-material elevation="2" id="' + name + '_container" style="position: relative; overflow: hidden; width: ' + convertLengthCSS(settings[imageWidthTranslations[lang]]) + '; height: ' + convertLengthCSS(settings[imageLengthTranslations[lang]]) + ';"> \
+								<img id="' + name + '" width="' + settings[imageWidthTranslations[lang]] + '" height="' + settings[imageLengthTranslations[lang]] + '" src="' + window.mediaImageBlurredA + '" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
+								<div id="showImage_' + name + '_containerA"> \
+								<p id="' + name + '_imageData" class="imageData"></p> \
+								<button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + source + '\');"> \
+								<i class="material-icons">file_download</i> Loading...</button></div> \
+								<div id="showImage_' + name + '_containerB" style="display: none;"> \
+								<p class="nudesFoundWarningText">Nudes found</p><button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + source + '\');">Continue</button> \
+								<button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div> \
+								<div id="showImage_' + name + '_containerC" style="display: none;"> \
+								<p class="showTheFullContentWarning">Show the full content ?</p> \
+								<button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></paper-container>';
+							}
 						}
 						if (settings[containerTranslations[lang]]) {
 							$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -4416,22 +4493,38 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').attr('alt', settings[titleTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							$('#' + name + '').css('width', convertLengthCSS(settings[widthTranslations[lang]]));
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
 						}
 						if (settings[lengthTranslations[lang]]) {
-							$('#' + name + '').css('height', convertLengthCSS(settings[lengthTranslations[lang]]));
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
-							setDistance(name + '_container', 'bottom', settings[distanceFromBottomTranslations[lang]]);
+							if (isLogo == true) {
+								setDistance(name, 'bottom', settings[distanceFromBottomTranslations[lang]]);
+							} else {
+								setDistance(name + '_container', 'bottom', settings[distanceFromBottomTranslations[lang]]);
+							}
 						}
 						if (settings[distanceFromTopTranslations[lang]]) {
-							setDistance(name + '_container', 'top', settings[distanceFromTopTranslations[lang]]);
+							if (isLogo == true) {
+								setDistance(name, 'top', settings[distanceFromTopTranslations[lang]]);
+							} else {
+								setDistance(name + '_container', 'top', settings[distanceFromTopTranslations[lang]]);
+							}
 						}
 						if (settings[distanceFromLeftTranslations[lang]]) {
-							setDistance(name + '_container', 'left', settings[distanceFromLeftTranslations[lang]]);
+							if (isLogo == true) {
+								setDistance(name, 'left', settings[distanceFromLeftTranslations[lang]]);
+							} else {
+								setDistance(name + '_container', 'left', settings[distanceFromLeftTranslations[lang]]);
+							}
 						}
 						if (settings[distanceFromRightTranslations[lang]]) {
-							setDistance(name + '_container', 'right', settings[distanceFromRightTranslations[lang]]);
+							if (isLogo == true) {
+								setDistance(name, 'right', settings[distanceFromRightTranslations[lang]]);
+							} else {
+								setDistance(name + '_container', 'right', settings[distanceFromRightTranslations[lang]]);
+							}
 						}
 						if (settings[animationTranslations[lang]]) {
 							document.setAnimation(name, settings[animationTranslations[lang]]);
@@ -4468,7 +4561,14 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					return this.each(function () {
 						var name = settings[nameTranslations[lang]];
 						var source = settings[sourceTranslations[lang]];
-						var out = '<div id="' + name + '_container_container"><div id="' + name + '_container" style="position: relative; overflow: hidden; width: ' + convertLengthCSS(settings[videoWidthTranslations[lang]]) + '; height: ' + convertLengthCSS(settings[videoLengthTranslations[lang]]) + ';"><video id="' + name + '" width="' + settings[videoWidthTranslations[lang]] + '" height="' + settings[videoLengthTranslations[lang]] + '" crossorigin="anonymous" style="-webkit-filter: blur(10px); background: black;" preload="auto" /><div id="showVideo_' + name + '_containerA"><button id="video_' + name + '_mainButton" class="videoMainButton" onclick="showVideoA(\'' + name + '\', \'' + source + '\');"><i class="material-icons">play_arrow</i> Loading...</button></div><div id="showVideo_' + name + '_containerB" style="display: none;"><p style="position: absolute; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p><button style="position: absolute; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></div></div>';
+						var out = '<div id="' + name + '_container" style="position: relative; overflow: hidden; width: ' + convertLengthCSS(settings[videoWidthTranslations[lang]]) + '; height: ' + convertLengthCSS(settings[videoLengthTranslations[lang]]) + ';"> \
+						<video id="' + name + '" width="' + settings[videoWidthTranslations[lang]] + '" height="' + settings[videoLengthTranslations[lang]] + '" crossorigin="anonymous" style="-webkit-filter: blur(10px); background: black;" preload="auto" /> \
+						<div id="showVideo_' + name + '_containerA"> \
+						<button id="video_' + name + '_mainButton" class="videoMainButton" onclick="showVideoA(\'' + name + '\', \'' + source + '\');"> \
+						<i class="material-icons">play_arrow</i> Loading...</button></div> \
+						<div id="showVideo_' + name + '_containerB" style="display: none;"> \
+						<p style="position: relative; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p> \
+						<button style="position: relative; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></div>';
 						if (settings[containerTranslations[lang]]) {
 							$('#' + settings[containerTranslations[lang]] + '').append(out);
 						} else {
@@ -4490,10 +4590,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').attr('alt', settings[titleTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							$('#' + name + '').css('width', convertLengthCSS(settings[widthTranslations[lang]]));
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
 						}
 						if (settings[lengthTranslations[lang]]) {
-							$('#' + name + '').css('height', convertLengthCSS(settings[lengthTranslations[lang]]));
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
 							setDistance(name + '_container', 'bottom', settings[distanceFromBottomTranslations[lang]]);
@@ -4543,7 +4643,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					return this.each(function () {
 						var name = settings[nameTranslations[lang]];
 						var source = settings[sourceTranslations[lang]];
-						var out = '<div id="' + name + '_container"><div id="' + name + '" class="aplayer"></div></div>';
+						var out = '<div id="' + name + '" class="aplayer"></div>';
 						if (settings[containerTranslations[lang]]) {
 							$('#' + settings[containerTranslations[lang]] + '').append(out);
 						} else {
@@ -4556,7 +4656,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						if (settings[positionTranslations[lang]]) {
 							$('#' + name + '').css('position', settings[positionTranslations[lang]]);
 						} else {
-							$('#' + name + '').css('position', 'absolute');
+							$('#' + name + '').css('position', 'relative');
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
 							setDistance(name, 'bottom', settings[distanceFromBottomTranslations[lang]]);
@@ -4583,10 +4683,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').attr('alt', settings[titleTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							$('#' + name + '').css('width', convertLengthCSS(settings[widthTranslations[lang]]));
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
 						}
 						if (settings[lengthTranslations[lang]]) {
-							$('#' + name + '').css('height', convertLengthCSS(settings[lengthTranslations[lang]]));
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
 						}
 						if (settings[animationTranslations[lang]]) {
 							document.setAnimation(name, settings[animationTranslations[lang]]);
@@ -4652,7 +4752,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						if (settings[positionTranslations[lang]]) {
 							$('#' + name + '').css('position', settings[positionTranslations[lang]]);
 						} else {
-							$('#' + name + '').css('position', 'absolute');
+							$('#' + name + '').css('position', 'relative');
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
 							setDistance(name, 'bottom', settings[distanceFromBottomTranslations[lang]]);
@@ -4679,10 +4779,183 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').attr('alt', settings[titleTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							$('#' + name + '').css('width', convertLengthCSS(settings[widthTranslations[lang]]));
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
 						}
 						if (settings[lengthTranslations[lang]]) {
-							$('#' + name + '').css('height', convertLengthCSS(settings[lengthTranslations[lang]]));
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
+						}
+						if (settings[animationTranslations[lang]]) {
+							document.setAnimation(name, settings[animationTranslations[lang]]);
+						}
+						if (settings[transparencyTranslations[lang]]) {
+							$('#' + name + '').css('-webkit-filter', 'opacity(' + settings[transparencyTranslations[lang]] + '%)');
+						}
+					});
+				};
+				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+				//-----------------------------------------------------------------ِSlideshow------------------------------------------------------------------------------------------------------------------------------------------//
+				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+				$.fn[slideShowTranslations[lang]] = function (options) {
+					// Establish our default settings
+					var settings = $.extend({
+						[autoplayTranslations[lang]]: null,
+						[nameTranslations[lang]]: null,
+						[widthTranslations[lang]]: null,
+						[lengthTranslations[lang]]: null,
+						[animationTranslations[lang]]: null,
+						[transparencyTranslations[lang]]: null,
+						[distanceFromBottomTranslations[lang]]: null,
+						[distanceFromTopTranslations[lang]]: null,
+						[distanceFromLeftTranslations[lang]]: null,
+						[distanceFromRightTranslations[lang]]: null,
+						[positionTranslations[lang]]: null,
+						[containerTranslations[lang]]: null,
+						[backgroundTranslations[lang]]: null,
+						[commandsTranslations[lang]]: null
+					}, options);
+					return this.each(function () {
+						var name = settings[nameTranslations[lang]];
+						var source = settings[sourceTranslations[lang]];
+						var out = '<div id="' + name + '" class="owl-carousel owl-theme"></div>';
+						if (settings[containerTranslations[lang]]) {
+							$('#' + settings[containerTranslations[lang]] + '').append(out);
+						} else {
+							$('contents').append(out);
+						}
+						if (settings[attributesTranslations[lang]]) {
+							var propertiesArray = settings[attributesTranslations[lang]].split(' &amp;&amp;&amp; ');
+							for (i = 0; i < propertiesArray.length; i++) {
+								if (propertiesArray[i] == autoplayTranslations[lang]) {
+									var autoplay = true;
+								}
+							}
+						}
+						jQuery(document).ready(function ($) {
+							$('#' + name + '').owlCarousel({
+								animateOut: 'slideOutDown',
+								animateIn: 'flipInX',
+								items: 1,
+								margin: 30,
+								loop: true,
+								stagePadding: 30,
+								smartSpeed: 450,
+								autoHeight: true,
+								rtl: document.isRTL,
+								autoplay: autoplay,
+								autoplayHoverPause: true,
+								URLhashListener: true,
+								autoplayTimeout: 5000
+							});
+						});
+						if (settings[positionTranslations[lang]]) {
+							$('#' + name + '').css('position', settings[positionTranslations[lang]]);
+						} else {
+							$('#' + name + '').css('position', 'relative');
+						}
+						if (settings[distanceFromBottomTranslations[lang]]) {
+							setDistance(name, 'bottom', settings[distanceFromBottomTranslations[lang]]);
+						}
+						if (settings[distanceFromTopTranslations[lang]]) {
+							setDistance(name, 'top', settings[distanceFromTopTranslations[lang]]);
+						}
+						if (settings[distanceFromLeftTranslations[lang]]) {
+							setDistance(name, 'left', settings[distanceFromLeftTranslations[lang]]);
+						}
+						if (settings[distanceFromRightTranslations[lang]]) {
+							setDistance(name, 'right', settings[distanceFromRightTranslations[lang]]);
+						}
+						if (settings[backgroundTranslations[lang]]) {
+							setBG(name, settings[backgroundTranslations[lang]]);
+						}
+						if (settings[imageWidthTranslations[lang]]) {
+							$('#' + name + '').attr('width', settings[imageWidthTranslations[lang]]);
+						}
+						if (settings[imageLengthTranslations[lang]]) {
+							$('#' + name + '').attr('length', settings[imageLengthTranslations[lang]]);
+						}
+						if (settings[titleTranslations[lang]]) {
+							$('#' + name + '').attr('alt', settings[titleTranslations[lang]]);
+						}
+						if (settings[widthTranslations[lang]]) {
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
+						}
+						if (settings[lengthTranslations[lang]]) {
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
+						}
+						if (settings[animationTranslations[lang]]) {
+							document.setAnimation(name, settings[animationTranslations[lang]]);
+						}
+						if (settings[transparencyTranslations[lang]]) {
+							$('#' + name + '').css('-webkit-filter', 'opacity(' + settings[transparencyTranslations[lang]] + '%)');
+						}
+					});
+				};
+				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+				//---------------------------------------------------------------------Audio------------------------------------------------------------------------------------------------------------------------------------------//
+				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+				$.fn[slideShowItemTranslations[lang]] = function (options) {
+					// Establish our default settings
+					var settings = $.extend({
+						[slideShowTranslations[lang]]: null,
+						[typeTranslations[lang]]: imageTranslations[lang],
+						[sourceTranslations[lang]]: null,
+						[nameTranslations[lang]]: null,
+						[widthTranslations[lang]]: null,
+						[lengthTranslations[lang]]: null,
+						[animationTranslations[lang]]: null,
+						[transparencyTranslations[lang]]: null,
+						[distanceFromBottomTranslations[lang]]: null,
+						[distanceFromTopTranslations[lang]]: null,
+						[distanceFromLeftTranslations[lang]]: null,
+						[distanceFromRightTranslations[lang]]: null,
+						[positionTranslations[lang]]: null,
+						[containerTranslations[lang]]: null,
+						[backgroundTranslations[lang]]: null,
+						[commandsTranslations[lang]]: null
+					}, options);
+					return this.each(function () {
+						var name = settings[nameTranslations[lang]];
+						var source = settings[sourceTranslations[lang]];
+						if (settings[typeTranslations[lang]] == imageTranslations[lang]) {
+							var out = '<div class="owl-item" data-hash="' + name + '"><img src="' + source + '"></img></div>';
+						} else if (settings[typeTranslations[lang]] == videoTranslations[lang]) {
+							var out = '<div class="item-video" data-hash="' + name + '"><a class="owl-video" href="' + source + '"></a></div>'
+						}
+						$('#' + settings[slideShowTranslations[lang]] + '').append(out);
+						if (settings[positionTranslations[lang]]) {
+							$('#' + name + '').css('position', settings[positionTranslations[lang]]);
+						} else {
+							$('#' + name + '').css('position', 'relative');
+						}
+						if (settings[distanceFromBottomTranslations[lang]]) {
+							setDistance(name, 'bottom', settings[distanceFromBottomTranslations[lang]]);
+						}
+						if (settings[distanceFromTopTranslations[lang]]) {
+							setDistance(name, 'top', settings[distanceFromTopTranslations[lang]]);
+						}
+						if (settings[distanceFromLeftTranslations[lang]]) {
+							setDistance(name, 'left', settings[distanceFromLeftTranslations[lang]]);
+						}
+						if (settings[distanceFromRightTranslations[lang]]) {
+							setDistance(name, 'right', settings[distanceFromRightTranslations[lang]]);
+						}
+						if (settings[backgroundTranslations[lang]]) {
+							setBG(name, settings[backgroundTranslations[lang]]);
+						}
+						if (settings[imageWidthTranslations[lang]]) {
+							$('#' + name + '').attr('width', settings[imageWidthTranslations[lang]]);
+						}
+						if (settings[imageLengthTranslations[lang]]) {
+							$('#' + name + '').attr('length', settings[imageLengthTranslations[lang]]);
+						}
+						if (settings[titleTranslations[lang]]) {
+							$('#' + name + '').attr('alt', settings[titleTranslations[lang]]);
+						}
+						if (settings[widthTranslations[lang]]) {
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
+						}
+						if (settings[lengthTranslations[lang]]) {
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
 						}
 						if (settings[animationTranslations[lang]]) {
 							document.setAnimation(name, settings[animationTranslations[lang]]);
@@ -4721,7 +4994,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					}, options);
 					return this.each(function () {
 						var name = settings[nameTranslations[lang]];
-						var out = '<div id="' + name + '_container"><paper-badge id="' + name + '" for="' + targetTranslations[lang] + '"></paper-badge></div>';
+						var out = '<paper-badge id="' + name + '" for="' + targetTranslations[lang] + '"></paper-badge>';
 						if (settings[containerTranslations[lang]]) {
 							$('#' + settings[containerTranslations[lang]] + '').append(out);
 						} else {
@@ -4753,12 +5026,12 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').css('font-size', convertLengthCSS(settings[fontSizeTranslations[lang]]));
 						}
 						if ($('#' + settings[containerTranslations[lang]] + '').hasClass('row') == true) {
-							$('#' + name + '_container').addClass('col');
+							$('#' + name + '').addClass('col');
 						}
 						if (settings[positionTranslations[lang]]) {
 							$('#' + name + '').css('position', settings[positionTranslations[lang]]);
 						} else {
-							$('#' + name + '').css('position', 'absolute');
+							$('#' + name + '').css('position', 'relative');
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
 							setDistance(name, 'bottom', settings[distanceFromBottomTranslations[lang]]);
@@ -4776,10 +5049,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							execute(name, settings[commandsTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							$('#' + name + '').css('width', convertLengthCSS(settings[widthTranslations[lang]]));
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
 						}
 						if (settings[lengthTranslations[lang]]) {
-							$('#' + name + '').css('height', convertLengthCSS(settings[lengthTranslations[lang]]));
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
 						}
 						if (settings[animationTranslations[lang]]) {
 							document.setAnimation(name, settings[animationTranslations[lang]]);
@@ -4822,7 +5095,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					}, options);
 					return this.each(function () {
 						var name = settings[nameTranslations[lang]];
-						var out = '<div id="' + name + '_container"><paper-checkbox id="' + name + '">' + text + '</paper-checkbox></div>';
+						var out = '<paper-checkbox id="' + name + '">' + text + '</paper-checkbox>';
 						if (settings[containerTranslations[lang]]) {
 							$('#' + settings[containerTranslations[lang]] + '').append(out);
 						} else {
@@ -4863,12 +5136,12 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').css('font-size', convertLengthCSS(settings[fontSizeTranslations[lang]]));
 						}
 						if ($('#' + settings[containerTranslations[lang]] + '').hasClass('row') == true) {
-							$('#' + name + '_container').addClass('col');
+							$('#' + name + '').addClass('col');
 						}
 						if (settings[positionTranslations[lang]]) {
 							$('#' + name + '').css('position', settings[positionTranslations[lang]]);
 						} else {
-							$('#' + name + '').css('position', 'absolute');
+							$('#' + name + '').css('position', 'relative');
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
 							setDistance(name, 'bottom', settings[distanceFromBottomTranslations[lang]]);
@@ -4886,10 +5159,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							execute(name, settings[commandsTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							$('#' + name + '').css('width', convertLengthCSS(settings[widthTranslations[lang]]));
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
 						}
 						if (settings[lengthTranslations[lang]]) {
-							$('#' + name + '').css('height', convertLengthCSS(settings[lengthTranslations[lang]]));
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
 						}
 						if (settings[animationTranslations[lang]]) {
 							document.setAnimation(name, settings[animationTranslations[lang]]);
@@ -4932,7 +5205,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					return this.each(function () {
 						var name = settings[nameTranslations[lang]];
 						var body = settings[bodyTranslations[lang]].split('&amp;&amp;&amp;');
-						var out = '<div id="' + name + '_container"><paper-dialog id="' + name + '">';
+						var out = '<paper-dialog id="' + name + '">';
 						if (settings[titleTranslations[lang]]) {
 							out += '<h2>' + settings[titleTranslations[lang]] + '</h2>';
 						}
@@ -4955,7 +5228,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							}
 							out += '</div>';
 						}
-						out += '</paper-dialog></div>';
+						out += '</paper-dialog>';
 						if (settings[containerTranslations[lang]]) {
 							$('#' + settings[containerTranslations[lang]] + '').append(out);
 						} else {
@@ -4984,12 +5257,12 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').css('font-size', convertLengthCSS(settings[fontSizeTranslations[lang]]));
 						}
 						if ($('#' + settings[containerTranslations[lang]] + '').hasClass('row') == true) {
-							$('#' + name + '_container').addClass('col');
+							$('#' + name + '').addClass('col');
 						}
 						if (settings[positionTranslations[lang]]) {
 							$('#' + name + '').css('position', settings[positionTranslations[lang]]);
 						} else {
-							$('#' + name + '').css('position', 'absolute');
+							$('#' + name + '').css('position', 'relative');
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
 							setDistance(name, 'bottom', settings[distanceFromBottomTranslations[lang]]);
@@ -5007,10 +5280,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							execute(name, settings[commandsTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							$('#' + name + '').css('width', convertLengthCSS(settings[widthTranslations[lang]]));
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
 						}
 						if (settings[lengthTranslations[lang]]) {
-							$('#' + name + '').css('height', convertLengthCSS(settings[lengthTranslations[lang]]));
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
 						}
 						if (settings[animationTranslations[lang]]) {
 							document.setAnimation(name, settings[animationTranslations[lang]]);
@@ -5052,21 +5325,34 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					}, options);
 					return this.each(function () {
 						var name = settings[nameTranslations[lang]];
-						var out = '<div id="' + name + '_container"><paper-dropdown-menu id="' + name + '" label="' + settings[titleTranslations[lang]] + '">';
+						var out = '<div class="input-field"> \
+						<select id="' + name + '" style="display: block;"> \
+						<option value="" disabled selected>Choose your option</option>';
 						if (settings[itemsTranslations[lang]]) {
-							var items = settings[itemsTranslations[lang]].split(' &amp;&amp;&amp; ');
-							out += '<paper-listbox id="' + name + '-contents" class="dropdown-content" '
-							if (settings.preselected) {
-								out += 'selected="' + settings.preselected + '">'
-							} else {
-								out += '>'
+							if (settings[itemsTranslations[lang]].includes(inTheGroupTranslations[lang])) {
+								var itemsGroups = settings[itemsTranslations[lang]].split(' &amp;&amp;&amp;&amp; ');
+								for (a = 0; a < itemsGroups.length; a++) {
+									if (itemsGroups[a].includes(inTheGroupTranslations[lang])) {
+										var items = itemsGroups[a].split(' ' + inTheGroupTranslations[lang])[0].split(' &amp;&amp;&amp; ');
+										out += '<optgroup label="' + itemsGroups[a].split(' ' + inTheGroupTranslations[lang])[1] + '">'
+										for (i = 0; i < items.length; i++) {
+											out += '<option value="' + items[i] + '">' + items[i] + '</option>';
+										}
+										out += '</optgroup>';
+									} else {
+										var items = itemsGroups[a].split(' &amp;&amp;&amp; ');
+										for (i = 0; i < items.length; i++) {
+											out += '<option value="' + items[i] + '">' + items[i] + '</option>';
+										}
+									}
+								}
 							}
-							for (i = 0; i < items.length; i++) {
-								out += '<paper-item>' + items[i] + '</paper-item>';
-							}
-							out += '</paper-listbox>';
 						}
-						out += '</paper-dropdown-menu></div>';
+						if (settings[titleTranslations[lang]]) {
+							out += '</select><label>' + settings[titleTranslations[lang]] + '</label></div>';
+						} else {
+							out += '</select></div>';
+						}
 						if (settings[containerTranslations[lang]]) {
 							$('#' + settings[containerTranslations[lang]] + '').append(out);
 						} else {
@@ -5099,12 +5385,12 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').css('font-size', convertLengthCSS(settings[fontSizeTranslations[lang]]));
 						}
 						if ($('#' + settings[containerTranslations[lang]] + '').hasClass('row') == true) {
-							$('#' + name + '_container').addClass('col');
+							$('#' + name + '').addClass('col');
 						}
 						if (settings[positionTranslations[lang]]) {
 							$('#' + name + '').css('position', settings[positionTranslations[lang]]);
 						} else {
-							$('#' + name + '').css('position', 'absolute');
+							$('#' + name + '').css('position', 'relative');
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
 							setDistance(name, 'bottom', settings[distanceFromBottomTranslations[lang]]);
@@ -5122,10 +5408,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							execute(name, settings[commandsTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							$('#' + name + '').css('width', convertLengthCSS(settings[widthTranslations[lang]]));
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
 						}
 						if (settings[lengthTranslations[lang]]) {
-							$('#' + name + '').css('height', convertLengthCSS(settings[lengthTranslations[lang]]));
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
 						}
 						if (settings[backgroundTranslations[lang]]) {
 							setBG(name, settings[backgroundTranslations[lang]]);
@@ -5136,6 +5422,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						if (settings[transparencyTranslations[lang]]) {
 							$('#' + name + '').css('-webkit-filter', 'opacity(' + settings[transparencyTranslations[lang]] + '%)');
 						}
+						$('#' + name + '').material_select();
 					});
 				};
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -5172,7 +5459,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					}, options);
 					return this.each(function () {
 						var name = settings[nameTranslations[lang]];
-						var out = '<div id="' + name + '_container"><paper-fab ';
+						var out = '<paper-fab ';
 						if (settings[attributesTranslations[lang]]) {
 							var propertiesArray = settings[attributesTranslations[lang]].split(' &amp;&amp;&amp; ');
 							for (i = 0; i < propertiesArray.length; i++) {
@@ -5195,7 +5482,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						if (settings[descriptionTranslations[lang]]) {
 							out += 'title="' + settings[descriptionTranslations[lang]] + '" ';
 						}
-						out += 'id="' + name + '"></paper-fab></div>';
+						out += 'id="' + name + '"></paper-fab>';
 						if (settings[containerTranslations[lang]]) {
 							$('#' + settings[containerTranslations[lang]] + '').append(out);
 						} else {
@@ -5229,12 +5516,12 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').css('font-size', convertLengthCSS(settings[fontSizeTranslations[lang]]));
 						}
 						if ($('#' + settings[containerTranslations[lang]] + '').hasClass('row') == true) {
-							$('#' + name + '_container').addClass('col');
+							$('#' + name + '').addClass('col');
 						}
 						if (settings[positionTranslations[lang]]) {
 							$('#' + name + '').css('position', settings[positionTranslations[lang]]);
 						} else {
-							$('#' + name + '').css('position', 'absolute');
+							$('#' + name + '').css('position', 'relative');
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
 							setDistance(name, 'bottom', settings[distanceFromBottomTranslations[lang]]);
@@ -5252,10 +5539,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							execute(name, settings[commandsTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							$('#' + name + '').css('width', convertLengthCSS(settings[widthTranslations[lang]]));
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
 						}
 						if (settings[lengthTranslations[lang]]) {
-							$('#' + name + '').css('height', convertLengthCSS(settings[lengthTranslations[lang]]));
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
 						}
 						if (settings[backgroundTranslations[lang]]) {
 							setBG(name, settings[backgroundTranslations[lang]]);
@@ -5309,9 +5596,9 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					return this.each(function () {
 						var name = settings[nameTranslations[lang]];
 						if (settings[dynamicSizeTranslations[lang]] == yesTranslations[lang]) {
-							var out = '<div id="' + name + '_container"><paper-textarea ';
+							var out = 'paper-textarea ';
 						} else {
-							var out = '<div id="' + name + '_container"><paper-input '
+							var out = '<paper-input '
 						}
 						if (settings[titleTranslations[lang]]) {
 							out += 'label="' + settings[titleTranslations[lang]] + '" ';
@@ -5320,8 +5607,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							out += 'type="password" ';
 						} else if (settings[typeTranslations[lang]] == 'number') {
 							out += 'type="number" ';
-						} else if (settings[typeTranslations[lang]]) {
-							out += 'type="' + settings[typeTranslations[lang]] + '" ';
 						}
 						if (settings[requirementTranslations[lang]] == 'someText') {
 							out += 'auto-validate ';
@@ -5362,8 +5647,8 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						if (settings[prefixTranslations[lang]]) {
 							var prefix = settings[prefixTranslations[lang]].split(' &amp;&amp;&amp; ');
 							for (i = 0; i < prefix.length; i++) {
-								if (prefix[i].split("An icon of ")[1]) {
-									out += '<iron-icon icon="' + prefix[i].split("An icon of ")[1] + '" prefix></iron-icon>';
+								if (prefix[i].split("an icon of ")[1]) {
+									out += '<iron-icon icon="' + prefix[i].split("an icon of ")[1] + '" prefix></iron-icon>';
 								} else {
 									out += '<div prefix>' + prefix[i] + '</div>';
 								}
@@ -5372,8 +5657,8 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						if (settings[suffixTranslations[lang]]) {
 							var suffix = settings[suffixTranslations[lang]].split(' &amp;&amp;&amp; ');
 							for (i = 0; i < suffix.length; i++) {
-								if (suffix[i].split("An icon of ")[1]) {
-									out += '<iron-icon icon="' + suffix[i].split("An icon of ")[1] + '" suffix></iron-icon>';
+								if (suffix[i].split("an icon of ")[1]) {
+									out += '<iron-icon icon="' + suffix[i].split("an icon of ")[1] + '" suffix></iron-icon>';
 								} else {
 									out += '<div suffix>' + suffix[i] + '</div>';
 								}
@@ -5383,14 +5668,31 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							out += '<paper-icon-button suffix onclick="clearInput()" icon="clear" alt="clear" title="clear"></paper-icon-button>';
 						}
 						if (settings[dynamicSizeTranslations[lang]] == yesTranslations[lang]) {
-							out += '</paper-textarea></div>';
+							out += '</paper-textarea>';
 						} else {
-							out += '</paper-input></div>'
+							out += '</paper-input>'
 						}
 						if (settings[containerTranslations[lang]]) {
 							$('#' + settings[containerTranslations[lang]] + '').append(out);
 						} else {
 							$('contents').append(out);
+						}
+						if (settings[typeTranslations[lang]] == 'date') {
+							$('#' + name + '').pickadate({
+								selectMonths: true,
+								selectYears: 100,
+								today: 'Today',
+								clear: 'Clear',
+								close: 'Ok',
+								closeOnSelect: false
+							});
+						} else if (settings[typeTranslations[lang]] == 'time') {
+							$('#' + name + '').pickatime({
+								default: 'now',
+								donetext: 'OK',
+								cleartext: 'Clear',
+								canceltext: 'Cancel'
+							});
 						}
 						if (settings[fontColorTranslations[lang]]) {
 							setFontColour(name, settings[fontColorTranslations[lang]]);
@@ -5420,12 +5722,12 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').css('font-size', convertLengthCSS(settings[fontSizeTranslations[lang]]));
 						}
 						if ($('#' + settings[containerTranslations[lang]] + '').hasClass('row') == true) {
-							$('#' + name + '_container').addClass('col');
+							$('#' + name + '').addClass('col');
 						}
 						if (settings[positionTranslations[lang]]) {
 							$('#' + name + '').css('position', settings[positionTranslations[lang]]);
 						} else {
-							$('#' + name + '').css('position', 'absolute');
+							$('#' + name + '').css('position', 'relative');
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
 							setDistance(name, 'bottom', settings[distanceFromBottomTranslations[lang]]);
@@ -5443,10 +5745,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							execute(name, settings[commandsTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							$('#' + name + '').css('width', convertLengthCSS(settings[widthTranslations[lang]]));
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
 						}
 						if (settings[lengthTranslations[lang]]) {
-							$('#' + name + '').css('height', convertLengthCSS(settings[lengthTranslations[lang]]));
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
 						}
 						if (settings[animationTranslations[lang]]) {
 							document.setAnimation(name, settings[animationTranslations[lang]]);
@@ -5486,7 +5788,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					}, options);
 					return this.each(function () {
 						var name = settings[nameTranslations[lang]];
-						var out = '<div id="' + name + '_container"><paper-material elevation="2" id="' + name + '" class="' + name + '"></paper-material></div>'
+						var out = '<paper-material elevation="2" id="' + name + '" class="' + name + '"></paper-material>'
 						if (settings[containerTranslations[lang]]) {
 							$('#' + settings[containerTranslations[lang]] + '').append(out);
 						} else {
@@ -5542,7 +5844,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').css('font-size', convertLengthCSS(settings[fontSizeTranslations[lang]]));
 						}
 						if ($('#' + settings[containerTranslations[lang]] + '').hasClass('row') == true) {
-							$('#' + name + '_container').addClass('col');
+							$('#' + name + '').addClass('col');
 						}
 						if (settings[positionTranslations[lang]]) {
 							$('#' + name + '').css('position', settings[positionTranslations[lang]]);
@@ -5565,10 +5867,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							execute(name, settings[commandsTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							$('#' + name + '').css('width', convertLengthCSS(settings[widthTranslations[lang]]));
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
 						}
 						if (settings[lengthTranslations[lang]]) {
-							$('#' + name + '').css('height', convertLengthCSS(settings[lengthTranslations[lang]]));
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
 						}
 						if (settings[attributesTranslations[lang]]) {
 							if (settings[attributesTranslations[lang]].indexOf(parallaxTranslations[lang]) > -1) {
@@ -5594,7 +5896,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					});
 				};
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-				//-----------------------------------------------------------------Container------------------------------------------------------------------------------------------------------------------------------------------//
+				//---------------------------------------------------------------------Table------------------------------------------------------------------------------------------------------------------------------------------//
 				//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 				$.fn[tableTranslations[lang]] = function (options) {
 					// Establish our default settings
@@ -5621,7 +5923,7 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 					}, options);
 					return this.each(function () {
 						var name = settings[nameTranslations[lang]];
-						var out = '<div id="' + name + '_container"><table id="' + name + '" class="responsive-table centered highlight"><thead></thead><tbody class="list"></tbody></table></div>'
+						var out = 'table id="' + name + '" class="responsive-table centered highlight"><thead></thead><tbody class="list"></tbody></table>'
 						if (settings[containerTranslations[lang]]) {
 							$('#' + settings[containerTranslations[lang]] + '').append(out);
 						} else {
@@ -5630,28 +5932,27 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						if (settings[dataTranslations[lang]]) {
 							var inputDataPlainA = settings[dataTranslations[lang]].split(' &amp;&amp;&amp;&amp; ');
 							var inputDataRaw = '[';
-								for (var a = 0; a < inputDataPlainA.length; a++) {
-									var inputDataPlainB = inputDataPlainA[a].split(' &amp;&amp;&amp; ');
-									inputDataRaw += '{';
-									for (var i = 0; i < inputDataPlainB.length; i++) {
-										if (i == inputDataPlainB.length - 1) {
-											var cellData = inputDataPlainB[i].split(' ' + inTheCellTranslations[lang] + ' ')[0];
-											var cellName = inputDataPlainB[i].split(' ' + inTheCellTranslations[lang] + ' ')[1];
-											inputDataRaw += '"' + cellName + '": "' + cellData + '"';
-										} else {
-											var cellData = inputDataPlainB[i].split(' ' + inTheCellTranslations[lang] + ' ')[0];
-											var cellName = inputDataPlainB[i].split(' ' + inTheCellTranslations[lang] + ' ')[1];
-											inputDataRaw += '"' + cellName + '": "' + cellData + '", ';
-										}
-									}
-									if (a == inputDataPlainA.length - 1) {
-										inputDataRaw += '}';
+							for (var a = 0; a < inputDataPlainA.length; a++) {
+								var inputDataPlainB = inputDataPlainA[a].split(' &amp;&amp;&amp; ');
+								inputDataRaw += '{';
+								for (var i = 0; i < inputDataPlainB.length; i++) {
+									if (i == inputDataPlainB.length - 1) {
+										var cellData = inputDataPlainB[i].split(' ' + inTheCellTranslations[lang] + ' ')[0];
+										var cellName = inputDataPlainB[i].split(' ' + inTheCellTranslations[lang] + ' ')[1];
+										inputDataRaw += '"' + cellName + '": "' + cellData + '"';
 									} else {
-										inputDataRaw += '}, ';
-
+										var cellData = inputDataPlainB[i].split(' ' + inTheCellTranslations[lang] + ' ')[0];
+										var cellName = inputDataPlainB[i].split(' ' + inTheCellTranslations[lang] + ' ')[1];
+										inputDataRaw += '"' + cellName + '": "' + cellData + '", ';
 									}
 								}
-								inputDataRaw += ']';
+								if (a == inputDataPlainA.length - 1) {
+									inputDataRaw += '}';
+								} else {
+									inputDataRaw += '}, ';
+								}
+							}
+							inputDataRaw += ']';
 						}
 						var inputData = JSON.parse(inputDataRaw);
 						var keys = [];
@@ -5673,8 +5974,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							item: template
 						};
 						var userList = new List(name + '_container', options, inputData);
-
-
 						if (settings[attributesTranslations[lang]]) {
 							var propertiesArray = settings[attributesTranslations[lang]].split(' &amp;&amp;&amp; ');
 							for (i = 0; i < propertiesArray.length; i++) {
@@ -5700,12 +5999,12 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').css('font-size', convertLengthCSS(settings[fontSizeTranslations[lang]]));
 						}
 						if ($('#' + settings[containerTranslations[lang]] + '').hasClass('row') == true) {
-							$('#' + name + '_container').addClass('col');
+							$('#' + name + '').addClass('col');
 						}
 						if (settings[positionTranslations[lang]]) {
 							$('#' + name + '').css('position', settings[positionTranslations[lang]]);
 						} else {
-							$('#' + name + '').css('position', 'absolute');
+							$('#' + name + '').css('position', 'relative');
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
 							setDistance(name, 'bottom', settings[distanceFromBottomTranslations[lang]]);
@@ -5723,10 +6022,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							execute(name, settings[commandsTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							$('#' + name + '').css('width', convertLengthCSS(settings[widthTranslations[lang]]));
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
 						}
 						if (settings[lengthTranslations[lang]]) {
-							$('#' + name + '').css('height', convertLengthCSS(settings[lengthTranslations[lang]]));
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
 						}
 						if (settings[attributesTranslations[lang]]) {
 							if (settings[attributesTranslations[lang]].indexOf(parallaxTranslations[lang]) > -1) {
@@ -5849,12 +6148,12 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							$('#' + name + '').css('font-size', convertLengthCSS(settings[fontSizeTranslations[lang]]));
 						}
 						if ($('#' + settings[containerTranslations[lang]] + '').hasClass('row') == true) {
-							$('#' + name + '_container').addClass('col');
+							$('#' + name + '').addClass('col');
 						}
 						if (settings[positionTranslations[lang]]) {
 							$('#' + name + '').css('position', settings[positionTranslations[lang]]);
 						} else {
-							$('#' + name + '').css('position', 'absolute');
+							$('#' + name + '').css('position', 'relative');
 						}
 						if (settings[distanceFromBottomTranslations[lang]]) {
 							setDistance(name, 'bottom', settings[distanceFromBottomTranslations[lang]]);
@@ -5872,10 +6171,10 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 							execute(name, settings[commandsTranslations[lang]]);
 						}
 						if (settings[widthTranslations[lang]]) {
-							$('#' + name + '').css('width', convertLengthCSS(settings[widthTranslations[lang]]));
+							setDimension(name, 'width', settings[widthTranslations[lang]]);
 						}
 						if (settings[lengthTranslations[lang]]) {
-							$('#' + name + '').css('height', convertLengthCSS(settings[lengthTranslations[lang]]));
+							setDimension(name, 'length', settings[lengthTranslations[lang]]);
 						}
 						if (settings[backgroundTranslations[lang]]) {
 							setBG(name, settings[backgroundTranslations[lang]]);
@@ -6825,13 +7124,13 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 	15: [function (require, module, exports) {
 		'use strict';
 		/**
-		 * Determines whether the specified URL is absolute
+		 * Determines whether the specified URL is relative
 		 *
 		 * @param {string} url The URL to test
-		 * @returns {boolean} True if the specified URL is absolute, otherwise false
+		 * @returns {boolean} True if the specified URL is relative, otherwise false
 		 */
 		module.exports = function isAbsoluteURL(url) {
-			// A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
+			// A URL is considered relative if it begins with "<scheme>://" or "//" (protocol-relative URL).
 			// RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
 			// by any combination of letters, digits, plus, period, or hyphen.
 			return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
