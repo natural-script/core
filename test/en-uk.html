@@ -420,8 +420,8 @@ name: 'big_buck_bunny_video',
 title: 'Big Buck Bunny',
 container: 'post2_container',
 source: 'https://archive.org/download/BigBuckBunny_328/BigBuckBunny_512kb.mp4',
-video_width: '980',
-video_length: '500',
+width: '980',
+length: '500',
 animation: 'bounce',
 distance_from_the_top: '100 pixels',
 distance_from_the_left: '50 pixels'.
@@ -462,16 +462,32 @@ type: 'image',
 slideshow: 'sample_slideshow',
 source: 'http://placehold.it/1024x1024'.
 
-add a button with the following properties:
-name: 'test_button',
+add a checkbox with the following properties:
+name: 'A_sample_checkbox',
 text: 'Play',
 container: 'test',
-width: '200 pixels',
-length: '100 pixels',
-attributes: 'raised',
 font_colour: 'red',
-thickness: 'thick',
+description: 'Check here',
 animation: 'wobble',
+distance_from_the_top: '50 pixels',
+distance_from_the_left: '50%',
+commands: 'When it has been clicked, play big_buck_bunny_video every a period of 5 seconds'.
+
+add a dialog_box with the following properties:
+name: 'A_sample_dialog',
+title: 'Hello',
+container: 'test',
+font_colour: 'red',
+cancellation_button: 'Cancel',
+animation: 'wobble',
+commands: 'When it has been clicked, play big_buck_bunny_video every a period of 5 seconds'.
+
+add a checkbox with the following properties:
+name: 'A_sample_checkbox',
+text: 'Play',
+container: 'A_sample_dialog',
+font_colour: 'red',
+description: 'Check here',
 distance_from_the_top: '50 pixels',
 distance_from_the_left: '50%',
 commands: 'When it has been clicked, play big_buck_bunny_video every a period of 5 seconds'.
