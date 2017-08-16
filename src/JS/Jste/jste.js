@@ -375,44 +375,61 @@ function evaluateExpression(expression) {
 	finalExpression = finalExpression.replace(/square root/g, 'sqrt').replace(/جذر/g, 'sqrt').replace(/multiplied by/g, '*').replace(/ضرب/g, '*').replace(/divided/g, '/').replace(/على/g, '/').replace(/جا/g, 'sin').replace(/جتا/g, 'cos').replace(/ظا/g, 'tan');
 	return math.eval(finalExpression);
 }
-
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+//-----------------------------------------------Evaluating If Statements------------------------------------------------------------------------------------------------------------------------------------------//
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 function evaluateStatement(statement) {
-	var valNo = expression.match(RegExp(theValueOfTranslations[lang], "g"));
-	var finalStatement = expression;
+	var statementORParts = statement.split(' ' + orTranslations[lang] + ' ' + theValueOfTranslations[lang]);
+	var finalStatement = '';
 	var valueResource = '';
-	if (valNo != null) {
-		if (valNo.length > -1) {
-			for (i = 0; i < valNo.length; i++) {
-				if (lang == 0) {
-					valueResource = statement[i].split(theValueOfTranslations[lang])[1].split(' ')[1];
-					finalStatement = "$('#" + valueResource + "').val()";
-					if (statement[i].split(valueResource)[1].split(' ')[1] == 'is', statement[i].split(valueResource)[1].split(' ')[2] != 'greater', statement[i].split(valueResource)[1].split(' ')[2] != 'smaller') {
-						finalStatement += ' == ';
-					} else if (statement[i].split(valueResource)[1].split(' ')[1] == 'is', statement[i].split(valueResource)[1].split(' ')[2] != 'greater', statement[i].split(valueResource)[1].split(' ')[2] == 'smaller', statement[i].split(valueResource)[1].split(' ')[3] == 'than') {
-						finalStatement += ' < ';
-					} else if (statement[i].split(valueResource)[1].split(' ')[1] == 'is', statement[i].split(valueResource)[1].split(' ')[2] != 'smaller', statement[i].split(valueResource)[1].split(' ')[2] == 'greater', statement[i].split(valueResource)[1].split(' ')[3] == 'than') {
-						finalStatement += ' > ';
-					}
-				} else if (lang == 2) {
-					valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
-					finalValue = $('#' + valueResource + '').val();
-					finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
-				} else if (lang == 3) {
-					valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
-					finalValue = $('#' + valueResource + '').val();
-					finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
-				} else if (lang == 4) {
-					valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
-					finalValue = $('#' + valueResource + '').val();
-					finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
-				} else if (lang == 5) {
-					valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
-					finalValue = $('#' + valueResource + '').val();
-					finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
+	for (var i = 0; i < statementORParts.length; i++) {
+		var statementCurrentPart;
+		if (i == 0) {
+			statementCurrentPart = statementORParts[i];
+		} else {
+			statementCurrentPart = ' ' + theValueOfTranslations[lang] + '' + statementORParts[i];
+			finalStatement += ' || ';
+		}
+		console.log(statementCurrentPart);
+		var statementANDParts = statementCurrentPart.split(' ' + andTranslations[lang] + ' ' + theValueOfTranslations[lang]);
+		for (var k = 0; k < statementANDParts.length; k++) {
+			if (lang == 0) {
+				var statementCurrentPart;
+				if (k == 0) {
+					statementCurrentPart = statementANDParts[k];
+				} else {
+					statementCurrentPart = ' ' + theValueOfTranslations[lang] + '' + statementANDParts[k];
+					finalStatement += ' && ';
 				}
+				valueResource = statementCurrentPart.split(theValueOfTranslations[lang])[1].split(' ')[1];
+				finalStatement += "$('#" + valueResource + "').val()";
+				if (statementCurrentPart.split(valueResource)[1].split(' ')[1] == 'is' && statementCurrentPart.split(valueResource)[1].split(' ')[2] != 'greater' && statementCurrentPart.split(valueResource)[1].split(' ')[2] != 'smaller') {
+					finalStatement += " == '" + statementCurrentPart.split(valueResource)[1].split(' is ')[1] + "'";
+				} else if (statementCurrentPart.split(valueResource)[1].split(' ')[1] == 'is' && statementCurrentPart.split(valueResource)[1].split(' ')[2] != 'greater' && statementCurrentPart.split(valueResource)[1].split(' ')[2] == 'smaller' && statementCurrentPart.split(valueResource)[1].split(' ')[3] == 'than') {
+					finalStatement += " < '" + statementCurrentPart.split(valueResource)[1].split(' is smaller than ')[1] + "'";
+				} else if (statementCurrentPart.split(valueResource)[1].split(' ')[1] == 'is' && statementCurrentPart.split(valueResource)[1].split(' ')[2] != 'smaller' && statementCurrentPart.split(valueResource)[1].split(' ')[2] == 'greater' && statementCurrentPart.split(valueResource)[1].split(' ')[3] == 'than') {
+					finalStatement += " > '" + statementCurrentPart.split(valueResource)[1].split(' is greater than ')[1] + "'";
+				}
+			} else if (lang == 2) {
+				valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
+				finalValue = $('#' + valueResource + '').val();
+				finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
+			} else if (lang == 3) {
+				valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
+				finalValue = $('#' + valueResource + '').val();
+				finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
+			} else if (lang == 4) {
+				valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
+				finalValue = $('#' + valueResource + '').val();
+				finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
+			} else if (lang == 5) {
+				valueResource = finalExpression.split(theValueOfTranslations[lang])[1].split(' ')[1];
+				finalValue = $('#' + valueResource + '').val();
+				finalExpression = finalExpression.replace(theValueOfTranslations[lang] + ' ' + valueResource, finalValue);
 			}
 		}
 	}
+	return finalStatement;
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //-------------------------------------------------------Raining FX Function------------------------------------------------------------------------------------------------------------------------------------------//
@@ -641,7 +658,6 @@ function showImageA(name, source) {
 				}
 			}
 		});
-
 	}
 }
 
@@ -702,6 +718,8 @@ function isElementOutViewport(el) {
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 var yesTranslations = ['yes', 'yup', 'oui', 'نعم', 'ايوة', 'はい'];
 var noTranslations = ['no', 'nope', 'non', 'لا', 'لأ', 'いいえ'];
+var andTranslations = ['and', 'and', 'et', 'و', 'و', 'そして'];
+var orTranslations = ['or', 'or', 'ou', 'أو', 'أو', 'または'];
 var blackTranslations = ['black', 'black', 'noir', 'اسود', 'اسود', '黒'];
 var redTranslations = ['red', 'red', 'rouge', 'احمر', 'احمر', '赤'];
 var blueTranslations = ['blue', 'blue', 'bleu', 'ازرق', 'ازرق', '青'];
@@ -4103,7 +4121,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						var out = '<p id="' + name + '"></p>';
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -4242,7 +4259,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						var out = '<paper-button id="' + name + '"></paper-button>';
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -4346,7 +4362,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						var out = '<paper-card id="' + name + '"><div id="الحاجات_اللى_جوة_السيكشن" class="card-content"></div></paper-card>';
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -4471,7 +4486,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						var out = '<paper-swatch-picker id="' + name + '" color="{{selectedColor}}"></paper-swatch-picker>';
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -4531,7 +4545,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						}
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -4648,7 +4661,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						}
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -4748,7 +4760,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						<button style="position: relative; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></div>';
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -4828,7 +4839,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						var out = '<div id="' + name + '" class="aplayer"></div>';
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -4957,7 +4967,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						var out = '<div id="' + name + '" class="owl-carousel owl-theme"></div>';
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -5131,7 +5140,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						var out = '<paper-badge id="' + name + '" for="' + targetTranslations[lang] + '"></paper-badge>';
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -5269,7 +5277,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 								}
 							}
 						}
-
 						if (settings[thicknessTranslations[lang]]) {
 							if (settings[thicknessTranslations[lang]] == thickTranslations[lang]) {
 								$('#' + name + '').css('font-weight', 'bold');
@@ -5352,7 +5359,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						} else {
 							out += '<div class="modal-content"></div>';
 						}
-
 						if (settings[cancellationButtonTranslations[lang]] || settings[acceptanceButtonTranslations[lang]]) {
 							out += '<div class="modal-footer">';
 							if (settings[cancellationButtonTranslations[lang]]) {
@@ -5366,7 +5372,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						out += '</div>';
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -5497,7 +5502,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						}
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -5632,7 +5636,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						out += 'id="' + name + '"></paper-fab>';
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -5826,7 +5829,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						}
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -5948,7 +5950,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						var out = '<paper-material elevation="2" id="' + name + '" class="' + name + '"></paper-material>'
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -6088,7 +6089,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						var out = 'table id="' + name + '" class="responsive-table centered highlight"><thead></thead><tbody class="list"></tbody></table>'
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
@@ -6285,7 +6285,6 @@ function commandsFnTranslations(commandCode, eventRaw, commandValue, para1Raw, p
 						out += '</paper-slider>'
 						if (settings[containerTranslations[lang]]) {
 							if ($('#' + settings[containerTranslations[lang]] + '').hasClass('modal')) {
-
 								$('#' + settings[containerTranslations[lang]] + ' > .modal-content').append(out);
 							} else {
 								$('#' + settings[containerTranslations[lang]] + '').append(out);
