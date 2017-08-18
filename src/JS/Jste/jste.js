@@ -194,8 +194,10 @@ if ($('en-uk').length) {
 code += "});";
 customText(code);
 $(function () {
-	$('<script>').attr('type', 'text/javascript').text(code).appendTo('head');
-	$('<iframe>').attr('id', 'receiver').attr('src', 'http://0.0.0.0:5050/db-manager').hide().appendTo('body');	
+	if (lang != null) {
+		$('<script>').attr('type', 'text/javascript').text(code).appendTo('head');
+		$('<iframe>').attr('id', 'receiver').attr('src', 'http://0.0.0.0:5050/db-manager').hide().appendTo('body');
+	}
 });
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //----------------------------------------Vanillia Fading In & Out Functions------------------------------------------------------------------------------------------------------------------------------------------//
@@ -655,9 +657,9 @@ function requestBLOB(name, type, url) {
 window.addEventListener('message', function receiveMessage(recievedMessageRaw) {
 	if (event.origin !== 'http://0.0.0.0:5050') return;
 	if (recievedMessageRaw.data.type == 'img' || recievedMessageRaw.data.type == 'vid') {
-	var BLOBURL = window.URL.createObjectURL(recievedMessageRaw.data.BLOBObject);
-	$('#' + recievedMessageRaw.data.name + '').attr('src', BLOBURL);
-}
+		var BLOBURL = window.URL.createObjectURL(recievedMessageRaw.data.BLOBObject);
+		$('#' + recievedMessageRaw.data.name + '').attr('src', BLOBURL);
+	}
 }, false);
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------Images Related Functions------------------------------------------------------------------------------------------------------------------------------------------//
@@ -669,7 +671,7 @@ function showImageA(name, source) {
 		window.fadeOut('showImage_' + name + '_containerA');
 		window.fadeIn('showImage_' + name + '_containerB');
 	} else {
-		requestBLOB(name, 'vid', source);		
+		requestBLOB(name, 'vid', source);
 		$('#' + name + '').on('load', function () {
 			window.URL.revokeObjectURL($('#' + name + '').attr('src'));
 			$('#' + name + '').css('-webkit-filter', 'blur(0px)');
@@ -684,7 +686,7 @@ function showImageA(name, source) {
 }
 
 function showImageB(name, source) {
-	requestBLOB(name, 'vid', source);	
+	requestBLOB(name, 'vid', source);
 	$('#' + name + '').on('load', function () {
 		window.URL.revokeObjectURL($('#' + name + '').attr('src'));
 		window.fadeOut('showImage_' + name + '_containerB');
@@ -693,7 +695,7 @@ function showImageB(name, source) {
 }
 
 function showImageC(name, source) {
-	requestBLOB(name, 'vid', source);	
+	requestBLOB(name, 'vid', source);
 	$('#' + name + '').on('load', function () {
 		window.URL.revokeObjectURL($('#' + name + '').attr('src'));
 		$('#' + name + '').css('-webkit-filter', 'blur(0px)');
