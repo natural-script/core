@@ -1,0 +1,28 @@
+{
+  "name": "Jste Framework",
+  "version": "1.0.0",
+  "description": "The official Jste Framework",
+  "main": "build.js",
+  "bin": "build.js",
+  "scripts": {
+    "start": "node build.js"
+  },
+  "dependencies": [
+    "vulcanize",
+    "figlet",
+    "shelljs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/project-jste/framework"
+  },
+  "keywords": [
+    "node",
+    "jste",
+    "framework",
+    "js",
+    "html",
+    "css"
+  ],
+  "author": "Jste Team"
+}

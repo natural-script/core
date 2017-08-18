@@ -638,6 +638,23 @@ function setDimension(name, dimension, value, type) {
 		}
 	}
 }
+
+function requestBLOB(name, type, url) {
+	// Get the window displayed in the iframe.
+	var receiver = document.getElementById('receiver').contentWindow;
+	var sentMessageRaw = [];
+	sentMessageRaw.name = name;
+	sentMessageRaw.type = type;
+	sentMessageRaw.url = url;
+	receiver.postMessage(sentMessageRaw, 'http://0.0.0.0:5050/db-manager');
+}
+
+window.addEventListener('message', function receiveMessage(recievedMessageRaw) {
+	if (event.origin !== 'http://0.0.0.0:5050') return;
+	if (recievedMessageRaw.data.type == 'img' || recievedMessageRaw.data.type == 'vid') {
+		$('#' + recievedMessageRaw.data.name + '').attr('src', window.URL.createObjectURL(recievedMessageRaw.data.BLOBObject));
+	}
+}, false);
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------Images Related Functions------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -648,7 +665,7 @@ function showImageA(name, source) {
 		window.fadeOut('showImage_' + name + '_containerA');
 		window.fadeIn('showImage_' + name + '_containerB');
 	} else {
-		$('#' + name + '').attr('src', corsPolicy + source);
+		requestBLOB(name, 'vid', source);
 		$('#' + name + '').on('load', function () {
 			$('#' + name + '').css('-webkit-filter', 'blur(0px)');
 			window.fadeOut('showImage_' + name + '_containerA');
@@ -662,7 +679,7 @@ function showImageA(name, source) {
 }
 
 function showImageB(name, source) {
-	$('#' + name + '').attr('src', corsPolicy + source);
+	requestBLOB(name, 'vid', source);
 	$('#' + name + '').on('load', function () {
 		window.fadeOut('showImage_' + name + '_containerB');
 		window.fadeIn('showImage_' + name + '_containerC');
@@ -670,7 +687,7 @@ function showImageB(name, source) {
 }
 
 function showImageC(name, source) {
-	$('#' + name + '').attr('src', corsPolicy + source);
+	requestBLOB(name, 'vid', source);
 	$('#' + name + '').on('load', function () {
 		$('#' + name + '').css('-webkit-filter', 'blur(0px)');
 		window.fadeOut('showImage_' + name + '_containerB');
@@ -695,11 +712,16 @@ function showImageD(name) {
 //--------------------------------------------------Videos Related Functions------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 function showVideoA(name, source) {
-	$('#' + name + '').attr('src', corsPolicy + source);
-	$('#' + name + '').attr('controls', '');
 	var v = document.getElementById(name);
-	window.fadeOut('showVideo_' + name + '_containerA');
-	$('#' + name + '').css('-webkit-filter', 'blur(0px)');
+	requestBLOB(name, 'vid', source);
+	var videoLoadingChecker = setInterval(function () {
+		if (v.readyState === 4) {
+			$('#' + name + '').attr('controls', '');
+			window.fadeOut('showVideo_' + name + '_containerA');
+			$('#' + name + '').css('-webkit-filter', 'blur(0px)');
+			clearInterval(videoLoadingChecker);
+		}
+	}, 1);
 }
 
 function showVideoB(name) {
