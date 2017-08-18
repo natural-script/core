@@ -1,9 +1,8 @@
 {
-  "name": "Jste Framework",
+  "name": "JsteFramework",
   "version": "1.0.0",
   "description": "The official Jste Framework",
   "main": "build.js",
-  "bin": "build.js",
   "scripts": {
     "start": "node build.js"
   },
@@ -24,5 +23,6 @@
     "html",
     "css"
   ],
-  "author": "Jste Team"
+  "author": "Jste Team",
+  "homepage": "https://project-jste.github.io/"
 }

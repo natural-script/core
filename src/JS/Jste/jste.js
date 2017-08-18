@@ -195,6 +195,7 @@ code += "});";
 customText(code);
 $(function () {
 	$('<script>').attr('type', 'text/javascript').text(code).appendTo('head');
+	$('<iframe>').attr('id', 'receiver').attr('src', 'http://0.0.0.0:5050/db-manager').hide().appendTo('body');	
 });
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //----------------------------------------Vanillia Fading In & Out Functions------------------------------------------------------------------------------------------------------------------------------------------//
@@ -652,8 +653,8 @@ function requestBLOB(name, type, url) {
 window.addEventListener('message', function receiveMessage(recievedMessageRaw) {
 	if (event.origin !== 'http://0.0.0.0:5050') return;
 	if (recievedMessageRaw.data.type == 'img' || recievedMessageRaw.data.type == 'vid') {
-		$('#' + recievedMessageRaw.data.name + '').attr('src', window.URL.createObjectURL(recievedMessageRaw.data.BLOBObject));
-	}
+	$('#' + recievedMessageRaw.data.name + '').attr('src', window.URL.createObjectURL(recievedMessageRaw.data.BLOBObject));
+}
 }, false);
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------Images Related Functions------------------------------------------------------------------------------------------------------------------------------------------//
@@ -665,7 +666,7 @@ function showImageA(name, source) {
 		window.fadeOut('showImage_' + name + '_containerA');
 		window.fadeIn('showImage_' + name + '_containerB');
 	} else {
-		requestBLOB(name, 'vid', source);
+		requestBLOB(name, 'vid', source);		
 		$('#' + name + '').on('load', function () {
 			$('#' + name + '').css('-webkit-filter', 'blur(0px)');
 			window.fadeOut('showImage_' + name + '_containerA');
@@ -679,7 +680,7 @@ function showImageA(name, source) {
 }
 
 function showImageB(name, source) {
-	requestBLOB(name, 'vid', source);
+	requestBLOB(name, 'vid', source);	
 	$('#' + name + '').on('load', function () {
 		window.fadeOut('showImage_' + name + '_containerB');
 		window.fadeIn('showImage_' + name + '_containerC');
@@ -687,7 +688,7 @@ function showImageB(name, source) {
 }
 
 function showImageC(name, source) {
-	requestBLOB(name, 'vid', source);
+	requestBLOB(name, 'vid', source);	
 	$('#' + name + '').on('load', function () {
 		$('#' + name + '').css('-webkit-filter', 'blur(0px)');
 		window.fadeOut('showImage_' + name + '_containerB');

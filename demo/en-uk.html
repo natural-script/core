@@ -1,21 +1,23 @@
 <meta charset="UTF-8">
-<script src="http://0.0.0.0:5050/webcomponents-loader"></script>
-<link rel="import" href="http://0.0.0.0:5050/framework">
+<script src="https://cdn.rawgit.com/project-jste/loader/master/dist/loader.min.js"></script>
 <en-uk>
     
     add a setup with the following properties:
     mode: 'site',
     title: 'Jste Demo',
-    logo: 'https://github.com/project-jste/project-jste.github.io/raw/master/images/logo.png',
-    attributes: 'remote scrolling'.
+    width: '1366',
+    length: '654',
+    logo: 'https://github.com/project-jste/project-jste.github.io/raw/master/images/logo.png'.
     
     add a firebase_centre with the following properties:
     username: 'jste-9584c',
     password: 'AIzaSyDMGk_SFlEto93zfGHUbVLwxYiSq00aknk'.
     
+    add.login_form();
+    
     add a page with the following properties:
     name: 'welcome',
-    commands: 'When the user said: please take me to the blog, go to the page blog'.
+    commands: 'When the user said: hello, go to the page blog'.
     
     add a page with the following properties:
     name: 'blog'.
@@ -28,11 +30,14 @@
     
     add a page with the following properties:
     name: 'tools'.
-        
+    
+    add a page with the following properties:
+    name: 'test'.
+    
     add a text with the following properties:
     name: 'screen_resolution_text',
     text: '<< an icon of television >> Your screen resolution is << the screen width >> x << the screen length >>',
-    container: 'second_page',
+    container: 'welcome',
     background: 'black',
     font_size: '30 pixels',
     font_style: 'roboto',
@@ -40,12 +45,12 @@
     animation: 'bounce',
     transparency: '50',
     distance_from_the_top: '40%',
-    distance_from_the_left: '50%'.
+    distance_from_the_left: '10%'.
     
     add a text with the following properties:
     name: 'window_resolution_text',
     text: '<< an icon of television >> The site window resolution is << the window width >> x << the window length >>',
-    container: 'second_page',
+    container: 'welcome',
     background: 'black',
     font_size: '30 pixels',
     font_style: 'roboto',
@@ -53,12 +58,12 @@
     animation: 'bounce',
     transparency: '50',
     distance_from_the_top: '50%',
-    distance_from_the_left: '50%'.
+    distance_from_the_left: '10%'.
     
     add a container with the following properties:
     name: 'shape1',
     shape: 'triangle',
-    container: 'second_page',
+    container: 'welcome',
     width: '50 pixels',
     length: '50 pixels',
     animation: 'fadeInLeft',
@@ -69,7 +74,7 @@
     add a container with the following properties:
     name: 'shape2',
     shape: 'triangle',
-    container: 'second_page',
+    container: 'welcome',
     width: '50 pixels',
     length: '50 pixels',
     animation: 'fadeInRight',
@@ -80,7 +85,7 @@
     add a button with the following properties:
     name: 'go_blog_button',
     text: 'Go to the blog',
-    container: 'second_page',
+    container: 'welcome',
     width: '200 pixels',
     length: '100 pixels',
     attributes: 'raised',
@@ -88,7 +93,7 @@
     thickness: 'thick',
     animation: 'wobble',
     distance_from_the_top: '70%',
-    distance_from_the_left: '50%',
+    distance_from_the_left: '10%',
     commands: 'When it has been clicked, go to the page blog'.
     
     add a container with the following properties:
@@ -209,11 +214,10 @@
     title: 'Maher Zain One Cover',
     container: 'post1_container',
     source: 'https://i.ytimg.com/vi/gnZjSui_Mc4/maxresdefault.jpg',
-    image_width: '980',
-    image_length: '500',
+    width: '980 pixels',
+    length: '500 pixels',
     animation: 'bounce',
-    distance_from_the_top: '100 pixels',
-    distance_from_the_left: '50 pixels'.
+    distance_from_the_left: 'center'.
     
     add a text with the following properties:
     name: 'post1_back',
@@ -230,7 +234,7 @@
     name: 'post1_text',
     text: 'Finally, The lovely artist << write this text in a bold and italic font: Maher Zain >> has released a new album of his beautiful songs in three languages which are << write this text in a bold and underlined font: Arabic, English and Turkish >> and you can listen to it below !',
     container: 'post1_container',
-    distance_from_the_top: '670 pixels',
+    distance_from_the_top: '500 pixels',
     distance_from_the_left: '50 pixels',
     font_colour: 'black',
     font_size: '20 pixels',
@@ -239,8 +243,9 @@
     add an audio_player with the following properties:
     name: 'Maher_Zain_One_Playlist',
     container: 'post1_container',
+    width: '300',
     distance_from_the_top: '760 pixels',
-    distance_from_the_left: '50%'.
+    distance_from_the_left: 'center'.
     
     add an audio with the following properties:
     audio_player: 'Maher_Zain_One_Playlist',
@@ -282,11 +287,12 @@
     text: 'Enter the angle degree',
     container: 'tools_container',
     font_colour: 'blue',
+    width: '200 pixels',
     font_size: '50 pixels',
     font_style: 'roboto',
     animation: 'wobble',
     transparency: '50',
-    distance_from_the_top: '75 pixels',
+    distance_from_the_top: '20 pixels',
     distance_from_the_left: '25 pixels'.
     
     add a text with the following properties:
@@ -330,9 +336,23 @@
     font_colour: 'red',
     thickness: 'thick',
     animation: 'wobble',
-    distance_from_the_top: '95 pixels',
+    distance_from_the_top: '30 pixels',
     distance_from_the_left: '300 pixels',
     commands: 'When it has been clicked, set the value of result_text to the result of sin( the value of angle_input )'.
+    
+    add a button with the following properties:
+    name: 'store_data_button',
+    text: 'Store Data',
+    container: 'tools_container',
+    width: '200 pixels',
+    length: '100 pixels',
+    attributes: 'raised',
+    font_colour: 'red',
+    thickness: 'thick',
+    animation: 'wobble',
+    distance_from_the_top: '150 pixels',
+    distance_from_the_left: '300 pixels',
+    commands: 'When it has been clicked, go to the private database tools the branch values and then get the value of the slot number which has the same class of the value of angle_input in the slot res and set it as the value of angle_input'.
     
     add a button with the following properties:
     name: 'get_cos_button',
@@ -398,9 +418,9 @@
     name: 'big_buck_bunny_video',
     title: 'Big Buck Bunny',
     container: 'post2_container',
-    source: 'https://archive.org/download/BigBuckBunny_328/BigBuckBunny_512kb.mp4',
-    video_width: '980',
-    video_length: '500',
+    source: 'https://www.w3schools.com/html/mov_bbb.mp4',
+    width: '980',
+    length: '500',
     animation: 'bounce',
     distance_from_the_top: '100 pixels',
     distance_from_the_left: '50 pixels'.
@@ -417,6 +437,58 @@
     animation: 'wobble',
     distance_from_the_top: '620 pixels',
     distance_from_the_left: '50%',
-    commands: 'When it has been clicked, play big_buck_bunny_video &&& When it has been double clicked, play big_buck_bunny_video every a period of 3 seconds'.
+    commands: 'When it has been clicked, play big_buck_bunny_video every a period of 5 seconds'.
+    
+    add a tooltip with the following properties:
+    emitter: 'play_button',
+    title: 'shit',
+    text: 'Fuck',
+    direction: 'from_the_right'.
+    
+    add a slideshow with the following properties:
+    name: 'sample_slideshow',
+    container: 'test'.
+    
+    add a slideshow_item with the following properties:
+    name: 'sample_slideshow_item',
+    type: 'image',
+    slideshow: 'sample_slideshow',
+    source: 'http://placehold.it/940x528'.
+    
+    add a slideshow_item with the following properties:
+    name: 'sample_slideshow_item2',
+    type: 'image',
+    slideshow: 'sample_slideshow',
+    source: 'http://placehold.it/1024x1024'.
+    
+    add a checkbox with the following properties:
+    name: 'A_sample_checkbox',
+    text: 'Play',
+    container: 'test',
+    font_colour: 'red',
+    description: 'Check here',
+    animation: 'wobble',
+    distance_from_the_top: '50 pixels',
+    distance_from_the_left: '50%',
+    commands: 'When it has been clicked, play big_buck_bunny_video every a period of 5 seconds'.
+    
+    add a dialog_box with the following properties:
+    name: 'A_sample_dialog',
+    title: 'Hello',
+    container: 'test',
+    font_colour: 'red',
+    cancellation_button: 'Cancel',
+    animation: 'wobble',
+    commands: 'When it has been clicked, play big_buck_bunny_video every a period of 5 seconds'.
+    
+    add a checkbox with the following properties:
+    name: 'A_sample_checkbox',
+    text: 'Play',
+    container: 'A_sample_dialog',
+    font_colour: 'red',
+    description: 'Check here',
+    distance_from_the_top: '50 pixels',
+    distance_from_the_left: '50%',
+    commands: 'When it has been clicked, play big_buck_bunny_video every a period of 5 seconds'.
     
     </en-uk>

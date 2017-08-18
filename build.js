@@ -7,6 +7,6 @@ console.log(data);
 console.log(' Starting building Jste Framework ');
 shell.cd('dist');
 shell.rm('-rf', '*');
-shell.exec('vulcanize ../src/Res.html  --strip-comments --inline-scripts --inline-css > index.html');
+shell.exec('vulcanize ../src/Res.html  --strip-comments --inline-scripts --inline-css > framework.html');
 console.log(' Jste Framework has been built properly ;) ');
 });
