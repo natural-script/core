@@ -77,9 +77,9 @@ if ($('en-uk').length) {
 }
 code += "});";
 window.customText(code);
-$(function() {
+window.onload = function () {
 	if (document.lang != null) {
-		$('<script>').attr('type', 'text/javascript').text(code).appendTo('head');
+		eval(code);
 		$('<iframe>').attr('id', 'receiver').attr('src', 'http://' + window.localAddress + ':5050/db-manager.html').hide().appendTo('body');
 	}
-});
+};

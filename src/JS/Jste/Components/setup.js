@@ -26,6 +26,7 @@ $(function () {
                 }
                 if (settings[titleTranslations[document.lang]]) {
                     $('head').append('<title>' + settings[titleTranslations[document.lang]] + '</title>');
+                    window.title = settings[titleTranslations[document.lang]];
                 }
                 if (settings[attributesTranslations[document.lang]]) {
                     var propertiesArray = settings[attributesTranslations[document.lang]].split(' &amp;&amp;&amp; ');
