@@ -98,6 +98,9 @@ $(function () {
                 if (settings[window.fontSizeTranslations[document.lang]]) {
                     $('#' + name + '').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.lang]]));
                 }
+                if (settings[window.backgroundTranslations[document.lang]]) {
+                    window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
+                }
                 if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('row') == true) {
                     $('#' + name + '').addClass('col');
                 }

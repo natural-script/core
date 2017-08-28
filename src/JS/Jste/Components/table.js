@@ -136,20 +136,8 @@ $(function () {
                 if (settings[window.lengthTranslations[document.lang]]) {
                     window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]]);
                 }
-                if (settings[window.attributesTranslations[document.lang]]) {
-                    if (settings[window.attributesTranslations[document.lang]].indexOf(window.parallaxTranslations[document.lang]) > -1) {
-                        if (settings[window.backgroundTranslations[document.lang]]) {
-                            $('#' + name + '').css('background', 'url(' + settings[window.backgroundTranslations[document.lang]] + ') 50% 0 no-repeat fixed');
-                        }
-                    } else {
-                        if (settings[window.backgroundTranslations[document.lang]]) {
-                            window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
-                        }
-                    }
-                } else {
-                    if (settings[window.backgroundTranslations[document.lang]]) {
-                        window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
-                    }
+                if (settings[window.backgroundTranslations[document.lang]]) {
+                    window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
                 }
                 if (settings[window.animationTranslations[document.lang]]) {
                     window.setAnimation(name, settings[window.animationTranslations[document.lang]]);

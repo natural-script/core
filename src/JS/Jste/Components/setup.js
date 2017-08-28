@@ -26,7 +26,7 @@ $(function () {
                 }
                 if (settings[titleTranslations[document.lang]]) {
                     $('head').append('<title>' + settings[titleTranslations[document.lang]] + '</title>');
-                    window.title = settings[titleTranslations[document.lang]];
+                    window.title = settings[titleTranslations[document.lang]].replace(/[_]/g , ' ').replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
                 }
                 if (settings[attributesTranslations[document.lang]]) {
                     var propertiesArray = settings[attributesTranslations[document.lang]].split(' &amp;&amp;&amp; ');

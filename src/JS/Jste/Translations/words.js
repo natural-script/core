@@ -148,3 +148,6 @@ window.slideShowItemTranslations = ['slideshow_item', 'slideshow_item', "dans la
 window.acceptanceButtonTranslations = ['acceptance_button', 'acceptance_button', "Bouton_d'acceptation", 'زر_الموافقة', 'زرار_الموافقة', '受諾ボタン'];
 window.cancellationButtonTranslations = ['cancellation_button', 'cancellation_button', "Bouton_d'annulation", 'زر_الإلغاء', 'زرار_الإلغاء', 'キャンセルボタン'];
 window.selectMenuTranslations = ['select_menu', 'select_menu', "Bouton_d'annulation", 'قائمة_الإختيار', 'قائمة_الإختيار', 'キャンセルボタン'];
+window.aRandomColorTranslations = ['a random colour', 'a random color', "une couleur aléatoire", 'لون عشوائى', 'لون عشوائى', 'ランダムな色'];
+window.aRandomLightColorTranslations = ['a random light colour', 'a random light color', "une couleur claire aléatoire", 'لون فاتح عشوائى', 'لون فاتح عشوائى', 'ランダムな明るい色'];
+window.aRandomDarkColorTranslations = ['a random dark colour', 'a random dark color', "une couleur sombre aléatoire", 'لون غامق عشوائى', 'لون غامق عشوائى', 'ランダムな暗い色'];

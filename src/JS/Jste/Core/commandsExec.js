@@ -21,6 +21,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E1', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E1', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E1', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E1', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E1', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E1', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E1', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E1', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E1', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E1', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E1', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E1', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E1', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E1', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E1', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E1', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E1', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E1', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E1', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E1', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E1', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E1', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -41,6 +57,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E2', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E2', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E2', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E2', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E2', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E2', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E2', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E2', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E2', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E2', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E2', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E2', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E2', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E2', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E2', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E2', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E2', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E2', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E2', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E2', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E2', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E2', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -61,6 +93,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E3', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E3', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E3', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E3', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E3', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E3', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E3', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E3', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E3', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E3', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E3', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E3', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E3', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E3', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E3', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E3', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E3', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E3', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E3', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E3', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E3', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E3', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -81,6 +129,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E4', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E4', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E4', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E4', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E4', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E4', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E4', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E4', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E4', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E4', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E4', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E4', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E4', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E4', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E4', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E4', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E4', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E4', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E4', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E4', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E4', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E4', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -101,6 +165,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E5', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E5', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E5', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E5', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E5', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E5', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E5', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E5', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E5', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E5', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E5', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E5', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E5', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E5', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E5', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E5', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E5', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E5', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E5', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E5', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E5', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E5', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -121,6 +201,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E6', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E6', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E6', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E6', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E6', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E6', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E6', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E6', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E6', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E6', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E6', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E6', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E6', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E6', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E6', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E6', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E6', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E6', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E6', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E6', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E6', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E6', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -141,6 +237,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E7', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E7', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E7', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E7', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E7', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E7', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E7', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E7', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E7', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E7', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E7', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E7', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E7', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E7', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E7', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E7', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E7', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E7', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E7', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E7', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E7', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E7', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -161,6 +273,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E8', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E8', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E8', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E8', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E8', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E8', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E8', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E8', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E8', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E8', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E8', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E8', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E8', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E8', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E8', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E8', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E8', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E8', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E8', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E8', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E8', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E8', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -181,6 +309,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E9', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E9', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E9', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E9', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E9', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E9', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E9', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E9', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E9', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E9', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E9', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E9', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E9', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E9', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E9', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E9', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E9', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E9', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E9', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E9', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E9', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E9', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -201,6 +345,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E10', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E10', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E10', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E10', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E10', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E10', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E10', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E10', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E10', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E10', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E10', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E10', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E10', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E10', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E10', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E10', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E10', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E10', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E10', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E10', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E10', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E10', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -221,6 +381,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E11', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E11', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E11', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E11', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E11', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E11', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E11', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E11', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E11', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E11', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E11', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E11', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E11', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E11', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E11', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E11', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E11', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E11', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E11', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E11', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E11', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E11', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -241,6 +417,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E12', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E12', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E12', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E12', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E12', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E12', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E12', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E12', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E12', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E12', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E12', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E12', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E12', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E12', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E12', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E12', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E12', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E12', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E12', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E12', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E12', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E12', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -261,6 +453,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E13', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E13', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E13', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E13', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E13', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E13', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E13', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E13', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E13', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E13', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E13', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E13', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E13', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E13', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E13', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E13', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E13', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E13', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E13', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E13', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E13', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E13', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -281,6 +489,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E14', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E14', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E14', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E14', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E14', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E14', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E14', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E14', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E14', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E14', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E14', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E14', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E14', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E14', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E14', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E14', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E14', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E14', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E14', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E14', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E14', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E14', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -301,6 +525,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E15', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E15', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E15', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E15', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E15', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E15', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E15', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E15', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E15', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E15', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E15', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E15', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E15', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E15', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E15', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E15', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E15', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E15', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E15', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E15', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E15', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E15', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -321,6 +561,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E16', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E16', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E16', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E16', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E16', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E16', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E16', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E16', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E16', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E16', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E16', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E16', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E16', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E16', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E16', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E16', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E16', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E16', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E16', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E16', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E16', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E16', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -343,6 +599,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E17', 'T3'));
 				} else if (window.commandsFnTranslations('c13q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E17', 'T3'));
+				} else if (window.commandsFnTranslations('c55q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E17', 'T3'));
+				} else if (window.commandsFnTranslations('c59q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E17', 'T3'));
+				} else if (window.commandsFnTranslations('c64q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E17', 'T3'));
+				} else if (window.commandsFnTranslations('c68q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E17', 'T3'));
+				} else if (window.commandsFnTranslations('c73q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E17', 'T3'));
+				} else if (window.commandsFnTranslations('c77q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E17', 'T3'));
+				} else if (window.commandsFnTranslations('c82q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E17', 'T3'));
+				} else if (window.commandsFnTranslations('c86q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E17', 'T3'));
 				} else if (window.commandsFnTranslations('c18q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E17', 'T3'));
 				} else if (window.commandsFnTranslations('c23q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c23r')) {
@@ -367,6 +639,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E1', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E1', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E1', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E1', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E1', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E1', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E1', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E1', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E1', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E1', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E1', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E1', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E1', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E1', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E1', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E1', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E1', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E1', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E1', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E1', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E1', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E1', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -387,6 +675,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E2', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E2', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E2', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E2', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E2', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E2', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E2', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E2', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E2', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E2', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E2', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E2', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E2', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E2', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E2', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E2', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E2', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E2', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E2', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E2', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E2', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E2', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -407,6 +711,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E3', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E3', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E3', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E3', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E3', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E3', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E3', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E3', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E3', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E3', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E3', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E3', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E3', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E3', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E3', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E3', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E3', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E3', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E3', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E3', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E3', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E3', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -427,6 +747,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E4', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E4', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E4', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E4', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E4', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E4', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E4', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E4', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E4', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E4', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E4', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E4', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E4', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E4', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E4', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E4', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E4', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E4', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E4', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E4', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E4', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E4', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -447,6 +783,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E5', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E5', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E5', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E5', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E5', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E5', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E5', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E5', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E5', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E5', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E5', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E5', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E5', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E5', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E5', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E5', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E5', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E5', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E5', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E5', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E5', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E5', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -467,6 +819,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E6', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E6', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E6', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E6', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E6', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E6', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E6', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E6', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E6', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E6', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E6', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E6', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E6', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E6', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E6', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E6', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E6', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E6', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E6', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E6', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E6', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E6', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -487,6 +855,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E7', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E7', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E7', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E7', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E7', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E7', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E7', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E7', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E7', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E7', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E7', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E7', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E7', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E7', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E7', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E7', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E7', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E7', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E7', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E7', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E7', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E7', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -507,6 +891,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E8', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E8', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E8', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E8', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E8', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E8', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E8', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E8', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E8', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E8', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E8', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E8', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E8', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E8', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E8', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E8', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E8', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E8', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E8', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E8', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E8', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E8', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -527,6 +927,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E9', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E9', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E9', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E9', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E9', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E9', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E9', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E9', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E9', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E9', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E9', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E9', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E9', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E9', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E9', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E9', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E9', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E9', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E9', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E9', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E9', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E9', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -547,6 +963,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E10', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E10', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E10', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E10', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E10', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E10', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E10', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E10', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E10', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E10', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E10', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E10', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E10', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E10', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E10', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E10', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E10', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E10', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E10', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E10', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E10', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E10', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -567,6 +999,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E11', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E11', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E11', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E11', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E11', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E11', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E11', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E11', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E11', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E11', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E11', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E11', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E11', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E11', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E11', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E11', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E11', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E11', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E11', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E11', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E11', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E11', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -587,6 +1035,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E12', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E12', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E12', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E12', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E12', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E12', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E12', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E12', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E12', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E12', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E12', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E12', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E12', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E12', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E12', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E12', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E12', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E12', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E12', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E12', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E12', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E12', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -607,6 +1071,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E13', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E13', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E13', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E13', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E13', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E13', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E13', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E13', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E13', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E13', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E13', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E13', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E13', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E13', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E13', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E13', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E13', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E13', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E13', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E13', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E13', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E13', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -627,6 +1107,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E14', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E14', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E14', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E14', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E14', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E14', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E14', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E14', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E14', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E14', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E14', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E14', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E14', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E14', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E14', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E14', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E14', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E14', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E14', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E14', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E14', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E14', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -647,6 +1143,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E15', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E15', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E15', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E15', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E15', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E15', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E15', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E15', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E15', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E15', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E15', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E15', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E15', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E15', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E15', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E15', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E15', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E15', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E15', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E15', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E15', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E15', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -667,6 +1179,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E16', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E16', statementT0Command) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E16', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E16', statementT0Command) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E16', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E16', statementT0Command) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E16', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E16', statementT0Command) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E16', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E16', statementT0Command) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E16', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E16', statementT0Command) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E16', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E16', statementT0Command) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E16', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E16', statementT0Command) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E16', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E16', statementT0Command) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E16', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E16', statementT0Command) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E16', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E16', statementT0Command) == window.commandsFnTranslations('c23r')) {
@@ -689,6 +1217,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E17', 'T1'));
 				} else if (window.commandsFnTranslations('c13q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E17', 'T1'));
+				} else if (window.commandsFnTranslations('c55q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E17', 'T1'));
+				} else if (window.commandsFnTranslations('c59q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E17', 'T1'));
+				} else if (window.commandsFnTranslations('c64q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E17', 'T1'));
+				} else if (window.commandsFnTranslations('c68q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E17', 'T1'));
+				} else if (window.commandsFnTranslations('c73q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E17', 'T1'));
+				} else if (window.commandsFnTranslations('c77q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E17', 'T1'));
+				} else if (window.commandsFnTranslations('c82q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E17', 'T1'));
+				} else if (window.commandsFnTranslations('c86q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E17', 'T1'));
 				} else if (window.commandsFnTranslations('c18q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E17', 'T1'));
 				} else if (window.commandsFnTranslations('c23q', 'E17', statementT0Command, voiceCommand) == window.commandsFnTranslations('c23r')) {
@@ -713,6 +1257,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E1', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E1', intervalCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E1', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E1', intervalCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E1', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E1', intervalCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E1', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E1', intervalCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E1', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E1', intervalCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E1', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E1', intervalCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E1', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E1', intervalCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E1', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E1', intervalCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E1', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E1', intervalCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E1', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E1', intervalCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E1', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E1', intervalCommand) == window.commandsFnTranslations('c23r')) {
@@ -733,6 +1293,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E2', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E2', intervalCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E2', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E2', intervalCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E2', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E2', intervalCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E2', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E2', intervalCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E2', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E2', intervalCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E2', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E2', intervalCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E2', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E2', intervalCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E2', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E2', intervalCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E2', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E2', intervalCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E2', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E2', intervalCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E2', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E2', intervalCommand) == window.commandsFnTranslations('c23r')) {
@@ -753,6 +1329,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E3', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E3', intervalCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E3', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E3', intervalCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E3', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E3', intervalCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E3', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E3', intervalCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E3', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E3', intervalCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E3', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E3', intervalCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E3', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E3', intervalCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E3', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E3', intervalCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E3', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E3', intervalCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E3', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E3', intervalCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E3', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E3', intervalCommand) == window.commandsFnTranslations('c23r')) {
@@ -773,6 +1365,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E4', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E4', intervalCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E4', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E4', intervalCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E4', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E4', intervalCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E4', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E4', intervalCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E4', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E4', intervalCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E4', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E4', intervalCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E4', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E4', intervalCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E4', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E4', intervalCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E4', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E4', intervalCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E4', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E4', intervalCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E4', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E4', intervalCommand) == window.commandsFnTranslations('c23r')) {
@@ -793,6 +1401,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E5', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E5', intervalCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E5', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E5', intervalCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E5', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E5', intervalCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E5', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E5', intervalCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E5', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E5', intervalCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E5', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E5', intervalCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E5', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E5', intervalCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E5', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E5', intervalCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E5', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E5', intervalCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E5', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E5', intervalCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E5', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E5', intervalCommand) == window.commandsFnTranslations('c23r')) {
@@ -813,6 +1437,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E6', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E6', intervalCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E6', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E6', intervalCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E6', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E6', intervalCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E6', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E6', intervalCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E6', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E6', intervalCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E6', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E6', intervalCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E6', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E6', intervalCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E6', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E6', intervalCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E6', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E6', intervalCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E6', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E6', intervalCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E6', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E6', intervalCommand) == window.commandsFnTranslations('c23r')) {
@@ -833,6 +1473,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E7', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E7', intervalCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E7', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E7', intervalCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E7', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E7', intervalCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E7', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E7', intervalCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E7', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E7', intervalCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E7', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E7', intervalCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E7', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E7', intervalCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E7', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E7', intervalCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E7', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E7', intervalCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E7', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E7', intervalCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E7', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E7', intervalCommand) == window.commandsFnTranslations('c23r')) {
@@ -853,6 +1509,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E8', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E8', intervalCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E8', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E8', intervalCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E8', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E8', intervalCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E8', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E8', intervalCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E8', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E8', intervalCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E8', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E8', intervalCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E8', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E8', intervalCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E8', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E8', intervalCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E8', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E8', intervalCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E8', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E8', intervalCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E8', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E8', intervalCommand) == window.commandsFnTranslations('c23r')) {
@@ -873,6 +1545,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E9', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E9', intervalCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E9', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E9', intervalCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E9', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E9', intervalCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E9', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E9', intervalCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E9', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E9', intervalCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E9', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E9', intervalCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E9', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E9', intervalCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E9', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E9', intervalCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E9', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E9', intervalCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E9', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E9', intervalCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E9', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E9', intervalCommand) == window.commandsFnTranslations('c23r')) {
@@ -893,6 +1581,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E10', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E10', intervalCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E10', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E10', intervalCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E10', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E10', intervalCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E10', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E10', intervalCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E10', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E10', intervalCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E10', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E10', intervalCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E10', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E10', intervalCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E10', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E10', intervalCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E10', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E10', intervalCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E10', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E10', intervalCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E10', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E10', intervalCommand) == window.commandsFnTranslations('c23r')) {
@@ -913,6 +1617,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E11', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E11', intervalCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E11', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E11', intervalCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E11', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E11', intervalCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E11', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E11', intervalCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E11', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E11', intervalCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E11', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E11', intervalCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E11', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E11', intervalCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E11', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E11', intervalCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E11', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E11', intervalCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E11', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E11', intervalCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E11', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E11', intervalCommand) == window.commandsFnTranslations('c23r')) {
@@ -933,6 +1653,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E12', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E12', intervalCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E12', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E12', intervalCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E12', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E12', intervalCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E12', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E12', intervalCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E12', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E12', intervalCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E12', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E12', intervalCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E12', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E12', intervalCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E12', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E12', intervalCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E12', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E12', intervalCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E12', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E12', intervalCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E12', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E12', intervalCommand) == window.commandsFnTranslations('c23r')) {
@@ -953,6 +1689,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E13', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E13', intervalCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E13', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E13', intervalCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E13', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E13', intervalCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E13', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E13', intervalCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E13', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E13', intervalCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E13', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E13', intervalCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E13', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E13', intervalCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E13', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E13', intervalCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E13', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E13', intervalCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E13', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E13', intervalCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E13', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E13', intervalCommand) == window.commandsFnTranslations('c23r')) {
@@ -973,6 +1725,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E14', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E14', intervalCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E14', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E14', intervalCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E14', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E14', intervalCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E14', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E14', intervalCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E14', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E14', intervalCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E14', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E14', intervalCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E14', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E14', intervalCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E14', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E14', intervalCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E14', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E14', intervalCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E14', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E14', intervalCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E14', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E14', intervalCommand) == window.commandsFnTranslations('c23r')) {
@@ -993,6 +1761,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E15', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E15', intervalCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E15', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E15', intervalCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E15', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E15', intervalCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E15', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E15', intervalCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E15', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E15', intervalCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E15', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E15', intervalCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E15', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E15', intervalCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E15', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E15', intervalCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E15', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E15', intervalCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E15', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E15', intervalCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E15', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E15', intervalCommand) == window.commandsFnTranslations('c23r')) {
@@ -1013,6 +1797,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E16', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E16', intervalCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E16', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E16', intervalCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E16', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E16', intervalCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E16', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E16', intervalCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E16', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E16', intervalCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E16', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E16', intervalCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E16', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E16', intervalCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E16', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E16', intervalCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E16', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E16', intervalCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E16', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E16', intervalCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E16', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E16', intervalCommand) == window.commandsFnTranslations('c23r')) {
@@ -1035,6 +1835,22 @@ window.execute = function (elementName, command) {
 					eval(window.evaluateScript('S5', 'E17', 'T2'));
 				} else if (window.commandsFnTranslations('c13q', 'E17', intervalCommand, voiceCommand) == window.commandsFnTranslations('c13r')) {
 					eval(window.evaluateScript('S6', 'E17', 'T2'));
+				} else if (window.commandsFnTranslations('c55q', 'E17', intervalCommand, voiceCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E17', 'T2'));
+				} else if (window.commandsFnTranslations('c59q', 'E17', intervalCommand, voiceCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E17', 'T2'));
+				} else if (window.commandsFnTranslations('c64q', 'E17', intervalCommand, voiceCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E17', 'T2'));
+				} else if (window.commandsFnTranslations('c68q', 'E17', intervalCommand, voiceCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E17', 'T2'));
+				} else if (window.commandsFnTranslations('c73q', 'E17', intervalCommand, voiceCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E17', 'T2'));
+				} else if (window.commandsFnTranslations('c77q', 'E17', intervalCommand, voiceCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E17', 'T2'));
+				} else if (window.commandsFnTranslations('c82q', 'E17', intervalCommand, voiceCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E17', 'T2'));
+				} else if (window.commandsFnTranslations('c86q', 'E17', intervalCommand, voiceCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E17', 'T2'));
 				} else if (window.commandsFnTranslations('c18q', 'E17', intervalCommand, voiceCommand) == window.commandsFnTranslations('c18r')) {
 					eval(window.evaluateScript('S7', 'E17', 'T2'));
 				} else if (window.commandsFnTranslations('c23q', 'E17', intervalCommand, voiceCommand) == window.commandsFnTranslations('c23r')) {
@@ -1056,6 +1872,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E1', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E1', commands[commandID]) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E1', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E1', commands[commandID]) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E1', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E1', commands[commandID]) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E1', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E1', commands[commandID]) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E1', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E1', commands[commandID]) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E1', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E1', commands[commandID]) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E1', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E1', commands[commandID]) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E1', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E1', commands[commandID]) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E1', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E1', commands[commandID]) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E1', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E1', commands[commandID]) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E1', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E1', commands[commandID]) == window.commandsFnTranslations('c23r')) {
@@ -1076,6 +1908,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E2', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E2', commands[commandID]) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E2', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E2', commands[commandID]) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E2', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E2', commands[commandID]) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E2', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E2', commands[commandID]) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E2', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E2', commands[commandID]) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E2', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E2', commands[commandID]) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E2', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E2', commands[commandID]) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E2', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E2', commands[commandID]) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E2', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E2', commands[commandID]) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E2', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E2', commands[commandID]) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E2', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E2', commands[commandID]) == window.commandsFnTranslations('c23r')) {
@@ -1096,6 +1944,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E3', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E3', commands[commandID]) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E3', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E3', commands[commandID]) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E3', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E3', commands[commandID]) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E3', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E3', commands[commandID]) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E3', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E3', commands[commandID]) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E3', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E3', commands[commandID]) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E3', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E3', commands[commandID]) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E3', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E3', commands[commandID]) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E3', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E3', commands[commandID]) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E3', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E3', commands[commandID]) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E3', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E3', commands[commandID]) == window.commandsFnTranslations('c23r')) {
@@ -1116,6 +1980,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E4', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E4', commands[commandID]) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E4', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E4', commands[commandID]) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E4', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E4', commands[commandID]) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E4', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E4', commands[commandID]) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E4', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E4', commands[commandID]) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E4', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E4', commands[commandID]) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E4', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E4', commands[commandID]) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E4', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E4', commands[commandID]) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E4', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E4', commands[commandID]) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E4', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E4', commands[commandID]) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E4', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E4', commands[commandID]) == window.commandsFnTranslations('c23r')) {
@@ -1136,6 +2016,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E5', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E5', commands[commandID]) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E5', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E5', commands[commandID]) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E5', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E5', commands[commandID]) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E5', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E5', commands[commandID]) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E5', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E5', commands[commandID]) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E5', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E5', commands[commandID]) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E5', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E5', commands[commandID]) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E5', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E5', commands[commandID]) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E5', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E5', commands[commandID]) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E5', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E5', commands[commandID]) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E5', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E5', commands[commandID]) == window.commandsFnTranslations('c23r')) {
@@ -1156,6 +2052,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E6', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E6', commands[commandID]) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E6', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E6', commands[commandID]) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E6', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E6', commands[commandID]) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E6', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E6', commands[commandID]) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E6', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E6', commands[commandID]) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E6', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E6', commands[commandID]) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E6', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E6', commands[commandID]) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E6', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E6', commands[commandID]) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E6', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E6', commands[commandID]) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E6', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E6', commands[commandID]) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E6', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E6', commands[commandID]) == window.commandsFnTranslations('c23r')) {
@@ -1176,6 +2088,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E7', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E7', commands[commandID]) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E7', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E7', commands[commandID]) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E7', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E7', commands[commandID]) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E7', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E7', commands[commandID]) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E7', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E7', commands[commandID]) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E7', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E7', commands[commandID]) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E7', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E7', commands[commandID]) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E7', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E7', commands[commandID]) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E7', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E7', commands[commandID]) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E7', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E7', commands[commandID]) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E7', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E7', commands[commandID]) == window.commandsFnTranslations('c23r')) {
@@ -1196,6 +2124,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E8', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E8', commands[commandID]) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E8', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E8', commands[commandID]) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E8', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E8', commands[commandID]) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E8', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E8', commands[commandID]) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E8', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E8', commands[commandID]) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E8', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E8', commands[commandID]) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E8', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E8', commands[commandID]) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E8', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E8', commands[commandID]) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E8', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E8', commands[commandID]) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E8', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E8', commands[commandID]) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E8', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E8', commands[commandID]) == window.commandsFnTranslations('c23r')) {
@@ -1216,6 +2160,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E9', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E9', commands[commandID]) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E9', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E9', commands[commandID]) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E9', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E9', commands[commandID]) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E9', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E9', commands[commandID]) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E9', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E9', commands[commandID]) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E9', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E9', commands[commandID]) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E9', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E9', commands[commandID]) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E9', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E9', commands[commandID]) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E9', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E9', commands[commandID]) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E9', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E9', commands[commandID]) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E9', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E9', commands[commandID]) == window.commandsFnTranslations('c23r')) {
@@ -1236,6 +2196,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E10', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E10', commands[commandID]) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E10', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E10', commands[commandID]) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E10', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E10', commands[commandID]) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E10', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E10', commands[commandID]) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E10', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E10', commands[commandID]) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E10', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E10', commands[commandID]) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E10', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E10', commands[commandID]) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E10', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E10', commands[commandID]) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E10', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E10', commands[commandID]) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E10', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E10', commands[commandID]) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E10', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E10', commands[commandID]) == window.commandsFnTranslations('c23r')) {
@@ -1256,6 +2232,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E11', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E11', commands[commandID]) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E11', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E11', commands[commandID]) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E11', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E11', commands[commandID]) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E11', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E11', commands[commandID]) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E11', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E11', commands[commandID]) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E11', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E11', commands[commandID]) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E11', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E11', commands[commandID]) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E11', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E11', commands[commandID]) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E11', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E11', commands[commandID]) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E11', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E11', commands[commandID]) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E11', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E11', commands[commandID]) == window.commandsFnTranslations('c23r')) {
@@ -1276,6 +2268,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E12', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E12', commands[commandID]) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E12', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E12', commands[commandID]) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E12', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E12', commands[commandID]) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E12', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E12', commands[commandID]) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E12', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E12', commands[commandID]) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E12', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E12', commands[commandID]) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E12', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E12', commands[commandID]) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E12', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E12', commands[commandID]) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E12', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E12', commands[commandID]) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E12', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E12', commands[commandID]) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E12', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E12', commands[commandID]) == window.commandsFnTranslations('c23r')) {
@@ -1296,6 +2304,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E13', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E13', commands[commandID]) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E13', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E13', commands[commandID]) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E13', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E13', commands[commandID]) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E13', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E13', commands[commandID]) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E13', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E13', commands[commandID]) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E13', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E13', commands[commandID]) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E13', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E13', commands[commandID]) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E13', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E13', commands[commandID]) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E13', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E13', commands[commandID]) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E13', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E13', commands[commandID]) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E13', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E13', commands[commandID]) == window.commandsFnTranslations('c23r')) {
@@ -1316,6 +2340,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E14', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E14', commands[commandID]) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E14', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E14', commands[commandID]) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E14', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E14', commands[commandID]) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E14', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E14', commands[commandID]) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E14', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E14', commands[commandID]) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E14', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E14', commands[commandID]) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E14', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E14', commands[commandID]) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E14', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E14', commands[commandID]) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E14', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E14', commands[commandID]) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E14', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E14', commands[commandID]) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E14', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E14', commands[commandID]) == window.commandsFnTranslations('c23r')) {
@@ -1336,6 +2376,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E15', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E15', commands[commandID]) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E15', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E15', commands[commandID]) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E15', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E15', commands[commandID]) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E15', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E15', commands[commandID]) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E15', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E15', commands[commandID]) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E15', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E15', commands[commandID]) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E15', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E15', commands[commandID]) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E15', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E15', commands[commandID]) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E15', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E15', commands[commandID]) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E15', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E15', commands[commandID]) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E15', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E15', commands[commandID]) == window.commandsFnTranslations('c23r')) {
@@ -1356,6 +2412,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E16', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E16', commands[commandID]) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E16', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E16', commands[commandID]) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E16', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E16', commands[commandID]) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E16', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E16', commands[commandID]) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E16', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E16', commands[commandID]) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E16', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E16', commands[commandID]) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E16', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E16', commands[commandID]) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E16', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E16', commands[commandID]) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E16', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E16', commands[commandID]) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E16', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E16', commands[commandID]) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E16', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E16', commands[commandID]) == window.commandsFnTranslations('c23r')) {
@@ -1378,6 +2450,22 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S5', 'E17', 'T0'));
 			} else if (window.commandsFnTranslations('c13q', 'E17', commands[commandID], voiceCommand) == window.commandsFnTranslations('c13r')) {
 				eval(window.evaluateScript('S6', 'E17', 'T0'));
+			} else if (window.commandsFnTranslations('c55q', 'E17', commands[commandID], voiceCommand) == window.commandsFnTranslations('c55r')) {
+				eval(window.evaluateScript('S10', 'E17', 'T0'));
+			} else if (window.commandsFnTranslations('c59q', 'E17', commands[commandID], voiceCommand) == window.commandsFnTranslations('c59r')) {
+				eval(window.evaluateScript('S11', 'E17', 'T0'));
+			} else if (window.commandsFnTranslations('c64q', 'E17', commands[commandID], voiceCommand) == window.commandsFnTranslations('c64r')) {
+				eval(window.evaluateScript('S12', 'E17', 'T0'));
+			} else if (window.commandsFnTranslations('c68q', 'E17', commands[commandID], voiceCommand) == window.commandsFnTranslations('c68r')) {
+				eval(window.evaluateScript('S13', 'E17', 'T0'));
+			} else if (window.commandsFnTranslations('c73q', 'E17', commands[commandID], voiceCommand) == window.commandsFnTranslations('c73r')) {
+				eval(window.evaluateScript('S14', 'E17', 'T0'));
+			} else if (window.commandsFnTranslations('c77q', 'E17', commands[commandID], voiceCommand) == window.commandsFnTranslations('c77r')) {
+				eval(window.evaluateScript('S15', 'E17', 'T0'));
+			} else if (window.commandsFnTranslations('c82q', 'E17', commands[commandID], voiceCommand) == window.commandsFnTranslations('c82r')) {
+				eval(window.evaluateScript('S16', 'E17', 'T0'));
+			} else if (window.commandsFnTranslations('c86q', 'E17', commands[commandID], voiceCommand) == window.commandsFnTranslations('c86r')) {
+				eval(window.evaluateScript('S17', 'E17', 'T0'));
 			} else if (window.commandsFnTranslations('c18q', 'E17', commands[commandID], voiceCommand) == window.commandsFnTranslations('c18r')) {
 				eval(window.evaluateScript('S7', 'E17', 'T0'));
 			} else if (window.commandsFnTranslations('c23q', 'E17', commands[commandID], voiceCommand) == window.commandsFnTranslations('c23r')) {

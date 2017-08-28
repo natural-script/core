@@ -1,7 +1,7 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------------Commands Translations------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
- window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, para1Raw, para2Raw, para3Raw, para4Raw, para5Raw) {
+ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, param1Raw, param2Raw, param3Raw, param4Raw, param5Raw) {
 	if (document.lang == 0) {
 		this.E1 = 'When it has been clicked, ';
 		this.E2 = 'When the mouse pointer has been moved over it, ';
@@ -112,17 +112,17 @@
 		this.E17 = 'ユーザーが言った場合：';
 	}
 	if (eventRaw == 'E17') {
-		var event = this[eventRaw] + para1Raw + ', ';
-		var para1 = para2Raw;
-		var para2 = para3Raw;
-		var para3 = para4Raw;
-		var para4 = para5Raw;
+		var event = this[eventRaw] + param1Raw + ', ';
+		var param1 = param2Raw;
+		var param2 = param3Raw;
+		var param3 = param4Raw;
+		var param4 = param5Raw;
 	} else {
 		var event = this[eventRaw];
-		var para1 = para1Raw;
-		var para2 = para2Raw;
-		var para3 = para3Raw;
-		var para4 = para4Raw;
+		var param1 = param1Raw;
+		var param2 = param2Raw;
+		var param3 = param3Raw;
+		var param4 = param4Raw;
 	}
 	if (commandCode == 'c1') {
 		if (document.lang == 0) {
@@ -314,9 +314,9 @@
 		} else if (document.lang == 2) {
 			return 'définir sa valeur à';
 		} else if (document.lang == 3) {
-			return 'غير قيمته إلى';
+			return 'اجعل قيمته إلى';
 		} else if (document.lang == 4) {
-			return 'غير قيمته إلى';
+			return 'خلى قيمته إلى';
 		} else if (document.lang == 5) {
 			return 'にその値を設定';
 		}
@@ -328,9 +328,9 @@
 		} else if (document.lang == 2) {
 			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
 		} else if (document.lang == 3) {
-			return commandValue.split('غير قيمته إلى ')[1].split(' ')[0];
+			return commandValue.split('اجعل قيمته إلى ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split('غير قيمته إلى ')[1].split(' ')[0];
+			return commandValue.split('خلى قيمته إلى ')[1].split(' ')[0];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
 		}
@@ -370,9 +370,9 @@
 		} else if (document.lang == 2) {
 			return commandValue.split('définir sa valeur à la valeur de ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('غير قيمته إلى قيمة ')[1];
+			return commandValue.split('اجعل قيمته إلى قيمة ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('غير قيمته إلى قيمة ')[1];
+			return commandValue.split('خلى قيمته إلى قيمة ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir sa valeur à la valeur de ')[1];
 		}
@@ -384,9 +384,9 @@
 		} else if (document.lang == 2) {
 			return commandValue.split('définir sa valeur à ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('غير قيمته إلى ')[1];
+			return commandValue.split('اجعل قيمته إلى ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('غير قيمته إلى ')[1];
+			return commandValue.split('خلى قيمته إلى ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('にその値を設定')[0].split('、 ')[1];
 		}
@@ -412,9 +412,9 @@
 		} else if (document.lang == 2) {
 			return 'définir la valeur de à';
 		} else if (document.lang == 3) {
-			return 'غير قيمة إلى';
+			return 'اجعل قيمة إلى';
 		} else if (document.lang == 4) {
-			return 'غير قيمة إلى';
+			return 'خلى قيمة إلى';
 		} else if (document.lang == 5) {
 			return 'définir la valeur de à';
 		}
@@ -426,39 +426,39 @@
 		} else if (document.lang == 2) {
 			return commandValue.split('définir la valeur de ')[1].split(' ')[0];
 		} else if (document.lang == 3) {
-			return commandValue.split('غير قيمة ')[1].split(' ')[0];
+			return commandValue.split('اجعل قيمة ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split('غير قيمة ')[1].split(' ')[0];
+			return commandValue.split('خلى قيمة ')[1].split(' ')[0];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ')[1].split(' ')[0];
 		}
 	} else if (commandCode == 'c15') {
 		if (document.lang == 0) {
-			return commandValue.split('set the value of ' + para1 + ' to the value of ')[1];
+			return commandValue.split('set the value of ' + param1 + ' to the value of ')[1];
 		} else if (document.lang == 1) {
-			return commandValue.split('set the value of ' + para1 + ' to the value of ')[1];
+			return commandValue.split('set the value of ' + param1 + ' to the value of ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ' + para1 + ' à la valeur de ')[1];
+			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('غير قيمة ' + para1 + ' إلى قيمة ')[1];
+			return commandValue.split('اجعل قيمة ' + param1 + ' إلى قيمة ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('غير قيمة ' + para1 + ' إلى قيمة ')[1];
+			return commandValue.split('خلى قيمة ' + param1 + ' إلى قيمة ')[1];
 		} else if (document.lang == 5) {
-			return commandValue.split('définir la valeur de ' + para1 + ' à la valeur de ')[1];
+			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
 		}
 	} else if (commandCode == 'c16q') {
 		if (document.lang == 0) {
-			return commandValue.split('set the value of ' + para1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the value of ' + para1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the value of ' + para1 + ' to ')[1].split(' ')[2];
+			return commandValue.split('set the value of ' + param1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the value of ' + param1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the value of ' + param1 + ' to ')[1].split(' ')[2];
 		} else if (document.lang == 1) {
-			return commandValue.split('set the value of ' + para1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the value of ' + para1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the value of ' + para1 + ' to ')[1].split(' ')[2];
+			return commandValue.split('set the value of ' + param1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the value of ' + param1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the value of ' + param1 + ' to ')[1].split(' ')[2];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[2];
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
 		} else if (document.lang == 3) {
-			return commandValue.split('غير قيمة ' + para1 + ' إلى ')[1].split(' ')[0];
+			return commandValue.split('اجعل قيمة ' + param1 + ' إلى ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split('غير قيمة ' + para1 + ' إلى ')[1].split(' ')[0];
+			return commandValue.split('خلى قيمة ' + param1 + ' إلى ')[1].split(' ')[0];
 		} else if (document.lang == 5) {
-			return commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + para1 + ' à ')[1].split(' ')[2];
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
 		}
 	} else if (commandCode == 'c16rA') {
 		if (document.lang == 0) {
@@ -490,17 +490,17 @@
 		}
 	} else if (commandCode == 'c17') {
 		if (document.lang == 0) {
-			return commandValue.split('set the value of ' + para1 + ' to ')[1];
+			return commandValue.split('set the value of ' + param1 + ' to ')[1];
 		} else if (document.lang == 1) {
-			return commandValue.split('set the value of ' + para1 + ' to ')[1];
+			return commandValue.split('set the value of ' + param1 + ' to ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ' + para1 + ' à ')[1];
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('غير قيمة ' + para1 + ' إلى ')[1];
+			return commandValue.split('اجعل قيمة ' + param1 + ' إلى ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('غير قيمة ' + para1 + ' إلى ')[1];
+			return commandValue.split('خلى قيمة ' + param1 + ' إلى ')[1];
 		} else if (document.lang == 5) {
-			return commandValue.split('définir la valeur de ' + para1 + ' à ')[1];
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
 		}
 	} else if (commandCode == 'c18q') {
 		if (document.lang == 0) {
@@ -546,31 +546,31 @@
 		}
 	} else if (commandCode == 'c20') {
 		if (document.lang == 0) {
-			return commandValue.split('set the value of ' + para1 + ' to the value of ')[1];
+			return commandValue.split('set the value of ' + param1 + ' to the value of ')[1];
 		} else if (document.lang == 1) {
-			return commandValue.split('set the value of ' + para1 + ' to the value of ')[1];
+			return commandValue.split('set the value of ' + param1 + ' to the value of ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ' + para1 + ' à la valeur de ')[1];
+			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('غير قيمة ' + para1 + ' إلى قيمة ')[1];
+			return commandValue.split('اجعل قيمة ' + param1 + ' إلى قيمة ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('غير قيمة ' + para1 + ' إلى قيمة ')[1];
+			return commandValue.split('خلى قيمة ' + param1 + ' إلى قيمة ')[1];
 		} else if (document.lang == 5) {
-			return commandValue.split('définir la valeur de ' + para1 + ' à la valeur de ')[1];
+			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
 		}
 	} else if (commandCode == 'c21q') {
 		if (document.lang == 0) {
-			return commandValue.split('set the time position of ' + para1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the time position of ' + para1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the time position of ' + para1 + ' to ')[1].split(' ')[2];
+			return commandValue.split('set the time position of ' + param1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the time position of ' + param1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the time position of ' + param1 + ' to ')[1].split(' ')[2];
 		} else if (document.lang == 1) {
-			return commandValue.split('set the time position of ' + para1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the time position of ' + para1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the time position of ' + para1 + ' to ')[1].split(' ')[2];
+			return commandValue.split('set the time position of ' + param1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the time position of ' + param1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the time position of ' + param1 + ' to ')[1].split(' ')[2];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[2];
+			return commandValue.split('définir la position de temps de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la position de temps de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la position de temps de ' + param1 + ' à ')[1].split(' ')[2];
 		} else if (document.lang == 3) {
-			return commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[2];
+			return commandValue.split('définir la position de temps de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la position de temps de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la position de temps de ' + param1 + ' à ')[1].split(' ')[2];
 		} else if (document.lang == 4) {
-			return commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[2];
+			return commandValue.split('définir la position de temps de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la position de temps de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la position de temps de ' + param1 + ' à ')[1].split(' ')[2];
 		} else if (document.lang == 5) {
-			return commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la position de temps de ' + para1 + ' à ')[1].split(' ')[2];
+			return commandValue.split('définir la position de temps de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la position de temps de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la position de temps de ' + param1 + ' à ')[1].split(' ')[2];
 		}
 	} else if (commandCode == 'c21rA') {
 		if (document.lang == 0) {
@@ -602,17 +602,17 @@
 		}
 	} else if (commandCode == 'c22') {
 		if (document.lang == 0) {
-			return commandValue.split('set the time position of ' + para1 + ' to ')[1];
+			return commandValue.split('set the time position of ' + param1 + ' to ')[1];
 		} else if (document.lang == 1) {
-			return commandValue.split('set the time position of ' + para1 + ' to ')[1];
+			return commandValue.split('set the time position of ' + param1 + ' to ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la position de temps de ' + para1 + ' à ')[1];
+			return commandValue.split('définir la position de temps de ' + param1 + ' à ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('définir la position de temps de ' + para1 + ' à ')[1];
+			return commandValue.split('définir la position de temps de ' + param1 + ' à ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('définir la position de temps de ' + para1 + ' à ')[1];
+			return commandValue.split('définir la position de temps de ' + param1 + ' à ')[1];
 		} else if (document.lang == 5) {
-			return commandValue.split('définir la position de temps de ' + para1 + ' à ')[1];
+			return commandValue.split('définir la position de temps de ' + param1 + ' à ')[1];
 		}
 	} else if (commandCode == 'c23q') {
 		if (document.lang == 0) {
@@ -644,17 +644,17 @@
 		}
 	} else if (commandCode == 'c24') {
 		if (document.lang == 0) {
-			return commandValue.split('go to the ' + para1 + ' database ')[1].split(' ')[0];
+			return commandValue.split('go to the ' + param1 + ' database ')[1].split(' ')[0];
 		} else if (document.lang == 1) {
-			return commandValue.split('go to the ' + para1 + ' database ')[1].split(' ')[0];
+			return commandValue.split('go to the ' + param1 + ' database ')[1].split(' ')[0];
 		} else if (document.lang == 2) {
-			return commandValue.split('aller à la base de données ' + para1 + ' ')[1].split(' ')[0];
+			return commandValue.split('aller à la base de données ' + param1 + ' ')[1].split(' ')[0];
 		} else if (document.lang == 3) {
-			return commandValue.split('اذهب إلى قاعدة البيانات ' + para1 + ' ')[1].split(' ')[0];
+			return commandValue.split('اذهب إلى قاعدة البيانات ' + param1 + ' ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split('روح لقاعدة البيانات ' + para1 + ' ')[1].split(' ')[0];
+			return commandValue.split('روح لقاعدة البيانات ' + param1 + ' ')[1].split(' ')[0];
 		} else if (document.lang == 5) {
-			return commandValue.split('aller à la base de données ' + para1 + ' ')[1].split(' ')[0];
+			return commandValue.split('aller à la base de données ' + param1 + ' ')[1].split(' ')[0];
 		}
 	} else if (commandCode == 'c25') {
 		if (document.lang == 0) {
@@ -672,17 +672,17 @@
 		}
 	} else if (commandCode == 'c26') {
 		if (document.lang == 0) {
-			return commandValue.split('go to the ' + para1 + ' database ' + para2 + ' the branch ' + para3 + ' and then insert the following data: ')[1].split(', ');
+			return commandValue.split('go to the ' + param1 + ' database ' + param2 + ' the branch ' + param3 + ' and then insert the following data: ')[1].split(', ');
 		} else if (document.lang == 1) {
-			return commandValue.split('go to the ' + para1 + ' database ' + para2 + ' the branch ' + para3 + ' and then insert the following data: ')[1].split(', ');
+			return commandValue.split('go to the ' + param1 + ' database ' + param2 + ' the branch ' + param3 + ' and then insert the following data: ')[1].split(', ');
 		} else if (document.lang == 2) {
-			return commandValue.split('aller à la base de données ' + para1 + ' ' + para2 + ' la branche ' + para3 + ' et ensuite insérer les données suivantes: ')[1].split(', ');
+			return commandValue.split('aller à la base de données ' + param1 + ' ' + param2 + ' la branche ' + param3 + ' et ensuite insérer les données suivantes: ')[1].split(', ');
 		} else if (document.lang == 3) {
-			return commandValue.split('اذهب إلى قاعدة البيانات ' + para1 + ' ' + para2 + ' الفرع ' + para3 + ' ثم قم بإدخال البيانات التالية: ')[1].split(', ');
+			return commandValue.split('اذهب إلى قاعدة البيانات ' + param1 + ' ' + param2 + ' الفرع ' + param3 + ' ثم قم بإدخال البيانات التالية: ')[1].split(', ');
 		} else if (document.lang == 4) {
-			return commandValue.split('روح لقاعدة البيانات ' + para1 + ' ' + para2 + ' الفرع ' + para3 + ' و بعد كدة دخل البيانات دى: ')[1].split(', ');
+			return commandValue.split('روح لقاعدة البيانات ' + param1 + ' ' + param2 + ' الفرع ' + param3 + ' و بعد كدة دخل البيانات دى: ')[1].split(', ');
 		} else if (document.lang == 5) {
-			return commandValue.split('aller à la base de données ' + para1 + ' ' + para2 + ' la branche ' + para3 + ' et ensuite insérer les données suivantes: ')[1].split(', ');
+			return commandValue.split('aller à la base de données ' + param1 + ' ' + param2 + ' la branche ' + param3 + ' et ensuite insérer les données suivantes: ')[1].split(', ');
 		}
 	} else if (commandCode == 'c27q') {
 		if (document.lang == 0) {
@@ -714,17 +714,17 @@
 		}
 	} else if (commandCode == 'c28') {
 		if (document.lang == 0) {
-			return commandValue.split('go to the ' + para1 + ' database ')[1].split(' ')[0];
+			return commandValue.split('go to the ' + param1 + ' database ')[1].split(' ')[0];
 		} else if (document.lang == 1) {
-			return commandValue.split('go to the ' + para1 + ' database ')[1].split(' ')[0];
+			return commandValue.split('go to the ' + param1 + ' database ')[1].split(' ')[0];
 		} else if (document.lang == 2) {
-			return commandValue.split('aller à la base de données ' + para1 + ' ')[1].split(' ')[0];
+			return commandValue.split('aller à la base de données ' + param1 + ' ')[1].split(' ')[0];
 		} else if (document.lang == 3) {
-			return commandValue.split('اذهب إلى قاعدة البيانات ' + para1 + ' ')[1].split(' ')[0];
+			return commandValue.split('اذهب إلى قاعدة البيانات ' + param1 + ' ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split('روح لقاعدة البيانات ' + para1 + ' ')[1].split(' ')[0];
+			return commandValue.split('روح لقاعدة البيانات ' + param1 + ' ')[1].split(' ')[0];
 		} else if (document.lang == 5) {
-			return commandValue.split('aller à la base de données ' + para1 + ' ')[1].split(' ')[0];
+			return commandValue.split('aller à la base de données ' + param1 + ' ')[1].split(' ')[0];
 		}
 	} else if (commandCode == 'c29') {
 		if (document.lang == 0) {
@@ -1150,31 +1150,31 @@
 		}
 	} else if (commandCode == 'c42') {
 		if (document.lang == 0) {
-			return window.evaluateExpression(commandValue.split('set the value of ' + para1 + ' to the result of ')[1]);
+			return window.evaluateExpression(commandValue.split('set the value of ' + param1 + ' to the result of ')[1]);
 		} else if (document.lang == 1) {
-			return window.evaluateExpression(commandValue.split('set the value of ' + para1 + ' to the result of ')[1]);
+			return window.evaluateExpression(commandValue.split('set the value of ' + param1 + ' to the result of ')[1]);
 		} else if (document.lang == 2) {
-			return window.evaluateExpression(commandValue.split("définir la valeur de ' + para1 + ' à le résultat de ")[1]);
+			return window.evaluateExpression(commandValue.split("définir la valeur de ' + param1 + ' à le résultat de ")[1]);
 		} else if (document.lang == 3) {
-			return window.evaluateExpression(commandValue.split('غير قيمة ' + para1 + ' إلى ناتج ')[1]);
+			return window.evaluateExpression(commandValue.split('اجعل قيمة ' + param1 + ' إلى ناتج ')[1]);
 		} else if (document.lang == 4) {
-			return window.evaluateExpression(commandValue.split('غير قيمة ' + para1 + ' إلى ناتج ')[1]);
+			return window.evaluateExpression(commandValue.split('خلى قيمة ' + param1 + ' إلى ناتج ')[1]);
 		} else if (document.lang == 5) {
-			return window.evaluateExpression(commandValue.split('set the value of ' + para1 + ' to the result of ')[1]);
+			return window.evaluateExpression(commandValue.split('set the value of ' + param1 + ' to the result of ')[1]);
 		}
 	} else if (commandCode == 'c43') {
 		if (document.lang == 0) {
-			return window.evaluateExpression(commandValue.split('set the value of ' + para1 + ' to the result of ')[1]);
+			return window.evaluateExpression(commandValue.split('set the value of ' + param1 + ' to the result of ')[1]);
 		} else if (document.lang == 1) {
-			return window.evaluateExpression(commandValue.split('set the value of ' + para1 + ' to the result of ')[1]);
+			return window.evaluateExpression(commandValue.split('set the value of ' + param1 + ' to the result of ')[1]);
 		} else if (document.lang == 2) {
-			return window.evaluateExpression(commandValue.split("définir la valeur de ' + para1 + ' à le résultat de ")[1]);
+			return window.evaluateExpression(commandValue.split("définir la valeur de ' + param1 + ' à le résultat de ")[1]);
 		} else if (document.lang == 3) {
-			return window.evaluateExpression(commandValue.split('غير قيمة ' + para1 + ' إلى ناتج ')[1]);
+			return window.evaluateExpression(commandValue.split('اجعل قيمة ' + param1 + ' إلى ناتج ')[1]);
 		} else if (document.lang == 4) {
-			return window.evaluateExpression(commandValue.split('غير قيمة ' + para1 + ' إلى ناتج ')[1]);
+			return window.evaluateExpression(commandValue.split('خلى قيمة ' + param1 + ' إلى ناتج ')[1]);
 		} else if (document.lang == 5) {
-			return window.evaluateExpression(commandValue.split('set the value of ' + para1 + ' to the result of ')[1]);
+			return window.evaluateExpression(commandValue.split('set the value of ' + param1 + ' to the result of ')[1]);
 		}
 	} else if (commandCode == 'c44q') {
 		if (document.lang == 0) {
@@ -1388,9 +1388,9 @@
 		}
 	} else if (commandCode == 'c51') {
 		if (document.lang == 0) {
-			return commandValue.split('which has the same class of the value of ' + para1 + ' in the slot ')[1].split(' ')[0];
+			return commandValue.split('which has the same class of the value of ' + param1 + ' in the slot ')[1].split(' ')[0];
 		} else if (document.lang == 1) {
-			return commandValue.split('which has the same class of the value of ' + para1 + ' in the slot ')[1].split(' ')[0];
+			return commandValue.split('which has the same class of the value of ' + param1 + ' in the slot ')[1].split(' ')[0];
 		} else if (document.lang == 2) {
 			return commandValue.split('aller à la base de données ')[1].split(' ')[0];
 		} else if (document.lang == 3) {
@@ -1441,6 +1441,846 @@
 			return commandValue.split(' فى حالة أن ')[0];
 		} else if (document.lang == 5) {
 			return commandValue.split('obtenir la valeur de la fente ')[0];
+		}
+	} else if (commandCode == 'c55q') {
+		if (document.lang == 0) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		} else if (document.lang == 1) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		} else if (document.lang == 2) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 3) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4];
+		} else if (document.lang == 4) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4];
+		} else if (document.lang == 5) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		}
+	} else if (commandCode == 'c55r') {
+		if (document.lang == 0) {
+			return 'set its text font colour to';
+		} else if (document.lang == 1) {
+			return 'set its text font color to';
+		} else if (document.lang == 2) {
+			return 'définir sa valeur à';
+		} else if (document.lang == 3) {
+			return 'اجعل لون خط نصه إلى';
+		} else if (document.lang == 4) {
+			return 'خلى لون خط كلامه إلى';
+		} else if (document.lang == 5) {
+			return 'にその値を設定';
+		}
+	} else if (commandCode == 'c56q') {
+		if (document.lang == 0) {
+			return commandValue.split('set its text font colour to ')[1].split(' ')[0] + ' ' + commandValue.split('set its text font colour to ')[1].split(' ')[1] + ' ' + commandValue.split('set its text font colour to ')[1].split(' ')[2];
+		} else if (document.lang == 1) {
+			return commandValue.split('set its text font color to ')[1].split(' ')[0] + ' ' + commandValue.split('set its text font color to ')[1].split(' ')[1] + ' ' + commandValue.split('set its text font color to ')[1].split(' ')[2];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل لون خط نصه إلى ')[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى لون خط كلامه إلى ')[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
+		}
+	} else if (commandCode == 'c56rA') {
+		if (document.lang == 0) {
+			return 'the value of';
+		} else if (document.lang == 1) {
+			return 'the value of';
+		} else if (document.lang == 2) {
+			return 'la valeur de';
+		} else if (document.lang == 3) {
+			return 'قيمة';
+		} else if (document.lang == 4) {
+			return 'قيمة';
+		} else if (document.lang == 5) {
+			return 'の価値';
+		}
+	} else if (commandCode == 'c56rB') {
+		if (document.lang == 0) {
+			return 'the result of';
+		} else if (document.lang == 1) {
+			return 'the result of';
+		} else if (document.lang == 2) {
+			return "le résultat de";
+		} else if (document.lang == 3) {
+			return 'ناتج';
+		} else if (document.lang == 4) {
+			return 'ناتج';
+		} else if (document.lang == 5) {
+			return 'の価値';
+		}
+	} else if (commandCode == 'c57') {
+		if (document.lang == 0) {
+			return commandValue.split('set its text font colour to the value of ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('set its text font color to the value of ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir sa valeur à la valeur de ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('خلى لون خط نصه إلى قيمة ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى لون خط كلامه إلى قيمة ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir sa valeur à la valeur de ')[1];
+		}
+	} else if (commandCode == 'c58') {
+		if (document.lang == 0) {
+			return commandValue.split('set its text font colour to ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('set its text font color to ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir sa valeur à ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('خلى لون خط نصه إلى ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى لون خط كلامه إلى ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('にその値を設定')[0].split('、 ')[1];
+		}
+	} else if (commandCode == 'c59q') {
+		if (document.lang == 0) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[5] + ' ' + commandValue.split(event)[1].split(' ')[7];
+		} else if (document.lang == 1) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[5] + ' ' + commandValue.split(event)[1].split(' ')[7];
+		} else if (document.lang == 2) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		} else if (document.lang == 3) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		} else if (document.lang == 4) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		} else if (document.lang == 2) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		}
+	} else if (commandCode == 'c59r') {
+		if (document.lang == 0) {
+			return 'set the text font colour of to';
+		} else if (document.lang == 1) {
+			return 'set the text font color of to';
+		} else if (document.lang == 2) {
+			return 'définir la valeur de à';
+		} else if (document.lang == 3) {
+			return 'خلى لون خط نص إلى';
+		} else if (document.lang == 4) {
+			return 'خلى لون خط كلام إلى';
+		} else if (document.lang == 5) {
+			return 'définir la valeur de à';
+		}
+	} else if (commandCode == 'c60') {
+		if (document.lang == 0) {
+			return commandValue.split('set the text font colour of ')[1].split(' ')[0];
+		} else if (document.lang == 1) {
+			return commandValue.split('set the text font color of ')[1].split(' ')[0];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir la valeur de ')[1].split(' ')[0];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل لون خط نص ')[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى لون خط كلام ')[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir la valeur de ')[1].split(' ')[0];
+		}
+	} else if (commandCode == 'c61') {
+		if (document.lang == 0) {
+			return commandValue.split('set the text font colour of ' + param1 + ' to the value of ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('set the text font color of ' + param1 + ' to the value of ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل لون خط نص ' + param1 + ' إلى قيمة ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى لون خط كلام ' + param1 + ' إلى قيمة ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
+		}
+	} else if (commandCode == 'c62q') {
+		if (document.lang == 0) {
+			return commandValue.split('set the text font colour of ' + param1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the text font colour of ' + param1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the text font colour of ' + param1 + ' to ')[1].split(' ')[2];
+		} else if (document.lang == 1) {
+			return commandValue.split('set the text font color of ' + param1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the text font color of ' + param1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the text font color of ' + param1 + ' to ')[1].split(' ')[2];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل لون خط نص ' + param1 + ' إلى ')[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى لون خط كلام ' + param1 + ' إلى ')[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
+		}
+	} else if (commandCode == 'c62rA') {
+		if (document.lang == 0) {
+			return 'the value of';
+		} else if (document.lang == 1) {
+			return 'the value of';
+		} else if (document.lang == 2) {
+			return 'la valeur de';
+		} else if (document.lang == 3) {
+			return 'قيمة';
+		} else if (document.lang == 4) {
+			return 'قيمة';
+		} else if (document.lang == 5) {
+			return 'la valeur de';
+		}
+	} else if (commandCode == 'c62rB') {
+		if (document.lang == 0) {
+			return 'the result of';
+		} else if (document.lang == 1) {
+			return 'the result of';
+		} else if (document.lang == 2) {
+			return "le résultat de";
+		} else if (document.lang == 3) {
+			return 'ناتج';
+		} else if (document.lang == 4) {
+			return 'ناتج';
+		} else if (document.lang == 5) {
+			return 'the result of';
+		}
+	} else if (commandCode == 'c63') {
+		if (document.lang == 0) {
+			return commandValue.split('set the text font colour of ' + param1 + ' to ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('set the text font color of ' + param1 + ' to ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل لون خط نص ' + param1 + ' إلى ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى لون خط كلام ' + param1 + ' إلى ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
+		}
+	} else if (commandCode == 'c64q') {
+		if (document.lang == 0) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 1) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 2) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 3) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+		} else if (document.lang == 4) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+		} else if (document.lang == 5) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		}
+	} else if (commandCode == 'c64r') {
+		if (document.lang == 0) {
+			return 'set its background to';
+		} else if (document.lang == 1) {
+			return 'set its background to';
+		} else if (document.lang == 2) {
+			return 'définir sa valeur à';
+		} else if (document.lang == 3) {
+			return 'اجعل خلفيته إلى';
+		} else if (document.lang == 4) {
+			return 'خلى خلفيته إلى';
+		} else if (document.lang == 5) {
+			return 'にその値を設定';
+		}
+	} else if (commandCode == 'c65q') {
+		if (document.lang == 0) {
+			return commandValue.split('set its background to ')[1].split(' ')[0] + ' ' + commandValue.split('set its background to ')[1].split(' ')[1] + ' ' + commandValue.split('set its background to ')[1].split(' ')[2];
+		} else if (document.lang == 1) {
+			return commandValue.split('set its background to ')[1].split(' ')[0] + ' ' + commandValue.split('set its background to ')[1].split(' ')[1] + ' ' + commandValue.split('set its background to ')[1].split(' ')[2];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل خلفيته إلى ')[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى خلفيته إلى ')[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
+		}
+	} else if (commandCode == 'c65rA') {
+		if (document.lang == 0) {
+			return 'the value of';
+		} else if (document.lang == 1) {
+			return 'the value of';
+		} else if (document.lang == 2) {
+			return 'la valeur de';
+		} else if (document.lang == 3) {
+			return 'قيمة';
+		} else if (document.lang == 4) {
+			return 'قيمة';
+		} else if (document.lang == 5) {
+			return 'の価値';
+		}
+	} else if (commandCode == 'c65rB') {
+		if (document.lang == 0) {
+			return 'the result of';
+		} else if (document.lang == 1) {
+			return 'the result of';
+		} else if (document.lang == 2) {
+			return "le résultat de";
+		} else if (document.lang == 3) {
+			return 'ناتج';
+		} else if (document.lang == 4) {
+			return 'ناتج';
+		} else if (document.lang == 5) {
+			return 'の価値';
+		}
+	} else if (commandCode == 'c66') {
+		if (document.lang == 0) {
+			return commandValue.split('set its background to the value of ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('set its background to the value of ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir sa valeur à la valeur de ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('خلى خلفيته إلى قيمة ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى خلفيته إلى قيمة ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir sa valeur à la valeur de ')[1];
+		}
+	} else if (commandCode == 'c67') {
+		if (document.lang == 0) {
+			return commandValue.split('set its background to ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('set its background to ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir sa valeur à ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('خلى خلفيته إلى ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى خلفيته إلى ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('にその値を設定')[0].split('、 ')[1];
+		}
+	} else if (commandCode == 'c68q') {
+		if (document.lang == 0) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		} else if (document.lang == 1) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		} else if (document.lang == 2) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		} else if (document.lang == 3) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 4) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 2) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		}
+	} else if (commandCode == 'c68r') {
+		if (document.lang == 0) {
+			return 'set the background of to';
+		} else if (document.lang == 1) {
+			return 'set the background of to';
+		} else if (document.lang == 2) {
+			return 'définir la valeur de à';
+		} else if (document.lang == 3) {
+			return 'خلى خلفية إلى';
+		} else if (document.lang == 4) {
+			return 'خلى خلفية إلى';
+		} else if (document.lang == 5) {
+			return 'définir la valeur de à';
+		}
+	} else if (commandCode == 'c69') {
+		if (document.lang == 0) {
+			return commandValue.split('set the background of ')[1].split(' ')[0];
+		} else if (document.lang == 1) {
+			return commandValue.split('set the background of ')[1].split(' ')[0];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir la valeur de ')[1].split(' ')[0];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل خلفية ')[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى خلفية ')[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir la valeur de ')[1].split(' ')[0];
+		}
+	} else if (commandCode == 'c70') {
+		if (document.lang == 0) {
+			return commandValue.split('set the background of ' + param1 + ' to the value of ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('set the background of ' + param1 + ' to the value of ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل خلفية ' + param1 + ' إلى قيمة ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى خلفية ' + param1 + ' إلى قيمة ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
+		}
+	} else if (commandCode == 'c71q') {
+		if (document.lang == 0) {
+			return commandValue.split('set the background of ' + param1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the background of ' + param1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the background of ' + param1 + ' to ')[1].split(' ')[2];
+		} else if (document.lang == 1) {
+			return commandValue.split('set the background of ' + param1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the background of ' + param1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the background of ' + param1 + ' to ')[1].split(' ')[2];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل خلفية ' + param1 + ' إلى ')[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى خلفية ' + param1 + ' إلى ')[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
+		}
+	} else if (commandCode == 'c71rA') {
+		if (document.lang == 0) {
+			return 'the value of';
+		} else if (document.lang == 1) {
+			return 'the value of';
+		} else if (document.lang == 2) {
+			return 'la valeur de';
+		} else if (document.lang == 3) {
+			return 'قيمة';
+		} else if (document.lang == 4) {
+			return 'قيمة';
+		} else if (document.lang == 5) {
+			return 'la valeur de';
+		}
+	} else if (commandCode == 'c71rB') {
+		if (document.lang == 0) {
+			return 'the result of';
+		} else if (document.lang == 1) {
+			return 'the result of';
+		} else if (document.lang == 2) {
+			return "le résultat de";
+		} else if (document.lang == 3) {
+			return 'ناتج';
+		} else if (document.lang == 4) {
+			return 'ناتج';
+		} else if (document.lang == 5) {
+			return 'the result of';
+		}
+	} else if (commandCode == 'c72') {
+		if (document.lang == 0) {
+			return commandValue.split('set the background of ' + param1 + ' to ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('set the background of ' + param1 + ' to ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل خلفية ' + param1 + ' إلى ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى خلفية ' + param1 + ' إلى ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
+		}
+	} else if (commandCode == 'c73q') {
+		if (document.lang == 0) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 1) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 2) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 3) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+		} else if (document.lang == 4) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+		} else if (document.lang == 5) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		}
+	} else if (commandCode == 'c73r') {
+		if (document.lang == 0) {
+			return 'set its length to';
+		} else if (document.lang == 1) {
+			return 'set its length to';
+		} else if (document.lang == 2) {
+			return 'définir sa valeur à';
+		} else if (document.lang == 3) {
+			return 'اجعل طوله إلى';
+		} else if (document.lang == 4) {
+			return 'خلى طوله إلى';
+		} else if (document.lang == 5) {
+			return 'にその値を設定';
+		}
+	} else if (commandCode == 'c74q') {
+		if (document.lang == 0) {
+			return commandValue.split('set its length to ')[1].split(' ')[0] + ' ' + commandValue.split('set its length to ')[1].split(' ')[1] + ' ' + commandValue.split('set its length to ')[1].split(' ')[2];
+		} else if (document.lang == 1) {
+			return commandValue.split('set its length to ')[1].split(' ')[0] + ' ' + commandValue.split('set its length to ')[1].split(' ')[1] + ' ' + commandValue.split('set its length to ')[1].split(' ')[2];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل طوله إلى ')[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى طوله إلى ')[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
+		}
+	} else if (commandCode == 'c74rA') {
+		if (document.lang == 0) {
+			return 'the value of';
+		} else if (document.lang == 1) {
+			return 'the value of';
+		} else if (document.lang == 2) {
+			return 'la valeur de';
+		} else if (document.lang == 3) {
+			return 'قيمة';
+		} else if (document.lang == 4) {
+			return 'قيمة';
+		} else if (document.lang == 5) {
+			return 'の価値';
+		}
+	} else if (commandCode == 'c74rB') {
+		if (document.lang == 0) {
+			return 'the result of';
+		} else if (document.lang == 1) {
+			return 'the result of';
+		} else if (document.lang == 2) {
+			return "le résultat de";
+		} else if (document.lang == 3) {
+			return 'ناتج';
+		} else if (document.lang == 4) {
+			return 'ناتج';
+		} else if (document.lang == 5) {
+			return 'の価値';
+		}
+	} else if (commandCode == 'c75') {
+		if (document.lang == 0) {
+			return commandValue.split('set its length to the value of ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('set its length to the value of ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir sa valeur à la valeur de ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('خلى طوله إلى قيمة ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى طوله إلى قيمة ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir sa valeur à la valeur de ')[1];
+		}
+	} else if (commandCode == 'c76') {
+		if (document.lang == 0) {
+			return commandValue.split('set its length to ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('set its length to ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir sa valeur à ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('خلى طوله إلى ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى طوله إلى ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('にその値を設定')[0].split('、 ')[1];
+		}
+	} else if (commandCode == 'c77q') {
+		if (document.lang == 0) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		} else if (document.lang == 1) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		} else if (document.lang == 2) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		} else if (document.lang == 3) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 4) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 2) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		}
+	} else if (commandCode == 'c77r') {
+		if (document.lang == 0) {
+			return 'set the length of to';
+		} else if (document.lang == 1) {
+			return 'set the length of to';
+		} else if (document.lang == 2) {
+			return 'définir la valeur de à';
+		} else if (document.lang == 3) {
+			return 'خلى طول إلى';
+		} else if (document.lang == 4) {
+			return 'خلى طول إلى';
+		} else if (document.lang == 5) {
+			return 'définir la valeur de à';
+		}
+	} else if (commandCode == '78') {
+		if (document.lang == 0) {
+			return commandValue.split('set the length of ')[1].split(' ')[0];
+		} else if (document.lang == 1) {
+			return commandValue.split('set the length of ')[1].split(' ')[0];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir la valeur de ')[1].split(' ')[0];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل طول ')[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى طول ')[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir la valeur de ')[1].split(' ')[0];
+		}
+	} else if (commandCode == 'c79') {
+		if (document.lang == 0) {
+			return commandValue.split('set the length of ' + param1 + ' to the value of ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('set the length of ' + param1 + ' to the value of ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل طول ' + param1 + ' إلى قيمة ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى طول ' + param1 + ' إلى قيمة ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
+		}
+	} else if (commandCode == 'c80q') {
+		if (document.lang == 0) {
+			return commandValue.split('set the length of ' + param1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the length of ' + param1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the length of ' + param1 + ' to ')[1].split(' ')[2];
+		} else if (document.lang == 1) {
+			return commandValue.split('set the length of ' + param1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the length of ' + param1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the length of ' + param1 + ' to ')[1].split(' ')[2];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل طول ' + param1 + ' إلى ')[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى طول ' + param1 + ' إلى ')[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
+		}
+	} else if (commandCode == 'c80rA') {
+		if (document.lang == 0) {
+			return 'the value of';
+		} else if (document.lang == 1) {
+			return 'the value of';
+		} else if (document.lang == 2) {
+			return 'la valeur de';
+		} else if (document.lang == 3) {
+			return 'قيمة';
+		} else if (document.lang == 4) {
+			return 'قيمة';
+		} else if (document.lang == 5) {
+			return 'la valeur de';
+		}
+	} else if (commandCode == 'c80rB') {
+		if (document.lang == 0) {
+			return 'the result of';
+		} else if (document.lang == 1) {
+			return 'the result of';
+		} else if (document.lang == 2) {
+			return "le résultat de";
+		} else if (document.lang == 3) {
+			return 'ناتج';
+		} else if (document.lang == 4) {
+			return 'ناتج';
+		} else if (document.lang == 5) {
+			return 'the result of';
+		}
+	} else if (commandCode == 'c81') {
+		if (document.lang == 0) {
+			return commandValue.split('set the length of ' + param1 + ' to ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('set the length of ' + param1 + ' to ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل طول ' + param1 + ' إلى ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى طول ' + param1 + ' إلى ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
+		}
+	} else if (commandCode == 'c82q') {
+		if (document.lang == 0) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 1) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 2) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 3) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+		} else if (document.lang == 4) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+		} else if (document.lang == 5) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		}
+	} else if (commandCode == 'c82r') {
+		if (document.lang == 0) {
+			return 'set its width to';
+		} else if (document.lang == 1) {
+			return 'set its width to';
+		} else if (document.lang == 2) {
+			return 'définir sa valeur à';
+		} else if (document.lang == 3) {
+			return 'اجعل عرضه إلى';
+		} else if (document.lang == 4) {
+			return 'خلى عرضه إلى';
+		} else if (document.lang == 5) {
+			return 'にその値を設定';
+		}
+	} else if (commandCode == 'c83q') {
+		if (document.lang == 0) {
+			return commandValue.split('set its width to ')[1].split(' ')[0] + ' ' + commandValue.split('set its width to ')[1].split(' ')[1] + ' ' + commandValue.split('set its width to ')[1].split(' ')[2];
+		} else if (document.lang == 1) {
+			return commandValue.split('set its width to ')[1].split(' ')[0] + ' ' + commandValue.split('set its width to ')[1].split(' ')[1] + ' ' + commandValue.split('set its width to ')[1].split(' ')[2];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل عرضه إلى ')[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى عرضه إلى ')[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
+		}
+	} else if (commandCode == 'c83rA') {
+		if (document.lang == 0) {
+			return 'the value of';
+		} else if (document.lang == 1) {
+			return 'the value of';
+		} else if (document.lang == 2) {
+			return 'la valeur de';
+		} else if (document.lang == 3) {
+			return 'قيمة';
+		} else if (document.lang == 4) {
+			return 'قيمة';
+		} else if (document.lang == 5) {
+			return 'の価値';
+		}
+	} else if (commandCode == 'c83rB') {
+		if (document.lang == 0) {
+			return 'the result of';
+		} else if (document.lang == 1) {
+			return 'the result of';
+		} else if (document.lang == 2) {
+			return "le résultat de";
+		} else if (document.lang == 3) {
+			return 'ناتج';
+		} else if (document.lang == 4) {
+			return 'ناتج';
+		} else if (document.lang == 5) {
+			return 'の価値';
+		}
+	} else if (commandCode == 'c84') {
+		if (document.lang == 0) {
+			return commandValue.split('set its width to the value of ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('set its width to the value of ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir sa valeur à la valeur de ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('خلى عرضه إلى قيمة ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى عرضه إلى قيمة ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir sa valeur à la valeur de ')[1];
+		}
+	} else if (commandCode == 'c85') {
+		if (document.lang == 0) {
+			return commandValue.split('set its width to ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('set its width to ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir sa valeur à ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('خلى عرضه إلى ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى عرضه إلى ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('にその値を設定')[0].split('、 ')[1];
+		}
+	} else if (commandCode == 'c86q') {
+		if (document.lang == 0) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		} else if (document.lang == 1) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		} else if (document.lang == 2) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		} else if (document.lang == 3) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 4) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 2) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+		}
+	} else if (commandCode == 'c86r') {
+		if (document.lang == 0) {
+			return 'set the width of to';
+		} else if (document.lang == 1) {
+			return 'set the width of to';
+		} else if (document.lang == 2) {
+			return 'définir la valeur de à';
+		} else if (document.lang == 3) {
+			return 'خلى عرض إلى';
+		} else if (document.lang == 4) {
+			return 'خلى عرض إلى';
+		} else if (document.lang == 5) {
+			return 'définir la valeur de à';
+		}
+	} else if (commandCode == 'c87') {
+		if (document.lang == 0) {
+			return commandValue.split('set the width of ')[1].split(' ')[0];
+		} else if (document.lang == 1) {
+			return commandValue.split('set the width of ')[1].split(' ')[0];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir la valeur de ')[1].split(' ')[0];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل عرض ')[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى عرض ')[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir la valeur de ')[1].split(' ')[0];
+		}
+	} else if (commandCode == 'c88') {
+		if (document.lang == 0) {
+			return commandValue.split('set the width of ' + param1 + ' to the value of ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('set the width of ' + param1 + ' to the value of ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل عرض ' + param1 + ' إلى قيمة ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى عرض ' + param1 + ' إلى قيمة ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
+		}
+	} else if (commandCode == 'c89q') {
+		if (document.lang == 0) {
+			return commandValue.split('set the width of ' + param1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the width of ' + param1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the width of ' + param1 + ' to ')[1].split(' ')[2];
+		} else if (document.lang == 1) {
+			return commandValue.split('set the width of ' + param1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the width of ' + param1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the width of ' + param1 + ' to ')[1].split(' ')[2];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل عرض ' + param1 + ' إلى ')[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى عرض ' + param1 + ' إلى ')[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
+		}
+	} else if (commandCode == 'c89rA') {
+		if (document.lang == 0) {
+			return 'the value of';
+		} else if (document.lang == 1) {
+			return 'the value of';
+		} else if (document.lang == 2) {
+			return 'la valeur de';
+		} else if (document.lang == 3) {
+			return 'قيمة';
+		} else if (document.lang == 4) {
+			return 'قيمة';
+		} else if (document.lang == 5) {
+			return 'la valeur de';
+		}
+	} else if (commandCode == 'c89rB') {
+		if (document.lang == 0) {
+			return 'the result of';
+		} else if (document.lang == 1) {
+			return 'the result of';
+		} else if (document.lang == 2) {
+			return "le résultat de";
+		} else if (document.lang == 3) {
+			return 'ناتج';
+		} else if (document.lang == 4) {
+			return 'ناتج';
+		} else if (document.lang == 5) {
+			return 'the result of';
+		}
+	} else if (commandCode == 'c90') {
+		if (document.lang == 0) {
+			return commandValue.split('set the width of ' + param1 + ' to ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('set the width of ' + param1 + ' to ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('اجعل عرض ' + param1 + ' إلى ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('خلى عرض ' + param1 + ' إلى ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
 		}
 	}
 }
