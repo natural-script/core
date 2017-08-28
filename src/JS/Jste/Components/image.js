@@ -90,7 +90,11 @@ $(function () {
                 }
                 window.getFileSize(source, function (size) {
                     $('#image_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
-                })
+                });
+                $('#receiver').on('load', function () {
+                    window.verifyBLOB(name, 'img', source);
+                });
+                window.verifyBLOB(name, 'img', source);
                 if (settings[window.backgroundTranslations[document.lang]]) {
                     window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
                 }

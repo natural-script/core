@@ -44,7 +44,11 @@ $(function () {
                 }
                 window.getFileSize(source, function (size) {
                     $('#video_' + name + '_mainButton').html('<i class="material-icons">play_arrow</i> ' + size);
-                })
+                });
+                $('#receiver').on('load', function () {
+                    window.verifyBLOB(name, 'vid', source);
+                });
+                window.verifyBLOB(name, 'vid', source);
                 if (settings[window.backgroundTranslations[document.lang]]) {
                     window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
                 }
