@@ -15,9 +15,10 @@ function showImageA(name, source) {
 			}
 		});
 	} else {
-		window.requestBLOB(name, 'img', source);
+		window.requestDataURL(source, function (dataURL) {
+			$('#' + name + '').attr('src', dataURL);
+		});
 		$('#' + name + '').on('load', function () {
-			window.URL.revokeObjectURL($('#' + name + '').attr('src'));
 			$('#' + name + '').css('-webkit-filter', 'blur(0px)');
 			window.fadeOut('showImage_' + name + '_containerA');
 			if (typeof fx !== typeof undefined && fx !== false) {
@@ -30,18 +31,20 @@ function showImageA(name, source) {
 }
 
 function showImageB(name, source) {
-	window.requestBLOB(name, 'img', source);
+	window.requestDataURL(source, function (dataURL) {
+		$('#' + name + '').attr('src', dataURL);
+	});
 	$('#' + name + '').on('load', function () {
-		window.URL.revokeObjectURL($('#' + name + '').attr('src'));
 		window.fadeOut('showImage_' + name + '_containerB');
 		window.fadeIn('showImage_' + name + '_containerC');
 	});
 }
 
 function showImageC(name, source) {
-	window.requestBLOB(name, 'img', source);
+	window.requestDataURL(source, function (dataURL) {
+		$('#' + name + '').attr('src', dataURL);
+	});
 	$('#' + name + '').on('load', function () {
-		window.URL.revokeObjectURL($('#' + name + '').attr('src'));
 		$('#' + name + '').css('-webkit-filter', 'blur(0px)');
 		window.fadeOut('showImage_' + name + '_containerB');
 		if (typeof fx !== typeof undefined && fx !== false) {

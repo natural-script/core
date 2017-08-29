@@ -42,13 +42,15 @@ $(function () {
                 } else {
                     $('contents').append(out);
                 }
-                window.getFileSize(source, function (size) {
-                    $('#video_' + name + '_mainButton').html('<i class="material-icons">play_arrow</i> ' + size);
+                window.verifyDataURL(source, function (data) {
+                    if (data == 'not exist') {
+                        window.getFileSize(source, function (size) {
+                            $('#video_' + name + '_mainButton').html('<i class="material-icons">play_arrow</i> ' + size);
+                        });
+                    } else if (data == 'exists') {
+                        window.showVideoA(name, source);
+                    }
                 });
-                $('#receiver').on('load', function () {
-                    window.verifyBLOB(name, 'vid', source);
-                });
-                window.verifyBLOB(name, 'vid', source);
                 if (settings[window.backgroundTranslations[document.lang]]) {
                     window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
                 }

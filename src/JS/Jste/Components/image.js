@@ -97,13 +97,15 @@ $(function () {
                 } else {
                     $('contents').append(out);
                 }
-                window.getFileSize(source, function (size) {
-                    $('#image_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
+                window.verifyDataURL(source, function (data) {
+                    if (data == 'not exist') {
+                        window.getFileSize(source, function (size) {
+                            $('#image_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
+                        });
+                    } else if (data == 'exists') {
+                        window.showImageA(name, source);
+                    }
                 });
-                $('#receiver').on('load', function () {
-                    window.verifyBLOB(name, 'img', source);
-                });
-                window.verifyBLOB(name, 'img', source);
                 if (settings[window.backgroundTranslations[document.lang]]) {
                     window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
                 }

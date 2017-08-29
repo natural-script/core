@@ -85,6 +85,5 @@ window.customText(code);
 window.onload = function () {
 	if (document.lang != null) {
 		eval(code);
-		$('<iframe>').attr('id', 'receiver').attr('src', 'http://' + window.localAddress + ':5050/db-manager.html').hide().appendTo('body');
 	}
 };
