@@ -46,7 +46,10 @@ $(function () {
 								<button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div> \
 								<div id="showImage_' + name + '_containerC" style="display: none;"> \
 								<p class="showTheFullContentWarning">Show the full content ?</p> \
-								<button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></paper-container>';
+								<button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></div>\
+                                <div id="showImage_' + name + '_containerD" style="display: none;"> \
+								<p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
+								</div></paper-container>';
                         }
                     });
                 } else {
@@ -63,7 +66,10 @@ $(function () {
 								<button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div> \
 								<div id="showImage_' + name + '_containerC" style="display: none;"> \
 								<p class="showTheFullContentWarning">Show the full content ?</p> \
-								<button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></paper-container>';
+								<button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></div>\
+                                <div id="showImage_' + name + '_containerD" style="display: none;"> \
+								<p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
+								</div></paper-container>';
                     } else {
                         var out = '<paper-material elevation="2" id="' + name + '_container" style="position: relative; overflow: hidden;"> \
 								<img id="' + name + '" src="' + window.mediaImageBlurredA + '" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
@@ -76,7 +82,10 @@ $(function () {
 								<button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div> \
 								<div id="showImage_' + name + '_containerC" style="display: none;"> \
 								<p class="showTheFullContentWarning">Show the full content ?</p> \
-								<button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></paper-container>';
+                                <button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></div>\
+                                <div id="showImage_' + name + '_containerD" style="display: none;"> \
+								<p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
+								</div></paper-container>';
                     }
                 }
                 if (settings[window.containerTranslations[document.lang]]) {

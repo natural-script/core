@@ -25,7 +25,7 @@
     transform: translate(-50%, -50%) !important;
 }
 
-.nudesFOundWarningText {
+.nudesFoundWarningText {
     position: absolute !important;
     color: #FFFFFF !important;
     top: 20% !important;
@@ -83,10 +83,20 @@
     transform: translate(-50%, -50%) !important;
 }
 
-.showTheFullContentWarninga {
+.showTheFullContentWarning {
     position: absolute !important;
     color: #FFFFFF !important;
     top: 25% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    text-align: center !important;
+    width: 85% !important;
+}
+
+.forbiddenContentWarning {
+    position: absolute !important;
+    color: #FFFFFF !important;
+    top: 50% !important;
     left: 50% !important;
     transform: translate(-50%, -50%) !important;
     text-align: center !important;

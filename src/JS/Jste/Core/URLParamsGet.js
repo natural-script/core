@@ -47,4 +47,4 @@ window.getAllUrlParams = function (url) {
 		}
 	}
 	return obj;
-}
+};

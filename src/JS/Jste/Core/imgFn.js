@@ -5,11 +5,18 @@ function showImageA(name, source) {
 	var nudity = $('#' + name + '').attr('nude');
 	var fx = $('#' + name + '').attr('fx');
 	if (typeof nudity !== typeof undefined && nudity !== false) {
-		window.fadeOut('showImage_' + name + '_containerA');
-		window.fadeIn('showImage_' + name + '_containerB');
+		$.get("http://0.0.0.0:5050/childModeStatus", function (data) {
+			if (data == 'off') {
+				window.fadeOut('showImage_' + name + '_containerA');
+				window.fadeIn('showImage_' + name + '_containerB');
+			} else if (data == 'on') {
+				window.fadeOut('showImage_' + name + '_containerA');
+				window.fadeIn('showImage_' + name + '_containerD');
+			}
+		});
 	} else {
-		window.requestBLOB(name, 'vid', source);
-		$('#' + name + '').on('load', function() {
+		window.requestBLOB(name, 'img', source);
+		$('#' + name + '').on('load', function () {
 			window.URL.revokeObjectURL($('#' + name + '').attr('src'));
 			$('#' + name + '').css('-webkit-filter', 'blur(0px)');
 			window.fadeOut('showImage_' + name + '_containerA');
@@ -23,8 +30,8 @@ function showImageA(name, source) {
 }
 
 function showImageB(name, source) {
-	window.requestBLOB(name, 'vid', source);
-	$('#' + name + '').on('load', function() {
+	window.requestBLOB(name, 'img', source);
+	$('#' + name + '').on('load', function () {
 		window.URL.revokeObjectURL($('#' + name + '').attr('src'));
 		window.fadeOut('showImage_' + name + '_containerB');
 		window.fadeIn('showImage_' + name + '_containerC');
@@ -32,8 +39,8 @@ function showImageB(name, source) {
 }
 
 function showImageC(name, source) {
-	window.requestBLOB(name, 'vid', source);
-	$('#' + name + '').on('load', function() {
+	window.requestBLOB(name, 'img', source);
+	$('#' + name + '').on('load', function () {
 		window.URL.revokeObjectURL($('#' + name + '').attr('src'));
 		$('#' + name + '').css('-webkit-filter', 'blur(0px)');
 		window.fadeOut('showImage_' + name + '_containerB');
