@@ -40,6 +40,7 @@
 				(function(widthRatio, name) {
 					window.addEventListener('resize', function() {
 						$('#' + name + '_container').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
+						$('#' + name + '_html5_api').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');						
 						$('#' + name + '').width(parseInt(widthRatio * document.documentElement.clientWidth));
 					});
 				})(widthRatio, name);

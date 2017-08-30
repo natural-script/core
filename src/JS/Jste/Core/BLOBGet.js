@@ -38,7 +38,10 @@ window.addEventListener('message', function receiveMessage(recievedMessageRaw) {
 			window.showVideoA(name, originalSource);
 		}
 	} else if (recievedMessageRaw.data.action == 'request') {
-		if (recievedMessageRaw.data.type == 'img' || recievedMessageRaw.data.type == 'vid') {
+		if (recievedMessageRaw.data.type == 'vid') {
+			var BLOBURL = window.URL.createObjectURL(recievedMessageRaw.data.BLOBObject);
+			$('#' + recievedMessageRaw.data.name + '').html('<source src="' + BLOBURL + '" type="video/mp4" />');
+		} else if (recievedMessageRaw.data.type == 'img') {
 			var BLOBURL = window.URL.createObjectURL(recievedMessageRaw.data.BLOBObject);
 			$('#' + recievedMessageRaw.data.name + '').attr('src', BLOBURL);
 		}

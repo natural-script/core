@@ -25,8 +25,9 @@ $(function () {
             return this.each(function () {
                 var name = settings[window.nameTranslations[document.lang]];
                 var source = settings[window.sourceTranslations[document.lang]];
+                var title = settings[window.titleTranslations[document.lang]];
                 var out = '<div id="' + name + '_container" style="position: relative; overflow: hidden;"> \
-						<video id="' + name + '" crossorigin="anonymous" style="-webkit-filter: blur(10px); background: black;" preload="auto" /> \
+						<video id="' + name + '" crossorigin="anonymous" class="video-js vjs-big-play-centered" style="-webkit-filter: blur(10px); background: black;" controls preload="auto" data-setup="{}" /> \
 						<div id="showVideo_' + name + '_containerA"> \
 						<button id="video_' + name + '_mainButton" class="videoMainButton" onclick="showVideoA(\'' + name + '\', \'' + source + '\');"> \
 						<i class="material-icons">play_arrow</i> Loading...</button></div> \

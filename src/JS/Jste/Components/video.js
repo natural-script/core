@@ -25,8 +25,9 @@ $(function () {
             return this.each(function () {
                 var name = settings[window.nameTranslations[document.lang]];
                 var source = settings[window.sourceTranslations[document.lang]];
+                var title = settings[window.titleTranslations[document.lang]];
                 var out = '<div id="' + name + '_container" style="position: relative; overflow: hidden;"> \
-						<video id="' + name + '" crossorigin="anonymous" style="-webkit-filter: blur(10px); background: black;" preload="auto" /> \
+						<video id="' + name + '" crossorigin="anonymous" class="video-js vjs-big-play-centered" style="-webkit-filter: blur(10px); background: black;" controls preload="auto" data-setup="{}" /> \
 						<div id="showVideo_' + name + '_containerA"> \
 						<button id="video_' + name + '_mainButton" class="videoMainButton" onclick="showVideoA(\'' + name + '\', \'' + source + '\');"> \
 						<i class="material-icons">play_arrow</i> Loading...</button></div> \
@@ -48,7 +49,7 @@ $(function () {
                             $('#video_' + name + '_mainButton').html('<i class="material-icons">play_arrow</i> ' + size);
                         });
                     } else if (data == 'exists') {
-                        window.showVideoA(name, source);
+                        window.showVideoA(name, source, title);
                     }
                 });
                 if (settings[window.backgroundTranslations[document.lang]]) {
@@ -85,7 +86,7 @@ $(function () {
                     window.execute(name, settings[window.commandsTranslations[document.lang]]);
                 }
                 if (settings[window.animationTranslations[document.lang]]) {
-                    window.setAnimation(name, settings[window.animationTranslations[document.lang]]);
+                    window.setAnimation(name + '_container', settings[window.animationTranslations[document.lang]]);
                 }
                 if (settings[window.transparencyTranslations[document.lang]]) {
                     $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.lang]] + '%)');

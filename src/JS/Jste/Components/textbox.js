@@ -127,21 +127,19 @@ $(function () {
                     $('contents').append(out);
                 }
                 if (settings[window.typeTranslations[document.lang]] == 'date') {
-                    $('#' + name + '').pickadate({
-                        selectMonths: true,
-                        selectYears: 100,
-                        today: 'Today',
-                        clear: 'Clear',
-                        close: 'Ok',
-                        closeOnSelect: false
-                    });
+                    if (document.lang == 0 || document.lang == 1) {
+                        $('#' + name + '').attr('data-lang', 'en');
+                    }else if (document.lang == 2) {
+                        $('#' + name + '').attr('data-lang', 'fr');
+                    } else if (document.lang == 3 || document.lang == 4) {
+                        $('#' + name + '').attr('data-lang', 'ar');
+                    }
+                    $('#' + name + '').attr('data-modal', 'true');
+                    $('#' + name + '').attr('data-large-mode', 'true');
+                    $('#' + name + '').attr('data-translate-mode', 'true');
+                    $('#' + name + '').dateDropper();
                 } else if (settings[window.typeTranslations[document.lang]] == 'time') {
-                    $('#' + name + '').pickatime({
-                        default: 'now',
-                        donetext: 'OK',
-                        cleartext: 'Clear',
-                        canceltext: 'Cancel'
-                    });
+                    $('#' + name + '').timeDropper();
                 }
                 if (settings[window.fontColorTranslations[document.lang]]) {
                     window.setFontColour(name, settings[window.fontColorTranslations[document.lang]]);

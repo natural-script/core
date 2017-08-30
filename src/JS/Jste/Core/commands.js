@@ -126,7 +126,7 @@ window.evaluateScript = function (script, event, type) {
 	} else if (script == 'S3') {
 		return "var targetElement = window.commandsFnTranslations('c7', '" + event + "', " + commandVarA + "); \
 		  " + eventPrefix + typePrefix + " \
-		  if ($('#' + targetElement + '').hasClass('aplayer')) { \
+		  if ($('#' + targetElement + '').hasClass('aplayer') || $('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO') { \
 			document[targetElement].play(); \
 		  } else { \
 			document.getElementById(targetElement).play(); \
@@ -135,7 +135,7 @@ window.evaluateScript = function (script, event, type) {
 	} else if (script == 'S4') {
 		return "var targetElement = window.commandsFnTranslations('c8', '" + event + "', " + commandVarA + "); \
             " + eventPrefix + typePrefix + " \
-			if ($('#' + targetElement + '').hasClass('aplayer')) { \
+			if ($('#' + targetElement + '').hasClass('aplayer') || $('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO') { \
 				document[targetElement].pause(); \
 			  } else { \
 				document.getElementById(targetElement).pause(); \
@@ -394,7 +394,10 @@ window.evaluateScript = function (script, event, type) {
 					if ($('#' + targetElement + '').hasClass('aplayer')) { \
 						document[targetElement].audio.currentTime = $('#' + resource + '').val(); \
 						document[targetElement].audio.currentTime = $('#' + resource + '').text(); \
-					  } else { \
+                      } else if ($('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO'){ \
+                        document[targetElement].currentTime($('#' + resource + '').val()); \
+                        document[targetElement].currentTime($('#' + resource + '').text()); \
+                      } else {\
                         document.getElementById(targetElement).currentTime = $('#' + resource + '').val(); \
                         document.getElementById(targetElement).currentTime = $('#' + resource + '').text(); \
 					  } \
@@ -404,7 +407,9 @@ window.evaluateScript = function (script, event, type) {
 						" + eventPrefix + typePrefix + " \
 						if ($('#' + targetElement + '').hasClass('aplayer')) { \
 							document[targetElement].audio.currentTime = window.commandsFnTranslations('c42', '" + event + "', " + commandVarA + ", targetElement); \
-						  } else { \
+                        } else if ($('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO'){ \
+                          document[targetElement].currentTime(window.commandsFnTranslations('c42', '" + event + "', " + commandVarA + ", targetElement)); \
+                        } else {\
                             document.getElementById(targetElement).currentTime = window.commandsFnTranslations('c42', '" + event + "', " + commandVarA + ", targetElement); \
 						} \
                             " + typeSuffix + eventSuffix + " \
