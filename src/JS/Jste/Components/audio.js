@@ -15,30 +15,33 @@ $(function () {
             }, options);
             return this.each(function () {
                 var source = settings[window.sourceTranslations[document.lang]];
-                if (settings[window.coverTranslations[document.lang]]) {
-                    var audioInfo = [{
-                        title: settings[window.titleTranslations[document.lang]],
-                        author: settings[window.authorTranslations[document.lang]],
-                        url: settings[window.sourceTranslations[document.lang]],
-                        pic: settings[window.coverTranslations[document.lang]]
-                    }];
-                    if ($('#' + settings[window.audioPlayerTranslations[document.lang]]).html().trim() != "") {
-                        document[settings[window.audioPlayerTranslations[document.lang]]].addMusic(audioInfo);
+                window.requestDataURL(source, encodeURIComponent(source).replace(/\./g, '%2E'), function (dataURL) {
+                    console.log('hello')
+                    if (settings[window.coverTranslations[document.lang]]) {
+                        var audioInfo = [{
+                            title: settings[window.titleTranslations[document.lang]],
+                            author: settings[window.authorTranslations[document.lang]],
+                            url: dataURL,
+                            pic: settings[window.coverTranslations[document.lang]]
+                        }];
+                        if ($('#' + settings[window.audioPlayerTranslations[document.lang]]).html().trim() != "") {
+                            document[settings[window.audioPlayerTranslations[document.lang]]].addMusic(audioInfo);
+                        } else {
+                            document.initializeAudioPlayerB[settings[window.audioPlayerTranslations[document.lang]]](settings[window.titleTranslations[document.lang]], settings[window.authorTranslations[document.lang]], dataURL, settings[window.coverTranslations[document.lang]]);
+                        }
                     } else {
-                        document.initializeAudioPlayerB[settings[window.audioPlayerTranslations[document.lang]]](settings[window.titleTranslations[document.lang]], settings[window.authorTranslations[document.lang]], settings[window.sourceTranslations[document.lang]], settings[window.coverTranslations[document.lang]]);
+                        var audioInfo = [{
+                            title: settings[window.titleTranslations[document.lang]],
+                            author: settings[window.authorTranslations[document.lang]],
+                            url: dataURL
+                        }];
+                        if ($('#' + settings[window.audioPlayerTranslations[document.lang]]).html().trim() != "") {
+                            document[settings[window.audioPlayerTranslations[document.lang]]].addMusic(audioInfo);
+                        } else {
+                            document.initializeAudioPlayerA[settings[window.audioPlayerTranslations[document.lang]]](settings[window.titleTranslations[document.lang]], settings[window.authorTranslations[document.lang]], dataURL);
+                        }
                     }
-                } else {
-                    var audioInfo = [{
-                        title: settings[window.titleTranslations[document.lang]],
-                        author: settings[window.authorTranslations[document.lang]],
-                        url: settings[window.sourceTranslations[document.lang]]
-                    }];
-                    if ($('#' + settings[window.audioPlayerTranslations[document.lang]]).html().trim() != "") {
-                        document[settings[window.audioPlayerTranslations[document.lang]]].addMusic(audioInfo);
-                    } else {
-                        document.initializeAudioPlayerA[settings[window.audioPlayerTranslations[document.lang]]](settings[window.titleTranslations[document.lang]], settings[window.authorTranslations[document.lang]], settings[window.sourceTranslations[document.lang]]);
-                    }
-                }
+                });
             });
         };
     });

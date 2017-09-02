@@ -26,14 +26,33 @@ $(function () {
                 var name = settings[window.nameTranslations[document.lang]];
                 var source = settings[window.sourceTranslations[document.lang]];
                 var title = settings[window.titleTranslations[document.lang]];
-                var out = '<div id="' + name + '_container" style="position: relative; overflow: hidden;"> \
-						<video id="' + name + '" crossorigin="anonymous" class="video-js vjs-big-play-centered" style="-webkit-filter: blur(10px); background: black;" controls preload="auto" data-setup="{}" /> \
-						<div id="showVideo_' + name + '_containerA"> \
-						<button id="video_' + name + '_mainButton" class="videoMainButton" onclick="showVideoA(\'' + name + '\', \'' + source + '\');"> \
-						<i class="material-icons">play_arrow</i> Loading...</button></div> \
+                var isTitled = false;
+                if (title) {
+                    isTitled = true;
+                    var out = '<paper-material id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+                        <video id="' + name + '" crossorigin="anonymous" class="video-js vjs-big-play-centered" style="-webkit-filter: blur(10px); background: black;" controls preload="auto" data-setup="{}" /> \
+                        <div class="videoTitle">' + title + '</div> \
+                        <div id="showVideo_' + name + '_containerA"> \
+                        <div class="showVideoContainerA"> \
+						<paper-button id="video_' + name + '_mainButton" class="videoMainButton" onclick="showVideoA(\'' + name + '\', \'' + source + '\', \'' + title + '\');"> \
+                        <i class="material-icons">play_arrow</i> Loading...</paper-button></div> \
+                        <div id="' + name + '_resolutionsBtnConatiner" class="resolutionsBtnConatiner row" style="display: none;"></div></div> \
 						<div id="showVideo_' + name + '_containerB" style="display: none;"> \
 						<p style="position: relative; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p> \
-						<button style="position: relative; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></div>';
+                        <button style="position: relative; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></paper-material>';
+                } else {
+                    var out = '<paper-material id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+                            <video id="' + name + '" crossorigin="anonymous" class="video-js vjs-big-play-centered" style="-webkit-filter: blur(10px); background: black;" controls preload="auto" data-setup="{}" /> \
+                            <div id="showVideo_' + name + '_containerA"> \
+                            <div class="showVideoContainerA"> \
+                            <paper-button id="video_' + name + '_mainButton" class="videoMainButton" onclick="showVideoA(\'' + name + '\', \'' + source + '\', \'' + title + '\');"> \
+                            <i class="material-icons">play_arrow</i> Loading...</paper-button></div> \
+                            <div id="' + name + '_resolutionsBtnConatiner" class="resolutionsBtnConatiner row" style="display: none;"></div></div> \
+                            <div id="showVideo_' + name + '_containerB" style="display: none;"> \
+                            <p style="position: relative; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p> \
+                            <button style="position: relative; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></paper-material>';
+
+                }
                 if (settings[window.containerTranslations[document.lang]]) {
                     if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
                         $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
@@ -46,10 +65,14 @@ $(function () {
                 window.getFileSize(source, function (size) {
                     $('#video_' + name + '_mainButton').html('<i class="material-icons">play_arrow</i> ' + size);
                 });
-                $('#receiver').on('load', function () {
-                    window.verifyBLOB(name, 'vid', source);
-                });
-                window.verifyBLOB(name, 'vid', source);
+                if (window.getVideoProvider(source).videoProvider == 'webHosting') {
+                    $('#receiver').on('load', function () {
+                        window.verifyBLOB(name, 'vid', encodeURIComponent(source).replace(/\./g, '%2E'));
+                    });
+                    window.verifyBLOB(name, 'vid', encodeURIComponent(source).replace(/\./g, '%2E'));
+                } else {
+                    window.getVideoInfo(name, window.getVideoProvider(source).videoProvider, window.getVideoProvider(source).videoID, window.getVideoProvider(source).videoURL, title);
+                }
                 if (settings[window.backgroundTranslations[document.lang]]) {
                     window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
                 }

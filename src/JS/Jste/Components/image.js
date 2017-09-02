@@ -26,27 +26,31 @@ $(function () {
             }, options);
             return this.each(function () {
                 var isLogo = false;
+                var isTitled = false;
                 var name = settings[window.nameTranslations[document.lang]];
                 var source = settings[window.sourceTranslations[document.lang]];
                 window.analyseImage(name, source);
                 if (settings[window.typeTranslations[document.lang]] == window.iconTranslations[document.lang]) {
                     window.getFileSize(source, function (size) {
+                        console.log(size.split(' kb')[0]);
                         if (size.split(' kb')[0] < 100) {
                             isLogo = true;
                             var out = '<img id="' + name + '" width="' + settings[window.imageWidthTranslations[document.lang]] + '" height="' + settings[window.imageLengthTranslations[document.lang]] + '" src="' + source + '" />';
                         } else {
                             var out = '<paper-material elevation="2" id="' + name + '_container" style="position: relative; overflow: hidden;"> \
 								<img id="' + name + '" src="' + window.mediaImageBlurredA + '" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
-								<div id="showImage_' + name + '_containerA"> \
+                                <div id="showImage_' + name + '_containerA"> \
+                                <div class="showImageConatainerA"> \
 								<p id="' + name + '_imageData" class="imageData"></p> \
-								<button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + source + '\');"> \
-								<i class="material-icons">file_download</i> Loading...</button></div> \
-								<div id="showImage_' + name + '_containerB" style="display: none;"> \
-								<p class="nudesFoundWarningText">Nudes found</p><button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + source + '\');">Continue</button> \
-								<button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div> \
+								<paper-button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');"> \
+								<i class="material-icons">file_download</i> Loading...</paper-button></div></div> \
+                                <div id="showImage_' + name + '_containerB" style="display: none;"> \
+                                <div class="showImageConatainerB"> \
+								<p class="nudesFoundWarningText">Nudes found</p><paper-button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Continue</paper-button> \
+								<paper-button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Show Blurred</paper-button></div></div> \
 								<div id="showImage_' + name + '_containerC" style="display: none;"> \
 								<p class="showTheFullContentWarning">Show the full content ?</p> \
-								<button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></div>\
+								<paper-button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</paper-button></div>\
                                 <div id="showImage_' + name + '_containerD" style="display: none;"> \
 								<p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
 								</div></paper-container>';
@@ -54,19 +58,21 @@ $(function () {
                     });
                 } else {
                     if (settings[window.titleTranslations[document.lang]]) {
-                        containerHeight = parseInt(settings[window.imageLengthTranslations[document.lang]]) + 40;
+                        isTitled = true;
                         var out = '<paper-material elevation="2" id="' + name + '_container" style="position: relative; overflow: hidden;"> \
-								<img id="' + name + '" src="' + window.mediaImageBlurredA + '" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
+                                <img id="' + name + '" src="' + window.mediaImageBlurredA + '" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
+                                <div class="imageTitle">' + settings[window.titleTranslations[document.lang]] + '</div> \
 								<div id="showImage_' + name + '_containerA"> \
 								<p id="' + name + '_imageData" class="imageData"></p> \
-								<button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + source + '\');"> \
-								<i class="material-icons">file_download</i> Loading...</button></div> \
+								<paper-button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');"> \
+								<i class="material-icons">file_download</i> Loading...</paper-button></div> \
 								<div id="showImage_' + name + '_containerB" style="display: none;"> \
-								<p class="nudesFoundWarningText">Nudes found</p><button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + source + '\');">Continue</button> \
-								<button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div> \
+                                <div class="showImageConatainerB"> \
+								<p class="nudesFoundWarningText">Nudes found</p><paper-button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Continue</paper-button> \
+								<paper-button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Show Blurred</paper-button></div></div> \
 								<div id="showImage_' + name + '_containerC" style="display: none;"> \
 								<p class="showTheFullContentWarning">Show the full content ?</p> \
-								<button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></div>\
+								<paper-button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</paper-button></div>\
                                 <div id="showImage_' + name + '_containerD" style="display: none;"> \
 								<p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
 								</div></paper-container>';
@@ -75,14 +81,15 @@ $(function () {
 								<img id="' + name + '" src="' + window.mediaImageBlurredA + '" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
 								<div id="showImage_' + name + '_containerA"> \
 								<p id="' + name + '_imageData" class="imageData"></p> \
-								<button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + source + '\');"> \
-								<i class="material-icons">file_download</i> Loading...</button></div> \
+								<paper-button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');"> \
+								<i class="material-icons">file_download</i> Loading...</paper-button></div> \
 								<div id="showImage_' + name + '_containerB" style="display: none;"> \
-								<p class="nudesFoundWarningText">Nudes found</p><button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + source + '\');">Continue</button> \
-								<button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + source + '\');">Show Blurred</button></div> \
+                                <div class="showImageConatainerB"> \
+								<p class="nudesFoundWarningText">Nudes found</p><paper-button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Continue</paper-button> \
+								<paper-button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Show Blurred</paper-button></div></div> \
 								<div id="showImage_' + name + '_containerC" style="display: none;"> \
 								<p class="showTheFullContentWarning">Show the full content ?</p> \
-                                <button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</button></div>\
+                                <paper-button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</paper-button></div>\
                                 <div id="showImage_' + name + '_containerD" style="display: none;"> \
 								<p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
 								</div></paper-container>';
@@ -97,13 +104,13 @@ $(function () {
                 } else {
                     $('contents').append(out);
                 }
-                window.verifyDataURL(source, function (data) {
+                window.verifyDataURL(encodeURIComponent(source).replace(/\./g, '%2E'), function (data) {
                     if (data == 'not exist') {
                         window.getFileSize(source, function (size) {
                             $('#image_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
                         });
                     } else if (data == 'exists') {
-                        window.showImageA(name, source);
+                        window.showImageA(name, encodeURIComponent(source).replace(/\./g, '%2E'), source);
                     }
                 });
                 if (settings[window.backgroundTranslations[document.lang]]) {
@@ -113,10 +120,10 @@ $(function () {
                     $('#' + name + '').attr('alt', settings[window.titleTranslations[document.lang]]);
                 }
                 if (settings[window.widthTranslations[document.lang]]) {
-                    window.setDimension(name, 'width', settings[window.widthTranslations[document.lang]], 'img');
+                    window.setDimension(name, 'width', settings[window.widthTranslations[document.lang]], 'img', isTitled);
                 }
                 if (settings[window.lengthTranslations[document.lang]]) {
-                    window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]], 'img');
+                    window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]], 'img', isTitled);
                 }
                 if (settings[window.distanceFromBottomTranslations[document.lang]]) {
                     if (isLogo == true) {

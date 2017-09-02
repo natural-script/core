@@ -1,10 +1,9 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------Videos Related Functions------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-function showVideoA(name, source, title, service) {
-	var URLID = encodeURIComponent(source).replace(/\./g, '%2E');
+function showVideoA(name, source, title, videoURLID, fps) {
 	var v = document.getElementById(name);
-	window.requestDataURL(source, function (dataURL) {
+	window.requestDataURL(source, videoURLID, function (dataURL) {
 		$('#' + name + '').html('<source src="' + dataURL + '" type="video/mp4" />');
 	});
 	var videoLoadingChecker = setInterval(function () {
@@ -30,7 +29,7 @@ function showVideoA(name, source, title, service) {
 			});
 			var player = document[name];
 			player.Resume({
-				uuid: URLID,
+				uuid: videoURLID,
 				playbackOffset: 5, // begin playing video this number of seconds before it otherwise would.
 				title: 'Resume ?',
 				resumeButtonText: 'Sure',

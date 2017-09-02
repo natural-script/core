@@ -1,7 +1,7 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------Images Related Functions------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-function showImageA(name, source) {
+function showImageA(name, URLID, source) {
 	var nudity = $('#' + name + '').attr('nude');
 	var fx = $('#' + name + '').attr('fx');
 	if (typeof nudity !== typeof undefined && nudity !== false) {
@@ -15,7 +15,7 @@ function showImageA(name, source) {
 			}
 		});
 	} else {
-		window.requestDataURL(source, function (dataURL) {
+		window.requestDataURL(source, URLID, function (dataURL) {
 			$('#' + name + '').attr('src', dataURL);
 		});
 		$('#' + name + '').on('load', function () {
@@ -31,7 +31,7 @@ function showImageA(name, source) {
 }
 
 function showImageB(name, source) {
-	window.requestDataURL(source, function (dataURL) {
+	window.requestDataURL(source, URLID, function (dataURL) {
 		$('#' + name + '').attr('src', dataURL);
 	});
 	$('#' + name + '').on('load', function () {

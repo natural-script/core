@@ -1,7 +1,7 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //-----------------------------------------------Evaluating If Statements------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
- window.evaluateStatement = function (statement) {
+window.evaluateStatement = function (statement) {
 	var statementORParts = statement.split(' ' + window.orTranslations[document.lang] + ' ' + window.theValueOfTranslations[document.lang]);
 	var finalStatement = '';
 	var valueResource = '';
@@ -28,7 +28,7 @@
 				console.log(statementCurrentPart);
 				if (statementCurrentPart.split(valueResource)[1].split(' ')[1] == 'is' && statementCurrentPart.split(valueResource)[1].split(' ')[2] != 'greater' && statementCurrentPart.split(valueResource)[1].split(' ')[2] != 'smaller') {
 					if (statementCurrentPart.split(valueResource)[1].split(' is ')[1].includes(window.theValueOfTranslations[document.lang] + ' ')) {
-						if (statementCurrentPart.split(valueResource)[1].split(' is ')[1].split(' ')[1] + ' ' + statementCurrentPart.split(valueResource)[1].split(' is ')[1].split(' ')[2] + ' ' + statementCurrentPart.split(valueResource)[1].split(' is ')[1].split(' ')[3] == window.theValueOfTranslations[document.lang]) {
+						if (statementCurrentPart.split(valueResource)[1].split(' is ')[1].split(' ')[0] + ' ' + statementCurrentPart.split(valueResource)[1].split(' is ')[1].split(' ')[1] + ' ' + statementCurrentPart.split(valueResource)[1].split(' is ')[1].split(' ')[2] == window.theValueOfTranslations[document.lang]) {
 							finalStatement += " == $('#" + statementCurrentPart.split(valueResource)[1].split(' is ')[1].split(window.theValueOfTranslations[document.lang] + ' ')[1] + "').val()";
 						} else {
 							finalStatement += " == '" + statementCurrentPart.split(valueResource)[1].split(' is ')[1] + "'";
@@ -38,7 +38,7 @@
 					}
 				} else if (statementCurrentPart.split(valueResource)[1].split(' ')[1] == 'is' && statementCurrentPart.split(valueResource)[1].split(' ')[2] != 'greater' && statementCurrentPart.split(valueResource)[1].split(' ')[2] == 'smaller' && statementCurrentPart.split(valueResource)[1].split(' ')[3] == 'than') {
 					if (statementCurrentPart.split(valueResource)[1].split(' is smaller than ')[1].includes(window.theValueOfTranslations[document.lang] + ' ')) {
-						if (statementCurrentPart.split(valueResource)[1].split(' is smaller than ')[1].split(' ')[1] == window.theValueOfTranslations[document.lang]) {
+						if (statementCurrentPart.split(valueResource)[1].split(' is smaller than ')[1].split(' ')[0] + ' ' + statementCurrentPart.split(valueResource)[1].split(' is smaller than ')[1].split(' ')[1] + ' ' + statementCurrentPart.split(valueResource)[1].split(' is smaller than ')[1].split(' ')[2] == window.theValueOfTranslations[document.lang]) {
 							finalStatement += " < $('#" + statementCurrentPart.split(valueResource)[1].split(' is smaller than ')[1].split(window.theValueOfTranslations[document.lang] + ' ')[1] + "').val()";
 						} else {
 							finalStatement += " < '" + statementCurrentPart.split(valueResource)[1].split(' is smaller than ')[1] + "'";
@@ -47,7 +47,15 @@
 						finalStatement += " < '" + statementCurrentPart.split(valueResource)[1].split(' is smaller than ')[1] + "'";
 					}
 				} else if (statementCurrentPart.split(valueResource)[1].split(' ')[1] == 'is' && statementCurrentPart.split(valueResource)[1].split(' ')[2] != 'smaller' && statementCurrentPart.split(valueResource)[1].split(' ')[2] == 'greater' && statementCurrentPart.split(valueResource)[1].split(' ')[3] == 'than') {
-					finalStatement += " > '" + statementCurrentPart.split(valueResource)[1].split(' is greater than ')[1] + "'";
+					if (statementCurrentPart.split(valueResource)[1].split(' is greater than ')[1].includes(window.theValueOfTranslations[document.lang] + ' ')) {
+						if (statementCurrentPart.split(valueResource)[1].split(' is greater than ')[1].split(' ')[0] + ' ' + statementCurrentPart.split(valueResource)[1].split(' is greater than ')[1].split(' ')[1] + ' ' + statementCurrentPart.split(valueResource)[1].split(' is greater than ')[1].split(' ')[2] == window.theValueOfTranslations[document.lang]) {
+							finalStatement += " > $('#" + statementCurrentPart.split(valueResource)[1].split(' is greater than ')[1].split(window.theValueOfTranslations[document.lang] + ' ')[1] + "').val()";
+						} else {
+							finalStatement += " > '" + statementCurrentPart.split(valueResource)[1].split(' is greater than ')[1] + "'";
+						}
+					} else {
+						finalStatement += " > '" + statementCurrentPart.split(valueResource)[1].split(' is greater than ')[1] + "'";
+					}
 				}
 			} else if (document.lang == 2) {
 				var statementCurrentPart;
@@ -72,7 +80,7 @@
 					}
 				} else if (statementCurrentPart.split(valueResource)[1].split(' ')[1] == 'est' && statementCurrentPart.split(valueResource)[1].split(' ')[2] != 'supérieur' && statementCurrentPart.split(valueResource)[1].split(' ')[2] == 'inférieure' && statementCurrentPart.split(valueResource)[1].split(' ')[3] == 'à') {
 					if (statementCurrentPart.split(valueResource)[1].split(' est inférieure à ')[1].includes(window.theValueOfTranslations[document.lang] + ' ')) {
-						if (statementCurrentPart.split(valueResource)[1].split(' est inférieure à ')[1].split(' ')[1] == window.theValueOfTranslations[document.lang]) {
+						if (statementCurrentPart.split(valueResource)[1].split(' est inférieure à ')[1].split(' ')[0] + ' ' + statementCurrentPart.split(valueResource)[1].split(' est inférieure à ')[1].split(' ')[1] + ' ' + statementCurrentPart.split(valueResource)[1].split(' est inférieure à ')[1].split(' ')[2] == window.theValueOfTranslations[document.lang]) {
 							finalStatement += " < $('#" + statementCurrentPart.split(valueResource)[1].split(' est inférieure à ')[1].split(window.theValueOfTranslations[document.lang] + ' ')[1] + "').val()";
 						} else {
 							finalStatement += " < '" + statementCurrentPart.split(valueResource)[1].split(' est inférieure à ')[1] + "'";
@@ -81,7 +89,15 @@
 						finalStatement += " < '" + statementCurrentPart.split(valueResource)[1].split(' est inférieure à ')[1] + "'";
 					}
 				} else if (statementCurrentPart.split(valueResource)[1].split(' ')[1] == 'est' && statementCurrentPart.split(valueResource)[1].split(' ')[2] != 'inférieure' && statementCurrentPart.split(valueResource)[1].split(' ')[2] == 'supérieur' && statementCurrentPart.split(valueResource)[1].split(' ')[3] == 'à') {
-					finalStatement += " > '" + statementCurrentPart.split(valueResource)[1].split(' est supérieur à ')[1] + "'";
+					if (statementCurrentPart.split(valueResource)[1].split(' est supérieur à ')[1].includes(window.theValueOfTranslations[document.lang] + ' ')) {
+						if (statementCurrentPart.split(valueResource)[1].split(' est supérieur à ')[1].split(' ')[0] + ' ' + statementCurrentPart.split(valueResource)[1].split(' est supérieur à ')[1].split(' ')[1] + ' ' + statementCurrentPart.split(valueResource)[1].split(' est supérieur à ')[1].split(' ')[2] == window.theValueOfTranslations[document.lang]) {
+							finalStatement += " > $('#" + statementCurrentPart.split(valueResource)[1].split(' est supérieur à ')[1].split(window.theValueOfTranslations[document.lang] + ' ')[1] + "').val()";
+						} else {
+							finalStatement += " > '" + statementCurrentPart.split(valueResource)[1].split(' est supérieur à ')[1] + "'";
+						}
+					} else {
+						finalStatement += " > '" + statementCurrentPart.split(valueResource)[1].split(' est supérieur à ')[1] + "'";
+					}
 				}
 			} else if (document.lang == 3 || document.lang == 4) {
 				var statementCurrentPart;
@@ -105,7 +121,7 @@
 					}
 				} else if (statementCurrentPart.split(valueResource)[1].split(' ')[1] == 'اصغر' && statementCurrentPart.split(valueResource)[1].split(' ')[1] != 'اكبر' && statementCurrentPart.split(valueResource)[1].split(' ')[2] == 'من') {
 					if (statementCurrentPart.split(valueResource)[1].split(' اصغر من ')[1].includes(window.theValueOfTranslations[document.lang] + ' ')) {
-						if (statementCurrentPart.split(valueResource)[1].split(' اصغر من ')[1].split(' ')[1] == window.theValueOfTranslations[document.lang]) {
+						if (statementCurrentPart.split(valueResource)[1].split(' اصغر من ')[1].split(' ')[0] == window.theValueOfTranslations[document.lang]) {
 							finalStatement += " < $('#" + statementCurrentPart.split(valueResource)[1].split(' اصغر من ')[1].split(window.theValueOfTranslations[document.lang] + ' ')[1] + "').val()";
 						} else {
 							finalStatement += " < '" + statementCurrentPart.split(valueResource)[1].split(' اصغر من ')[1] + "'";
@@ -115,7 +131,7 @@
 					}
 				} else if (statementCurrentPart.split(valueResource)[1].split(' ')[1] == 'اكبر' && statementCurrentPart.split(valueResource)[1].split(' ')[1] != 'اصغر' && statementCurrentPart.split(valueResource)[1].split(' ')[2] == 'من') {
 					if (statementCurrentPart.split(valueResource)[1].split(' اكبر من ')[1].includes(window.theValueOfTranslations[document.lang] + ' ')) {
-						if (statementCurrentPart.split(valueResource)[1].split(' اكبر من ')[1].split(' ')[1] == window.theValueOfTranslations[document.lang]) {
+						if (statementCurrentPart.split(valueResource)[1].split(' اكبر من ')[1].split(' ')[0] == window.theValueOfTranslations[document.lang]) {
 							finalStatement += " > $('#" + statementCurrentPart.split(valueResource)[1].split(' اكبر من ')[1].split(window.theValueOfTranslations[document.lang] + ' ')[1] + "').val()";
 						} else {
 							finalStatement += " > '" + statementCurrentPart.split(valueResource)[1].split(' اكبر من ')[1] + "'";

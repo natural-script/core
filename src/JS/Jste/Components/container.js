@@ -42,6 +42,7 @@ $(function () {
                     for (i = 0; i < propertiesArray.length; i++) {
                         if (propertiesArray[i] == window.gridTranslations[document.lang]) {
                             $('#' + name + '').addClass('row');
+                            $('#' + name + '').css('text-align', 'center');
                         }
                     }
                 }

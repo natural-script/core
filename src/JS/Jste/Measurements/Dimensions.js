@@ -1,29 +1,42 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------Setting The Dimensions Function------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
- window.setDimension = function (name, dimension, value, type) {
+window.setDimension = function (name, dimension, value, type, isTitled) {
 	if (dimension == 'length') {
 		if (type == 'img' || type == 'vid') {
-			$('#' + name + '_container').css('height', window.convertLengthCSS(value));
+			if (isTitled) {
+				$('#' + name + '_container').css('height', parseInt(window.convertLengthCSS(value)) + 40 + 'px');
+			} else {
+				$('#' + name + '_container').css('height', window.convertLengthCSS(value));
+
+			}
 			$('#' + name + '').height(parseInt(window.convertLengthCSS(value)));
 			var lengthRatio = parseInt($('#' + name + '_container').outerHeight()) / document.defaultWindowLength;
-			$('#' + name + '_container').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 'px');
+			if (isTitled) {
+				$('#' + name + '_container').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 40 + 'px');
+			} else {
+				$('#' + name + '_container').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 'px');				
+			}
 			$('#' + name + '').height(parseInt(lengthRatio * document.documentElement.clientHeight));
 			if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
-				(function(lengthRatio, name) {
-					window.addEventListener('resize', function() {
-						$('#' + name + '_container').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 'px');
+				(function (lengthRatio, name, isTitled) {
+					window.addEventListener('resize', function () {
+						if (isTitled) {
+							$('#' + name + '_container').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 40 + 'px');
+						} else {
+							$('#' + name + '_container').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 'px');				
+						}
 						$('#' + name + '').height(parseInt(lengthRatio * document.documentElement.clientHeight));
 					});
-				})(lengthRatio, name);
+				})(lengthRatio, name, isTitled);
 			}
 		} else {
 			$('#' + name + '').css('height', window.convertLengthCSS(value));
 			var lengthRatio = parseInt($('#' + name + '').outerHeight()) / document.defaultWindowLength;
 			if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
 				$('#' + name + '').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 'px');
-				(function(lengthRatio, name) {
-					window.addEventListener('resize', function() {
+				(function (lengthRatio, name) {
+					window.addEventListener('resize', function () {
 						$('#' + name + '').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 'px');
 					});
 				})(lengthRatio, name);
@@ -37,10 +50,10 @@
 			$('#' + name + '_container').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
 			$('#' + name + '').width(parseInt(widthRatio * document.documentElement.clientWidth));
 			if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
-				(function(widthRatio, name) {
-					window.addEventListener('resize', function() {
+				(function (widthRatio, name) {
+					window.addEventListener('resize', function () {
 						$('#' + name + '_container').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
-						$('#' + name + '_html5_api').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');						
+						$('#' + name + '_html5_api').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
 						$('#' + name + '').width(parseInt(widthRatio * document.documentElement.clientWidth));
 					});
 				})(widthRatio, name);
@@ -50,8 +63,8 @@
 			var widthRatio = parseInt($('#' + name + '').outerWidth()) / document.defaultWindowWidth;
 			if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
 				$('#' + name + '').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
-				(function(widthRatio, name) {
-					window.addEventListener('resize', function() {
+				(function (widthRatio, name) {
+					window.addEventListener('resize', function () {
 						$('#' + name + '').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
 					});
 				})(widthRatio, name);

@@ -13,11 +13,7 @@
     position: absolute !important;
     top: 75% !important;
     left: 50% !important;
-    background-color: #c0c0c0 !important;
-    opacity: 0.5 !important;
-    border-radius: 100px !important;
-    border: 5px solid !important;
-    color: #FFFFFF !important;
+    background-color: #FFFFFF !important;
     max-width: 200px !important;
     max-height: 60px !important;
     width: 50% !important;
@@ -37,11 +33,7 @@
     position: absolute !important;
     top: 65% !important;
     left: 25% !important;
-    background-color: #c0c0c0 !important;
-    opacity: 0.5 !important;
-    border-radius: 100px !important;
-    border: 5px solid !important;
-    color: #FFFFFF !important;
+    background-color: #FFFFFF !important;
     max-width: 200px !important;
     max-height: 60px !important;
     width: 35% !important;
@@ -54,11 +46,7 @@
     position: absolute !important;
     top: 65% !important;
     left: 75% !important;
-    background-color: #c0c0c0 !important;
-    opacity: 0.5 !important;
-    border-radius: 100px !important;
-    border: 5px solid !important;
-    color: #FFFFFF !important;
+    background-color: #FFFFFF !important;
     max-width: 200px !important;
     max-height: 60px !important;
     width: 35% !important;
@@ -71,11 +59,7 @@
     position: absolute !important;
     top: 65% !important;
     left: 50% !important;
-    background-color: #c0c0c0 !important;
-    opacity: 0.5 !important;
-    border-radius: 100px !important;
-    border: 5px solid !important;
-    color: #FFFFFF !important;
+    background-color: #FFFFFF !important;
     max-width: 200px !important;
     max-height: 60px !important;
     width: 50% !important;
@@ -107,16 +91,57 @@
     position: absolute !important;
     top: 50% !important;
     left: 50% !important;
-    background-color: #c0c0c0 !important;
-    opacity: 0.5 !important;
-    border-radius: 100px !important;
-    border: 5px solid !important;
-    color: #FFFFFF !important;
+    background-color: #FFFFFF !important;
     max-width: 200px !important;
     max-height: 60px !important;
     width: 50% !important;
     height: 30% !important;
     transform: translate(-50%, -50%) !important;
+}
+
+.showVideoContainerA,
+.showImageContainerA {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.showVideoContainerA {
+    background-color: #E91E63;
+}
+
+.showImageContainerA {
+    background-color: #03A9F4;
+}
+
+.showImageContainerB {
+    background-color: #E91E63;
+}
+
+.resolutionsBtnConatiner{
+    position: absolute !important;
+    top: 80% !important;
+    left: 50%;
+    width: 100% !important;
+    height: 20% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.resolutionBtn {
+    background-color: #FFFFFF;
+    width: 50% !important;
+    height: 30% !important;
+}
+
+.imageTitle,
+.videoTitle {
+    text-align: center;
+    color: #000000;
+    position: relative;
+    top: 10px;
 }
 
 .triangle {
@@ -222,18 +247,23 @@
 en-uk {
     display: none !important;
 }
+
 en-us {
     display: none !important;
 }
+
 fr-fr {
     display: none !important;
 }
+
 ar-ar {
     display: none !important;
 }
+
 ar-eg {
     display: none !important;
 }
+
 ja-ja {
     display: none !important;
 }
