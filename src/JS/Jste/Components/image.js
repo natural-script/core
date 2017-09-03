@@ -22,6 +22,7 @@ $(function () {
                 [window.containerTranslations[document.lang]]: null,
                 [window.backgroundTranslations[document.lang]]: null,
                 [window.FXTranslations[document.lang]]: null,
+                [window.attributesTranslations[document.lang]]: null,
                 [window.commandsTranslations[document.lang]]: null
             }, options);
             return this.each(function () {
@@ -29,23 +30,45 @@ $(function () {
                 var isTitled = false;
                 var name = settings[window.nameTranslations[document.lang]];
                 var source = settings[window.sourceTranslations[document.lang]];
+                var imageContainerStartTag = 'paper-material elevation="2"';
+                var imageContainerEndTag = 'paper-material';
                 window.analyseImage(name, source);
+                if (settings[window.attributesTranslations[document.lang]]) {
+                    var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' &amp;&amp;&amp; ');
+                    for (i = 0; i < propertiesArray.length; i++) {
+                        if (propertiesArray[i] == window.transparentTranslations[document.lang]) {
+                            imageContainerStartTag = 'div';
+                            imageContainerEndTag = 'div';
+                        }
+                    }
+                }
                 if (settings[window.typeTranslations[document.lang]] == window.iconTranslations[document.lang]) {
                     window.getFileSize(source, function (size) {
                         console.log(size.split(' kb')[0]);
                         if (size.split(' kb')[0] < 100) {
                             isLogo = true;
-                            var out = '<img id="' + name + '" width="' + settings[window.imageWidthTranslations[document.lang]] + '" height="' + settings[window.imageLengthTranslations[document.lang]] + '" src="' + source + '" />';
+                            var out = '<' + imageContainerStartTag + ' id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+                            <img id="' + name + '" src="" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
+                            <div id="showImage_' + name + '_containerB" style="display: none;"> \
+                            <div class="showImageConatainerB"> \
+                            <p class="nudesFoundWarningText">Nudes found</p><paper-button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Continue</paper-button> \
+                            <paper-button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Show Blurred</paper-button></div></div> \
+                            <div id="showImage_' + name + '_containerC" style="display: none;"> \
+                            <p class="showTheFullContentWarning">Show the full content ?</p> \
+                            <paper-button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</paper-button></div>\
+                            <div id="showImage_' + name + '_containerD" style="display: none;"> \
+                            <p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
+                            </div></' + imageContainerEndTag + '>';
                         } else {
-                            var out = '<paper-material elevation="2" id="' + name + '_container" style="position: relative; overflow: hidden;"> \
-								<img id="' + name + '" src="' + window.mediaImageBlurredA + '" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
+                            var out = '<' + imageContainerStartTag + ' id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+								<img id="' + name + '" src="" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
                                 <div id="showImage_' + name + '_containerA"> \
                                 <div class="showImageConatainerA"> \
 								<p id="' + name + '_imageData" class="imageData"></p> \
 								<paper-button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');"> \
-								<i class="material-icons">file_download</i> Loading...</paper-button></div></div> \
-                                <div id="showImage_' + name + '_containerB" style="display: none;"> \
-                                <div class="showImageConatainerB"> \
+                                <i class="material-icons">file_download</i> Loading...</paper-button> \
+                                <img class="showImageContainerAIcon" src="' + window.mediaImageIconPhotoA + '" /></div></div> \
+								<div id="showImage_' + name + '_containerB" style="display: none;"> \
 								<p class="nudesFoundWarningText">Nudes found</p><paper-button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Continue</paper-button> \
 								<paper-button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Show Blurred</paper-button></div></div> \
 								<div id="showImage_' + name + '_containerC" style="display: none;"> \
@@ -53,19 +76,32 @@ $(function () {
 								<paper-button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</paper-button></div>\
                                 <div id="showImage_' + name + '_containerD" style="display: none;"> \
 								<p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
-								</div></paper-container>';
+								</div></' + imageContainerEndTag + '>';
                         }
+
+                        if (settings[window.containerTranslations[document.lang]]) {
+                            if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
+                                $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
+                            } else {
+                                $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
+                            }
+                        } else {
+                            $('contents').append(out);
+                        }
+                        window.showImageA(name, encodeURIComponent(source).replace(/\./g, '%2E'), source);
                     });
                 } else {
                     if (settings[window.titleTranslations[document.lang]]) {
                         isTitled = true;
-                        var out = '<paper-material elevation="2" id="' + name + '_container" style="position: relative; overflow: hidden;"> \
-                                <img id="' + name + '" src="' + window.mediaImageBlurredA + '" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
+                        var out = '<' + imageContainerStartTag + ' id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+                                <img id="' + name + '" src="" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
                                 <div class="imageTitle">' + settings[window.titleTranslations[document.lang]] + '</div> \
 								<div id="showImage_' + name + '_containerA"> \
+                                <div class="showImageContainerA"> \
 								<p id="' + name + '_imageData" class="imageData"></p> \
 								<paper-button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');"> \
-								<i class="material-icons">file_download</i> Loading...</paper-button></div> \
+                                <i class="material-icons">file_download</i> Loading...</paper-button> \
+                                <img class="showImageContainerAIcon" src="' + window.mediaImageIconPhotoA + '" /></div></div> \
 								<div id="showImage_' + name + '_containerB" style="display: none;"> \
                                 <div class="showImageConatainerB"> \
 								<p class="nudesFoundWarningText">Nudes found</p><paper-button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Continue</paper-button> \
@@ -75,16 +111,17 @@ $(function () {
 								<paper-button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</paper-button></div>\
                                 <div id="showImage_' + name + '_containerD" style="display: none;"> \
 								<p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
-								</div></paper-container>';
+								</div></' + imageContainerEndTag + '>';
                     } else {
-                        var out = '<paper-material elevation="2" id="' + name + '_container" style="position: relative; overflow: hidden;"> \
-								<img id="' + name + '" src="' + window.mediaImageBlurredA + '" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
-								<div id="showImage_' + name + '_containerA"> \
+                        var out = '<' + imageContainerStartTag + ' id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+								<img id="' + name + '" src="" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
+                                <div id="showImage_' + name + '_containerA"> \
+                                <div class="showImageContainerA"> \
 								<p id="' + name + '_imageData" class="imageData"></p> \
 								<paper-button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');"> \
-								<i class="material-icons">file_download</i> Loading...</paper-button></div> \
+                                <i class="material-icons">file_download</i> Loading...</paper-button> \
+                                <img class="showImageContainerAIcon" src="' + window.mediaImageIconPhotoA + '" /></div></div> \
 								<div id="showImage_' + name + '_containerB" style="display: none;"> \
-                                <div class="showImageConatainerB"> \
 								<p class="nudesFoundWarningText">Nudes found</p><paper-button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Continue</paper-button> \
 								<paper-button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Show Blurred</paper-button></div></div> \
 								<div id="showImage_' + name + '_containerC" style="display: none;"> \
@@ -92,27 +129,28 @@ $(function () {
                                 <paper-button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</paper-button></div>\
                                 <div id="showImage_' + name + '_containerD" style="display: none;"> \
 								<p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
-								</div></paper-container>';
+								</div></' + imageContainerEndTag + '>';
                     }
-                }
-                if (settings[window.containerTranslations[document.lang]]) {
-                    if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
-                        $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
+
+                    if (settings[window.containerTranslations[document.lang]]) {
+                        if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
+                            $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
+                        } else {
+                            $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
+                        }
                     } else {
-                        $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
+                        $('contents').append(out);
                     }
-                } else {
-                    $('contents').append(out);
+                    window.verifyDataURL(encodeURIComponent(source).replace(/\./g, '%2E'), function (data) {
+                        if (data == 'not exist') {
+                            window.getFileSize(source, function (size) {
+                                $('#image_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
+                            });
+                        } else if (data == 'exists') {
+                            window.showImageA(name, encodeURIComponent(source).replace(/\./g, '%2E'), source);
+                        }
+                    });
                 }
-                window.verifyDataURL(encodeURIComponent(source).replace(/\./g, '%2E'), function (data) {
-                    if (data == 'not exist') {
-                        window.getFileSize(source, function (size) {
-                            $('#image_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
-                        });
-                    } else if (data == 'exists') {
-                        window.showImageA(name, encodeURIComponent(source).replace(/\./g, '%2E'), source);
-                    }
-                });
                 if (settings[window.backgroundTranslations[document.lang]]) {
                     window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
                 }

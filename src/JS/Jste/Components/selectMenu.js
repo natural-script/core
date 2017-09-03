@@ -53,6 +53,11 @@ $(function () {
                                 }
                             }
                         }
+                    } else {
+                        var items = settings[window.itemsTranslations[document.lang]].split(' &amp;&amp;&amp; ');
+                        for (i = 0; i < items.length; i++) {
+                            out += '<option value="' + items[i] + '">' + items[i] + '</option>';
+                        }
                     }
                 }
                 if (settings[window.titleTranslations[document.lang]]) {

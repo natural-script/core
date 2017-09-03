@@ -2282,5 +2282,47 @@
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
 		}
+	} else if (commandCode == 'c91q') {
+		if (document.lang == 0) {
+			return commandValue.split('go to ')[1].split(' ')[0] + ' ' + commandValue.split('go to ')[1].split(' ')[1] + ' ' + commandValue.split('go to ')[1].split(' ')[2];
+		} else if (document.lang == 1) {
+			return commandValue.split('go to ')[1].split(' ')[0] + ' ' + commandValue.split('go to ')[1].split(' ')[1] + ' ' + commandValue.split('go to ')[1].split(' ')[2];
+		} else if (document.lang == 2) {
+			return commandValue.split("aller à ")[1].split(' ')[0] + ' ' + commandValue.split('go to ')[1].split(' ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('اذهب إلى ')[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split('روح إلى ')[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split('the result of ')[1].split(' ')[0];
+		}
+	} else if (commandCode == 'c91r') {
+		if (document.lang == 0) {
+			return 'the dialog box';
+		} else if (document.lang == 1) {
+			return 'the dialog box';
+		} else if (document.lang == 2) {
+			return 'la page';
+		} else if (document.lang == 3) {
+			return 'الصفحة';
+		} else if (document.lang == 4) {
+			return 'الصفحة';
+		} else if (document.lang == 5) {
+			return 'ページ';
+		}
+	} else if (commandCode == 'c91t') {
+		if (document.lang == 0) {
+			return commandValue.split('the dialog box ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('the dialog box ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split("le courriella page ")[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('الصفحة ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('الصفحة ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('ページ ')[1];
+		}
 	}
 }

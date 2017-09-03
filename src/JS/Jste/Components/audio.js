@@ -16,7 +16,6 @@ $(function () {
             return this.each(function () {
                 var source = settings[window.sourceTranslations[document.lang]];
                 window.requestDataURL(source, encodeURIComponent(source).replace(/\./g, '%2E'), function (dataURL) {
-                    console.log('hello')
                     if (settings[window.coverTranslations[document.lang]]) {
                         var audioInfo = [{
                             title: settings[window.titleTranslations[document.lang]],

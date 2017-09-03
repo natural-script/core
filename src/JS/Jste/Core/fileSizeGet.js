@@ -3,7 +3,7 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
  window.getFileSize = function (url, callback) {
 	$.post('http://0.0.0.0:5050/getFileSize', {fileURL: url}).done(function(data) {
-			size = parseInt(xhr.getResponseHeader("Content-Length"));
+			size = parseInt(data);
 			if (size < 1000) {
 				callback(size + ' Bytes');
 			} else if (size < 1000000) {

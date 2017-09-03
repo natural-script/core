@@ -109,6 +109,15 @@
     transform: translate(-50%, -50%) !important;
 }
 
+.showVideoContainerAIcon,
+.showImageContainerAIcon {
+    position: absolute !important;
+    bottom: 30px !important;
+    left: 30px !important;
+    width: 20% !important;
+    height: 20% !important;
+}
+
 .showVideoContainerA {
     background-color: #E91E63;
 }
