@@ -54,6 +54,12 @@ window.evaluateScript = function (script, event, type) {
 	} else if (event == 'E17') {
 		eventPrefix = "annyang.addCommands({ [voiceCommand]: function () {";
 		eventSuffix = "}});";
+	} else if (event == 'E18') {
+		eventPrefix = "$('#' + elementName + '').visibilityChanged({ callback: function (element, visible) { if (visible == true) {";
+		eventSuffix = "},runOnLoad: true,frequency: 100});";
+	} else if (event == 'E19') {
+		eventPrefix = "$('#' + elementName + '').visibilityChanged({ callback: function (element, visible) { if (visible == false) {";
+		eventSuffix = "},runOnLoad: true,frequency: 100});";
 	}
 	if (type == 'T0') {
 		typePrefix = "";

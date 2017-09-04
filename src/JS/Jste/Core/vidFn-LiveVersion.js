@@ -1,10 +1,11 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------Videos Related Functions------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-function showVideoA(name, source, title, videoURLID) {
+function showVideoA(name, source, title, videoURLID, fps) {
+	var uniqueID = document.uniqueID();
 	var v = document.getElementById(name);
-	window.requestBLOB(name, 'vid', source);
-	var videoLoadingChecker = setInterval(function () {
+	window.requestBLOB(name, 'vid', source, videoURLID);
+	document[uniqueID + 'checker'] = setInterval(function () {
 		if (v.readyState === 4) {
 			$('#' + name + '').attr('controls', '');
 			window.fadeOut('showVideo_' + name + '_containerA');
@@ -27,24 +28,24 @@ function showVideoA(name, source, title, videoURLID) {
 			});
 			var player = document[name];
 			player.Resume({
-				uuid: URLID,
+				uuid: videoURLID,
 				playbackOffset: 5, // begin playing video this number of seconds before it otherwise would.
 				title: 'Resume ?',
 				resumeButtonText: 'Sure',
 				cancelButtonText: 'Start Over'
-			});
-			player.ready(function () {
+			  });
+			  player.ready(function() {
 				this.hotkeys({
-					volumeStep: 0.1,
-					seekStep: 1,
-					enableModifiersForNumbers: false
+				  volumeStep: 0.1,
+				  seekStep: 1,
+				  enableModifiersForNumbers: false
 				});
-			});
-			player.dock({
+			  });
+			  player.dock({
 				title: title
-			});
+			  });
 			window.URL.revokeObjectURL($('#' + name + '_html5_api').find('source').attr('src'));
-			clearInterval(videoLoadingChecker);
+			clearInterval(document[uniqueID + 'checker']);
 		}
 	}, 1);
 }

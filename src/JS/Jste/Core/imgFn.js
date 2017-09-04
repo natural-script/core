@@ -30,7 +30,7 @@ function showImageA(name, URLID, source) {
 	}
 }
 
-function showImageB(name, source) {
+function showImageB(name, URLID, source) {
 	window.requestDataURL(source, URLID, function (dataURL) {
 		$('#' + name + '').attr('src', dataURL);
 	});

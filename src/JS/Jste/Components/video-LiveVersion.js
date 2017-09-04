@@ -36,7 +36,8 @@ $(function () {
                         <div class="showVideoContainerA"> \
 						<paper-button id="video_' + name + '_mainButton" class="videoMainButton" onclick="showVideoA(\'' + name + '\', \'' + source + '\', \'' + title + '\');"> \
                         <i class="material-icons">play_arrow</i> Loading...</paper-button></div> \
-                        <div id="' + name + '_resolutionsBtnConatiner" class="resolutionsBtnConatiner row" style="display: none;"></div></div> \
+                        <div id="' + name + '_resolutionsBtnConatiner" class="resolutionsBtnConatiner row" style="display: none;"></div> \
+                        <img class="showVideoContainerAIcon" src="' + window.mediaImageIconCamcorderA + '" /></div> \
 						<div id="showVideo_' + name + '_containerB" style="display: none;"> \
 						<p style="position: relative; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p> \
                         <button style="position: relative; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></paper-material>';
@@ -47,7 +48,8 @@ $(function () {
                             <div class="showVideoContainerA"> \
                             <paper-button id="video_' + name + '_mainButton" class="videoMainButton" onclick="showVideoA(\'' + name + '\', \'' + source + '\', \'' + title + '\');"> \
                             <i class="material-icons">play_arrow</i> Loading...</paper-button></div> \
-                            <div id="' + name + '_resolutionsBtnConatiner" class="resolutionsBtnConatiner row" style="display: none;"></div></div> \
+                            <div id="' + name + '_resolutionsBtnConatiner" class="resolutionsBtnConatiner row" style="display: none;"></div> \
+                            <img class="showVideoContainerAIcon" src="' + window.mediaImageIconCamcorderA + '" /></div> \
                             <div id="showVideo_' + name + '_containerB" style="display: none;"> \
                             <p style="position: relative; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p> \
                             <button style="position: relative; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></paper-material>';
@@ -67,7 +69,11 @@ $(function () {
                 });
                 if (window.getVideoProvider(source).videoProvider == 'webHosting') {
                     $('#receiver').on('load', function () {
-                        window.verifyBLOB(name, 'vid', encodeURIComponent(source).replace(/\./g, '%2E'));
+                        if (isTitled) {
+                            window.verifyBLOB(name, 'vid', source, encodeURIComponent(source).replace(/\./g, '%2E'), title);
+                        } else {
+                            window.verifyBLOB(name, 'vid', source, encodeURIComponent(source).replace(/\./g, '%2E'));
+                        }
                     });
                     window.verifyBLOB(name, 'vid', encodeURIComponent(source).replace(/\./g, '%2E'));
                 } else {
@@ -76,12 +82,6 @@ $(function () {
                 if (settings[window.backgroundTranslations[document.lang]]) {
                     window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
                 }
-                if (settings[window.videoWidthTranslations[document.lang]]) {
-                    $('#' + name + '').attr('width', settings[window.imageWidthTranslations[document.lang]]);
-                }
-                if (settings[window.videoLengthTranslations[document.lang]]) {
-                    $('#' + name + '').attr('length', settings[window.videoLengthTranslations[document.lang]]);
-                }
                 if (settings[window.titleTranslations[document.lang]]) {
                     $('#' + name + '').attr('alt', settings[window.titleTranslations[document.lang]]);
                 }
@@ -89,7 +89,7 @@ $(function () {
                     window.setDimension(name, 'width', settings[window.widthTranslations[document.lang]], 'vid');
                 }
                 if (settings[window.lengthTranslations[document.lang]]) {
-                    window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]], 'vid');
+                    window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]], 'vid', isTitled);
                 }
                 if (settings[window.distanceFromBottomTranslations[document.lang]]) {
                     window.setDistance(name + '_container', 'bottom', settings[window.distanceFromBottomTranslations[document.lang]]);
@@ -107,7 +107,7 @@ $(function () {
                     window.execute(name, settings[window.commandsTranslations[document.lang]]);
                 }
                 if (settings[window.animationTranslations[document.lang]]) {
-                    window.setAnimation(name, settings[window.animationTranslations[document.lang]]);
+                    window.setAnimation(name + '_container', settings[window.animationTranslations[document.lang]]);
                 }
                 if (settings[window.transparencyTranslations[document.lang]]) {
                     $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.lang]] + '%)');

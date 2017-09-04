@@ -1,14 +1,14 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------Images Related Functions------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-function showImageA(name, source) {
+function showImageA(name, URLID, source) {
 	var nudity = $('#' + name + '').attr('nude');
 	var fx = $('#' + name + '').attr('fx');
 	if (typeof nudity !== typeof undefined && nudity !== false) {
 				window.fadeOut('showImage_' + name + '_containerA');
 				window.fadeIn('showImage_' + name + '_containerB');
 	} else {
-		window.requestBLOB(name, 'img', source);
+		window.requestBLOB(name, 'img', source, URLID);
 		$('#' + name + '').on('load', function () {
 			window.URL.revokeObjectURL($('#' + name + '').attr('src'));
 			$('#' + name + '').css('-webkit-filter', 'blur(0px)');
@@ -22,8 +22,8 @@ function showImageA(name, source) {
 	}
 }
 
-function showImageB(name, source) {
-	window.requestBLOB(name, 'img', source);
+function showImageB(name, URLID, source) {
+	window.requestBLOB(name, 'img', source, URLID);
 	$('#' + name + '').on('load', function () {
 		window.URL.revokeObjectURL($('#' + name + '').attr('src'));
 		window.fadeOut('showImage_' + name + '_containerB');
@@ -31,8 +31,8 @@ function showImageB(name, source) {
 	});
 }
 
-function showImageC(name, source) {
-	window.requestBLOB(name, 'img', source);
+function showImageC(name, URLID, source) {
+	window.requestBLOB(name, 'img', source, URLID);
 	$('#' + name + '').on('load', function () {
 		window.URL.revokeObjectURL($('#' + name + '').attr('src'));
 		$('#' + name + '').css('-webkit-filter', 'blur(0px)');

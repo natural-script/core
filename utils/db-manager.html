@@ -4999,7 +4999,7 @@
 
             if (recievedMessageRaw.data.type == 'img' || recievedMessageRaw.data.type == 'vid') {
                 if (recievedMessageRaw.data.action == 'verify') {
-                    var URLID = encodeURIComponent(recievedMessageRaw.data.url).replace(/\./g, '%2E');
+                    var URLID = recievedMessageRaw.data.URLID;
                     var db = new Dexie('Jste');
                     db.version(1).stores({
                         BLOBs: 'URLID, BLOBObject'
@@ -5015,12 +5015,16 @@
                             sentMessageRaw.name = recievedMessageRaw.data.name;
                             sentMessageRaw.type = recievedMessageRaw.data.type;
                             sentMessageRaw.action = recievedMessageRaw.data.action;
-                            sentMessageRaw.originalSource = recievedMessageRaw.data.url;
+                            sentMessageRaw.source = recievedMessageRaw.data.url;
+                            sentMessageRaw.URLID = recievedMessageRaw.data.URLID;
+                            if (recievedMessageRaw.data.title) {
+                                sentMessageRaw.title = recievedMessageRaw.data.title;
+                            }
                             window.parent.postMessage(sentMessageRaw, '*');
                         }
                     });
                 } else if (recievedMessageRaw.data.action == 'request') {
-                    var URLID = encodeURIComponent(recievedMessageRaw.data.url).replace(/\./g, '%2E');
+                    var URLID = recievedMessageRaw.data.URLID;
                     var db = new Dexie('Jste');
                     db.version(1).stores({
                         BLOBs: 'URLID, BLOBObject'

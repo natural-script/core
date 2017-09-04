@@ -2,11 +2,12 @@
 //--------------------------------------------------Videos Related Functions------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 function showVideoA(name, source, title, videoURLID, fps) {
+	var uniqueID = document.uniqueID();
 	var v = document.getElementById(name);
 	window.requestDataURL(source, videoURLID, function (dataURL) {
 		$('#' + name + '').html('<source src="' + dataURL + '" type="video/mp4" />');
 	});
-	var videoLoadingChecker = setInterval(function () {
+	document[uniqueID + 'checker'] = setInterval(function () {
 		if (v.readyState === 4) {
 			$('#' + name + '').attr('controls', '');
 			window.fadeOut('showVideo_' + name + '_containerA');
@@ -45,7 +46,7 @@ function showVideoA(name, source, title, videoURLID, fps) {
 			  player.dock({
 				title: title
 			  });
-			clearInterval(videoLoadingChecker);
+			clearInterval(document[uniqueID + 'checker']);
 		}
 	}, 1);
 }

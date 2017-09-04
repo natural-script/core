@@ -2,143 +2,20 @@
 //-----------------------------------------------------Commands Translations------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
  window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, param1Raw, param2Raw, param3Raw, param4Raw, param5Raw) {
-	if (document.lang == 0) {
-		this.E1 = 'When it has been clicked, ';
-		this.E2 = 'When the mouse pointer has been moved over it, ';
-		this.E3 = 'When the mouse pointer has been moved away from it, ';
-		this.E4 = 'When the mouse pointer is being moved out of it, ';
-		this.E5 = 'When the mouse pointer is being moved over it, ';
-		this.E6 = 'When it is no longer clicked, ';
-		this.E7 = 'When it has been double clicked, ';
-		this.E8 = 'When it has been right clicked, ';
-		this.E9 = 'When a key has been pressed while focusing it, ';
-		this.E10 = 'When a key is being pressed while focusing it, ';
-		this.E11 = 'When its contents have been modified, ';
-		this.E12 = 'When it has been focused, ';
-		this.E13 = 'When it is being focused, ';
-		this.E14 = 'When it is no longer focused, ';
-		this.E15 = 'When the data of this form has been sent, ';
-		this.E16 = 'When it has been scrolled, ';
-		this.E17 = 'When the user said: ';
-	} else if (document.lang == 1) {
-		this.E1 = 'When it has been clicked, ';
-		this.E2 = 'When the mouse pointer has been moved over it, ';
-		this.E3 = 'When the mouse pointer has been moved away from it, ';
-		this.E4 = 'When the mouse pointer is being moved out of it, ';
-		this.E5 = 'When the mouse pointer is being moved over it, ';
-		this.E6 = 'When it is no longer clicked, ';
-		this.E7 = 'When it has been double clicked, ';
-		this.E8 = 'When it has been right clicked, ';
-		this.E9 = 'When a key has been pressed while focusing it, ';
-		this.E10 = 'When a key is being pressed while focusing it, ';
-		this.E11 = 'When its contents have been modified, ';
-		this.E12 = 'When it has been focused, ';
-		this.E13 = 'When it is being focused, ';
-		this.E14 = 'When it is no longer focused, ';
-		this.E15 = 'When the data of this form has been sent, ';
-		this.E16 = 'When it has been scrolled, ';
-		this.E17 = 'When the user said: ';
-	} else if (document.lang == 2) {
-		this.E1 = 'Quand il a été cliqué, ';
-		this.E2 = "Lorsque le pointeur de souris a été déplacé au dessus, ";
-		this.E3 = "Lorsque le pointeur de la souris s'a été éloigné de lui, ";
-		this.E4 = "Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, ";
-		this.E5 = 'Lorsque le pointeur de la souris se déplace au dessus, ';
-		this.E6 = "Quand il n'est plus fait cliqué, ";
-		this.E7 = 'Quand il a été double-cliqué, ';
-		this.E8 = 'Quand il a été droit-cliqué, ';
-		this.E9 = "Lorsqu'une touche a été pressée tout en la focalisant, ";
-		this.E10 = "Lorsqu'une touche est en train d'être pressée tout en la focalisant, ";
-		this.E11 = 'Lorsque son contenu a été modifié, ';
-		this.E12 = "Lorsqu'on a été focalisé, ";
-		this.E13 = "Quand il est en train d'être focalisé, ";
-		this.E14 = 'Quand il a dormi, ';
-		this.E15 = 'Lorsque les données de ce formulaire ont été envoyées, ';
-		this.E16 = "Lorsqu'il s'a été déroulé, ";
-		this.E17 = "Si l'utilisateur a dit: ";
-	} else if (document.lang == 3) {
-		this.E1 = 'إذا نقر عليه, ';
-		this.E2 = 'إذا مر به مؤشر الفأرة, ';
-		this.E3 = 'إذا خرج مؤشر الفأرة منه, ';
-		this.E4 = 'إذا كان مؤشر الفأرة يمر خارجه, ';
-		this.E5 = 'إذا كان مؤشر الفأرة يمر به, ';
-		this.E6 = 'إذا تم الإنتهاء من النقر عليه, ';
-		this.E7 = 'إذا نقر عليه نقرتين مزدوجتين, ';
-		this.E8 = 'إذا نقر عليه بالزر الأيمن,';
-		this.E9 = 'إذا ضغط على زر اثناء نشاطه, ';
-		this.E10 = 'إذا كان هناك زر يتم الضغط عليه اثناء نشاطه, ';
-		this.E11 = 'إذا تغيرت محتوياته, ';
-		this.E12 = 'إن أصبح نشطا, ';
-		this.E13 = 'إذا كان نشطا, ';
-		this.E14 = 'إن أصبح خاملا, ';
-		this.E15 = 'إذا ارسلت بيانات هذه الإستمارة, ';
-		this.E16 = 'إن تم تمريره, ';
-		this.E17 = 'إذا قال المستخدم: ';
-	} else if (document.lang == 4) {
-		this.E1 = 'لما يضغط عليه, ';
-		this.E2 = 'لما الماوس يعدى من فوقيه, ';
-		this.E3 = 'لما الماوس يطلع منه, ';
-		this.E4 = 'لما الماوس يكون بيمشى براه, ';
-		this.E5 = 'لما الماوس يكون بيمشى فوقيه, ';
-		this.E6 = 'لما يخلص الدوس عليه, ';
-		this.E7 = 'لما يضغط عليه دبل كليك, ';
-		this.E8 = 'لما يضغط عليك كليك لمين, ';
-		this.E9 = 'لو زرار اضغط و هوة نشط, ';
-		this.E10 = 'لما زرار يكون بيضغط و هوة نشط, ';
-		this.E11 = 'لما محتوياته تتغير, ';
-		this.E12 = 'لما يبقى نشط, ';
-		this.E13 = 'لما يكون نشط, ';
-		this.E14 = 'لما ينام, ';
-		this.E15 = 'لما الداتا بتاعت الفورم دة تتبعت, ';
-		this.E16 = 'لما يتمرر, ';
-		this.E17 = 'لو المستخدم قال: ';
-	} else if (document.lang == 5) {
-		this.E1 = 'それがクリックされた場合には、 ';
-		this.E2 = 'マウスポインタがその上に移動されると、 ';
-		this.E3 = 'マウスポインタがそれを離れると、 ';
-		this.E4 = 'When the mouse pointer is being moved out of it, ';
-		this.E5 = 'When the mouse pointer is being moved over it, ';
-		this.E6 = 'それがもはやクリックされないと、 ';
-		this.E7 = 'それがダブルクリックされたときに、 ';
-		this.E8 = 'それが右クリックされたときに、 ';
-		this.E9 = 'When a key pressed while focusing it, ';
-		this.E10 = 'When a key is being pressed while focusing it, ';
-		this.E11 = 'その内容が変更されたとき、';
-		this.E12 = 'それがフォーカスされたときに、 ';
-		this.E13 = 'When it is being focused, ';
-		this.E14 = 'When it is no longer focused, ';
-		this.E15 = 'この形式のデータが送られたときに、 ';
-		this.E16 = 'それがスクロールされると、';
-		this.E17 = 'ユーザーが言った場合：';
-	}
 	if (eventRaw == 'E17') {
-		var event = this[eventRaw] + param1Raw + ', ';
+		var event = document[eventRaw] + param1Raw + ', ';
 		var param1 = param2Raw;
 		var param2 = param3Raw;
 		var param3 = param4Raw;
 		var param4 = param5Raw;
 	} else {
-		var event = this[eventRaw];
+		var event = document[eventRaw];
 		var param1 = param1Raw;
 		var param2 = param2Raw;
 		var param3 = param3Raw;
 		var param4 = param4Raw;
 	}
-	if (commandCode == 'c1') {
-		if (document.lang == 0) {
-			return commandValue.split(this[eventRaw]);
-		} else if (document.lang == 1) {
-			return commandValue.split(this[eventRaw]);
-		} else if (document.lang == 2) {
-			return commandValue.split(this[eventRaw]);
-		} else if (document.lang == 3) {
-			return commandValue.split(this[eventRaw]);
-		} else if (document.lang == 4) {
-			return commandValue.split(this[eventRaw]);
-		} else if (document.lang == 5) {
-			return commandValue.split(this[eventRaw]);
-		}
-	} else if (commandCode == 'c2q') {
+	if (commandCode == 'c2q') {
 		if (document.lang == 0) {
 			return commandValue.split(event)[1].split(' ')[0];
 		} else if (document.lang == 1) {
@@ -1122,17 +999,17 @@
 		}
 	} else if (commandCode == 'c40') {
 		if (document.lang == 0) {
-			return commandValue.split(this.E17)[1].split(', ')[0];
+			return commandValue.split(document.E17)[1].split(', ')[0];
 		} else if (document.lang == 1) {
-			return commandValue.split(this.E17)[1].split(', ')[0];
+			return commandValue.split(document.E17)[1].split(', ')[0];
 		} else if (document.lang == 2) {
-			return commandValue.split(this.E17)[1].split(', ')[0];
+			return commandValue.split(document.E17)[1].split(', ')[0];
 		} else if (document.lang == 3) {
-			return commandValue.split(this.E17)[1].split(', ')[0];
+			return commandValue.split(document.E17)[1].split(', ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split(this.E17)[1].split(', ')[0];
+			return commandValue.split(document.E17)[1].split(', ')[0];
 		} else if (document.lang == 5) {
-			return commandValue.split(this.E17)[1].split(', ')[0];
+			return commandValue.split(document.E17)[1].split(', ')[0];
 		}
 	} else if (commandCode == 'c41') {
 		if (document.lang == 0) {
