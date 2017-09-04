@@ -5073,6 +5073,9 @@
         }
 
         window.addEventListener('message', receiveMessage);
+        var sentMessageRaw = [];
+        sentMessageRaw.action = 'ready';
+        window.parent.postMessage(sentMessageRaw, '*');
     </script>
 </head>
 

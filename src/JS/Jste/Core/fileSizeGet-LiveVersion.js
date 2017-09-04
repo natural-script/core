@@ -1,13 +1,9 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //------------------------------------------------Requesting The Files Sizes------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
- window.getFileSize = function (url, callback) {
-	var xhr = new XMLHttpRequest();
-	xhr.open("HEAD", window.corsPolicy + url, true); // Notice "HEAD" instead of "GET",
-	//  to get only the header
-	xhr.onreadystatechange = function() {
-		if (this.readyState == this.DONE) {
-			size = parseInt(xhr.getResponseHeader("Content-Length"));
+window.getFileSize = function (url, callback) {
+	$.post('https://jste-manager.herokuapp.com/getFileSize', {fileURL: url}).done(function(data) {
+			size = parseInt(data);
 			if (size < 1000) {
 				callback(size + ' Bytes');
 			} else if (size < 1000000) {
@@ -17,7 +13,5 @@
 			} else if (size < 1000000000000) {
 				callback(Math.round(size / 1000000000 * 10) / 10 + ' gb');
 			}
-		}
-	};
-	xhr.send();
-}
+		});
+};

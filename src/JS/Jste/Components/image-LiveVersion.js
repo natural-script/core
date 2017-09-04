@@ -36,6 +36,7 @@ $(function () {
                         var isTitled = false;
                         var name = settings[window.nameTranslations[document.lang]];
                         var source = settings[window.sourceTranslations[document.lang]];
+                        var URLID = encodeURIComponent(source).replace(/\./g, '%2E');
                         var imageContainerStartTag = 'paper-material elevation="2"';
                         var imageContainerEndTag = 'paper-material';
                         window.analyseImage(name, source);
@@ -57,8 +58,8 @@ $(function () {
                             <img id="' + name + '" src="" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
                             <div id="showImage_' + name + '_containerB" style="display: none;"> \
                             <div class="showImageConatainerB"> \
-                            <p class="nudesFoundWarningText">Nudes found</p><paper-button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Continue</paper-button> \
-                            <paper-button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Show Blurred</paper-button></div></div> \
+                            <p class="nudesFoundWarningText">Nudes found</p><paper-button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + URLID + '\', \'' + source + '\');">Continue</paper-button> \
+                            <paper-button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + URLID + '\', \'' + source + '\');">Show Blurred</paper-button></div></div> \
                             <div id="showImage_' + name + '_containerC" style="display: none;"> \
                             <p class="showTheFullContentWarning">Show the full content ?</p> \
                             <paper-button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</paper-button></div>\
@@ -71,12 +72,12 @@ $(function () {
                                 <div id="showImage_' + name + '_containerA"> \
                                 <div class="showImageConatainerA"> \
 								<p id="' + name + '_imageData" class="imageData"></p> \
-								<paper-button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');"> \
+								<paper-button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + URLID + '\', \'' + source + '\');"> \
                                 <i class="material-icons">file_download</i> Loading...</paper-button> \
                                 <img class="showImageContainerAIcon" src="' + window.mediaImageIconPhotoA + '" /></div></div> \
 								<div id="showImage_' + name + '_containerB" style="display: none;"> \
-								<p class="nudesFoundWarningText">Nudes found</p><paper-button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Continue</paper-button> \
-								<paper-button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Show Blurred</paper-button></div></div> \
+								<p class="nudesFoundWarningText">Nudes found</p><paper-button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + URLID + '\', \'' + source + '\');">Continue</paper-button> \
+								<paper-button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + URLID + '\', \'' + source + '\');">Show Blurred</paper-button></div></div> \
 								<div id="showImage_' + name + '_containerC" style="display: none;"> \
 								<p class="showTheFullContentWarning">Show the full content ?</p> \
 								<paper-button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</paper-button></div>\
@@ -94,7 +95,7 @@ $(function () {
                                 } else {
                                     $('contents').append(out);
                                 }
-                                window.showImageA(name, encodeURIComponent(source).replace(/\./g, '%2E'), source);
+                                window.showImageA(name, URLID, source);
                             });
                         } else {
                             if (settings[window.titleTranslations[document.lang]]) {
@@ -105,13 +106,13 @@ $(function () {
 								<div id="showImage_' + name + '_containerA"> \
                                 <div class="showImageContainerA"> \
 								<p id="' + name + '_imageData" class="imageData"></p> \
-								<paper-button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');"> \
+								<paper-button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + URLID + '\', \'' + source + '\');"> \
                                 <i class="material-icons">file_download</i> Loading...</paper-button> \
                                 <img class="showImageContainerAIcon" src="' + window.mediaImageIconPhotoA + '" /></div></div> \
 								<div id="showImage_' + name + '_containerB" style="display: none;"> \
                                 <div class="showImageConatainerB"> \
-								<p class="nudesFoundWarningText">Nudes found</p><paper-button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Continue</paper-button> \
-								<paper-button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Show Blurred</paper-button></div></div> \
+								<p class="nudesFoundWarningText">Nudes found</p><paper-button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + URLID + '\', \'' + source + '\');">Continue</paper-button> \
+								<paper-button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + URLID + '\', \'' + source + '\');">Show Blurred</paper-button></div></div> \
 								<div id="showImage_' + name + '_containerC" style="display: none;"> \
 								<p class="showTheFullContentWarning">Show the full content ?</p> \
 								<paper-button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</paper-button></div>\
@@ -124,12 +125,12 @@ $(function () {
                                 <div id="showImage_' + name + '_containerA"> \
                                 <div class="showImageContainerA"> \
 								<p id="' + name + '_imageData" class="imageData"></p> \
-								<paper-button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');"> \
+								<paper-button id="image_' + name + '_mainButton" class="imageMainButton" onclick="showImageA(\'' + name + '\', \'' + URLID + '\', \'' + source + '\');"> \
                                 <i class="material-icons">file_download</i> Loading...</paper-button> \
                                 <img class="showImageContainerAIcon" src="' + window.mediaImageIconPhotoA + '" /></div></div> \
 								<div id="showImage_' + name + '_containerB" style="display: none;"> \
-								<p class="nudesFoundWarningText">Nudes found</p><paper-button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Continue</paper-button> \
-								<paper-button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + encodeURIComponent(source).replace(/\./g, '%2E') + '\', \'' + source + '\');">Show Blurred</paper-button></div></div> \
+								<p class="nudesFoundWarningText">Nudes found</p><paper-button class="yesShowTheNudes" onclick="showImageC(\'' + name + '\', \'' + URLID + '\', \'' + source + '\');">Continue</paper-button> \
+								<paper-button class="showBlurredNudes" onclick="showImageB(\'' + name + '\', \'' + URLID + '\', \'' + source + '\');">Show Blurred</paper-button></div></div> \
 								<div id="showImage_' + name + '_containerC" style="display: none;"> \
 								<p class="showTheFullContentWarning">Show the full content ?</p> \
                                 <paper-button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</paper-button></div>\
@@ -151,10 +152,13 @@ $(function () {
                         window.getFileSize(source, function (size) {
                             $('#image_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
                         });
-                        $('#receiver').on('load', function () {
-                            window.verifyBLOB(name, 'img', source);
-                        });
-                        window.verifyBLOB(name, 'img', source);
+                        var uniqueID = document.uniqueID();
+                        document[uniqueID + 'checker'] = setInterval(function () {
+                            if ($('#receiver').prop('ready')) {
+                                window.verifyBLOB(name, 'img', source, URLID);
+                                clearInterval(document[uniqueID + 'checker']);
+                            }
+                        }, 1);
                         if (settings[window.backgroundTranslations[document.lang]]) {
                             window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
                         }
