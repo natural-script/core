@@ -27,7 +27,7 @@
 			$('#' + name + '').css('bottom', window.convertLengthCSS(value));
 			(function(bottomRatio, name) {
 				window.addEventListener('resize', function() {
-					$('#' + name + '').css('bottom', parseInt(bottomRatio * document.documentElement.clientHeight) + 'px');
+					$('#' + name + '').css('bottom', parseInt(bottomRatio * window.innerHeight) + 'px');
 				});
 			})(bottomRatio, name);
 		}
@@ -56,7 +56,7 @@
 			$('#' + name + '').css('top', window.convertLengthCSS(value));
 			(function(topRatio, name) {
 				window.addEventListener('resize', function() {
-					$('#' + name + '').css('top', parseInt(topRatio * document.documentElement.clientHeight) + 'px');
+					$('#' + name + '').css('top', parseInt(topRatio * window.innerHeight) + 'px');
 				});
 			})(topRatio, name);
 		}
@@ -85,7 +85,7 @@
 			$('#' + name + '').css('left', window.convertLengthCSS(value));
 			(function(leftRatio, name) {
 				window.addEventListener('resize', function() {
-					$('#' + name + '').css('left', parseInt(leftRatio * document.documentElement.clientWidth) + 'px');
+					$('#' + name + '').css('left', parseInt(leftRatio * window.innerWidth) + 'px');
 				});
 			})(leftRatio, name);
 		}
@@ -114,7 +114,7 @@
 			$('#' + name + '').css('right', window.convertLengthCSS(value));
 			(function(rightRatio, name) {
 				window.addEventListener('resize', function() {
-					$('#' + name + '').css('right', parseInt(rightRatio * document.documentElement.clientWidth) + 'px');
+					$('#' + name + '').css('right', parseInt(rightRatio * window.innerWidth) + 'px');
 				});
 			})(rightRatio, name);
 		}

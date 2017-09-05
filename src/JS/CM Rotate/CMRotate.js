@@ -187,8 +187,8 @@ var CMRotate = CMRotate || ( function () {
     function onResize() {
         var sw, sh;
         if (document.documentElement) {
-            sw = document.documentElement.clientWidth;
-            sh = document.documentElement.clientHeight;
+            sw = window.innerWidth;
+            sh = window.innerHeight;
         } else if (document.body.clientWidth) {
             sw = document.body.clientWidth;
             sh = document.body.clientHeight;

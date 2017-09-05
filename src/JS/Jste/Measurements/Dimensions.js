@@ -13,20 +13,20 @@ window.setDimension = function (name, dimension, value, type, isTitled) {
 			$('#' + name + '').height(parseInt(window.convertLengthCSS(value)));
 			var lengthRatio = parseInt($('#' + name + '_container').outerHeight()) / document.defaultWindowLength;
 			if (isTitled) {
-				$('#' + name + '_container').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 40 + 'px');
+				$('#' + name + '_container').css('height', parseInt(lengthRatio * window.innerHeight) + 40 + 'px');
 			} else {
-				$('#' + name + '_container').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 'px');				
+				$('#' + name + '_container').css('height', parseInt(lengthRatio * window.innerHeight) + 'px');				
 			}
-			$('#' + name + '').height(parseInt(lengthRatio * document.documentElement.clientHeight));
+			$('#' + name + '').height(parseInt(lengthRatio * window.innerHeight));
 			if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
 				(function (lengthRatio, name, isTitled) {
 					window.addEventListener('resize', function () {
 						if (isTitled) {
-							$('#' + name + '_container').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 40 + 'px');
+							$('#' + name + '_container').css('height', parseInt(lengthRatio * window.innerHeight) + 40 + 'px');
 						} else {
-							$('#' + name + '_container').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 'px');				
+							$('#' + name + '_container').css('height', parseInt(lengthRatio * window.innerHeight) + 'px');				
 						}
-						$('#' + name + '').height(parseInt(lengthRatio * document.documentElement.clientHeight));
+						$('#' + name + '').height(parseInt(lengthRatio * window.innerHeight));
 					});
 				})(lengthRatio, name, isTitled);
 			}
@@ -34,10 +34,10 @@ window.setDimension = function (name, dimension, value, type, isTitled) {
 			$('#' + name + '').css('height', window.convertLengthCSS(value));
 			var lengthRatio = parseInt($('#' + name + '').outerHeight()) / document.defaultWindowLength;
 			if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
-				$('#' + name + '').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 'px');
+				$('#' + name + '').css('height', parseInt(lengthRatio * window.innerHeight) + 'px');
 				(function (lengthRatio, name) {
 					window.addEventListener('resize', function () {
-						$('#' + name + '').css('height', parseInt(lengthRatio * document.documentElement.clientHeight) + 'px');
+						$('#' + name + '').css('height', parseInt(lengthRatio * window.innerHeight) + 'px');
 					});
 				})(lengthRatio, name);
 			}
@@ -47,14 +47,14 @@ window.setDimension = function (name, dimension, value, type, isTitled) {
 			$('#' + name + '_container').css('width', window.convertLengthCSS(value));
 			$('#' + name + '').width(parseInt(window.convertLengthCSS(value)));
 			var widthRatio = parseInt($('#' + name + '_container').outerWidth()) / document.defaultWindowWidth;
-			$('#' + name + '_container').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
-			$('#' + name + '').width(parseInt(widthRatio * document.documentElement.clientWidth));
+			$('#' + name + '_container').css('width', parseInt(widthRatio * window.innerWidth) + 'px');
+			$('#' + name + '').width(parseInt(widthRatio * window.innerWidth));
 			if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
 				(function (widthRatio, name) {
 					window.addEventListener('resize', function () {
-						$('#' + name + '_container').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
-						$('#' + name + '_html5_api').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
-						$('#' + name + '').width(parseInt(widthRatio * document.documentElement.clientWidth));
+						$('#' + name + '_container').css('width', parseInt(widthRatio * window.innerWidth) + 'px');
+						$('#' + name + '_html5_api').css('width', parseInt(widthRatio * window.innerWidth) + 'px');
+						$('#' + name + '').width(parseInt(widthRatio * window.innerWidth));
 					});
 				})(widthRatio, name);
 			}
@@ -62,10 +62,10 @@ window.setDimension = function (name, dimension, value, type, isTitled) {
 			$('#' + name + '').css('width', window.convertLengthCSS(value));
 			var widthRatio = parseInt($('#' + name + '').outerWidth()) / document.defaultWindowWidth;
 			if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
-				$('#' + name + '').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
+				$('#' + name + '').css('width', parseInt(widthRatio * window.innerWidth) + 'px');
 				(function (widthRatio, name) {
 					window.addEventListener('resize', function () {
-						$('#' + name + '').css('width', parseInt(widthRatio * document.documentElement.clientWidth) + 'px');
+						$('#' + name + '').css('width', parseInt(widthRatio * window.innerWidth) + 'px');
 					});
 				})(widthRatio, name);
 			}

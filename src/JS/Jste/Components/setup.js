@@ -12,8 +12,8 @@ $(function () {
                         [logoTranslations[document.lang]]: null,
                         [titleTranslations[document.lang]]: null,
                         [modeTranslations[document.lang]]: null,
-                        [widthTranslations[document.lang]]: document.documentElement.clientWidth,
-                        [lengthTranslations[document.lang]]: document.documentElement.clientHeight,
+                        [widthTranslations[document.lang]]: window.innerWidth,
+                        [lengthTranslations[document.lang]]: window.innerHeight,
                         [attributesTranslations[document.lang]]: null
                     }, options);
                     return this.each(function () {

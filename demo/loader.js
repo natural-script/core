@@ -865,15 +865,15 @@ window.onload = function () {
 	if (document.getElementsByTagName("EN-UK").length == 1) {
 		logoURL = document.getElementsByTagName("EN-UK")[0].innerHTML.split("its logo is ").pop().split(",").shift();
 	} else if (document.getElementsByTagName("EN-US").length == 1) {
-		logoURL = document.getElementsByTagName("EN-US")[0].innerHTML.split("logo: '").pop().split("'").shift();
+		logoURL = document.getElementsByTagName("EN-US")[0].innerHTML.split("its logo is ").pop().split(",").shift();
 	} else if (document.getElementsByTagName("FR-FR").length == 1) {
-		logoURL = document.getElementsByTagName("FR-FR")[0].innerHTML.split("logo: '").pop().split("'").shift();
+		logoURL = document.getElementsByTagName("FR-FR")[0].innerHTML.split("son logo est ").pop().split(",").shift();
 	} else if (document.getElementsByTagName("AR-AR").length == 1) {
-		logoURL = document.getElementsByTagName("AR-AR")[0].innerHTML.split("الشعار: '").pop().split("'").shift();
+		logoURL = document.getElementsByTagName("AR-AR")[0].innerHTML.split("الشعار بتاعه ").pop().split(",").shift();
 	} else if (document.getElementsByTagName("AR-EG").length == 1) {
-		logoURL = document.getElementsByTagName("AR-EG")[0].innerHTML.split("اللوجو: '").pop().split("'").shift();
+		logoURL = document.getElementsByTagName("AR-EG")[0].innerHTML.split("اللوجو بتاعه ").pop().split(",").shift();
 	} else if (document.getElementsByTagName("JP-JP").length == 1) {
-		logoURL = document.getElementsByTagName("JP-JP")[0].innerHTML.split("ロゴ: '").pop().split("'").shift();
+		logoURL = document.getElementsByTagName("JP-JP")[0].innerHTML.split("ロゴ: '").pop().split(",").shift();
 	}
 	var loading_screen = pleaseWait({
 		logo: logoURL,
@@ -884,14 +884,17 @@ window.onload = function () {
 		document.getElementsByTagName("BODY")[0].innerHTML = document.code;
 		var request = new XMLHttpRequest();
 		request.open('GET', 'https://jste-manager.herokuapp.com/framework-LiveVersion.min.html', true);
-		
-		request.onload = function() {
-		  if (request.status >= 200 && request.status < 400) {
-			setTimeout(function () {
-				document.getElementsByTagName("HEAD")[0].innerHTML += request.responseText;
-				nodeScriptReplace(document.getElementsByTagName("HEAD")[0]);
-			}, 1000);
-		  }
+
+		request.onload = function () {
+			if (request.status >= 200 && request.status < 400) {
+				console.clear();
+				document.getElementsByTagName("BODY")[0].removeAttribute('class');
+				document.getElementsByTagName("BODY")[0].removeAttribute('style');
+				setTimeout(function () {
+					document.getElementsByTagName("HEAD")[0].innerHTML += request.responseText;
+					nodeScriptReplace(document.getElementsByTagName("HEAD")[0]);
+				}, 1000);
+			}
 		};
 		request.send();
 	}
@@ -930,23 +933,4 @@ window.onload = function () {
 										setTimeout(function () {
 											document.getElementsByTagName("HEAD")[0].innerHTML += file_result;
 											nodeScriptReplace(document.getElementsByTagName("HEAD")[0]);
-										}, 1000);
-									} else {
-										document.getElementsByTagName("BODY")[0].style.background = 'black';
-										document.getElementsByTagName("BODY")[0].innerHTML = '<h1 style="color: white;">It seems that you have modified version of Jste :(</h1>';
-									}
-								};
-							};
-							request.send();
-						}
-					}
-				}
-				reader.send(null);
-			} else {
-				document.getElementsByTagName("BODY")[0].style.background = 'black';
-				document.getElementsByTagName("BODY")[0].innerHTML = "<center><h1 style='color: white;'>It seems that Jste isn't installed on your device :(</h1><button onclick='window.importLiveVersion();'>Use the live version instead</button></center>";
-			}
-		}
-	};
-	JsteInstallationCheckingRequest.send();
-};
+		

@@ -188,7 +188,7 @@ Add the `fullbleed` attribute to app-header-layout to make it fit the size of it
         if (!this.hasScrollingRegion) {
           requestAnimationFrame(function() {
             var rect = this.getBoundingClientRect();
-            var rightOffset = document.documentElement.clientWidth - rect.right;
+            var rightOffset = window.innerWidth - rect.right;
             header.style.left = rect.left + 'px';
             header.style.right = rightOffset + 'px';
           }.bind(this));

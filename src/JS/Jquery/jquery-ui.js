@@ -7441,8 +7441,8 @@ $.extend( Datepicker.prototype, {
 
 		this._pos = ( pos ? ( pos.length ? pos : [ pos.pageX, pos.pageY ] ) : null );
 		if ( !this._pos ) {
-			browserWidth = document.documentElement.clientWidth;
-			browserHeight = document.documentElement.clientHeight;
+			browserWidth = window.innerWidth;
+			browserHeight = window.innerHeight;
 			scrollX = document.documentElement.scrollLeft || document.body.scrollLeft;
 			scrollY = document.documentElement.scrollTop || document.body.scrollTop;
 			this._pos = // should use actual width/height below
@@ -7960,8 +7960,8 @@ $.extend( Datepicker.prototype, {
 			dpHeight = inst.dpDiv.outerHeight(),
 			inputWidth = inst.input ? inst.input.outerWidth() : 0,
 			inputHeight = inst.input ? inst.input.outerHeight() : 0,
-			viewWidth = document.documentElement.clientWidth + ( isFixed ? 0 : $( document ).scrollLeft() ),
-			viewHeight = document.documentElement.clientHeight + ( isFixed ? 0 : $( document ).scrollTop() );
+			viewWidth = window.innerWidth + ( isFixed ? 0 : $( document ).scrollLeft() ),
+			viewHeight = window.innerHeight + ( isFixed ? 0 : $( document ).scrollTop() );
 
 		offset.left -= ( this._get( inst, "isRTL" ) ? ( dpWidth - inputWidth ) : 0 );
 		offset.left -= ( isFixed && offset.left === inst.input.offset().left ) ? $( document ).scrollLeft() : 0;

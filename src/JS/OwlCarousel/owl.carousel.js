@@ -1276,8 +1276,8 @@
 			width = $(this.options.responsiveBaseElement).width();
 		} else if (window.innerWidth) {
 			width = window.innerWidth;
-		} else if (document.documentElement && document.documentElement.clientWidth) {
-			width = document.documentElement.clientWidth;
+		} else if (document.documentElement && window.innerWidth) {
+			width = window.innerWidth;
 		} else {
 			console.warn('Can not detect viewport width.');
 		}
