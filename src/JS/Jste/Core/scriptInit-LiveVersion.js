@@ -10,10 +10,12 @@ if ($('en-uk').length) {
 	code += "add = $('body');" + $('en-uk').html();
 	code = code.replace(/^add a text/gm, "add a text0");
 	code = code.replace(/^add (a|an) (.*?) with the following properties:$/gm, "add.$2({");
-	code = code.replace(/^its ((?!commands).*?) is (.*)\,$/gm, "$1: '$2',");
-	code = code.replace(/^its ((?!commands).*?) is (.*)\.$/gm, "$1: '$2'\n});");
-	code = code.replace(/^its (commands) are (.*)\,$/gm, "$1: '$2',");
-	code = code.replace(/^its (commands) are (.*)\.$/gm, "$1: '$2'\n});");
+	code = code.replace(/^clone (\w+) with the following properties:$/gm, "add.clone0({\nits cloned element is $1,");
+	code = code.replace(/^clone (\w+) including its commands with the following properties:$/gm, "add.clone0({\nits cloned element is $1,\nits attributes are with commands,");
+	code = code.replace(/^its ((?!commands)(?!attributes).*?) is (.*)\,$/gm, "$1: '$2',");
+	code = code.replace(/^its ((?!commands)(?!attributes).*?) is (.*)\.$/gm, "$1: '$2'\n});");
+	code = code.replace(/^its (commands|attributes) are (.*)\,$/gm, "$1: '$2',");
+	code = code.replace(/^its (commands|attributes) are (.*)\.$/gm, "$1: '$2'\n});");
 	var codeArray = [];
 	codeArray = code.split(/^(.*?):/gm);
 	var codePrefix = codeArray.shift();
@@ -34,10 +36,12 @@ if ($('en-uk').length) {
 	code += "add = $('body');" + $('en-us').html();
 	code = code.replace(/^add a text/gm, "add a text0");
 	code = code.replace(/^add (a|an) (.*?) with the following properties:$/gm, "add.$2({");
-	code = code.replace(/^its ((?!commands).*?) is (.*)\,$/gm, "$1: '$2',");
-	code = code.replace(/^its ((?!commands).*?) is (.*)\.$/gm, "$1: '$2'\n});");
-	code = code.replace(/^its (commands) are (.*)\,$/gm, "$1: '$2',");
-	code = code.replace(/^its (commands) are (.*)\.$/gm, "$1: '$2'\n});");
+	code = code.replace(/^clone (\w+) with the following properties:$/gm, "add.clone0({\nits cloned element is $1,");
+	code = code.replace(/^clone (\w+) including its commands with the following properties:$/gm, "add.clone0({\nits cloned element is $1,\nits attributes are with commands,");
+	code = code.replace(/^its ((?!commands)(?!attributes).*?) is (.*)\,$/gm, "$1: '$2',");
+	code = code.replace(/^its ((?!commands)(?!attributes).*?) is (.*)\.$/gm, "$1: '$2'\n});");
+	code = code.replace(/^its (commands|attributes) are (.*)\,$/gm, "$1: '$2',");
+	code = code.replace(/^its (commands|attributes) are (.*)\.$/gm, "$1: '$2'\n});");
 	var codeArray = [];
 	codeArray = code.split(/^(.*?):/gm);
 	var codePrefix = codeArray.shift();
@@ -57,10 +61,12 @@ if ($('en-uk').length) {
 	}
 	code += "ajouter = $('body');" + $('fr-fr').html();
 	code = code.replace(/^ajouter (le|la|un|une) (.*?) avec les propriétés suivantes:$/gm, "ajouter.$2({");
-	code = code.replace(/^(son|sa) ((?!commandes).*?) est (.*)\,$/gm, "$1: '$2',");
-	code = code.replace(/^(son|sa) ((?!commandes).*?) est (.*)\.$/gm, "$1: '$2'\n});");
-	code = code.replace(/^ses (commandes) sont (.*)\,$/gm, "$1: '$2',");
-	code = code.replace(/^ses (commandes) sont (.*)\.$/gm, "$1: '$2'\n});");
+	code = code.replace(/^cloner (\w+) avec les propriétés suivantes:$/gm, "ajouter.clone0({\nson élément clone est $1,");
+	code = code.replace(/^cloner (\w+) y compris ses commandes avec les propriétés suivantes:$/gm, "ajouter.clone0({\nson élément clone est $1,\nses attributs sont avec des commandes,");
+	code = code.replace(/^(son|sa) ((?!commandes)(?!attributs).*?) est (.*)\,$/gm, "$1: '$2',");
+	code = code.replace(/^(son|sa) ((?!commandes)(?!attributs).*?) est (.*)\.$/gm, "$1: '$2'\n});");
+	code = code.replace(/^ses (commandes|attributs) sont (.*)\,$/gm, "$1: '$2',");
+	code = code.replace(/^ses (commandes|attributs) sont (.*)\.$/gm, "$1: '$2'\n});");
 	var codeArray = [];
 	codeArray = code.split(/^(.*?):/gm);
 	var codePrefix = codeArray.shift();
@@ -78,12 +84,16 @@ if ($('en-uk').length) {
 	$('html').attr('dir', 'rtl').attr('document.lang', 'ar');
 	document.lang = 3;
 	if (window.isChrome) {
-		annyang.setLanguage('en-AE');
+		annyang.setLanguage('ar-AE');
 	}
 	code += "اضف = $('body');" + $('ar-ar').html();
 	code = code.replace(/^اضف (.*?) بالخواص التالية:$/gm, "اضف.$1({");
-	code = code.replace(/^(.*?) الخاص به (.*)\,$/gm, "$1: '$2',");
+	code = code.replace(/^استنسخ (\w+) بالخواص دى:$/gm, "اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,");
+	code = code.replace(/^استنسخ (\w+) بأوامره بالخواص التالية:$/gm, "اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,\nالصفات الخاصة به بالأوامر,");
+	code = code.replace(/^(.*?) الخاصة به (.*)\,$/gm, "$1: '$2',");
 	code = code.replace(/^(.*?) الخاصة به (.*)\.$/gm, "$1: '$2'\n});");
+	code = code.replace(/^(.*?) الخاص به (.*)\,$/gm, "$1: '$2',");
+	code = code.replace(/^(.*?) الخاص به (.*)\.$/gm, "$1: '$2'\n});");
 	var codeArray = [];
 	codeArray = code.split(/^(.*?):/gm);
 	var codePrefix = codeArray.shift();
@@ -105,6 +115,8 @@ if ($('en-uk').length) {
 	}
 	code += "ضيف = $('body');" + $('ar-eg').html();
 	code = code.replace(/^ضيف (.*?) بالخواص دى:$/gm, "ضيف.$1({");
+	code = code.replace(/^استنسخ (\w+) بالخواص دى:$/gm, "ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,");
+	code = code.replace(/^استنسخ (\w+) بأوامره بالخواص دى:$/gm, "ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,\nالصفات بتاعته بالأوامر,");
 	code = code.replace(/^(.*?) بتاعه (.*)\,$/gm, "$1: '$2',");
 	code = code.replace(/^(.*?) بتاعه (.*)\.$/gm, "$1: '$2'\n});");
 	code = code.replace(/^(.*?) بتاعته (.*)\,$/gm, "$1: '$2',");
