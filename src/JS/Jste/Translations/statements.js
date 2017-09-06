@@ -1,6 +1,13 @@
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//-----------------------------------------------Evaluating If Statements------------------------------------------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+/*!
+ * Conditional Statements Translations
+ * https://project-jste.github.com/
+ *
+ * Copyright 2017 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.com/license
+ *
+ * Date: 2017-09-6
+ */
 window.evaluateStatement = function (statement) {
 	var statementORParts = statement.split(' ' + window.orTranslations[document.lang] + ' ' + window.theValueOfTranslations[document.lang]);
 	var finalStatement = '';

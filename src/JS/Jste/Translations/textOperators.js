@@ -1,6 +1,13 @@
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//------------------------------------------------------------Text Operators------------------------------------------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+/*!
+ * Text Operators Translations
+ * https://project-jste.github.com/
+ *
+ * Copyright 2017 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.com/license
+ *
+ * Date: 2017-09-6
+ */
 window.customText = function (siteContents, keywordA, keywordB, keywordC, keywordD, keywordE, keywordF, keywordG, keywordH, keywordI, keywordJ, keywordK, keywordL, keywordM, keywordN, keywordO, keywordP, keywordQ, keywordR, keywordS, keywordT, keywordU) {
 	var customTextsArrayA = siteContents.split('&lt;&lt; ' + keywordA + ': ');
 	for (i = 1; i < customTextsArrayA.length; i++) {

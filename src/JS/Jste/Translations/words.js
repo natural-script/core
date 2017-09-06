@@ -1,6 +1,13 @@
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//---------------------------------------------------Properties Translations------------------------------------------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+/*!
+ * Properties Translations
+ * https://project-jste.github.com/
+ *
+ * Copyright 2017 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.com/license
+ *
+ * Date: 2017-09-6
+ */
 window.yesTranslations = ['yes', 'yup', 'oui', 'نعم', 'ايوة', 'はい'];
 window.noTranslations = ['no', 'nope', 'non', 'لا', 'لأ', 'いいえ'];
 window.andTranslations = ['and', 'and', 'et', 'و', 'و', 'そして'];
@@ -28,7 +35,7 @@ window.FABTranslations = ['FAB', 'FAB', 'épingle', 'دبوس', 'دبوس', 'ピ
 window.colorsPaletteTranslations = ['colours_palette', 'colors_palette', 'palette_de_couleurs', 'لوحة_الوان', 'بلتة_الوان', 'カラーパレット'];
 window.textFnTranslations = ['text0', 'text0', 'texte', 'نص', 'كلام', 'テキスト'];
 window.buttonWithAnIconTranslations = ['button_with_an_icon', 'button_with_an_icon', 'bouton_avec_icône', 'زر_بأيقونة', 'زرار_بأيكونة', 'アイコン付きボタン'];
-window.iconTranslations = ['icon', 'icon', 'icône', 'ايقونة', 'ايكونة', 'アイコン'];
+window.iconTranslations = ['icon', 'icon', 'icône', 'الأيقونة', 'الأيكونة', 'アイコン'];
 window.imageTranslations = ['image', 'image', 'image', 'صورة', 'صورة', 'ピクチャー'];
 window.videoTranslations = ['video', 'video', 'vidéo', 'فيديو', 'فيديو', 'ビデオ'];
 window.audioTranslations = ['audio', 'audio', "l'audio", 'صوت', 'صوت', 'オーディオ'];
@@ -38,7 +45,7 @@ window.checkboxTranslations = ['checkbox', 'checkbox', 'case_à_cocher', 'دبو
 window.spinnerTranslations = ['spinner', 'spinner', 'fileur', 'دوار', 'دوار', 'スピナー'];
 window.barTranslations = ['bar', 'bar', 'bar', 'شريط', 'شريط', 'バー'];
 window.loaderTranslations = ['loader', 'loader', 'chargeur', 'دبوس', 'دبوس', 'ローダ'];
-window.notificationCountTranslations = ['notification_count', 'notification_count', 'ىombre_de_notifications', 'عدد_الإشعارات', 'عدد_الإشعارات', '通知回数'];
+window.notificationCountTranslations = ['notification_count', 'notification_count', 'nombre_de_notifications', 'عدد_الإشعارات', 'عدد_الإشعارات', '通知回数'];
 window.dialogBoxTranslations = ['dialog_box', 'dialog_box', 'épingle', 'دبوس', 'دبوس', 'ピン'];
 window.dropdownTranslations = ['dropdown_menu', 'dropdown_menu', 'menu_déroulant', 'دبوس', 'دبوس', 'ピン'];
 window.backgroundTranslations = ['background', 'background', 'contexte', 'الخلفية', 'الخلفية', 'ピン'];
@@ -49,7 +56,7 @@ window.lengthTranslations = ['length', 'length', 'longueur', 'الطول', 'ال
 window.positionTranslations = ['position', 'position', 'position', 'المكان', 'المكان', 'ポジション'];
 window.distanceFromLeftTranslations = ['distance_from_the_left', 'distance_from_the_left', 'distance_à_partir_de_la_gauche', 'المسافة_من_الشمال', 'المسافة_من_الشمال', '左からの距離'];
 window.distanceFromRightTranslations = ['distance_from_the_right', 'distance_from_the_right', 'distance_à_partir_de_la_droit', 'المسافة_من_اليمين', 'المسافة_من_اللمين', '右からの距離'];
-window.distanceFromTopTranslations = ['distance_from_the_top', 'distance_from_the_top', 'distance_à_partir_de_le_haut', 'المسافة_من_أعلى', 'المسافة_من_فوق', '上からの距離'];
+window.distanceFromTopTranslations = ['distance_from_the_top', 'distance_from_the_top', 'distance_à_partir_de_le_haut', 'المسافة_من_اعلى', 'المسافة_من_فوق', '上からの距離'];
 window.distanceFromBottomTranslations = ['distance_from_the_bottom', 'distance_from_the_bottom', 'distance_à_partir_de_le_fond', 'المسافة_من_اسفل', 'المسافة_من_تحت', '底からの距離'];
 window.firebaseCenterTranslations = ['firebase_centre', 'firebase_center', 'emplacement_central', 'مركز_البيانات', 'مركز_البيانات', 'ピン'];
 window.usernameTranslations = ['username', 'username', "nom_d'utilisateur", 'اسم_المستخدم', 'اسم_المستخدم', 'ピン'];
@@ -88,10 +95,6 @@ window.FXTranslations = ['FX', 'FX', 'FX', 'FX', 'FX', 'FX'];
 window.emitterTranslations = ['emitter', 'emitter', 'émetteur', 'باعث', 'باعث', 'エミッタ'];
 window.directionTranslations = ['direction', 'direction', 'direction', 'الإتجاه', 'الإتجاه', '方向'];
 window.loadingTranslations = ['loading', 'loading', 'chargement', 'يحمل', 'بيحمل', '読み込み中'];
-window.imageWidthTranslations = ['image_width', 'image_width', "largeur_de_l'image", 'عرض_الصورة', 'عرض_الصورة', '画像の幅'];
-window.imageLengthTranslations = ['image_length', 'image_length', "longueur_de_l'image", 'طول_الصورة', 'طول_الصورة', '画像の長さ'];
-window.videoWidthTranslations = ['video_width', 'video_width', "largeur_de_la_vidéo", 'عرض_الفيديو', 'عرض_الفيديو', 'ビデオの幅'];
-window.videoLengthTranslations = ['video_length', 'video_length', "longueur_de_la_vidéo", 'طول_الفيديو', 'طول_الفيديو', 'ビデオの長さ'];
 window.sourceTranslations = ['source', 'source', "la_source", 'المصدر', 'المصدر', 'ソース'];
 window.itemsTranslations = ['items', 'items', "articles", 'العناصر', 'العناصر', 'アイテム'];
 window.descriptionTranslations = ['description', 'description', "la_description", 'الوصف', 'الوصف', '説明'];

@@ -1,7 +1,14 @@
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//-----------------------------------------------Evaluating Math Expressions------------------------------------------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
- window.evaluateExpression = function (expression) {
+/*!
+ * Math Expressions Translations
+ * https://project-jste.github.com/
+ *
+ * Copyright 2017 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.com/license
+ *
+ * Date: 2017-09-6
+ */
+window.evaluateExpression = function (expression) {
 	var valNo = expression.match(RegExp(window.theValueOfTranslations[document.lang], "g"));
 	var finalExpression = expression;
 	var valueResource = '';

@@ -1,7 +1,14 @@
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//-----------------------------------------------------Commands Translations------------------------------------------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
- window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, param1Raw, param2Raw, param3Raw, param4Raw, param5Raw) {
+/*!
+ * Commands Translations
+ * https://project-jste.github.com/
+ *
+ * Copyright 2017 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.com/license
+ *
+ * Date: 2017-09-6
+ */
+window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, param1Raw, param2Raw, param3Raw, param4Raw, param5Raw) {
 	if (eventRaw == 'E17') {
 		var event = document[eventRaw] + param1Raw + ', ';
 		var param1 = param2Raw;

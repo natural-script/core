@@ -1,3 +1,13 @@
+/*!
+ * Events Translations
+ * https://project-jste.github.com/
+ *
+ * Copyright 2017 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.com/license
+ *
+ * Date: 2017-09-6
+ */
 var uniqueID = document.uniqueID();
     document[uniqueID + 'checker'] = setInterval(function () {
         if (document.lang == 0 || document.lang == 1 || document.lang == 2 || document.lang == 3 || document.lang == 4 || document.lang == 5) {

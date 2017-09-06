@@ -1,3 +1,13 @@
+/*!
+ * Textbox
+ * https://project-jste.github.com/
+ *
+ * Copyright 2017 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.com/license
+ *
+ * Date: 2017-09-6
+ */
 $(function () {
     $(function () {
         var uniqueID = document.uniqueID();
