@@ -48,7 +48,7 @@ $(function () {
                         var imageContainerEndTag = 'paper-material';
                         window.analyseImage(name, source);
                         if (settings[window.attributesTranslations[document.lang]]) {
-                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' &amp;&amp;&amp; ');
+                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
                             for (i = 0; i < propertiesArray.length; i++) {
                                 if (propertiesArray[i] == window.transparentTranslations[document.lang]) {
                                     imageContainerStartTag = 'div';

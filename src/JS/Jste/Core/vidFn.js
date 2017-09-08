@@ -4,8 +4,9 @@
 function showVideoA(name, source, title, videoURLID, fps) {
 	var uniqueID = document.uniqueID();
 	var v = document.getElementById(name);
-	window.requestDataURL(source, videoURLID, function (dataURL) {
-		$('#' + name + '').html('<source src="' + dataURL + '" type="video/mp4" />');
+	window.requestBLOB(source, videoURLID, function (BLOBURL) {
+		$('#' + name + '').html('<source src="' + BLOBURL + '" type="video/mp4" />');
+		document[uniqueID + 'src'] = BLOBURL;
 	});
 	document[uniqueID + 'checker'] = setInterval(function () {
 		if (v.readyState === 4) {
@@ -45,7 +46,10 @@ function showVideoA(name, source, title, videoURLID, fps) {
 			  });
 			  player.dock({
 				title: title
-			  });
+				});
+				if (document.lang == 3 || document.lang == 4) {
+					$('.vjs-dock-text').css('padding', '1em 5% 2em 1em');
+				}
 			clearInterval(document[uniqueID + 'checker']);
 		}
 	}, 1);

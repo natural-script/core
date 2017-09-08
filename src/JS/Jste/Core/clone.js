@@ -43,7 +43,7 @@ $(function () {
                         var name = settings[window.nameTranslations[document.lang]];
                         var out = $('#' + clonedElement + '').clone(false).attr('id', name);
                         if (settings[window.attributesTranslations[document.lang]]) {
-                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' &amp;&amp;&amp; ');
+                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
                             for (i = 0; i < propertiesArray.length; i++) {
                                 if (propertiesArray[i] == window.withCommandsTranslations[document.lang]) {
                                     out = $('#' + clonedElement + '').clone(true).attr('id', name);

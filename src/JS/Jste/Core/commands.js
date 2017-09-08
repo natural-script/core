@@ -134,7 +134,7 @@ window.evaluateScript = function (script, event, type) {
                         window.changePage(targetURL); \
                         window.setURLParameter('page', targetURL); \
                     } else if (window.commandsFnTranslations('c91q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c91r')) { \
-                        targetURL = window.commandsFnTranslations('c91t', '" + event + "', " + commandVarA + "); \
+                        console.log('hello');targetURL = window.commandsFnTranslations('c91t', '" + event + "', " + commandVarA + "); \
                         $('#' + targetURL + '').modal('open'); \
                     } \
                     " + typeSuffix + eventSuffix + " \

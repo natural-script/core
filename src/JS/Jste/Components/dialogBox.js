@@ -42,7 +42,12 @@ $(function () {
                     }, options);
                     return this.each(function () {
                         var name = settings[window.nameTranslations[document.lang]];
-                        var out = '<div id="' + name + '" class="modal modal-fixed-footer">';
+                        var out;
+                        if (settings[window.cancellationButtonTranslations[document.lang]] || settings[window.acceptanceButtonTranslations[document.lang]]) {
+                            out = '<div id="' + name + '" class="modal modal-fixed-footer">';
+                        } else {
+                            out = '<div id="' + name + '" class="modal">';
+                        }
                         if (settings[window.titleTranslations[document.lang]]) {
                             out += '<div class="modal-content" elementTitle="' + settings[window.titleTranslations[document.lang]] + '"><h4>' + settings[window.titleTranslations[document.lang]] + '</h4></div>';
                         } else {

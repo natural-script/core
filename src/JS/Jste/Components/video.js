@@ -41,7 +41,7 @@ $(function () {
                         var title = settings[window.titleTranslations[document.lang]];
                         var URLID = encodeURIComponent(source).replace(/\./g, '%2E');
                         var isTitled = false;
-                        if (title) {
+                        /*if (title) {
                             isTitled = true;
                             var out = '<paper-material id="' + name + '_container" style="position: relative; overflow: hidden;"> \
                         <video id="' + name + '" crossorigin="anonymous" class="video-js vjs-big-play-centered" style="-webkit-filter: blur(10px); background: black;" controls preload="auto" data-setup="{}" /> \
@@ -55,7 +55,7 @@ $(function () {
 						<div id="showVideo_' + name + '_containerB" style="display: none;"> \
 						<p style="position: relative; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p> \
                         <button style="position: relative; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></paper-material>';
-                        } else {
+                        } else {*/
                             var out = '<paper-material id="' + name + '_container" style="position: relative; overflow: hidden;"> \
                             <video id="' + name + '" crossorigin="anonymous" class="video-js vjs-big-play-centered" style="-webkit-filter: blur(10px); background: black;" controls preload="auto" data-setup="{}" /> \
                             <div id="showVideo_' + name + '_containerA"> \
@@ -68,7 +68,7 @@ $(function () {
                             <p style="position: relative; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p> \
                             <button style="position: relative; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></paper-material>';
 
-                        }
+                        // }
                         if (settings[window.containerTranslations[document.lang]]) {
                             if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
                                 $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
@@ -79,7 +79,7 @@ $(function () {
                             $('contents').append(out);
                         }
                         if (window.getVideoProvider(source).videoProvider == 'webHosting') {
-                            window.verifyDataURL(encodeURIComponent(source).replace(/\./g, '%2E'), function (data) {
+                            window.verifyBLOB(encodeURIComponent(source).replace(/\./g, '%2E'), function (data) {
                                 if (data == 'not exist') {
                                     window.getFileSize(source, function (size) {
                                         $('#video_' + name + '_mainButton').html('<i class="material-icons">play_arrow</i> ' + size);

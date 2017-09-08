@@ -1,17 +1,19 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //------------------------------------------------Requesting The Files Sizes------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
- window.getFileSize = function (url, callback) {
-	$.post('http://0.0.0.0:5050/getFileSize', {fileURL: url}).done(function(data) {
-			size = parseInt(data);
-			if (size < 1000) {
-				callback(size + ' Bytes');
-			} else if (size < 1000000) {
-				callback(Math.round(size / 1000 * 10) / 10 + ' kb');
-			} else if (size < 1000000000) {
-				callback(Math.round(size / 1000000 * 10) / 10 + ' mb');
-			} else if (size < 1000000000000) {
-				callback(Math.round(size / 1000000000 * 10) / 10 + ' gb');
-			}
-		});
+window.getFileSize = function (url, callback) {
+	$.post('http://0.0.0.0:5050/getFileSize', {
+		fileURL: url
+	}).done(function (data) {
+		size = parseInt(data);
+		if (size < 1000) {
+			callback(size + ' Bytes');
+		} else if (size < 1000000) {
+			callback(Math.round(size / 1000 * 10) / 10 + ' kb');
+		} else if (size < 1000000000) {
+			callback(Math.round(size / 1000000 * 10) / 10 + ' mb');
+		} else if (size < 1000000000000) {
+			callback(Math.round(size / 1000000000 * 10) / 10 + ' gb');
+		}
+	});
 };

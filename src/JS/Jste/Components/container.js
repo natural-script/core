@@ -36,11 +36,21 @@ $(function () {
                         [window.containerTranslations[document.lang]]: null,
                         [window.attributesTranslations[document.lang]]: null,
                         [window.backgroundTranslations[document.lang]]: null,
+                        [window.withoutShadowTranslations[document.lang]]: null,
                         [window.commandsTranslations[document.lang]]: null
                     }, options);
                     return this.each(function () {
+                        var elevation = 2;
                         var name = settings[window.nameTranslations[document.lang]];
-                        var out = '<paper-material elevation="2" id="' + name + '" class="' + name + '"></paper-material>'
+                        if (settings[window.attributesTranslations[document.lang]]) {
+                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
+                            for (i = 0; i < propertiesArray.length; i++) {
+                                if (propertiesArray[i] == window.withoutShadowTranslations[document.lang]) {
+                                    elevation = 0;
+                                }
+                            }
+                        }
+                        var out = '<paper-material elevation="' + elevation + '" id="' + name + '" class="' + name + '"></paper-material>'
                         if (settings[window.containerTranslations[document.lang]]) {
                             if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
                                 $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
@@ -51,7 +61,7 @@ $(function () {
                             $('contents').append(out);
                         }
                         if (settings[window.attributesTranslations[document.lang]]) {
-                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' &amp;&amp;&amp; ');
+                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
                             for (i = 0; i < propertiesArray.length; i++) {
                                 if (propertiesArray[i] == window.gridTranslations[document.lang]) {
                                     $('#' + name + '').addClass('row');
@@ -132,7 +142,7 @@ $(function () {
                         if (settings[window.attributesTranslations[document.lang]]) {
                             if (settings[window.attributesTranslations[document.lang]].indexOf(window.parallaxTranslations[document.lang]) > -1) {
                                 if (settings[window.backgroundTranslations[document.lang]]) {
-                                    $('#' + name + '').css('background', 'url(' + settings[window.backgroundTranslations[document.lang]] + ') 50% 0 no-repeat fixed');
+                                    $('#' + name + '').css('background', 'url(' + settings[window.backgroundTranslations[document.lang]] + ')').addClass('parallax');
                                 }
                             } else {
                                 if (settings[window.backgroundTranslations[document.lang]]) {

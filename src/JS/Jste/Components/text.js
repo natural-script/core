@@ -52,7 +52,7 @@ $(function () {
                             $('contents').append(out);
                         }
                         if (settings[window.attributesTranslations[document.lang]]) {
-                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' &amp;&amp;&amp; ');
+                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
                             for (i = 0; i < propertiesArray.length; i++) {
                                 if (propertiesArray[i] == window.shareableTranslations[document.lang]) {
                                     window.shareThis({
@@ -109,7 +109,8 @@ $(function () {
                             }
                         }
                         if (settings[window.fontSizeTranslations[document.lang]]) {
-                            $('#' + name + '').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.lang]]));
+                            var fontSizeRatio = parseFloat(window.convertLengthCSS(settings[window.fontSizeTranslations[document.lang]])) / document.defaultWindowWidth;
+                            $('#' + name + '').css('font-size', (parseFloat(fontSizeRatio * window.innerWidth) * (100 / window.innerWidth)) + 'vw');
                         }
                         if (settings[window.backgroundTranslations[document.lang]]) {
                             window.setBG(name, settings[window.backgroundTranslations[document.lang]]);

@@ -89,7 +89,7 @@
 
 .videoMainButton {
     position: absolute !important;
-    top: 50% !important;
+    top: 40% !important;
     left: 50% !important;
     background-color: #FFFFFF !important;
     max-width: 200px !important;
@@ -112,8 +112,8 @@
 .showVideoContainerAIcon,
 .showImageContainerAIcon {
     position: absolute !important;
-    bottom: 30px !important;
-    left: 30px !important;
+    bottom: 20px !important;
+    left: 20px !important;
     width: 20% !important;
     height: 20% !important;
 }
@@ -130,9 +130,9 @@
     background-color: #E91E63;
 }
 
-.resolutionsBtnConatiner{
+.resolutionsBtnConatiner {
     position: absolute !important;
-    top: 80% !important;
+    top: 70% !important;
     left: 50%;
     width: 100% !important;
     height: 20% !important;
@@ -253,26 +253,18 @@
     clip-path: ellipse(25% 40% at 50% 50%) !important;
 }
 
-en-uk {
-    display: none !important;
-}
-
-en-us {
-    display: none !important;
-}
-
-fr-fr {
-    display: none !important;
-}
-
-ar-ar {
-    display: none !important;
-}
-
-ar-eg {
-    display: none !important;
-}
-
+en-uk,
+en-us,
+fr-fr,
+ar-ar,
+ar-eg,
 ja-ja {
     display: none !important;
+}
+
+.parallax {
+    background-attachment: fixed !important;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
 }

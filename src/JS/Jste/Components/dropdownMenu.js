@@ -68,7 +68,7 @@ $(function () {
                                 hover: true,
                                 gutter: 0,
                                 belowOrigin: true,
-                                alignment: 'left',
+                                alignment: 'center',
                                 stopPropagation: true
                             });
                         }
@@ -79,7 +79,7 @@ $(function () {
                             $('#' + name + '').css('font-style', settings[window.fontStyleTranslations[document.lang]]);
                         }
                         if (settings[window.attributesTranslations[document.lang]]) {
-                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' &amp;&amp;&amp; ');
+                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
                             for (i = 0; i < propertiesArray.length; i++) {
                                 if (propertiesArray[i] == window.disabledTranslations[document.lang]) {
                                     $('#' + name + '').attr('disabled', '');

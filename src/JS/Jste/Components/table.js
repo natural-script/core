@@ -97,7 +97,7 @@ $(function () {
                         };
                         var userList = new List(name + '_container', options, inputData);
                         if (settings[window.attributesTranslations[document.lang]]) {
-                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' &amp;&amp;&amp; ');
+                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
                             for (i = 0; i < propertiesArray.length; i++) {
                                 if (propertiesArray[i] == window.gridTranslations[document.lang]) {
                                     $('#' + name + '').addClass('row');

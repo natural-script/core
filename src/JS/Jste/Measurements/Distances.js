@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-6
+ * Date: 2017-09-8
  */
 window.setDistance = function (name, direction, value) {
 	if (direction == 'bottom') {
@@ -30,13 +30,8 @@ window.setDistance = function (name, direction, value) {
 				});
 			})(name);
 		} else {
-			var bottomRatio = parseInt(value) / document.defaultWindowHeight;
-			$('#' + name + '').css('bottom', window.convertLengthCSS(value));
-			(function (bottomRatio, name) {
-				window.addEventListener('resize', function () {
-					$('#' + name + '').css('bottom', parseInt(bottomRatio * window.innerHeight) + 'px');
-				});
-			})(bottomRatio, name);
+			var bottomRatio = parseFloat(window.convertLengthCSS(value)) / document.defaultWindowLength;
+			$('#' + name + '').css('bottom', (parseFloat(bottomRatio * window.innerHeight) * (100 / window.innerHeight)) + 'vh');
 		}
 	} else if (direction == 'top') {
 		if (value.includes('center')) {
@@ -59,13 +54,8 @@ window.setDistance = function (name, direction, value) {
 				});
 			})(name);
 		} else {
-			var topRatio = parseInt(value) / document.defaultWindowHeight;
-			$('#' + name + '').css('top', window.convertLengthCSS(value));
-			(function (topRatio, name) {
-				window.addEventListener('resize', function () {
-					$('#' + name + '').css('top', parseInt(topRatio * window.innerHeight) + 'px');
-				});
-			})(topRatio, name);
+			var topRatio = parseFloat(window.convertLengthCSS(value)) / document.defaultWindowLength;
+			$('#' + name + '').css('top', (parseFloat(topRatio * window.innerHeight) * (100 / window.innerHeight)) + 'vh');
 		}
 	} else if (direction == 'left') {
 		if (value.includes('center')) {
@@ -88,13 +78,8 @@ window.setDistance = function (name, direction, value) {
 				});
 			})(name);
 		} else {
-			var leftRatio = parseInt(value) / document.defaultWindowWidth;
-			$('#' + name + '').css('left', window.convertLengthCSS(value));
-			(function (leftRatio, name) {
-				window.addEventListener('resize', function () {
-					$('#' + name + '').css('left', parseInt(leftRatio * window.innerWidth) + 'px');
-				});
-			})(leftRatio, name);
+			var leftRatio = parseFloat(window.convertLengthCSS(value)) / document.defaultWindowWidth;
+			$('#' + name + '').css('left', (parseFloat(leftRatio * window.innerWidth) * (100 / window.innerWidth)) + 'vw');
 		}
 	} else if (direction == 'right') {
 		if (value.includes('center')) {
@@ -117,13 +102,8 @@ window.setDistance = function (name, direction, value) {
 				});
 			})(name);
 		} else {
-			var rightRatio = parseInt(value) / document.defaultWindowWidth;
-			$('#' + name + '').css('right', window.convertLengthCSS(value));
-			(function (rightRatio, name) {
-				window.addEventListener('resize', function () {
-					$('#' + name + '').css('right', parseInt(rightRatio * window.innerWidth) + 'px');
-				});
-			})(rightRatio, name);
+			var rightRatio = parseFloat(window.convertLengthCSS(value)) / document.defaultWindowWidth;
+			$('#' + name + '').css('right', (parseFloat(rightRatio * window.innerWidth) * (100 / window.innerWidth)) + 'vw');
 		}
 	}
-}
+};

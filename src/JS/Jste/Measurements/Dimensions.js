@@ -6,76 +6,34 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-6
+ * Date: 2017-09-8
  */
 window.setDimension = function (name, dimension, value, type, isTitled) {
 	if (dimension == 'length') {
 		if (type == 'img' || type == 'vid') {
+			var lengthRatio = parseFloat(window.convertLengthCSS(value)) / document.defaultWindowLength;
 			if (isTitled) {
-				$('#' + name + '_container').css('height', parseInt(window.convertLengthCSS(value)) + 40 + 'px');
+				$('#' + name + '_container').css('height', ((parseFloat(lengthRatio * window.innerHeight) + 40) * (100 / window.innerHeight)) + 'vh');
 			} else {
-				$('#' + name + '_container').css('height', window.convertLengthCSS(value));
-
+				$('#' + name + '_container').css('height', (parseFloat(lengthRatio * window.innerHeight) * (100 / window.innerHeight)) + 'vh');
 			}
-			$('#' + name + '').height(parseInt(window.convertLengthCSS(value)));
-			var lengthRatio = parseInt($('#' + name + '_container').outerHeight()) / document.defaultWindowLength;
-			if (isTitled) {
-				$('#' + name + '_container').css('height', parseInt(lengthRatio * window.innerHeight) + 40 + 'px');
-			} else {
-				$('#' + name + '_container').css('height', parseInt(lengthRatio * window.innerHeight) + 'px');				
-			}
-			$('#' + name + '').height(parseInt(lengthRatio * window.innerHeight));
-			if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
-				(function (lengthRatio, name, isTitled) {
-					window.addEventListener('resize', function () {
-						if (isTitled) {
-							$('#' + name + '_container').css('height', parseInt(lengthRatio * window.innerHeight) + 40 + 'px');
-						} else {
-							$('#' + name + '_container').css('height', parseInt(lengthRatio * window.innerHeight) + 'px');				
-						}
-						$('#' + name + '').height(parseInt(lengthRatio * window.innerHeight));
-					});
-				})(lengthRatio, name, isTitled);
-			}
+			$('#' + name + '').css('height', (parseFloat(lengthRatio * window.innerHeight) * (100 / window.innerHeight)) + 'vh');
 		} else {
-			$('#' + name + '').css('height', window.convertLengthCSS(value));
-			var lengthRatio = parseInt($('#' + name + '').outerHeight()) / document.defaultWindowLength;
-			if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
-				$('#' + name + '').css('height', parseInt(lengthRatio * window.innerHeight) + 'px');
-				(function (lengthRatio, name) {
-					window.addEventListener('resize', function () {
-						$('#' + name + '').css('height', parseInt(lengthRatio * window.innerHeight) + 'px');
-					});
-				})(lengthRatio, name);
-			}
+			var lengthRatio = parseFloat(window.convertLengthCSS(value)) / document.defaultWindowLength;
+			$('#' + name + '').css('height', (parseFloat(lengthRatio * window.innerHeight) * (100 / window.innerHeight)) + 'vh');
 		}
 	} else if (dimension == 'width') {
 		if (type == 'img' || type == 'vid') {
-			$('#' + name + '_container').css('width', window.convertLengthCSS(value));
-			$('#' + name + '').width(parseInt(window.convertLengthCSS(value)));
-			var widthRatio = parseInt($('#' + name + '_container').outerWidth()) / document.defaultWindowWidth;
-			$('#' + name + '_container').css('width', parseInt(widthRatio * window.innerWidth) + 'px');
-			$('#' + name + '').width(parseInt(widthRatio * window.innerWidth));
+			var widthRatio = parseFloat(window.convertLengthCSS(value)) / document.defaultWindowWidth;
+			$('#' + name + '').width(parseFloat(widthRatio * window.innerWidth));
 			if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
-				(function (widthRatio, name) {
-					window.addEventListener('resize', function () {
-						$('#' + name + '_container').css('width', parseInt(widthRatio * window.innerWidth) + 'px');
-						$('#' + name + '_html5_api').css('width', parseInt(widthRatio * window.innerWidth) + 'px');
-						$('#' + name + '').width(parseInt(widthRatio * window.innerWidth));
-					});
-				})(widthRatio, name);
+				$('#' + name + '_container').css('width', (parseFloat(widthRatio * window.innerWidth) * (100 / window.innerWidth)) + 'vw');
+				$('#' + name + '_html5_api').css('width', (parseFloat(widthRatio * window.innerWidth) * (100 / window.innerWidth)) + 'vw');
+				$('#' + name + '').css('width', (parseFloat(widthRatio * window.innerWidth) * (100 / window.innerWidth)) + 'vw');
 			}
 		} else {
-			$('#' + name + '').css('width', window.convertLengthCSS(value));
-			var widthRatio = parseInt($('#' + name + '').outerWidth()) / document.defaultWindowWidth;
-			if ($('#' + name + '').prop("tagName") != 'PAPER-MATERIAL') {
-				$('#' + name + '').css('width', parseInt(widthRatio * window.innerWidth) + 'px');
-				(function (widthRatio, name) {
-					window.addEventListener('resize', function () {
-						$('#' + name + '').css('width', parseInt(widthRatio * window.innerWidth) + 'px');
-					});
-				})(widthRatio, name);
-			}
+			var widthRatio = parseFloat(window.convertLengthCSS(value)) / document.defaultWindowWidth;
+			$('#' + name + '').css('width', (parseFloat(widthRatio * window.innerWidth) * (100 / window.innerWidth)) + 'vw');
 		}
 	}
-}
+};

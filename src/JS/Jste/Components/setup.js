@@ -21,7 +21,7 @@ $(function () {
                     var settings = $.extend({
                         [logoTranslations[document.lang]]: null,
                         [titleTranslations[document.lang]]: null,
-                        [modeTranslations[document.lang]]: null,
+                        [modeTranslations[document.lang]]: 'site',
                         [widthTranslations[document.lang]]: window.innerWidth,
                         [lengthTranslations[document.lang]]: window.innerHeight,
                         [attributesTranslations[document.lang]]: null

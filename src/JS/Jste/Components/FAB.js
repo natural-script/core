@@ -49,7 +49,7 @@ $(function () {
                         var name = settings[window.nameTranslations[document.lang]];
                         var out = '<paper-fab ';
                         if (settings[window.attributesTranslations[document.lang]]) {
-                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' &amp;&amp;&amp; ');
+                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
                             for (i = 0; i < propertiesArray.length; i++) {
                                 if (settings.mini == window.yesTranslations[document.lang]) {
                                     out += 'mini ';
@@ -87,7 +87,7 @@ $(function () {
                             $('#' + name + '').css('font-style', settings[window.fontStyleTranslations[document.lang]]);
                         }
                         if (settings[window.attributesTranslations[document.lang]]) {
-                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' &amp;&amp;&amp; ');
+                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
                             for (i = 0; i < propertiesArray.length; i++) {
                                 if (propertiesArray[i] == window.disabledTranslations[document.lang]) {
                                     $('#' + name + '').attr('disabled', '');

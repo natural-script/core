@@ -721,15 +721,15 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 			} else if (commandValue.split(' after a period of ')[1] == 'a day') {
 				return 86400000;
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'milliseconds') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]);
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]);
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'seconds') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]) * 1000;
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]) * 1000;
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'minuits') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]) * 60000;
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]) * 60000;
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'hours') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]) * 3600000;
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]) * 3600000;
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'days') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]) * 86400000;
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]) * 86400000;
 			}
 		} else if (document.lang == 1) {
 			if (commandValue.split(' after a period of ')[1] == 'a millisecond') {
@@ -743,15 +743,15 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 			} else if (commandValue.split(' after a period of ')[1] == 'a day') {
 				return 86400000;
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'milliseconds') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]);
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]);
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'seconds') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]) * 1000;
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]) * 1000;
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'minuits') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]) * 60000;
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]) * 60000;
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'hours') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]) * 3600000;
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]) * 3600000;
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'days') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]) * 86400000;
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]) * 86400000;
 			}
 		} else if (document.lang == 2) {
 			if (commandValue.split(' after a period of ')[1] == 'a millisecond') {
@@ -765,15 +765,15 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 			} else if (commandValue.split(' after a period of ')[1] == 'a day') {
 				return 86400000;
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'milliseconds') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]);
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]);
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'seconds') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]) * 1000;
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]) * 1000;
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'minuits') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]) * 60000;
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]) * 60000;
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'hours') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]) * 3600000;
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]) * 3600000;
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'days') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]) * 86400000;
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]) * 86400000;
 			}
 		} else if (document.lang == 3) {
 			if (commandValue.split(' بعد مدة ')[1] == 'ميلى ثانية') {
@@ -787,15 +787,15 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 			} else if (commandValue.split(' بعد مدة ')[1] == 'يوم') {
 				return 86400000;
 			} else if (commandValue.split(' بعد مدة ')[1].split(' ')[1] == 'ميلى ثانية') {
-				return parseInt(commandValue.split(' بعد مدة ')[1].split(' ')[0]);
+				return parseFloat(commandValue.split(' بعد مدة ')[1].split(' ')[0]);
 			} else if (commandValue.split(' بعد مدة ')[1].split(' ')[1] == 'ثوانى') {
-				return parseInt(commandValue.split(' بعد مدة ')[1].split(' ')[0]) * 1000;
+				return parseFloat(commandValue.split(' بعد مدة ')[1].split(' ')[0]) * 1000;
 			} else if (commandValue.split(' بعد مدة ')[1].split(' ')[1] == 'دقائق') {
-				return parseInt(commandValue.split(' بعد مدة ')[1].split(' ')[0]) * 60000;
+				return parseFloat(commandValue.split(' بعد مدة ')[1].split(' ')[0]) * 60000;
 			} else if (commandValue.split(' بعد مدة ')[1].split(' ')[1] == 'ساعات') {
-				return parseInt(commandValue.split(' بعد مدة ')[1].split(' ')[0]) * 3600000;
+				return parseFloat(commandValue.split(' بعد مدة ')[1].split(' ')[0]) * 3600000;
 			} else if (commandValue.split(' بعد مدة ')[1].split(' ')[1] == 'ايام') {
-				return parseInt(commandValue.split(' بعد مدة ')[1].split(' ')[0]) * 86400000;
+				return parseFloat(commandValue.split(' بعد مدة ')[1].split(' ')[0]) * 86400000;
 			}
 		} else if (document.lang == 4) {
 			if (commandValue.split(' بعد مدة ')[1] == 'ميلى ثانية') {
@@ -809,15 +809,15 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 			} else if (commandValue.split(' بعد مدة ')[1] == 'يوم') {
 				return 86400000;
 			} else if (commandValue.split(' بعد مدة ')[1].split(' ')[1] == 'ميلى ثانية') {
-				return parseInt(commandValue.split(' بعد مدة ')[1].split(' ')[0]);
+				return parseFloat(commandValue.split(' بعد مدة ')[1].split(' ')[0]);
 			} else if (commandValue.split(' بعد مدة ')[1].split(' ')[1] == 'ثوانى') {
-				return parseInt(commandValue.split(' بعد مدة ')[1].split(' ')[0]) * 1000;
+				return parseFloat(commandValue.split(' بعد مدة ')[1].split(' ')[0]) * 1000;
 			} else if (commandValue.split(' بعد مدة ')[1].split(' ')[1] == 'دقائق') {
-				return parseInt(commandValue.split(' بعد مدة ')[1].split(' ')[0]) * 60000;
+				return parseFloat(commandValue.split(' بعد مدة ')[1].split(' ')[0]) * 60000;
 			} else if (commandValue.split(' بعد مدة ')[1].split(' ')[1] == 'ساعات') {
-				return parseInt(commandValue.split(' بعد مدة ')[1].split(' ')[0]) * 3600000;
+				return parseFloat(commandValue.split(' بعد مدة ')[1].split(' ')[0]) * 3600000;
 			} else if (commandValue.split(' بعد مدة ')[1].split(' ')[1] == 'ايام') {
-				return parseInt(commandValue.split(' بعد مدة ')[1].split(' ')[0]) * 86400000;
+				return parseFloat(commandValue.split(' بعد مدة ')[1].split(' ')[0]) * 86400000;
 			}
 		} else if (document.lang == 5) {
 			if (commandValue.split(' after a period of ')[1] == 'a millisecond') {
@@ -831,15 +831,15 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 			} else if (commandValue.split(' after a period of ')[1] == 'a day') {
 				return 86400000;
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'milliseconds') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]);
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]);
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'seconds') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]) * 1000;
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]) * 1000;
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'minuits') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]) * 60000;
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]) * 60000;
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'hours') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]) * 3600000;
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]) * 3600000;
 			} else if (commandValue.split(' after a period of ')[1].split(' ')[1] == 'days') {
-				return parseInt(commandValue.split(' after a period of ')[1].split(' ')[0]) * 86400000;
+				return parseFloat(commandValue.split(' after a period of ')[1].split(' ')[0]) * 86400000;
 			}
 		}
 	} else if (commandCode == 'c37') {
@@ -883,15 +883,15 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 			} else if (commandValue.split(' every a period of ')[1] == 'a day') {
 				return 86400000;
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'milliseconds') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]);
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]);
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'seconds') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 1000;
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]) * 1000;
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'minuits') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 60000;
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]) * 60000;
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'hours') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 3600000;
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]) * 3600000;
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'days') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 86400000;
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]) * 86400000;
 			}
 		} else if (document.lang == 1) {
 			if (commandValue.split(' every a period of ')[1] == 'a millisecond') {
@@ -905,15 +905,15 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 			} else if (commandValue.split(' every a period of ')[1] == 'a day') {
 				return 86400000;
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'milliseconds') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]);
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]);
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'seconds') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 1000;
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]) * 1000;
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'minuits') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 60000;
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]) * 60000;
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'hours') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 3600000;
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]) * 3600000;
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'days') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 86400000;
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]) * 86400000;
 			}
 		} else if (document.lang == 2) {
 			if (commandValue.split(' every a period of ')[1] == 'a millisecond') {
@@ -927,15 +927,15 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 			} else if (commandValue.split(' every a period of ')[1] == 'a day') {
 				return 86400000;
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'milliseconds') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]);
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]);
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'seconds') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 1000;
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]) * 1000;
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'minuits') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 60000;
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]) * 60000;
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'hours') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 3600000;
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]) * 3600000;
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'days') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 86400000;
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]) * 86400000;
 			}
 		} else if (document.lang == 3) {
 			if (commandValue.split(' كل مدة ')[1] == 'ميلى ثانية') {
@@ -949,15 +949,15 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 			} else if (commandValue.split(' كل مدة ')[1] == 'يوم') {
 				return 86400000;
 			} else if (commandValue.split(' كل مدة ')[1].split(' ')[1] == 'ميلى ثانية') {
-				return parseInt(commandValue.split(' كل مدة ')[1].split(' ')[0]);
+				return parseFloat(commandValue.split(' كل مدة ')[1].split(' ')[0]);
 			} else if (commandValue.split(' كل مدة ')[1].split(' ')[1] == 'ثوانى') {
-				return parseInt(commandValue.split(' كل مدة ')[1].split(' ')[0]) * 1000;
+				return parseFloat(commandValue.split(' كل مدة ')[1].split(' ')[0]) * 1000;
 			} else if (commandValue.split(' كل مدة ')[1].split(' ')[1] == 'دقائق') {
-				return parseInt(commandValue.split(' كل مدة ')[1].split(' ')[0]) * 60000;
+				return parseFloat(commandValue.split(' كل مدة ')[1].split(' ')[0]) * 60000;
 			} else if (commandValue.split(' كل مدة ')[1].split(' ')[1] == 'ساعات') {
-				return parseInt(commandValue.split(' كل مدة ')[1].split(' ')[0]) * 3600000;
+				return parseFloat(commandValue.split(' كل مدة ')[1].split(' ')[0]) * 3600000;
 			} else if (commandValue.split(' كل مدة ')[1].split(' ')[1] == 'ايام') {
-				return parseInt(commandValue.split(' كل مدة ')[1].split(' ')[0]) * 86400000;
+				return parseFloat(commandValue.split(' كل مدة ')[1].split(' ')[0]) * 86400000;
 			}
 		} else if (document.lang == 4) {
 			if (commandValue.split(' كل مدة ')[1] == 'ميلى ثانية') {
@@ -971,15 +971,15 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 			} else if (commandValue.split(' كل مدة ')[1] == 'يوم') {
 				return 86400000;
 			} else if (commandValue.split(' كل مدة ')[1].split(' ')[1] == 'ميلى ثانية') {
-				return parseInt(commandValue.split(' كل مدة ')[1].split(' ')[0]);
+				return parseFloat(commandValue.split(' كل مدة ')[1].split(' ')[0]);
 			} else if (commandValue.split(' كل مدة ')[1].split(' ')[1] == 'ثوانى') {
-				return parseInt(commandValue.split(' كل مدة ')[1].split(' ')[0]) * 1000;
+				return parseFloat(commandValue.split(' كل مدة ')[1].split(' ')[0]) * 1000;
 			} else if (commandValue.split(' كل مدة ')[1].split(' ')[1] == 'دقائق') {
-				return parseInt(commandValue.split(' كل مدة ')[1].split(' ')[0]) * 60000;
+				return parseFloat(commandValue.split(' كل مدة ')[1].split(' ')[0]) * 60000;
 			} else if (commandValue.split(' كل مدة ')[1].split(' ')[1] == 'ساعات') {
-				return parseInt(commandValue.split(' كل مدة ')[1].split(' ')[0]) * 3600000;
+				return parseFloat(commandValue.split(' كل مدة ')[1].split(' ')[0]) * 3600000;
 			} else if (commandValue.split(' كل مدة ')[1].split(' ')[1] == 'ايام') {
-				return parseInt(commandValue.split(' كل مدة ')[1].split(' ')[0]) * 86400000;
+				return parseFloat(commandValue.split(' كل مدة ')[1].split(' ')[0]) * 86400000;
 			}
 		} else if (document.lang == 5) {
 			if (commandValue.split(' every a period of ')[1] == 'a millisecond') {
@@ -993,15 +993,15 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 			} else if (commandValue.split(' every a period of ')[1] == 'a day') {
 				return 86400000;
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'milliseconds') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]);
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]);
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'seconds') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 1000;
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]) * 1000;
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'minuits') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 60000;
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]) * 60000;
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'hours') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 3600000;
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]) * 3600000;
 			} else if (commandValue.split(' every a period of ')[1].split(' ')[1] == 'days') {
-				return parseInt(commandValue.split(' every a period of ')[1].split(' ')[0]) * 86400000;
+				return parseFloat(commandValue.split(' every a period of ')[1].split(' ')[0]) * 86400000;
 			}
 		}
 	} else if (commandCode == 'c40') {
@@ -2174,9 +2174,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return commandValue.split("aller à ")[1].split(' ')[0] + ' ' + commandValue.split('go to ')[1].split(' ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اذهب إلى ')[1].split(' ')[0];
+			return commandValue.split('اذهب إلى ')[1].split(' ')[0] + ' ' + commandValue.split('اذهب إلى ')[1].split(' ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('روح إلى ')[1].split(' ')[0];
+			return commandValue.split('روح إلى ')[1].split(' ')[0] + ' ' + commandValue.split('روح إلى ')[1].split(' ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('the result of ')[1].split(' ')[0];
 		}
@@ -2188,9 +2188,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return 'la page';
 		} else if (document.lang == 3) {
-			return 'الصفحة';
+			return 'مربع الحوار';
 		} else if (document.lang == 4) {
-			return 'الصفحة';
+			return 'مربع الحوار';
 		} else if (document.lang == 5) {
 			return 'ページ';
 		}
@@ -2202,9 +2202,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return commandValue.split("le courriella page ")[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('الصفحة ')[1];
+			return commandValue.split('مربع الحوار ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('الصفحة ')[1];
+			return commandValue.split('مربع الحوار ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('ページ ')[1];
 		}

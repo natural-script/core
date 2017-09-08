@@ -15,12 +15,15 @@ function showImageA(name, URLID, source) {
 			}
 		});
 	} else {
-		window.requestDataURL(source, URLID, function (dataURL) {
-			$('#' + name + '').attr('src', dataURL);
+		window.requestBLOB(source, URLID, function (BLOBURL) {
+			$('#' + name + '').attr('src', BLOBURL);
 		});
 		$('#' + name + '').on('load', function () {
+			window.URL.revokeObjectURL($('#' + name + '').attr('src'));
 			$('#' + name + '').css('-webkit-filter', 'blur(0px)');
-			window.fadeOut('showImage_' + name + '_containerA');
+			if ($('showImage_' + name + '_containerA').length > 0) {
+				window.fadeOut('showImage_' + name + '_containerA');
+			}
 			if (typeof fx !== typeof undefined && fx !== false) {
 				if (fx == 'rain') {
 					window.setDimension(name);
@@ -31,20 +34,22 @@ function showImageA(name, URLID, source) {
 }
 
 function showImageB(name, URLID, source) {
-	window.requestDataURL(source, URLID, function (dataURL) {
-		$('#' + name + '').attr('src', dataURL);
+	window.requestBLOB(source, URLID, function (BLOBURL) {
+		$('#' + name + '').attr('src', BLOBURL);
 	});
 	$('#' + name + '').on('load', function () {
+		window.URL.revokeObjectURL($('#' + name + '').attr('src'));
 		window.fadeOut('showImage_' + name + '_containerB');
 		window.fadeIn('showImage_' + name + '_containerC');
 	});
 }
 
 function showImageC(name, source) {
-	window.requestDataURL(source, function (dataURL) {
-		$('#' + name + '').attr('src', dataURL);
+	window.requestBLOB(source, function (BLOBURL) {
+		$('#' + name + '').attr('src', BLOBURL);
 	});
 	$('#' + name + '').on('load', function () {
+		window.URL.revokeObjectURL($('#' + name + '').attr('src'));
 		$('#' + name + '').css('-webkit-filter', 'blur(0px)');
 		window.fadeOut('showImage_' + name + '_containerB');
 		if (typeof fx !== typeof undefined && fx !== false) {

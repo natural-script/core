@@ -16,18 +16,21 @@ if ($('en-uk').length) {
 	}
 	code += "add = $('body');" + $('en-uk').html();
 	code = code.replace(/^add a text/gm, "add a text0");
-	code = code.replace(/^add (a|an) (.*?) with the following properties:$/gm, "add.$2({");
+	code = code.replace(/^add (a|an) (\w+) (.*?) with the following properties:$/gm, "add.$2({\nits attributes are $3,");
+	code = code.replace(/^add (a|an) (.*?) (\w+) without (.*?) with the following properties:$/gm, "add.$3({\nits attributes are $2 and without $4,");
+	code = code.replace(/^add (a|an) (.*?) (\w+) with (.*?) with the following properties:$/gm, "add.$3({\nits attributes are $2 and with $4,");
+	code = code.replace(/^add (a|an) (\w+) with (.*?) with the following properties:$/gm, "add.$2({\nits attributes are with $3,");
+	code = code.replace(/^add (a|an) (\w+) with (.*?) without the following properties:$/gm, "add.$2({\nits attributes are without $3,");
+	code = code.replace(/^add (a|an) (\w+) with the following properties:$/gm, "add.$2({");
 	code = code.replace(/^clone (\w+) with the following properties:$/gm, "add.clone0({\nits cloned element is $1,");
 	code = code.replace(/^clone (\w+) including its commands with the following properties:$/gm, "add.clone0({\nits cloned element is $1,\nits attributes are with commands,");
-	code = code.replace(/^its ((?!commands)(?!attributes).*?) is (.*)\,$/gm, "$1: '$2',");
-	code = code.replace(/^its ((?!commands)(?!attributes).*?) is (.*)\.$/gm, "$1: '$2'\n});");
-	code = code.replace(/^its (commands|attributes) are (.*)\,$/gm, "$1: '$2',");
-	code = code.replace(/^its (commands|attributes) are (.*)\.$/gm, "$1: '$2'\n});");
+	code = code.replace(/^its (.*?) (is|are) (.*)\,$/gm, "$1: '$3',");
+	code = code.replace(/^its (.*?) (is|are) (.*)\.$/gm, "$1: '$3'\n});");
 	var codeArray = [];
 	codeArray = code.split(/^(.*?):/gm);
 	var codePrefix = codeArray.shift();
 	for (i = 0; i < codeArray.length; i += 2) {
-		codeArray[i] = codeArray[i].replace(' ', '_') + ':';
+		codeArray[i] = codeArray[i].replace(/ /g, '_') + ':';
 	}
 	for (i = 1; i < codeArray.length; i += 2) {
 		codeArray[i] = codeArray[i].replace(/^'(.*?)'(.*)'$/gm, "'$1\\'$2'");
@@ -42,18 +45,21 @@ if ($('en-uk').length) {
 	}
 	code += "add = $('body');" + $('en-us').html();
 	code = code.replace(/^add a text/gm, "add a text0");
-	code = code.replace(/^add (a|an) (.*?) with the following properties:$/gm, "add.$2({");
+	code = code.replace(/^add (a|an) (\w+) (.*?) with the following properties:$/gm, "add.$2({\nits attributes are $3,");
+	code = code.replace(/^add (a|an) (.*?) (\w+) without (.*?) with the following properties:$/gm, "add.$3({\nits attributes are $2 and without $4,");
+	code = code.replace(/^add (a|an) (.*?) (\w+) with (.*?) with the following properties:$/gm, "add.$3({\nits attributes are $2 and with $4,");
+	code = code.replace(/^add (a|an) (\w+) with (.*?) with the following properties:$/gm, "add.$2({\nits attributes are with $3,");
+	code = code.replace(/^add (a|an) (\w+) with (.*?) without the following properties:$/gm, "add.$2({\nits attributes are without $3,");
+	code = code.replace(/^add (a|an) (\w+) with the following properties:$/gm, "add.$2({");
 	code = code.replace(/^clone (\w+) with the following properties:$/gm, "add.clone0({\nits cloned element is $1,");
 	code = code.replace(/^clone (\w+) including its commands with the following properties:$/gm, "add.clone0({\nits cloned element is $1,\nits attributes are with commands,");
-	code = code.replace(/^its ((?!commands)(?!attributes).*?) is (.*)\,$/gm, "$1: '$2',");
-	code = code.replace(/^its ((?!commands)(?!attributes).*?) is (.*)\.$/gm, "$1: '$2'\n});");
-	code = code.replace(/^its (commands|attributes) are (.*)\,$/gm, "$1: '$2',");
-	code = code.replace(/^its (commands|attributes) are (.*)\.$/gm, "$1: '$2'\n});");
+	code = code.replace(/^its (.*?) (is|are) (.*)\,$/gm, "$1: '$3',");
+	code = code.replace(/^its (.*?) (is|are) (.*)\.$/gm, "$1: '$3'\n});");
 	var codeArray = [];
 	codeArray = code.split(/^(.*?):/gm);
 	var codePrefix = codeArray.shift();
 	for (i = 0; i < codeArray.length; i += 2) {
-		codeArray[i] = codeArray[i].replace(' ', '_') + ':';
+		codeArray[i] = codeArray[i].replace(/ /g, '_') + ':';
 	}
 	for (i = 1; i < codeArray.length; i += 2) {
 		codeArray[i] = codeArray[i].replace(/^'(.*?)'(.*)'$/gm, "'$1\\'$2'");
@@ -67,18 +73,16 @@ if ($('en-uk').length) {
 		annyang.setLanguage('fr-FR');
 	}
 	code += "ajouter = $('body');" + $('fr-fr').html();
-	code = code.replace(/^ajouter (le|la|un|une) (.*?) avec les propriétés suivantes:$/gm, "ajouter.$2({");
+	code = code.replace(/^ajouter (le|la|un|une) (\w+) avec les propriétés suivantes:$/gm, "ajouter.$2({");
 	code = code.replace(/^cloner (\w+) avec les propriétés suivantes:$/gm, "ajouter.clone0({\nson élément clone est $1,");
 	code = code.replace(/^cloner (\w+) y compris ses commandes avec les propriétés suivantes:$/gm, "ajouter.clone0({\nson élément clone est $1,\nses attributs sont avec des commandes,");
-	code = code.replace(/^(son|sa) ((?!commandes)(?!attributs).*?) est (.*)\,$/gm, "$1: '$2',");
-	code = code.replace(/^(son|sa) ((?!commandes)(?!attributs).*?) est (.*)\.$/gm, "$1: '$2'\n});");
-	code = code.replace(/^ses (commandes|attributs) sont (.*)\,$/gm, "$1: '$2',");
-	code = code.replace(/^ses (commandes|attributs) sont (.*)\.$/gm, "$1: '$2'\n});");
+	code = code.replace(/^(son|sa) (.*?) (est|sont) (.*)\,$/gm, "$1: '$3',");
+	code = code.replace(/^(son|sa) (.*?) (est|sont) (.*)\.$/gm, "$1: '$3'\n});");
 	var codeArray = [];
 	codeArray = code.split(/^(.*?):/gm);
 	var codePrefix = codeArray.shift();
 	for (i = 0; i < codeArray.length; i += 2) {
-		codeArray[i] = codeArray[i].replace(' ', '_') + ':';
+		codeArray[i] = codeArray[i].replace(/ /g, '_') + ':';
 	}
 	for (i = 1; i < codeArray.length; i += 2) {
 		codeArray[i] = codeArray[i].replace(/^'(.*?)'(.*)'$/gm, "'$1\\'$2'");
@@ -94,18 +98,18 @@ if ($('en-uk').length) {
 		annyang.setLanguage('ar-AE');
 	}
 	code += "اضف = $('body');" + $('ar-ar').html();
-	code = code.replace(/^اضف (.*?) بالخواص التالية:$/gm, "اضف.$1({");
-	code = code.replace(/^استنسخ (\w+) بالخواص دى:$/gm, "اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,");
-	code = code.replace(/^استنسخ (\w+) بأوامره بالخواص التالية:$/gm, "اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,\nالصفات الخاصة به بالأوامر,");
-	code = code.replace(/^(الأيقونة|الصفات|الأوامر|الخلفية|المسافة من الشمال|المسافة من اليمين|المسافة من اعلى|المسافة من اسفل|الوضعية|الشفافية|البيانات) الخاصة به (.*)\,$/gm, "$1: '$2',");
-	code = code.replace(/^(الأيقونة|الصفات|الأوامر|الخلفية|المسافة من الشمال|المسافة من اليمين|المسافة من اعلى|المسافة من اسفل|الوضعية|الشفافية|البيانات) الخاصة به (.*)\.$/gm, "$1: '$2'\n});");
-	code = code.replace(/^((?!الأيقونة)(?!الصفات)(?!الأوامر)(?!الخلفية)(?!المسافة من الشمال)(?!المسافة من اليمين)(?!المسافة من اعلى)(?!المسافة من اسفل)(?!الوضعية)(?!الشفافية)(?!البيانات).*?) الخاص به (.*)\,$/gm, "$1: '$2',");
-	code = code.replace(/^((?!الأيقونة)(?!الصفات)(?!الأوامر)(?!الخلفية)(?!المسافة من الشمال)(?!المسافة من اليمين)(?!المسافة من اعلى)(?!المسافة من اسفل)(?!الوضعية)(?!الشفافية)(?!البيانات).*?) الخاص به (.*)\.$/gm, "$1: '$2'\n});");
+	code = code.replace(/^اضف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (.*?) بالخواص التالية:$/gm, "اضف.$1({\nالصفات الخاصة به $2,");
+	code = code.replace(/^اضف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص التالية:$/gm, "اضف.$1({");
+	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, "اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,");
+	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بأوامره بالخواص التالية:$/gm, "اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,\nالصفات الخاصة به بالأوامر,");
+	code = code.replace(/^(.*?) (الخاص به|الخاصة به|الخاص بها|الخاصة بها) (.*)\,$/gm, "$1: '$3',");
+	code = code.replace(/^(.*?) (الخاص به|الخاصة به|الخاص بها|الخاصة بها) (.*)\.$/gm, "$1: '$3'\n});");
 	var codeArray = [];
 	codeArray = code.split(/^(.*?):/gm);
 	var codePrefix = codeArray.shift();
 	for (i = 0; i < codeArray.length; i += 2) {
-		codeArray[i] = codeArray[i].replace(' ', '_') + ':';
+		codeArray[i] = codeArray[i].replace(/ /g, '_') + ':';
+		codeArray[i] = codeArray[i].replace(/^ال/gm, '');
 	}
 	for (i = 1; i < codeArray.length; i += 2) {
 		codeArray[i] = codeArray[i].replace(/^'(.*?)'(.*)'$/gm, "'$1\\'$2'");
@@ -121,18 +125,18 @@ if ($('en-uk').length) {
 		annyang.setLanguage('ar-EG');
 	}
 	code += "ضيف = $('body');" + $('ar-eg').html();
-	code = code.replace(/^ضيف (.*?) بالخواص دى:$/gm, "ضيف.$1({");
-	code = code.replace(/^استنسخ (\w+) بالخواص دى:$/gm, "ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,");
-	code = code.replace(/^استنسخ (\w+) بأوامره بالخواص دى:$/gm, "ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,\nالصفات بتاعته بالأوامر,");
-	code = code.replace(/^((?!الأيكونة)(?!الصفات)(?!الأوامر)(?!الخلفية)(?!المسافة من الشمال)(?!المسافة من اللمين)(?!المسافة من فوق)(?!المسافة من تحت)(?!الشفافية)(?!البيانات).*?) بتاعه (.*)\,$/gm, "$1: '$2',");
-	code = code.replace(/^((?!الأيكونة)(?!الصفات)(?!الأوامر)(?!الخلفية)(?!المسافة من الشمال)(?!المسافة من اللمين)(?!المسافة من فوق)(?!المسافة من تحت)(?!الشفافية)(?!البيانات).*?) بتاعه (.*)\.$/gm, "$1: '$2'\n});");
-	code = code.replace(/^(الأيكونة|الصفات|الأوامر|الخلفية|المسافة من الشمال|المسافة من الليمين|المسافة من اعلى|المسافة من تحت|الشفافية|البيانات) بتاعته (.*)\,$/gm, "$1: '$2',");
-	code = code.replace(/^(الأيكونة|الصفات|الأوامر|الخلفية|المسافة من الشمال|المسافة من الليمين|المسافة من اعلى|المسافة من تحت|الشفافية|البيانات) بتاعته (.*)\.$/gm, "$1: '$2'\n});");
+	code = code.replace(/^ضيف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (.*?) بالخواص دى:$/gm, "ضيف.$1({\nالصفات بتاعته $2,");
+	code = code.replace(/^ضيف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, "ضيف.$1({");
+	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, "ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,");
+	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بأوامره بالخواص دى:$/gm, "ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,\nالصفات بتاعته بالأوامر,");
+	code = code.replace(/^(.*?) (بتاعه|بتاعته|بتاعها|بتاعتها) (.*)\,$/gm, "$1: '$3',");
+	code = code.replace(/^(.*?) (بتاعه|بتاعته|بتاعها|بتاعتها) (.*)\.$/gm, "$1: '$3'\n});");
 	var codeArray = [];
 	codeArray = code.split(/^(.*?):/gm);
 	var codePrefix = codeArray.shift();
 	for (i = 0; i < codeArray.length; i += 2) {
-		codeArray[i] = codeArray[i].replace(' ', '_') + ':';
+		codeArray[i] = codeArray[i].replace(/ /g, '_') + ':';
+		codeArray[i] = codeArray[i].replace(/^ال/gm, '');
 	}
 	for (i = 1; i < codeArray.length; i += 2) {
 		codeArray[i] = codeArray[i].replace(/^'(.*?)'(.*)'$/gm, "'$1\\'$2'");

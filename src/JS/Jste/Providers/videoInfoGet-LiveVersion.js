@@ -13,7 +13,7 @@ window.getVideoInfo = function (name, provider, videoID, url, title) {
                     var videoQuality = availableQualities[i].width;
                     var videoURL = availableQualities[i].url;
                     var videoSize = availableQualities[i].size;
-                    var fps = parseInt(availableQualities[i].fps);
+                    var fps = parseFloat(availableQualities[i].fps);
                     var videoURLID = encodeURIComponent(url + videoQuality).replace(/\./g, '%2E');
                     $('<paper-button>').addClass('resolutionBtn')
                         .addClass('col')
