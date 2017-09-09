@@ -2,6 +2,12 @@
 //--------------------------------------------------Videos Related Functions------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 function showVideoA(name, source, title, videoURLID, fps) {
+	var FPS;
+	if (fps) {
+		FPS = parseFloat(fps);
+	} else {
+		FPS = 30;
+	}
 	var uniqueID = document.uniqueID();
 	var v = document.getElementById(name);
 	window.requestBLOB(source, videoURLID, function (BLOBURL) {
@@ -16,7 +22,7 @@ function showVideoA(name, source, title, videoURLID, fps) {
 			document[name] = videojs(name, {
 				plugins: {
 					framebyframe: {
-						fps: 23.98,
+						fps: FPS,
 						steps: [{
 								text: '-1',
 								step: -1
@@ -36,20 +42,20 @@ function showVideoA(name, source, title, videoURLID, fps) {
 				title: 'Resume ?',
 				resumeButtonText: 'Sure',
 				cancelButtonText: 'Start Over'
-			  });
-			  player.ready(function() {
+			});
+			player.ready(function () {
 				this.hotkeys({
-				  volumeStep: 0.1,
-				  seekStep: 1,
-				  enableModifiersForNumbers: false
+					volumeStep: 0.1,
+					seekStep: 1,
+					enableModifiersForNumbers: false
 				});
-			  });
-			  player.dock({
+			});
+			player.dock({
 				title: title
-				});
-				if (document.lang == 3 || document.lang == 4) {
-					$('.vjs-dock-text').css('padding', '1em 5% 2em 1em');
-				}
+			});
+			if (document.lang == 3 || document.lang == 4) {
+				$('.vjs-dock-text').css('padding', '1em 5% 2em 1em');
+			}
 			clearInterval(document[uniqueID + 'checker']);
 		}
 	}, 1);

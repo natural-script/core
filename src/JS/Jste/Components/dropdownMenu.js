@@ -59,7 +59,7 @@ $(function () {
                         out += '</ul>';
                         if (settings[window.emitterTranslations[document.lang]]) {
                             var emitter = settings[window.emitterTranslations[document.lang]];
-                            $('#' + emitter + '').parent().append(out);
+                            $('contents').append(out);
                             $('#' + emitter + '').attr('data-activates', name).addClass('dropdown-button');
                             $('#' + emitter + '').dropdown({
                                 inDuration: 300,
@@ -68,7 +68,7 @@ $(function () {
                                 hover: true,
                                 gutter: 0,
                                 belowOrigin: true,
-                                alignment: 'center',
+                                alignment: 'left',
                                 stopPropagation: true
                             });
                         }

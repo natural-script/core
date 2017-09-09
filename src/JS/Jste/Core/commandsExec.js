@@ -13,7 +13,7 @@ window.execute = function (elementName, command) {
 	var commandID;
 	for (commandID = 0; commandID < commands.length; commandID++) {
 		if (window.commandsFnTranslations('c52', 'E1', commands[commandID]).length > 1) {
-			var ifStatement = window.commandsFnTranslations('c53', 'E1', commands[commandID]);
+			document.ifStatement = window.commandsFnTranslations('c53', 'E1', commands[commandID]);
 			var statementT0Command = window.commandsFnTranslations('c54', 'E1', commands[commandID]);
 			if (statementT0Command.startsWith(document.E1)) {
 				if (window.commandsFnTranslations('c2q', 'E1', statementT0Command) == window.commandsFnTranslations('c2ruA')) {

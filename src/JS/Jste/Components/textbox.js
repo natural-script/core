@@ -28,8 +28,6 @@ $(function () {
                         [window.suffixTranslations[document.lang]]: null,
                         [window.clearButtonTranslations[document.lang]]: null,
                         required: null,
-                        counter: null,
-                        [window.dynamicSizeTranslations[document.lang]]: null,
                         [window.disabledTranslations[document.lang]]: null,
                         [window.rippleTranslations[document.lang]]: null,
                         [window.fontColorTranslations[document.lang]]: null,
@@ -53,11 +51,16 @@ $(function () {
                     }, options);
                     return this.each(function () {
                         var name = settings[window.nameTranslations[document.lang]];
-                        if (settings[window.dynamicSizeTranslations[document.lang]] == window.yesTranslations[document.lang]) {
-                            var out = 'paper-textarea ';
-                        } else {
-                            var out = '<paper-input '
+                        var tagName = 'paper-input';
+                        if (settings[window.attributesTranslations[document.lang]]) {
+                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
+                            for (i = 0; i < propertiesArray.length; i++) {
+                                if (propertiesArray[i] == window.multilineTranslations[document.lang]) {
+                                    tagName = 'paper-textarea';
+                                }
+                            }
                         }
+                        var out = '<' + tagName + ' ';
                         if (settings[window.titleTranslations[document.lang]]) {
                             out += 'label="' + settings[window.titleTranslations[document.lang]] + '" ';
                         }
@@ -84,7 +87,7 @@ $(function () {
                             for (i = 0; i < propertiesArray.length; i++) {
                                 if (propertiesArray[i] == window.disabledTranslations[document.lang]) {
                                     out += 'disabled ';
-                                } else if (propertiesArray[i] == counterTranslations[document.lang]) {
+                                } else if (propertiesArray[i] == withCounterTranslations[document.lang]) {
                                     out += 'char-counter ';
                                 }
                             }
@@ -125,11 +128,7 @@ $(function () {
                         if (settings[window.clearButtonTranslations[document.lang]] == window.yesTranslations[document.lang]) {
                             out += '<paper-icon-button suffix onclick="clearInput()" icon="clear" alt="clear" title="clear"></paper-icon-button>';
                         }
-                        if (settings[window.dynamicSizeTranslations[document.lang]] == window.yesTranslations[document.lang]) {
-                            out += '</paper-textarea>';
-                        } else {
-                            out += '</paper-input>'
-                        }
+                        out += '</' + tagName + '>';
                         if (settings[window.containerTranslations[document.lang]]) {
                             if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
                                 $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);

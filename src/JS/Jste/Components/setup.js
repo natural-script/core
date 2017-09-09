@@ -24,6 +24,7 @@ $(function () {
                         [modeTranslations[document.lang]]: 'site',
                         [widthTranslations[document.lang]]: window.innerWidth,
                         [lengthTranslations[document.lang]]: window.innerHeight,
+                        [directionTranslations[document.lang]]: window.verticalTranslations[document.lang],
                         [attributesTranslations[document.lang]]: null
                     }, options);
                     return this.each(function () {
@@ -42,6 +43,13 @@ $(function () {
                             window.title = settings[titleTranslations[document.lang]].replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
                                 return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
                             });
+                        }
+                        if (settings[directionTranslations[document.lang]]) {
+                            if (settings[directionTranslations[document.lang]] == window.verticalTranslations[document.lang]) {
+                                document.pageDirection = 'vertical';
+                            } else if (settings[directionTranslations[document.lang]] == window.horizontalTranslations[document.lang]) {
+                                document.pageDirection = 'horizontal';
+                            }
                         }
                         if (settings[attributesTranslations[document.lang]]) {
                             var propertiesArray = settings[attributesTranslations[document.lang]].split(' &amp;&amp;&amp; ');

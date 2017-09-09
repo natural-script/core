@@ -109,8 +109,14 @@ $(function () {
                             }
                         }
                         if (settings[window.fontSizeTranslations[document.lang]]) {
+                            var vw2vhRatio = (document.defaultWindowWidth / 100) / (document.defaultWindowLength / 100);
+                            var vh2vwRatio = (document.defaultWindowLength / 100) / (document.defaultWindowWidth / 100);
                             var fontSizeRatio = parseFloat(window.convertLengthCSS(settings[window.fontSizeTranslations[document.lang]])) / document.defaultWindowWidth;
-                            $('#' + name + '').css('font-size', (parseFloat(fontSizeRatio * window.innerWidth) * (100 / window.innerWidth)) + 'vw');
+                            if (document.pageDirection == 'horizontal') {
+                                $('#' + name + '').css('font-size', ((parseFloat(fontSizeRatio * window.innerWidth) * (100 / window.innerWidth)) * vw2vhRatio) + 'vh');
+                            } else if (document.pageDirection == 'vertical') {
+                                $('#' + name + '').css('font-size', (parseFloat(fontSizeRatio * window.innerWidth) * (100 / window.innerWidth)) + 'vw');
+                            }
                         }
                         if (settings[window.backgroundTranslations[document.lang]]) {
                             window.setBG(name, settings[window.backgroundTranslations[document.lang]]);

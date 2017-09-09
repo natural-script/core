@@ -109,8 +109,8 @@ var uniqueID = document.uniqueID();
                 document.E15 = 'لما الداتا بتاعت الفورم دة تتبعت, ';
                 document.E16 = 'لما يتمرر, ';
                 document.E17 = 'لو المستخدم قال: ';
-                document.E18 = 'لما يبقى فى إطار العرض, ';
-                document.E19 = 'لما يبقى خارج إطار العرض, ';
+                document.E18 = 'لما يبقى جوة إطار العرض, ';
+                document.E19 = 'لما يبقى برة إطار العرض, ';
             } else if (document.lang == 5) {
                 document.E1 = 'それがクリックされた場合には、 ';
                 document.E2 = 'マウスポインタがその上に移動されると、 ';

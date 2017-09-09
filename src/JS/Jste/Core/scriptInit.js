@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-6
+ * Date: 2017-09-9
  */
 var code = "jQuery(document).ready(\nfunction ($) {\nvar ";
 if ($('en-uk').length) {

@@ -508,7 +508,7 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 3) {
 			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[6] + ' ' + commandValue.split(event)[1].split(' ')[8] + ' ' + commandValue.split(event)[1].split(' ')[9] + ' ' + commandValue.split(event)[1].split(' ')[10] + ' ' + commandValue.split(event)[1].split(' ')[11] + ' ' + commandValue.split(event)[1].split(' ')[12];
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[5] + ' ' + commandValue.split(event)[1].split(' ')[7] + ' ' + commandValue.split(event)[1].split(' ')[8] + ' ' + commandValue.split(event)[1].split(' ')[9] + ' ' + commandValue.split(event)[1].split(' ')[10] + ' ' + commandValue.split(event)[1].split(' ')[11];
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[5] + ' ' + commandValue.split(event)[1].split(' ')[7] + ' ' + commandValue.split(event)[1].split(' ')[8] + ' ' + commandValue.split(event)[1].split(' ')[9] + ' ' + commandValue.split(event)[1].split(' ')[10] + ' ' + commandValue.split(event)[1].split(' ')[11] + ' ' + commandValue.split(event)[1].split(' ')[12];
 		} else if (document.lang == 5) {
 			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[6] + ' ' + commandValue.split(event)[1].split(' ')[6] + ' ' + commandValue.split(event)[1].split(' ')[8] + ' ' + commandValue.split(event)[1].split(' ')[9] + ' ' + commandValue.split(event)[1].split(' ')[10] + ' ' + commandValue.split(event)[1].split(' ')[11] + ' ' + commandValue.split(event)[1].split(' ')[12] + ' ' + commandValue.split(event)[1].split(' ')[13];
 		}
@@ -1294,7 +1294,7 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 3) {
 			return commandValue.split(' فى حالة أن ');
 		} else if (document.lang == 4) {
-			return commandValue.split(' فى حالة أن ');
+			return commandValue.split(' فى حالة إن ');
 		} else if (document.lang == 5) {
 			return commandValue.split('obtenir la valeur de la fente ');
 		}
@@ -1308,7 +1308,7 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 3) {
 			return window.evaluateStatement(commandValue.split(' فى حالة أن ')[1]);
 		} else if (document.lang == 4) {
-			return window.evaluateStatement(commandValue.split(' فى حالة أن ')[1]);
+			return window.evaluateStatement(commandValue.split(' فى حالة إن ')[1]);
 		} else if (document.lang == 5) {
 			return window.evaluateStatement(commandValue.split('obtenir la valeur de la fente ')[1]);
 		}
@@ -1322,7 +1322,7 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 3) {
 			return commandValue.split(' فى حالة أن ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split(' فى حالة أن ')[0];
+			return commandValue.split(' فى حالة إن ')[0];
 		} else if (document.lang == 5) {
 			return commandValue.split('obtenir la valeur de la fente ')[0];
 		}

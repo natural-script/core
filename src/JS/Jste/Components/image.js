@@ -195,7 +195,6 @@ $(function () {
 								<p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
 								</div></' + imageContainerEndTag + '>';
                             }
-
                             if (settings[window.containerTranslations[document.lang]]) {
                                 if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
                                     $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);

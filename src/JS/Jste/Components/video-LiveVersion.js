@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-6
+ * Date: 2017-09-9
  */
 $(function () {
     $(function () {
@@ -41,22 +41,7 @@ $(function () {
                         var title = settings[window.titleTranslations[document.lang]];
                         var URLID = encodeURIComponent(source).replace(/\./g, '%2E');
                         var isTitled = false;
-                        if (title) {
-                            isTitled = true;
-                            var out = '<paper-material id="' + name + '_container" style="position: relative; overflow: hidden;"> \
-                        <video id="' + name + '" crossorigin="anonymous" class="video-js vjs-big-play-centered" style="-webkit-filter: blur(10px); background: black;" controls preload="auto" data-setup="{}" /> \
-                        <div class="videoTitle">' + title + '</div> \
-                        <div id="showVideo_' + name + '_containerA"> \
-                        <div class="showVideoContainerA"> \
-						<paper-button id="video_' + name + '_mainButton" class="videoMainButton" onclick="showVideoA(\'' + name + '\', \'' + source + '\', \'' + title + '\', \'' + URLID + '\');"> \
-                        <i class="material-icons">play_arrow</i> Loading...</paper-button></div> \
-                        <div id="' + name + '_resolutionsBtnConatiner" class="resolutionsBtnConatiner row" style="display: none;"></div> \
-                        <img class="showVideoContainerAIcon" src="' + window.mediaImageIconCamcorderA + '" /></div> \
-						<div id="showVideo_' + name + '_containerB" style="display: none;"> \
-						<p style="position: relative; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p> \
-                        <button style="position: relative; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></paper-material>';
-                        } else {
-                            var out = '<paper-material id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+                        var out = '<paper-material id="' + name + '_container" style="position: relative; overflow: hidden;"> \
                             <video id="' + name + '" crossorigin="anonymous" class="video-js vjs-big-play-centered" style="-webkit-filter: blur(10px); background: black;" controls preload="auto" data-setup="{}" /> \
                             <div id="showVideo_' + name + '_containerA"> \
                             <div class="showVideoContainerA"> \
@@ -67,8 +52,6 @@ $(function () {
                             <div id="showVideo_' + name + '_containerB" style="display: none;"> \
                             <p style="position: relative; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p> \
                             <button style="position: relative; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></paper-material>';
-
-                        }
                         if (settings[window.containerTranslations[document.lang]]) {
                             if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
                                 $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
