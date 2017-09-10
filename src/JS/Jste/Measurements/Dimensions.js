@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-8
+ * Date: 2017-09-10
  */
 window.setDimension = function (name, dimension, value, type, isTitled) {
 	if (dimension == 'length') {

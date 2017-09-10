@@ -74,6 +74,11 @@ window.setFontColour = function (elementName, color) {
 			targets: '#' + elementName + '',
 			color: '#8BC34A'
 		});
+	} else if (color == window.transparentTranslations[document.lang]) {
+		anime({
+			targets: '#' + elementName + '',
+			color: 'transparent'
+		});
 	} else if (color == window.aRandomColorTranslations[document.lang]) {
 		anime({
 			targets: '#' + elementName + '',
@@ -171,6 +176,11 @@ window.setBG = function (elementName, background) {
 		anime({
 			targets: '#' + elementName + '',
 			backgroundColor: '#8BC34A'
+		});
+	} else if (background == window.transparentTranslations[document.lang]) {
+		anime({
+			targets: '#' + elementName + '',
+			backgroundColor: 'transparent'
 		});
 	} else if (background.charAt(0) == '#') {
 		anime({

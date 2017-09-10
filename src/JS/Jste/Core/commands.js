@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-6
+ * Date: 2017-09-10
  */
 window.evaluateScript = function (script, event, type) {
     var eventPrefix = '';
@@ -72,38 +72,38 @@ window.evaluateScript = function (script, event, type) {
         typePrefix = "";
         typeSuffix = "";
         if (event == 'E17') {
-            commandVarA = "commands[commandID], voiceCommand"
+            commandVarA = "pureCommand, voiceCommand"
         } else {
-            commandVarA = "commands[commandID]"
+            commandVarA = "pureCommand"
         }
-        commandVarB = "commandID"
+        commandVarB = "pureCommand"
     } else if (type == 'T1') {
         typePrefix = "setTimeout(function () {";
         typeSuffix = "}, timeoutPeriod);";
         if (event == 'E17') {
-            commandVarA = "statementT0Command, voiceCommand"
+            commandVarA = "pureCommand, voiceCommand"
         } else {
-            commandVarA = "statementT0Command"
+            commandVarA = "pureCommand"
         }
-        commandVarB = "statementT0Command"
+        commandVarB = "pureCommand"
     } else if (type == 'T2') {
         typePrefix = "setInterval(function () {";
         typeSuffix = "}, intervalPeriod);";
         if (event == 'E17') {
-            commandVarA = "intervalCommand, voiceCommand"
+            commandVarA = "pureCommand, voiceCommand"
         } else {
-            commandVarA = "intervalCommand"
+            commandVarA = "pureCommand"
         }
-        commandVarB = "intervalCommand"
+        commandVarB = "pureCommand"
     } else if (type == 'T3') {
         typePrefix = "if (" + document.ifStatement + ") {";
         typeSuffix = "}";
         if (event == 'E17') {
-            commandVarA = "statementT0Command, voiceCommand"
+            commandVarA = "pureCommand, voiceCommand"
         } else {
-            commandVarA = "statementT0Command"
+            commandVarA = "pureCommand"
         }
-        commandVarB = "statementT0Command"
+        commandVarB = "pureCommand"
     }
     if (script == 'S1') {
         return "(function () { \

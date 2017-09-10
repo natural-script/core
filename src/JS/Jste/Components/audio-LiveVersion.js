@@ -6,15 +6,12 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-6
+ * Date: 2017-09-10
  */$(function () {
     $(function () {
         var uniqueID = document.uniqueID();
         document[uniqueID + 'checker'] = setInterval(function () {
             if (document.lang == 0 || document.lang == 1 || document.lang == 2 || document.lang == 3 || document.lang == 4 || document.lang == 5) {
-                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                //---------------------------------------------------------------------Audio------------------------------------------------------------------------------------------------------------------------------------------//
-                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[window.audioTranslations[document.lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
@@ -53,7 +50,6 @@
                         }
                     });
                 };
-
                 clearInterval(document[uniqueID + 'checker']);
             }
         }, 1);

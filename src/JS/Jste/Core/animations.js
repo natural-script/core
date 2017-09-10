@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-6
+ * Date: 2017-09-10
  */
 $.fn.extend({
     animateCss: function (animationName) {
@@ -182,4 +182,4 @@ window.setAnimation = function (elementName, animation) {
         runOnLoad: true,
         frequency: 100
     });
-}
+};
