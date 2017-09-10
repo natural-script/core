@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-6
+ * Date: 2017-09-10
  */
 window.setFontColour = function (elementName, color) {
 	if (color == window.blackTranslations[document.lang]) {
