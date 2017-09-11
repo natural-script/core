@@ -26,7 +26,7 @@ window.execute = function (elementName, command) {
 	var intervalPeriod;
 	for (commandID = 0; commandID < commands.length; commandID++) {
 		if (window.commandsFnTranslations('c52', 'E1', commands[commandID]).length > 1) {
-			commandType = commandType;
+			commandType = 'T3';
 			document.ifStatement = window.commandsFnTranslations('c53', 'E1', commands[commandID]);
 			pureCommand = window.commandsFnTranslations('c54', 'E1', commands[commandID]);
 		} else if (window.commandsFnTranslations('c34', 'E1', commands[commandID]).length > 1) {

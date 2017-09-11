@@ -17,19 +17,19 @@ if ($('en-uk').length) {
 	var i = -1;
 	code += "add = $('body');" + $('en-uk').html();
 	code = code.replace(/^add a text/gm, "add a text0");
-	code = code.replace(/^add (a|an) (\w+) (.*?) with the following properties:$/gm, "add.$2({\nits attributes are $3,");
 	code = code.replace(/^add (a|an) (.*?) (\w+) without (.*?) with the following properties:$/gm, "add.$3({\nits attributes are $2 and without $4,");
 	code = code.replace(/^add (a|an) (.*?) (\w+) with (.*?) with the following properties:$/gm, "add.$3({\nits attributes are $2 and with $4,");
 	code = code.replace(/^add (a|an) (\w+) with (.*?) with the following properties:$/gm, "add.$2({\nits attributes are with $3,");
-	code = code.replace(/^add (a|an) (\w+) with (.*?) without the following properties:$/gm, "add.$2({\nits attributes are without $3,");
+	code = code.replace(/^add (a|an) (\w+) without (.*?) with the following properties:$/gm, "add.$2({\nits attributes are without $3,");
+	code = code.replace(/^add (a|an) (.*?) (\w+) with the following properties:$/gm, "add.$3({\nits attributes are $2,");
 	code = code.replace(/^add (a|an) (\w+) with the following properties:$/gm, "add.$2({");
 	code = code.replace(/^clone (\w+) with the following properties:$/gm, "add.clone0({\nits cloned element is $1,");
 	code = code.replace(/^clone (\w+) including its commands with the following properties:$/gm, "add.clone0({\nits cloned element is $1,\nits attributes are with commands,");
 	code = code.replace(/^its (.*?) (is|are) (.*)\,$/gm, function (match, p1, p2, p3, offset, string) {
-		return p1.replace(/ /g, '_') + ": '" + p3.replace(/^'(.*?)'(.*)'$/gm, "'$1\\'$2'") + "',";
+		return p1.replace(/ /g, '_') + ": '" + p3.replace(/^(.*?)'(.*)$/gm, "$1\\'$2") + "',";
 	});
 	code = code.replace(/^its (.*?) (is|are) (.*)\.$/gm, function (match, p1, p2, p3, offset, string) {
-		return p1.replace(/ /g, '_') + ": '" + p3.replace(/^'(.*?)'(.*)'$/gm, "'$1\\'$2'") + "'\n});";
+		return p1.replace(/ /g, '_') + ": '" + p3.replace(/^(.*?)'(.*)$/gm, "$1\\'$2") + "'\n});";
 	});
 	code = code.replace(/^the commands of the item (.*?) are that (.*?)\,$/gm, function (match, p1, p2, offset, string) {
 		i++;
@@ -67,21 +67,22 @@ if ($('en-uk').length) {
 	if (window.isChrome) {
 		annyang.setLanguage('en-US');
 	}
+	var i = -1;
 	code += "add = $('body');" + $('en-us').html();
 	code = code.replace(/^add a text/gm, "add a text0");
-	code = code.replace(/^add (a|an) (\w+) (.*?) with the following properties:$/gm, "add.$2({\nits attributes are $3,");
 	code = code.replace(/^add (a|an) (.*?) (\w+) without (.*?) with the following properties:$/gm, "add.$3({\nits attributes are $2 and without $4,");
 	code = code.replace(/^add (a|an) (.*?) (\w+) with (.*?) with the following properties:$/gm, "add.$3({\nits attributes are $2 and with $4,");
 	code = code.replace(/^add (a|an) (\w+) with (.*?) with the following properties:$/gm, "add.$2({\nits attributes are with $3,");
-	code = code.replace(/^add (a|an) (\w+) with (.*?) without the following properties:$/gm, "add.$2({\nits attributes are without $3,");
+	code = code.replace(/^add (a|an) (\w+) without (.*?) with the following properties:$/gm, "add.$2({\nits attributes are without $3,");
+	code = code.replace(/^add (a|an) (.*?) (\w+) with the following properties:$/gm, "add.$3({\nits attributes are $2,");
 	code = code.replace(/^add (a|an) (\w+) with the following properties:$/gm, "add.$2({");
 	code = code.replace(/^clone (\w+) with the following properties:$/gm, "add.clone0({\nits cloned element is $1,");
 	code = code.replace(/^clone (\w+) including its commands with the following properties:$/gm, "add.clone0({\nits cloned element is $1,\nits attributes are with commands,");
 	code = code.replace(/^its (.*?) (is|are) (.*)\,$/gm, function (match, p1, p2, p3, offset, string) {
-		return p1.replace(/ /g, '_') + ": '" + p3.replace(/^'(.*?)'(.*)'$/gm, "'$1\\'$2'") + "',";
+		return p1.replace(/ /g, '_') + ": '" + p3.replace(/^(.*?)'(.*)$/gm, "$1\\'$2") + "',";
 	});
 	code = code.replace(/^its (.*?) (is|are) (.*)\.$/gm, function (match, p1, p2, p3, offset, string) {
-		return p1.replace(/ /g, '_') + ": '" + p3.replace(/^'(.*?)'(.*)'$/gm, "'$1\\'$2'") + "'\n});";
+		return p1.replace(/ /g, '_') + ": '" + p3.replace(/^(.*?)'(.*)$/gm, "$1\\'$2") + "'\n});";
 	});
 	code = code.replace(/^the commands of the item (.*?) are that (.*?)\,$/gm, function (match, p1, p2, offset, string) {
 		i++;
@@ -121,14 +122,15 @@ if ($('en-uk').length) {
 	}
 	var i = -1;
 	code += "ajouter = $('body');" + $('fr-fr').html();
+	code = code.replace(/^ajouter (le|la|un|une) (\w+) (.*?) avec les propriétés suivantes:$/gm, "ajouter.$2({\nses attributs sont $3,");
 	code = code.replace(/^ajouter (le|la|un|une) (\w+) avec les propriétés suivantes:$/gm, "ajouter.$2({");
 	code = code.replace(/^cloner (\w+) avec les propriétés suivantes:$/gm, "ajouter.clone0({\nson élément clone est $1,");
 	code = code.replace(/^cloner (\w+) y compris ses commandes avec les propriétés suivantes:$/gm, "ajouter.clone0({\nson élément clone est $1,\nses attributs sont avec des commandes,");
 	code = code.replace(/^(son|sa) (.*?) (est|sont) (.*)\,$/gm, function (match, p1, p2, p3, p4, offset, string) {
-		return p2.replace(/ /g, '_') + ": '" + p4.replace(/^'(.*?)'(.*)'$/gm, "'$1\\'$2'") + "',";
+		return p2.replace(/ /g, '_') + ": '" + p4.replace(/^(.*?)'(.*)$/gm, "$1\\'$2") + "',";
 	});
 	code = code.replace(/^(son|sa) (.*?) (est|sont) (.*)\.$/gm, function (match, p1, p2, p3, p4, offset, string) {
-		return p2.replace(/ /g, '_') + ": '" + p4.replace(/^'(.*?)'(.*)'$/gm, "'$1\\'$2'") + "'\n});";
+		return p2.replace(/ /g, '_') + ": '" + p4.replace(/^(.*?)'(.*)$/gm, "$1\\'$2") + "'\n});";
 	});
 	code = code.replace(/^les commandes de l'élément (.*?) sont (.*?)\,$/gm, function (match, p1, p2, offset, string) {
 		i++;
@@ -175,10 +177,10 @@ if ($('en-uk').length) {
 	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, "اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,");
 	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بأوامره بالخواص التالية:$/gm, "اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,\nالصفات الخاصة به بالأوامر,");
 	code = code.replace(/^(.*?) (الخاص به|الخاصة به|الخاص بها|الخاصة بها) (.*)\,$/gm, function (match, p1, p2, p3, offset, string) {
-		return p1.replace(/ /g, '_').replace(/^ال/gm, '') + ": '" + p3.replace(/^'(.*?)'(.*)'$/gm, "'$1\\'$2'") + "',";
+		return p1.replace(/ /g, '_').replace(/^ال/gm, '') + ": '" + p3.replace(/^(.*?)'(.*)$/gm, "$1\\'$2") + "',";
 	});
 	code = code.replace(/^(.*?) (الخاص به|الخاصة به|الخاص بها|الخاصة بها) (.*)\.$/gm, function (match, p1, p2, p3, offset, string) {
-		return p1.replace(/ /g, '_').replace(/^ال/gm, '') + ": '" + p3.replace(/^'(.*?)'(.*)'$/gm, "'$1\\'$2'") + "'\n});";
+		return p1.replace(/ /g, '_').replace(/^ال/gm, '') + ": '" + p3.replace(/^(.*?)'(.*)$/gm, "$1\\'$2") + "'\n});";
 	});
 	code = code.replace(/^الأوامر الخاصة بالعنصر (.*?) هى أنه (.*?)\,$/gm, function (match, p1, p2, offset, string) {
 		i++;
@@ -224,10 +226,10 @@ if ($('en-uk').length) {
 	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, "ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,");
 	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بأوامره بالخواص دى:$/gm, "ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,\nالصفات بتاعته بالأوامر,");
 	code = code.replace(/^(.*?) (بتاعه|بتاعته|بتاعها|بتاعتها) (.*)\,$/gm, function (match, p1, p2, p3, offset, string) {
-		return p1.replace(/ /g, '_').replace(/^ال/gm, '') + ": '" + p3.replace(/^'(.*?)'(.*)'$/gm, "'$1\\'$2'") + "',";
+		return p1.replace(/ /g, '_').replace(/^ال/gm, '') + ": '" + p3.replace(/^(.*?)'(.*)$/gm, "$1\\'$2") + "',";
 	});
 	code = code.replace(/^(.*?) (بتاعه|بتاعته|بتاعها|بتاعتها) (.*)\.$/gm, function (match, p1, p2, p3, offset, string) {
-		return p1.replace(/ /g, '_').replace(/^ال/gm, '') + ": '" + p3.replace(/^'(.*?)'(.*)'$/gm, "'$1\\'$2'") + "'\n});";
+		return p1.replace(/ /g, '_').replace(/^ال/gm, '') + ": '" + p3.replace(/^(.*?)'(.*)$/gm, "$1\\'$2") + "'\n});";
 	});
 	code = code.replace(/^الأوامر بتاعت العنصر (.*?) هية إنه (.*?)\,$/gm, function (match, p1, p2, offset, string) {
 		i++;
