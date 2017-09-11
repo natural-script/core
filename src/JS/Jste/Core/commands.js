@@ -134,9 +134,19 @@ window.evaluateScript = function (script, event, type) {
                         targetURL = window.commandsFnTranslations('c47t', '" + event + "', " + commandVarA + "); \
                         window.changePage(targetURL); \
                         window.setURLParameter('page', targetURL); \
-                    } else if (window.commandsFnTranslations('c91q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c91r')) { \
+                    } \
+                    " + typeSuffix + eventSuffix + " \
+            })(" + commandVarB + ");";
+    } else if (script == 'S18') {
+        return "(function (" + commandVarB + ") { \
+				$('#' + elementName + '').css('cursor', 'pointer'); \
+                " + eventPrefix + typePrefix + " \
+                    if (window.commandsFnTranslations('c91q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c91r')) { \
                         targetURL = window.commandsFnTranslations('c91t', '" + event + "', " + commandVarA + "); \
                         $('#' + targetURL + '').modal('open'); \
+                    } else if (window.commandsFnTranslations('c93q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c93r')) { \
+                        targetURL = window.commandsFnTranslations('c93t', '" + event + "', " + commandVarA + "); \
+                        $('#' + targetURL + '').sideNav('show'); \
                     } \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";

@@ -13,9 +13,6 @@ $(function () {
         var uniqueID = document.uniqueID();
         document[uniqueID + 'checker'] = setInterval(function () {
             if (document.lang == 0 || document.lang == 1 || document.lang == 2 || document.lang == 3 || document.lang == 4 || document.lang == 5) {
-                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-                //----------------------------------------------------------------Dialog Box------------------------------------------------------------------------------------------------------------------------------------------//
-                //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
                 $.fn[window.dialogBoxTranslations[document.lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
@@ -131,7 +128,7 @@ $(function () {
                             $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.lang]] + '%)');
                         }
                         $('#' + name + '').modal();
-                        $('#' + name + '').css('position', 'fixed')
+                        $('#' + name + '').css('position', 'fixed');
                     });
                 };
 

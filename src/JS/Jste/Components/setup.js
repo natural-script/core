@@ -18,7 +18,7 @@ $(function () {
                     var settings = $.extend({
                         [logoTranslations[document.lang]]: null,
                         [titleTranslations[document.lang]]: null,
-                        [modeTranslations[document.lang]]: 'site',
+                        [modeTranslations[document.lang]]: siteTranslations[document.lang],
                         [widthTranslations[document.lang]]: window.innerWidth,
                         [lengthTranslations[document.lang]]: window.innerHeight,
                         [directionTranslations[document.lang]]: window.verticalTranslations[document.lang],
@@ -27,10 +27,10 @@ $(function () {
                     return this.each(function () {
                         document.defaultWindowLength = settings[lengthTranslations[document.lang]];
                         document.defaultWindowWidth = settings[widthTranslations[document.lang]];
-                        if (settings[modeTranslations[document.lang]] == 'site') {
+                        if (settings[modeTranslations[document.lang]] == siteTranslations[document.lang]) {
                             $('body').append('<contents></contents>');
-                        } else if (settings[modeTranslations[document.lang]] == 'app') {
-                            $('body').append('<paper-header-panel><paper-toolbar><paper-button slot="top" on-tap="menuAction"><i class="material-icons">menu</i></paper-button><div slot="top" class="title">' + settings[titleTranslations[document.lang]] + '</div></paper-toolbar><div><contents></contents></div></paper-header-panel>');
+                        } else if (settings[modeTranslations[document.lang]] == appTranslations[document.lang]) {
+                            $('body').append('<paper-header-panel><paper-toolbar><a slot="top" class="waves-effect waves-light transparent"><i class="material-icons">menu</i></a><div slot="top" class="title" style="margin-left: 25px;">' + settings[titleTranslations[document.lang]] + '</div></paper-toolbar><div><contents></contents></div></paper-header-panel>');
                         }
                         if (settings[logoTranslations[document.lang]]) {
                             $('head').append('<link rel="icon" type="image/png" href="' + settings[logoTranslations[document.lang]] + '">');

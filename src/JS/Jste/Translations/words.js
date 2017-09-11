@@ -165,4 +165,7 @@ window.withCounterTranslations = ['with a counter', 'with a counter', "avec un c
 window.ifTranslations = ['if', 'if', "si", 'لو', 'لو', 'と'];
 window.verticalTranslations = ['vertical', 'vertical', "verticale", 'عمودى', 'عمودى', '垂直'];
 window.horizontalTranslations = ['horizontal', 'horizontal', "horizontal", 'أفقي', 'أفقي', '水平'];
+window.siteTranslations = ['site', 'site', "site", 'موقع', 'سايت', 'サイト'];
+window.appTranslations = ['app', 'app', "app", 'تطبيق', 'اب', 'アプリ'];
+window.sidebarTranslations = ['sidebar', 'sidebar', "barre_latérale", 'شريط_جانبى', 'شريط_جانبى', 'サイドバー'];
 window.clonedElementTranslations = ['cloned_element', 'cloned_element', "élément_clone", 'عنصر_المستنسخ', 'عنصر_المستنسخ', 'クローンされた要素'];

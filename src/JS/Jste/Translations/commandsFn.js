@@ -1150,7 +1150,7 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('go to ')[1].split(' ')[0] + ' ' + commandValue.split('go to ')[1].split(' ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split("aller à ")[1].split(' ')[0] + ' ' + commandValue.split('go to ')[1].split(' ')[1];
+			return commandValue.split("aller à ")[1].split(' ')[0] + ' ' + commandValue.split('aller à ')[1].split(' ')[1];
 		} else if (document.lang == 3) {
 			return commandValue.split('اذهب إلى ')[1].split(' ')[0] + ' ' + commandValue.split('go to ')[1].split(' ')[1];
 		} else if (document.lang == 4) {
@@ -1192,7 +1192,7 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('go to ')[1].split(' ')[0] + ' ' + commandValue.split('go to ')[1].split(' ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split("aller à ")[1].split(' ')[0] + ' ' + commandValue.split('go to ')[1].split(' ')[1];
+			return commandValue.split("aller à ")[1].split(' ')[0] + ' ' + commandValue.split('aller à ')[1].split(' ')[1];
 		} else if (document.lang == 3) {
 			return commandValue.split('اذهب إلى ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
@@ -2168,15 +2168,15 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c91q') {
 		if (document.lang == 0) {
-			return commandValue.split('go to ')[1].split(' ')[0] + ' ' + commandValue.split('go to ')[1].split(' ')[1] + ' ' + commandValue.split('go to ')[1].split(' ')[2];
+			return commandValue.split('open ')[1].split(' ')[0] + ' ' + commandValue.split('open ')[1].split(' ')[1] + ' ' + commandValue.split('open ')[1].split(' ')[2];
 		} else if (document.lang == 1) {
-			return commandValue.split('go to ')[1].split(' ')[0] + ' ' + commandValue.split('go to ')[1].split(' ')[1] + ' ' + commandValue.split('go to ')[1].split(' ')[2];
+			return commandValue.split('open ')[1].split(' ')[0] + ' ' + commandValue.split('open')[1].split(' ')[1] + ' ' + commandValue.split('open ')[1].split(' ')[2];
 		} else if (document.lang == 2) {
-			return commandValue.split("aller à ")[1].split(' ')[0] + ' ' + commandValue.split('go to ')[1].split(' ')[1];
+			return commandValue.split("ouvrir ")[1].split(' ')[0] + ' ' + commandValue.split('ouvrir ')[1].split(' ')[1] + ' ' + commandValue.split('ouvrir ')[1].split(' ')[2] + ' ' + commandValue.split('ouvrir ')[1].split(' ')[3];
 		} else if (document.lang == 3) {
-			return commandValue.split('اذهب إلى ')[1].split(' ')[0] + ' ' + commandValue.split('اذهب إلى ')[1].split(' ')[1];
+			return commandValue.split('افتح ')[1].split(' ')[0] + ' ' + commandValue.split('افتح ')[1].split(' ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('روح إلى ')[1].split(' ')[0] + ' ' + commandValue.split('روح إلى ')[1].split(' ')[1];
+			return commandValue.split('افتح ')[1].split(' ')[0] + ' ' + commandValue.split('افتح ')[1].split(' ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('the result of ')[1].split(' ')[0];
 		}
@@ -2186,7 +2186,7 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return 'the dialog box';
 		} else if (document.lang == 2) {
-			return 'la page';
+			return 'la boîte de dialogue';
 		} else if (document.lang == 3) {
 			return 'مربع الحوار';
 		} else if (document.lang == 4) {
@@ -2200,11 +2200,81 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('the dialog box ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split("le courriella page ")[1];
+			return commandValue.split("la boîte de dialogue ")[1];
 		} else if (document.lang == 3) {
 			return commandValue.split('مربع الحوار ')[1];
 		} else if (document.lang == 4) {
 			return commandValue.split('مربع الحوار ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('ページ ')[1];
+		}
+	} else if (commandCode == 'c92q') {
+		if (document.lang == 0) {
+			return commandValue.split(event)[1].split(' ')[0];
+		} else if (document.lang == 1) {
+			return commandValue.split(event)[1].split(' ')[0];
+		} else if (document.lang == 2) {
+			return commandValue.split(event)[1].split(' ')[0];
+		} else if (document.lang == 3) {
+			return commandValue.split(event)[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split(event)[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split(event)[1].split(' ')[0];
+		}
+	} else if (commandCode == 'c92r') {
+		if (document.lang == 0) {
+			return 'open';
+		} else if (document.lang == 1) {
+			return 'open';
+		} else if (document.lang == 2) {
+			return 'ouvrir';
+		} else if (document.lang == 3) {
+			return 'افتح';
+		} else if (document.lang == 4) {
+			return 'افتح';
+		} else if (document.lang == 5) {
+			return 'に行く';
+		}
+	} else if (commandCode == 'c93q') {
+		if (document.lang == 0) {
+			return commandValue.split('open ')[1].split(' ')[0] + ' ' + commandValue.split('open ')[1].split(' ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('open ')[1].split(' ')[0] + ' ' + commandValue.split('open')[1].split(' ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split("ouvrir ")[1].split(' ')[0] + ' ' + commandValue.split('ouvrir ')[1].split(' ')[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('افتح ')[1].split(' ')[0] + ' ' + commandValue.split('افتح ')[1].split(' ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('افتح ')[1].split(' ')[0] + ' ' + commandValue.split('افتح ')[1].split(' ')[1];
+		} else if (document.lang == 5) {
+			return commandValue.split('the result of ')[1].split(' ')[0];
+		}
+	} else if (commandCode == 'c93r') {
+		if (document.lang == 0) {
+			return 'the sidebar';
+		} else if (document.lang == 1) {
+			return 'the sidebar';
+		} else if (document.lang == 2) {
+			return 'barre latérale';
+		} else if (document.lang == 3) {
+			return 'الشريط الجانبى';
+		} else if (document.lang == 4) {
+			return 'الشريط الجانبى';
+		} else if (document.lang == 5) {
+			return 'ページ';
+		}
+	} else if (commandCode == 'c93t') {
+		if (document.lang == 0) {
+			return commandValue.split('the sidebar ')[1];
+		} else if (document.lang == 1) {
+			return commandValue.split('the sidebar ')[1];
+		} else if (document.lang == 2) {
+			return commandValue.split("barre latérale ")[1];
+		} else if (document.lang == 3) {
+			return commandValue.split('الشريط الجانبى ')[1];
+		} else if (document.lang == 4) {
+			return commandValue.split('الشريط الجانبى ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('ページ ')[1];
 		}

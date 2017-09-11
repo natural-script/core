@@ -1,5 +1,5 @@
 /*!
- * Container
+ * Sidebar
  * https://project-jste.github.com/
  *
  * Copyright 2017 Jste Team
@@ -13,7 +13,7 @@ $(function () {
         var uniqueID = document.uniqueID();
         document[uniqueID + 'checker'] = setInterval(function () {
             if (document.lang == 0 || document.lang == 1 || document.lang == 2 || document.lang == 3 || document.lang == 4 || document.lang == 5) {
-                $.fn[window.containerTranslations[document.lang]] = function (options) {
+                $.fn[window.sidebarTranslations[document.lang]] = function (options) {
                     // Establish our default settings
                     var settings = $.extend({
                         [window.fontColorTranslations[document.lang]]: null,
@@ -31,23 +31,18 @@ $(function () {
                         [window.distanceFromRightTranslations[document.lang]]: null,
                         [window.positionTranslations[document.lang]]: null,
                         [window.containerTranslations[document.lang]]: null,
-                        [window.attributesTranslations[document.lang]]: null,
                         [window.backgroundTranslations[document.lang]]: null,
-                        [window.withoutShadowTranslations[document.lang]]: null,
                         [window.commandsTranslations[document.lang]]: null
                     }, options);
                     return this.each(function () {
-                        var elevation = 2;
                         var name = settings[window.nameTranslations[document.lang]];
-                        if (settings[window.attributesTranslations[document.lang]]) {
-                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
-                            for (i = 0; i < propertiesArray.length; i++) {
-                                if (propertiesArray[i] == window.withoutShadowTranslations[document.lang]) {
-                                    elevation = 0;
-                                }
-                            }
+                        var edge;
+                        if (document.lang == 3 || document.lang == 4) {
+                            edge = 'left';
+                        } else {
+                            edge = 'right';
                         }
-                        var out = '<paper-material elevation="' + elevation + '" id="' + name + '" class="' + name + '"></paper-material>'
+                        var out = '<ul id="' + name + '" data-activates="' + name + '" class="side-nav"></ul>';
                         if (settings[window.containerTranslations[document.lang]]) {
                             if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
                                 $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
@@ -57,45 +52,17 @@ $(function () {
                         } else {
                             $('contents').append(out);
                         }
-                        if (settings[window.attributesTranslations[document.lang]]) {
-                            var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
-                            for (i = 0; i < propertiesArray.length; i++) {
-                                if (propertiesArray[i] == window.gridTranslations[document.lang]) {
-                                    $('#' + name + '').addClass('row');
-                                    $('#' + name + '').css('text-align', 'center');
-                                }
-                            }
-                        }
+                        $('#' + name + '').sideNav({
+                            edge: edge
+                        });
                         if (settings[window.fontColorTranslations[document.lang]]) {
                             window.setFontColour(name, settings[window.fontColorTranslations[document.lang]]);
                         }
                         if (settings[window.fontStyleTranslations[document.lang]]) {
                             $('#' + name + '').css('font-style', settings[window.fontStyleTranslations[document.lang]]);
                         }
-                        if (settings[window.shapeTranslations[document.lang]]) {
-                            if (settings[window.shapeTranslations[document.lang]] == window.triangleTranslations[document.lang]) {
-                                $('#' + name + '').addClass('triangle');
-                            } else if (settings[window.shapeTranslations[document.lang]] == window.trapezoidTranslations[document.lang]) {
-                                $('#' + name + '').addClass('trapezoid');
-                            } else if (settings[window.shapeTranslations[document.lang]] == window.parallelogramTranslations[document.lang]) {
-                                $('#' + name + '').addClass('parallelogram');
-                            } else if (settings[window.shapeTranslations[document.lang]] == window.rhombusTranslations[document.lang]) {
-                                $('#' + name + '').addClass('rhombus');
-                            } else if (settings[window.shapeTranslations[document.lang]] == window.pentagonTranslations[document.lang]) {
-                                $('#' + name + '').addClass('pentagon');
-                            } else if (settings[window.shapeTranslations[document.lang]] == window.hexagonTranslations[document.lang]) {
-                                $('#' + name + '').addClass('hexagon');
-                            } else if (settings[window.shapeTranslations[document.lang]] == window.heptagonTranslations[document.lang]) {
-                                $('#' + name + '').addClass('heptagon');
-                            } else if (settings[window.shapeTranslations[document.lang]] == window.octagonTranslations[document.lang]) {
-                                $('#' + name + '').addClass('octagon');
-                            } else if (settings[window.shapeTranslations[document.lang]] == window.decagonTranslations[document.lang]) {
-                                $('#' + name + '').addClass('decagon');
-                            } else if (settings[window.shapeTranslations[document.lang]] == window.circleTranslations[document.lang]) {
-                                $('#' + name + '').addClass('circle');
-                            } else if (settings[window.shapeTranslations[document.lang]] == window.ellipseTranslations[document.lang]) {
-                                $('#' + name + '').addClass('ellipse');
-                            }
+                        if (settings[window.backgroundTranslations[document.lang]]) {
+                            window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
                         }
                         if (settings[window.thicknessTranslations[document.lang]]) {
                             if (settings[window.thicknessTranslations[document.lang]] == window.thickTranslations[document.lang]) {
@@ -113,7 +80,7 @@ $(function () {
                         if (settings[window.positionTranslations[document.lang]]) {
                             $('#' + name + '').css('position', settings[window.positionTranslations[document.lang]]);
                         } else {
-                            $('#' + name + '').css('position', 'absolute');
+                            $('#' + name + '').css('position', 'relative');
                         }
                         if (settings[window.distanceFromBottomTranslations[document.lang]]) {
                             window.setDistance(name, 'bottom', settings[window.distanceFromBottomTranslations[document.lang]]);
@@ -136,32 +103,14 @@ $(function () {
                         if (settings[window.lengthTranslations[document.lang]]) {
                             window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]]);
                         }
-                        if (settings[window.attributesTranslations[document.lang]]) {
-                            if (settings[window.attributesTranslations[document.lang]].indexOf(window.parallaxTranslations[document.lang]) > -1) {
-                                if (settings[window.backgroundTranslations[document.lang]]) {
-                                    window.requestBLOB(settings[window.backgroundTranslations[document.lang]], encodeURIComponent(settings[window.backgroundTranslations[document.lang]]).replace(/\./g, '%2E'), function (BLOBURL) {
-                                        $('#' + name + '').css('background', 'url(' + BLOBURL + ')').addClass('parallax');
-                                        setTimeout(function () {
-                                            window.URL.revokeObjectURL(BLOBURL);
-                                        }, 10000);
-                                    });
-                                }
-                            } else {
-                                if (settings[window.backgroundTranslations[document.lang]]) {
-                                    window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
-                                }
-                            }
-                        } else {
-                            if (settings[window.backgroundTranslations[document.lang]]) {
-                                window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
-                            }
-                        }
                         if (settings[window.animationTranslations[document.lang]]) {
                             window.setAnimation(name, settings[window.animationTranslations[document.lang]]);
                         }
                         if (settings[window.transparencyTranslations[document.lang]]) {
                             $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.lang]] + '%)');
                         }
+                        $('#' + name + '').modal();
+                        $('#' + name + '').css('position', 'fixed');
                     });
                 };
 

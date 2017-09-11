@@ -44,8 +44,10 @@ window.execute = function (elementName, command) {
 		if (pureCommand.startsWith(document[getTheEventCode(pureCommand)])) {
 			if (window.commandsFnTranslations('c2q', getTheEventCode(pureCommand), pureCommand) == window.commandsFnTranslations('c2ruA')) {
 				eval(window.evaluateScript('S1', getTheEventCode(pureCommand), commandType));
-			} else if (window.commandsFnTranslations('c5q', getTheEventCode(pureCommand), pureCommand) == window.commandsFnTranslations('c5r'), pureCommand.includes(window.commandsFnTranslations('c44r')) || pureCommand.includes(window.commandsFnTranslations('c45r')) || pureCommand.includes(window.commandsFnTranslations('c46r')) || pureCommand.includes(window.commandsFnTranslations('c47r')) || pureCommand.includes(window.commandsFnTranslations('c91r'))) {
+			} else if (window.commandsFnTranslations('c5q', getTheEventCode(pureCommand), pureCommand) == window.commandsFnTranslations('c5r'), pureCommand.includes(window.commandsFnTranslations('c44r')) || pureCommand.includes(window.commandsFnTranslations('c45r')) || pureCommand.includes(window.commandsFnTranslations('c46r')) || pureCommand.includes(window.commandsFnTranslations('c47r'))) {
 				eval(window.evaluateScript('S2', getTheEventCode(pureCommand), commandType));
+			} else if (window.commandsFnTranslations('c92q', getTheEventCode(pureCommand), pureCommand) == window.commandsFnTranslations('c92r'), pureCommand.includes(window.commandsFnTranslations('c91r')) || pureCommand.includes(window.commandsFnTranslations('c93r'))) {
+				eval(window.evaluateScript('S18', getTheEventCode(pureCommand), commandType));
 			} else if (window.commandsFnTranslations('c2q', getTheEventCode(pureCommand), pureCommand) == window.commandsFnTranslations('c2ruB')) {
 				eval(window.evaluateScript('S3', getTheEventCode(pureCommand), commandType));
 			} else if (window.commandsFnTranslations('c2q', getTheEventCode(pureCommand), pureCommand) == window.commandsFnTranslations('c2ruC')) {
@@ -78,42 +80,46 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S9', getTheEventCode(pureCommand), commandType));
 			}
 		} else if (pureCommand.startsWith(document.E17)) {
-			annyang.start();
-			var voiceCommand = window.commandsFnTranslations('c40', 'E17', pureCommand);
-			if (window.commandsFnTranslations('c2q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c2ruA')) {
-				eval(window.evaluateScript('S1', 'E17', commandType));
-			} else if (window.commandsFnTranslations('c5q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c5r')) {
-				eval(window.evaluateScript('S2', 'E17', commandType));
-			} else if (window.commandsFnTranslations('c2q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c2ruB')) {
-				eval(window.evaluateScript('S3', 'E17', commandType));
-			} else if (window.commandsFnTranslations('c2q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c2ruC')) {
-				eval(window.evaluateScript('S4', 'E17', commandType));
-			} else if (window.commandsFnTranslations('c9q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c9r')) {
-				eval(window.evaluateScript('S5', 'E17', commandType));
-			} else if (window.commandsFnTranslations('c13q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c13r')) {
-				eval(window.evaluateScript('S6', 'E17', commandType));
-			} else if (window.commandsFnTranslations('c55q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c55r')) {
-				eval(window.evaluateScript('S10', 'E17', commandType));
-			} else if (window.commandsFnTranslations('c59q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c59r')) {
-				eval(window.evaluateScript('S11', 'E17', commandType));
-			} else if (window.commandsFnTranslations('c64q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c64r')) {
-				eval(window.evaluateScript('S12', 'E17', commandType));
-			} else if (window.commandsFnTranslations('c68q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c68r')) {
-				eval(window.evaluateScript('S13', 'E17', commandType));
-			} else if (window.commandsFnTranslations('c73q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c73r')) {
-				eval(window.evaluateScript('S14', 'E17', commandType));
-			} else if (window.commandsFnTranslations('c77q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c77r')) {
-				eval(window.evaluateScript('S15', 'E17', commandType));
-			} else if (window.commandsFnTranslations('c82q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c82r')) {
-				eval(window.evaluateScript('S16', 'E17', commandType));
-			} else if (window.commandsFnTranslations('c86q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c86r')) {
-				eval(window.evaluateScript('S17', 'E17', commandType));
-			} else if (window.commandsFnTranslations('c18q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c18r')) {
-				eval(window.evaluateScript('S7', 'E17', commandType));
-			} else if (window.commandsFnTranslations('c23q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c23r')) {
-				eval(window.evaluateScript('S8', 'E17', commandType));
-			} else if (window.commandsFnTranslations('c27q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c27r')) {
-				eval(window.evaluateScript('S9', 'E17', commandType));
+			if (window.isChrome) {
+				annyang.start();
+				var voiceCommand = window.commandsFnTranslations('c40', 'E17', pureCommand);
+				if (window.commandsFnTranslations('c2q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c2ruA')) {
+					eval(window.evaluateScript('S1', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c5q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c5r')) {
+					eval(window.evaluateScript('S2', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c92q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c92r'), pureCommand.includes(window.commandsFnTranslations('c91r')) || pureCommand.includes(window.commandsFnTranslations('c93r'))) {
+					eval(window.evaluateScript('S18', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c2q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c2ruB')) {
+					eval(window.evaluateScript('S3', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c2q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c2ruC')) {
+					eval(window.evaluateScript('S4', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c9q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c9r')) {
+					eval(window.evaluateScript('S5', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c13q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c13r')) {
+					eval(window.evaluateScript('S6', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c55q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c55r')) {
+					eval(window.evaluateScript('S10', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c59q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c59r')) {
+					eval(window.evaluateScript('S11', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c64q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c64r')) {
+					eval(window.evaluateScript('S12', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c68q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c68r')) {
+					eval(window.evaluateScript('S13', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c73q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c73r')) {
+					eval(window.evaluateScript('S14', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c77q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c77r')) {
+					eval(window.evaluateScript('S15', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c82q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c82r')) {
+					eval(window.evaluateScript('S16', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c86q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c86r')) {
+					eval(window.evaluateScript('S17', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c18q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c18r')) {
+					eval(window.evaluateScript('S7', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c23q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c23r')) {
+					eval(window.evaluateScript('S8', 'E17', commandType));
+				} else if (window.commandsFnTranslations('c27q', 'E17', pureCommand, voiceCommand) == window.commandsFnTranslations('c27r')) {
+					eval(window.evaluateScript('S9', 'E17', commandType));
+				}
 			}
 		}
 	}
