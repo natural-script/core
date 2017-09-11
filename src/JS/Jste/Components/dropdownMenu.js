@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-6
+ * Date: 2017-09-11
  */
 $(function () {
     $(function () {
@@ -51,8 +51,8 @@ $(function () {
                                     out += '<li class="divider"></li>';
                                 }
                                 var items = itemsGroups[a].split(' &amp;&amp;&amp; ');
-                                for (i = 0; i < items.length; i++) {
-                                    out += '<li><a href="' + items[i] + '">' + items[i] + '</a></li>';
+                                for (var i = 0; i < items.length; i++) {
+                                    out += '<li><a id="' + items[i].split(' ').join('_') + '_dropdownItem" href="">' + items[i] + '</a></li>';
                                 }
                             }
                         }
@@ -120,6 +120,22 @@ $(function () {
                         }
                         if (settings[window.commandsTranslations[document.lang]]) {
                             window.execute(name, settings[window.commandsTranslations[document.lang]]);
+                        }
+                        if (settings[window.commandsTranslations[document.lang] + 0]) {
+                            var commandsNo = 0;
+                            var preCommands;
+                            var itemName;
+                            var pureCommands;
+                            while (settings[window.commandsTranslations[document.lang] + commandsNo] != undefined) {
+                                commandsNo++;
+                            }
+                            console.log(commandsNo)
+                            for (var i = 0; i < commandsNo; i++) {
+                                preCommands = settings[window.commandsTranslations[document.lang] + i];
+                                itemName = preCommands.split(':')[0].split(' ').join('_') + '_dropdownItem';
+                                pureCommands = preCommands.split(':')[1];
+                                window.execute(itemName, pureCommands);
+                            }
                         }
                         if (settings[window.widthTranslations[document.lang]]) {
                             window.setDimension(name, 'width', settings[window.widthTranslations[document.lang]]);

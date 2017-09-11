@@ -142,7 +142,12 @@ $(function () {
                         if (settings[window.attributesTranslations[document.lang]]) {
                             if (settings[window.attributesTranslations[document.lang]].indexOf(window.parallaxTranslations[document.lang]) > -1) {
                                 if (settings[window.backgroundTranslations[document.lang]]) {
-                                    $('#' + name + '').css('background', 'url(' + settings[window.backgroundTranslations[document.lang]] + ')').addClass('parallax');
+                                    window.requestBLOB(settings[window.backgroundTranslations[document.lang]], encodeURIComponent(settings[window.backgroundTranslations[document.lang]]).replace(/\./g, '%2E'), function (BLOBURL) {
+                                        $('#' + name + '').css('background', 'url(' + BLOBURL + ')').addClass('parallax');
+                                        setTimeout(function () {
+                                            window.URL.revokeObjectURL(BLOBURL);
+                                        }, 10000);
+                                    });
                                 }
                             } else {
                                 if (settings[window.backgroundTranslations[document.lang]]) {

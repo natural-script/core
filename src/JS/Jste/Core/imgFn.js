@@ -7,10 +7,14 @@ function showImageA(name, URLID, source) {
 	if (typeof nudity !== typeof undefined && nudity !== false) {
 		$.get("http://0.0.0.0:5050/childModeStatus", function (data) {
 			if (data == 'off') {
-				window.fadeOut('showImage_' + name + '_containerA');
+				if ($('showImage_' + name + '_containerA').length > -1) {
+					window.fadeOut('showImage_' + name + '_containerA');
+				}
 				window.fadeIn('showImage_' + name + '_containerB');
 			} else if (data == 'on') {
-				window.fadeOut('showImage_' + name + '_containerA');
+				if ($('showImage_' + name + '_containerA').length > -1) {
+					window.fadeOut('showImage_' + name + '_containerA');
+				}
 				window.fadeIn('showImage_' + name + '_containerD');
 			}
 		});
@@ -21,7 +25,7 @@ function showImageA(name, URLID, source) {
 		$('#' + name + '').on('load', function () {
 			window.URL.revokeObjectURL($('#' + name + '').attr('src'));
 			$('#' + name + '').css('-webkit-filter', 'blur(0px)');
-			if ($('showImage_' + name + '_containerA').length > 0) {
+			if ($('showImage_' + name + '_containerA').length > -1) {
 				window.fadeOut('showImage_' + name + '_containerA');
 			}
 			if (typeof fx !== typeof undefined && fx !== false) {
