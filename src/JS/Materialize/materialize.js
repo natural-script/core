@@ -1915,7 +1915,12 @@ if (Vel) {
       this.$el[0].M_Modal = this;
       this.id = $el.attr('id');
       this.openingTrigger = undefined;
+      if(navigator.userAgent.indexOf('Firefox') != -1){
       this.$overlay = $('<div class="modal-overlay"></div>');
+      this.$overlay[0] = this.$overlay[1];
+      } else {
+          this.$overlay = $('<div class="modal-overlay"></div>');
+      }
 
       Modal._increment++;
       Modal._count++;

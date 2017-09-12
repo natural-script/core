@@ -6,12 +6,12 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-10
+ * Date: 2017-09-12
  */
 window.evaluateScript = function (script, event, type) {
     var eventPrefix = '';
     if (event == 'E1') {
-        eventPrefix = "$('#' + elementName + '').click(function () {";
+        eventPrefix = "$('#' + elementName + '').on('tap', function () {";
         eventSuffix = "});";
     } else if (event == 'E2') {
         eventPrefix = "$('#' + elementName + '').mouseenter(function () {";
@@ -29,7 +29,7 @@ window.evaluateScript = function (script, event, type) {
         eventPrefix = "$('#' + elementName + '').mouseup(function () {";
         eventSuffix = "});";
     } else if (event == 'E7') {
-        eventPrefix = "$('#' + elementName + '').dblclick(function () {";
+        eventPrefix = "$('#' + elementName + '').on('doubletap', function () {";
         eventSuffix = "});";
     } else if (event == 'E8') {
         eventPrefix = "$('#' + elementName + '').contextmenu(function () {";
@@ -72,38 +72,38 @@ window.evaluateScript = function (script, event, type) {
         typePrefix = "";
         typeSuffix = "";
         if (event == 'E17') {
-            commandVarA = "pureCommand, voiceCommand"
+            commandVarA = "pureCommand, voiceCommand";
         } else {
-            commandVarA = "pureCommand"
+            commandVarA = "pureCommand";
         }
-        commandVarB = "pureCommand"
+        commandVarB = "pureCommand";
     } else if (type == 'T1') {
         typePrefix = "setTimeout(function () {";
         typeSuffix = "}, timeoutPeriod);";
         if (event == 'E17') {
-            commandVarA = "pureCommand, voiceCommand"
+            commandVarA = "pureCommand, voiceCommand";
         } else {
-            commandVarA = "pureCommand"
+            commandVarA = "pureCommand";
         }
-        commandVarB = "pureCommand"
+        commandVarB = "pureCommand";
     } else if (type == 'T2') {
         typePrefix = "setInterval(function () {";
         typeSuffix = "}, intervalPeriod);";
         if (event == 'E17') {
-            commandVarA = "pureCommand, voiceCommand"
+            commandVarA = "pureCommand, voiceCommand";
         } else {
-            commandVarA = "pureCommand"
+            commandVarA = "pureCommand";
         }
-        commandVarB = "pureCommand"
+        commandVarB = "pureCommand";
     } else if (type == 'T3') {
         typePrefix = "if (" + document.ifStatement + ") {";
         typeSuffix = "}";
         if (event == 'E17') {
-            commandVarA = "pureCommand, voiceCommand"
+            commandVarA = "pureCommand, voiceCommand";
         } else {
-            commandVarA = "pureCommand"
+            commandVarA = "pureCommand";
         }
-        commandVarB = "pureCommand"
+        commandVarB = "pureCommand";
     }
     if (script == 'S1') {
         return "(function () { \
@@ -148,6 +148,42 @@ window.evaluateScript = function (script, event, type) {
                         targetURL = window.commandsFnTranslations('c93t', '" + event + "', " + commandVarA + "); \
                         $('#' + targetURL + '').sideNav('show'); \
                     } \
+                    " + typeSuffix + eventSuffix + " \
+            })(" + commandVarB + ");";
+    } else if (script == 'S19') {
+        return "(function (" + commandVarB + ") { \
+                " + eventPrefix + typePrefix + " \
+                window.plugins.flashlight.available(function(isAvailable) { \
+                    if (isAvailable) { \
+                        window.plugins.flashlight.toggle(); \
+                    } else { \
+                        alert('Flashlight not available on this device'); \
+                    } \
+                }); \
+                    " + typeSuffix + eventSuffix + " \
+            })(" + commandVarB + ");";
+    } else if (script == 'S20') {
+        return "(function (" + commandVarB + ") { \
+                " + eventPrefix + typePrefix + " \
+                window.plugins.flashlight.available(function(isAvailable) { \
+                    if (isAvailable) { \
+                        window.plugins.flashlight.switchOn(); \
+                    } else { \
+                        alert('Flashlight not available on this device'); \
+                    } \
+                }); \
+                    " + typeSuffix + eventSuffix + " \
+            })(" + commandVarB + ");";
+    } else if (script == 'S21') {
+        return "(function (" + commandVarB + ") { \
+                " + eventPrefix + typePrefix + " \
+                window.plugins.flashlight.available(function(isAvailable) { \
+                    if (isAvailable) { \
+                        window.plugins.flashlight.switchOff(); \
+                    } else { \
+                        alert('Flashlight not available on this device'); \
+                    } \
+                }); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
     } else if (script == 'S3') {

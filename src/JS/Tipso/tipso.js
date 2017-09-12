@@ -383,6 +383,9 @@
   });
 
   function realHeight(obj) {
+    if(navigator.userAgent.indexOf('Firefox') != -1){
+    obj = $(obj[1]);
+    }
     var clone = obj.clone();
     clone.css("visibility", "hidden");
     $('body').append(clone);

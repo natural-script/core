@@ -535,31 +535,20 @@
 	}
 }());
 
-function nodeScriptReplace(node) {
-	if (nodeScriptIs(node) === true) {
-		node.parentNode.replaceChild(nodeScriptClone(node), node);
+function JSScriptsExec(node) {
+	if (node.tagName === 'SCRIPT') {
+		setTimeout(function () {
+			window.eval(node.innerHTML);
+		}, 100);
 	} else {
 		var i = 0;
 		var children = node.childNodes;
 		while (i < children.length) {
-			nodeScriptReplace(children[i++]);
+			JSScriptsExec(children[i++]);
 		}
 	}
-	return node;
 }
 
-function nodeScriptIs(node) {
-	return node.tagName === 'SCRIPT';
-}
-
-function nodeScriptClone(node) {
-	var script = document.createElement("script");
-	script.text = node.innerHTML;
-	for (var i = node.attributes.length - 1; i >= 0; i--) {
-		script.setAttribute(node.attributes[i].name, node.attributes[i].value);
-	}
-	return script;
-}
 /**
  * please-wait
  * Display a nice loading screen while your app loads
@@ -674,6 +663,8 @@ function nodeScriptClone(node) {
 			this._logoElem = this._loadingElem.getElementsByClassName("pg-loading-logo")[0];
 			if (this._logoElem != null) {
 				this._logoElem.src = this.options.logo;
+				this._logoElem.width = 180;
+				this._logoElem.height = 180;
 			}
 			removeClass("pg-loaded", document.body);
 			addClass("pg-loading", document.body);
@@ -875,7 +866,7 @@ window.onload = function () {
 	} else if (document.getElementsByTagName("JP-JP").length == 1) {
 		logoURL = document.getElementsByTagName("JP-JP")[0].innerHTML.split("ロゴ: '").pop().split(",").shift();
 	}
-	var loading_screen = pleaseWait({
+	window.loading_screen = pleaseWait({
 		logo: logoURL,
 		backgroundColor: '#f46d3b',
 		loadingHtml: '<div class="spinner"><div class="dot1"></div><div class="dot2"></div></div>'
@@ -890,14 +881,25 @@ window.onload = function () {
 				console.clear();
 				document.getElementsByTagName("BODY")[0].removeAttribute('class');
 				document.getElementsByTagName("BODY")[0].removeAttribute('style');
+				window.loading_screen = pleaseWait({
+					logo: logoURL,
+					backgroundColor: '#f46d3b',
+					loadingHtml: '<div class="spinner"><div class="dot1"></div><div class="dot2"></div></div>'
+				});
+				var pageLoadingChecker = setInterval(function () {
+					if (document.getElementsByTagName("CONTENTS").length > 0) {
+						window.loading_screen.finish();
+						clearInterval(pageLoadingChecker);
+					}
+				}, 1);
 				setTimeout(function () {
 					document.getElementsByTagName("HEAD")[0].innerHTML += request.responseText;
-					nodeScriptReplace(document.getElementsByTagName("HEAD")[0]);
+					JSScriptsExec(document.getElementsByTagName("HEAD")[0]);
 				}, 1000);
 			}
 		};
 		request.send();
-	}
+	};
 	var JsteInstallationCheckingRequest = new XMLHttpRequest();
 	JsteInstallationCheckingRequest.open('GET', 'http://' + localAddress + ':5050/UI/index.html', true);
 	JsteInstallationCheckingRequest.onreadystatechange = function () {
@@ -926,15 +928,16 @@ window.onload = function () {
 									if (currentFileHash === genuineFileHash) {
 										var pageLoadingChecker = setInterval(function () {
 											if (document.getElementsByTagName("CONTENTS").length > 0) {
-												loading_screen.finish();
+												window.loading_screen.finish();
 												clearInterval(pageLoadingChecker);
 											}
 										}, 1);
 										setTimeout(function () {
 											document.getElementsByTagName("HEAD")[0].innerHTML += file_result;
-											nodeScriptReplace(document.getElementsByTagName("HEAD")[0]);
+											JSScriptsExec(document.getElementsByTagName("HEAD")[0]);
 										}, 1000);
 									} else {
+										window.loading_screen.finish();
 										document.getElementsByTagName("BODY")[0].style.background = 'black';
 										document.getElementsByTagName("BODY")[0].innerHTML = '<center><h1 style="color: white;">It seems that you have modified version of Jste :(</h1><button onclick="window.importLiveVersion();">Use the live version instead</button></center>';
 									}
@@ -946,6 +949,7 @@ window.onload = function () {
 				}
 				reader.send(null);
 			} else {
+				window.loading_screen.finish();
 				document.getElementsByTagName("BODY")[0].style.background = 'black';
 				document.getElementsByTagName("BODY")[0].innerHTML = "<center><h1 style='color: white;'>It seems that Jste isn't installed on your device :(</h1><button onclick='window.importLiveVersion();'>Use the live version instead</button></center>";
 			}

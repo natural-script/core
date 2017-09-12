@@ -48,6 +48,12 @@ window.execute = function (elementName, command) {
 				eval(window.evaluateScript('S2', getTheEventCode(pureCommand), commandType));
 			} else if (window.commandsFnTranslations('c92q', getTheEventCode(pureCommand), pureCommand) == window.commandsFnTranslations('c92r'), pureCommand.includes(window.commandsFnTranslations('c91r')) || pureCommand.includes(window.commandsFnTranslations('c93r'))) {
 				eval(window.evaluateScript('S18', getTheEventCode(pureCommand), commandType));
+			} else if (window.commandsFnTranslations('c94q', getTheEventCode(pureCommand), pureCommand) == window.commandsFnTranslations('c94r')) {
+				eval(window.evaluateScript('S19', getTheEventCode(pureCommand), commandType));
+			} else if (window.commandsFnTranslations('c95q', getTheEventCode(pureCommand), pureCommand) == window.commandsFnTranslations('c95r')) {
+				eval(window.evaluateScript('S20', getTheEventCode(pureCommand), commandType));
+			} else if (window.commandsFnTranslations('c96q', getTheEventCode(pureCommand), pureCommand) == window.commandsFnTranslations('c96r')) {
+				eval(window.evaluateScript('S21', getTheEventCode(pureCommand), commandType));
 			} else if (window.commandsFnTranslations('c2q', getTheEventCode(pureCommand), pureCommand) == window.commandsFnTranslations('c2ruB')) {
 				eval(window.evaluateScript('S3', getTheEventCode(pureCommand), commandType));
 			} else if (window.commandsFnTranslations('c2q', getTheEventCode(pureCommand), pureCommand) == window.commandsFnTranslations('c2ruC')) {

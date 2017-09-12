@@ -2278,5 +2278,89 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 5) {
 			return commandValue.split('ページ ')[1];
 		}
+	} else if (commandCode == 'c94q') {
+		if (document.lang == 0) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+		} else if (document.lang == 1) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+		} else if (document.lang == 2) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 3) {
+			return commandValue.split(event)[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split(event)[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split(event)[1].split(' ')[0];
+		}
+	} else if (commandCode == 'c94r') {
+		if (document.lang == 0) {
+			return 'toggle the flashlight';
+		} else if (document.lang == 1) {
+			return 'toggle the flashlight';
+		} else if (document.lang == 2) {
+			return 'basculer la lampe de poche';
+		} else if (document.lang == 3) {
+			return 'افتح';
+		} else if (document.lang == 4) {
+			return 'افتح';
+		} else if (document.lang == 5) {
+			return '懐中電灯を切り換える';
+		}
+	} else if (commandCode == 'c95q') {
+		if (document.lang == 0) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 1) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 2) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 3) {
+			return commandValue.split(event)[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split(event)[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split(event)[1].split(' ')[0];
+		}
+	} else if (commandCode == 'c95r') {
+		if (document.lang == 0) {
+			return 'switch on the flashlight';
+		} else if (document.lang == 1) {
+			return 'switch on the flashlight';
+		} else if (document.lang == 2) {
+			return 'allumer la lampe de poche';
+		} else if (document.lang == 3) {
+			return 'افتح';
+		} else if (document.lang == 4) {
+			return 'افتح';
+		} else if (document.lang == 5) {
+			return '懐中電灯を切り換える';
+		}
+	} else if (commandCode == 'c96q') {
+		if (document.lang == 0) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 1) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 2) {
+			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+		} else if (document.lang == 3) {
+			return commandValue.split(event)[1].split(' ')[0];
+		} else if (document.lang == 4) {
+			return commandValue.split(event)[1].split(' ')[0];
+		} else if (document.lang == 5) {
+			return commandValue.split(event)[1].split(' ')[0];
+		}
+	} else if (commandCode == 'c96r') {
+		if (document.lang == 0) {
+			return 'switch off the flashlight';
+		} else if (document.lang == 1) {
+			return 'switch off the flashlight';
+		} else if (document.lang == 2) {
+			return 'éteignez la lampe de poche';
+		} else if (document.lang == 3) {
+			return 'افتح';
+		} else if (document.lang == 4) {
+			return 'افتح';
+		} else if (document.lang == 5) {
+			return '懐中電灯を切り換える';
+		}
 	}
 }

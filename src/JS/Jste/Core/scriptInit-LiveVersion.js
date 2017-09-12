@@ -9,8 +9,7 @@
  * Date: 2017-09-11
  */
 var code = 'jQuery(document).ready(\nfunction ($) {\nvar ';
-if ($("en-uk").length) {
-	document.lang = 0;
+if (document.lang == 0) {
 	if (window.isChrome) {
 		annyang.setLanguage("en-GB");
 	}
@@ -62,8 +61,7 @@ if ($("en-uk").length) {
 		"an icon of",
 		"a line break");
 	$("en-uk").remove();
-} else if ($("en-us").length) {
-	document.lang = 1;
+} else if (document.lang == 1) {
 	if (window.isChrome) {
 		annyang.setLanguage("en-US");
 	}
@@ -115,8 +113,7 @@ if ($("en-uk").length) {
 		"an icon of",
 		"a line break");
 	$("en-us").remove();
-} else if ($("fr-fr").length) {
-	document.lang = 2;
+} else if (document.lang == 2) {
 	if (window.isChrome) {
 		annyang.setLanguage("fr-FR");
 	}
@@ -163,10 +160,9 @@ if ($("en-uk").length) {
 		"une icône de",
 		"un saut de ligne");
 	$("fr-fr").remove();
-} else if ($("ar-ar").length) {
+} else if (document.lang == 3) {
 	document.isRTL = true;
 	$("html").attr("dir", "rtl").attr("document.lang", "ar");
-	document.lang = 3;
 	if (window.isChrome) {
 		annyang.setLanguage("ar-AE");
 	}
@@ -212,10 +208,9 @@ if ($("en-uk").length) {
 		"ايقونة",
 		"سطر جديد");
 	$("ar-ar").remove();
-} else if ($("ar-eg").length) {
+} else if (document.lang == 4) {
 	document.isRTL = true;
 	$("html").attr("dir", "rtl").attr("document.lang", "ar");
-	document.lang = 4;
 	if (window.isChrome) {
 		annyang.setLanguage("ar-EG");
 	}
@@ -261,8 +256,7 @@ if ($("en-uk").length) {
 		"ايكونة",
 		"سطر جديد");
 	$("ar-eg").remove();
-} else if ($("ja-ja").length) {
-	document.lang = 5;
+} else if (document.lang == 5) {
 	if (window.isChrome) {
 		annyang.setLanguage("ja");
 	}

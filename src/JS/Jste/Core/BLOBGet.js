@@ -39,11 +39,11 @@ function dataURItoBlob(dataURI) {
 //--------------------------------------------Requesting The Stored data URL------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 window.requestBLOB = function (url, URLID, callback) {
-	$.post('http://0.0.0.0:5050/verifyDataURL', {
+	$.post('http://' + window.localAddress + ':5050/verifyDataURL', {
 		URLID: URLID
 	}).done(function (data) {
 		if (data == 'exists') {
-			$.post('http://0.0.0.0:5050/getDataURL', {
+			$.post('http://' + window.localAddress + ':5050/getDataURL', {
 				URLID: URLID
 			}).done(function (data) {
 				callback(dataURItoBlob(data));
@@ -61,7 +61,7 @@ window.requestBLOB = function (url, URLID, callback) {
 					reader.readAsDataURL(BLOBObject);
 					reader.onloadend = function () {
 						dataURL = reader.result;
-						$.post('http://0.0.0.0:5050/insertDataURL', {
+						$.post('http://' + window.localAddress + ':5050/insertDataURL', {
 							URLID: URLID,
 							dataURL: dataURL
 						});
@@ -77,7 +77,7 @@ window.requestBLOB = function (url, URLID, callback) {
 //-----------------------------------Verifying If A Specific data URL Exists------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 window.verifyBLOB = function (URLID, callback) {
-	$.post('http://0.0.0.0:5050/verifyDataURL', {
+	$.post('http://' + window.localAddress + ':5050/verifyDataURL', {
 		URLID: URLID
 	}).done(function (data) {
 		callback(data);

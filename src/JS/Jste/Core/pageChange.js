@@ -8,6 +8,11 @@ window.changePage = function (pageName) {
 		$('title').html(pageName.replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
 			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 		}) + ' | ' + window.title);
+		if (window.mode) {
+			$('.appTitle').html(decodeURIComponent(window.getAllUrlParams().page).replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
+				return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+			}));
+		}
 	}
 };
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -28,6 +33,11 @@ $(function () {
 			$('title').html(decodeURIComponent(window.getAllUrlParams().page).replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
 				return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 			}) + ' | ' + window.title);
+			if (window.mode) {
+				$('.appTitle').html(decodeURIComponent(window.getAllUrlParams().page).replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
+					return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+				}));
+			}
 		}
 		currentLocation = newLocation;
 	});
