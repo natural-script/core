@@ -17,6 +17,7 @@ $(function () {
             [modeTranslations[document.lang]]: siteTranslations[document.lang],
             [widthTranslations[document.lang]]: window.innerWidth,
             [lengthTranslations[document.lang]]: window.innerHeight,
+            [mainColorTranslations[document.lang]]: null,
             [directionTranslations[document.lang]]: window.verticalTranslations[document.lang],
             [attributesTranslations[document.lang]]: null
         }, options);
@@ -38,6 +39,18 @@ $(function () {
                 window.title = settings[titleTranslations[document.lang]].replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
                     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
                 });
+                if (typeof cordova !== 'undefined') {
+                    if (cordova.platformId == 'android') {
+                        RecentsControl.setDescription(window.title);
+                    }
+                }
+            }
+            if (settings[mainColorTranslations[document.lang]]) {
+                if (typeof cordova !== 'undefined') {
+                    if (cordova.platformId == 'android') {
+                        window.setMainColor(settings[mainColorTranslations[document.lang]]);
+                    }
+                }
             }
             if (settings[directionTranslations[document.lang]]) {
                 if (settings[directionTranslations[document.lang]] == window.verticalTranslations[document.lang]) {

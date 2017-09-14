@@ -136,7 +136,7 @@ https://project-jste.github.io/docs/en-uk
 
 ### How to install the dependencies:
 
-<code>cd FRAMEWORK_REPO_ROOT</code>
+<code>cd <FRAMEWORK_REPO_ROOT></code>
 
 <code>npm install -g vulcanize  html-minifier</code>
 
@@ -144,7 +144,7 @@ https://project-jste.github.io/docs/en-uk
 
 ### How to build:
 
-<code>cd FRAMEWORK_REPO_ROOT</code>
+<code>cd <FRAMEWORK_REPO_ROOT></code>
 
 <code>npm start</code>
 

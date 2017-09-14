@@ -9,6 +9,7 @@
  * Date: 2017-09-6
  */
 window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, param1Raw, param2Raw, param3Raw, param4Raw, param5Raw) {
+	var eventSplitter;
 	if (eventRaw == 'E17') {
 		var event = document[eventRaw] + param1Raw + ', ';
 		var param1 = param2Raw;
@@ -22,19 +23,24 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		var param3 = param3Raw;
 		var param4 = param4Raw;
 	}
+	if (eventRaw == 'E0') {
+		eventSplitter = "";
+	} else {
+		eventSplitter = ".split(event)[1]";
+	}
 	if (commandCode == 'c2q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0].split('ه')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0].split('ه')[0]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0].split('ه')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0].split('ه')[0]");
 		} else if (document.lang == 5) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
 		}
 	} else if (commandCode == 'c2ruA') {
 		if (document.lang == 0) {
@@ -122,17 +128,17 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c5q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 5) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		}
 	} else if (commandCode == 'c5r') {
 		if (document.lang == 0) {
@@ -178,17 +184,17 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c9q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
 		} else if (document.lang == 5) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		}
 	} else if (commandCode == 'c9r') {
 		if (document.lang == 0) {
@@ -276,17 +282,17 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c13q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		}
 	} else if (commandCode == 'c13r') {
 		if (document.lang == 0) {
@@ -388,17 +394,17 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c18q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[6];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[6]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[6];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[6]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[5] + ' ' + commandValue.split(event)[1].split(' ')[7];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[5] + ' ' + commandValue" + eventSplitter + ".split(' ')[7]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[5] + ' ' + commandValue.split(event)[1].split(' ')[7];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[5] + ' ' + commandValue" + eventSplitter + ".split(' ')[7]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[5] + ' ' + commandValue.split(event)[1].split(' ')[7];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[5] + ' ' + commandValue" + eventSplitter + ".split(' ')[7]");
 		} else if (document.lang == 5) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[5] + ' ' + commandValue.split(event)[1].split(' ')[7];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[5] + ' ' + commandValue" + eventSplitter + ".split(' ')[7]");
 		}
 	} else if (commandCode == 'c18r') {
 		if (document.lang == 0) {
@@ -500,17 +506,17 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c23q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[6] + ' ' + commandValue.split(event)[1].split(' ')[7] + ' ' + commandValue.split(event)[1].split(' ')[9] + ' ' + commandValue.split(event)[1].split(' ')[10] + ' ' + commandValue.split(event)[1].split(' ')[11] + ' ' + commandValue.split(event)[1].split(' ')[12] + ' ' + commandValue.split(event)[1].split(' ')[13] + ' ' + commandValue.split(event)[1].split(' ')[14];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[6] + ' ' + commandValue" + eventSplitter + ".split(' ')[7] + ' ' + commandValue" + eventSplitter + ".split(' ')[9] + ' ' + commandValue" + eventSplitter + ".split(' ')[10] + ' ' + commandValue" + eventSplitter + ".split(' ')[11] + ' ' + commandValue" + eventSplitter + ".split(' ')[12] + ' ' + commandValue" + eventSplitter + ".split(' ')[13] + ' ' + commandValue" + eventSplitter + ".split(' ')[14]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[6] + ' ' + commandValue.split(event)[1].split(' ')[7] + ' ' + commandValue.split(event)[1].split(' ')[9] + ' ' + commandValue.split(event)[1].split(' ')[10] + ' ' + commandValue.split(event)[1].split(' ')[11] + ' ' + commandValue.split(event)[1].split(' ')[12] + ' ' + commandValue.split(event)[1].split(' ')[13] + ' ' + commandValue.split(event)[1].split(' ')[14];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[6] + ' ' + commandValue" + eventSplitter + ".split(' ')[7] + ' ' + commandValue" + eventSplitter + ".split(' ')[9] + ' ' + commandValue" + eventSplitter + ".split(' ')[10] + ' ' + commandValue" + eventSplitter + ".split(' ')[11] + ' ' + commandValue" + eventSplitter + ".split(' ')[12] + ' ' + commandValue" + eventSplitter + ".split(' ')[13] + ' ' + commandValue" + eventSplitter + ".split(' ')[14]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[5] + ' ' + commandValue.split(event)[1].split(' ')[8] + ' ' + commandValue.split(event)[1].split(' ')[9] + ' ' + commandValue.split(event)[1].split(' ')[11] + ' ' + commandValue.split(event)[1].split(' ')[12] + ' ' + commandValue.split(event)[1].split(' ')[13] + ' ' + commandValue.split(event)[1].split(' ')[14] + ' ' + commandValue.split(event)[1].split(' ')[15] + ' ' + commandValue.split(event)[1].split(' ')[16];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[5] + ' ' + commandValue" + eventSplitter + ".split(' ')[8] + ' ' + commandValue" + eventSplitter + ".split(' ')[9] + ' ' + commandValue" + eventSplitter + ".split(' ')[11] + ' ' + commandValue" + eventSplitter + ".split(' ')[12] + ' ' + commandValue" + eventSplitter + ".split(' ')[13] + ' ' + commandValue" + eventSplitter + ".split(' ')[14] + ' ' + commandValue" + eventSplitter + ".split(' ')[15] + ' ' + commandValue" + eventSplitter + ".split(' ')[16]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[6] + ' ' + commandValue.split(event)[1].split(' ')[8] + ' ' + commandValue.split(event)[1].split(' ')[9] + ' ' + commandValue.split(event)[1].split(' ')[10] + ' ' + commandValue.split(event)[1].split(' ')[11] + ' ' + commandValue.split(event)[1].split(' ')[12];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[6] + ' ' + commandValue" + eventSplitter + ".split(' ')[8] + ' ' + commandValue" + eventSplitter + ".split(' ')[9] + ' ' + commandValue" + eventSplitter + ".split(' ')[10] + ' ' + commandValue" + eventSplitter + ".split(' ')[11] + ' ' + commandValue" + eventSplitter + ".split(' ')[12]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[5] + ' ' + commandValue.split(event)[1].split(' ')[7] + ' ' + commandValue.split(event)[1].split(' ')[8] + ' ' + commandValue.split(event)[1].split(' ')[9] + ' ' + commandValue.split(event)[1].split(' ')[10] + ' ' + commandValue.split(event)[1].split(' ')[11] + ' ' + commandValue.split(event)[1].split(' ')[12];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[5] + ' ' + commandValue" + eventSplitter + ".split(' ')[7] + ' ' + commandValue" + eventSplitter + ".split(' ')[8] + ' ' + commandValue" + eventSplitter + ".split(' ')[9] + ' ' + commandValue" + eventSplitter + ".split(' ')[10] + ' ' + commandValue" + eventSplitter + ".split(' ')[11] + ' ' + commandValue" + eventSplitter + ".split(' ')[12]");
 		} else if (document.lang == 5) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[6] + ' ' + commandValue.split(event)[1].split(' ')[6] + ' ' + commandValue.split(event)[1].split(' ')[8] + ' ' + commandValue.split(event)[1].split(' ')[9] + ' ' + commandValue.split(event)[1].split(' ')[10] + ' ' + commandValue.split(event)[1].split(' ')[11] + ' ' + commandValue.split(event)[1].split(' ')[12] + ' ' + commandValue.split(event)[1].split(' ')[13];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[6] + ' ' + commandValue" + eventSplitter + ".split(' ')[6] + ' ' + commandValue" + eventSplitter + ".split(' ')[8] + ' ' + commandValue" + eventSplitter + ".split(' ')[9] + ' ' + commandValue" + eventSplitter + ".split(' ')[10] + ' ' + commandValue" + eventSplitter + ".split(' ')[11] + ' ' + commandValue" + eventSplitter + ".split(' ')[12] + ' ' + commandValue" + eventSplitter + ".split(' ')[13]");
 		}
 	} else if (commandCode == 'c23r') {
 		if (document.lang == 0) {
@@ -570,17 +576,17 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c27q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[6] + ' ' + commandValue.split(event)[1].split(' ')[7] + ' ' + commandValue.split(event)[1].split(' ')[9] + ' ' + commandValue.split(event)[1].split(' ')[10] + ' ' + commandValue.split(event)[1].split(' ')[11] + ' ' + commandValue.split(event)[1].split(' ')[12] + ' ' + commandValue.split(event)[1].split(' ')[13] + ' ' + commandValue.split(event)[1].split(' ')[14] + ' ' + commandValue.split(event)[1].split(' ')[15] + ' ' + commandValue.split(event)[1].split(' ')[16];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[6] + ' ' + commandValue" + eventSplitter + ".split(' ')[7] + ' ' + commandValue" + eventSplitter + ".split(' ')[9] + ' ' + commandValue" + eventSplitter + ".split(' ')[10] + ' ' + commandValue" + eventSplitter + ".split(' ')[11] + ' ' + commandValue" + eventSplitter + ".split(' ')[12] + ' ' + commandValue" + eventSplitter + ".split(' ')[13] + ' ' + commandValue" + eventSplitter + ".split(' ')[14] + ' ' + commandValue" + eventSplitter + ".split(' ')[15] + ' ' + commandValue" + eventSplitter + ".split(' ')[16]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[6] + ' ' + commandValue.split(event)[1].split(' ')[7] + ' ' + commandValue.split(event)[1].split(' ')[9] + ' ' + commandValue.split(event)[1].split(' ')[10] + ' ' + commandValue.split(event)[1].split(' ')[11] + ' ' + commandValue.split(event)[1].split(' ')[12] + ' ' + commandValue.split(event)[1].split(' ')[13] + ' ' + commandValue.split(event)[1].split(' ')[14] + ' ' + commandValue.split(event)[1].split(' ')[15] + ' ' + commandValue.split(event)[1].split(' ')[16];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[6] + ' ' + commandValue" + eventSplitter + ".split(' ')[7] + ' ' + commandValue" + eventSplitter + ".split(' ')[9] + ' ' + commandValue" + eventSplitter + ".split(' ')[10] + ' ' + commandValue" + eventSplitter + ".split(' ')[11] + ' ' + commandValue" + eventSplitter + ".split(' ')[12] + ' ' + commandValue" + eventSplitter + ".split(' ')[13] + ' ' + commandValue" + eventSplitter + ".split(' ')[14] + ' ' + commandValue" + eventSplitter + ".split(' ')[15] + ' ' + commandValue" + eventSplitter + ".split(' ')[16]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[5] + ' ' + commandValue.split(event)[1].split(' ')[8] + ' ' + commandValue.split(event)[1].split(' ')[10] + ' ' + commandValue.split(event)[1].split(' ')[11] + ' ' + commandValue.split(event)[1].split(' ')[12] + ' ' + commandValue.split(event)[1].split(' ')[13] + ' ' + commandValue.split(event)[1].split(' ')[14] + ' ' + commandValue.split(event)[1].split(' ')[15] + ' ' + commandValue.split(event)[1].split(' ')[16] + ' ' + commandValue.split(event)[1].split(' ')[16];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[5] + ' ' + commandValue" + eventSplitter + ".split(' ')[8] + ' ' + commandValue" + eventSplitter + ".split(' ')[10] + ' ' + commandValue" + eventSplitter + ".split(' ')[11] + ' ' + commandValue" + eventSplitter + ".split(' ')[12] + ' ' + commandValue" + eventSplitter + ".split(' ')[13] + ' ' + commandValue" + eventSplitter + ".split(' ')[14] + ' ' + commandValue" + eventSplitter + ".split(' ')[15] + ' ' + commandValue" + eventSplitter + ".split(' ')[16] + ' ' + commandValue" + eventSplitter + ".split(' ')[16]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[6] + ' ' + commandValue.split(event)[1].split(' ')[8] + ' ' + commandValue.split(event)[1].split(' ')[9] + ' ' + commandValue.split(event)[1].split(' ')[10] + ' ' + commandValue.split(event)[1].split(' ')[11] + ' ' + commandValue.split(event)[1].split(' ')[12] + ' ' + commandValue.split(event)[1].split(' ')[13];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[6] + ' ' + commandValue" + eventSplitter + ".split(' ')[8] + ' ' + commandValue" + eventSplitter + ".split(' ')[9] + ' ' + commandValue" + eventSplitter + ".split(' ')[10] + ' ' + commandValue" + eventSplitter + ".split(' ')[11] + ' ' + commandValue" + eventSplitter + ".split(' ')[12] + ' ' + commandValue" + eventSplitter + ".split(' ')[13]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[5] + ' ' + commandValue.split(event)[1].split(' ')[7] + ' ' + commandValue.split(event)[1].split(' ')[8] + ' ' + commandValue.split(event)[1].split(' ')[9] + ' ' + commandValue.split(event)[1].split(' ')[10] + ' ' + commandValue.split(event)[1].split(' ')[11] + ' ' + commandValue.split(event)[1].split(' ')[12];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[5] + ' ' + commandValue" + eventSplitter + ".split(' ')[7] + ' ' + commandValue" + eventSplitter + ".split(' ')[8] + ' ' + commandValue" + eventSplitter + ".split(' ')[9] + ' ' + commandValue" + eventSplitter + ".split(' ')[10] + ' ' + commandValue" + eventSplitter + ".split(' ')[11] + ' ' + commandValue" + eventSplitter + ".split(' ')[12]");
 		} else if (document.lang == 5) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5] + ' ' + commandValue.split(event)[1].split(' ')[6] + ' ' + commandValue.split(event)[1].split(' ')[8] + ' ' + commandValue.split(event)[1].split(' ')[9] + ' ' + commandValue.split(event)[1].split(' ')[10] + ' ' + commandValue.split(event)[1].split(' ')[11] + ' ' + commandValue.split(event)[1].split(' ')[12] + ' ' + commandValue.split(event)[1].split(' ')[13] + ' ' + commandValue.split(event)[1].split(' ')[14] + ' ' + commandValue.split(event)[1].split(' ')[15];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5] + ' ' + commandValue" + eventSplitter + ".split(' ')[6] + ' ' + commandValue" + eventSplitter + ".split(' ')[8] + ' ' + commandValue" + eventSplitter + ".split(' ')[9] + ' ' + commandValue" + eventSplitter + ".split(' ')[10] + ' ' + commandValue" + eventSplitter + ".split(' ')[11] + ' ' + commandValue" + eventSplitter + ".split(' ')[12] + ' ' + commandValue" + eventSplitter + ".split(' ')[13] + ' ' + commandValue" + eventSplitter + ".split(' ')[14] + ' ' + commandValue" + eventSplitter + ".split(' ')[15]");
 		}
 	} else if (commandCode == 'c27r') {
 		if (document.lang == 0) {
@@ -1328,17 +1334,17 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c55q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4]");
 		} else if (document.lang == 5) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		}
 	} else if (commandCode == 'c55r') {
 		if (document.lang == 0) {
@@ -1426,17 +1432,17 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c59q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[5] + ' ' + commandValue.split(event)[1].split(' ')[7];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[5] + ' ' + commandValue" + eventSplitter + ".split(' ')[7]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[4] + ' ' + commandValue.split(event)[1].split(' ')[5] + ' ' + commandValue.split(event)[1].split(' ')[7];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[5] + ' ' + commandValue" + eventSplitter + ".split(' ')[7]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		}
 	} else if (commandCode == 'c59r') {
 		if (document.lang == 0) {
@@ -1538,17 +1544,17 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c64q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
 		} else if (document.lang == 5) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		}
 	} else if (commandCode == 'c64r') {
 		if (document.lang == 0) {
@@ -1636,17 +1642,17 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c68q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		}
 	} else if (commandCode == 'c68r') {
 		if (document.lang == 0) {
@@ -1748,17 +1754,17 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c73q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
 		} else if (document.lang == 5) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		}
 	} else if (commandCode == 'c73r') {
 		if (document.lang == 0) {
@@ -1846,17 +1852,17 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c77q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		}
 	} else if (commandCode == 'c77r') {
 		if (document.lang == 0) {
@@ -1958,17 +1964,17 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c82q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
 		} else if (document.lang == 5) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		}
 	} else if (commandCode == 'c82r') {
 		if (document.lang == 0) {
@@ -2056,17 +2062,17 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c86q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3] + ' ' + commandValue.split(event)[1].split(' ')[5];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		}
 	} else if (commandCode == 'c86r') {
 		if (document.lang == 0) {
@@ -2210,17 +2216,17 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c92q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
 		} else if (document.lang == 5) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
 		}
 	} else if (commandCode == 'c92r') {
 		if (document.lang == 0) {
@@ -2280,17 +2286,17 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c94q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
 		} else if (document.lang == 5) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
 		}
 	} else if (commandCode == 'c94r') {
 		if (document.lang == 0) {
@@ -2300,67 +2306,235 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return 'basculer la lampe de poche';
 		} else if (document.lang == 3) {
-			return 'افتح';
+			return 'بدل حالة المصباح';
 		} else if (document.lang == 4) {
-			return 'افتح';
+			return 'بدل حالة الفلاش';
 		} else if (document.lang == 5) {
 			return '懐中電灯を切り換える';
 		}
 	} else if (commandCode == 'c95q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[0]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[0]");
 		} else if (document.lang == 5) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
 		}
 	} else if (commandCode == 'c95r') {
 		if (document.lang == 0) {
-			return 'switch on the flashlight';
+			return 'turn on the flashlight';
 		} else if (document.lang == 1) {
-			return 'switch on the flashlight';
+			return 'turn on the flashlight';
 		} else if (document.lang == 2) {
 			return 'allumer la lampe de poche';
 		} else if (document.lang == 3) {
-			return 'افتح';
+			return 'شغل المصباح';
 		} else if (document.lang == 4) {
-			return 'افتح';
+			return 'ولع الفلاش';
 		} else if (document.lang == 5) {
 			return '懐中電灯を切り換える';
 		}
 	} else if (commandCode == 'c96q') {
 		if (document.lang == 0) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 1) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 2) {
-			return commandValue.split(event)[1].split(' ')[0] + ' ' + commandValue.split(event)[1].split(' ')[1] + ' ' + commandValue.split(event)[1].split(' ')[2] + ' ' + commandValue.split(event)[1].split(' ')[3];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4]");
 		} else if (document.lang == 3) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 4) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 5) {
-			return commandValue.split(event)[1].split(' ')[0];
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
 		}
 	} else if (commandCode == 'c96r') {
 		if (document.lang == 0) {
-			return 'switch off the flashlight';
+			return 'turn off the flashlight';
 		} else if (document.lang == 1) {
-			return 'switch off the flashlight';
+			return 'turn off the flashlight';
 		} else if (document.lang == 2) {
 			return 'éteignez la lampe de poche';
 		} else if (document.lang == 3) {
-			return 'افتح';
+			return 'اغلق المصباح';
 		} else if (document.lang == 4) {
-			return 'افتح';
+			return 'اطفى الفلاش';
 		} else if (document.lang == 5) {
 			return '懐中電灯を切り換える';
+		}
+	} else if (commandCode == 'c97q') {
+		if (document.lang == 0) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 1) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 2) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
+		} else if (document.lang == 3) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
+		} else if (document.lang == 4) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
+		} else if (document.lang == 5) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
+		}
+	} else if (commandCode == 'c97r') {
+		if (document.lang == 0) {
+			return 'take a screenshot';
+		} else if (document.lang == 1) {
+			return 'take a screenshot';
+		} else if (document.lang == 2) {
+			return 'éteignez la lampe de poche';
+		} else if (document.lang == 3) {
+			return 'التقط الشاشة';
+		} else if (document.lang == 4) {
+			return 'خد سكرينة';
+		} else if (document.lang == 5) {
+			return '懐中電灯を切り換える';
+		}
+	} else if (commandCode == 'c98q') {
+		if (document.lang == 0) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
+		} else if (document.lang == 1) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
+		} else if (document.lang == 2) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 3) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
+		} else if (document.lang == 4) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
+		} else if (document.lang == 5) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
+		}
+	} else if (commandCode == 'c98r') {
+		if (document.lang == 0) {
+			return 'turn on the bluetooth';
+		} else if (document.lang == 1) {
+			return 'turn on the bluetooth';
+		} else if (document.lang == 2) {
+			return 'allumez le bluetooth';
+		} else if (document.lang == 3) {
+			return 'شغل البلوتوث';
+		} else if (document.lang == 4) {
+			return 'افتح البلوتوث';
+		} else if (document.lang == 5) {
+			return 'ブルートゥースをオンにする';
+		}
+	} else if (commandCode == 'c99q') {
+		if (document.lang == 0) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
+		} else if (document.lang == 1) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
+		} else if (document.lang == 2) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 3) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 4) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 5) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
+		}
+	} else if (commandCode == 'c99r') {
+		if (document.lang == 0) {
+			return 'turn on the WIFI';
+		} else if (document.lang == 1) {
+			return 'turn on the WIFI';
+		} else if (document.lang == 2) {
+			return 'allumez le WIFI';
+		} else if (document.lang == 3) {
+			return 'شغل الواي فاى';
+		} else if (document.lang == 4) {
+			return 'افتح الواي فاى';
+		} else if (document.lang == 5) {
+			return 'ブルートゥースをオンにする';
+		}
+	} else if (commandCode == 'c100q') {
+		if (document.lang == 0) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
+		} else if (document.lang == 1) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
+		} else if (document.lang == 2) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 3) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 4) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 5) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
+		}
+	} else if (commandCode == 'c100r') {
+		if (document.lang == 0) {
+			return 'turn off the WIFI';
+		} else if (document.lang == 1) {
+			return 'turn off the WIFI';
+		} else if (document.lang == 2) {
+			return 'éteignez le WIFI';
+		} else if (document.lang == 3) {
+			return 'اغلق الواي فاى';
+		} else if (document.lang == 4) {
+			return 'طفى الواي فاى';
+		} else if (document.lang == 5) {
+			return 'ブルートゥースをオンにする';
+		}
+	} else if (commandCode == 'c101q') {
+		if (document.lang == 0) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 1) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 2) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 3) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
+		} else if (document.lang == 4) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 5) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
+		}
+	} else if (commandCode == 'c101r') {
+		if (document.lang == 0) {
+			return 'show the keyboard';
+		} else if (document.lang == 1) {
+			return 'show the keyboard';
+		} else if (document.lang == 2) {
+			return 'montrer le clavier';
+		} else if (document.lang == 3) {
+			return 'اظهر لوحة المفاتيح';
+		} else if (document.lang == 4) {
+			return 'اظهر الكيبورد';
+		} else if (document.lang == 5) {
+			return 'キーボードを表示する';
+		}
+	} else if (commandCode == 'c102q') {
+		if (document.lang == 0) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 1) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 2) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 3) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
+		} else if (document.lang == 4) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+		} else if (document.lang == 5) {
+			return eval("commandValue" + eventSplitter + ".split(' ')[0]");
+		}
+	} else if (commandCode == 'c102r') {
+		if (document.lang == 0) {
+			return 'hide the keyboard';
+		} else if (document.lang == 1) {
+			return 'hide the keyboard';
+		} else if (document.lang == 2) {
+			return 'cacher le clavier';
+		} else if (document.lang == 3) {
+			return 'اخفى لوحة المفاتيح';
+		} else if (document.lang == 4) {
+			return 'اخفى الكيبورد';
+		} else if (document.lang == 5) {
+			return 'キーボードを隠す';
 		}
 	}
 }

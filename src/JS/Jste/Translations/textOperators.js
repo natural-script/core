@@ -8,7 +8,7 @@
  *
  * Date: 2017-09-12
  */
-window.customText = function (siteContents, keywordA, keywordB, keywordC, keywordD, keywordE, keywordF, keywordG, keywordH, keywordI, keywordJ, keywordK, keywordL, keywordM, keywordN, keywordO, keywordP, keywordQ, keywordR, keywordS, keywordT, keywordU) {
+window.customText = function (siteContents, keywordA, keywordB, keywordC, keywordD, keywordE, keywordF, keywordG, keywordH, keywordI, keywordJ, keywordK, keywordL, keywordM, keywordN, keywordO, keywordP, keywordQ, keywordR, keywordS, keywordT, keywordU, keywordV, keywordX, keywordY) {
 	var customTextsArrayA = siteContents.split("&lt;&lt; " + keywordA + ": ");
 	for (i = 0; i < customTextsArrayA.length; i++) {
 		var customTextA = customTextsArrayA[i].split(" &gt;&gt;")[0];
@@ -110,5 +110,46 @@ window.customText = function (siteContents, keywordA, keywordB, keywordC, keywor
 		siteContents = siteContents.replace("&lt;&lt; " + keywordT + " " + customTextT + " &gt;&gt;", "<i class='fa fa-" + customTextT + "' aria-hidden='true'></i>");
 	}
 	siteContents = siteContents.replace(new RegExp("&lt;&lt; " + keywordU + " &gt;&gt;", "g"), "<br />");
+	var customTextsArrayV = siteContents.split("&lt;&lt; " + keywordV + " ");
+	if (customTextsArrayV.length > 0) {
+		var DisplayJSID = document.uniqueID();
+		document[DisplayJSID + '_varsArray'] = [];
+		for (i = 1; i < customTextsArrayV.length; i++) {
+			var customTextV = customTextsArrayV[i].split(" &gt;&gt;")[0];
+			document[DisplayJSID + '_varsArray'][customTextV] = keywordV + " " + customTextV;
+			siteContents = siteContents.replace("&lt;&lt; " + keywordV + " " + customTextV + " &gt;&gt;", "<span var='" + customTextV + "'></span>");
+		}
+		document[DisplayJSID] = new DisplayJS(document[DisplayJSID + '_varsArray']);
+		document[DisplayJSID].dynamic(function () {
+			for (i = 0; i < Object.keys(document[DisplayJSID + '_varsArray']).length; i++) {
+				document[DisplayJSID + '_varsArray'][Object.keys(document[DisplayJSID + '_varsArray'])[i]] = new String(window.elementValue.get(Object.keys(document[DisplayJSID + '_varsArray'])[i]));
+			}
+		});
+		document[DisplayJSID].var(true);
+	}
+	var customTextsArrayX = siteContents.split("&lt;&lt; " + keywordX + " ");
+	if (customTextsArrayX.length > 0) {
+		siteContents = siteContents.replace(new RegExp("&lt;&lt; " + keywordX + " &gt;&gt;", "g"), "<span var='currentUserName'></span>");
+		var DisplayJSID = document.uniqueID();
+		document[DisplayJSID + '_varsArray'] = [];
+		document[DisplayJSID + '_varsArray'].currentUserName = keywordX;
+		document[DisplayJSID] = new DisplayJS(document[DisplayJSID + '_varsArray']);
+		document[DisplayJSID].dynamic(function () {
+			document[DisplayJSID + '_varsArray'].currentUserName = new String(window.user);
+		});
+		document[DisplayJSID].var(true);
+	}
+	var customTextsArrayY = siteContents.split("&lt;&lt; " + keywordY + " ");
+	if (customTextsArrayY.length > 0) {
+		siteContents = siteContents.replace(new RegExp("&lt;&lt; " + keywordY + " &gt;&gt;", "g"), "<span var='currentUserEmail'></span>");
+		var DisplayJSID = document.uniqueID();
+		document[DisplayJSID + '_varsArray'] = [];
+		document[DisplayJSID + '_varsArray'].currentUserEmail = keywordY;
+		document[DisplayJSID] = new DisplayJS(document[DisplayJSID + '_varsArray']);
+		document[DisplayJSID].dynamic(function () {
+			document[DisplayJSID + '_varsArray'].currentUserEmail = new String(window.email);
+		});
+		document[DisplayJSID].var(true);
+	}
 	return siteContents;
 };

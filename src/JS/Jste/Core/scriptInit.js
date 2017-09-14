@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-11
+ * Date: 2017-09-14
  */
 var code = 'jQuery(document).ready(\nfunction ($) {\nvar ';
 if (document.lang == 0) {
@@ -16,6 +16,8 @@ if (document.lang == 0) {
 	var i = -1;
 	code += 'add = $("body");' + $("en-uk").html();
 	code = code.replace(/^add a text/gm, 'add a text0');
+	code = code.replace(/^configure this (.*?) (site|app) with the following properties:$/gm, 'add.setup({\nits mode is $2,\nits attributes are $1,');
+	code = code.replace(/^configure this (site|app) with the following properties:$/gm, 'add.setup({\nits mode is $1,');
 	code = code.replace(/^add (a|an) (.*?) (\w+) without (.*?) with the following properties:$/gm, 'add.$3({\nits attributes are $2 and without $4,');
 	code = code.replace(/^add (a|an) (.*?) (\w+) with (.*?) with the following properties:$/gm, 'add.$3({\nits attributes are $2 and with $4,');
 	code = code.replace(/^add (a|an) (\w+) with (.*?) with the following properties:$/gm, 'add.$2({\nits attributes are with $3,');
@@ -59,7 +61,10 @@ if (document.lang == 0) {
 		"the screen length",
 		"the screen width",
 		"an icon of",
-		"a line break");
+		"a line break",
+		"the value of",
+		"the user's name",
+		"the user's email");
 	$("en-uk").remove();
 } else if (document.lang == 1) {
 	if (window.isChrome) {
@@ -68,6 +73,8 @@ if (document.lang == 0) {
 	var i = -1;
 	code += 'add = $("body");' + $("en-us").html();
 	code = code.replace(/^add a text/gm, 'add a text0');
+	code = code.replace(/^configure this (.*?) (site|app) with the following properties:$/gm, 'add.setup({\nits mode is $2,\nits attributes are $1,');
+	code = code.replace(/^configure this (site|app) with the following properties:$/gm, 'add.setup({\nits mode is $1,');
 	code = code.replace(/^add (a|an) (.*?) (\w+) without (.*?) with the following properties:$/gm, 'add.$3({\nits attributes are $2 and without $4,');
 	code = code.replace(/^add (a|an) (.*?) (\w+) with (.*?) with the following properties:$/gm, 'add.$3({\nits attributes are $2 and with $4,');
 	code = code.replace(/^add (a|an) (\w+) with (.*?) with the following properties:$/gm, 'add.$2({\nits attributes are with $3,');
@@ -111,7 +118,10 @@ if (document.lang == 0) {
 		"the screen length",
 		"the screen width",
 		"an icon of",
-		"a line break");
+		"a line break",
+		"the value of",
+		"the user's name",
+		"the user's email");
 	$("en-us").remove();
 } else if (document.lang == 2) {
 	if (window.isChrome) {
@@ -119,6 +129,8 @@ if (document.lang == 0) {
 	}
 	var i = -1;
 	code += 'ajouter = $("body");' + $("fr-fr").html();
+	code = code.replace(/^configurez ce (site|app) (.*?) avec les propriétés suivantes:$/gm, 'ajouter.installation({\nson mode est $1,\nses attributs sont $2,');
+	code = code.replace(/^configurez ce (site|app) avec les propriétés suivantes:$/gm, 'ajouter.installation({\nson mode est $1,');
 	code = code.replace(/^ajouter (le|la|un|une) (\w+) (.*?) avec les propriétés suivantes:$/gm, 'ajouter.$2({\nses attributs sont $3,');
 	code = code.replace(/^ajouter (le|la|un|une) (\w+) avec les propriétés suivantes:$/gm, 'ajouter.$2({');
 	code = code.replace(/^cloner (\w+) avec les propriétés suivantes:$/gm, 'ajouter.clone0({\nson élément clone est $1,');
@@ -158,7 +170,10 @@ if (document.lang == 0) {
 		"la longueur de l'écran",
 		"la largeur de l'écran",
 		"une icône de",
-		"un saut de ligne");
+		"un saut de ligne",
+		"la valeur de",
+		"le nom de l'utilisateur",
+		"le courrier électronique de l'utilisateur");
 	$("fr-fr").remove();
 } else if (document.lang == 3) {
 	document.isRTL = true;
@@ -168,6 +183,8 @@ if (document.lang == 0) {
 	}
 	var i = -1;
 	code += 'اضف = $("body");' + $("ar-ar").html();
+	code = code.replace(/^هيئ هذا (الموقع|التطبيق) (.*?) بالخواص التالية:$/gm, 'اضف.الإعدادات({\nالوضعية الخاصة به $1,\nالصفات الخاصة به $2,');
+	code = code.replace(/^هيئ هذا (الموقع|التطبيق) بالخواص التالية:$/gm, 'اضف.الإعدادات({\nالوضعية الخاصة به $1,');
 	code = code.replace(/^اضف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (.*?) بالخواص التالية:$/gm, 'اضف.$1({\nالصفات الخاصة به $2,');
 	code = code.replace(/^اضف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص التالية:$/gm, 'اضف.$1({');
 	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, 'اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,');
@@ -206,7 +223,10 @@ if (document.lang == 0) {
 		"طول الشاشة",
 		"عرض الشاشة",
 		"ايقونة",
-		"سطر جديد");
+		"سطر جديد",
+		"قيمة",
+		"اسم المستخدم",
+		"بريد المستخدم");
 	$("ar-ar").remove();
 } else if (document.lang == 4) {
 	document.isRTL = true;
@@ -216,6 +236,8 @@ if (document.lang == 0) {
 	}
 	var i = -1;
 	code += 'ضيف = $("body");' + $("ar-eg").html();
+	code = code.replace(/^هيئ (السايت|الآب) (.*?) دة بالخواص دى:$/gm, 'ضيف.الإعدادات({\المود بتاعه $1,\nالصفات بتاعته $2,');
+	code = code.replace(/^هيئ (السايت|الآب) دة بالخواص دى:$/gm, 'ضيف.الإعدادات({\المود بتاعه $1,');
 	code = code.replace(/^ضيف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (.*?) بالخواص دى:$/gm, 'ضيف.$1({\nالصفات بتاعته $2,');
 	code = code.replace(/^ضيف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, 'ضيف.$1({');
 	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, 'ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,');
@@ -254,7 +276,10 @@ if (document.lang == 0) {
 		"طول الشاشة",
 		"عرض الشاشة",
 		"ايكونة",
-		"سطر جديد");
+		"سطر جديد",
+		"قيمة",
+		"اسم المستخدم",
+		"إيميل المستخدم");
 	$("ar-eg").remove();
 } else if (document.lang == 5) {
 	if (window.isChrome) {

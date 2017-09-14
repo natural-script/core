@@ -80,11 +80,11 @@ $(function () {
             var handleSignedInUser = function (user) {
                 window.user = user;
                 console.log(user.uid);
-                sessionStorage.displayName = user.displayName;
-                sessionStorage.email = user.email;
-                sessionStorage.phoneNumber = user.phoneNumber;
+                window.displayName = user.displayName;
+                window.email = user.email;
+                window.phoneNumber = user.phoneNumber;
                 if (user.photoURL) {
-                    sessionStorage.profilePhoto = user.photoURL;
+                    window.profilePhoto = user.photoURL;
                 }
             };
             /**

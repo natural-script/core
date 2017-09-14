@@ -8,9 +8,22 @@
  *
  * Date: 2017-09-12
  */
-window.evaluateScript = function (script, event, type) {
-    var eventPrefix = '';
-    if (event == 'E1') {
+window.evaluateScript = function (script, event, type, commandInfo, typeOptions) {
+    var typePrefix;
+    var typeSuffix;
+    var commandVarA;
+    var commandVarB;
+    var eventPrefix;
+    var eventSuffix;
+    var commandsCommonDeclarations = '';
+    var commandAvailableInfo = Object.keys(commandInfo);
+    for (var infoID = 0; infoID < commandAvailableInfo.length; infoID++) {
+        commandsCommonDeclarations += 'var ' + commandAvailableInfo[infoID] + ' = "' + commandInfo[commandAvailableInfo[infoID]] + '";';
+    }
+    if (event == 'E0') {
+        eventPrefix = "";
+        eventSuffix = "";
+    } else if (event == 'E1') {
         eventPrefix = "$('#' + elementName + '').on('tap', function () {";
         eventSuffix = "});";
     } else if (event == 'E2') {
@@ -78,6 +91,7 @@ window.evaluateScript = function (script, event, type) {
         }
         commandVarB = "pureCommand";
     } else if (type == 'T1') {
+
         typePrefix = "setTimeout(function () {";
         typeSuffix = "}, timeoutPeriod);";
         if (event == 'E17') {
@@ -96,8 +110,13 @@ window.evaluateScript = function (script, event, type) {
         }
         commandVarB = "pureCommand";
     } else if (type == 'T3') {
-        typePrefix = "if (" + document.ifStatement + ") {";
+        typePrefix = "if (" + typeOptions.primaryCondition + ") {";
         typeSuffix = "}";
+        if (typeOptions.secondryConditions) {
+            for (var conditionID = 0; conditionID < typeOptions.secondryConditions.length; conditionID++) {
+                typeSuffix += " else if (" + typeOptions.secondryConditions[conditionID].condition + ") { " + window.execute(typeOptions.elementName, typeOptions.secondryConditions[conditionID].command, false) + "}";
+            }
+        }
         if (event == 'E17') {
             commandVarA = "pureCommand, voiceCommand";
         } else {
@@ -107,6 +126,7 @@ window.evaluateScript = function (script, event, type) {
     }
     if (script == 'S1') {
         return "(function () { \
+            " + commandsCommonDeclarations + " \
             if (window.commandsFnTranslations('c3q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c3r')) { \
         " + eventPrefix + typePrefix + " \
             $('#' + elementName + '').remove(); \
@@ -119,6 +139,7 @@ window.evaluateScript = function (script, event, type) {
             }})();";
     } else if (script == 'S2') {
         return "(function (" + commandVarB + ") { \
+            " + commandsCommonDeclarations + " \
 				$('#' + elementName + '').css('cursor', 'pointer'); \
                 " + eventPrefix + typePrefix + " \
                     if (window.commandsFnTranslations('c44q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c44r')) { \
@@ -139,6 +160,7 @@ window.evaluateScript = function (script, event, type) {
             })(" + commandVarB + ");";
     } else if (script == 'S18') {
         return "(function (" + commandVarB + ") { \
+            " + commandsCommonDeclarations + " \
 				$('#' + elementName + '').css('cursor', 'pointer'); \
                 " + eventPrefix + typePrefix + " \
                     if (window.commandsFnTranslations('c91q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c91r')) { \
@@ -152,6 +174,7 @@ window.evaluateScript = function (script, event, type) {
             })(" + commandVarB + ");";
     } else if (script == 'S19') {
         return "(function (" + commandVarB + ") { \
+            " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
                 window.plugins.flashlight.available(function(isAvailable) { \
                     if (isAvailable) { \
@@ -164,6 +187,7 @@ window.evaluateScript = function (script, event, type) {
             })(" + commandVarB + ");";
     } else if (script == 'S20') {
         return "(function (" + commandVarB + ") { \
+            " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
                 window.plugins.flashlight.available(function(isAvailable) { \
                     if (isAvailable) { \
@@ -176,6 +200,7 @@ window.evaluateScript = function (script, event, type) {
             })(" + commandVarB + ");";
     } else if (script == 'S21') {
         return "(function (" + commandVarB + ") { \
+            " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
                 window.plugins.flashlight.available(function(isAvailable) { \
                     if (isAvailable) { \
@@ -186,8 +211,52 @@ window.evaluateScript = function (script, event, type) {
                 }); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
+    } else if (script == 'S22') {
+        return "(function (" + commandVarB + ") { \
+            " + commandsCommonDeclarations + " \
+                " + eventPrefix + typePrefix + " \
+                navigator.screenshot.save() \
+                    " + typeSuffix + eventSuffix + " \
+            })(" + commandVarB + ");";
+    } else if (script == 'S23') {
+        return "(function (" + commandVarB + ") { \
+            " + commandsCommonDeclarations + " \
+                " + eventPrefix + typePrefix + " \
+                cordova.plugins.BluetoothStatus.initPlugin(); \
+                cordova.plugins.BluetoothStatus.promptForBT(); \
+                    " + typeSuffix + eventSuffix + " \
+            })(" + commandVarB + ");";
+    } else if (script == 'S24') {
+        return "(function (" + commandVarB + ") { \
+            " + commandsCommonDeclarations + " \
+                " + eventPrefix + typePrefix + " \
+                WifiWizard.setWifiEnabled(enabled, win, fail); \
+                    " + typeSuffix + eventSuffix + " \
+            })(" + commandVarB + ");";
+    } else if (script == 'S25') {
+        return "(function (" + commandVarB + ") { \
+            " + commandsCommonDeclarations + " \
+                " + eventPrefix + typePrefix + " \
+                WifiWizard.setWifiEnabled(false, win, fail); \
+                    " + typeSuffix + eventSuffix + " \
+            })(" + commandVarB + ");";
+    } else if (script == 'S26') {
+        return "(function (" + commandVarB + ") { \
+            " + commandsCommonDeclarations + " \
+                " + eventPrefix + typePrefix + " \
+                Keyboard.show(); \
+                    " + typeSuffix + eventSuffix + " \
+            })(" + commandVarB + ");";
+    } else if (script == 'S27') {
+        return "(function (" + commandVarB + ") { \
+            " + commandsCommonDeclarations + " \
+                " + eventPrefix + typePrefix + " \
+                Keyboard.hide(); \
+                    " + typeSuffix + eventSuffix + " \
+            })(" + commandVarB + ");";
     } else if (script == 'S3') {
         return "(function () { \
+            " + commandsCommonDeclarations + " \
             var targetElement = window.commandsFnTranslations('c7', '" + event + "', " + commandVarA + "); \
 		  " + eventPrefix + typePrefix + " \
 		  if ($('#' + targetElement + '').hasClass('aplayer') || $('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO') { \
@@ -198,6 +267,7 @@ window.evaluateScript = function (script, event, type) {
               " + typeSuffix + eventSuffix + "})();";
     } else if (script == 'S4') {
         return "(function () { \
+            " + commandsCommonDeclarations + " \
                 var targetElement = window.commandsFnTranslations('c8', '" + event + "', " + commandVarA + "); \
             " + eventPrefix + typePrefix + " \
 			if ($('#' + targetElement + '').hasClass('aplayer') || $('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO') { \
@@ -208,73 +278,63 @@ window.evaluateScript = function (script, event, type) {
                 " + typeSuffix + eventSuffix + "})();";
     } else if (script == 'S5') {
         return "(function () { \
+            " + commandsCommonDeclarations + " \
                 if (window.commandsFnTranslations('c10q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c10rA')) { \
                     var targetElement = window.commandsFnTranslations('c11', '" + event + "', " + commandVarA + "); \
 					" + eventPrefix + typePrefix + " \
 					if ($('#' + targetElement + '').prop('tagName') == 'PAPER-SWATCH-PICKER') {\
-						$('#' + elementName + '').val($('#' + targetElement + '').prop('color')); \
-						$('#' + elementName + '').text($('#' + targetElement + '').prop('color')); \
+						window.elementValue.set(elementName, $('#' + targetElement + '').prop('color')); \
 					} else {\
-                        $('#' + elementName + '').val($('#' + targetElement + '').val()); \
-                        $('#' + elementName + '').text($('#' + targetElement + '').val()); \
-                        $('#' + elementName + '').val($('#' + targetElement + '').text()); \
-						$('#' + elementName + '').text($('#' + targetElement + '').text()); \
+                        window.elementValue.set(elementName, window.elementValue.get(targetElement)); \
 					}\
                         " + typeSuffix + eventSuffix + " \
                 } else if (window.commandsFnTranslations('c10q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c10rB')) { \
                     (function (" + commandVarB + ") { \
                         " + eventPrefix + typePrefix + " \
-                            $('#' + elementName + '').val(window.commandsFnTranslations('c41', '" + event + "', " + commandVarA + ")); \
-                            $('#' + elementName + '').text(window.commandsFnTranslations('c41', '" + event + "', " + commandVarA + ")); \
+                        window.elementValue.set(elementName, window.commandsFnTranslations('c41', '" + event + "', " + commandVarA + ")); \
                             " + typeSuffix + eventSuffix + " \
                     })(" + commandVarB + "); \
                 } else { \
                     var newVal = window.commandsFnTranslations('c12', '" + event + "', " + commandVarA + "); \
                     " + eventPrefix + typePrefix + " \
-                        $('#' + elementName + '').val(newVal); \
-                        $('#' + elementName + '').text(newVal); \
+                    window.elementValue.set(elementName, newVal); \
                         " + typeSuffix + eventSuffix + " \
                 }}();";
     } else if (script == 'S6') {
         return "(function () { \
+            " + commandsCommonDeclarations + " \
                 var targetElement = window.commandsFnTranslations('c14', '" + event + "', " + commandVarA + "); \
                 if (window.commandsFnTranslations('c16q', '" + event + "', " + commandVarA + ", targetElement) == window.commandsFnTranslations('c16rA')) { \
                     var resource = window.commandsFnTranslations('c15', '" + event + "', " + commandVarA + ", targetElement); \
                     " + eventPrefix + typePrefix + " \
 					if ($('#' + resource + '').prop('tagName') == 'PAPER-SWATCH-PICKER') {\
-						$('#' + targetElement + '').val($('#' + resource + '').prop('color')); \
-						$('#' + targetElement + '').text($('#' + resource + '').prop('color')); \
+						window.elementValue.set(targetElement, $('#' + resource + '').prop('color')); \
 					} else {\
-                        $('#' + targetElement + '').val($('#' + resource + '').val()); \
-                        $('#' + targetElement + '').val($('#' + resource + '').text()); \
-                        $('#' + targetElement + '').text($('#' + resource + '').val()); \
-						$('#' + targetElement + '').text($('#' + resource + '').text()); \
+                        window.elementValue.set(targetElement, window.elementValue.get(resource)); \
 					}\
                         " + typeSuffix + eventSuffix + " \
                     } else if (window.commandsFnTranslations('c16q', '" + event + "', " + commandVarA + ", targetElement) == window.commandsFnTranslations('c16rB')) { \
                     (function (" + commandVarB + ", targetElement) { \
                         " + eventPrefix + typePrefix + " \
-                            $('#' + targetElement + '').val(window.commandsFnTranslations('c43', '" + event + "', " + commandVarA + ", targetElement)); \
-                            $('#' + targetElement + '').text(window.commandsFnTranslations('c43', '" + event + "', " + commandVarA + ", targetElement)); \
+                        window.elementValue.set(targetElement, window.commandsFnTranslations('c43', '" + event + "', " + commandVarA + ", targetElement)); \
                             " + typeSuffix + eventSuffix + " \
                         })(" + commandVarB + ", targetElement); \
                 } else { \
                     var newVal = window.commandsFnTranslations('c17', '" + event + "', " + commandVarA + ", targetElement); \
                     " + eventPrefix + typePrefix + " \
-                    $('#' + targetElement + '').val(newVal); \
-                        $('#' + targetElement + '').text(newVal); \
+                    window.elementValue.set(targetElement, newVal); \
                         " + typeSuffix + eventSuffix + " \
                     }})();";
     } else if (script == 'S10') {
         return "(function () { \
+            " + commandsCommonDeclarations + " \
                 if (window.commandsFnTranslations('c56q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c56rA')) { \
                     var targetElement = window.commandsFnTranslations('c57', '" + event + "', " + commandVarA + "); \
                     " + eventPrefix + typePrefix + " \
 					if ($('#' + targetElement + '').prop('tagName') == 'PAPER-SWATCH-PICKER') {\
 						window.setFontColour(elementName, $('#' + targetElement + '').prop('color')); \
 					} else {\
-					    window.setFontColour(elementName, $('#' + targetElement + '').val()); \
-						window.setFontColour(elementName, $('#' + targetElement + '').text()); \
+					    window.setFontColour(elementName, window.elementValue.get(targetElement)); \
 					}\
                         " + typeSuffix + eventSuffix + " \
                 } else if (window.commandsFnTranslations('c56q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c56rB')) { \
@@ -291,6 +351,7 @@ window.evaluateScript = function (script, event, type) {
                 }})();";
     } else if (script == 'S11') {
         return "(function () { \
+            " + commandsCommonDeclarations + " \
                 var targetElement = window.commandsFnTranslations('c60', '" + event + "', " + commandVarA + "); \
                 if (window.commandsFnTranslations('c62q', '" + event + "', " + commandVarA + ", targetElement) == window.commandsFnTranslations('c62rA')) { \
                     var resource = window.commandsFnTranslations('c61', '" + event + "', " + commandVarA + ", targetElement); \
@@ -298,8 +359,7 @@ window.evaluateScript = function (script, event, type) {
 					if ($('#' + resource + '').prop('tagName') == 'PAPER-SWATCH-PICKER') {\
 						window.setFontColour(targetElement, $('#' + resource + '').prop('color')); \
 					} else {\
-                        window.setFontColour(targetElement, $('#' + resource + '').val()); \
-						window.setFontColour(targetElement, $('#' + resource + '').text()); \
+                        window.setFontColour(targetElement, window.elementValue.get(resource)); \
 					}\
                         " + typeSuffix + eventSuffix + " \
                     } else if (window.commandsFnTranslations('c62q', '" + event + "', " + commandVarA + ", targetElement) == window.commandsFnTranslations('c62rB')) { \
@@ -316,14 +376,14 @@ window.evaluateScript = function (script, event, type) {
                     }})();";
     } else if (script == 'S12') {
         return "(function () { \
+            " + commandsCommonDeclarations + " \
                 if (window.commandsFnTranslations('c65q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c65rA')) { \
                     var targetElement = window.commandsFnTranslations('c66', '" + event + "', " + commandVarA + "); \
                     " + eventPrefix + typePrefix + " \
 					if ($('#' + targetElement + '').prop('tagName') == 'PAPER-SWATCH-PICKER') {\
 						window.setBG(elementName, $('#' + targetElement + '').prop('color')); \
 					} else {\
-					    window.setBG(elementName, $('#' + targetElement + '').val()); \
-						window.setBG(elementName, $('#' + targetElement + '').text()); \
+					    window.setBG(elementName, window.elementValue.get(targetElement)); \
 					}\
                         " + typeSuffix + eventSuffix + " \
                 } else if (window.commandsFnTranslations('c65q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c65rB')) { \
@@ -340,6 +400,7 @@ window.evaluateScript = function (script, event, type) {
                 }})();";
     } else if (script == 'S13') {
         return "(function () { \
+            " + commandsCommonDeclarations + " \
                 var targetElement = window.commandsFnTranslations('c69', '" + event + "', " + commandVarA + "); \
                 if (window.commandsFnTranslations('c71q', '" + event + "', " + commandVarA + ", targetElement) == window.commandsFnTranslations('c71rA')) { \
                     var resource = window.commandsFnTranslations('c70', '" + event + "', " + commandVarA + ", targetElement); \
@@ -347,8 +408,7 @@ window.evaluateScript = function (script, event, type) {
 					if ($('#' + resource + '').prop('tagName') == 'PAPER-SWATCH-PICKER') {\
 						window.setBG(targetElement, $('#' + resource + '').prop('color')); \
 					} else {\
-                        window.setBG(targetElement, $('#' + resource + '').val()); \
-						window.setBG(targetElement, $('#' + resource + '').text()); \
+                        window.setBG(targetElement, window.elementValue.get(resource)); \
 					}\
                         " + typeSuffix + eventSuffix + " \
                     } else if (window.commandsFnTranslations('c71q', '" + event + "', " + commandVarA + ", targetElement) == window.commandsFnTranslations('c71rB')) { \
@@ -365,14 +425,14 @@ window.evaluateScript = function (script, event, type) {
                     }})();";
     } else if (script == 'S14') {
         return "(function () { \
+            " + commandsCommonDeclarations + " \
                 if (window.commandsFnTranslations('c74q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c74rA')) { \
                     var targetElement = window.commandsFnTranslations('c75', '" + event + "', " + commandVarA + "); \
                     " + eventPrefix + typePrefix + " \
 					if ($('#' + targetElement + '').prop('tagName') == 'PAPER-SWATCH-PICKER') {\
 						window.scale(elementName, 'length', $('#' + targetElement + '').prop('color')); \
 					} else {\
-					    window.scale(elementName, 'length', $('#' + targetElement + '').val()); \
-						window.scale(elementName, 'length', $('#' + targetElement + '').text()); \
+					    window.scale(elementName, 'length', window.elementValue.get(targetElement)); \
 					}\
                         " + typeSuffix + eventSuffix + " \
                 } else if (window.commandsFnTranslations('c74q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c74rB')) { \
@@ -389,6 +449,7 @@ window.evaluateScript = function (script, event, type) {
                 }})();";
     } else if (script == 'S15') {
         return "(function () { \
+            " + commandsCommonDeclarations + " \
                 var targetElement = window.commandsFnTranslations('c78', '" + event + "', " + commandVarA + "); \
                 if (window.commandsFnTranslations('c80q', '" + event + "', " + commandVarA + ", targetElement) == window.commandsFnTranslations('c80rA')) { \
                     var resource = window.commandsFnTranslations('c79', '" + event + "', " + commandVarA + ", targetElement); \
@@ -396,8 +457,7 @@ window.evaluateScript = function (script, event, type) {
 					if ($('#' + resource + '').prop('tagName') == 'PAPER-SWATCH-PICKER') {\
 						window.scale(targetElement, 'length', $('#' + resource + '').prop('color')); \
 					} else {\
-                        window.scale(targetElement, 'length', $('#' + resource + '').val()); \
-						window.scale(targetElement, 'length', $('#' + resource + '').text()); \
+                        window.scale(targetElement, 'length', window.elementValue.get(resource)); \
 					}\
                         " + typeSuffix + eventSuffix + " \
                     } else if (window.commandsFnTranslations('c80q', '" + event + "', " + commandVarA + ", targetElement) == window.commandsFnTranslations('c80rB')) { \
@@ -414,14 +474,14 @@ window.evaluateScript = function (script, event, type) {
                     }})();";
     } else if (script == 'S16') {
         return "(function () { \
+            " + commandsCommonDeclarations + " \
                 if (window.commandsFnTranslations('c83q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c83rA')) { \
                     var targetElement = window.commandsFnTranslations('c84', '" + event + "', " + commandVarA + "); \
                     " + eventPrefix + typePrefix + " \
 					if ($('#' + targetElement + '').prop('tagName') == 'PAPER-SWATCH-PICKER') {\
 						window.scale(elementName, 'height', $('#' + targetElement + '').prop('color')); \
 					} else {\
-					    window.scale(elementName, 'height', $('#' + targetElement + '').val()); \
-						window.scale(elementName, 'height', $('#' + targetElement + '').text()); \
+					    window.scale(elementName, 'height', window.elementValue.get(targetElement)); \
 					}\
                         " + typeSuffix + eventSuffix + " \
                 } else if (window.commandsFnTranslations('c83q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c83rB')) { \
@@ -438,6 +498,7 @@ window.evaluateScript = function (script, event, type) {
                 }})()";
     } else if (script == 'S17') {
         return "(function () { \
+            " + commandsCommonDeclarations + " \
                 var targetElement = window.commandsFnTranslations('c87', '" + event + "', " + commandVarA + "); \
                 if (window.commandsFnTranslations('c89q', '" + event + "', " + commandVarA + ", targetElement) == window.commandsFnTranslations('c71rA')) { \
                     var resource = window.commandsFnTranslations('c88', '" + event + "', " + commandVarA + ", targetElement); \
@@ -445,8 +506,7 @@ window.evaluateScript = function (script, event, type) {
 					if ($('#' + resource + '').prop('tagName') == 'PAPER-SWATCH-PICKER') {\
 						window.scale(targetElement, 'height', $('#' + resource + '').prop('color')); \
 					} else {\
-                        window.scale(targetElement, 'height', $('#' + resource + '').val()); \
-						window.scale(targetElement, 'height', $('#' + resource + '').text()); \
+                        window.scale(targetElement, 'height', window.elementValue.get(resource)); \
 					}\
                         " + typeSuffix + eventSuffix + " \
                     } else if (window.commandsFnTranslations('c89q', '" + event + "', " + commandVarA + ", targetElement) == window.commandsFnTranslations('c89rB')) { \
@@ -463,19 +523,17 @@ window.evaluateScript = function (script, event, type) {
                     }})();";
     } else if (script == 'S7') {
         return "(function () { \
+            " + commandsCommonDeclarations + " \
                 var targetElement = window.commandsFnTranslations('c19', '" + event + "', " + commandVarA + "); \
                 if (window.commandsFnTranslations('c21q', '" + event + "', " + commandVarA + ", targetElement) == window.commandsFnTranslations('c21rA')) { \
                     var resource = window.commandsFnTranslations('c20', '" + event + "', " + commandVarA + ", targetElement); \
 					" + eventPrefix + typePrefix + " \
 					if ($('#' + targetElement + '').hasClass('aplayer')) { \
-						document[targetElement].audio.currentTime = $('#' + resource + '').val(); \
-						document[targetElement].audio.currentTime = $('#' + resource + '').text(); \
+						document[targetElement].audio.currentTime = window.elementValue.get(resource); \
                       } else if ($('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO'){ \
-                        document[targetElement].currentTime($('#' + resource + '').val()); \
-                        document[targetElement].currentTime($('#' + resource + '').text()); \
+                        document[targetElement].currentTime(window.elementValue.get(resource)); \
                       } else {\
-                        document.getElementById(targetElement).currentTime = $('#' + resource + '').val(); \
-                        document.getElementById(targetElement).currentTime = $('#' + resource + '').text(); \
+                        document.getElementById(targetElement).currentTime = window.elementValue.get(resource); \
 					  } \
                         " + typeSuffix + eventSuffix + " \
                 } else if (window.commandsFnTranslations('c21q', '" + event + "', " + commandVarA + ", targetElement) == window.commandsFnTranslations('c21rB')) { \
@@ -498,6 +556,7 @@ window.evaluateScript = function (script, event, type) {
                 }})();";
     } else if (script == 'S8') {
         return "(function () { \
+            " + commandsCommonDeclarations + " \
                 var dbType = window.commandsFnTranslations('c48', '" + event + "', " + commandVarA + "); \
                 var dbname = window.commandsFnTranslations('c24', '" + event + "', " + commandVarA + ", dbType); \
                 var tablename = window.commandsFnTranslations('c25', '" + event + "', " + commandVarA + "); \
@@ -508,9 +567,9 @@ window.evaluateScript = function (script, event, type) {
                         var resource = window.commandsFnTranslations('c32', '', dataRaw[i]); \
                         var slot = window.commandsFnTranslations('c33', '', dataRaw[i]); \
                         if (i != dataRaw.length - 1) { \
-                            data += '\"' + slot + '\":\"' + $('#' + resource + '').val().replace(/\\n/g, '<br />') + '\", '; \
+                            data += '\"' + slot + '\":\"' + window.elementValue.get(resource).replace(/\\n/g, '<br />') + '\", '; \
                         } else { \
-                            data += '\"' + slot + '\":\"' + $('#' + resource + '').val().replace(/\\n/g, '<br />') + '\"}'; \
+                            data += '\"' + slot + '\":\"' + window.elementValue.get(resource).replace(/\\n/g, '<br />') + '\"}'; \
                         } \
                     } \
                     data = JSON.parse(data); \
@@ -524,6 +583,7 @@ window.evaluateScript = function (script, event, type) {
                     " + typeSuffix + eventSuffix + "})();";
     } else if (script == 'S9') {
         return "(function () { \
+            " + commandsCommonDeclarations + " \
             var dbType = window.commandsFnTranslations('c49', '" + event + "', " + commandVarA + "); \
             var dbname = window.commandsFnTranslations('c28', '" + event + "', " + commandVarA + ", dbType); \
             var tablename = window.commandsFnTranslations('c29', '" + event + "', " + commandVarA + "); \

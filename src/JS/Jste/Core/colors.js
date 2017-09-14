@@ -215,3 +215,50 @@ window.setBG = function (elementName, background) {
 		$('#' + elementName + '').css('background-image', 'url(' + background + ')');
 	}
 };
+
+window.setMainColor = function (color) {
+	if (color == window.blackTranslations[document.lang]) {
+		RecentsControl.setColor('#000000');
+	} else if (color == window.redTranslations[document.lang]) {
+		RecentsControl.setColor('#F44336');
+	} else if (color == window.blueTranslations[document.lang]) {
+		RecentsControl.setColor('#2196F3');
+	} else if (color == window.cyanTranslations[document.lang]) {
+		RecentsControl.setColor('#00BCD4');
+	} else if (color == window.grayTranslations[document.lang]) {
+		RecentsControl.setColor('#9E9E9E');
+	} else if (color == window.greenTranslations[document.lang]) {
+		RecentsControl.setColor('#4CAF50');
+	} else if (color == window.whiteTranslations[document.lang]) {
+		RecentsControl.setColor('#FFFFFF');
+	} else if (color == window.orangeTranslations[document.lang]) {
+		RecentsControl.setColor('#FF9800');
+	} else if (color == window.yellowTranslations[document.lang]) {
+		RecentsControl.setColor('#FFEB3B');
+	} else if (color == window.brownTranslations[document.lang]) {
+		RecentsControl.setColor('#795548');
+	} else if (color == window.tealTranslations[document.lang]) {
+		RecentsControl.setColor('#009688');
+	} else if (color == window.pinkTranslations[document.lang]) {
+		RecentsControl.setColor('#E91E63');
+	} else if (color == window.lightGreenTranslations[document.lang]) {
+		RecentsControl.setColor('#8BC34A');
+	} else if (color.charAt(0) == '#') {
+		RecentsControl.setColor(color);
+	} else if (color == window.aRandomColorTranslations[document.lang]) {
+		RecentsControl.setColor(window.randomColor({
+			hue: 'random',
+			luminosity: 'random'
+		}));
+	} else if (color == window.aRandomLightColorTranslations[document.lang]) {
+		RecentsControl.setColor(window.randomColor({
+			hue: 'random',
+			luminosity: 'light'
+		}));
+	} else if (color == window.aRandomDarkColorTranslations[document.lang]) {
+		RecentsControl.setColor(window.randomColor({
+			hue: 'random',
+			luminosity: 'dark'
+		}));
+	}
+};

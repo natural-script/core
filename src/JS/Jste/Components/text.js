@@ -34,7 +34,7 @@ $(function () {
         }, options);
         return this.each(function () {
             var name = settings[window.nameTranslations[document.lang]];
-            var out = '<p id="' + name + '"></p>';
+            var out = '<p id="' + name + '">' + settings[window.textTranslations[document.lang]] + '</p>';
             if (settings[window.containerTranslations[document.lang]]) {
                 if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
                     $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
@@ -54,39 +54,6 @@ $(function () {
                         }).init();
                     }
                 }
-            }
-            var insertedText = settings[window.textTranslations[document.lang]];
-            var dynamicTextsArrayA = settings[window.textTranslations[document.lang]].split('&lt;&lt; the value of ');
-            (function (dynamicTextsArrayA, insertedText) {
-                setInterval(function () {
-                    for (i = 1; i < dynamicTextsArrayA.length; i++) {
-                        var textResourceA = dynamicTextsArrayA[i].split(' &gt;&gt;')[0];
-                        var newText = insertedText.replace('&lt;&lt; the value of ' + textResourceA + ' &gt;&gt;', $('#' + textResourceA + '').val());
-                    }
-                    $('#' + name + '').html(newText);
-                }, 5000);
-            })(dynamicTextsArrayA, insertedText);
-            var dynamicTextsArrayB = settings[window.textTranslations[document.lang]].split('&lt;&lt; the text of ');
-            (function (dynamicTextsArrayB, insertedText) {
-                setInterval(function () {
-                    for (i = 1; i < dynamicTextsArrayB.length; i++) {
-                        var textResourceB = dynamicTextsArrayB[i].split(' &gt;&gt;')[0];
-                        var newText = insertedText.replace('&lt;&lt; the text of ' + textResourceB + ' &gt;&gt;', $('#' + textResourceB + '').text());
-                    }
-                    $('#' + name + '').html(newText);
-                }, 5000);
-            })(dynamicTextsArrayB, insertedText);
-            var customTextsArrayAB = insertedText.split('&lt;&lt; ' + "the user's name" + ' ');
-            if (customTextsArrayAB.length > 1) {
-                setTimeout(function () {
-                    for (i = 1; i < customTextsArrayAB.length; i++) {
-                        var customTextAB = customTextsArrayAB[i].split(' &gt;&gt;')[0];
-                        insertedText = insertedText.replace('&lt;&lt; ' + "the user's name" + ' &gt;&gt;', window.user.displayName);
-                    }
-                    $('#' + name + '').html(insertedText);
-                }, 2000);
-            } else {
-                $('#' + name + '').html(insertedText);
             }
             if (settings[window.fontColorTranslations[document.lang]]) {
                 window.setFontColour(name, settings[window.fontColorTranslations[document.lang]]);
