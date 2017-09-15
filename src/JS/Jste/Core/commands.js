@@ -114,7 +114,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
         typeSuffix = "}";
         if (typeOptions.secondryConditions) {
             for (var conditionID = 0; conditionID < typeOptions.secondryConditions.length; conditionID++) {
-                typeSuffix += " else if (" + typeOptions.secondryConditions[conditionID].condition + ") { " + window.execute(typeOptions.elementName, typeOptions.secondryConditions[conditionID].command, false) + "}";
+                typeSuffix += " else if (" + typeOptions.secondryConditions[conditionID].condition + ") { " + typeOptions.secondryConditions[conditionID].command + "}";
             }
         }
         if (event == 'E17') {
@@ -142,6 +142,8 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
             " + commandsCommonDeclarations + " \
 				$('#' + elementName + '').css('cursor', 'pointer'); \
                 " + eventPrefix + typePrefix + " \
+                    var targetURL; \
+                    event.preventDefault(); \
                     if (window.commandsFnTranslations('c44q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c44r')) { \
                         targetURL = window.commandsFnTranslations('c44t', '" + event + "', " + commandVarA + "); \
                         window.open(targetURL); \
@@ -163,6 +165,8 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
             " + commandsCommonDeclarations + " \
 				$('#' + elementName + '').css('cursor', 'pointer'); \
                 " + eventPrefix + typePrefix + " \
+                    var targetURL; \
+                    event.preventDefault(); \
                     if (window.commandsFnTranslations('c91q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c91r')) { \
                         targetURL = window.commandsFnTranslations('c91t', '" + event + "', " + commandVarA + "); \
                         $('#' + targetURL + '').modal('open'); \
@@ -288,16 +292,10 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                         window.elementValue.set(elementName, window.elementValue.get(targetElement)); \
 					}\
                         " + typeSuffix + eventSuffix + " \
-                } else if (window.commandsFnTranslations('c10q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c10rB')) { \
-                    (function (" + commandVarB + ") { \
-                        " + eventPrefix + typePrefix + " \
-                        window.elementValue.set(elementName, window.commandsFnTranslations('c41', '" + event + "', " + commandVarA + ")); \
-                            " + typeSuffix + eventSuffix + " \
-                    })(" + commandVarB + "); \
                 } else { \
-                    var newVal = window.commandsFnTranslations('c12', '" + event + "', " + commandVarA + "); \
+                    var newVal = window.evaluateValue(window.commandsFnTranslations('c12', '" + event + "', " + commandVarA + ")); \
                     " + eventPrefix + typePrefix + " \
-                    window.elementValue.set(elementName, newVal); \
+                    window.elementValue.set(elementName, eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                 }}();";
     } else if (script == 'S6') {
@@ -320,9 +318,9 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                             " + typeSuffix + eventSuffix + " \
                         })(" + commandVarB + ", targetElement); \
                 } else { \
-                    var newVal = window.commandsFnTranslations('c17', '" + event + "', " + commandVarA + ", targetElement); \
+                    var newVal = window.evaluateValue(window.commandsFnTranslations('c17', '" + event + "', " + commandVarA + ", targetElement)); \
                     " + eventPrefix + typePrefix + " \
-                    window.elementValue.set(targetElement, newVal); \
+                    window.elementValue.set(targetElement, eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                     }})();";
     } else if (script == 'S10') {
@@ -344,9 +342,9 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                             " + typeSuffix + eventSuffix + " \
                     })(" + commandVarB + "); \
                 } else { \
-                    var newVal = window.commandsFnTranslations('c58', '" + event + "', " + commandVarA + "); \
+                    var newVal = window.evaluateValue(window.commandsFnTranslations('c58', '" + event + "', " + commandVarA + ")); \
                     " + eventPrefix + typePrefix + " \
-						window.setFontColour(elementName, newVal); \
+						window.setFontColour(elementName, eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                 }})();";
     } else if (script == 'S11') {
@@ -369,9 +367,9 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                             " + typeSuffix + eventSuffix + " \
                         })(" + commandVarB + ", targetElement); \
                 } else { \
-                    var newVal = window.commandsFnTranslations('c63', '" + event + "', " + commandVarA + ", targetElement); \
+                    var newVal = window.evaluateValue(window.commandsFnTranslations('c63', '" + event + "', " + commandVarA + ", targetElement)); \
                     " + eventPrefix + typePrefix + " \
-                    window.setFontColour(targetElement, newVal); \
+                    window.setFontColour(targetElement, eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                     }})();";
     } else if (script == 'S12') {
@@ -393,9 +391,9 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                             " + typeSuffix + eventSuffix + " \
                     })(" + commandVarB + "); \
                 } else { \
-                    var newVal = window.commandsFnTranslations('c67', '" + event + "', " + commandVarA + "); \
+                    var newVal = window.evaluateValue(window.commandsFnTranslations('c67', '" + event + "', " + commandVarA + ")); \
                     " + eventPrefix + typePrefix + " \
-						window.setBG(elementName, newVal); \
+						window.setBG(elementName, eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                 }})();";
     } else if (script == 'S13') {
@@ -418,9 +416,9 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                             " + typeSuffix + eventSuffix + " \
                         })(" + commandVarB + ", targetElement); \
                 } else { \
-                    var newVal = window.commandsFnTranslations('c72', '" + event + "', " + commandVarA + ", targetElement); \
+                    var newVal = window.evaluateValue(window.commandsFnTranslations('c72', '" + event + "', " + commandVarA + ", targetElement)); \
                     " + eventPrefix + typePrefix + " \
-                    window.setBG(targetElement, newVal); \
+                    window.setBG(targetElement, eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                     }})();";
     } else if (script == 'S14') {
@@ -442,9 +440,9 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                             " + typeSuffix + eventSuffix + " \
                     })(" + commandVarB + "); \
                 } else { \
-                    var newVal = window.commandsFnTranslations('c76', '" + event + "', " + commandVarA + "); \
+                    var newVal = window.evaluateValue(window.commandsFnTranslations('c76', '" + event + "', " + commandVarA + ")); \
                     " + eventPrefix + typePrefix + " \
-						window.scale(elementName, 'length', newVal); \
+						window.scale(elementName, 'length', eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                 }})();";
     } else if (script == 'S15') {
@@ -467,9 +465,9 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                             " + typeSuffix + eventSuffix + " \
                         })(" + commandVarB + ", targetElement); \
                 } else { \
-                    var newVal = window.commandsFnTranslations('c81', '" + event + "', " + commandVarA + ", targetElement); \
+                    var newVal = window.evaluateValue(window.commandsFnTranslations('c81', '" + event + "', " + commandVarA + ", targetElement)); \
                     " + eventPrefix + typePrefix + " \
-                    window.scale(targetElement, 'length', newVal); \
+                    window.scale(targetElement, 'length', eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                     }})();";
     } else if (script == 'S16') {
@@ -491,9 +489,9 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                             " + typeSuffix + eventSuffix + " \
                     })(" + commandVarB + "); \
                 } else { \
-                    var newVal = window.commandsFnTranslations('c85', '" + event + "', " + commandVarA + "); \
+                    var newVal = window.evaluateValue(window.commandsFnTranslations('c85', '" + event + "', " + commandVarA + ")); \
                     " + eventPrefix + typePrefix + " \
-						window.scale(elementName, 'height', newVal); \
+						window.scale(elementName, 'height', eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                 }})()";
     } else if (script == 'S17') {
@@ -516,9 +514,9 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                             " + typeSuffix + eventSuffix + " \
                         })(" + commandVarB + ", targetElement); \
                 } else { \
-                    var newVal = window.commandsFnTranslations('c90', '" + event + "', " + commandVarA + ", targetElement); \
+                    var newVal = window.evaluateValue(window.commandsFnTranslations('c90', '" + event + "', " + commandVarA + ", targetElement)); \
                     " + eventPrefix + typePrefix + " \
-                    window.scale(targetElement, 'height', newVal); \
+                    window.scale(targetElement, 'height', eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                     }})();";
     } else if (script == 'S7') {

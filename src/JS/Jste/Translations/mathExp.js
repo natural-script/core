@@ -1,12 +1,12 @@
 /*!
- * Math Expressions Translations
+ * Math Expressions Builder
  * https://project-jste.github.com/
  *
  * Copyright 2017 Jste Team
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-6
+ * Date: 2017-09-15
  */
 window.evaluateExpression = function (expression) {
 	var valNo = expression.match(RegExp(window.theValueOfTranslations[document.lang], "g"));
@@ -40,6 +40,28 @@ window.evaluateExpression = function (expression) {
 			}
 		}
 	}
-	finalExpression = finalExpression.replace(/square root/g, 'sqrt').replace(/جذر/g, 'sqrt').replace(/multiplied by/g, '*').replace(/ضرب/g, '*').replace(/divided/g, '/').replace(/على/g, '/').replace(/جا/g, 'sin').replace(/جتا/g, 'cos').replace(/ظا/g, 'tan');
+	finalExpression = finalExpression
+		.replace(/(square root|جذر)/g, 'sqrt')
+		.replace(/(multiplied by|ضرب)/g, '*')
+		.replace(/(divided by|فى|على)/g, '/')
+		.replace(/(plus|زائد)/g, '+')
+		.replace(/(minus|ناقص)/g, '-')
+		.replace(/جا/g, 'sin')
+		.replace(/جتا/g, 'cos')
+		.replace(/ظا/g, 'tan')
+		.replace(RegExp(window.centimetersTranslations[document.lang], "g"), "cm")
+		.replace(RegExp(window.millimetersTranslations[document.lang], "g"), "mm")
+		.replace(RegExp(window.inchesTranslations[document.lang], "g"), "in")
+		.replace(RegExp(window.pixelsTranslations[document.lang], "g"), "px")
+		.replace(RegExp(window.pointsTranslations[document.lang], "g"), "pt")
+		.replace(RegExp(window.picasTranslations[document.lang], "g"), "pc")
+		.replace(RegExp(window.centimeterTranslations[document.lang], "g"), "cm")
+		.replace(RegExp(window.millimeterTranslations[document.lang], "g"), "mm")
+		.replace(RegExp(window.inchTranslations[document.lang], "g"), "in")
+		.replace(RegExp(window.pixelTranslations[document.lang], "g"), "px")
+		.replace(RegExp(window.pointTranslations[document.lang], "g"), "pt")
+		.replace(RegExp(window.picaTranslations[document.lang], "g"), "pc")
+		.replace(RegExp('سم', "g"), "cm")
+		.replace(RegExp('مم', "g"), "mm");
 	return math.eval(finalExpression);
-}
+};

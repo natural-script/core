@@ -6,150 +6,192 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-12
+ * Date: 2017-09-15
  */
-window.customText = function (siteContents, keywordA, keywordB, keywordC, keywordD, keywordE, keywordF, keywordG, keywordH, keywordI, keywordJ, keywordK, keywordL, keywordM, keywordN, keywordO, keywordP, keywordQ, keywordR, keywordS, keywordT, keywordU, keywordV, keywordX, keywordY) {
-	var customTextsArrayA = siteContents.split("&lt;&lt; " + keywordA + ": ");
-	for (i = 0; i < customTextsArrayA.length; i++) {
-		var customTextA = customTextsArrayA[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordA + ": " + customTextA + " &gt;&gt;", "<b>" + customTextA + "</b>");
+window.customText = function (content, dynamic) {
+	var keywordA,
+		keywordB,
+		keywordC,
+		keywordD,
+		keywordE,
+		keywordF,
+		keywordG,
+		keywordH,
+		keywordI,
+		keywordJ,
+		keywordK,
+		keywordL,
+		keywordM,
+		keywordN,
+		keywordO,
+		keywordP,
+		keywordQ,
+		keywordR,
+		keywordS,
+		keywordT,
+		keywordU,
+		keywordV,
+		keywordW,
+		keywordX,
+		keywordY;
+	if (document.lang == 0 || document.lang == 1) {
+		keywordA = "write this text in a bold font";
+		keywordB = "write this text in an italic font";
+		keywordC = "write this text in an underlined font";
+		keywordD = "write this text in a bold and italic font";
+		keywordE = "write this text in an italic and bold font";
+		keywordF = "write this text in a bold and underlined font";
+		keywordG = "write this text in an underlined and bold font";
+		keywordH = "write this text in an underlined and italic font";
+		keywordI = "write this text in an italic and underlined font";
+		keywordJ = "write this text in a bold, italic and underlined font";
+		keywordK = "write this text in a bold, underlined and italic font";
+		keywordL = "write this text in an italic, bold and underlined font";
+		keywordM = "write this text in an italic, underlined and bold font";
+		keywordN = "write this text in an underlined, italic and bold font";
+		keywordO = "write this text in an underlined, bold and italic font";
+		keywordP = "the window length";
+		keywordQ = "the window width";
+		keywordR = "the screen length";
+		keywordS = "the screen width";
+		keywordT = "an icon of";
+		keywordU = "a line break";
+		keywordV = "the value of";
+		keywordW = "the user's name";
+		keywordX = "the user's email";
+		keywordY = "name this text";
+	} else if (document.lang == 2) {
+		keywordA = "écrire ce texte dans une police en gras";
+		keywordB = "écrire ce texte dans une police en italique";
+		keywordC = "écrire ce texte dans une police soulignée";
+		keywordD = "écrire ce texte dans une police en gras et en italique";
+		keywordE = "écrire ce texte dans une police en italique et en gras";
+		keywordF = "écrire ce texte dans une police en gras et soulignée";
+		keywordG = "écrire ce texte dans une police soulignée et en gras";
+		keywordH = "écrire ce texte dans une police soulignée et en italique";
+		keywordI = "écrire ce texte dans une police en italique et soulignée";
+		keywordJ = "écrire ce texte dans une police en gras, en italique et soulignée";
+		keywordK = "écrire ce texte dans une police en gras, soulignée et en italique";
+		keywordL = "écrire ce texte dans une police en italique, en gras et soulignée";
+		keywordM = "écrire ce texte dans une police en italique, soulignée et en gras";
+		keywordN = "écrire ce texte dans une police soulignée, en italique et en gras";
+		keywordO = "écrire ce texte dans une police soulignée, en gras et en italique";
+		keywordP = "la longueur de la fenêtre";
+		keywordQ = "la largeur de la fenêtre";
+		keywordR = "la longueur de l'écran";
+		keywordS = "la largeur de l'écran";
+		keywordT = "une icône de";
+		keywordU = "un saut de ligne";
+		keywordV = "la valeur de";
+		keywordW = "le nom de l'utilisateur";
+		keywordX = "le courrier électronique de l'utilisateur";
+		keywordY = "nommer ce texte";
+	} else if (document.lang == 3) {
+		keywordA = "اكتب هذا النص بخط سميك";
+		keywordB = "اكتب هذا النص بخط مائل";
+		keywordC = "اكتب هذا النص بخط مخطط";
+		keywordD = "اكتب هذا النص بخط سميك و مائل";
+		keywordE = "اكتب هذا النص بخط مائل و سميك";
+		keywordF = "اكتب هذا النص بخط سميك و مخطط";
+		keywordG = "اكتب هذا النص بخط مخطط و سميك";
+		keywordH = "اكتب هذا النص بخط مخطط و مائل";
+		keywordI = "اكتب هذا النص بخط مائل و مخطط";
+		keywordJ = "اكتب هذا النص بخط سميك, مائل و مخطط";
+		keywordK = "اكتب هذا النص بخط سميك, مخطط و مائل";
+		keywordL = "اكتب هذا النص بخط مائل, سميك و مخطط";
+		keywordM = "اكتب هذا النص بخط مائل, مخطط و سميك";
+		keywordN = "اكتب هذا النص بخط مخطط, مائل و سميك";
+		keywordO = "اكتب هذا النص بخط مخطط, سميك و مائل";
+		keywordP = "طول النافذة";
+		keywordQ = "عرض النافذة";
+		keywordR = "طول الشاشة";
+		keywordS = "عرض الشاشة";
+		keywordT = "ايقونة";
+		keywordU = "سطر جديد";
+		keywordV = "قيمة";
+		keywordW = "اسم المستخدم";
+		keywordX = "بريد المستخدم";
+		keywordY = "سمى هذا النص";
+	} else if (document.lang == 4) {
+		keywordA = "اكتب الكلام دة بخط طخين";
+		keywordB = "اكتب الكلام دة بخط مايل";
+		keywordC = "اكتب الكلام دة بخط متخطط";
+		keywordD = "اكتب الكلام دة بخط طخين و مايل";
+		keywordE = "اكتب الكلام دة بخط مايل و طخين";
+		keywordF = "اكتب الكلام دة بخط طخين و متخطط";
+		keywordG = "اكتب الكلام دة بخط متخطط و طخين";
+		keywordH = "اكتب الكلام دة بخط متخطط و مايل";
+		keywordI = "اكتب الكلام دة بخط مايل و متخطط";
+		keywordJ = "اكتب الكلام دة بخط طخين, مايل و متخطط";
+		keywordK = "اكتب الكلام دة بخط طخين, متخطط و مايل";
+		keywordL = "اكتب الكلام دة بخط مايل, طخين و متخطط";
+		keywordM = "اكتب الكلام دة بخط مايل, متخطط و طخين";
+		keywordN = "اكتب الكلام دة بخط متخطط, مايل و طخين";
+		keywordO = "اكتب الكلام دة بخط متخطط, طخين و مايل";
+		keywordP = "طول النافذة";
+		keywordQ = "عرض النافذة";
+		keywordR = "طول الشاشة";
+		keywordS = "عرض الشاشة";
+		keywordT = "ايكونة";
+		keywordU = "سطر جديد";
+		keywordV = "قيمة";
+		keywordW = "اسم المستخدم";
+		keywordX = "إيميل المستخدم";
+		keywordY = "سمى الكلام دة";
+	} else if (document.lang == 5) {
+
 	}
-	var customTextsArrayB = siteContents.split("&lt;&lt; " + keywordB + ": ");
-	for (i = 0; i < customTextsArrayB.length; i++) {
-		var customTextB = customTextsArrayB[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordB + ": " + customTextB + " &gt;&gt;", "<i>" + customTextB + "</i>");
-	}
-	var customTextsArrayC = siteContents.split("&lt;&lt; " + keywordC + ": ");
-	for (i = 0; i < customTextsArrayC.length; i++) {
-		var customTextC = customTextsArrayC[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordC + ": " + customTextC + " &gt;&gt;", "<u>" + customTextC + "</u>");
-	}
-	var customTextsArrayD = siteContents.split("&lt;&lt; " + keywordD + ": ");
-	for (i = 0; i < customTextsArrayD.length; i++) {
-		var customTextD = customTextsArrayD[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordD + ": " + customTextD + " &gt;&gt;", "<b><i>" + customTextD + "</b></i>");
-	}
-	var customTextsArrayE = siteContents.split("&lt;&lt; " + keywordE + ": ");
-	for (i = 0; i < customTextsArrayE.length; i++) {
-		var customTextE = customTextsArrayE[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordE + ": " + customTextE + " &gt;&gt;", "<i><b>" + customTextE + "</i></b>");
-	}
-	var customTextsArrayF = siteContents.split("&lt;&lt; " + keywordF + ": ");
-	for (i = 0; i < customTextsArrayF.length; i++) {
-		var customTextF = customTextsArrayF[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordF + ": " + customTextF + " &gt;&gt;", "<b><u>" + customTextF + "</b></u>");
-	}
-	var customTextsArrayG = siteContents.split("&lt;&lt; " + keywordG + ": ");
-	for (i = 0; i < customTextsArrayG.length; i++) {
-		var customTextG = customTextsArrayG[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordG + ": " + customTextG + " &gt;&gt;", "<u><b>" + customTextG + "</u></b>");
-	}
-	var customTextsArrayH = siteContents.split("&lt;&lt; " + keywordH + ": ");
-	for (i = 0; i < customTextsArrayH.length; i++) {
-		var customTextH = customTextsArrayH[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordH + ": " + customTextH + " &gt;&gt;", "<u><i>" + customTextH + "</u></i>");
-	}
-	var customTextsArrayI = siteContents.split("&lt;&lt; " + keywordI + ": ");
-	for (i = 0; i < customTextsArrayI.length; i++) {
-		var customTextI = customTextsArrayI[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordI + ": " + customTextI + " &gt;&gt;", "<i><u>" + customTextI + "</i></u>");
-	}
-	var customTextsArrayJ = siteContents.split("&lt;&lt; " + keywordJ + ": ");
-	for (i = 0; i < customTextsArrayJ.length; i++) {
-		var customTextJ = customTextsArrayJ[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordJ + ": " + customTextJ + " &gt;&gt;", "<b><i><u>" + customTextJ + "</b></i></u>");
-	}
-	var customTextsArrayK = siteContents.split("&lt;&lt; " + keywordK + ": ");
-	for (i = 0; i < customTextsArrayK.length; i++) {
-		var customTextK = customTextsArrayK[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordK + ": " + customTextK + " &gt;&gt;", "<b><u><i>" + customTextK + "</b></u></i>");
-	}
-	var customTextsArrayL = siteContents.split("&lt;&lt; " + keywordL + ": ");
-	for (i = 0; i < customTextsArrayL.length; i++) {
-		var customTextL = customTextsArrayL[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordL + ": " + customTextL + " &gt;&gt;", "<i><b><u>" + customTextL + "</i></b></u>");
-	}
-	var customTextsArrayM = siteContents.split("&lt;&lt; " + keywordM + ": ");
-	for (i = 0; i < customTextsArrayM.length; i++) {
-		var customTextM = customTextsArrayM[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordM + ": " + customTextM + " &gt;&gt;", "<i><u><b>" + customTextM + "</i></u></b>");
-	}
-	var customTextsArrayN = siteContents.split("&lt;&lt; " + keywordN + ": ");
-	for (i = 0; i < customTextsArrayN.length; i++) {
-		var customTextN = customTextsArrayN[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordN + ": " + customTextN + " &gt;&gt;", "<u><i><b>" + customTextN + "</u></i></b>");
-	}
-	var customTextsArrayO = siteContents.split("&lt;&lt; " + keywordO + ": ");
-	for (i = 0; i < customTextsArrayO.length; i++) {
-		var customTextO = customTextsArrayO[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordO + ": " + customTextO + " &gt;&gt;", "<u><b><i>" + customTextO + "</u></b></i>");
-	}
-	var customTextsArrayP = siteContents.split("&lt;&lt; " + keywordP + " ");
-	for (i = 0; i < customTextsArrayP.length; i++) {
-		var customTextP = customTextsArrayP[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordP + " &gt;&gt;", window.innerHeight);
-	}
-	var customTextsArrayQ = siteContents.split("&lt;&lt; " + keywordQ + " ");
-	for (i = 0; i < customTextsArrayQ.length; i++) {
-		var customTextQ = customTextsArrayQ[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordQ + " &gt;&gt;", window.innerWidth);
-	}
-	var customTextsArrayR = siteContents.split("&lt;&lt; " + keywordR + " ");
-	for (i = 0; i < customTextsArrayR.length; i++) {
-		var customTextR = customTextsArrayR[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordR + " &gt;&gt;", screen.height);
-	}
-	var customTextsArrayS = siteContents.split("&lt;&lt; " + keywordS + " ");
-	for (i = 0; i < customTextsArrayS.length; i++) {
-		var customTextS = customTextsArrayS[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordS + " &gt;&gt;", screen.width);
-	}
-	var customTextsArrayT = siteContents.split("&lt;&lt; " + keywordT + " ");
-	for (i = 0; i < customTextsArrayT.length; i++) {
-		var customTextT = customTextsArrayT[i].split(" &gt;&gt;")[0];
-		siteContents = siteContents.replace("&lt;&lt; " + keywordT + " " + customTextT + " &gt;&gt;", "<i class='fa fa-" + customTextT + "' aria-hidden='true'></i>");
-	}
-	siteContents = siteContents.replace(new RegExp("&lt;&lt; " + keywordU + " &gt;&gt;", "g"), "<br />");
-	var customTextsArrayV = siteContents.split("&lt;&lt; " + keywordV + " ");
-	if (customTextsArrayV.length > 0) {
-		var DisplayJSID = document.uniqueID();
-		document[DisplayJSID + '_varsArray'] = [];
-		for (i = 1; i < customTextsArrayV.length; i++) {
-			var customTextV = customTextsArrayV[i].split(" &gt;&gt;")[0];
-			document[DisplayJSID + '_varsArray'][customTextV] = keywordV + " " + customTextV;
-			siteContents = siteContents.replace("&lt;&lt; " + keywordV + " " + customTextV + " &gt;&gt;", "<span var='" + customTextV + "'></span>");
-		}
-		document[DisplayJSID] = new DisplayJS(document[DisplayJSID + '_varsArray']);
-		document[DisplayJSID].dynamic(function () {
-			for (i = 0; i < Object.keys(document[DisplayJSID + '_varsArray']).length; i++) {
-				document[DisplayJSID + '_varsArray'][Object.keys(document[DisplayJSID + '_varsArray'])[i]] = new String(window.elementValue.get(Object.keys(document[DisplayJSID + '_varsArray'])[i]));
+	content = content.replace(new RegExp("&lt;&lt; (" + keywordA + "|" + keywordB + "|" + keywordC + "|" + keywordD + "|" + keywordE + "|" + keywordF + "|" + keywordG + "|" + keywordH + "|" + keywordI + "|" + keywordJ + "|" + keywordK + "|" + keywordL + "|" + keywordM + "|" + keywordN + "|" + keywordO + "): (.*?) &gt;&gt;", 'g'), function (match, p1, p2, offset, string) {
+			var prefix,
+				suffix;
+			if (p1 == keywordA) {
+				prefix = '<b>';
+				suffix = '</b>';
+			} else if (p1 == keywordB) {
+				prefix = '<i>';
+				suffix = '</i>';
+			} else if (p1 == keywordC) {
+				prefix = '<u>';
+				suffix = '</u>';
+			} else if (p1 == keywordD || p1 == keywordE) {
+				prefix = '<b><i>';
+				suffix = '</b></i>';
+			} else if (p1 == keywordF || p1 == keywordG) {
+				prefix = '<b><u>';
+				suffix = '</b></u>';
+			} else if (p1 == keywordH || p1 == keywordI) {
+				prefix = '<u><i>';
+				suffix = '</u></i>';
+			} else if (p1 == keywordJ || p1 == keywordK || p1 == keywordL || p1 == keywordM || p1 == keywordN || p1 == keywordO) {
+				prefix = '<b><i><u>';
+				suffix = '</b></i></u>';
 			}
+			return prefix + p2 + suffix;
+		})
+		.replace(new RegExp("&lt;&lt; " + keywordT + " (.*?) &gt;&gt;", 'g'), "<i class='fa fa-$1' aria-hidden='true'></i>")
+		.replace(new RegExp("&lt;&lt; " + keywordU + " &gt;&gt;", "g"), "<br />")
+		.replace(new RegExp("&lt;&lt; " + keywordY + " (.*?): (.*?) &gt;&gt;", "g"), function(match, p1, p2, offset, string){
+			return "<span id='" + p1 + "'>" + p2 + "</span>";
 		});
-		document[DisplayJSID].var(true);
-	}
-	var customTextsArrayX = siteContents.split("&lt;&lt; " + keywordX + " ");
-	if (customTextsArrayX.length > 0) {
-		siteContents = siteContents.replace(new RegExp("&lt;&lt; " + keywordX + " &gt;&gt;", "g"), "<span var='currentUserName'></span>");
-		var DisplayJSID = document.uniqueID();
-		document[DisplayJSID + '_varsArray'] = [];
-		document[DisplayJSID + '_varsArray'].currentUserName = keywordX;
-		document[DisplayJSID] = new DisplayJS(document[DisplayJSID + '_varsArray']);
-		document[DisplayJSID].dynamic(function () {
-			document[DisplayJSID + '_varsArray'].currentUserName = new String(window.user);
+	if (dynamic == undefined) {
+		content = content.replace(new RegExp("&lt;&lt; (" + keywordV + " |" + keywordW + "|" + keywordX + "|" + keywordP + "|" + keywordQ + "|" + keywordR + "|" + keywordS + ")(|.*?) &gt;&gt;", 'g'), function (match, p1, p2, offset, string) {
+			if (p1 == keywordW) {
+				p2 = 'currentUserName';
+			} else if (p1 == keywordX) {
+				p2 = 'currentUserEmail';
+			} else if (p1 == keywordP) {
+				p2 = 'currentWindowLength';
+			} else if (p1 == keywordQ) {
+				p2 = 'currentWindowWidth';
+			} else if (p1 == keywordR) {
+				p2 = 'currentScreenLength';
+			} else if (p1 == keywordS) {
+				p2 = 'currentScreenWidth';
+			}
+			window.varsArray[p2] = undefined;
+			window.varsUpdater();
+			return "<span var='" + p2 + "'></span>";
 		});
-		document[DisplayJSID].var(true);
 	}
-	var customTextsArrayY = siteContents.split("&lt;&lt; " + keywordY + " ");
-	if (customTextsArrayY.length > 0) {
-		siteContents = siteContents.replace(new RegExp("&lt;&lt; " + keywordY + " &gt;&gt;", "g"), "<span var='currentUserEmail'></span>");
-		var DisplayJSID = document.uniqueID();
-		document[DisplayJSID + '_varsArray'] = [];
-		document[DisplayJSID + '_varsArray'].currentUserEmail = keywordY;
-		document[DisplayJSID] = new DisplayJS(document[DisplayJSID + '_varsArray']);
-		document[DisplayJSID].dynamic(function () {
-			document[DisplayJSID + '_varsArray'].currentUserEmail = new String(window.email);
-		});
-		document[DisplayJSID].var(true);
-	}
-	return siteContents;
+	return content;
 };

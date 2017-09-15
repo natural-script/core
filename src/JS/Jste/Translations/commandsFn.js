@@ -1410,7 +1410,7 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return commandValue.split('définir sa valeur à la valeur de ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('خلى لون خط نصه إلى قيمة ')[1];
+			return commandValue.split('اجعل لون خط نصه إلى قيمة ')[1];
 		} else if (document.lang == 4) {
 			return commandValue.split('خلى لون خط كلامه إلى قيمة ')[1];
 		} else if (document.lang == 5) {
@@ -1424,7 +1424,7 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return commandValue.split('définir sa valeur à ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('خلى لون خط نصه إلى ')[1];
+			return commandValue.split('اجعل لون خط نصه إلى ')[1];
 		} else if (document.lang == 4) {
 			return commandValue.split('خلى لون خط كلامه إلى ')[1];
 		} else if (document.lang == 5) {

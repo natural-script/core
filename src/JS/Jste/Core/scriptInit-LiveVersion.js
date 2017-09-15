@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-14
+ * Date: 2017-09-15
  */
 var code = 'jQuery(document).ready(\nfunction ($) {\nvar ';
 if (document.lang == 0) {
@@ -24,12 +24,20 @@ if (document.lang == 0) {
 	code = code.replace(/^add (a|an) (\w+) without (.*?) with the following properties:$/gm, 'add.$2({\nits attributes are without $3,');
 	code = code.replace(/^add (a|an) (.*?) (\w+) with the following properties:$/gm, 'add.$3({\nits attributes are $2,');
 	code = code.replace(/^add (a|an) (\w+) with the following properties:$/gm, 'add.$2({');
+	code = code.replace(/^assign the following properties to the element (\w+):$/gm, 'add.properties_assignor({\nits name is $1,');
 	code = code.replace(/^clone (\w+) with the following properties:$/gm, 'add.clone0({\nits cloned element is $1,');
 	code = code.replace(/^clone (\w+) including its commands with the following properties:$/gm, 'add.clone0({\nits cloned element is $1,\nits attributes are with commands,');
+	code = window.customText(code, false);
 	code = code.replace(/^its (.*?) (is|are) (.*)\,$/gm, function (match, p1, p2, p3, offset, string) {
+		if (p1 == 'text') {
+			p3 = window.customText(p3);
+		}
 		return p1.replace(/ /g, "_") + ': "' + p3.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '",';
 	});
 	code = code.replace(/^its (.*?) (is|are) (.*)\.$/gm, function (match, p1, p2, p3, offset, string) {
+		if (p1 == 'text') {
+			p3 = window.customText(p3);
+		}
 		return p1.replace(/ /g, "_") + ': "' + p3.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '"\n});';
 	});
 	code = code.replace(/^the commands of the item (.*?) are that (.*?)\,$/gm, function (match, p1, p2, offset, string) {
@@ -40,31 +48,6 @@ if (document.lang == 0) {
 		i++;
 		return 'commands' + i + ': "' + p1 + ':' + p2 + '"\n});';
 	});
-	code = window.customText(code,
-		"write this text in a bold font",
-		"write this text in an italic font",
-		"write this text in an underlined font",
-		"write this text in a bold and italic font",
-		"write this text in an italic and bold font",
-		"write this text in a bold and underlined font",
-		"write this text in an underlined and bold font",
-		"write this text in an underlined and italic font",
-		"write this text in an italic and underlined font",
-		"write this text in a bold, italic and underlined font",
-		"write this text in a bold, underlined and italic font",
-		"write this text in an italic, bold and underlined font",
-		"write this text in an italic, underlined and bold font",
-		"write this text in an underlined, italic and bold font",
-		"write this text in an underlined, bold and italic font",
-		"the window length",
-		"the window width",
-		"the screen length",
-		"the screen width",
-		"an icon of",
-		"a line break",
-		"the value of",
-		"the user's name",
-		"the user's email");
 	$("en-uk").remove();
 } else if (document.lang == 1) {
 	if (window.isChrome) {
@@ -81,12 +64,20 @@ if (document.lang == 0) {
 	code = code.replace(/^add (a|an) (\w+) without (.*?) with the following properties:$/gm, 'add.$2({\nits attributes are without $3,');
 	code = code.replace(/^add (a|an) (.*?) (\w+) with the following properties:$/gm, 'add.$3({\nits attributes are $2,');
 	code = code.replace(/^add (a|an) (\w+) with the following properties:$/gm, 'add.$2({');
+	code = code.replace(/^assign the following properties to the element (\w+):$/gm, 'add.properties_assignor({\nits name is $1,');
 	code = code.replace(/^clone (\w+) with the following properties:$/gm, 'add.clone0({\nits cloned element is $1,');
 	code = code.replace(/^clone (\w+) including its commands with the following properties:$/gm, 'add.clone0({\nits cloned element is $1,\nits attributes are with commands,');
+	code = window.customText(code, false);
 	code = code.replace(/^its (.*?) (is|are) (.*)\,$/gm, function (match, p1, p2, p3, offset, string) {
+		if (p1 == 'text') {
+			p3 = window.customText(p3);
+		}
 		return p1.replace(/ /g, "_") + ': "' + p3.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '",';
 	});
 	code = code.replace(/^its (.*?) (is|are) (.*)\.$/gm, function (match, p1, p2, p3, offset, string) {
+		if (p1 == 'text') {
+			p3 = window.customText(p3);
+		}
 		return p1.replace(/ /g, "_") + ': "' + p3.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '"\n});';
 	});
 	code = code.replace(/^the commands of the item (.*?) are that (.*?)\,$/gm, function (match, p1, p2, offset, string) {
@@ -97,31 +88,6 @@ if (document.lang == 0) {
 		i++;
 		return 'commands' + i + ': "' + p1 + ':' + p2 + '"\n});';
 	});
-	code = window.customText(code,
-		"write this text in a bold font",
-		"write this text in an italic font",
-		"write this text in an underlined font",
-		"write this text in a bold and italic font",
-		"write this text in an italic and bold font",
-		"write this text in a bold and underlined font",
-		"write this text in an underlined and bold font",
-		"write this text in an underlined and italic font",
-		"write this text in an italic and underlined font",
-		"write this text in a bold, italic and underlined font",
-		"write this text in a bold, underlined and italic font",
-		"write this text in an italic, bold and underlined font",
-		"write this text in an italic, underlined and bold font",
-		"write this text in an underlined, italic and bold font",
-		"write this text in an underlined, bold and italic font",
-		"the window length",
-		"the window width",
-		"the screen length",
-		"the screen width",
-		"an icon of",
-		"a line break",
-		"the value of",
-		"the user's name",
-		"the user's email");
 	$("en-us").remove();
 } else if (document.lang == 2) {
 	if (window.isChrome) {
@@ -133,12 +99,20 @@ if (document.lang == 0) {
 	code = code.replace(/^configurez ce (site|app) avec les propriétés suivantes:$/gm, 'ajouter.installation({\nson mode est $1,');
 	code = code.replace(/^ajouter (le|la|un|une) (\w+) (.*?) avec les propriétés suivantes:$/gm, 'ajouter.$2({\nses attributs sont $3,');
 	code = code.replace(/^ajouter (le|la|un|une) (\w+) avec les propriétés suivantes:$/gm, 'ajouter.$2({');
+	code = code.replace(/^affectez les propriétés suivantes à l'élément (\w+):$/gm, 'ajouter.cédant_des_propriétés({\nson nom est $1,');
 	code = code.replace(/^cloner (\w+) avec les propriétés suivantes:$/gm, 'ajouter.clone0({\nson élément clone est $1,');
 	code = code.replace(/^cloner (\w+) y compris ses commandes avec les propriétés suivantes:$/gm, 'ajouter.clone0({\nson élément clone est $1,\nses attributs sont avec des commandes,');
+	code = window.customText(code, false);
 	code = code.replace(/^(son|sa) (.*?) (est|sont) (.*)\,$/gm, function (match, p1, p2, p3, p4, offset, string) {
+		if (p2 == 'text') {
+			p4 = window.customText(p4);
+		}
 		return p2.replace(/ /g, "_") + ': "' + p4.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '",';
 	});
 	code = code.replace(/^(son|sa) (.*?) (est|sont) (.*)\.$/gm, function (match, p1, p2, p3, p4, offset, string) {
+		if (p2 == 'text') {
+			p4 = window.customText(p4);
+		}
 		return p2.replace(/ /g, "_") + ': "' + p4.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '"\n});';
 	});
 	code = code.replace(/^les commandes de l'élément (.*?) sont (.*?)\,$/gm, function (match, p1, p2, offset, string) {
@@ -149,31 +123,6 @@ if (document.lang == 0) {
 		i++;
 		return 'commandes' + i + ': "' + p1 + ':' + p2 + '"\n});';
 	});
-	code = window.customText(code,
-		"écrire ce texte dans une police en gras",
-		"écrire ce texte dans une police en italique",
-		"écrire ce texte dans une police soulignée",
-		"écrire ce texte dans une police en gras et en italique",
-		"écrire ce texte dans une police en italique et en gras",
-		"écrire ce texte dans une police en gras et soulignée",
-		"écrire ce texte dans une police soulignée et en gras",
-		"écrire ce texte dans une police soulignée et en italique",
-		"écrire ce texte dans une police en italique et soulignée",
-		"écrire ce texte dans une police en gras, en italique et soulignée",
-		"écrire ce texte dans une police en gras, soulignée et en italique",
-		"écrire ce texte dans une police en italique, en gras et soulignée",
-		"écrire ce texte dans une police en italique, soulignée et en gras",
-		"écrire ce texte dans une police soulignée, en italique et en gras",
-		"écrire ce texte dans une police soulignée, en gras et en italique",
-		"la longueur de la fenêtre",
-		"la largeur de la fenêtre",
-		"la longueur de l'écran",
-		"la largeur de l'écran",
-		"une icône de",
-		"un saut de ligne",
-		"la valeur de",
-		"le nom de l'utilisateur",
-		"le courrier électronique de l'utilisateur");
 	$("fr-fr").remove();
 } else if (document.lang == 3) {
 	document.isRTL = true;
@@ -187,12 +136,20 @@ if (document.lang == 0) {
 	code = code.replace(/^هيئ هذا (الموقع|التطبيق) بالخواص التالية:$/gm, 'اضف.الإعدادات({\nالوضعية الخاصة به $1,');
 	code = code.replace(/^اضف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (.*?) بالخواص التالية:$/gm, 'اضف.$1({\nالصفات الخاصة به $2,');
 	code = code.replace(/^اضف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص التالية:$/gm, 'اضف.$1({');
+	code = code.replace(/^اضف هذه الخواص التالية إلى العنصر ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+):$/gm, 'اضف.مضيف_الخواص({\nالاسم الخاص به $1,');
 	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, 'اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,');
 	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بأوامره بالخواص التالية:$/gm, 'اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,\nالصفات الخاصة به بالأوامر,');
+	code = window.customText(code, false);
 	code = code.replace(/^(.*?) (الخاص به|الخاصة به|الخاص بها|الخاصة بها) (.*)\,$/gm, function (match, p1, p2, p3, offset, string) {
+		if (p1 == 'النص') {
+			p3 = window.customText(p3);
+		}
 		return p1.replace(/ /g, "_").replace(/^ال/gm, "") + ': "' + p3.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '",';
 	});
 	code = code.replace(/^(.*?) (الخاص به|الخاصة به|الخاص بها|الخاصة بها) (.*)\.$/gm, function (match, p1, p2, p3, offset, string) {
+		if (p1 == 'النص') {
+			p3 = window.customText(p3);
+		}
 		return p1.replace(/ /g, "_").replace(/^ال/gm, "") + ': "' + p3.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '"\n});';
 	});
 	code = code.replace(/^الأوامر الخاصة بالعنصر (.*?) هى أنه (.*?)\,$/gm, function (match, p1, p2, offset, string) {
@@ -203,30 +160,6 @@ if (document.lang == 0) {
 		i++;
 		return 'أوامر' + i + ': "' + p1 + ':' + p2 + '"\n});';
 	});
-	code = window.customText(code, "اكتب هذا النص بخط سميك",
-		"اكتب هذا النص بخط مائل",
-		"اكتب هذا النص بخط مخطط",
-		"اكتب هذا النص بخط سميك و مائل",
-		"اكتب هذا النص بخط مائل و سميك",
-		"اكتب هذا النص بخط سميك و مخطط",
-		"اكتب هذا النص بخط مخطط و سميك",
-		"اكتب هذا النص بخط مخطط و مائل",
-		"اكتب هذا النص بخط مائل و مخطط",
-		"اكتب هذا النص بخط سميك, مائل و مخطط",
-		"اكتب هذا النص بخط سميك, مخطط و مائل",
-		"اكتب هذا النص بخط مائل, سميك و مخطط",
-		"اكتب هذا النص بخط مائل, مخطط و سميك",
-		"اكتب هذا النص بخط مخطط, مائل و سميك",
-		"اكتب هذا النص بخط مخطط, سميك و مائل",
-		"طول النافذة",
-		"عرض النافذة",
-		"طول الشاشة",
-		"عرض الشاشة",
-		"ايقونة",
-		"سطر جديد",
-		"قيمة",
-		"اسم المستخدم",
-		"بريد المستخدم");
 	$("ar-ar").remove();
 } else if (document.lang == 4) {
 	document.isRTL = true;
@@ -240,12 +173,20 @@ if (document.lang == 0) {
 	code = code.replace(/^هيئ (السايت|الآب) دة بالخواص دى:$/gm, 'ضيف.الإعدادات({\المود بتاعه $1,');
 	code = code.replace(/^ضيف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (.*?) بالخواص دى:$/gm, 'ضيف.$1({\nالصفات بتاعته $2,');
 	code = code.replace(/^ضيف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, 'ضيف.$1({');
+	code = code.replace(/^ضيف الخواص دى للعنصر ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+):$/gm, 'ضيف.مضيف_الخواص({\nالاسم بتاعه $1,');
 	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, 'ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,');
 	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بأوامره بالخواص دى:$/gm, 'ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,\nالصفات بتاعته بالأوامر,');
+	code = window.customText(code, false);
 	code = code.replace(/^(.*?) (بتاعه|بتاعته|بتاعها|بتاعتها) (.*)\,$/gm, function (match, p1, p2, p3, offset, string) {
+		if (p1 == 'الكلام') {
+			p3 = window.customText(p3);
+		}
 		return p1.replace(/ /g, "_").replace(/^ال/gm, "") + ': "' + p3.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '",';
 	});
 	code = code.replace(/^(.*?) (بتاعه|بتاعته|بتاعها|بتاعتها) (.*)\.$/gm, function (match, p1, p2, p3, offset, string) {
+		if (p1 == 'الكلام') {
+			p3 = window.customText(p3);
+		}
 		return p1.replace(/ /g, "_").replace(/^ال/gm, "") + ': "' + p3.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '"\n});';
 	});
 	code = code.replace(/^الأوامر بتاعت العنصر (.*?) هية إنه (.*?)\,$/gm, function (match, p1, p2, offset, string) {
@@ -256,30 +197,6 @@ if (document.lang == 0) {
 		i++;
 		return 'أوامر' + i + ': "' + p1 + ':' + p2 + '"\n});';
 	});
-	code = window.customText(code, "اكتب الكلام دة بخط طخين",
-		"اكتب الكلام دة بخط مايل",
-		"اكتب الكلام دة بخط متخطط",
-		"اكتب الكلام دة بخط طخين و مايل",
-		"اكتب الكلام دة بخط مايل و طخين",
-		"اكتب الكلام دة بخط طخين و متخطط",
-		"اكتب الكلام دة بخط متخطط و طخين",
-		"اكتب الكلام دة بخط متخطط و مايل",
-		"اكتب الكلام دة بخط مايل و متخطط",
-		"اكتب الكلام دة بخط طخين, مايل و متخطط",
-		"اكتب الكلام دة بخط طخين, متخطط و مايل",
-		"اكتب الكلام دة بخط مايل, طخين و متخطط",
-		"اكتب الكلام دة بخط مايل, متخطط و طخين",
-		"اكتب الكلام دة بخط متخطط, مايل و طخين",
-		"اكتب الكلام دة بخط متخطط, طخين و مايل",
-		"طول النافذة",
-		"عرض النافذة",
-		"طول الشاشة",
-		"عرض الشاشة",
-		"ايكونة",
-		"سطر جديد",
-		"قيمة",
-		"اسم المستخدم",
-		"إيميل المستخدم");
 	$("ar-eg").remove();
 } else if (document.lang == 5) {
 	if (window.isChrome) {
