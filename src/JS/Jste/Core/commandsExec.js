@@ -48,12 +48,19 @@ window.execute = async function (elementName, command, execute) {
 				typeOptions.secondryConditions = [];
 				for (var optionID = 0; optionID < alternativeOptionsArray.length; optionID++) {
 					typeOptions.secondryConditions[optionID] = [];
-					await window.evaluateStatement(alternativeOptionsArray[optionID]).then(function (condition) {
-						typeOptions.secondryConditions[optionID].condition = condition;
-					});
-					await window.execute(typeOptions.elementName, window.commandsFnTranslations('c54', 'E1', alternativeOptionsArray[optionID]), false).then(function (conditionalCommand) {
-						typeOptions.secondryConditions[optionID].command = conditionalCommand;
-					});
+					if (alternativeOptionsArray[optionID].includes(window.inTheCaseThatTranslations[document.lang])) {
+						await window.evaluateStatement(alternativeOptionsArray[optionID]).then(function (condition) {
+							typeOptions.secondryConditions[optionID].condition = condition;
+						});
+						await window.execute(typeOptions.elementName, window.commandsFnTranslations('c54', 'E1', alternativeOptionsArray[optionID]), false).then(function (conditionalCommand) {
+							typeOptions.secondryConditions[optionID].command = conditionalCommand;
+						});
+					} else {
+						typeOptions.secondryConditions[optionID].condition = 'true';
+						await window.execute(typeOptions.elementName, alternativeOptionsArray[optionID], false).then(function (conditionalCommand) {
+							typeOptions.secondryConditions[optionID].command = conditionalCommand;
+						});
+					}
 				}
 			}
 		} else if (window.commandsFnTranslations('c34', 'E1', commands[commandID]).length > 1) {
@@ -83,7 +90,7 @@ window.execute = async function (elementName, command, execute) {
 			codeParam = ", typeOptions";
 		}
 		commandInfo.pureCommand = pureCommand;
-			var result = eval("if (pureCommand.startsWith(document[getTheEventCode(pureCommand)])) { \
+		var result = eval("if (pureCommand.startsWith(document[getTheEventCode(pureCommand)])) { \
 			" + codePrefix + " \
 			if (window.commandsFnTranslations('c2q', getTheEventCode(pureCommand), pureCommand) == window.commandsFnTranslations('c2ruA')) { \
 				" + operationPrefix + "window.evaluateScript('S1', getTheEventCode(pureCommand), commandType, commandInfo" + codeParam + ")" + operationSuffix + " \

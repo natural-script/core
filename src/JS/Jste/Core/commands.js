@@ -39,10 +39,10 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
         eventPrefix = "$('#' + elementName + '').mousemove(function () {";
         eventSuffix = "});";
     } else if (event == 'E6') {
-        eventPrefix = "$('#' + elementName + '').mouseup(function () {";
+        eventPrefix = "$('#' + elementName + '').on('up', function () {";
         eventSuffix = "});";
     } else if (event == 'E7') {
-        eventPrefix = "$('#' + elementName + '').on('doubletap', function () {";
+        eventPrefix = "$('#' + elementName + '').dblclick(function () {";
         eventSuffix = "});";
     } else if (event == 'E8') {
         eventPrefix = "$('#' + elementName + '').contextmenu(function () {";

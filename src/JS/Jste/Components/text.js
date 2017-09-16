@@ -116,6 +116,7 @@ $(function () {
             if (settings[window.transparencyTranslations[document.lang]]) {
                 $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.lang]] + '%)');
             }
+            $('#' + name + '').niceScroll();
         });
     };
 });

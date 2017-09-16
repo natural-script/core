@@ -10,104 +10,185 @@
  */
 window.setFontColour = function (elementName, color) {
 	if (color == window.blackTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: '#000000'
-		});
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', '#000000');
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: '#000000'
+			});
+		}
 	} else if (color == window.redTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: '#F44336'
-		});
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', '#F44336');
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: '#F44336'
+			});
+		}
 	} else if (color == window.blueTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: '#2196F3'
-		});
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', '#2196F3');
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: '#2196F3'
+			});
+		}
 	} else if (color == window.cyanTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: '#00BCD4'
-		});
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', '#00BCD4');
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: '#00BCD4'
+			});
+		}
 	} else if (color == window.grayTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: '#9E9E9E'
-		});
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', '#9E9E9E');
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: '#9E9E9E'
+			});
+		}
 	} else if (color == window.greenTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: '#4CAF50'
-		});
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', '#4CAF50');
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: '#4CAF50'
+			});
+		}
 	} else if (color == window.whiteTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: '#FFFFFF'
-		});
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', '#FFFFFF');
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: '#FFFFFF'
+			});
+		}
 	} else if (color == window.orangeTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: '#FF9800'
-		});
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', '#FF9800');
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: '#FF9800'
+			});
+		}
 	} else if (color == window.yellowTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: '#FFEB3B'
-		});
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', '#FFEB3B');
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: '#FFEB3B'
+			});
+		}
 	} else if (color == window.brownTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: '#795548'
-		});
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', '#795548');
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: '#795548'
+			});
+		}
 	} else if (color == window.tealTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: '#009688'
-		});
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', '#009688');
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: '#009688'
+			});
+		}
 	} else if (color == window.pinkTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: '#E91E63'
-		});
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', '#E91E63');
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: '#E91E63'
+			});
+		}
 	} else if (color == window.lightGreenTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: '#8BC34A'
-		});
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', '#8BC34A');
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: '#8BC34A'
+			});
+		}
 	} else if (color == window.transparentTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: 'transparent'
-		});
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', 'transparent');
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: 'transparent'
+			});
+		}
 	} else if (color == window.aRandomColorTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: window.randomColor({
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', window.randomColor({
 				hue: 'random',
 				luminosity: 'random'
-			})
-		});
+			}));
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: window.randomColor({
+					hue: 'random',
+					luminosity: 'random'
+				})
+			});
+		}
 	} else if (color == window.aRandomLightColorTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: window.randomColor({
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', window.randomColor({
 				hue: 'random',
 				luminosity: 'light'
-			})
-		});
+			}));
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: window.randomColor({
+					hue: 'random',
+					luminosity: 'light'
+				})
+			});
+		}
 	} else if (color == window.aRandomDarkColorTranslations[document.lang]) {
-		anime({
-			targets: '#' + elementName + '',
-			color: window.randomColor({
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', window.randomColor({
 				hue: 'random',
 				luminosity: 'dark'
-			})
-		});
+			}));
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: window.randomColor({
+					hue: 'random',
+					luminosity: 'dark'
+				})
+			});
+		}
 	} else {
-		anime({
-			targets: '#' + elementName + '',
-			color: color
-		});
+		if ($('#' + elementName + '').prop('tagName') == 'PAPER-BUTTON') {
+			$('#' + elementName + '').css('color', color);
+		} else {
+			anime({
+				targets: '#' + elementName + '',
+				color: color
+			});
+		}
 	}
 };
 

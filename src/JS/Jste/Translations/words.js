@@ -171,4 +171,5 @@ window.sidebarTranslations = ['sidebar', 'sidebar', "barre_latérale", 'شريط
 window.elseTranslations = ['else', 'else', "sinon", 'و إلا', 'و إلا', '主な色'];
 window.mainColorTranslations = ['main_colour', 'main_color', "couleur_principale", 'لون_الرئيسى', 'لون_الرئيسى', '主な色'];
 window.propertiesAssignorTranslations = ['properties_assignor', 'properties_assignor', "cédant_des_propriétés", 'مضيف_الخواص', 'مضيف_الخواص', '主な色'];
+window.inTheCaseThatTranslations = ['in the case that', 'in the case that', "cédant_des_propriétés", 'فى حالة أن', 'فى حالة إن', '主な色'];
 window.clonedElementTranslations = ['cloned_element', 'cloned_element', "élément_clone", 'عنصر_المستنسخ', 'عنصر_المستنسخ', 'クローンされた要素'];

@@ -1,3 +1,6 @@
+paper-button {
+    min-width: 0px;
+}
 .imageData {
     position: absolute !important;
     color: #FFFFFF !important;

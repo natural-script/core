@@ -18,23 +18,23 @@ window.evaluateExpression = function (expression) {
 			for (i = 0; i < valNo.length; i++) {
 				if (document.lang == 0) {
 					valueResource = finalExpression.split(window.theValueOfTranslations[document.lang])[1].split(' ')[1];
-					finalValue = $('#' + valueResource + '').val();
+					finalValue = window.elementValue.get(valueResource);
 					finalExpression = finalExpression.replace(window.theValueOfTranslations[document.lang] + ' ' + valueResource, finalValue);
 				} else if (document.lang == 2) {
 					valueResource = finalExpression.split(window.theValueOfTranslations[document.lang])[1].split(' ')[1];
-					finalValue = $('#' + valueResource + '').val();
+					finalValue = window.elementValue.get(valueResource);
 					finalExpression = finalExpression.replace(window.theValueOfTranslations[document.lang] + ' ' + valueResource, finalValue);
 				} else if (document.lang == 3) {
 					valueResource = finalExpression.split(window.theValueOfTranslations[document.lang])[1].split(' ')[1];
-					finalValue = $('#' + valueResource + '').val();
+					finalValue = window.elementValue.get(valueResource);
 					finalExpression = finalExpression.replace(window.theValueOfTranslations[document.lang] + ' ' + valueResource, finalValue);
 				} else if (document.lang == 4) {
 					valueResource = finalExpression.split(window.theValueOfTranslations[document.lang])[1].split(' ')[1];
-					finalValue = $('#' + valueResource + '').val();
+					finalValue = window.elementValue.get(valueResource);
 					finalExpression = finalExpression.replace(window.theValueOfTranslations[document.lang] + ' ' + valueResource, finalValue);
 				} else if (document.lang == 5) {
 					valueResource = finalExpression.split(window.theValueOfTranslations[document.lang])[1].split(' ')[1];
-					finalValue = $('#' + valueResource + '').val();
+					finalValue = window.elementValue.get(valueResource);
 					finalExpression = finalExpression.replace(window.theValueOfTranslations[document.lang] + ' ' + valueResource, finalValue);
 				}
 			}
@@ -63,5 +63,10 @@ window.evaluateExpression = function (expression) {
 		.replace(RegExp(window.picaTranslations[document.lang], "g"), "pc")
 		.replace(RegExp('سم', "g"), "cm")
 		.replace(RegExp('مم', "g"), "mm");
+		var openingBracketsNo = (finalExpression.match(/\(/g) || []).length;
+		var closingBracketsNo = (finalExpression.match(/\)/g) || []).length;
+		for (var i = 0; i < (openingBracketsNo - closingBracketsNo); i++){
+			finalExpression += ')';
+		}
 	return math.eval(finalExpression);
 };

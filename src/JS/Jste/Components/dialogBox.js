@@ -125,6 +125,7 @@ $(function () {
             }
             $('#' + name + '').modal();
             $('#' + name + '').css('position', 'fixed');
+            $('#' + name + '').niceScroll();
         });
     };
 });

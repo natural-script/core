@@ -15,9 +15,9 @@ window.evaluateStatement = function (command) {
 			statement = command.split(' in the case that ')[1];
 			var currentStatementBuildingStage = statement;
 			var previousStatementBuildingStage;
-			var regexA = new RegExp(/(&& |\|\| |^)the value of (\w+) (is greater than|is smaller than|is) (.*?) (and|or) (the value of|the keyboard is shown|the bluetooth is turned off|the WIFI is turned off|the bluetooth is turned on|the WIFI is turned on|the device is a desktop|the device is a phone|the device is a tablet)/, 'gm');
+			var regexA = new RegExp(/(&& |\|\| |^)the value of (\w+) (is greater than|is smaller than|is|isn't) (.*?) (and|or) (the value of|the keyboard is shown|the bluetooth is turned off|the WIFI is turned off|the bluetooth is turned on|the WIFI is turned on|the device is a desktop|the device is a phone|the device is a tablet)/, 'gm');
 			var regexB = new RegExp(/(&& |\|\| |^)(the keyboard is shown|the bluetooth is turned off|the WIFI is turned off|the bluetooth is turned on|the WIFI is turned on|the device is a desktop|the device is a phone|the device is a tablet) (and|or) (the value of|the keyboard is shown|the bluetooth is turned off|the WIFI is turned off|the bluetooth is turned on|the WIFI is turned on|the device is a desktop|the device is a phone|the device is a tablet)/, 'gm');
-			var regexC = new RegExp(/(&& |\|\| |^)the value of (\w+) (is greater than|is smaller than|is) (.*?)$/, 'm');
+			var regexC = new RegExp(/(&& |\|\| |^)the value of (\w+) (is greater than|is smaller than|is|isn't) (.*?)$/, 'm');
 			var regexD = new RegExp(/(&& |\|\| |^)(the keyboard is shown|the bluetooth is turned off|the WIFI is turned off|the bluetooth is turned on|the WIFI is turned on|the device is a desktop|the device is a phone|the device is a tablet)$/, 'gm');
 			var statementBuilder = setInterval(function () {
 				if (currentStatementBuildingStage != previousStatementBuildingStage) {
@@ -27,6 +27,8 @@ window.evaluateStatement = function (command) {
 						var comparisonOperator;
 						if (p3 == 'is') {
 							assigmentOperator = '==';
+						} else if (p3 == "isn't") {
+							assigmentOperator = '!==';
 						} else if (p3 == 'is greater than') {
 							assigmentOperator = '>';
 						} else if (p3 == 'is smaller than') {
@@ -72,6 +74,8 @@ window.evaluateStatement = function (command) {
 						var comparisonOperator;
 						if (p3 == 'is') {
 							assigmentOperator = '==';
+						} else if (p3 == "isn't") {
+							assigmentOperator = '!==';
 						} else if (p3 == 'is greater than') {
 							assigmentOperator = '>';
 						} else if (p3 == 'is smaller than') {
@@ -201,9 +205,9 @@ window.evaluateStatement = function (command) {
 			statement = command.split(' فى حالة أن ')[1];
 			var currentStatementBuildingStage = statement;
 			var previousStatementBuildingStage;
-			var regexA = new RegExp(/(&& |\|\| |^)قيمة ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (أكبر من|أصغر من|تساوى) (.*?) (و|أو) (قيمة|لوحة المفاتيح ظاهرة|البلوتوث مغلق|الواى فاى مغلق|البلوتوث مفتوح|الواى فاى مفتوح|الجهاز هو حاسوب|الجهاز هو جوال|الجهاز هو جهاز لوحى)/, 'gm');
+			var regexA = new RegExp(/(&& |\|\| |^)قيمة ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (أكبر من|أصغر من|تساوى|لا تساوى) (.*?) (و|أو) (قيمة|لوحة المفاتيح ظاهرة|البلوتوث مغلق|الواى فاى مغلق|البلوتوث مفتوح|الواى فاى مفتوح|الجهاز هو حاسوب|الجهاز هو جوال|الجهاز هو جهاز لوحى)/, 'gm');
 			var regexB = new RegExp(/(&& |\|\| |^)(لوحة المفاتيح ظاهرة|البلوتوث مغلق|الواى فاى مغلق|البلوتوث مفتوح|الواى فاى مفتوح|الجهاز هو حاسوب|الجهاز هو جوال|الجهاز هو جهاز لوحى) (و|أو) (قيمة|لوحة المفاتيح ظاهرة|البلوتوث مغلق|الواى فاى مغلق|البلوتوث مفتوح|الواى فاى مفتوح|الجهاز هو حاسوب|الجهاز هو جوال|الجهاز هو جهاز لوحى)/, 'gm');
-			var regexC = new RegExp(/(&& |\|\| |^)قيمة ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (أكبر من|أصغر من|تساوى) (.*?)$/, 'm');
+			var regexC = new RegExp(/(&& |\|\| |^)قيمة ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (أكبر من|أصغر من|تساوى|لا تساوى) (.*?)$/, 'm');
 			var regexD = new RegExp(/(&& |\|\| |^)(لوحة المفاتيح ظاهرة|البلوتوث مغلق|الواى فاى مغلق|البلوتوث مفتوح|الواى فاى مفتوح|الجهاز هو حاسوب|الجهاز هو جوال|الجهاز هو جهاز لوحى)$/, 'gm');
 			var statementBuilder = setInterval(function () {
 				if (currentStatementBuildingStage != previousStatementBuildingStage) {
@@ -213,6 +217,8 @@ window.evaluateStatement = function (command) {
 						var comparisonOperator;
 						if (p3 == 'تساوى') {
 							assigmentOperator = '==';
+						} else if (p3 == 'لا تساوى') {
+							assigmentOperator = '!==';
 						} else if (p3 == 'أكبر من') {
 							assigmentOperator = '>';
 						} else if (p3 == 'أصغر من') {
@@ -294,9 +300,9 @@ window.evaluateStatement = function (command) {
 			statement = command.split(' فى حالة إن ')[1];
 			var currentStatementBuildingStage = statement;
 			var previousStatementBuildingStage;
-			var regexA = new RegExp(/(&& |\|\| |^)قيمة ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (أكبر من|أصغر من|تساوى) (.*?) (و|أو) (قيمة|الكيبورد ظاهر|البلوتوث مطفى|الواى فاى مطفى|البلوتوث مفتوح|الواى فاى مفتوح|الجهاز كمبيوتر|الجهاز موبايل|الجهاز تابلت)/, 'gm');
+			var regexA = new RegExp(/(&& |\|\| |^)قيمة ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (أكبر من|أصغر من|تساوى|متساويش) (.*?) (و|أو) (قيمة|الكيبورد ظاهر|البلوتوث مطفى|الواى فاى مطفى|البلوتوث مفتوح|الواى فاى مفتوح|الجهاز كمبيوتر|الجهاز موبايل|الجهاز تابلت)/, 'gm');
 			var regexB = new RegExp(/(&& |\|\| |^)(الكيبورد ظاهر|البلوتوث مطفى|الواى فاى مطفى|البلوتوث مفتوح|الواى فاى مفتوح|الجهاز كمبيوتر|الجهاز موبايل|الجهاز تابلت) (و|أو) (قيمة|الكيبورد ظاهر|البلوتوث مطفى|الواى فاى مطفى|البلوتوث مفتوح|الواى فاى مفتوح|الجهاز كمبيوتر|الجهاز موبايل|الجهاز تابلت)/, 'gm');
-			var regexC = new RegExp(/(&& |\|\| |^)قيمة ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (أكبر من|أصغر من|تساوى) (.*?)$/, 'm');
+			var regexC = new RegExp(/(&& |\|\| |^)قيمة ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (أكبر من|أصغر من|تساوى|متساويش) (.*?)$/, 'm');
 			var regexD = new RegExp(/(&& |\|\| |^)(الكيبورد ظاهر|البلوتوث مطفى|الواى فاى مطفى|البلوتوث مفتوح|الواى فاى مفتوح|الجهاز كمبيوتر|الجهاز موبايل|الجهاز تابلت)$/, 'gm');
 			var statementBuilder = setInterval(function () {
 				if (currentStatementBuildingStage != previousStatementBuildingStage) {
@@ -306,6 +312,8 @@ window.evaluateStatement = function (command) {
 						var comparisonOperator;
 						if (p3 == 'تساوى') {
 							assigmentOperator = '==';
+						} else if (p3 == 'متساويش') {
+							assigmentOperator = '!==';
 						} else if (p3 == 'أكبر من') {
 							assigmentOperator = '>';
 						} else if (p3 == 'أصغر من') {
@@ -351,6 +359,8 @@ window.evaluateStatement = function (command) {
 						var comparisonOperator;
 						if (p3 == 'تساوى') {
 							assigmentOperator = '==';
+						} else if (p3 == 'متساويش') {
+							assigmentOperator = '!==';
 						} else if (p3 == 'أكبر من') {
 							assigmentOperator = '>';
 						} else if (p3 == 'أصغر من') {
