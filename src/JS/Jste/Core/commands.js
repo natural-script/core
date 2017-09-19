@@ -24,55 +24,55 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
         eventPrefix = "";
         eventSuffix = "";
     } else if (event == 'E1') {
-        eventPrefix = "$('#' + elementName + '').on('tap', function () {";
+        eventPrefix = "$('#' + elementName + '').on('tap', function (event) {";
         eventSuffix = "});";
     } else if (event == 'E2') {
-        eventPrefix = "$('#' + elementName + '').mouseenter(function () {";
+        eventPrefix = "$('#' + elementName + '').mouseenter(function (event) {";
         eventSuffix = "});";
     } else if (event == 'E3') {
-        eventPrefix = "$('#' + elementName + '').mouseleave(function () {";
+        eventPrefix = "$('#' + elementName + '').mouseleave(function (event) {";
         eventSuffix = "});";
     } else if (event == 'E4') {
-        eventPrefix = "$('#' + elementName + '').mouseout(function () {";
+        eventPrefix = "$('#' + elementName + '').mouseout(function (event) {";
         eventSuffix = "});";
     } else if (event == 'E5') {
-        eventPrefix = "$('#' + elementName + '').mousemove(function () {";
+        eventPrefix = "$('#' + elementName + '').mousemove(function (event) {";
         eventSuffix = "});";
     } else if (event == 'E6') {
-        eventPrefix = "$('#' + elementName + '').on('up', function () {";
+        eventPrefix = "$('#' + elementName + '').on('up', function (event) {";
         eventSuffix = "});";
     } else if (event == 'E7') {
-        eventPrefix = "$('#' + elementName + '').dblclick(function () {";
+        eventPrefix = "$('#' + elementName + '').dblclick(function (event) {";
         eventSuffix = "});";
     } else if (event == 'E8') {
-        eventPrefix = "$('#' + elementName + '').contextmenu(function () {";
+        eventPrefix = "$('#' + elementName + '').contextmenu(function (event) {";
         eventSuffix = "});";
     } else if (event == 'E9') {
-        eventPrefix = "$('#' + elementName + '').keypress(function () {";
+        eventPrefix = "$('#' + elementName + '').keypress(function (event) {";
         eventSuffix = "});";
     } else if (event == 'E10') {
-        eventPrefix = "$('#' + elementName + '').keydown(function () {";
+        eventPrefix = "$('#' + elementName + '').keydown(function (event) {";
         eventSuffix = "});";
     } else if (event == 'E11') {
-        eventPrefix = "$('#' + elementName + '').change(function () {";
+        eventPrefix = "$('#' + elementName + '').change(function (event) {";
         eventSuffix = "});";
     } else if (event == 'E12') {
-        eventPrefix = "$('#' + elementName + '').focus(function () {";
+        eventPrefix = "$('#' + elementName + '').focus(function (event) {";
         eventSuffix = "});";
     } else if (event == 'E13') {
-        eventPrefix = "$('#' + elementName + '').focusin(function () {";
+        eventPrefix = "$('#' + elementName + '').focusin(function (event) {";
         eventSuffix = "});";
     } else if (event == 'E14') {
-        eventPrefix = "$('#' + elementName + '').focusout(function () {";
+        eventPrefix = "$('#' + elementName + '').focusout(function (event) {";
         eventSuffix = "});";
     } else if (event == 'E15') {
-        eventPrefix = "$('#' + elementName + '').submit(function () {";
+        eventPrefix = "$('#' + elementName + '').submit(function (event) {";
         eventSuffix = "});";
     } else if (event == 'E16') {
-        eventPrefix = "$('#' + elementName + '').scroll(function () {";
+        eventPrefix = "$('#' + elementName + '').scroll(function (event) {";
         eventSuffix = "});";
     } else if (event == 'E17') {
-        eventPrefix = "annyang.addCommands({ [voiceCommand]: function () {";
+        eventPrefix = "annyang.addCommands({ [voiceCommand]: function (event) {";
         eventSuffix = "}});";
     } else if (event == 'E18') {
         eventPrefix = "$('#' + elementName + '').visibilityChanged({ callback: function (element, visible) { if (visible == true) {";
@@ -169,7 +169,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                     event.preventDefault(); \
                     if (window.commandsFnTranslations('c91q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c91r')) { \
                         targetURL = window.commandsFnTranslations('c91t', '" + event + "', " + commandVarA + "); \
-                        $('#' + targetURL + '').modal('open'); \
+                        $('#' + targetURL + '').iziModal('open'); \
                     } else if (window.commandsFnTranslations('c93q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c93r')) { \
                         targetURL = window.commandsFnTranslations('c93t', '" + event + "', " + commandVarA + "); \
                         $('#' + targetURL + '').sideNav('show'); \

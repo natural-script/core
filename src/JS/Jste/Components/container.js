@@ -136,7 +136,10 @@ $(function () {
                 if (settings[window.attributesTranslations[document.lang]].indexOf(window.parallaxTranslations[document.lang]) > -1) {
                     if (settings[window.backgroundTranslations[document.lang]]) {
                         window.requestBLOB(settings[window.backgroundTranslations[document.lang]], encodeURIComponent(settings[window.backgroundTranslations[document.lang]]).replace(/\./g, '%2E'), function (BLOBURL) {
-                            $('#' + name + '').css('background', 'url(' + BLOBURL + ')').addClass('parallax');
+                            $('#' + name + '').css({'background': 'url(' + BLOBURL + ') no-repeat', 'background-size': 'cover'});
+                            if (window.deviceForm == 'desktop') {
+                                $('#' + name + '').addClass('parallax');
+                            }
                             setTimeout(function () {
                                 window.URL.revokeObjectURL(BLOBURL);
                             }, 10000);

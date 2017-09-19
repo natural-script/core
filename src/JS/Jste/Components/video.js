@@ -46,8 +46,8 @@ $(function () {
                             <p style="position: relative; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p> \
                             <button style="position: relative; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></paper-material>';
             if (settings[window.containerTranslations[document.lang]]) {
-                if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
-                    $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
+                if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('iziModal')) {
+                    $('#' + settings[window.containerTranslations[document.lang]] + '').iziModal('setContent', out);
                 } else {
                     $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
                 }

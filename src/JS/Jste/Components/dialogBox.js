@@ -35,37 +35,10 @@ $(function () {
         }, options);
         return this.each(function () {
             var name = settings[window.nameTranslations[document.lang]];
-            var out;
-            if (settings[window.cancellationButtonTranslations[document.lang]] || settings[window.acceptanceButtonTranslations[document.lang]]) {
-                out = '<div id="' + name + '" class="modal modal-fixed-footer">';
-            } else {
-                out = '<div id="' + name + '" class="modal">';
-            }
-            if (settings[window.titleTranslations[document.lang]]) {
-                out += '<div class="modal-content" elementTitle="' + settings[window.titleTranslations[document.lang]] + '"><h4>' + settings[window.titleTranslations[document.lang]] + '</h4></div>';
-            } else {
-                out += '<div class="modal-content"></div>';
-            }
-            if (settings[window.cancellationButtonTranslations[document.lang]] || settings[window.acceptanceButtonTranslations[document.lang]]) {
-                out += '<div class="modal-footer">';
-                if (settings[window.cancellationButtonTranslations[document.lang]]) {
-                    out += '<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">' + settings[window.cancellationButtonTranslations[document.lang]] + '</a>';
-                }
-                if (settings[window.acceptanceButtonTranslations[document.lang]]) {
-                    out += '<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">' + settings[window.acceptanceButtonTranslations[document.lang]] + '</a>';
-                }
-                out += '</div>';
-            }
-            out += '</div>';
-            if (settings[window.containerTranslations[document.lang]]) {
-                if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
-                    $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
-                } else {
-                    $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
-                }
-            } else {
-                $('contents').append(out);
-            }
+            var out = '<div id="' + name + '"></div>';
+
+            $('body').append(out);
+
             if (settings[window.fontColorTranslations[document.lang]]) {
                 window.setFontColour(name, settings[window.fontColorTranslations[document.lang]]);
             }
@@ -74,9 +47,6 @@ $(function () {
             }
             if (settings[window.emitterTranslations[document.lang]]) {
                 $('#' + settings[window.emitterTranslations[document.lang]] + '').attr('onclick', settings[window.nameTranslations[document.lang]] + '.open()');
-            }
-            if (settings[window.backgroundTranslations[document.lang]]) {
-                window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
             }
             if (settings[window.thicknessTranslations[document.lang]]) {
                 if (settings[window.thicknessTranslations[document.lang]] == window.thickTranslations[document.lang]) {
@@ -96,36 +66,18 @@ $(function () {
             } else {
                 $('#' + name + '').css('position', 'relative');
             }
-            if (settings[window.distanceFromBottomTranslations[document.lang]]) {
-                window.setDistance(name, 'bottom', settings[window.distanceFromBottomTranslations[document.lang]]);
+            if (settings[window.titleTranslations[document.lang]]) {
+                $('#' + name + '').iziModal({
+                    title: settings[window.titleTranslations[document.lang]],
+                    rtl: document.isRTL
+                });
+            } else {
+                $('#' + name + '').iziModal({
+                    rtl: document.isRTL
+                });
             }
-            if (settings[window.distanceFromTopTranslations[document.lang]]) {
-                window.setDistance(name, 'top', settings[window.distanceFromTopTranslations[document.lang]]);
-            }
-            if (settings[window.distanceFromLeftTranslations[document.lang]]) {
-                window.setDistance(name, 'left', settings[window.distanceFromLeftTranslations[document.lang]]);
-            }
-            if (settings[window.distanceFromRightTranslations[document.lang]]) {
-                window.setDistance(name, 'right', settings[window.distanceFromRightTranslations[document.lang]]);
-            }
-            if (settings[window.commandsTranslations[document.lang]]) {
-                window.execute(name, settings[window.commandsTranslations[document.lang]]);
-            }
-            if (settings[window.widthTranslations[document.lang]]) {
-                window.setDimension(name, 'width', settings[window.widthTranslations[document.lang]]);
-            }
-            if (settings[window.lengthTranslations[document.lang]]) {
-                window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]]);
-            }
-            if (settings[window.animationTranslations[document.lang]]) {
-                window.setAnimation(name, settings[window.animationTranslations[document.lang]]);
-            }
-            if (settings[window.transparencyTranslations[document.lang]]) {
-                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.lang]] + '%)');
-            }
-            $('#' + name + '').modal();
+            window.propSet(name, settings);
             $('#' + name + '').css('position', 'fixed');
-            $('#' + name + '').niceScroll();
         });
     };
 });

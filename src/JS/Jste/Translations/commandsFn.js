@@ -678,7 +678,7 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('in the slot ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('in the slot ')[1];
+			return commandValue.split('dans la fente ')[1];
 		} else if (document.lang == 3) {
 			return commandValue.split('فى الشريحة ')[1];
 		} else if (document.lang == 4) {
@@ -1158,7 +1158,7 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return commandValue.split("aller à ")[1].split(' ')[0] + ' ' + commandValue.split('aller à ')[1].split(' ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اذهب إلى ')[1].split(' ')[0] + ' ' + commandValue.split('go to ')[1].split(' ')[1];
+			return commandValue.split('اذهب إلى ')[1].split(' ')[0] + ' ' + commandValue.split('اذهب إلى ')[1].split(' ')[1];
 		} else if (document.lang == 4) {
 			return commandValue.split('روح إلى ')[1].split(' ')[0];
 		} else if (document.lang == 5) {
@@ -1226,7 +1226,7 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('the page ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split("le courriella page ")[1];
+			return commandValue.split("la page ")[1];
 		} else if (document.lang == 3) {
 			return commandValue.split('الصفحة ')[1];
 		} else if (document.lang == 4) {

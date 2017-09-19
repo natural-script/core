@@ -135,7 +135,10 @@ $(function () {
             if (settings[window.attributesTranslations[document.lang]]) {
                 if (settings[window.attributesTranslations[document.lang]].indexOf(window.parallaxTranslations[document.lang]) > -1) {
                     if (settings[window.backgroundTranslations[document.lang]]) {
-                        $('#' + name + '').css('background', 'url(' + settings[window.backgroundTranslations[document.lang]] + ')').addClass('parallax');
+                        $('#' + name + '').css({'background': 'url(' + settings[window.backgroundTranslations[document.lang]] + ') no-repeat', 'background-size': 'cover'});
+                        if (window.deviceForm == 'desktop') {
+                            $('#' + name + '').addClass('parallax');
+                        }
                     }
                 } else {
                     if (settings[window.backgroundTranslations[document.lang]]) {

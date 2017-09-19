@@ -62,7 +62,10 @@ window.evaluateExpression = function (expression) {
 		.replace(RegExp(window.pointTranslations[document.lang], "g"), "pt")
 		.replace(RegExp(window.picaTranslations[document.lang], "g"), "pc")
 		.replace(RegExp('سم', "g"), "cm")
-		.replace(RegExp('مم', "g"), "mm");
+		.replace(RegExp('مم', "g"), "mm")
+		.replace(RegExp('÷', "g"), "/")
+		.replace(RegExp('%', "g"), "/100")
+		.replace(RegExp('(×|x)', "g"), "*");
 		var openingBracketsNo = (finalExpression.match(/\(/g) || []).length;
 		var closingBracketsNo = (finalExpression.match(/\)/g) || []).length;
 		for (var i = 0; i < (openingBracketsNo - closingBracketsNo); i++){

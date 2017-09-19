@@ -6,10 +6,15 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-15
+ * Date: 2017-09-19
  */
+var meta = document.createElement('meta');
+meta.name = 'viewport';
+meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
+document.getElementsByTagName('head')[0].appendChild(meta);
 var code = 'jQuery(document).ready(\nfunction ($) {\nvar ';
 if (document.lang == 0) {
+	document.isRTL = false;
 	if (window.isChrome) {
 		annyang.setLanguage("en-GB");
 	}
@@ -25,8 +30,8 @@ if (document.lang == 0) {
 	code = code.replace(/^add (a|an) (.*?) (\w+) with the following properties:$/gm, 'add.$3({\nits attributes are $2,');
 	code = code.replace(/^add (a|an) (\w+) with the following properties:$/gm, 'add.$2({');
 	code = code.replace(/^assign the following properties to the element (\w+):$/gm, 'add.properties_assignor({\nits name is $1,');
-	code = code.replace(/^clone (\w+) with the following properties:$/gm, 'add.clone0({\nits cloned element is $1,');
 	code = code.replace(/^clone (\w+) including its commands with the following properties:$/gm, 'add.clone0({\nits cloned element is $1,\nits attributes are with commands,');
+	code = code.replace(/^clone (\w+) with the following properties:$/gm, 'add.clone0({\nits cloned element is $1,');
 	code = window.customText(code, false);
 	code = code.replace(/^its (.*?) (is|are) (.*)\,$/gm, function (match, p1, p2, p3, offset, string) {
 		if (p1 == 'text') {
@@ -50,6 +55,7 @@ if (document.lang == 0) {
 	});
 	$("en-uk").remove();
 } else if (document.lang == 1) {
+	document.isRTL = false;
 	if (window.isChrome) {
 		annyang.setLanguage("en-US");
 	}
@@ -65,8 +71,8 @@ if (document.lang == 0) {
 	code = code.replace(/^add (a|an) (.*?) (\w+) with the following properties:$/gm, 'add.$3({\nits attributes are $2,');
 	code = code.replace(/^add (a|an) (\w+) with the following properties:$/gm, 'add.$2({');
 	code = code.replace(/^assign the following properties to the element (\w+):$/gm, 'add.properties_assignor({\nits name is $1,');
-	code = code.replace(/^clone (\w+) with the following properties:$/gm, 'add.clone0({\nits cloned element is $1,');
 	code = code.replace(/^clone (\w+) including its commands with the following properties:$/gm, 'add.clone0({\nits cloned element is $1,\nits attributes are with commands,');
+	code = code.replace(/^clone (\w+) with the following properties:$/gm, 'add.clone0({\nits cloned element is $1,');
 	code = window.customText(code, false);
 	code = code.replace(/^its (.*?) (is|are) (.*)\,$/gm, function (match, p1, p2, p3, offset, string) {
 		if (p1 == 'text') {
@@ -90,6 +96,7 @@ if (document.lang == 0) {
 	});
 	$("en-us").remove();
 } else if (document.lang == 2) {
+	document.isRTL = false;
 	if (window.isChrome) {
 		annyang.setLanguage("fr-FR");
 	}
@@ -97,19 +104,19 @@ if (document.lang == 0) {
 	code += 'ajouter = $("body");' + $("fr-fr").html();
 	code = code.replace(/^configurez ce (site|app) (.*?) avec les propriétés suivantes:$/gm, 'ajouter.installation({\nson mode est $1,\nses attributs sont $2,');
 	code = code.replace(/^configurez ce (site|app) avec les propriétés suivantes:$/gm, 'ajouter.installation({\nson mode est $1,');
-	code = code.replace(/^ajouter (le|la|un|une) (\w+) (.*?) avec les propriétés suivantes:$/gm, 'ajouter.$2({\nses attributs sont $3,');
-	code = code.replace(/^ajouter (le|la|un|une) (\w+) avec les propriétés suivantes:$/gm, 'ajouter.$2({');
+	code = code.replace(/^ajouter (le|la|un|une) (.*?) (.*?) avec les propriétés suivantes:$/gm, 'ajouter.$2({\nses attributs sont $3,');
+	code = code.replace(/^ajouter (le|la|un|une) (.*?) avec les propriétés suivantes:$/gm, 'ajouter.$2({');
 	code = code.replace(/^affectez les propriétés suivantes à l'élément (\w+):$/gm, 'ajouter.cédant_des_propriétés({\nson nom est $1,');
-	code = code.replace(/^cloner (\w+) avec les propriétés suivantes:$/gm, 'ajouter.clone0({\nson élément clone est $1,');
-	code = code.replace(/^cloner (\w+) y compris ses commandes avec les propriétés suivantes:$/gm, 'ajouter.clone0({\nson élément clone est $1,\nses attributs sont avec des commandes,');
+	code = code.replace(/^cloner (.*?) y compris ses commandes avec les propriétés suivantes:$/gm, 'ajouter.clone0({\nson élément clone est $1,\nses attributs sont avec des commandes,');
+	code = code.replace(/^cloner (.*?) avec les propriétés suivantes:$/gm, 'ajouter.clone0({\nson élément clone est $1,');
 	code = window.customText(code, false);
-	code = code.replace(/^(son|sa) (.*?) (est|sont) (.*)\,$/gm, function (match, p1, p2, p3, p4, offset, string) {
+	code = code.replace(/^(son|sa|ses) (.*?) (est|sont) (.*)\,$/gm, function (match, p1, p2, p3, p4, offset, string) {
 		if (p2 == 'text') {
 			p4 = window.customText(p4);
 		}
 		return p2.replace(/ /g, "_") + ': "' + p4.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '",';
 	});
-	code = code.replace(/^(son|sa) (.*?) (est|sont) (.*)\.$/gm, function (match, p1, p2, p3, p4, offset, string) {
+	code = code.replace(/^(son|sa|ses) (.*?) (est|sont) (.*)\.$/gm, function (match, p1, p2, p3, p4, offset, string) {
 		if (p2 == 'text') {
 			p4 = window.customText(p4);
 		}
@@ -117,7 +124,7 @@ if (document.lang == 0) {
 	});
 	code = code.replace(/^les commandes de l'élément (.*?) sont (.*?)\,$/gm, function (match, p1, p2, offset, string) {
 		i++;
-		return 'commandes' + i + ': "' + p1 + ':' + p2 + ',';
+		return 'commandes' + i + ': "' + p1 + ':' + p2 + '",';
 	});
 	code = code.replace(/^les commandes de l'élément (.*?) sont (.*?)\.$/gm, function (match, p1, p2, offset, string) {
 		i++;
@@ -137,8 +144,8 @@ if (document.lang == 0) {
 	code = code.replace(/^اضف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (.*?) بالخواص التالية:$/gm, 'اضف.$1({\nالصفات الخاصة به $2,');
 	code = code.replace(/^اضف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص التالية:$/gm, 'اضف.$1({');
 	code = code.replace(/^اضف هذه الخواص التالية إلى العنصر ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+):$/gm, 'اضف.مضيف_الخواص({\nالاسم الخاص به $1,');
-	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, 'اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,');
 	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بأوامره بالخواص التالية:$/gm, 'اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,\nالصفات الخاصة به بالأوامر,');
+	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, 'اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,');
 	code = window.customText(code, false);
 	code = code.replace(/^(.*?) (الخاص به|الخاصة به|الخاص بها|الخاصة بها) (.*)\,$/gm, function (match, p1, p2, p3, offset, string) {
 		if (p1 == 'النص') {
@@ -174,8 +181,8 @@ if (document.lang == 0) {
 	code = code.replace(/^ضيف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (.*?) بالخواص دى:$/gm, 'ضيف.$1({\nالصفات بتاعته $2,');
 	code = code.replace(/^ضيف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, 'ضيف.$1({');
 	code = code.replace(/^ضيف الخواص دى للعنصر ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+):$/gm, 'ضيف.مضيف_الخواص({\nالاسم بتاعه $1,');
-	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, 'ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,');
 	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بأوامره بالخواص دى:$/gm, 'ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,\nالصفات بتاعته بالأوامر,');
+	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, 'ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,');
 	code = window.customText(code, false);
 	code = code.replace(/^(.*?) (بتاعه|بتاعته|بتاعها|بتاعتها) (.*)\,$/gm, function (match, p1, p2, p3, offset, string) {
 		if (p1 == 'الكلام') {
@@ -199,6 +206,7 @@ if (document.lang == 0) {
 	});
 	$("ar-eg").remove();
 } else if (document.lang == 5) {
+	document.isRTL = false;
 	if (window.isChrome) {
 		annyang.setLanguage("ja");
 	}

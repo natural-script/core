@@ -15,15 +15,35 @@ $(function () {
             [logoTranslations[document.lang]]: null,
             [titleTranslations[document.lang]]: null,
             [modeTranslations[document.lang]]: siteTranslations[document.lang],
-            [widthTranslations[document.lang]]: window.innerWidth,
-            [lengthTranslations[document.lang]]: window.innerHeight,
+            [defaultWindowResolutionTranslations[document.lang]]: screen.availWidth + ' × ' + screen.availHeight,
             [mainColorTranslations[document.lang]]: null,
             [directionTranslations[document.lang]]: window.verticalTranslations[document.lang],
             [attributesTranslations[document.lang]]: null
         }, options);
         return this.each(function () {
-            document.defaultWindowLength = settings[lengthTranslations[document.lang]];
-            document.defaultWindowWidth = settings[widthTranslations[document.lang]];
+            if (settings[window.defaultWindowResolutionTranslations[document.lang]]) {
+                var resolution = settings[window.defaultWindowResolutionTranslations[document.lang]];
+                var landscapeResolution = null;
+                var portraitResolution = null;
+                if (resolution.includes(window.andTranslations[document.lang])) {
+                    var availableResolutions = resolution.split(' ' + window.andTranslations[document.lang] + ' ');
+                    for (var i = 0; i < availableResolutions.length; i++) {
+                        if (availableResolutions[i].includes(window.inTheCaseOfLandscapeModeTranslations[document.lang])) {
+                            landscapeResolution = availableResolutions[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.lang])[0].split(' ')[0] + ' ' + availableResolutions[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.lang])[0].split(' ')[1] + ' ' + availableResolutions[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.lang])[0].split(' ')[2];
+                            document.defaultLandscapeWindowWidth = landscapeResolution.split(' × ')[0];
+                            document.defaultLandscapeWindowLength = landscapeResolution.split(' × ')[1];
+                        } else if (availableResolutions[i].includes(window.inTheCaseOfPortraitModeTranslations[document.lang])) {
+                            portraitResolution = availableResolutions[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.lang])[0].split(' ')[0] + ' ' + availableResolutions[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.lang])[0].split(' ')[1] + ' ' + availableResolutions[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.lang])[0].split(' ')[2];
+                            document.defaultPortraitWindowWidth = portraitResolution.split(' × ')[0];
+                            document.defaultPortraitWindowLength = portraitResolution.split(' × ')[1];
+                        }
+                    }
+                } else {
+                    document.defaultWindowWidth = resolution.split(' × ')[0];
+                    document.defaultWindowLength = resolution.split(' × ')[1];
+                }
+
+            }
             if (settings[modeTranslations[document.lang]] == siteTranslations[document.lang]) {
                 window.mode = 'site';
                 $('body').append('<contents></contents>');

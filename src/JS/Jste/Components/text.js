@@ -55,6 +55,13 @@ $(function () {
                     }
                 }
             }
+            if (settings[window.directionTranslations[document.lang]]) {
+                if (settings[window.directionTranslations[document.lang]] == window.ltrTranslations[document.lang]) {
+                    $('#' + name + '').css('direction', 'ltr');
+                } else if (settings[window.directionTranslations[document.lang]] == window.rtlTranslations[document.lang]) {
+                    $('#' + name + '').css('direction', 'rtl');
+                }
+            }
             if (settings[window.fontColorTranslations[document.lang]]) {
                 window.setFontColour(name, settings[window.fontColorTranslations[document.lang]]);
             }
@@ -69,14 +76,7 @@ $(function () {
                 }
             }
             if (settings[window.fontSizeTranslations[document.lang]]) {
-                var vw2vhRatio = (document.defaultWindowWidth / 100) / (document.defaultWindowLength / 100);
-                var vh2vwRatio = (document.defaultWindowLength / 100) / (document.defaultWindowWidth / 100);
-                var fontSizeRatio = parseFloat(window.convertLengthCSS(settings[window.fontSizeTranslations[document.lang]])) / document.defaultWindowWidth;
-                if (document.pageDirection == 'horizontal') {
-                    $('#' + name + '').css('font-size', ((parseFloat(fontSizeRatio * window.innerWidth) * (100 / window.innerWidth)) * vw2vhRatio) + 'vh');
-                } else if (document.pageDirection == 'vertical') {
-                    $('#' + name + '').css('font-size', (parseFloat(fontSizeRatio * window.innerWidth) * (100 / window.innerWidth)) + 'vw');
-                }
+                window.setFontSize(name, settings[window.fontSizeTranslations[document.lang]]);
             }
             if (settings[window.backgroundTranslations[document.lang]]) {
                 window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
@@ -89,33 +89,7 @@ $(function () {
             } else {
                 $('#' + name + '').css('position', 'relative');
             }
-            if (settings[window.distanceFromBottomTranslations[document.lang]]) {
-                window.setDistance(name, 'bottom', settings[window.distanceFromBottomTranslations[document.lang]]);
-            }
-            if (settings[window.distanceFromTopTranslations[document.lang]]) {
-                window.setDistance(name, 'top', settings[window.distanceFromTopTranslations[document.lang]]);
-            }
-            if (settings[window.distanceFromLeftTranslations[document.lang]]) {
-                window.setDistance(name, 'left', settings[window.distanceFromLeftTranslations[document.lang]]);
-            }
-            if (settings[window.distanceFromRightTranslations[document.lang]]) {
-                window.setDistance(name, 'right', settings[window.distanceFromRightTranslations[document.lang]]);
-            }
-            if (settings[window.commandsTranslations[document.lang]]) {
-                window.execute(name, settings[window.commandsTranslations[document.lang]]);
-            }
-            if (settings[window.widthTranslations[document.lang]]) {
-                window.setDimension(name, 'width', settings[window.widthTranslations[document.lang]]);
-            }
-            if (settings[window.lengthTranslations[document.lang]]) {
-                window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]]);
-            }
-            if (settings[window.animationTranslations[document.lang]]) {
-                window.setAnimation(name, settings[window.animationTranslations[document.lang]]);
-            }
-            if (settings[window.transparencyTranslations[document.lang]]) {
-                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.lang]] + '%)');
-            }
+            window.propSet(name, settings);
             $('#' + name + '').niceScroll();
         });
     };

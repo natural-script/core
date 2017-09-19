@@ -27,7 +27,7 @@ if (navigator.platform == 'Win32') {
 	window.localAddress = '0.0.0.0';
 }
 $.get("http://" + window.localAddress + ":5050/deviceForm", function (data) {
-	document.deviceForm = data;
+	window.deviceForm = data;
 });
 window.isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 document.isRTL = false;

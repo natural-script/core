@@ -18,9 +18,9 @@ window.varsUpdater = function () {
             } else if (Object.keys(window.varsArray)[i] == 'currentUserEmail') {
                 window.varsArray[Object.keys(window.varsArray)[i]] = new String(window.email);
             } else if (Object.keys(window.varsArray)[i] == 'currentWindowLength') {
-                window.varsArray[Object.keys(window.varsArray)[i]] = new String(window.innerHeight);
+                window.varsArray[Object.keys(window.varsArray)[i]] = new String(screen.availHeight);
             } else if (Object.keys(window.varsArray)[i] == 'currentWindowWidth') {
-                window.varsArray[Object.keys(window.varsArray)[i]] = new String(window.innerWidth);
+                window.varsArray[Object.keys(window.varsArray)[i]] = new String(screen.availWidth);
             } else if (Object.keys(window.varsArray)[i] == 'currentScreenLength') {
                 window.varsArray[Object.keys(window.varsArray)[i]] = new String(screen.height);
             } else if (Object.keys(window.varsArray)[i] == 'currentScreenWidth') {

@@ -1,3 +1,17 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+html {
+    overflow: hidden;
+}
+body {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
 paper-button {
     min-width: 0px;
 }

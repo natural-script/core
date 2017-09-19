@@ -41,21 +41,7 @@ $(function () {
             if (settings[window.fontColorTranslations[document.lang]]) {
                 window.setFontColour(name, settings[window.fontColorTranslations[document.lang]]);
             }
-            if (settings[window.backgroundTranslations[document.lang]]) {
-                window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
-            }
-            if (settings[window.widthTranslations[document.lang]]) {
-                window.setDimension(name, 'width', settings[window.widthTranslations[document.lang]]);
-            }
-            if (settings[window.lengthTranslations[document.lang]]) {
-                window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]]);
-            }
-            if (settings[window.animationTranslations[document.lang]]) {
-                window.setAnimation(name, settings[window.animationTranslations[document.lang]]);
-            }
-            if (settings[window.transparencyTranslations[document.lang]]) {
-                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.lang]] + '%)');
-            }
+            window.propSet(name, settings);
         });
     };
 });

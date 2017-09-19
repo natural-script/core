@@ -27,11 +27,11 @@ if (navigator.platform == 'Win32') {
 	window.localAddress = '0.0.0.0';
 }
 $.get("https://jste-manager.herokuapp.com/deviceForm", function (data) {
-	document.deviceForm = data;
+	window.deviceForm = data;
 });
 window.isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 document.isRTL = false;
-window.corsPolicy = 'http://jste-cors-proxy.herokuapp.com/';
+window.corsPolicy = 'https://jste-cors-proxy.herokuapp.com/';
 window.shareThis = window.ShareThis;
 window.twitterSharer = window.ShareThisViaTwitter;
 window.facebookSharer = window.ShareThisViaFacebook;
