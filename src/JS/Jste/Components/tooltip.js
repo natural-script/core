@@ -19,7 +19,7 @@ $(function () {
             [window.nameTranslations[document.lang]]: null,
             [window.widthTranslations[document.lang]]: null,
             [window.lengthTranslations[document.lang]]: null,
-            [window.thicknessTranslations[document.lang]]: null,
+            [window.fontThicknessTranslations[document.lang]]: null,
             [window.fontStyleTranslations[document.lang]]: null,
             [window.emitterTranslations[document.lang]]: null,
             [window.directionTranslations[document.lang]]: window.fromTheTopTranslations[document.lang],

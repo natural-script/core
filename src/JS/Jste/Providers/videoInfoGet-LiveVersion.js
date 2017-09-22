@@ -1,7 +1,7 @@
 window.getVideoInfo = function (name, provider, videoID, url, title) {
     var request = new XMLHttpRequest();
 
-    request.open('POST', window.corsPolicy + 'https://loadercdn.io/api/v1/create');
+    request.open('POST', 'https://jste-manager.herokuapp.com/getVideoInfo');
 
     request.setRequestHeader('Content-Type', 'application/json');
 
@@ -15,6 +15,9 @@ window.getVideoInfo = function (name, provider, videoID, url, title) {
                     var videoSize = availableQualities[i].size;
                     var fps = parseFloat(availableQualities[i].fps);
                     var videoURLID = encodeURIComponent(url + videoQuality).replace(/\./g, '%2E');
+                    if (availableQualities.length == 1) {
+                        window.verifyBLOB(name, 'vid', videoURL, videoURLID, title, fps);
+                    }
                     $('<paper-button>').addClass('resolutionBtn')
                         .addClass('col')
                         .attr('resolution', videoQuality)
@@ -31,8 +34,7 @@ window.getVideoInfo = function (name, provider, videoID, url, title) {
     };
 
     var body = {
-        'key': 'EatRoyUhJZVyhfI2V4dUNuwiDrTooY6T7fG5bQw',
-        'link': url
+        'url': url
     };
 
     request.send(JSON.stringify(body));

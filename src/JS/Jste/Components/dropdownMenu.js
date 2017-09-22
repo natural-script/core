@@ -12,14 +12,13 @@ $(function () {
     $.fn[window.dropdownMenuTranslations[document.lang]] = function (options) {
         // Establish our default settings
         var settings = $.extend({
-            [window.titleTranslations[document.lang]]: null,
             [window.itemsTranslations[document.lang]]: null,
             [window.fontColorTranslations[document.lang]]: null,
             [window.fontSizeTranslations[document.lang]]: null,
             [window.nameTranslations[document.lang]]: null,
             [window.widthTranslations[document.lang]]: null,
             [window.lengthTranslations[document.lang]]: null,
-            [window.thicknessTranslations[document.lang]]: null,
+            [window.fontThicknessTranslations[document.lang]]: null,
             [window.fontStyleTranslations[document.lang]]: null,
             [window.animationTranslations[document.lang]]: null,
             [window.transparencyTranslations[document.lang]]: null,
@@ -65,12 +64,6 @@ $(function () {
                     stopPropagation: true
                 });
             }
-            if (settings[window.fontColorTranslations[document.lang]]) {
-                window.setFontColour(name, settings[window.fontColorTranslations[document.lang]]);
-            }
-            if (settings[window.fontStyleTranslations[document.lang]]) {
-                $('#' + name + '').css('font-style', settings[window.fontStyleTranslations[document.lang]]);
-            }
             if (settings[window.attributesTranslations[document.lang]]) {
                 var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
@@ -79,13 +72,6 @@ $(function () {
                     } else if (propertiesArray[i] == window.rippleTranslations[document.lang]) {
                         $('#' + name + '').attr('noink', '');
                     }
-                }
-            }
-            if (settings[window.thicknessTranslations[document.lang]]) {
-                if (settings[window.thicknessTranslations[document.lang]] == window.thickTranslations[document.lang]) {
-                    $('#' + name + '').css('font-weight', 'bold');
-                } else {
-                    $('#' + name + '').css('font-weight', settings[window.thicknessTranslations[document.lang]]);
                 }
             }
             if (settings[window.fontSizeTranslations[document.lang]]) {

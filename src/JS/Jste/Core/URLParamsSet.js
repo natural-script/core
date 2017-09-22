@@ -16,4 +16,4 @@ window.setURLParameter = function (paramName, paramValue) {
 		else url += "&" + paramName + "=" + paramValue;
 	}
 	window.history.pushState("", "", url + hash);
-}
+};

@@ -15,7 +15,6 @@ window.getVideoInfo = function (name, provider, videoID, url, title) {
                     var videoSize = availableQualities[i].size;
                     var fps = parseFloat(availableQualities[i].fps);
                     var videoURLID = encodeURIComponent(url + videoQuality).replace(/\./g, '%2E');
-
                     if (availableQualities.length == 1) {
                         window.verifyProvidedVideoDataURL(name, videoURL, title, videoURLID, fps);
                     }

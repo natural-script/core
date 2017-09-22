@@ -428,21 +428,21 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                     var targetElement = window.commandsFnTranslations('c75', '" + event + "', " + commandVarA + "); \
                     " + eventPrefix + typePrefix + " \
 					if ($('#' + targetElement + '').prop('tagName') == 'PAPER-SWATCH-PICKER') {\
-						window.scale(elementName, 'length', $('#' + targetElement + '').prop('color')); \
+						window.setDimension(elementName, 'length', $('#' + targetElement + '').prop('color')); \
 					} else {\
-					    window.scale(elementName, 'length', window.elementValue.get(targetElement)); \
+					    window.setDimension(elementName, 'length', window.elementValue.get(targetElement)); \
 					}\
                         " + typeSuffix + eventSuffix + " \
                 } else if (window.commandsFnTranslations('c74q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c74rB')) { \
                     (function (" + commandVarB + ") { \
                         " + eventPrefix + typePrefix + " \
-						    window.scale(elementName, 'length', window.commandsFnTranslations('c41', '" + event + "', " + commandVarA + ")); \
+						    window.setDimension(elementName, 'length', window.commandsFnTranslations('c41', '" + event + "', " + commandVarA + ")); \
                             " + typeSuffix + eventSuffix + " \
                     })(" + commandVarB + "); \
                 } else { \
                     var newVal = window.evaluateValue(window.commandsFnTranslations('c76', '" + event + "', " + commandVarA + ")); \
                     " + eventPrefix + typePrefix + " \
-						window.scale(elementName, 'length', eval(newVal)); \
+						window.setDimension(elementName, 'length', eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                 }})();";
     } else if (script == 'S15') {
@@ -453,21 +453,21 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                     var resource = window.commandsFnTranslations('c79', '" + event + "', " + commandVarA + ", targetElement); \
                     " + eventPrefix + typePrefix + " \
 					if ($('#' + resource + '').prop('tagName') == 'PAPER-SWATCH-PICKER') {\
-						window.scale(targetElement, 'length', $('#' + resource + '').prop('color')); \
+						window.setDimension(targetElement, 'length', $('#' + resource + '').prop('color')); \
 					} else {\
-                        window.scale(targetElement, 'length', window.elementValue.get(resource)); \
+                        window.setDimension(targetElement, 'length', window.elementValue.get(resource)); \
 					}\
                         " + typeSuffix + eventSuffix + " \
                     } else if (window.commandsFnTranslations('c80q', '" + event + "', " + commandVarA + ", targetElement) == window.commandsFnTranslations('c80rB')) { \
                     (function (" + commandVarB + ", targetElement) { \
                         " + eventPrefix + typePrefix + " \
-							window.scale(targetElement, 'length', window.commandsFnTranslations('c43', '" + event + "', " + commandVarA + ", targetElement)); \
+							window.setDimension(targetElement, 'length', window.commandsFnTranslations('c43', '" + event + "', " + commandVarA + ", targetElement)); \
                             " + typeSuffix + eventSuffix + " \
                         })(" + commandVarB + ", targetElement); \
                 } else { \
                     var newVal = window.evaluateValue(window.commandsFnTranslations('c81', '" + event + "', " + commandVarA + ", targetElement)); \
                     " + eventPrefix + typePrefix + " \
-                    window.scale(targetElement, 'length', eval(newVal)); \
+                    window.setDimension(targetElement, 'length', eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                     }})();";
     } else if (script == 'S16') {
@@ -477,21 +477,21 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                     var targetElement = window.commandsFnTranslations('c84', '" + event + "', " + commandVarA + "); \
                     " + eventPrefix + typePrefix + " \
 					if ($('#' + targetElement + '').prop('tagName') == 'PAPER-SWATCH-PICKER') {\
-						window.scale(elementName, 'height', $('#' + targetElement + '').prop('color')); \
+						window.setDimension(elementName, 'width', $('#' + targetElement + '').prop('color')); \
 					} else {\
-					    window.scale(elementName, 'height', window.elementValue.get(targetElement)); \
+					    window.setDimension(elementName, 'width', window.elementValue.get(targetElement)); \
 					}\
                         " + typeSuffix + eventSuffix + " \
                 } else if (window.commandsFnTranslations('c83q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c83rB')) { \
                     (function (" + commandVarB + ") { \
                         " + eventPrefix + typePrefix + " \
-						    window.scale(elementName, 'height', window.commandsFnTranslations('c41', '" + event + "', " + commandVarA + ")); \
+						    window.setDimension(elementName, 'width', window.commandsFnTranslations('c41', '" + event + "', " + commandVarA + ")); \
                             " + typeSuffix + eventSuffix + " \
                     })(" + commandVarB + "); \
                 } else { \
                     var newVal = window.evaluateValue(window.commandsFnTranslations('c85', '" + event + "', " + commandVarA + ")); \
                     " + eventPrefix + typePrefix + " \
-						window.scale(elementName, 'height', eval(newVal)); \
+						window.setDimension(elementName, 'width', eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                 }})()";
     } else if (script == 'S17') {
@@ -502,21 +502,22 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                     var resource = window.commandsFnTranslations('c88', '" + event + "', " + commandVarA + ", targetElement); \
                     " + eventPrefix + typePrefix + " \
 					if ($('#' + resource + '').prop('tagName') == 'PAPER-SWATCH-PICKER') {\
-						window.scale(targetElement, 'height', $('#' + resource + '').prop('color')); \
+						window.setDimension(targetElement, 'width', $('#' + resource + '').prop('color')); \
 					} else {\
-                        window.scale(targetElement, 'height', window.elementValue.get(resource)); \
+                        window.setDimension(targetElement, 'width', window.elementValue.get(resource)); \
 					}\
                         " + typeSuffix + eventSuffix + " \
                     } else if (window.commandsFnTranslations('c89q', '" + event + "', " + commandVarA + ", targetElement) == window.commandsFnTranslations('c89rB')) { \
                     (function (" + commandVarB + ", targetElement) { \
                         " + eventPrefix + typePrefix + " \
-							window.scale(targetElement, 'height', window.commandsFnTranslations('c43', '" + event + "', " + commandVarA + ", targetElement)); \
+							window.setDimension(targetElement, 'width', window.commandsFnTranslations('c43', '" + event + "', " + commandVarA + ", targetElement)); \
                             " + typeSuffix + eventSuffix + " \
                         })(" + commandVarB + ", targetElement); \
                 } else { \
                     var newVal = window.evaluateValue(window.commandsFnTranslations('c90', '" + event + "', " + commandVarA + ", targetElement)); \
                     " + eventPrefix + typePrefix + " \
-                    window.scale(targetElement, 'height', eval(newVal)); \
+                    alert(targetElement); \
+                    window.setDimension(targetElement, 'width', eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                     }})();";
     } else if (script == 'S7') {

@@ -6,21 +6,18 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-6
+ * Date: 2017-09-21
  */
 $(function () {
     $.fn[window.writingZoneTranslations[document.lang]] = function (options) {
         // Establish our default settings
         var settings = $.extend({
-            [window.typeTranslations[document.lang]]: null,
+            [window.inputTypeTranslations[document.lang]]: null,
             [window.maxTranslations[document.lang]]: null,
             [window.minTranslations[document.lang]]: null,
             [window.requirementTranslations[document.lang]]: null,
-            errorMessage: null,
             [window.prefixTranslations[document.lang]]: null,
             [window.suffixTranslations[document.lang]]: null,
-            [window.clearButtonTranslations[document.lang]]: null,
-            required: null,
             [window.disabledTranslations[document.lang]]: null,
             [window.rippleTranslations[document.lang]]: null,
             [window.fontColorTranslations[document.lang]]: null,
@@ -28,7 +25,7 @@ $(function () {
             [window.nameTranslations[document.lang]]: null,
             [window.widthTranslations[document.lang]]: null,
             [window.lengthTranslations[document.lang]]: null,
-            [window.thicknessTranslations[document.lang]]: null,
+            [window.fontThicknessTranslations[document.lang]]: null,
             [window.fontStyleTranslations[document.lang]]: null,
             [window.animationTranslations[document.lang]]: null,
             [window.transparencyTranslations[document.lang]]: null,
@@ -57,16 +54,12 @@ $(function () {
             if (settings[window.titleTranslations[document.lang]]) {
                 out += 'label="' + settings[window.titleTranslations[document.lang]] + '" ';
             }
-            if (settings[window.typeTranslations[document.lang]] == 'password') {
+            if (settings[window.inputTypeTranslations[document.lang]] == window.passwordTranslations[document.lang]) {
                 out += 'type="password" ';
-            } else if (settings[window.typeTranslations[document.lang]] == 'number') {
+            } else if (settings[window.inputTypeTranslations[document.lang]] == window.numberTranslations[document.lang]) {
                 out += 'type="number" ';
             }
-            if (settings[window.requirementTranslations[document.lang]] == 'someText') {
-                out += 'auto-validate ';
-            } else if (settings[window.requirementTranslations[document.lang]] == 'lettersOnly') {
-                out += 'auto-validate allowed-pattern="[a-zA-Z]"';
-            } else if (settings[window.requirementTranslations[document.lang]]) {
+            if (settings[window.requirementTranslations[document.lang]]) {
                 out += 'auto-validate allowed-pattern="' + settings[window.requirementTranslations[document.lang]] + '"';
             }
             if (settings[window.maxTranslations[document.lang]]) {
@@ -85,53 +78,22 @@ $(function () {
                     }
                 }
             }
-            if (settings[window.rippleTranslations[document.lang]] == window.noTranslations[document.lang]) {
-                out += 'noink ';
-            }
-            if (settings[window.textTranslations[document.lang]]) {
-                out += 'label="' + settings[window.textTranslations[document.lang]] + '" ';
-            }
-            if (settings[window.iconTranslations[document.lang]]) {
-                out += 'icon="' + settings[window.iconTranslations[document.lang]] + '" ';
-            }
-            if (settings[window.descriptionTranslations[document.lang]]) {
-                out += 'title="' + settings[window.descriptionTranslations[document.lang]] + '" ';
-            }
             out += 'id="' + name + '">';
             if (settings[window.prefixTranslations[document.lang]]) {
                 var prefix = settings[window.prefixTranslations[document.lang]].split(' &amp;&amp;&amp; ');
                 for (i = 0; i < prefix.length; i++) {
-                    if (prefix[i].split("an icon of ")[1]) {
-                        out += '<iron-icon icon="' + prefix[i].split("an icon of ")[1] + '" prefix></iron-icon>';
-                    } else {
-                        out += '<div prefix>' + prefix[i] + '</div>';
-                    }
+                    out += '<div slot="prefix">' + prefix[i] + '</div>';
                 }
             }
             if (settings[window.suffixTranslations[document.lang]]) {
                 var suffix = settings[window.suffixTranslations[document.lang]].split(' &amp;&amp;&amp; ');
                 for (i = 0; i < suffix.length; i++) {
-                    if (suffix[i].split("an icon of ")[1]) {
-                        out += '<iron-icon icon="' + suffix[i].split("an icon of ")[1] + '" suffix></iron-icon>';
-                    } else {
-                        out += '<div suffix>' + suffix[i] + '</div>';
-                    }
+                    out += '<div slot="suffix">' + suffix[i] + '</div>';
                 }
-            }
-            if (settings[window.clearButtonTranslations[document.lang]] == window.yesTranslations[document.lang]) {
-                out += '<paper-icon-button suffix onclick="clearInput()" icon="clear" alt="clear" title="clear"></paper-icon-button>';
             }
             out += '</' + tagName + '>';
-            if (settings[window.containerTranslations[document.lang]]) {
-                if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
-                    $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
-                } else {
-                    $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
-                }
-            } else {
-                $('contents').append(out);
-            }
-            if (settings[window.typeTranslations[document.lang]] == 'date') {
+            window.appendComponent(settings[window.containerTranslations[document.lang]], out);
+            if (settings[window.inputTypeTranslations[document.lang]] == window.dateTranslations[document.lang]) {
                 if (document.lang == 0 || document.lang == 1) {
                     $('#' + name + '').attr('data-lang', 'en');
                 } else if (document.lang == 2) {
@@ -143,7 +105,7 @@ $(function () {
                 $('#' + name + '').attr('data-large-mode', 'true');
                 $('#' + name + '').attr('data-translate-mode', 'true');
                 $('#' + name + '').dateDropper();
-            } else if (settings[window.typeTranslations[document.lang]] == 'time') {
+            } else if (settings[window.inputTypeTranslations[document.lang]] == window.timeTranslations[document.lang]) {
                 $('#' + name + '').timeDropper();
             }
             if (settings[window.fontColorTranslations[document.lang]]) {
@@ -152,22 +114,11 @@ $(function () {
             if (settings[window.fontStyleTranslations[document.lang]]) {
                 $('#' + name + '').css('font-style', settings[window.fontStyleTranslations[document.lang]]);
             }
-            if (settings[window.attributesTranslations[document.lang]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
-                for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.disabledTranslations[document.lang]) {
-                        $('#' + name + '').attr('disabled', '');
-                    }
-                }
-            }
-            if (settings[window.rippleTranslations[document.lang]] == window.noTranslations[document.lang]) {
-                $('#' + name + '').attr('noink', '');
-            }
-            if (settings[window.thicknessTranslations[document.lang]]) {
-                if (settings[window.thicknessTranslations[document.lang]] == window.thickTranslations[document.lang]) {
+            if (settings[window.fontThicknessTranslations[document.lang]]) {
+                if (settings[window.fontThicknessTranslations[document.lang]] == window.thickTranslations[document.lang]) {
                     $('#' + name + '').css('font-weight', 'bold');
                 } else {
-                    $('#' + name + '').css('font-weight', settings[window.thicknessTranslations[document.lang]]);
+                    $('#' + name + '').css('font-weight', settings[window.fontThicknessTranslations[document.lang]]);
                 }
             }
             if (settings[window.fontSizeTranslations[document.lang]]) {

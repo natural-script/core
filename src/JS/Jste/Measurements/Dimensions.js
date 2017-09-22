@@ -8,7 +8,10 @@
  *
  * Date: 2017-09-18
  */
-window.setDimension = function (name, dimension, value, type, isTitled) {
+window.setDimension = function (name, dimension, value) {
+	document[name + dimension + '_updater'] = null;
+	var type = $('#' + name + '').prop('type');
+	var isTitled = $('#' + name + '').prop('isTitled');
 	var landscapeValue = null;
 	var portraitValue = null;
 	if (value.includes(window.andTranslations[document.lang])) {
@@ -109,7 +112,7 @@ window.setDimension = function (name, dimension, value, type, isTitled) {
 		setDimensionFn(ratio, vhvwRatio);
 	};
 	if (landscapeValue || portraitValue) {
-		window.addEventListener("resize", function () {
+		document[name + dimension + '_updater'] = window.addEventListener("resize", function () {
 			updateDimension();
 		});
 	}

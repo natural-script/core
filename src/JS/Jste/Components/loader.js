@@ -25,32 +25,19 @@ $(function () {
             [window.distanceFromRightTranslations[document.lang]]: null,
             [window.positionTranslations[document.lang]]: null,
             [window.containerTranslations[document.lang]]: null,
-            [window.typeTranslations[document.lang]]: null,
+            [window.typeTranslations[document.lang]]: window.spinnerTranslations[document.lang],
             [window.attributesTranslations[document.lang]]: null,
             [window.commandsTranslations[document.lang]]: null
         }, options);
         return this.each(function () {
             var name = settings[window.nameTranslations[document.lang]];
-            if (settings[window.typeTranslations[document.lang]] == settings[window.barTranslations[document.lang]]) {
-                var out = '<paper-progress id="' + name + '"></paper-progress>';
-            } else if (settings[window.typeTranslations[document.lang]] == settings[window.spinnerTranslations[document.lang]]) {
-                var out = '<paper-spinner id="' + name + '"></paper-spinner>';
+            var out;
+            if (settings[window.typeTranslations[document.lang]] == window.barTranslations[document.lang]) {
+                out = '<paper-progress id="' + name + '"></paper-progress>';
+            } else if (settings[window.typeTranslations[document.lang]] == window.spinnerTranslations[document.lang]) {
+                out = '<paper-spinner id="' + name + '"></paper-spinner>';
             }
-            if (settings[window.containerTranslations[document.lang]]) {
-                if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
-                    $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
-                } else {
-                    $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
-                }
-            } else {
-                $('contents').append(out);
-            }
-            if (settings[window.fontColorTranslations[document.lang]]) {
-                window.setFontColour(name, settings[window.fontColorTranslations[document.lang]]);
-            }
-            if (settings[window.backgroundTranslations[document.lang]]) {
-                window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
-            }
+            window.appendComponent(settings[window.containerTranslations[document.lang]], out);
             if (settings[window.attributesTranslations[document.lang]]) {
                 var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
@@ -59,18 +46,7 @@ $(function () {
                     }
                 }
             }
-            if (settings[window.widthTranslations[document.lang]]) {
-                window.setDimension(name, 'width', settings[window.widthTranslations[document.lang]]);
-            }
-            if (settings[window.lengthTranslations[document.lang]]) {
-                window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]]);
-            }
-            if (settings[window.animationTranslations[document.lang]]) {
-                window.setAnimation(name, settings[window.animationTranslations[document.lang]]);
-            }
-            if (settings[window.transparencyTranslations[document.lang]]) {
-                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.lang]] + '%)');
-            }
+            window.propSet(name, settings);
         });
     };
 });

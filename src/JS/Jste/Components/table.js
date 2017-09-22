@@ -18,7 +18,7 @@ $(function () {
             [window.nameTranslations[document.lang]]: null,
             [window.widthTranslations[document.lang]]: null,
             [window.lengthTranslations[document.lang]]: null,
-            [window.thicknessTranslations[document.lang]]: null,
+            [window.fontThicknessTranslations[document.lang]]: null,
             [window.fontStyleTranslations[document.lang]]: null,
             [window.animationTranslations[document.lang]]: null,
             [window.transparencyTranslations[document.lang]]: null,
@@ -34,16 +34,8 @@ $(function () {
         }, options);
         return this.each(function () {
             var name = settings[window.nameTranslations[document.lang]];
-            var out = 'table id="' + name + '" class="responsive-table centered highlight"><thead></thead><tbody class="list"></tbody></table>'
-            if (settings[window.containerTranslations[document.lang]]) {
-                if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
-                    $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
-                } else {
-                    $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
-                }
-            } else {
-                $('contents').append(out);
-            }
+            var out = '<table id="' + name + '" class="responsive-table centered highlight"><thead></thead><tbody class="list"></tbody></table>';
+            window.appendComponent(settings[window.containerTranslations[document.lang]], out);
             if (settings[window.dataTranslations[document.lang]]) {
                 var inputDataPlainA = settings[window.dataTranslations[document.lang]].split(' &amp;&amp;&amp;&amp; ');
                 var inputDataRaw = '[';
@@ -69,6 +61,7 @@ $(function () {
                 }
                 inputDataRaw += ']';
             }
+            console.log(inputDataRaw)
             var inputData = JSON.parse(inputDataRaw);
             var keys = [];
             for (var i = 0; i < inputData.length; i++) {
@@ -88,7 +81,7 @@ $(function () {
                 valueNames: keys,
                 item: template
             };
-            var userList = new List(name + '_container', options, inputData);
+            var userList = new List(name, options, inputData);
             if (settings[window.attributesTranslations[document.lang]]) {
                 var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
@@ -96,22 +89,6 @@ $(function () {
                         $('#' + name + '').addClass('row');
                     }
                 }
-            }
-            if (settings[window.fontColorTranslations[document.lang]]) {
-                window.setFontColour(name, settings[window.fontColorTranslations[document.lang]]);
-            }
-            if (settings[window.fontStyleTranslations[document.lang]]) {
-                $('#' + name + '').css('font-style', settings[window.fontStyleTranslations[document.lang]]);
-            }
-            if (settings[window.thicknessTranslations[document.lang]]) {
-                if (settings[window.thicknessTranslations[document.lang]] == window.thickTranslations[document.lang]) {
-                    $('#' + name + '').css('font-weight', 'bold');
-                } else {
-                    $('#' + name + '').css('font-weight', settings[window.thicknessTranslations[document.lang]]);
-                }
-            }
-            if (settings[window.fontSizeTranslations[document.lang]]) {
-                $('#' + name + '').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.lang]]));
             }
             if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('row') == true) {
                 $('#' + name + '').addClass('col');

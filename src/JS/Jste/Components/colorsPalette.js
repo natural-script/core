@@ -29,15 +29,7 @@ $(function () {
         return this.each(function () {
             var name = settings[window.nameTranslations[document.lang]];
             var out = '<paper-swatch-picker id="' + name + '" color="{{selectedColor}}"></paper-swatch-picker>';
-            if (settings[window.containerTranslations[document.lang]]) {
-                if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
-                    $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
-                } else {
-                    $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
-                }
-            } else {
-                $('contents').append(out);
-            }
+            window.appendComponent(settings[window.containerTranslations[document.lang]], out);
             if (settings[window.fontColorTranslations[document.lang]]) {
                 window.setFontColour(name, settings[window.fontColorTranslations[document.lang]]);
             }

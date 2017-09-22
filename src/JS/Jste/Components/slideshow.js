@@ -32,15 +32,7 @@ $(function () {
             var name = settings[window.nameTranslations[document.lang]];
             var autoplay = false;
             var out = '<div id="' + name + '" class="owl-carousel owl-theme"></div>';
-            if (settings[window.containerTranslations[document.lang]]) {
-                if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
-                    $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
-                } else {
-                    $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
-                }
-            } else {
-                $('contents').append(out);
-            }
+            window.appendComponent(settings[window.containerTranslations[document.lang]], out);
             if (settings[window.attributesTranslations[document.lang]]) {
                 var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {

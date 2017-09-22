@@ -190,9 +190,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 3) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 4) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 5) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		}
@@ -204,9 +204,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return 'définir sa valeur à';
 		} else if (document.lang == 3) {
-			return 'اجعل قيمته إلى';
+			return 'اجعل قيمته';
 		} else if (document.lang == 4) {
-			return 'خلى قيمته إلى';
+			return 'خلى قيمته';
 		} else if (document.lang == 5) {
 			return 'にその値を設定';
 		}
@@ -218,9 +218,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل قيمته إلى ')[1].split(' ')[0];
+			return commandValue.split('اجعل قيمته ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى قيمته إلى ')[1].split(' ')[0];
+			return commandValue.split('خلى قيمته ')[1].split(' ')[0];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
 		}
@@ -260,9 +260,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return commandValue.split('définir sa valeur à la valeur de ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل قيمته إلى قيمة ')[1];
+			return commandValue.split('اجعل قيمته قيمة ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى قيمته إلى قيمة ')[1];
+			return commandValue.split('خلى قيمته قيمة ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir sa valeur à la valeur de ')[1];
 		}
@@ -274,9 +274,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return commandValue.split('définir sa valeur à ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل قيمته إلى ')[1];
+			return commandValue.split('اجعل قيمته ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى قيمته إلى ')[1];
+			return commandValue.split('خلى قيمته ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('にその値を設定')[0].split('、 ')[1];
 		}
@@ -288,9 +288,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 3) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 4) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 2) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		}
@@ -302,9 +302,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return 'définir la valeur de à';
 		} else if (document.lang == 3) {
-			return 'اجعل قيمة إلى';
+			return 'اجعل قيمة';
 		} else if (document.lang == 4) {
-			return 'خلى قيمة إلى';
+			return 'خلى قيمة';
 		} else if (document.lang == 5) {
 			return 'définir la valeur de à';
 		}
@@ -330,9 +330,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل قيمة ' + param1 + ' إلى قيمة ')[1];
+			return commandValue.split('اجعل قيمة ' + param1 + ' قيمة ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى قيمة ' + param1 + ' إلى قيمة ')[1];
+			return commandValue.split('خلى قيمة ' + param1 + ' قيمة ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
 		}
@@ -344,9 +344,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل قيمة ' + param1 + ' إلى ')[1].split(' ')[0];
+			return commandValue.split('اجعل قيمة ' + param1 + ' ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى قيمة ' + param1 + ' إلى ')[1].split(' ')[0];
+			return commandValue.split('خلى قيمة ' + param1 + ' ')[1].split(' ')[0];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
 		}
@@ -386,9 +386,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل قيمة ' + param1 + ' إلى ')[1];
+			return commandValue.split('اجعل قيمة ' + param1 + ' ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى قيمة ' + param1 + ' إلى ')[1];
+			return commandValue.split('خلى قيمة ' + param1 + ' ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
 		}
@@ -442,9 +442,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل قيمة ' + param1 + ' إلى قيمة ')[1];
+			return commandValue.split('اجعل قيمة ' + param1 + ' قيمة ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى قيمة ' + param1 + ' إلى قيمة ')[1];
+			return commandValue.split('خلى قيمة ' + param1 + ' قيمة ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
 		}
@@ -1334,43 +1334,43 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c55q') {
 		if (document.lang == 0) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4]");
 		} else if (document.lang == 1) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4]");
 		} else if (document.lang == 2) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4]");
 		} else if (document.lang == 3) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 4) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 5) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		}
 	} else if (commandCode == 'c55r') {
 		if (document.lang == 0) {
-			return 'set its text font colour to';
+			return 'set its font colour to';
 		} else if (document.lang == 1) {
-			return 'set its text font color to';
+			return 'set its font color to';
 		} else if (document.lang == 2) {
-			return 'définir sa valeur à';
+			return 'définir sa couleur de police';
 		} else if (document.lang == 3) {
-			return 'اجعل لون خط نصه إلى';
+			return 'اجعل لون خط نصه';
 		} else if (document.lang == 4) {
-			return 'خلى لون خط كلامه إلى';
+			return 'خلى لون خط كلامه';
 		} else if (document.lang == 5) {
 			return 'にその値を設定';
 		}
 	} else if (commandCode == 'c56q') {
 		if (document.lang == 0) {
-			return commandValue.split('set its text font colour to ')[1].split(' ')[0] + ' ' + commandValue.split('set its text font colour to ')[1].split(' ')[1] + ' ' + commandValue.split('set its text font colour to ')[1].split(' ')[2];
+			return commandValue.split('set its font colour to ')[1].split(' ')[0] + ' ' + commandValue.split('set its text font colour to ')[1].split(' ')[1] + ' ' + commandValue.split('set its text font colour to ')[1].split(' ')[2];
 		} else if (document.lang == 1) {
-			return commandValue.split('set its text font color to ')[1].split(' ')[0] + ' ' + commandValue.split('set its text font color to ')[1].split(' ')[1] + ' ' + commandValue.split('set its text font color to ')[1].split(' ')[2];
+			return commandValue.split('set its font color to ')[1].split(' ')[0] + ' ' + commandValue.split('set its text font color to ')[1].split(' ')[1] + ' ' + commandValue.split('set its text font color to ')[1].split(' ')[2];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
+			return commandValue.split('définir sa couleur de police à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa couleur de police à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa couleur de police à ')[1].split(' ')[2];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل لون خط نصه إلى ')[1].split(' ')[0];
+			return commandValue.split('اجعل لون خط نصه ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى لون خط كلامه إلى ')[1].split(' ')[0];
+			return commandValue.split('خلى لون خط كلامه ')[1].split(' ')[0];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
 		}
@@ -1404,67 +1404,67 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c57') {
 		if (document.lang == 0) {
-			return commandValue.split('set its text font colour to the value of ')[1];
+			return commandValue.split('set its font colour to the value of ')[1];
 		} else if (document.lang == 1) {
-			return commandValue.split('set its text font color to the value of ')[1];
+			return commandValue.split('set its font color to the value of ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir sa valeur à la valeur de ')[1];
+			return commandValue.split('définir sa couleur de police à la valeur de ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل لون خط نصه إلى قيمة ')[1];
+			return commandValue.split('اجعل لون خط نصه قيمة ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى لون خط كلامه إلى قيمة ')[1];
+			return commandValue.split('خلى لون خط كلامه قيمة ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir sa valeur à la valeur de ')[1];
 		}
 	} else if (commandCode == 'c58') {
 		if (document.lang == 0) {
-			return commandValue.split('set its text font colour to ')[1];
+			return commandValue.split('set its font colour to ')[1];
 		} else if (document.lang == 1) {
-			return commandValue.split('set its text font color to ')[1];
+			return commandValue.split('set its font color to ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir sa valeur à ')[1];
+			return commandValue.split('définir sa couleur de police ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل لون خط نصه إلى ')[1];
+			return commandValue.split('اجعل لون خط نصه ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى لون خط كلامه إلى ')[1];
+			return commandValue.split('خلى لون خط كلامه ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('にその値を設定')[0].split('、 ')[1];
 		}
 	} else if (commandCode == 'c59q') {
 		if (document.lang == 0) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[5] + ' ' + commandValue" + eventSplitter + ".split(' ')[7]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[6]");
 		} else if (document.lang == 1) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[5] + ' ' + commandValue" + eventSplitter + ".split(' ')[7]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[6]");
 		} else if (document.lang == 2) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[4] + ' ' + commandValue" + eventSplitter + ".split(' ')[5] + ' ' + commandValue" + eventSplitter + ".split(' ')[7]");
 		} else if (document.lang == 3) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 4) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 2) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		}
 	} else if (commandCode == 'c59r') {
 		if (document.lang == 0) {
-			return 'set the text font colour of to';
+			return 'set the font colour of to';
 		} else if (document.lang == 1) {
-			return 'set the text font color of to';
+			return 'set the font color of to';
 		} else if (document.lang == 2) {
-			return 'définir la valeur de à';
+			return 'définir la couleur de police de à';
 		} else if (document.lang == 3) {
-			return 'خلى لون خط نص إلى';
+			return 'اجعل لون خط نص';
 		} else if (document.lang == 4) {
-			return 'خلى لون خط كلام إلى';
+			return 'خلى لون خط كلام';
 		} else if (document.lang == 5) {
 			return 'définir la valeur de à';
 		}
 	} else if (commandCode == 'c60') {
 		if (document.lang == 0) {
-			return commandValue.split('set the text font colour of ')[1].split(' ')[0];
+			return commandValue.split('set the font colour of ')[1].split(' ')[0];
 		} else if (document.lang == 1) {
-			return commandValue.split('set the text font color of ')[1].split(' ')[0];
+			return commandValue.split('set the font color of ')[1].split(' ')[0];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ')[1].split(' ')[0];
+			return commandValue.split('définir la couleur de police de ')[1].split(' ')[0];
 		} else if (document.lang == 3) {
 			return commandValue.split('اجعل لون خط نص ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
@@ -1474,15 +1474,15 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c61') {
 		if (document.lang == 0) {
-			return commandValue.split('set the text font colour of ' + param1 + ' to the value of ')[1];
+			return commandValue.split('set the font colour of ' + param1 + ' to the value of ')[1];
 		} else if (document.lang == 1) {
-			return commandValue.split('set the text font color of ' + param1 + ' to the value of ')[1];
+			return commandValue.split('set the font color of ' + param1 + ' to the value of ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
+			return commandValue.split('définir la couleur de police de ' + param1 + ' à la valeur de ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل لون خط نص ' + param1 + ' إلى قيمة ')[1];
+			return commandValue.split('اجعل لون خط نص ' + param1 + ' قيمة ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى لون خط كلام ' + param1 + ' إلى قيمة ')[1];
+			return commandValue.split('خلى لون خط كلام ' + param1 + ' قيمة ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
 		}
@@ -1492,11 +1492,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set the text font color of ' + param1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the text font color of ' + param1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the text font color of ' + param1 + ' to ')[1].split(' ')[2];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
+			return commandValue.split('définir la couleur de police de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la couleur de police de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la couleur de police de ' + param1 + ' à ')[1].split(' ')[2];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل لون خط نص ' + param1 + ' إلى ')[1].split(' ')[0];
+			return commandValue.split('اجعل لون خط نص ' + param1 + ' ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى لون خط كلام ' + param1 + ' إلى ')[1].split(' ')[0];
+			return commandValue.split('خلى لون خط كلام ' + param1 + ' ')[1].split(' ')[0];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
 		}
@@ -1530,15 +1530,15 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		}
 	} else if (commandCode == 'c63') {
 		if (document.lang == 0) {
-			return commandValue.split('set the text font colour of ' + param1 + ' to ')[1];
+			return commandValue.split('set the font colour of ' + param1 + ' to ')[1];
 		} else if (document.lang == 1) {
-			return commandValue.split('set the text font color of ' + param1 + ' to ')[1];
+			return commandValue.split('set the font color of ' + param1 + ' to ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
+			return commandValue.split('définir la couleur de police de ' + param1 + ' à ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل لون خط نص ' + param1 + ' إلى ')[1];
+			return commandValue.split('اجعل لون خط نص ' + param1 + ' ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى لون خط كلام ' + param1 + ' إلى ')[1];
+			return commandValue.split('خلى لون خط كلام ' + param1 + ' ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
 		}
@@ -1550,9 +1550,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 3) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 4) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 5) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		}
@@ -1562,11 +1562,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return 'set its background to';
 		} else if (document.lang == 2) {
-			return 'définir sa valeur à';
+			return 'définir son fond à';
 		} else if (document.lang == 3) {
-			return 'اجعل خلفيته إلى';
+			return 'اجعل خلفيته';
 		} else if (document.lang == 4) {
-			return 'خلى خلفيته إلى';
+			return 'خلى خلفيته';
 		} else if (document.lang == 5) {
 			return 'にその値を設定';
 		}
@@ -1576,11 +1576,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set its background to ')[1].split(' ')[0] + ' ' + commandValue.split('set its background to ')[1].split(' ')[1] + ' ' + commandValue.split('set its background to ')[1].split(' ')[2];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
+			return commandValue.split('définir son fond à ')[1].split(' ')[0] + ' ' + commandValue.split('définir son fond à ')[1].split(' ')[1] + ' ' + commandValue.split('définir son fond à ')[1].split(' ')[2];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل خلفيته إلى ')[1].split(' ')[0];
+			return commandValue.split('اجعل خلفيته ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى خلفيته إلى ')[1].split(' ')[0];
+			return commandValue.split('خلى خلفيته ')[1].split(' ')[0];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
 		}
@@ -1618,11 +1618,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set its background to the value of ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir sa valeur à la valeur de ')[1];
+			return commandValue.split('définir son fond à la valeur de ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('خلى خلفيته إلى قيمة ')[1];
+			return commandValue.split('اجعل خلفيته قيمة ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى خلفيته إلى قيمة ')[1];
+			return commandValue.split('خلى خلفيته قيمة ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir sa valeur à la valeur de ')[1];
 		}
@@ -1632,11 +1632,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set its background to ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir sa valeur à ')[1];
+			return commandValue.split('définir son fond à ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('خلى خلفيته إلى ')[1];
+			return commandValue.split('اجعل خلفيته ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى خلفيته إلى ')[1];
+			return commandValue.split('خلى خلفيته ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('にその値を設定')[0].split('、 ')[1];
 		}
@@ -1648,9 +1648,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 3) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 4) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 2) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		}
@@ -1660,11 +1660,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return 'set the background of to';
 		} else if (document.lang == 2) {
-			return 'définir la valeur de à';
+			return 'définir le fond de à';
 		} else if (document.lang == 3) {
-			return 'خلى خلفية إلى';
+			return 'اجعل خلفية';
 		} else if (document.lang == 4) {
-			return 'خلى خلفية إلى';
+			return 'خلى خلفية';
 		} else if (document.lang == 5) {
 			return 'définir la valeur de à';
 		}
@@ -1674,7 +1674,7 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set the background of ')[1].split(' ')[0];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ')[1].split(' ')[0];
+			return commandValue.split('définir le fond de ')[1].split(' ')[0];
 		} else if (document.lang == 3) {
 			return commandValue.split('اجعل خلفية ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
@@ -1688,11 +1688,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set the background of ' + param1 + ' to the value of ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
+			return commandValue.split('définir le fond de ' + param1 + ' à la valeur de ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل خلفية ' + param1 + ' إلى قيمة ')[1];
+			return commandValue.split('اجعل خلفية ' + param1 + ' قيمة ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى خلفية ' + param1 + ' إلى قيمة ')[1];
+			return commandValue.split('خلى خلفية ' + param1 + ' قيمة ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
 		}
@@ -1702,11 +1702,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set the background of ' + param1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the background of ' + param1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the background of ' + param1 + ' to ')[1].split(' ')[2];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
+			return commandValue.split('définir le fond de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir le fond de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir le fond de ' + param1 + ' à ')[1].split(' ')[2];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل خلفية ' + param1 + ' إلى ')[1].split(' ')[0];
+			return commandValue.split('اجعل خلفية ' + param1 + ' ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى خلفية ' + param1 + ' إلى ')[1].split(' ')[0];
+			return commandValue.split('خلى خلفية ' + param1 + ' ')[1].split(' ')[0];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
 		}
@@ -1744,11 +1744,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set the background of ' + param1 + ' to ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
+			return commandValue.split('définir le fond de ' + param1 + ' à ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل خلفية ' + param1 + ' إلى ')[1];
+			return commandValue.split('اجعل خلفية ' + param1 + ' ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى خلفية ' + param1 + ' إلى ')[1];
+			return commandValue.split('خلى خلفية ' + param1 + ' ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
 		}
@@ -1760,9 +1760,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 3) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 4) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 5) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		}
@@ -1772,11 +1772,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return 'set its length to';
 		} else if (document.lang == 2) {
-			return 'définir sa valeur à';
+			return 'définir sa longueur à';
 		} else if (document.lang == 3) {
-			return 'اجعل طوله إلى';
+			return 'اجعل طوله';
 		} else if (document.lang == 4) {
-			return 'خلى طوله إلى';
+			return 'خلى طوله';
 		} else if (document.lang == 5) {
 			return 'にその値を設定';
 		}
@@ -1786,11 +1786,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set its length to ')[1].split(' ')[0] + ' ' + commandValue.split('set its length to ')[1].split(' ')[1] + ' ' + commandValue.split('set its length to ')[1].split(' ')[2];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
+			return commandValue.split('définir sa longueur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa longueur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa longueur à ')[1].split(' ')[2];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل طوله إلى ')[1].split(' ')[0];
+			return commandValue.split('اجعل طوله ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى طوله إلى ')[1].split(' ')[0];
+			return commandValue.split('خلى طوله ')[1].split(' ')[0];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
 		}
@@ -1828,11 +1828,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set its length to the value of ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir sa valeur à la valeur de ')[1];
+			return commandValue.split('définir sa longueur à la valeur de ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('خلى طوله إلى قيمة ')[1];
+			return commandValue.split('اجعل طوله قيمة ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى طوله إلى قيمة ')[1];
+			return commandValue.split('خلى طوله قيمة ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir sa valeur à la valeur de ')[1];
 		}
@@ -1842,11 +1842,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set its length to ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir sa valeur à ')[1];
+			return commandValue.split('définir sa longueur à ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('خلى طوله إلى ')[1];
+			return commandValue.split('اجعل طوله ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى طوله إلى ')[1];
+			return commandValue.split('خلى طوله ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('にその値を設定')[0].split('、 ')[1];
 		}
@@ -1858,9 +1858,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 3) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 4) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 2) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		}
@@ -1870,11 +1870,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return 'set the length of to';
 		} else if (document.lang == 2) {
-			return 'définir la valeur de à';
+			return 'définir la longueur de à';
 		} else if (document.lang == 3) {
-			return 'خلى طول إلى';
+			return 'اجعل طول';
 		} else if (document.lang == 4) {
-			return 'خلى طول إلى';
+			return 'خلى طول';
 		} else if (document.lang == 5) {
 			return 'définir la valeur de à';
 		}
@@ -1884,7 +1884,7 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set the length of ')[1].split(' ')[0];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ')[1].split(' ')[0];
+			return commandValue.split('définir la longueur de ')[1].split(' ')[0];
 		} else if (document.lang == 3) {
 			return commandValue.split('اجعل طول ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
@@ -1898,11 +1898,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set the length of ' + param1 + ' to the value of ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
+			return commandValue.split('définir la longueur de ' + param1 + ' à la valeur de ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل طول ' + param1 + ' إلى قيمة ')[1];
+			return commandValue.split('اجعل طول ' + param1 + ' قيمة ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى طول ' + param1 + ' إلى قيمة ')[1];
+			return commandValue.split('خلى طول ' + param1 + ' قيمة ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
 		}
@@ -1912,11 +1912,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set the length of ' + param1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the length of ' + param1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the length of ' + param1 + ' to ')[1].split(' ')[2];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
-		} else if (document.lang == 3) {
-			return commandValue.split('اجعل طول ' + param1 + ' إلى ')[1].split(' ')[0];
+			return commandValue.split('définir la longueur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la longueur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la longueur de ' + param1 + ' à ')[1].split(' ')[2];
+		} else if (document.lang == 3) {longueur
+			return commandValue.split('اجعل طول ' + param1 + ' ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى طول ' + param1 + ' إلى ')[1].split(' ')[0];
+			return commandValue.split('خلى طول ' + param1 + ' ')[1].split(' ')[0];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
 		}
@@ -1954,11 +1954,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set the length of ' + param1 + ' to ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
+			return commandValue.split('définir la longueur de ' + param1 + ' à ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل طول ' + param1 + ' إلى ')[1];
+			return commandValue.split('اجعل طول ' + param1 + ' ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى طول ' + param1 + ' إلى ')[1];
+			return commandValue.split('خلى طول ' + param1 + ' ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
 		}
@@ -1970,9 +1970,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		} else if (document.lang == 3) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 4) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 5) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
 		}
@@ -1982,11 +1982,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return 'set its width to';
 		} else if (document.lang == 2) {
-			return 'définir sa valeur à';
+			return 'définir sa largeur à';
 		} else if (document.lang == 3) {
-			return 'اجعل عرضه إلى';
+			return 'اجعل عرضه';
 		} else if (document.lang == 4) {
-			return 'خلى عرضه إلى';
+			return 'خلى عرضه';
 		} else if (document.lang == 5) {
 			return 'にその値を設定';
 		}
@@ -1996,11 +1996,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set its width to ')[1].split(' ')[0] + ' ' + commandValue.split('set its width to ')[1].split(' ')[1] + ' ' + commandValue.split('set its width to ')[1].split(' ')[2];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
+			return commandValue.split('définir sa largeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa largeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa largeur à ')[1].split(' ')[2];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل عرضه إلى ')[1].split(' ')[0];
+			return commandValue.split('اجعل عرضه ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى عرضه إلى ')[1].split(' ')[0];
+			return commandValue.split('خلى عرضه ')[1].split(' ')[0];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir sa valeur à ')[1].split(' ')[0] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[1] + ' ' + commandValue.split('définir sa valeur à ')[1].split(' ')[2];
 		}
@@ -2038,11 +2038,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set its width to the value of ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir sa valeur à la valeur de ')[1];
+			return commandValue.split('définir sa largeur à la valeur de ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('خلى عرضه إلى قيمة ')[1];
+			return commandValue.split('اجعل عرضه قيمة ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى عرضه إلى قيمة ')[1];
+			return commandValue.split('خلى عرضه قيمة ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir sa valeur à la valeur de ')[1];
 		}
@@ -2052,11 +2052,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set its width to ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir sa valeur à ')[1];
+			return commandValue.split('définir sa largeur à ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('خلى عرضه إلى ')[1];
+			return commandValue.split('اجعل عرضه ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى عرضه إلى ')[1];
+			return commandValue.split('خلى عرضه ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('にその値を設定')[0].split('、 ')[1];
 		}
@@ -2068,9 +2068,9 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 2) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		} else if (document.lang == 3) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 4) {
-			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[3]");
+			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1]");
 		} else if (document.lang == 2) {
 			return eval("commandValue" + eventSplitter + ".split(' ')[0] + ' ' + commandValue" + eventSplitter + ".split(' ')[1] + ' ' + commandValue" + eventSplitter + ".split(' ')[2] + ' ' + commandValue" + eventSplitter + ".split(' ')[3] + ' ' + commandValue" + eventSplitter + ".split(' ')[5]");
 		}
@@ -2080,11 +2080,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return 'set the width of to';
 		} else if (document.lang == 2) {
-			return 'définir la valeur de à';
+			return 'définir la largeur de à';
 		} else if (document.lang == 3) {
-			return 'خلى عرض إلى';
+			return 'اجعل عرض';
 		} else if (document.lang == 4) {
-			return 'خلى عرض إلى';
+			return 'خلى عرض';
 		} else if (document.lang == 5) {
 			return 'définir la valeur de à';
 		}
@@ -2094,7 +2094,7 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set the width of ')[1].split(' ')[0];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ')[1].split(' ')[0];
+			return commandValue.split('définir la largeur de ')[1].split(' ')[0];
 		} else if (document.lang == 3) {
 			return commandValue.split('اجعل عرض ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
@@ -2108,11 +2108,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set the width of ' + param1 + ' to the value of ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
+			return commandValue.split('définir la largeur de ' + param1 + ' à la valeur de ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل عرض ' + param1 + ' إلى قيمة ')[1];
+			return commandValue.split('اجعل عرض ' + param1 + ' قيمة ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى عرض ' + param1 + ' إلى قيمة ')[1];
+			return commandValue.split('خلى عرض ' + param1 + ' قيمة ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à la valeur de ')[1];
 		}
@@ -2122,11 +2122,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set the width of ' + param1 + ' to ')[1].split(' ')[0] + ' ' + commandValue.split('set the width of ' + param1 + ' to ')[1].split(' ')[1] + ' ' + commandValue.split('set the width of ' + param1 + ' to ')[1].split(' ')[2];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
+			return commandValue.split('définir la largeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la largeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la largeur de ' + param1 + ' à ')[1].split(' ')[2];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل عرض ' + param1 + ' إلى ')[1].split(' ')[0];
+			return commandValue.split('اجعل عرض ' + param1 + ' ')[1].split(' ')[0];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى عرض ' + param1 + ' إلى ')[1].split(' ')[0];
+			return commandValue.split('خلى عرض ' + param1 + ' ')[1].split(' ')[0];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[0] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[1] + ' ' + commandValue.split('définir la valeur de ' + param1 + ' à ')[1].split(' ')[2];
 		}
@@ -2164,11 +2164,11 @@ window.commandsFnTranslations = function (commandCode, eventRaw, commandValue, p
 		} else if (document.lang == 1) {
 			return commandValue.split('set the width of ' + param1 + ' to ')[1];
 		} else if (document.lang == 2) {
-			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
+			return commandValue.split('définir la largeur de ' + param1 + ' à ')[1];
 		} else if (document.lang == 3) {
-			return commandValue.split('اجعل عرض ' + param1 + ' إلى ')[1];
+			return commandValue.split('اجعل عرض ' + param1 + ' ')[1];
 		} else if (document.lang == 4) {
-			return commandValue.split('خلى عرض ' + param1 + ' إلى ')[1];
+			return commandValue.split('خلى عرض ' + param1 + ' ')[1];
 		} else if (document.lang == 5) {
 			return commandValue.split('définir la valeur de ' + param1 + ' à ')[1];
 		}

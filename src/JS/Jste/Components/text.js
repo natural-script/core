@@ -12,13 +12,13 @@ $(function () {
     $.fn[window.textFnTranslations[document.lang]] = function (options) {
         // Establish our default settings
         var settings = $.extend({
-            [window.textTranslations[document.lang]]: 'It seems that you have typed nothing',
+            [window.textTranslations[document.lang]]: null,
             [window.fontColorTranslations[document.lang]]: null,
             [window.fontSizeTranslations[document.lang]]: null,
             [window.nameTranslations[document.lang]]: null,
             [window.widthTranslations[document.lang]]: null,
             [window.lengthTranslations[document.lang]]: null,
-            [window.thicknessTranslations[document.lang]]: null,
+            [window.fontThicknessTranslations[document.lang]]: null,
             [window.fontStyleTranslations[document.lang]]: null,
             [window.animationTranslations[document.lang]]: null,
             [window.backgroundTranslations[document.lang]]: null,
@@ -35,15 +35,7 @@ $(function () {
         return this.each(function () {
             var name = settings[window.nameTranslations[document.lang]];
             var out = '<p id="' + name + '">' + settings[window.textTranslations[document.lang]] + '</p>';
-            if (settings[window.containerTranslations[document.lang]]) {
-                if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
-                    $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
-                } else {
-                    $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
-                }
-            } else {
-                $('contents').append(out);
-            }
+            window.appendComponent(settings[window.containerTranslations[document.lang]], out);
             if (settings[window.attributesTranslations[document.lang]]) {
                 var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
@@ -61,22 +53,6 @@ $(function () {
                 } else if (settings[window.directionTranslations[document.lang]] == window.rtlTranslations[document.lang]) {
                     $('#' + name + '').css('direction', 'rtl');
                 }
-            }
-            if (settings[window.fontColorTranslations[document.lang]]) {
-                window.setFontColour(name, settings[window.fontColorTranslations[document.lang]]);
-            }
-            if (settings[window.fontStyleTranslations[document.lang]]) {
-                $('#' + name + '').css('font-style', settings[window.fontStyleTranslations[document.lang]]);
-            }
-            if (settings[window.thicknessTranslations[document.lang]]) {
-                if (settings[window.thicknessTranslations[document.lang]] == window.thickTranslations[document.lang]) {
-                    $('#' + name + '').css('font-weight', 'bold');
-                } else {
-                    $('#' + name + '').css('font-weight', settings[window.thicknessTranslations[document.lang]]);
-                }
-            }
-            if (settings[window.fontSizeTranslations[document.lang]]) {
-                window.setFontSize(name, settings[window.fontSizeTranslations[document.lang]]);
             }
             if (settings[window.backgroundTranslations[document.lang]]) {
                 window.setBG(name, settings[window.backgroundTranslations[document.lang]]);

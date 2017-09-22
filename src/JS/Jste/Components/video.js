@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.com/license
  *
- * Date: 2017-09-9
+ * Date: 2017-09-20
  */
 $(function () {
     $.fn[window.videoTranslations[document.lang]] = function (options) {
@@ -33,7 +33,6 @@ $(function () {
             var source = settings[window.sourceTranslations[document.lang]];
             var title = settings[window.titleTranslations[document.lang]];
             var URLID = encodeURIComponent(source).replace(/\./g, '%2E');
-            var isTitled = false;
             var out = '<paper-material id="' + name + '_container" style="position: relative; overflow: hidden;"> \
                             <video id="' + name + '" crossorigin="anonymous" class="video-js vjs-big-play-centered" style="-webkit-filter: blur(10px); background: black;" controls preload="auto" data-setup="{}" /> \
                             <div id="showVideo_' + name + '_containerA"> \
@@ -45,15 +44,9 @@ $(function () {
                             <div id="showVideo_' + name + '_containerB" style="display: none;"> \
                             <p style="position: relative; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p> \
                             <button style="position: relative; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></paper-material>';
-            if (settings[window.containerTranslations[document.lang]]) {
-                if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('iziModal')) {
-                    $('#' + settings[window.containerTranslations[document.lang]] + '').iziModal('setContent', out);
-                } else {
-                    $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
-                }
-            } else {
-                $('contents').append(out);
-            }
+            window.appendComponent(settings[window.containerTranslations[document.lang]], out);
+            $('#' + name + '').prop('isTitled', false);
+            $('#' + name + '').prop('type', 'vid');
             if (window.getVideoProvider(source).videoProvider == 'webHosting') {
                 window.verifyBLOB(encodeURIComponent(source).replace(/\./g, '%2E'), function (data) {
                     if (data == 'not exist') {
@@ -74,10 +67,10 @@ $(function () {
                 $('#' + name + '').attr('alt', settings[window.titleTranslations[document.lang]]);
             }
             if (settings[window.widthTranslations[document.lang]]) {
-                window.setDimension(name, 'width', settings[window.widthTranslations[document.lang]], 'vid');
+                window.setDimension(name, 'width', settings[window.widthTranslations[document.lang]]);
             }
             if (settings[window.lengthTranslations[document.lang]]) {
-                window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]], 'vid', isTitled);
+                window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]]);
             }
             if (settings[window.distanceFromBottomTranslations[document.lang]]) {
                 window.setDistance(name + '_container', 'bottom', settings[window.distanceFromBottomTranslations[document.lang]]);

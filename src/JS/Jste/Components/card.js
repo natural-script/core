@@ -18,7 +18,7 @@ $(function () {
             [window.nameTranslations[document.lang]]: null,
             [window.widthTranslations[document.lang]]: null,
             [window.lengthTranslations[document.lang]]: null,
-            [window.thicknessTranslations[document.lang]]: null,
+            [window.fontThicknessTranslations[document.lang]]: null,
             [window.fontStyleTranslations[document.lang]]: null,
             [window.animationTranslations[document.lang]]: null,
             [window.backgroundTranslations[document.lang]]: null,
@@ -34,15 +34,7 @@ $(function () {
         return this.each(function () {
             var name = settings[window.nameTranslations[document.lang]];
             var out = '<paper-card id="' + name + '"><div id="الحاجات_اللى_جوة_السيكشن" class="card-content"></div></paper-card>';
-            if (settings[window.containerTranslations[document.lang]]) {
-                if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
-                    $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
-                } else {
-                    $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
-                }
-            } else {
-                $('contents').append(out);
-            }
+            window.appendComponent(settings[window.containerTranslations[document.lang]], out);
             if (settings[window.imageSourceTranslations[document.lang]]) {
                 $('#' + name + '').attr('image', settings[window.imageSourceTranslations[document.lang]]);
             }

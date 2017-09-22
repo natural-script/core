@@ -24,7 +24,7 @@ $(function () {
             [window.nameTranslations[document.lang]]: null,
             [window.widthTranslations[document.lang]]: null,
             [window.lengthTranslations[document.lang]]: null,
-            [window.thicknessTranslations[document.lang]]: null,
+            [window.fontThicknessTranslations[document.lang]]: null,
             [window.fontStyleTranslations[document.lang]]: null,
             [window.animationTranslations[document.lang]]: null,
             [window.transparencyTranslations[document.lang]]: null,
@@ -90,11 +90,11 @@ $(function () {
             if (settings[window.rippleTranslations[document.lang]] == window.noTranslations[document.lang]) {
                 $('#' + name + '').attr('noink', '');
             }
-            if (settings[window.thicknessTranslations[document.lang]]) {
-                if (settings[window.thicknessTranslations[document.lang]] == window.thickTranslations[document.lang]) {
+            if (settings[window.fontThicknessTranslations[document.lang]]) {
+                if (settings[window.fontThicknessTranslations[document.lang]] == window.thickTranslations[document.lang]) {
                     $('#' + name + '').css('font-weight', 'bold');
                 } else {
-                    $('#' + name + '').css('font-weight', settings[window.thicknessTranslations[document.lang]]);
+                    $('#' + name + '').css('font-weight', settings[window.fontThicknessTranslations[document.lang]]);
                 }
             }
             if (settings[window.fontSizeTranslations[document.lang]]) {

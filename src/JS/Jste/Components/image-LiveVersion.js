@@ -10,6 +10,12 @@
  */
 $(function () {
     function setImgProp(name, settings, isTitled) {
+        if (isTitled) {
+            $('#' + name + '').prop('isTitled', true);
+        } else {
+            $('#' + name + '').prop('isTitled', false);
+        }
+        $('#' + name + '').prop('type', 'img');
         if (settings[window.backgroundTranslations[document.lang]]) {
             window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
         }
@@ -17,10 +23,10 @@ $(function () {
             $('#' + name + '').attr('alt', settings[window.titleTranslations[document.lang]]);
         }
         if (settings[window.widthTranslations[document.lang]]) {
-            window.setDimension(name, 'width', settings[window.widthTranslations[document.lang]], 'img', isTitled);
+            window.setDimension(name, 'width', settings[window.widthTranslations[document.lang]]);
         }
         if (settings[window.lengthTranslations[document.lang]]) {
-            window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]], 'img', isTitled);
+            window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]]);
         }
         if (settings[window.distanceFromBottomTranslations[document.lang]]) {
             window.setDistance(name + '_container', 'bottom', settings[window.distanceFromBottomTranslations[document.lang]]);
@@ -122,16 +128,7 @@ $(function () {
 								<p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
 								</div></' + imageContainerEndTag + '>';
                     }
-
-                    if (settings[window.containerTranslations[document.lang]]) {
-                        if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
-                            $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
-                        } else {
-                            $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
-                        }
-                    } else {
-                        $('contents').append(out);
-                    }
+                    window.appendComponent(settings[window.containerTranslations[document.lang]], out);
                     if (isIcon) {
                         var uniqueID = document.uniqueID();
                         document[uniqueID + 'checker'] = setInterval(function () {
@@ -195,15 +192,7 @@ $(function () {
 								<p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
 								</div></' + imageContainerEndTag + '>';
                 }
-                if (settings[window.containerTranslations[document.lang]]) {
-                    if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
-                        $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
-                    } else {
-                        $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
-                    }
-                } else {
-                    $('contents').append(out);
-                }
+                window.appendComponent(settings[window.containerTranslations[document.lang]], out);
                 window.getFileSize(source, function (size) {
                     $('#image_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
                 });

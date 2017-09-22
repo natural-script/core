@@ -22,7 +22,7 @@ $(function () {
             [window.nameTranslations[document.lang]]: null,
             [window.widthTranslations[document.lang]]: null,
             [window.lengthTranslations[document.lang]]: null,
-            [window.thicknessTranslations[document.lang]]: null,
+            [window.fontThicknessTranslations[document.lang]]: null,
             [window.fontStyleTranslations[document.lang]]: null,
             [window.animationTranslations[document.lang]]: null,
             [window.transparencyTranslations[document.lang]]: null,
@@ -75,84 +75,26 @@ $(function () {
             } else {
                 out += '</select></div>';
             }
-            if (settings[window.containerTranslations[document.lang]]) {
-                if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
-                    $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
-                } else {
-                    $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
-                }
-            } else {
-                $('contents').append(out);
-            }
-            if (settings[window.fontColorTranslations[document.lang]]) {
-                window.setFontColour(name + '_container', settings[window.fontColorTranslations[document.lang]]);
-            }
-            if (settings[window.fontStyleTranslations[document.lang]]) {
-                $('#' + name + '_container').css('font-style', settings[window.fontStyleTranslations[document.lang]]);
-            }
+            window.appendComponent(settings[window.containerTranslations[document.lang]], out);
             if (settings[window.attributesTranslations[document.lang]]) {
                 var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
                     if (propertiesArray[i] == window.disabledTranslations[document.lang]) {
                         $('#' + name + '').attr('disabled', '');
-                    } else if (propertiesArray[i] == window.rippleTranslations[document.lang]) {
-                        $('#' + name + '').attr('noink', '');
                     }
                 }
-            }
-            if (settings[window.thicknessTranslations[document.lang]]) {
-                if (settings[window.thicknessTranslations[document.lang]] == window.thickTranslations[document.lang]) {
-                    $('#' + name + '_container').css('font-weight', 'bold');
-                } else {
-                    $('#' + name + '_container').css('font-weight', settings[window.thicknessTranslations[document.lang]]);
-                }
-            }
-            if (settings[window.fontSizeTranslations[document.lang]]) {
-                $('#' + name + '_container').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.lang]]));
-            }
-            if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('row') == true) {
-                $('#' + name + '_container').addClass('col');
             }
             if (settings[window.positionTranslations[document.lang]]) {
                 $('#' + name + '_container').css('position', settings[window.positionTranslations[document.lang]]);
             } else {
                 $('#' + name + '_container').css('position', 'relative');
             }
-            if (settings[window.distanceFromBottomTranslations[document.lang]]) {
-                window.setDistance(name + '_container', 'bottom', settings[window.distanceFromBottomTranslations[document.lang]]);
-            }
-            if (settings[window.distanceFromTopTranslations[document.lang]]) {
-                window.setDistance(name + '_container', 'top', settings[window.distanceFromTopTranslations[document.lang]]);
-            }
-            if (settings[window.distanceFromLeftTranslations[document.lang]]) {
-                window.setDistance(name + '_container', 'left', settings[window.distanceFromLeftTranslations[document.lang]]);
-            }
-            if (settings[window.distanceFromRightTranslations[document.lang]]) {
-                window.setDistance(name + '_container', 'right', settings[window.distanceFromRightTranslations[document.lang]]);
-            }
-            if (settings[window.commandsTranslations[document.lang]]) {
-                window.execute(name + '_container', settings[window.commandsTranslations[document.lang]]);
-            }
-            if (settings[window.widthTranslations[document.lang]]) {
-                window.setDimension(name + '_container', 'width', settings[window.widthTranslations[document.lang]]);
-            }
-            if (settings[window.lengthTranslations[document.lang]]) {
-                window.setDimension(name + '_container', 'length', settings[window.lengthTranslations[document.lang]]);
-            }
-            if (settings[window.backgroundTranslations[document.lang]]) {
-                window.setBG(name + '_container', settings[window.backgroundTranslations[document.lang]]);
-            }
-            if (settings[window.animationTranslations[document.lang]]) {
-                window.setAnimation(name + '_container', settings[window.animationTranslations[document.lang]]);
-            }
-            if (settings[window.transparencyTranslations[document.lang]]) {
-                $('#' + name + '_container').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.lang]] + '%)');
-            }
             $('#' + name + '').material_select();
             if (document.lang == 3 || document.lang == 4) {
                 $('#' + name + '_container > .select-wrapper > .caret').css('right', '97%');
                 $('#' + name + '_container > label').css('right', '0px');
             }
+            window.propSet(name + '_container', settings);
         });
     };
 });

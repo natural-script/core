@@ -17,12 +17,14 @@ $(function () {
         }, options);
         return this.each(function () {
             $('contents').append('<page id="' + settings[window.nameTranslations[document.lang]] + '" style="display: none;"></page>');
-            $('#' + decodeURIComponent(window.getAllUrlParams().page) + '').fadeIn(500);
-            $('title').html(decodeURIComponent(window.getAllUrlParams().page).replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
+            var currentPageRaw = window.getAllUrlParams().page || window.indexPageTranslations[document.lang];
+            var currentPage = decodeURIComponent(currentPageRaw);
+            $('#' + currentPage + '').fadeIn(500);
+            $('title').html(currentPage.replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
                 return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
             }) + ' | ' + window.title);
-            if (window.mode) {
-                $('.appTitle').html(decodeURIComponent(window.getAllUrlParams().page).replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
+            if (window.mode == 'app') {
+                $('.appTitle').html(currentPage.replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
                     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
                 }));
             }

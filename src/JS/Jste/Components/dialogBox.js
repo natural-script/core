@@ -20,7 +20,7 @@ $(function () {
             [window.nameTranslations[document.lang]]: null,
             [window.widthTranslations[document.lang]]: null,
             [window.lengthTranslations[document.lang]]: null,
-            [window.thicknessTranslations[document.lang]]: null,
+            [window.fontThicknessTranslations[document.lang]]: null,
             [window.fontStyleTranslations[document.lang]]: null,
             [window.animationTranslations[document.lang]]: null,
             [window.transparencyTranslations[document.lang]]: null,
@@ -36,24 +36,9 @@ $(function () {
         return this.each(function () {
             var name = settings[window.nameTranslations[document.lang]];
             var out = '<div id="' + name + '"></div>';
-
             $('body').append(out);
-
-            if (settings[window.fontColorTranslations[document.lang]]) {
-                window.setFontColour(name, settings[window.fontColorTranslations[document.lang]]);
-            }
-            if (settings[window.fontStyleTranslations[document.lang]]) {
-                $('#' + name + '').css('font-style', settings[window.fontStyleTranslations[document.lang]]);
-            }
             if (settings[window.emitterTranslations[document.lang]]) {
                 $('#' + settings[window.emitterTranslations[document.lang]] + '').attr('onclick', settings[window.nameTranslations[document.lang]] + '.open()');
-            }
-            if (settings[window.thicknessTranslations[document.lang]]) {
-                if (settings[window.thicknessTranslations[document.lang]] == window.thickTranslations[document.lang]) {
-                    $('#' + name + '').css('font-weight', 'bold');
-                } else {
-                    $('#' + name + '').css('font-weight', settings[window.thicknessTranslations[document.lang]]);
-                }
             }
             if (settings[window.fontSizeTranslations[document.lang]]) {
                 $('#' + name + '').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.lang]]));

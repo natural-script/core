@@ -12,20 +12,16 @@ $(function () {
     $.fn[window.sliderTranslations[document.lang]] = function (options) {
         // Establish our default settings
         var settings = $.extend({
-            [window.titleTranslations[document.lang]]: null,
             [window.maxTranslations[document.lang]]: null,
             [window.minTranslations[document.lang]]: null,
             [window.stepTranslations[document.lang]]: null,
-            [window.progressTranslations[document.lang]]: null,
-            prevalue: null,
-            [window.valueBoxTranslations[document.lang]]: null,
             [window.disabledTranslations[document.lang]]: null,
             [window.fontColorTranslations[document.lang]]: null,
             [window.fontSizeTranslations[document.lang]]: null,
             [window.nameTranslations[document.lang]]: null,
             [window.widthTranslations[document.lang]]: null,
             [window.lengthTranslations[document.lang]]: null,
-            [window.thicknessTranslations[document.lang]]: null,
+            [window.fontThicknessTranslations[document.lang]]: null,
             [window.fontStyleTranslations[document.lang]]: null,
             [window.animationTranslations[document.lang]]: null,
             [window.transparencyTranslations[document.lang]]: null,
@@ -41,19 +37,12 @@ $(function () {
         }, options);
         return this.each(function () {
             var name = settings[window.nameTranslations[document.lang]];
-            if (settings[window.titleTranslations[document.lang]]) {
-                var out = '<div>' + settings[window.titleTranslations[document.lang]] + '</div><br><paper-slider ';
-            } else {
-                var out = '<paper-slider '
-            }
+            var out = '<paper-slider '
             if (settings[window.maxTranslations[document.lang]]) {
                 out += 'max="' + settings[window.maxTranslations[document.lang]] + '" ';
             }
             if (settings[window.minTranslations[document.lang]]) {
                 out += 'min="' + settings[window.minTranslations[document.lang]] + '" ';
-            }
-            if (settings[window.progressTranslations[document.lang]]) {
-                out += 'secondary-progress="' + settings[window.progressTranslations[document.lang]] + '" ';
             }
             if (settings[window.stepTranslations[document.lang]]) {
                 out += 'step="' + settings[window.stepTranslations[document.lang]] + '" ';
@@ -65,22 +54,14 @@ $(function () {
                         out += 'disabled ';
                     } else if (propertiesArray[i] == window.withPinTranslations[document.lang]) {
                         out += 'pin ';
-                    } else if (propertiesArray[i] == window.valueBoxTranslations[document.lang]) {
+                    } else if (propertiesArray[i] == withDigitalValueEditorTranslations[document.lang]) {
                         out += 'editable ';
                     }
                 }
             }
             out += 'id="' + name + '">';
-            out += '</paper-slider>'
-            if (settings[window.containerTranslations[document.lang]]) {
-                if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('modal')) {
-                    $('#' + settings[window.containerTranslations[document.lang]] + ' > .modal-content').append(out);
-                } else {
-                    $('#' + settings[window.containerTranslations[document.lang]] + '').append(out);
-                }
-            } else {
-                $('contents').append(out);
-            }
+            out += '</paper-slider>';
+            window.appendComponent(settings[window.containerTranslations[document.lang]], out);
             if (settings[window.fontColorTranslations[document.lang]]) {
                 window.setFontColour(name, settings[window.fontColorTranslations[document.lang]]);
             }
@@ -92,16 +73,14 @@ $(function () {
                 for (i = 0; i < propertiesArray.length; i++) {
                     if (propertiesArray[i] == window.disabledTranslations[document.lang]) {
                         $('#' + name + '').attr('disabled', '');
-                    } else if (propertiesArray[i] == window.rippleTranslations[document.lang]) {
-                        $('#' + name + '').removeAttr('noink');
                     }
                 }
             }
-            if (settings[window.thicknessTranslations[document.lang]]) {
-                if (settings[window.thicknessTranslations[document.lang]] == window.thickTranslations[document.lang]) {
+            if (settings[window.fontThicknessTranslations[document.lang]]) {
+                if (settings[window.fontThicknessTranslations[document.lang]] == window.thickTranslations[document.lang]) {
                     $('#' + name + '').css('font-weight', 'bold');
                 } else {
-                    $('#' + name + '').css('font-weight', settings[window.thicknessTranslations[document.lang]]);
+                    $('#' + name + '').css('font-weight', settings[window.fontThicknessTranslations[document.lang]]);
                 }
             }
             if (settings[window.fontSizeTranslations[document.lang]]) {

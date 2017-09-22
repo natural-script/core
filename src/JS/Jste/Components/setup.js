@@ -32,6 +32,8 @@ $(function () {
                             landscapeResolution = availableResolutions[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.lang])[0].split(' ')[0] + ' ' + availableResolutions[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.lang])[0].split(' ')[1] + ' ' + availableResolutions[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.lang])[0].split(' ')[2];
                             document.defaultLandscapeWindowWidth = landscapeResolution.split(' × ')[0];
                             document.defaultLandscapeWindowLength = landscapeResolution.split(' × ')[1];
+                            document.defaultWindowWidth = document.defaultLandscapeWindowLength;
+                            document.defaultWindowLength = document.defaultLandscapeWindowLength;
                         } else if (availableResolutions[i].includes(window.inTheCaseOfPortraitModeTranslations[document.lang])) {
                             portraitResolution = availableResolutions[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.lang])[0].split(' ')[0] + ' ' + availableResolutions[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.lang])[0].split(' ')[1] + ' ' + availableResolutions[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.lang])[0].split(' ')[2];
                             document.defaultPortraitWindowWidth = portraitResolution.split(' × ')[0];

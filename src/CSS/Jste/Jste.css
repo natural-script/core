@@ -1,20 +1,35 @@
+* {
+    transition: all 0.4s ease-out;
+}
+
 html,
 body {
     width: 100%;
     height: 100%;
 }
+
 html {
     overflow: hidden;
 }
+
 body {
     position: absolute;
     height: 100%;
     width: 100%;
     overflow: auto;
 }
+
 paper-button {
     min-width: 0px;
 }
+
+paper-checkbox .subtitle {
+    display: block;
+    font-size: 0.8em;
+    margin-top: 2px;
+    max-width: 150px;
+}
+
 .imageData {
     position: absolute !important;
     color: #FFFFFF !important;

@@ -2,8 +2,9 @@
 //----------------------------------------Changing The Current Page Function------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 window.changePage = function (pageName) {
-	if (decodeURIComponent(window.getAllUrlParams().page) != pageName) {
-		window.fadeOut(decodeURIComponent(window.getAllUrlParams().page));
+	var currentPage = window.getAllUrlParams().page || window.indexPageTranslations[document.lang];
+	if (decodeURIComponent(currentPage) != pageName) {
+		window.fadeOut(decodeURIComponent(currentPage));
 		window.fadeIn(pageName, 'inline-block');
 		$('title').html(pageName.replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
 			return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();

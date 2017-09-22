@@ -39,4 +39,23 @@ window.propSet = function (elementName, properties, param1, param2, param3) {
     if (properties[window.backgroundTranslations[document.lang]]) {
         window.setBG(elementName, properties[window.backgroundTranslations[document.lang]]);
     }
+    if (properties[window.fontColorTranslations[document.lang]]) {
+        window.setFontColour(elementName, properties[window.fontColorTranslations[document.lang]]);
+    }
+    if (properties[window.fontStyleTranslations[document.lang]]) {
+        $('#' + elementName + '').css('font-style', properties[window.fontStyleTranslations[document.lang]]);
+    }
+    if (properties[window.fontThicknessTranslations[document.lang]]) {
+        if (properties[window.fontThicknessTranslations[document.lang]] == window.thickTranslations[document.lang]) {
+            $('#' + elementName + '').css('font-weight', 'bold');
+        } else {
+            $('#' + elementName + '').css('font-weight', properties[window.fontThicknessTranslations[document.lang]]);
+        }
+    }
+    if (properties[window.fontSizeTranslations[document.lang]]) {
+        window.setFontSize(elementName, properties[window.fontSizeTranslations[document.lang]]);
+    }
+    if ($('#' + properties[window.containerTranslations[document.lang]] + '').hasClass('row') == true) {
+        $('#' + elementName + '').addClass('col');
+    }
 };
