@@ -16,7 +16,7 @@ window.evaluateExpression = function (expression) {
 	if (valNo != null) {
 		if (valNo.length > -1) {
 			for (i = 0; i < valNo.length; i++) {
-				if (document.lang == 0) {
+				if (document.lang == 0 || document.lang == 1) {
 					valueResource = finalExpression.split(window.theValueOfTranslations[document.lang])[1].split(' ')[1];
 					finalValue = window.elementValue.get(valueResource);
 					finalExpression = finalExpression.replace(window.theValueOfTranslations[document.lang] + ' ' + valueResource, finalValue);
