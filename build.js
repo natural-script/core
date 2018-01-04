@@ -1,4 +1,6 @@
 const os = require('os');
+const zlib = require('zlib');
+const fs = require('fs');
 const shell = require('shelljs');
 const figlet = require('figlet');
 
@@ -14,7 +16,10 @@ figlet('JSTE FRAMEWORK', function (err, data) {
     shell.exec('html-minifier framework.html --remove-comments --minify-css --minify-js --remove-comments --minify-ur-ls --use-short-doctype > minified/framework.min.html');
     shell.rm('-rf', 'framework.html');
     console.log(' Compresssing the framework minified file ');
-    shell.exec('cat minified/framework.min.html | gzip --best > compressed/framework.min.html.gz');
+    const gzip = zlib.createGzip(); 
+    const inp = fs.createReadStream('minified/framework.min.html');
+    const out = fs.createWriteStream('compressed/framework.min.html.gz');
+    inp.pipe(gzip).pipe(out);
     console.log(' Jste Framework has been built properly ;) ');
     console.log(' ');
     console.log(' Starting building Jste Framework Live Version ');
@@ -24,7 +29,10 @@ figlet('JSTE FRAMEWORK', function (err, data) {
     shell.exec('html-minifier framework-LiveVersion.html --remove-comments --minify-css --minify-js --remove-comments --minify-ur-ls --use-short-doctype > minified/framework-LiveVersion.min.html');
     shell.rm('-rf', 'framework-LiveVersion.html');
     console.log(' Compresssing the framework minified file ');
-    shell.exec('cat minified/framework-LiveVersion.min.html | gzip --best > compressed/framework-LiveVersion.min.html.gz');
+    const gzip = zlib.createGzip(); 
+    const inp = fs.createReadStream('minified/framework-LiveVersion.min.html');
+    const out = fs.createWriteStream('compressed/framework-LiveVersion.min.html.gz');
+    inp.pipe(gzip).pipe(out);
     console.log(' Jste Framework Live Version has been built properly ;) ');
     console.log(' ');
     console.log(' Starting building the BLOB DB manager for Jste Framework Live Version ');
@@ -32,6 +40,9 @@ figlet('JSTE FRAMEWORK', function (err, data) {
     shell.exec('html-minifier ../utils/db-manager.html --remove-comments --minify-css --minify-js --remove-comments --minify-ur-ls --use-short-doctype > minified/db-manager.min.html');
     shell.rm('-rf', 'db-manager.html');
     console.log(' Compresssing the BLOB DB manager minified file ');
-    shell.exec('cat minified/db-manager.min.html | gzip --best > compressed/db-manager.min.html.gz');
+    const gzip = zlib.createGzip(); 
+    const inp = fs.createReadStream('minified/db-manager.min.html');
+    const out = fs.createWriteStream('compressed/db-manager.min.html.gz');
+    inp.pipe(gzip).pipe(out);
     console.log(' The BLOB DB manager for Jste Framework Live Version has been built properly ;) ');
 });
