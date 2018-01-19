@@ -1,0 +1,34 @@
+{
+  "name": "paper-input-elements",
+  "homepage": "https://github.com/PolymerElements/paper-input-elements",
+  "authors": [
+    "The Polymer Authors"
+  ],
+  "keywords": [
+    "element-collection"
+  ],
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "dependencies": {
+    "paper-checkbox": "PolymerElements/paper-checkbox#*",
+    "paper-dropdown-menu": "PolymerElements/paper-dropdown-menu#*",
+    "paper-input": "PolymerElements/paper-input#*",
+    "paper-listbox": "PolymerElements/paper-listbox#*",
+    "paper-radio-button": "PolymerElements/paper-radio-button#*",
+    "paper-radio-group": "PolymerElements/paper-radio-group#*",
+    "paper-slider": "PolymerElements/paper-slider#*",
+    "paper-toggle-button": "PolymerElements/paper-toggle-button#*"
+  },
+  "devDependencies": {
+    "paper-styles": "PolymerElements/paper-styles"
+  },
+  "_release": "a275152b49",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "a275152b49258a1794e9680d7d1f7b0d8f96d663"
+  },
+  "_source": "https://github.com/PolymerElements/paper-input-elements.git",
+  "_target": "*",
+  "_originalSource": "PolymerElements/paper-input-elements",
+  "_direct": true
+}

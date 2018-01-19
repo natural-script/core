@@ -33,7 +33,7 @@ The Markdown source can be specified several ways:
 #### Use `<script type="text/markdown">` element child to inline markdown
 
     <marked-element>
-      <div class="markdown-html"></div>
+      <div slot="markdown-html"></div>
       <script type="text/markdown">
         Check out my markdown!
 
@@ -51,7 +51,7 @@ The Markdown source can be specified several ways:
 #### Use `<script type="text/markdown" src="URL">` element child to specify remote markdown
 
     <marked-element>
-      <div class="markdown-html"></div>
+      <div slot="markdown-html"></div>
       <script type="text/markdown" src="../guidelines.md"></script>
     </marked-element>
 
@@ -62,7 +62,7 @@ Though, you can data bind to the `src` attribute to change the markdown.
 
 ```html
 <marked-element>
-  <div class="markdown-html"></div>
+  <div slot="markdown-html"></div>
   <script type="text/markdown" src$="[[source]]"></script>
 </marked-element>
 ...
@@ -95,19 +95,14 @@ as you would a regular DOM element:
       :host {
         display: block;
       }
-
-      [hidden] {
-        display: none !important;
-      }
     </style>
-    <slot name="markdown-html"></slot>
-    <div id="content" hidden></div>
+    <slot name="markdown-html">
+      <div id="content"></div>
+    </slot>
   </template>
-
 </dom-module>
 
 <script>
-
   'use strict';
 
   Polymer({
@@ -120,7 +115,6 @@ as you would a regular DOM element:
        * The markdown source that should be rendered by this element.
        */
       markdown: {
-        observer: 'render',
         type: String,
         value: null
       },
@@ -128,7 +122,6 @@ as you would a regular DOM element:
        * Enable GFM line breaks (regular newlines instead of two spaces for breaks)
        */
       breaks: {
-        observer: 'render',
         type: Boolean,
         value: false
       },
@@ -136,7 +129,6 @@ as you would a regular DOM element:
        * Conform to obscure parts of markdown.pl as much as possible. Don't fix any of the original markdown bugs or poor behavior.
        */
       pedantic: {
-        observer: 'render',
         type: Boolean,
         value: false
       },
@@ -146,7 +138,6 @@ as you would a regular DOM element:
        * It takes one argument: a marked renderer object, which is mutated by the function.
        */
       renderer: {
-        observer: 'render',
         type: Function,
         value: null
       },
@@ -154,7 +145,29 @@ as you would a regular DOM element:
        * Sanitize the output. Ignore any HTML that has been input.
        */
       sanitize: {
-        observer: 'render',
+        type: Boolean,
+        value: false
+      },
+      /**
+       * Function used to customize a sanitize behavior.
+       * It takes one argument: element String without text Contents.
+       *
+       * e.g. `<div>` `<a href="/">` `</p>'.
+       * Note: To enable this function, must set `sanitize` to true.
+       * WARNING: If you are using this option to untrusted text, you must to prevent XSS Attacks.
+       */
+      sanitizer: {
+        type: Function,
+        value: null
+      },
+      /**
+       * If true, disables the default sanitization of any markdown received by
+       * a request and allows fetched unsanitized markdown
+       *
+       * e.g. fetching markdown via `src` that has HTML.
+       * Note: this value overrides `sanitize` if a request is made.
+       */
+      disableRemoteSanitization: {
         type: Boolean,
         value: false
       },
@@ -162,7 +175,6 @@ as you would a regular DOM element:
        * Use "smart" typographic punctuation for things like quotes and dashes.
        */
       smartypants: {
-        observer: 'render',
         type: Boolean,
         value: false
       },
@@ -171,7 +183,6 @@ as you would a regular DOM element:
        * It must take two arguments: err and text and must return the resulting text.
        */
       callback: {
-        observer: 'render',
         type: Function,
         value: null
       },
@@ -188,6 +199,10 @@ as you would a regular DOM element:
       }
     },
 
+    observers: [
+      'render(markdown, breaks, pedantic, renderer, sanitize, sanitizer, smartypants, callback)'
+    ],
+
     ready: function() {
       if (this.markdown) {
         return;
@@ -200,15 +215,17 @@ as you would a regular DOM element:
         return;
       }
 
-      this.markdown = this._unindent(this._markdownElement.textContent);
-
       if (this._markdownElement.src) {
         this._request(this._markdownElement.src);
-      } else {
-        var observer = new MutationObserver(this._onScriptAttributeChanged
-            .bind(this));
-        observer.observe(this._markdownElement, { attributes: true })
       }
+
+      if (this._markdownElement.textContent.trim() !== '') {
+        this.markdown = this._unindent(this._markdownElement.textContent);
+      }
+
+      var observer = new MutationObserver(this._onScriptAttributeChanged
+          .bind(this));
+      observer.observe(this._markdownElement, { attributes: true });
     },
 
     /**
@@ -242,13 +259,7 @@ as you would a regular DOM element:
 
     get outputElement () {
       var child = Polymer.dom(this).queryDistributedElements('[slot="markdown-html"]')[0];
-
-      if (child) {
-        return child;
-      }
-
-      this.$.content.removeAttribute('hidden');
-      return this.$.content;
+      return child || this.$.content;
     },
 
     /**
@@ -270,7 +281,7 @@ as you would a regular DOM element:
      */
     render: function() {
       if (!this._attached) {
-        return
+        return;
       };
 
       if (!this.markdown) {
@@ -289,6 +300,7 @@ as you would a regular DOM element:
         highlight: this._highlight.bind(this),
         breaks: this.breaks,
         sanitize: this.sanitize,
+        sanitizer: this.sanitizer,
         pedantic: this.pedantic,
         smartypants: this.smartypants
       };
@@ -297,6 +309,14 @@ as you would a regular DOM element:
       this.fire('marked-render-complete', {}, {composed: true});
     },
 
+    /**
+     * Fired when the content is being processed and before it is rendered.
+     * Provides an opportunity to highlight code blocks based on the programming language used. This
+     * is also known as syntax highlighting. One example would be to use a prebuilt syntax
+     * highlighting library, e.g with [highlightjs](https://highlightjs.org/).
+     *
+     * @event syntax-highlight
+     */
     _highlight: function(code, lang) {
       var event = this.fire('syntax-highlight', {code: code, lang: lang}, {composed: true});
       return event.detail.code || code;
@@ -335,7 +355,7 @@ as you would a regular DOM element:
         // Note: if we are using the file:// protocol, the status code will be 0
         // for all outcomes (successful or otherwise).
         if (status === 0 || (status >= 200 && status < 300)) {
-          this.sanitize = true;
+          this.sanitize = !this.disableRemoteSanitization;
           this.markdown = e.target.response;
         } else {
           this._handleError(e);

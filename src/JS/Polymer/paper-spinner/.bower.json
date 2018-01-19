@@ -1,5 +1,6 @@
 {
   "name": "paper-spinner",
+  "version": "2.0.0",
   "description": "A material design spinner",
   "authors": [
     "The Polymer Authors"
@@ -19,14 +20,14 @@
   "homepage": "https://github.com/PolymerElements/paper-spinner",
   "ignore": [],
   "dependencies": {
-    "paper-styles": "PolymerElements/paper-styles#2.0-preview",
-    "polymer": "Polymer/polymer#^2.0.0-rc.1"
+    "paper-styles": "PolymerElements/paper-styles#1 - 2",
+    "polymer": "Polymer/polymer#1.9 - 2"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#2.0-preview",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#2.0-preview",
-    "web-component-tester": "Polymer/web-component-tester#^6.0.0-prerelease.6",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.1"
+    "iron-component-page": "PolymerElements/iron-component-page#1 - 2",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#1 - 2",
+    "web-component-tester": "^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
   },
   "main": [
     "paper-spinner.html",
@@ -35,7 +36,7 @@
   "variants": {
     "1.x": {
       "dependencies": {
-        "polymer": "Polymer/polymer#^1.7.1",
+        "polymer": "Polymer/polymer#^1.9",
         "paper-styles": "PolymerElements/paper-styles#^1.0.0"
       },
       "devDependencies": {
@@ -43,17 +44,22 @@
         "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
         "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0",
         "web-component-tester": "Polymer/web-component-tester#^4.0.0"
+      },
+      "resolutions": {
+        "webcomponentsjs": "^0.7"
       }
     }
   },
-  "_release": "ecb0d932de",
+  "resolutions": {
+    "webcomponentsjs": "^1.0.0"
+  },
+  "_release": "2.0.0",
   "_resolution": {
-    "type": "branch",
-    "branch": "2.0-preview",
-    "commit": "ecb0d932de650184ec5724dca13364aa537b6846"
+    "type": "version",
+    "tag": "v2.0.0",
+    "commit": "9667b7c6ae44986e4faa6c8c6ebed035fb2daaa5"
   },
   "_source": "https://github.com/PolymerElements/paper-spinner.git",
-  "_target": "2.0-preview",
-  "_originalSource": "PolymerElements/paper-spinner",
-  "_direct": true
+  "_target": "*",
+  "_originalSource": "PolymerElements/paper-spinner"
 }

@@ -53,6 +53,7 @@ Custom property | Description | Default
       .mirror-text {
         visibility: hidden;
         word-wrap: break-word;
+        @apply --iron-autogrow-textarea;
       }
 
       .fit {
@@ -101,6 +102,7 @@ Custom property | Description | Default
     <div class="textarea-container fit">
       <textarea id="textarea"
         name$="[[name]]"
+        aria-label$="[[label]]"
         autocomplete$="[[autocomplete]]"
         autofocus$="[[autofocus]]"
         inputmode$="[[inputmode]]"
@@ -230,6 +232,13 @@ Custom property | Description | Default
        */
       maxlength: {
         type: Number
+      },
+
+      /**
+       * Bound to the textarea's `aria-label` attribute.
+       */
+      label: {
+        type: String
       }
 
     },
@@ -334,10 +343,8 @@ Custom property | Description | Default
       this.bindValue = value;
       this.$.mirror.innerHTML = this._valueForMirror();
 
-      // This code is from early 1.0, when this element was a type extension.
-      // It's unclear if it's still needed, but leaving in in case it is.
-      // manually notify because we don't want to notify until after setting value.
-      // this.fire('bind-value-changed', {value: this.bindValue});
+      // Manually notify because we don't want to notify until after setting value.
+      this.fire('bind-value-changed', {value: this.bindValue});
     },
 
     _onInput: function(event) {

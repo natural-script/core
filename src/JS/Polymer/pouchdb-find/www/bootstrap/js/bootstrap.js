@@ -1134,7 +1134,7 @@ if (typeof jQuery === 'undefined') {
   }
 
   Modal.prototype.adjustDialog = function () {
-    var modalIsOverflowing = this.$element[0].scrollHeight > window.innerHeight
+    var modalIsOverflowing = this.$element[0].scrollHeight > document.documentElement.clientHeight
 
     this.$element.css({
       paddingLeft:  !this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : '',
@@ -1150,7 +1150,7 @@ if (typeof jQuery === 'undefined') {
   }
 
   Modal.prototype.checkScrollbar = function () {
-    this.bodyIsOverflowing = document.body.scrollHeight > window.innerHeight
+    this.bodyIsOverflowing = document.body.scrollHeight > document.documentElement.clientHeight
     this.scrollbarWidth = this.measureScrollbar()
   }
 

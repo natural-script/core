@@ -1,5 +1,6 @@
 {
   "name": "paper-dialog-scrollable",
+  "version": "2.1.0",
   "description": "A scrollable area used inside the material design dialog",
   "authors": [
     "The Polymer Authors"
@@ -20,18 +21,18 @@
   "homepage": "https://github.com/PolymerElements/paper-dialog-scrollable",
   "ignore": [],
   "dependencies": {
-    "iron-flex-layout": "PolymerElements/iron-flex-layout#2.0-preview",
-    "paper-dialog-behavior": "PolymerElements/paper-dialog-behavior#2.0-preview",
-    "paper-styles": "PolymerElements/paper-styles#2.0-preview",
-    "polymer": "Polymer/polymer#^2.0.0-rc.1"
+    "iron-flex-layout": "PolymerElements/iron-flex-layout#1 - 2",
+    "paper-dialog-behavior": "PolymerElements/paper-dialog-behavior#1 - 2",
+    "paper-styles": "PolymerElements/paper-styles#1 - 2",
+    "polymer": "Polymer/polymer#1.9 - 2"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#2.0-preview",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#2.0-preview",
-    "paper-button": "PolymerElements/paper-button#2.0-preview",
-    "paper-dialog": "PolymerElements/paper-dialog#2.0-preview",
-    "web-component-tester": "Polymer/web-component-tester#^6.0.0-prerelease.6",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.1"
+    "iron-component-page": "PolymerElements/iron-component-page#1 - 2",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#1 - 2",
+    "paper-button": "PolymerElements/paper-button#1 - 2",
+    "paper-dialog": "PolymerElements/paper-dialog#1 - 2",
+    "web-component-tester": "^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
   },
   "variants": {
     "1.x": {
@@ -39,7 +40,7 @@
         "iron-flex-layout": "PolymerElements/iron-flex-layout#^1.0.0",
         "paper-dialog-behavior": "PolymerElements/paper-dialog-behavior#^1.0.0",
         "paper-styles": "PolymerElements/paper-styles#^1.0.0",
-        "polymer": "Polymer/polymer#^1.0.0"
+        "polymer": "Polymer/polymer#^1.9"
       },
       "devDependencies": {
         "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
@@ -48,17 +49,22 @@
         "paper-dialog": "PolymerElements/paper-dialog#^1.0.0",
         "web-component-tester": "^5.0.0",
         "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+      },
+      "resolutions": {
+        "webcomponentsjs": "^0.7"
       }
     }
   },
-  "_release": "d4e1750eba",
+  "resolutions": {
+    "webcomponentsjs": "^1.0.0"
+  },
+  "_release": "2.1.0",
   "_resolution": {
-    "type": "branch",
-    "branch": "2.0-preview",
-    "commit": "d4e1750eba418b04e6d2b47bf4f42a0b4cdfeb0b"
+    "type": "version",
+    "tag": "v2.1.0",
+    "commit": "852b67551f34f1e48ec51d0e36c38576871e0b3d"
   },
   "_source": "https://github.com/PolymerElements/paper-dialog-scrollable.git",
-  "_target": "2.0-preview",
-  "_originalSource": "PolymerElements/paper-dialog-scrollable",
-  "_direct": true
+  "_target": "*",
+  "_originalSource": "PolymerElements/paper-dialog-scrollable"
 }

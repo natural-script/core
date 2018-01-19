@@ -1,0 +1,36 @@
+{
+  "name": "paper-ui-elements",
+  "authors": [
+    "The Polymer Authors"
+  ],
+  "keywords": [
+    "element-collection"
+  ],
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "dependencies": {
+    "paper-button": "PolymerElements/paper-button#*",
+    "paper-badge": "PolymerElements/paper-badge#*",
+    "paper-card": "PolymerElements/paper-card#*",
+    "paper-dropdown-menu": "PolymerElements/paper-dropdown-menu#*",
+    "paper-icon-button": "PolymerElements/paper-icon-button#*",
+    "paper-item": "PolymerElements/paper-item#*",
+    "paper-menu-button": "PolymerElements/paper-menu-button#*",
+    "paper-progress": "PolymerElements/paper-progress#*",
+    "paper-spinner": "PolymerElements/paper-spinner#*",
+    "paper-swatch-picker": "PolymerElements/paper-swatch-picker#*",
+    "paper-tabs": "PolymerElements/paper-tabs#*",
+    "paper-toolbar": "PolymerElements/paper-toolbar#*",
+    "paper-tooltip": "PolymerElements/paper-tooltip#*"
+  },
+  "homepage": "https://github.com/PolymerElements/paper-ui-elements",
+  "_release": "0c2c8313eb",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "0c2c8313eb94fa5f2ad4e1d473574625b4bf4233"
+  },
+  "_source": "https://github.com/PolymerElements/paper-ui-elements.git",
+  "_target": "*",
+  "_originalSource": "PolymerElements/paper-ui-elements",
+  "_direct": true
+}

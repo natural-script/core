@@ -1,0 +1,19 @@
+{
+  "name": "iron-input-elements",
+  "authors": [
+    "The Polymer Authors"
+  ],
+  "keywords": [
+    "element-collection"
+  ],
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "dependencies": {
+    "iron-checked-element-behavior": "PolymerElements/iron-checked-element-behavior",
+    "iron-dropdown": "PolymerElements/iron-dropdown",
+    "iron-form": "PolymerElements/iron-form",
+    "iron-form-element-behavior": "PolymerElements/iron-form-element-behavior",
+    "iron-input": "PolymerElements/iron-input",
+    "iron-label": "PolymerElements/iron-label",
+    "iron-validatable-behavior": "PolymerElements/iron-validatable-behavior"
+  }
+}

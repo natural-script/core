@@ -1,5 +1,6 @@
 {
   "name": "iron-label",
+  "version": "2.0.0",
   "description": "A version of the `<label>` element that works with custom elements as well as native elements",
   "authors": "The Polymer Authors",
   "keywords": [
@@ -17,23 +18,23 @@
   "homepage": "https://github.com/PolymerElements/iron-label",
   "ignore": [],
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0-rc.1"
+    "polymer": "Polymer/polymer#1.9 - 2"
   },
   "devDependencies": {
-    "iron-component-page": "PolymerElements/iron-component-page#2.0-preview",
-    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#2.0-preview",
-    "iron-test-helpers": "PolymerElements/iron-test-helpers#2.0-preview",
-    "paper-button": "PolymerElements/paper-button#2.0-preview",
-    "paper-checkbox": "PolymerElements/paper-checkbox#2.0-preview",
-    "paper-styles": "PolymerElements/paper-styles#2.0-preview",
+    "iron-component-page": "PolymerElements/iron-component-page#1 - 2",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#1 - 2",
+    "iron-test-helpers": "PolymerElements/iron-test-helpers#1 - 2",
+    "paper-button": "PolymerElements/paper-button#1 - 2",
+    "paper-checkbox": "PolymerElements/paper-checkbox#1 - 2",
+    "paper-styles": "PolymerElements/paper-styles#1 - 2",
     "test-fixture": "PolymerElements/test-fixture#^3.0.0-rc.1",
-    "web-component-tester": "Polymer/web-component-tester#^6.0.0-prerelease.6",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.1"
+    "web-component-tester": "^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0"
   },
   "variants": {
     "1.x": {
       "dependencies": {
-        "polymer": "Polymer/polymer#^1.1.0"
+        "polymer": "Polymer/polymer#^1.9"
       },
       "devDependencies": {
         "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
@@ -45,17 +46,22 @@
         "test-fixture": "PolymerElements/test-fixture#^1.0.0",
         "web-component-tester": "Polymer/web-component-tester#^4.0.0",
         "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+      },
+      "resolutions": {
+        "webcomponentsjs": "^0.7"
       }
     }
   },
-  "_release": "b372bc36ac",
+  "resolutions": {
+    "webcomponentsjs": "^1.0.0"
+  },
+  "_release": "2.0.0",
   "_resolution": {
-    "type": "branch",
-    "branch": "2.0-preview",
-    "commit": "b372bc36ac15ccad0c6647a60374080a5e14eed7"
+    "type": "version",
+    "tag": "v2.0.0",
+    "commit": "b560de7ef0ddff122bd75df905de53875e4db6a8"
   },
   "_source": "https://github.com/PolymerElements/iron-label.git",
-  "_target": "2.0-preview",
-  "_originalSource": "PolymerElements/iron-label",
-  "_direct": true
+  "_target": "*",
+  "_originalSource": "PolymerElements/iron-label"
 }

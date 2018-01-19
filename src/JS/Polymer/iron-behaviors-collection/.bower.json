@@ -1,0 +1,29 @@
+{
+  "name": "iron-behaviors-collection",
+  "authors": [
+    "The Polymer Authors"
+  ],
+  "keywords": [
+    "element-collection"
+  ],
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "dependencies": {
+    "iron-range-behavior": "PolymerElements/iron-range-behavior",
+    "iron-resizable-behavior": "PolymerElements/iron-resizable-behavior",
+    "iron-scroll-target-behavior": "PolymerElements/iron-scroll-target-behavior",
+    "iron-overlay-behavior": "PolymerElements/iron-overlay-behavior",
+    "iron-scroll-threshold": "PolymerElements/iron-scroll-threshold",
+    "iron-menu-behavior": "PolymerElements/iron-menu-behavior"
+  },
+  "homepage": "https://github.com/PolymerElements/iron-behaviors-collection",
+  "_release": "e3f9bcedd9",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "e3f9bcedd91b6775b1664f8b205719d6dd3fe17c"
+  },
+  "_source": "https://github.com/PolymerElements/iron-behaviors-collection.git",
+  "_target": "*",
+  "_originalSource": "PolymerElements/iron-behaviors-collection",
+  "_direct": true
+}

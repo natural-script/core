@@ -5,6 +5,7 @@
     "web-components",
     "polymer"
   ],
+  "version": "2.0.0",
   "homepage": "https://github.com/PolymerElements/iron-scroll-threshold",
   "authors": [
     "The Polymer Authors"
@@ -17,34 +18,39 @@
   "license": "http://polymer.github.io/LICENSE.txt",
   "ignore": [],
   "dependencies": {
-    "polymer": "Polymer/polymer#^2.0.0-rc.1",
-    "iron-scroll-target-behavior": "PolymerElements/iron-scroll-target-behavior#2.0-preview"
+    "polymer": "Polymer/polymer#1.9 - 2",
+    "iron-scroll-target-behavior": "PolymerElements/iron-scroll-target-behavior#1 - 2"
   },
   "devDependencies": {
-    "iron-component-page": "polymerelements/iron-component-page#2.0-preview",
-    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0-rc.1",
-    "web-component-tester": "^6.0.0-prerelease.6"
+    "iron-component-page": "polymerelements/iron-component-page#1 - 2",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^1.0.0",
+    "web-component-tester": "^6.0.0"
   },
   "variants": {
     "1.x": {
       "dependencies": {
-        "polymer": "Polymer/polymer#^1.1.0",
+        "polymer": "Polymer/polymer#^1.9",
         "iron-scroll-target-behavior": "PolymerElements/iron-scroll-target-behavior#^1.0.0"
       },
       "devDependencies": {
         "iron-component-page": "polymerelements/iron-component-page#^1.0.0",
         "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+      },
+      "resolutions": {
+        "webcomponentsjs": "^0.7"
       }
     }
   },
-  "_release": "c7ef460e5c",
+  "resolutions": {
+    "webcomponentsjs": "^1.0.0"
+  },
+  "_release": "2.0.0",
   "_resolution": {
-    "type": "branch",
-    "branch": "2.0-preview",
-    "commit": "c7ef460e5cf29099886ed1d45debdbb715d119e2"
+    "type": "version",
+    "tag": "v2.0.0",
+    "commit": "e7bba05323f4779042c1e17e290860cf2b1a8ed5"
   },
   "_source": "https://github.com/PolymerElements/iron-scroll-threshold.git",
-  "_target": "2.0-preview",
-  "_originalSource": "PolymerElements/iron-scroll-threshold",
-  "_direct": true
+  "_target": "*",
+  "_originalSource": "PolymerElements/iron-scroll-threshold"
 }

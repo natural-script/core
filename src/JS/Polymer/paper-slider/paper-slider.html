@@ -58,6 +58,7 @@ Custom property | Description | Default
 `--paper-slider-pin-start-color` | The color of the pin at the far left | `--paper-grey-400`
 `--paper-slider-height` | Height of the progress bar | `2px`
 `--paper-slider-input` | Mixin applied to the input in editable mode | `{}`
+`--paper-slider-input-container-input` | Mixin applied to the paper-input-container-input in editable mode | `{}`
 
 @group Paper Elements
 @element paper-slider
@@ -90,10 +91,33 @@ Custom property | Description | Default
       :host(:focus) {
         outline: none;
       }
-        
-      :host-context([dir="rtl"]) #sliderContainer {
+
+      /** 
+       * NOTE(keanulee): Though :host-context is not universally supported, some pages
+       * still rely on paper-slider being flipped when dir="rtl" is set on body. For full
+       * compatability, dir="rtl" must be explicitly set on paper-slider.
+       */
+      :dir(rtl) #sliderContainer {
         -webkit-transform: scaleX(-1);
         transform: scaleX(-1);
+      }
+
+      /** 
+       * NOTE(keanulee): This is separate from the rule above because :host-context may
+       * not be recognized.
+       */
+      :host([dir="rtl"]) #sliderContainer {
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+      }
+
+      /** 
+       * NOTE(keanulee): Needed to override the :host-context rule (where supported)
+       * to support LTR sliders in RTL pages.
+       */
+      :host([dir="ltr"]) #sliderContainer {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
       }
 
       #sliderContainer {
@@ -281,6 +305,7 @@ Custom property | Description | Default
         overflow: hidden;
         --paper-input-container-input: {
           text-align: center;
+          @apply --paper-slider-input-container-input;
         };
         @apply --paper-slider-input;
       }
@@ -446,7 +471,8 @@ Custom property | Description | Default
         dragging: {
           type: Boolean,
           value: false,
-          readOnly: true
+          readOnly: true,
+          notify: true
         },
 
         transiting: {
@@ -504,7 +530,7 @@ Custom property | Description | Default
         this.setAttribute('aria-valuemax', max);
         this.setAttribute('aria-valuenow', value);
 
-        this._positionKnob(this._calcRatio(value));
+        this._positionKnob(this._calcRatio(value) * 100);
       },
 
       _valueChanged: function() {
@@ -534,17 +560,17 @@ Custom property | Description | Default
 
       _positionKnob: function(ratio) {
         this._setImmediateValue(this._calcStep(this._calcKnobPosition(ratio)));
-        this._setRatio(this._calcRatio(this.immediateValue));
+        this._setRatio(this._calcRatio(this.immediateValue) * 100);
 
-        this.$.sliderKnob.style.left = (this.ratio * 100) + '%';
+        this.$.sliderKnob.style.left = this.ratio + '%';
         if (this.dragging) {
-          this._knobstartx = this.ratio * this._w;
+          this._knobstartx = (this.ratio * this._w) / 100;
           this.translate3d(0, 0, 0, this.$.sliderKnob);
         }
       },
 
       _calcKnobPosition: function(ratio) {
-        return (this.max - this.min) * ratio + this.min;
+        return (this.max - this.min) * ratio / 100 + this.min;
       },
 
       _onTrack: function(event) {
@@ -565,7 +591,7 @@ Custom property | Description | Default
       _trackStart: function(event) {
         this._setTransiting(false);
         this._w = this.$.sliderBar.offsetWidth;
-        this._x = this.ratio * this._w;
+        this._x = this.ratio * this._w / 100;
         this._startx = this._x;
         this._knobstartx = this._startx;
         this._minx = - this._startx;
@@ -584,7 +610,7 @@ Custom property | Description | Default
             this._maxx, Math.max(this._minx, event.detail.dx * direction));
         this._x = this._startx + dx;
 
-        var immediateValue = this._calcStep(this._calcKnobPosition(this._x / this._w));
+        var immediateValue = this._calcStep(this._calcKnobPosition(this._x / this._w * 100));
         this._setImmediateValue(immediateValue);
 
         // update knob's position
@@ -618,9 +644,9 @@ Custom property | Description | Default
       _bardown: function(event) {
         this._w = this.$.sliderBar.offsetWidth;
         var rect = this.$.sliderBar.getBoundingClientRect();
-        var ratio = (event.detail.x - rect.left) / this._w;
+        var ratio = (event.detail.x - rect.left) / this._w * 100;
         if (this._isRTL) {
-          ratio = 1 - ratio;
+          ratio = 100 - ratio;
         }
         var prevRatio = this.ratio;
 

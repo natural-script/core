@@ -1,4 +1,4 @@
-// pouchdb-find plugin 6.3.4
+// pouchdb-find plugin 6.4.1
 // Based on Mango: https://github.com/cloudant/mango
 // 
 // (c) 2012-2017 Dale Harvey and the PouchDB team
@@ -1827,7 +1827,7 @@ function v4(options, buf, offset) {
 module.exports = v4;
 
 },{"10":10,"9":9}],13:[function(_dereq_,module,exports){
-(function (process){
+(function (process,global){
 'use strict';
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
@@ -1841,7 +1841,7 @@ var nextTick = _interopDefault(_dereq_(3));
 var Md5 = _interopDefault(_dereq_(7));
 
 /* istanbul ignore next */
-var PouchPromise$1 = typeof Promise === 'function' ? Promise : lie;
+var PouchPromise = typeof Promise === 'function' ? Promise : lie;
 
 function isBinaryObject(object) {
   return (typeof ArrayBuffer !== 'undefined' && object instanceof ArrayBuffer) ||
@@ -1958,7 +1958,7 @@ function toPromise(func) {
     var self = this;
     // if the last argument is a function, assume its a callback
     var usedCB = (typeof args[args.length - 1] === 'function') ? args.pop() : false;
-    var promise = new PouchPromise$1(function (fulfill, reject) {
+    var promise = new PouchPromise(function (fulfill, reject) {
       var resp;
       try {
         var callback = once(function (err, mesg) {
@@ -2237,7 +2237,7 @@ Changes.prototype.notify = function (dbName) {
 
 function guardedConsole(method) {
   /* istanbul ignore else */
-  if (console !== 'undefined' && method in console) {
+  if (typeof console !== 'undefined' && typeof console[method] === 'function') {
     var args = Array.prototype.slice.call(arguments, 1);
     console[method].apply(console, args);
   }
@@ -2328,22 +2328,6 @@ function flatten(arrs) {
 // for browsers that don't support it like IE
 
 /* istanbul ignore next */
-function f() {}
-
-var hasName = f.name;
-var res;
-
-// We dont run coverage in IE
-/* istanbul ignore else */
-if (hasName) {
-  res = function (fun) {
-    return fun.name;
-  };
-} else {
-  res = function (fun) {
-    return fun.toString().match(/^\s*function\s*(\S*)\s*\(/)[1];
-  };
-}
 
 // Checks if a PouchDB object is "remote" or not. This is
 // designed to opt-in to certain optimizations, such as
@@ -2382,7 +2366,7 @@ function isRemote(db) {
 // the diffFun tells us what delta to apply to the doc.  it either returns
 // the doc, or false if it doesn't need to do an update after all
 function upsert(db, docId, diffFun) {
-  return new PouchPromise$1(function (fulfill, reject) {
+  return new PouchPromise(function (fulfill, reject) {
     db.get(docId, function (err, doc) {
       if (err) {
         /* istanbul ignore next */
@@ -2425,6 +2409,8 @@ function tryAndPut(db, doc, diffFun) {
     return upsert(db, doc._id, diffFun);
   });
 }
+
+var uuid = uuidV4.v4;
 
 // we restucture the supplied JSON considerably, because the official
 // Mango API is very particular about a lot of this stuff, but we like
@@ -3635,7 +3621,7 @@ function b64ToBluffer(b64, type) {
 
 
 function TaskQueue() {
-  this.promise = new PouchPromise$1(function (fulfill) {fulfill(); });
+  this.promise = new PouchPromise(function (fulfill) {fulfill(); });
 }
 TaskQueue.prototype.add = function (promiseFactory) {
   this.promise = this.promise["catch"](function () {
@@ -3648,6 +3634,8 @@ TaskQueue.prototype.add = function (promiseFactory) {
 TaskQueue.prototype.finish = function () {
   return this.promise;
 };
+
+var setImmediateShim = global.setImmediate || global.setTimeout;
 
 function stringMd5(string) {
   return Md5.hash(string);
@@ -3908,7 +3896,7 @@ function emitError(db, e) {
  *   This could be a way to communicate to the user that the configuration for the
  *   indexer is invalid.
  */
-function createAbstractMapReduce$1(localDocName, mapper, reducer, ddocValidator) {
+function createAbstractMapReduce(localDocName, mapper, reducer, ddocValidator) {
 
   function tryMap(db, fun, doc) {
     // emit an event if there was an error thrown by a map function.
@@ -4073,6 +4061,7 @@ function createAbstractMapReduce$1(localDocName, mapper, reducer, ddocValidator)
     addHttpParam('end_key', opts, params, true);
     addHttpParam('inclusive_end', opts, params);
     addHttpParam('key', opts, params, true);
+    addHttpParam('update_seq', opts, params);
 
     // Format the list of parameters into a valid URI query string
     params = params.join('&');
@@ -4143,7 +4132,7 @@ function createAbstractMapReduce$1(localDocName, mapper, reducer, ddocValidator)
   // and override the default behavior
   /* istanbul ignore next */
   function customQuery(db, fun, opts) {
-    return new PouchPromise$1(function (resolve, reject) {
+    return new PouchPromise(function (resolve, reject) {
       db._query(fun, opts, function (err, res) {
         if (err) {
           return reject(err);
@@ -4157,7 +4146,7 @@ function createAbstractMapReduce$1(localDocName, mapper, reducer, ddocValidator)
   // and override the default behavior
   /* istanbul ignore next */
   function customViewCleanup(db) {
-    return new PouchPromise$1(function (resolve, reject) {
+    return new PouchPromise(function (resolve, reject) {
       db._viewCleanup(function (err, res) {
         if (err) {
           return reject(err);
@@ -4192,7 +4181,7 @@ function createAbstractMapReduce$1(localDocName, mapper, reducer, ddocValidator)
       if (isGenOne(changes)) {
         // generation 1, so we can safely assume initial state
         // for performance reasons (avoids unnecessary GETs)
-        return PouchPromise$1.resolve(defaultMetaDoc);
+        return PouchPromise.resolve(defaultMetaDoc);
       }
       return view.db.get(metaDocId)["catch"](defaultsTo(defaultMetaDoc));
     }
@@ -4200,7 +4189,7 @@ function createAbstractMapReduce$1(localDocName, mapper, reducer, ddocValidator)
     function getKeyValueDocs(metaDoc) {
       if (!metaDoc.keys.length) {
         // no keys, no need for a lookup
-        return PouchPromise$1.resolve({rows: []});
+        return PouchPromise.resolve({rows: []});
       }
       return view.db.allDocs({
         keys: metaDoc.keys,
@@ -4263,7 +4252,7 @@ function createAbstractMapReduce$1(localDocName, mapper, reducer, ddocValidator)
       "catch"](defaultsTo({_id: seqDocId, seq: 0}))
       .then(function (lastSeqDoc) {
         var docIds = mapToKeysArray(docIdsToChangesAndEmits);
-        return PouchPromise$1.all(docIds.map(function (docId) {
+        return PouchPromise.all(docIds.map(function (docId) {
           return getDocsToPersist(docId, view, docIdsToChangesAndEmits);
         })).then(function (listOfDocsToPersist) {
           var docsToPersist = flatten(listOfDocsToPersist);
@@ -4494,6 +4483,10 @@ function createAbstractMapReduce$1(localDocName, mapper, reducer, ddocValidator)
           rows: rows
         };
       }
+      /* istanbul ignore if */
+      if (opts.update_seq) {
+        finalResults.update_seq = view.seq;
+      }
       if (opts.include_docs) {
         var docIds = uniq$1(rows.map(rowToDocId));
 
@@ -4529,13 +4522,21 @@ function createAbstractMapReduce$1(localDocName, mapper, reducer, ddocValidator)
           startkey : toIndexableString([key]),
           endkey   : toIndexableString([key, {}])
         };
+        /* istanbul ignore if */
+        if (opts.update_seq) {
+          viewOpts.update_seq = true;
+        }
         return fetchFromView(viewOpts);
       });
-      return PouchPromise$1.all(fetchPromises).then(flatten).then(onMapResultsReady);
+      return PouchPromise.all(fetchPromises).then(flatten).then(onMapResultsReady);
     } else { // normal query, no 'keys'
       var viewOpts = {
         descending : opts.descending
       };
+      /* istanbul ignore if */
+      if (opts.update_seq) {
+        viewOpts.update_seq = true;
+      }
       var startkey;
       var endkey;
       if ('start_key' in opts) {
@@ -4639,7 +4640,7 @@ function createAbstractMapReduce$1(localDocName, mapper, reducer, ddocValidator)
             return new db.constructor(viewDBName, db.__opts).destroy();
           })();
         });
-        return PouchPromise$1.all(destroyPromises).then(function () {
+        return PouchPromise.all(destroyPromises).then(function () {
           return {ok: true};
         });
       });
@@ -4654,7 +4655,7 @@ function createAbstractMapReduce$1(localDocName, mapper, reducer, ddocValidator)
     if (isRemote(db)) {
       return httpQuery(db, fun, opts);
     }
-
+    
     if (typeof fun !== 'string') {
       // temp_view
       checkQueryParseError(opts, fun);
@@ -4731,7 +4732,7 @@ function createAbstractMapReduce$1(localDocName, mapper, reducer, ddocValidator)
       fun = {map : fun};
     }
 
-    var promise = PouchPromise$1.resolve().then(function () {
+    var promise = PouchPromise.resolve().then(function () {
       return queryPromised(db, fun, opts);
     });
     promisedCallback$1(promise, callback);
@@ -4874,7 +4875,7 @@ function ddocValidator(ddoc, viewName) {
   }
 }
 
-var abstractMapper = createAbstractMapReduce$1(
+var abstractMapper = createAbstractMapReduce(
   /* localDocName */ 'indexes',
   mapper,
   reducer,
@@ -5748,10 +5749,10 @@ function find$1(db, requestDef, explain) {
     }
 
     if (explain) {
-      return PouchPromise$1.resolve(queryPlan, opts);
+      return PouchPromise.resolve(queryPlan, opts);
     }
 
-    return PouchPromise$1.resolve().then(function () {
+    return PouchPromise.resolve().then(function () {
       if (indexToUse.name === '_all_docs') {
         return doAllDocs(db, opts);
       } else {
@@ -5924,5 +5925,5 @@ if (typeof PouchDB === 'undefined') {
   PouchDB.plugin(plugin);
 }
 
-}).call(this,_dereq_(6))
+}).call(this,_dereq_(6),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"1":1,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8}]},{},[13]);

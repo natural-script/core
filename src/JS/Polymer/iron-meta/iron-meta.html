@@ -55,10 +55,18 @@ Or, in a Polymer element, you can include a meta in your template:
 
   (function() {
 
+    /**
+     * @constructor
+     * @param {{
+     *   type: (string|null|undefined),
+     *   key: (string|null|undefined),
+     *   value: *,
+     * }=} options
+     */
     function IronMeta(options) {
       this.type = (options && options.type) || 'default';
       this.key = options && options.key;
-      if ('value' in options) {
+      if (options && 'value' in options) {
         this.value = options.value;
       }
     }
@@ -80,7 +88,7 @@ Or, in a Polymer element, you can include a meta in your template:
         var key = this.key;
 
         if (type && key) {
-          var type = IronMeta.types[type] = IronMeta.types[type] || {};
+          type = IronMeta.types[type] = IronMeta.types[type] || {};
           if (value == null) {
             delete type[key];
           } else {
@@ -93,13 +101,18 @@ Or, in a Polymer element, you can include a meta in your template:
         var type = this.type;
 
         if (type) {
-          return Object.keys(IronMeta.types[this.type]).map(function(key) {
+          const items = IronMeta.types[this.type];
+          if (!items) {
+            return [];
+          }
+
+          return Object.keys(items).map(function(key) {
             return metaDatas[this.type][key];
           }, this);
         }
       },
 
-      byKey(key) {
+      byKey: function(key) {
         this.key = key;
         return this.value;
       }
@@ -118,6 +131,7 @@ Or, in a Polymer element, you can include a meta in your template:
         /**
          * The type of meta-data.  All meta-data of the same type is stored
          * together.
+         * @type {string}
          */
         type: {
           type: String,
@@ -126,6 +140,7 @@ Or, in a Polymer element, you can include a meta in your template:
 
         /**
          * The key used to store `value` under the `type` namespace.
+         * @type {?string}
          */
         key: {
           type: String,
@@ -133,6 +148,7 @@ Or, in a Polymer element, you can include a meta in your template:
 
         /**
          * The meta-data to store or retrieve.
+         * @type {*}
          */
         value: {
           type: String,
@@ -158,7 +174,7 @@ Or, in a Polymer element, you can include a meta in your template:
       },
 
       __computeMeta: function(type, key, value) {
-        let meta = new Polymer.IronMeta({
+        var meta = new Polymer.IronMeta({
           type: type,
           key: key
         });
