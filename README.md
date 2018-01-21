@@ -116,6 +116,10 @@ The target audience is every person who wants to develop his/her own website or 
 
 2. There are many other projects which have been founded recently to achieve the goal of programming using the plain text, but all of them are very simple and can't be used in any kind of production.
 
+## Jste AI Translating Core On Recast.AI:
+
+https://recast.ai/jste/jste/
+
 ## Documentation:
 
 https://project-jste.github.io/docs/en-uk
