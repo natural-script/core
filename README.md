@@ -1,3 +1,14 @@
+# Announcement
+
+## Jste v0.5 Alpha is on its way with many new features and bug fixes including:
+
+1. Automatic spelling correction.
+2. Automatic language detection thanks to Franc JS library..
+3. Jste Command Builder which will make the community be able to translate Jste to more languages in very easy way.
+4. Storing all the commands in a Rivescript file so that anyone can access, adding or modifying them easily.
+4. Jste build script Windows compatibility.
+5. Updated web components.
+
 # Jste Framework
 
 Jste is the first JavaScript framework translated to various languages from many countries all around the world to make it easier for anyone to code and develop his/her own website or application and exploit all the latest web technologies in his/her local language he/she uses during his/her daily life without any need for coding experiences, in addition to other extra features like data saving and media moderating.
@@ -116,9 +127,9 @@ The target audience is every person who wants to develop his/her own website or 
 
 2. There are many other projects which have been founded recently to achieve the goal of programming using the plain text, but all of them are very simple and can't be used in any kind of production.
 
-## Jste AI Translating Core On Recast.AI:
+## Roadmap:
 
-https://recast.ai/jste/jste/
+https://github.com/project-jste/framework/projects/1
 
 ## Documentation:
 
