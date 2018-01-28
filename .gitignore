@@ -3,3 +3,4 @@ phpmyadmin
 npm-debug.log
 .DS_Store
 /*.env
+.travis.yml

@@ -4,7 +4,8 @@
   "description": "The official Jste Framework",
   "main": "build.js",
   "scripts": {
-    "start": "node build.js"
+    "start": "node build.js",
+    "test": "node build.js"
   },
   "dependencies": [
     "vulcanize",
