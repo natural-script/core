@@ -14,3 +14,8 @@
 
 + (?:remove|delete) *
 - command_id: S1 ==> target: <star1>
+
+// open the dialog box learn_more
+
++ (?:go to|navigate to|visit|open) the * *
+- command_id: S2 ==> targetType: <star1> ==> target: <star2>
