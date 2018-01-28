@@ -94,3 +94,18 @@
 
 + set the time position of * to *
 - command_id: S5 ==> target: <star1> ==> timePosition: <star2>
+
+// set its value to Hello World !
+
++ (?:set|change) its value to *
+- command_id: S6 ==> target: itself ==> value: <star1>
+
+// set the value of this element to Hello World !
+
++ (?:set|change) the value of this element to *
+- command_id: S6 ==> target: itself ==> value: <star1>
+
+// set the value of welcome_message to Welcome, folks !
+
++ (?:set|change) the value of * to *
+- command_id: S6 ==> target: <star1> ==> value: <star2>
