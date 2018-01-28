@@ -26,7 +26,7 @@ window.analyzeCommand = function(commandRaw) {
 	}
 	for (var i = 0; i < loops.length; i++) {
 		var mainRegex = new RegExp(commandAnalysed[loops[i]]['REGEX'] + '(?:' + commandAnalysed[loops[i]]['SEPARATOR'] + '|&&&& |$)', 'gmyi');
-		var regex = new RegExp(commandAnalysed[loops[i]]['REGEX'] + '(?: ' + commandAnalysed[loops[i]]['SEPARATOR'] + ' |$)', 'gmyi');
+		var regex = new RegExp(commandAnalysed[loops[i]]['REGEX'] + '(?:' + commandAnalysed[loops[i]]['SEPARATOR'] + '|$)', 'gmyi');
 		var str = commandAnalysed[loops[i]]['DATA'];
 		var isGrouped = (commandAnalysed[loops[i]]['IS_GROUPED'] == 'true');
 		var elements = JSON.parse(commandAnalysed[loops[i]]['ELEMENTS']);
