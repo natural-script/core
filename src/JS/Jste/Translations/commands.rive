@@ -19,3 +19,28 @@
 
 + (?:go to|navigate to|visit|open) the * *
 - command_id: S2 ==> targetType: <star1> ==> target: <star2>
+
+// play it
+
++ play it
+- command_id: S3 ==> target: itself
+
+// play this song
+
++ play this song
+- command_id: S3 ==> target: itself
+
+// play this element
+
++ play this element
+- command_id: S3 ==> target: itself
+
+// play this video
+
++ play this video
+- command_id: S3 ==> target: itself
+
+// play Close_To_You
+
++ play *
+- command_id: S3 ==> target: <star1>
