@@ -169,3 +169,68 @@
 
 + (?:go|open a connection|open a new connection) to the * * the branch * then get the value of the slot * which has the same class of * in the slot * and set it as the value of this element
 - command_id: S16 ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> requiredSlot: <star4> ==> resourceValue: <star5> ==> resourceSlot: <star6> ==> target: itself
+
+// set its width to 30 pixels
+
++ (?:set|change) its width to *
+- command_id: S17 ==> target: itself ==> value: <star1>
+
+// set its font color to a random dark color
+
++ (?:set|change) its font (?:colour|color) to *
+- command_id: S20 ==> target: itself ==> value: <star1>
+
+// set its length to 30 pixels
+
++ (?:set|change) its length to *
+- command_id: S18 ==> target: itself ==> value: <star1>
+
+// set the color of its font to a random color
+
++ (?:set|change) the (?:colour|color) of its font to *
+- command_id: S20 ==> target: itself ==> value: <star1>
+
+// set its background to a random dark colour
+
++ (?:set|change) its background to *
+- command_id: S19 ==> target: itself ==> value: <star1>
+
+// set the width of this element to 50 pixels
+
++ (?:set|change) the width of this element to *
+- command_id: S17 ==> target: itself ==> value: <star1>
+
+// set the length of this element to 50 pixels
+
++ (?:set|change) the length of this element to *
+- command_id: S18 ==> target: itself ==> value: <star1>
+
+// set the background of this element to a random light colour
+
++ (?:set|change) the background of this element to *
+- command_id: S19 ==> target: itself ==> value: <star1>
+
+// set the font colour of this element to a random light colour
+
++ (?:set|change) (?:the font colour of|the font color of|the colour of the font of |the color of the font of ) this element to *
+- command_id: S20 ==> target: itself ==> value: <star1>
+
+// set the width of containerA to 30 pixels
+
++ (?:set|change) the width of * to *
+- command_id: S17 ==> target: <star1> ==> value: <star2>
+
+// set the length of containerA to 30 pixels
+
++ (?:set|change) the length of * to *
+- command_id: S18 ==> target: <star1> ==> value: <star2>
+
+// set the background of main_page to red
+
++ (?:set|change) the background of * to *
+- command_id: S19 ==> target: <star1> ==> value: <star2>
+
+// set the font color of heading_title to blue
+
++ (?:set|change) (?:the font colour of|the font color of|the colour of the font of |the color of the font of ) * to *
+- command_id: S20 ==> target: <star1> ==> value: <star2>
