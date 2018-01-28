@@ -144,3 +144,13 @@
 
 + (?:close|turn off|switch off) the (?:flashlight|flash light|torch|flash)
 - command_id: S8
+
+// open the keyboard
+
++ (?:show|open) the (?:keyboard|on-screen keyboard|on screen keyboard)
+- command_id: S13
+
+// hide the keyboard
+
++ (?:hide|close) the (?:keyboard|on-screen keyboard|on screen keyboard)
+- command_id: S14
