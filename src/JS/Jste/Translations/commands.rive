@@ -109,3 +109,38 @@
 
 + (?:set|change) the value of * to *
 - command_id: S6 ==> target: <star1> ==> value: <star2>
+
+// switch on the WIFI
+
++ (?:open|turn on|switch on|enable) the (?:wifi|wi-fi|wi fi|wifi connection)
+- command_id: S9
+
+// toggle the flashlight
+
++ toggle the (?:flashlight|flash light|torch|flash)
+- command_id: S7
+
+// switch on the Bluetooth
+
++ (?:open|turn on|switch on|enable) the (?:blue tooth|bluetooth|bt|bluetooth connection)
+- command_id: S11
+
+// switch on the torch
+
++ (?:open|turn on|switch on) the (?:flashlight|flash light|torch|flash)
+- command_id: S8
+
+// disable the WI-FI
+
++ (?:close|turn off|switch off|disable) the (?:wifi|wi-fi|wi fi|wifi connection)
+- command_id: S10
+
+// disable the BT
+
++ (?:close|turn off|switch off|disable) the (?:blue tooth|blutooth|bt|bluetooth connection)
+- command_id: S12
+
+// close the flash
+
++ (?:close|turn off|switch off) the (?:flashlight|flash light|torch|flash)
+- command_id: S8
