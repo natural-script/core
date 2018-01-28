@@ -68,27 +68,27 @@
 + (?:pause|stop|suspend) *
 - command_id: S4 ==> target: <star1>
 
-// play it
+// set the time position of it to 51654
 
 + set the time position of it to *
 - command_id: S5 ==> target: itself ==> timePosition: <star1>
 
-// play this song
+// set the time position of this song to 13575
 
 + set the time position of this song to *
 - command_id: S5 ==> target: itself ==> timePosition: <star1>
 
-// play this element
+// set the time position of this element to 5566
 
 + set the time position of this element to *
 - command_id: S5 ==> target: itself ==> timePosition: <star1>
 
-// play this video
+// set the time position of this video to 5
 
 + set the time position of this video to *
 - command_id: S5 ==> target: itself ==> timePosition: <star1>
 
-// play Close_To_You
+// set the time position of Close_To_You to 2048
 
 + set the time position of * to *
 - command_id: S5 ==> target: <star1> ==> timePosition: <star2>
@@ -155,17 +155,17 @@
 
 // go to the public database egypt the branch citizines and then insert the following data: the value of name_input in the slot name, the value of address_input in the slot address
 
-+ (?:go|open a connection|open a new connection) to the * * the branch * and then insert the following data: * in the slot * [*])
++ (?:go|open a connection|open a new connection) to the * database * the branch * and then insert the following data: * in the slot * [*])
 - command_id: S15 ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> data: IS_GROUPED: false SEPARATOR: ,  REGEX: (.*?) in the slot (.*?) ELEMENTS: ["value", "slotName"] DATA: <star4>
 
 // go to the public database egypt the branch citizines and then insert the following data: the value of name_input in the slot name, the value of address_input in the slot address
 
-+ (?:go|open a connection|open a new connection) to the * * the branch * then get the value of the slot * which has the same class of * in the slot * and set it as the value of *
++ (?:go|open a connection|open a new connection) to the * database * the branch * and then get the value of the slot * which has the same class of * in the slot * and set it as the value of *
 - command_id: S16 ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> requiredSlot: <star4> ==> resourceValue: <star5> ==> resourceSlot: <star6> ==> target: <star7>
 
 // go to the public database egypt the branch citizines and then get the value of the slot address which has the same class of the value of name_input in the slot name and set it as the value of this element
 
-+ (?:go|open a connection|open a new connection) to the * * the branch * then get the value of the slot * which has the same class of * in the slot * and set it as the value of this element
++ (?:go|open a connection|open a new connection) to the * database * the branch * and then get the value of the slot * which has the same class of * in the slot * and set it as the value of this element
 - command_id: S16 ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> requiredSlot: <star4> ==> resourceValue: <star5> ==> resourceSlot: <star6> ==> target: itself
 
 // set its width to 30 pixels
