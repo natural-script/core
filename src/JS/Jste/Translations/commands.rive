@@ -44,3 +44,28 @@
 
 + play *
 - command_id: S3 ==> target: <star1>
+
+// pause it
+
++ (?:pause|stop|suspend) it
+- command_id: S4 ==> target: itself
+
+// stop this song
+
++ (?:pause|stop|suspend) this song
+- command_id: S4 ==> target: itself
+
+// suspend this element
+
++ (?:pause|stop|suspend) this element
+- command_id: S4 ==> target: itself
+
+// pause this video
+
++ (?:pause|stop|suspend) this video
+- command_id: S4 ==> target: itself
+
+// stop Close_To_You
+
++ (?:pause|stop|suspend) *
+- command_id: S4 ==> target: <star1>
