@@ -255,3 +255,8 @@ LOOP[[[ID(((<<<options>>>)))IS_GROUPED(((<<<false>>>)))SEPARATOR(((<<<&&&>>>)))D
 
 + * null null [*]) null null
 - command_id: c0 ==> options: IS_GROUPED: false SEPARATOR: &&& REGEX: (.*?) null null ELEMENTS: ["sss"] DATA: <star1>
+
+// Set the value of textbox1 to Hello World !
+
++ * null null [*]) null null
+- command_id: c0 ==> options: IS_GROUPED: false SEPARATOR: &&& REGEX: (.*?) null null ELEMENTS: ["sss"] DATA: <star1>
