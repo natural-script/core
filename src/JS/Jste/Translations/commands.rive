@@ -69,3 +69,28 @@
 
 + (?:pause|stop|suspend) *
 - command_id: S4 ==> target: <star1>
+
+// play it
+
++ set the time position of it to *
+- command_id: S5 ==> target: itself ==> timePosition: <star1>
+
+// play this song
+
++ set the time position of this song to *
+- command_id: S5 ==> target: itself ==> timePosition: <star1>
+
+// play this element
+
++ set the time position of this element to *
+- command_id: S5 ==> target: itself ==> timePosition: <star1>
+
+// play this video
+
++ set the time position of this video to *
+- command_id: S5 ==> target: itself ==> timePosition: <star1>
+
+// play Close_To_You
+
++ set the time position of * to *
+- command_id: S5 ==> target: <star1> ==> timePosition: <star2>
