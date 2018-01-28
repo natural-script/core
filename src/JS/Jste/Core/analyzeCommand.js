@@ -1,4 +1,4 @@
-var bot = new rivescript({
+var bot = new RiveScript({
 	utf8: true
 });
 bot.unicodePunctuation = new RegExp(/[]/g);
