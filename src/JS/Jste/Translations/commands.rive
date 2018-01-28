@@ -154,3 +154,18 @@
 
 + (?:hide|close) the (?:keyboard|on-screen keyboard|on screen keyboard)
 - command_id: S14
+
+// go to the public database egypt the branch citizines and then insert the following data: the value of name_input in the slot name, the value of address_input in the slot address
+
++ (?:go|open a connection|open a new connection) to the * * the branch * and then insert the following data: * in the slot * [*])
+- command_id: S15 ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> data: IS_GROUPED: false SEPARATOR: ,  REGEX: (.*?) in the slot (.*?) ELEMENTS: ["value", "slotName"] DATA: <star4>
+
+// go to the public database egypt the branch citizines and then insert the following data: the value of name_input in the slot name, the value of address_input in the slot address
+
++ (?:go|open a connection|open a new connection) to the * * the branch * then get the value of the slot * which has the same class of * in the slot * and set it as the value of *
+- command_id: S16 ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> requiredSlot: <star4> ==> resourceValue: <star5> ==> resourceSlot: <star6> ==> target: <star7>
+
+// go to the public database egypt the branch citizines and then get the value of the slot address which has the same class of the value of name_input in the slot name and set it as the value of this element
+
++ (?:go|open a connection|open a new connection) to the * * the branch * then get the value of the slot * which has the same class of * in the slot * and set it as the value of this element
+- command_id: S16 ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> requiredSlot: <star4> ==> resourceValue: <star5> ==> resourceSlot: <star6> ==> target: itself
