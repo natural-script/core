@@ -11,6 +11,8 @@
 
 # Jste Framework
 
+[![Build Status](https://travis-ci.org/project-jste/framework.svg?branch=master)](https://travis-ci.org/project-jste/framework)
+
 Jste is the first JavaScript framework translated to various languages from many countries all around the world to make it easier for anyone to code and develop his/her own website or application and exploit all the latest web technologies in his/her local language he/she uses during his/her daily life without any need for coding experiences, in addition to other extra features like data saving and media moderating.
 
 ## Goals:
