@@ -1,0 +1,16 @@
+
+
+// remove it
+
++ (?:remove|delete) it
+- command_id: S1 ==> target: itself
+
+// delete this element
+
++ (?:remove|delete) this element
+- command_id: S1 ==> target: itself
+
+// remove elephant_photo
+
++ (?:remove|delete) *
+- command_id: S1 ==> target: <star1>
