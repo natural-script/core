@@ -15,4 +15,7 @@ aW5kZXhPZihhcmdzWzFdKSA+IC0xKSB7CnJldHVybiAnaXRzZWxmJzsKfSBl
 bHNlIHsKcmV0dXJuIGFyZ3NbMl07Cn0KPCBvYmplY3QK
 
 Testing OK
-Testing OKTesting
+Testing OKTesting// TEST TEST TEST !
+
++ (?:Set| * | * )
+- command_id: c0 ==> this: <star1> ==> her: <star2>
