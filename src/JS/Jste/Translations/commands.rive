@@ -232,3 +232,5 @@
 
 + (?:set|change) (?:the font colour of|the font color of|the colour of the font of |the color of the font of ) * to *
 - command_id: S20 ==> target: <star1> ==> value: <star2>
+
+LOOP[[[ID(((<<<options>>>)))IS_GROUPED(((<<<false>>>)))SEPARATOR(((<<<&&&>>>)))DATA(((<<<null null null>>>)))]]];
