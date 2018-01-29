@@ -2,7 +2,7 @@ var bot = new RiveScript({
 	utf8: true
 });
 bot.unicodePunctuation = new RegExp(/[]/g);
-bot.loadFile("https://jste.io/framework/src/JS/Jste/Translations/commands.rive");
+bot.loadFile("https://rawgit.com/project-jste/framework/master/src/JS/Translations/commands.rive");
 window.analyzeCommand = function(commandRaw) {
 	bot.sortReplies();
 	var command = bot.reply("local-user", commandRaw).split(' ==> ');

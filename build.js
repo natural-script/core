@@ -12,7 +12,7 @@ const gzip = zlib.createGzip();
 figlet('JSTE FRAMEWORK', function (err, data) {
     console.log(data);
     console.log(' Starting building Jste Framework ');
-    fs.writeFileSync(srcAbsolutePath + '/JS/Jste/Core/commandsExec-compiled.js', babel.transformFileSync(srcAbsolutePath + '/JS/Jste/Core/commandsExec.js', {presets: ["babel-preset-es2017"]}).code)
+    fs.writeFileSync(srcAbsolutePath + '/JS/Core/commandsExec-compiled.js', babel.transformFileSync(srcAbsolutePath + '/JS/Core/commandsExec.js', {presets: ["babel-preset-es2017"]}).code)
     replace({
         regex: "commandsExec.js",
         replacement: "commandsExec-compiled.js",
@@ -24,7 +24,7 @@ figlet('JSTE FRAMEWORK', function (err, data) {
     shell.rm('-rf', '*');
     shell.mkdir('minified', 'compressed');
     console.log(' Vulcanizing the framework files in to one HTML file ');
-    shell.exec('vulcanize ' + srcAbsolutePath + '/Res.html  --strip-comments --inline-scripts --polymer2 > framework.html');
+    shell.exec('vulcanize ' + srcAbsolutePath + '/Res.html  --strip-comments --inline-scripts --inline-css --polymer2 > framework.html');
     console.log(' Minifying the framework vulcanized file ');
     shell.exec('html-minifier framework.html --remove-comments --minify-css --minify-js --remove-comments --minify-ur-ls --use-short-doctype > minified/framework.min.html');
     shell.rm('-rf', 'framework.html');
@@ -36,7 +36,7 @@ figlet('JSTE FRAMEWORK', function (err, data) {
     console.log(' ');
     console.log(' Starting building Jste Framework Live Version ');
     console.log(' Vulcanizing the framework files in to one HTML file ');
-    shell.exec('vulcanize ' + srcAbsolutePath + '/Res-LiveVersion.html  --strip-comments --inline-scripts --polymer2 > framework-LiveVersion.html');
+    shell.exec('vulcanize ' + srcAbsolutePath + '/Res-LiveVersion.html  --strip-comments --inline-scripts --inline-css --polymer2 > framework-LiveVersion.html');
     console.log(' Minifying the framework vulcanized file ');
     shell.exec('html-minifier framework-LiveVersion.html --remove-comments --minify-css --minify-js --remove-comments --minify-ur-ls --use-short-doctype > minified/framework-LiveVersion.min.html');
     shell.rm('-rf', 'framework-LiveVersion.html');
