@@ -8,9 +8,12 @@
     "test": "node build.js"
   },
   "dependencies": [
-    "polymer-bundler",
+    "vulcanize",
     "html-minifier",
     "figlet",
+    "babel-preset-es2017",
+    "babel-core",
+    "replace",
     "shelljs"
   ],
   "repository": {
@@ -26,5 +29,9 @@
     "css"
   ],
   "author": "Jste Team",
-  "homepage": "https://project-jste.github.io/"
+  "homepage": "https://project-jste.github.io/",
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1"
+  }
 }
