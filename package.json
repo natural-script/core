@@ -8,7 +8,7 @@
     "test": "node build.js"
   },
   "dependencies": [
-    "vulcanize",
+    "polymer-bundler",
     "html-minifier",
     "figlet",
     "shelljs"

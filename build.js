@@ -11,8 +11,8 @@ figlet('JSTE FRAMEWORK', function (err, data) {
     shell.cd('build');
     shell.rm('-rf', '*');
     shell.mkdir('minified', 'compressed');
-    console.log(' Vulcanizing the framework files in to one HTML file ');
-    shell.exec('vulcanize ../src/Res.html  --strip-comments --inline-scripts --inline-css > framework.html');
+    console.log(' Bundling the framework files into one HTML file ');
+    shell.exec('polymer-bundler -r "../src/" /Res.html  --strip-comments --inline-scripts --inline-css > framework.html');
     console.log(' Minifying the framework vulcanized file ');
     shell.exec('html-minifier framework.html --remove-comments --minify-css --minify-js --remove-comments --minify-ur-ls --use-short-doctype > minified/framework.min.html');
     shell.rm('-rf', 'framework.html');
@@ -23,8 +23,8 @@ figlet('JSTE FRAMEWORK', function (err, data) {
     console.log(' Jste Framework has been built properly ;) ');
     console.log(' ');
     console.log(' Starting building Jste Framework Live Version ');
-    console.log(' Vulcanizing the framework files in to one HTML file ');
-    shell.exec('vulcanize ../src/Res-LiveVersion.html  --strip-comments --inline-scripts --inline-css > framework-LiveVersion.html');
+    console.log(' Bundling the framework files into one HTML file ');
+    shell.exec('polymer-bundler -r "../src/" /Res-LiveVersion.html  --strip-comments --inline-scripts --inline-css > framework-LiveVersion.html');
     console.log(' Minifying the framework vulcanized file ');
     shell.exec('html-minifier framework-LiveVersion.html --remove-comments --minify-css --minify-js --remove-comments --minify-ur-ls --use-short-doctype > minified/framework-LiveVersion.min.html');
     shell.rm('-rf', 'framework-LiveVersion.html');
