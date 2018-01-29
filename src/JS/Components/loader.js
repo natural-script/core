@@ -1,10 +1,10 @@
 /*!
  * Loader
- * https://project-jste.github.com/
+ * https://project-jste.github.io/
  *
  * Copyright 2017 Jste Team
  * Released under the GNU AGPLv3 license
- * https://project-jste.github.com/license
+ * https://project-jste.github.io/license
  *
  * Date: 2017-09-6
  */

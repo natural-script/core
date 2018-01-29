@@ -1,12 +1,12 @@
 /*!
  * Properties Translations
- * https://project-jste.github.com/
+ * https://project-jste.github.io/
  *
- * Copyright 2017 Jste Team
+ * Copyright 2018 Jste Team
  * Released under the GNU AGPLv3 license
- * https://project-jste.github.com/license
+ * https://project-jste.github.io/license
  *
- * Date: 2017-09-16
+ * Date: 2018-01-30
  */
 window.yesTranslations = ['yes', 'yup', 'oui', 'نعم', 'ايوة', 'はい'];
 window.noTranslations = ['no', 'nope', 'non', 'لا', 'لأ', 'いいえ'];
@@ -183,3 +183,4 @@ window.defaultWindowResolutionTranslations = ['default_window_resolution', 'defa
 window.inTheCaseOfPortraitModeTranslations = ['in the case of the portrait mode', 'in the case of the portrait mode', "dans le cas du mode portrait", 'فى حالة الوضع العمودى', 'فى حالة الوضع العمودى', '主な色'];
 window.rtlTranslations = ['from right to left', 'from right to left', "de droite à gauche", 'من اليمين إلى الشمال', 'من اللمين للشمال', '主な色'];
 window.indexPageTranslations = ['home', 'home', "page_principale", 'الرئيسية', 'الرئيسية', 'ホーム'];
+window.theResultOfTheMathematicalExpressionTranslations = ['the result of the mathematical expression', 'the result of the mathematical expression', "le résultat de l'expression mathématique", 'ناتج التعبير الرياضى', 'ناتج التعبير الرياضى', 'ホーム'];

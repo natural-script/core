@@ -1,3 +1,14 @@
+/*!
+ * Commands RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-01-30
+ */
+
 // remove it
 
 + (?:remove|delete) it

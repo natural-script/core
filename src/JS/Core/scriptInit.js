@@ -1,10 +1,10 @@
 /*!
  * Script Initialization
- * https://project-jste.github.com/
+ * https://project-jste.github.io/
  *
  * Copyright 2017 Jste Team
  * Released under the GNU AGPLv3 license
- * https://project-jste.github.com/license
+ * https://project-jste.github.io/license
  *
  * Date: 2017-09-19
  */
@@ -20,6 +20,7 @@ if (document.lang == 0) {
 	}
 	var i = -1;
 	code += 'add = $("body");' + $("en-uk").html();
+	code = code.replace(/^ +| +$/gm, "");
 	code = code.replace(/^add a text/gm, 'add a text0');
 	code = code.replace(/^configure this (.*?) (site|app) with the following properties:$/gm, 'add.setup({\nits mode is $2,\nits attributes are $1,');
 	code = code.replace(/^configure this (site|app) with the following properties:$/gm, 'add.setup({\nits mode is $1,');

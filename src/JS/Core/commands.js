@@ -1,12 +1,12 @@
 /*!
  * Commands Scripts
- * https://project-jste.github.com/
+ * https://project-jste.github.io/
  *
- * Copyright 2017 Jste Team
+ * Copyright 2018 Jste Team
  * Released under the GNU AGPLv3 license
- * https://project-jste.github.com/license
+ * https://project-jste.github.io/license
  *
- * Date: 2017-09-12
+ * Date: 2018-01-30
  */
 window.evaluateScript = function (script, event, type, commandInfo, typeOptions) {
     var typePrefix;
@@ -18,7 +18,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
     var commandsCommonDeclarations = '';
     var commandAvailableInfo = Object.keys(commandInfo);
     for (var infoID = 0; infoID < commandAvailableInfo.length; infoID++) {
-        commandsCommonDeclarations += 'var ' + commandAvailableInfo[infoID] + ' = "' + commandInfo[commandAvailableInfo[infoID]] + '";';
+        commandsCommonDeclarations += 'var ' + commandAvailableInfo[infoID] + ' = "' + commandInfo[commandAvailableInfo[infoID]] + '";\nvar script = ' + script + ';';
     }
     if (event == 'E0') {
         eventPrefix = "";
@@ -124,59 +124,95 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
         }
         commandVarB = "pureCommand";
     }
-    if (script == 'S1') {
+    if (script.command_id == 'S1') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
-            if (window.commandsFnTranslations('c3q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c3r')) { \
+            if (script.target = 'itself') { \
         " + eventPrefix + typePrefix + " \
             $('#' + elementName + '').remove(); \
         }); \
     } else { \
-        var targetName = window.commandsFnTranslations('c4', '" + event + "', " + commandVarA + "); \
+        var targetName = script.target; \
         $('#' + elementName + '').click(function () { \
             $('#' + targetName + '').remove(); \
             " + typeSuffix + eventSuffix + " \
             }})();";
-    } else if (script == 'S2') {
+    } else if (script.command_id == 'S2') {
         return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
 				$('#' + elementName + '').css('cursor', 'pointer'); \
                 " + eventPrefix + typePrefix + " \
-                    var targetURL; \
+                    var hyperlinkType = script.targetType; \
+                    var hyperlink = script.target; \
                     event.preventDefault(); \
-                    if (window.commandsFnTranslations('c44q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c44r')) { \
-                        targetURL = window.commandsFnTranslations('c44t', '" + event + "', " + commandVarA + "); \
-                        window.open(targetURL); \
-                    } else if (window.commandsFnTranslations('c45q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c45r')) { \
-                        targetURL = window.commandsFnTranslations('c45t', '" + event + "', " + commandVarA + "); \
-                        window.location.hash = '#' + targetURL; \
-                    } else if (window.commandsFnTranslations('c46q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c46r')) { \
-                        targetURL = window.commandsFnTranslations('c46t', '" + event + "', " + commandVarA + "); \
-                        window.open('mailto:' + targetURL); \
-                    } else if (window.commandsFnTranslations('c47q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c47r')) { \
-                        targetURL = window.commandsFnTranslations('c47t', '" + event + "', " + commandVarA + "); \
-                        window.changePage(targetURL); \
-                        window.setURLParameter('page', targetURL); \
+                    if (hyperlinkType = 'url') { \
+                        window.open(hyperlink); \
+                    } else if (hyperlinkType = 'element') { \
+                        window.location.hash = '#' + hyperlink; \
+                    } else if (hyperlinkType = 'email') { \
+                        window.open('mailto:' + hyperlink); \
+                    } else if (hyperlinkType = 'page') { \
+                        window.changePage(hyperlink); \
+                        window.setURLParameter('page', hyperlink); \
+                    } else if (hyperlinkType = 'dialog box') { \
+                        $('#' + hyperlink + '').iziModal('open'); \
+                    } else if (hyperlinkType = 'sidebar') { \
+                        $('#' + hyperlink + '').sideNav('show'); \
                     } \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-    } else if (script == 'S18') {
-        return "(function (" + commandVarB + ") { \
+    } else if (script.command_id == 'S3') {
+        return "(function () { \
             " + commandsCommonDeclarations + " \
-				$('#' + elementName + '').css('cursor', 'pointer'); \
-                " + eventPrefix + typePrefix + " \
-                    var targetURL; \
-                    event.preventDefault(); \
-                    if (window.commandsFnTranslations('c91q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c91r')) { \
-                        targetURL = window.commandsFnTranslations('c91t', '" + event + "', " + commandVarA + "); \
-                        $('#' + targetURL + '').iziModal('open'); \
-                    } else if (window.commandsFnTranslations('c93q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c93r')) { \
-                        targetURL = window.commandsFnTranslations('c93t', '" + event + "', " + commandVarA + "); \
-                        $('#' + targetURL + '').sideNav('show'); \
+            var targetElement = script.target; \
+		  " + eventPrefix + typePrefix + " \
+		  if ($('#' + targetElement + '').hasClass('aplayer') || $('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO') { \
+			document[targetElement].play(); \
+		  } else { \
+			document.getElementById(targetElement).play(); \
+		  } \
+              " + typeSuffix + eventSuffix + "})();";
+    } else if (script.command_id == 'S4') {
+        return "(function () { \
+            " + commandsCommonDeclarations + " \
+                var targetElement = script.target; \
+            " + eventPrefix + typePrefix + " \
+			if ($('#' + targetElement + '').hasClass('aplayer') || $('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO') { \
+				document[targetElement].pause(); \
+			  } else { \
+				document.getElementById(targetElement).pause(); \
+			  } \
+                " + typeSuffix + eventSuffix + "})();";
+    } else if (script.command_id == 'S5') {
+        return "(function () { \
+            " + commandsCommonDeclarations + " \
+                var targetElement = script.target; \
+                    var timePosition = script.timePosition.parseValue(); \
+					" + eventPrefix + typePrefix + " \
+					if ($('#' + targetElement + '').hasClass('aplayer')) { \
+						document[targetElement].audio.currentTime = timePosition; \
+                      } else if ($('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO'){ \
+                        document[targetElement].currentTime(timePosition); \
+                      } else {\
+                        document.getElementById(targetElement).currentTime = timePosition; \
+					  } \
+                        " + typeSuffix + eventSuffix + " \
+                    })();";
+    } else if (script.command_id == 'S6') {
+        return "(function () { \
+            " + commandsCommonDeclarations + " \
+                    var targetElement; \
+                    var target = script.target; \
+                    if (target == 'itself') { \
+                        targetElement = elementName; \
+                    } else { \
+                        targetElement = target; \
                     } \
-                    " + typeSuffix + eventSuffix + " \
-            })(" + commandVarB + ");";
-    } else if (script == 'S19') {
+					" + eventPrefix + typePrefix + " \
+                        window.elementValue.set(targetElement, script.value.parseValue()); \
+                        " + typeSuffix + eventSuffix + " \
+                    }();";
+    } else if (script.command_id == 'S7') {
         return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
@@ -189,7 +225,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                 }); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-    } else if (script == 'S20') {
+    } else if (script.command_id == 'S8') {
         return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
@@ -202,7 +238,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                 }); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-    } else if (script == 'S21') {
+    } else if (script.command_id == 'S21') {
         return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
@@ -215,14 +251,14 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                 }); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-    } else if (script == 'S22') {
+    } else if (script.command_id == 'S22') {
         return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
                 navigator.screenshot.save() \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-    } else if (script == 'S23') {
+    } else if (script.command_id == 'S23') {
         return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
@@ -230,75 +266,35 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                 cordova.plugins.BluetoothStatus.promptForBT(); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-    } else if (script == 'S24') {
+    } else if (script.command_id == 'S9') {
         return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
                 WifiWizard.setWifiEnabled(enabled, win, fail); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-    } else if (script == 'S25') {
+    } else if (script.command_id == 'S10') {
         return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
                 WifiWizard.setWifiEnabled(false, win, fail); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-    } else if (script == 'S26') {
+    } else if (script.command_id == 'S13') {
         return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
                 Keyboard.show(); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-    } else if (script == 'S27') {
+    } else if (script.command_id == 'S14') {
         return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
                 Keyboard.hide(); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-    } else if (script == 'S3') {
-        return "(function () { \
-            " + commandsCommonDeclarations + " \
-            var targetElement = window.commandsFnTranslations('c7', '" + event + "', " + commandVarA + "); \
-		  " + eventPrefix + typePrefix + " \
-		  if ($('#' + targetElement + '').hasClass('aplayer') || $('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO') { \
-			document[targetElement].play(); \
-		  } else { \
-			document.getElementById(targetElement).play(); \
-		  } \
-              " + typeSuffix + eventSuffix + "})();";
-    } else if (script == 'S4') {
-        return "(function () { \
-            " + commandsCommonDeclarations + " \
-                var targetElement = window.commandsFnTranslations('c8', '" + event + "', " + commandVarA + "); \
-            " + eventPrefix + typePrefix + " \
-			if ($('#' + targetElement + '').hasClass('aplayer') || $('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO') { \
-				document[targetElement].pause(); \
-			  } else { \
-				document.getElementById(targetElement).pause(); \
-			  } \
-                " + typeSuffix + eventSuffix + "})();";
-    } else if (script == 'S5') {
-        return "(function () { \
-            " + commandsCommonDeclarations + " \
-                if (window.commandsFnTranslations('c10q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c10rA')) { \
-                    var targetElement = window.commandsFnTranslations('c11', '" + event + "', " + commandVarA + "); \
-					" + eventPrefix + typePrefix + " \
-					if ($('#' + targetElement + '').prop('tagName') == 'PAPER-SWATCH-PICKER') {\
-						window.elementValue.set(elementName, $('#' + targetElement + '').prop('color')); \
-					} else {\
-                        window.elementValue.set(elementName, window.elementValue.get(targetElement)); \
-					}\
-                        " + typeSuffix + eventSuffix + " \
-                } else { \
-                    var newVal = window.evaluateValue(window.commandsFnTranslations('c12', '" + event + "', " + commandVarA + ")); \
-                    " + eventPrefix + typePrefix + " \
-                    window.elementValue.set(elementName, eval(newVal)); \
-                        " + typeSuffix + eventSuffix + " \
-                }}();";
-    } else if (script == 'S6') {
+    } else if (script.command_id == 'S6') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
                 var targetElement = window.commandsFnTranslations('c14', '" + event + "', " + commandVarA + "); \
@@ -323,7 +319,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                     window.elementValue.set(targetElement, eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                     }})();";
-    } else if (script == 'S10') {
+    } else if (script.command_id == 'S20') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
                 if (window.commandsFnTranslations('c56q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c56rA')) { \
@@ -347,7 +343,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
 						window.setFontColour(elementName, eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                 }})();";
-    } else if (script == 'S11') {
+    } else if (script.command_id == 'S11') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
                 var targetElement = window.commandsFnTranslations('c60', '" + event + "', " + commandVarA + "); \
@@ -372,7 +368,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                     window.setFontColour(targetElement, eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                     }})();";
-    } else if (script == 'S12') {
+    } else if (script.command_id == 'S19') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
                 if (window.commandsFnTranslations('c65q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c65rA')) { \
@@ -396,7 +392,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
 						window.setBG(elementName, eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                 }})();";
-    } else if (script == 'S13') {
+    } else if (script.command_id == 'S13') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
                 var targetElement = window.commandsFnTranslations('c69', '" + event + "', " + commandVarA + "); \
@@ -421,7 +417,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                     window.setBG(targetElement, eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                     }})();";
-    } else if (script == 'S14') {
+    } else if (script.command_id == 'S18') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
                 if (window.commandsFnTranslations('c74q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c74rA')) { \
@@ -445,7 +441,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
 						window.setDimension(elementName, 'length', eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                 }})();";
-    } else if (script == 'S15') {
+    } else if (script.command_id == 'S15') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
                 var targetElement = window.commandsFnTranslations('c78', '" + event + "', " + commandVarA + "); \
@@ -470,7 +466,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                     window.setDimension(targetElement, 'length', eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                     }})();";
-    } else if (script == 'S16') {
+    } else if (script.command_id == 'S17') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
                 if (window.commandsFnTranslations('c83q', '" + event + "', " + commandVarA + ") == window.commandsFnTranslations('c83rA')) { \
@@ -494,7 +490,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
 						window.setDimension(elementName, 'width', eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                 }})()";
-    } else if (script == 'S17') {
+    } else if (script.command_id == 'S17') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
                 var targetElement = window.commandsFnTranslations('c87', '" + event + "', " + commandVarA + "); \
@@ -520,40 +516,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                     window.setDimension(targetElement, 'width', eval(newVal)); \
                         " + typeSuffix + eventSuffix + " \
                     }})();";
-    } else if (script == 'S7') {
-        return "(function () { \
-            " + commandsCommonDeclarations + " \
-                var targetElement = window.commandsFnTranslations('c19', '" + event + "', " + commandVarA + "); \
-                if (window.commandsFnTranslations('c21q', '" + event + "', " + commandVarA + ", targetElement) == window.commandsFnTranslations('c21rA')) { \
-                    var resource = window.commandsFnTranslations('c20', '" + event + "', " + commandVarA + ", targetElement); \
-					" + eventPrefix + typePrefix + " \
-					if ($('#' + targetElement + '').hasClass('aplayer')) { \
-						document[targetElement].audio.currentTime = window.elementValue.get(resource); \
-                      } else if ($('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO'){ \
-                        document[targetElement].currentTime(window.elementValue.get(resource)); \
-                      } else {\
-                        document.getElementById(targetElement).currentTime = window.elementValue.get(resource); \
-					  } \
-                        " + typeSuffix + eventSuffix + " \
-                } else if (window.commandsFnTranslations('c21q', '" + event + "', " + commandVarA + ", targetElement) == window.commandsFnTranslations('c21rB')) { \
-                    (function (" + commandVarB + ") { \
-						" + eventPrefix + typePrefix + " \
-						if ($('#' + targetElement + '').hasClass('aplayer')) { \
-							document[targetElement].audio.currentTime = window.commandsFnTranslations('c42', '" + event + "', " + commandVarA + ", targetElement); \
-                        } else if ($('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO'){ \
-                          document[targetElement].currentTime(window.commandsFnTranslations('c42', '" + event + "', " + commandVarA + ", targetElement)); \
-                        } else {\
-                            document.getElementById(targetElement).currentTime = window.commandsFnTranslations('c42', '" + event + "', " + commandVarA + ", targetElement); \
-						} \
-                            " + typeSuffix + eventSuffix + " \
-                        })(" + commandVarB + "); \
-                } else { \
-                    var newTimePosition = window.commandsFnTranslations('c22', '" + event + "', " + commandVarA + ", targetElement); \
-                    " + eventPrefix + typePrefix + " \
-                    document.getElementById(targetElement).currentTime = newTimePosition; \
-                    " + typeSuffix + eventSuffix + " \
-                }})();";
-    } else if (script == 'S8') {
+    } else if (script.command_id == 'S15') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
                 var dbType = window.commandsFnTranslations('c48', '" + event + "', " + commandVarA + "); \
@@ -580,7 +543,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                         firebase.database().ref('private/' + window.user.uid + '/' + dbname + '/' + tablename + '/' + newPostKey).set(data); \
                     } \
                     " + typeSuffix + eventSuffix + "})();";
-    } else if (script == 'S9') {
+    } else if (script.command_id == 'S16') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
             var dbType = window.commandsFnTranslations('c49', '" + event + "', " + commandVarA + "); \
