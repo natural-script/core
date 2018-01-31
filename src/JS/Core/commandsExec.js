@@ -90,6 +90,7 @@ window.execute = async function (elementName, command, execute) {
 			codeParam = ", typeOptions";
 		}
 		commandInfo.pureCommand = pureCommand;
+
 		var result = eval("if (pureCommand.startsWith(document[getTheEventCode(pureCommand)])) { \
 			" + codePrefix + " \
 				" + operationPrefix + "window.evaluateScript(window.analyzeCommand(pureCommand.split(new RegExp('^' + document[getTheEventCode(pureCommand)], 'gimy'))[1].split(new RegExp(window.inTheCaseThatTranslations + '.*?$', 'gimy'))[0]), getTheEventCode(pureCommand), commandType, commandInfo" + codeParam + ")" + operationSuffix + " \
