@@ -1,9 +1,9 @@
-import uuidV4 from 'uuid';
 import lie from 'lie';
 import getArguments from 'argsarray';
+import nextTick from 'immediate';
 import { EventEmitter } from 'events';
 import inherits from 'inherits';
-import nextTick from 'immediate';
+import uuidV4 from 'uuid';
 import debug from 'debug';
 import Md5 from 'spark-md5';
 import vuvuzela from 'vuvuzela';
@@ -1550,8 +1550,8 @@ Changes$2.prototype.validateChanges = function (opts) {
   var self = this;
 
   /* istanbul ignore else */
-  if (PouchDB$5._changesFilterPlugin) {
-    PouchDB$5._changesFilterPlugin.validate(opts, function (err) {
+  if (PouchDB._changesFilterPlugin) {
+    PouchDB._changesFilterPlugin.validate(opts, function (err) {
       if (err) {
         return callback(err);
       }
@@ -1592,10 +1592,10 @@ Changes$2.prototype.doChanges = function (opts) {
   }
 
   /* istanbul ignore else */
-  if (PouchDB$5._changesFilterPlugin) {
-    PouchDB$5._changesFilterPlugin.normalize(opts);
-    if (PouchDB$5._changesFilterPlugin.shouldFilter(this, opts)) {
-      return PouchDB$5._changesFilterPlugin.filter(this, opts);
+  if (PouchDB._changesFilterPlugin) {
+    PouchDB._changesFilterPlugin.normalize(opts);
+    if (PouchDB._changesFilterPlugin.shouldFilter(this, opts)) {
+      return PouchDB._changesFilterPlugin.filter(this, opts);
     }
   } else {
     ['doc_ids', 'filter', 'selector', 'view'].forEach(function (key) {
@@ -1711,6 +1711,7 @@ function allDocsKeysParse(opts) {
     (opts.skip > 0) ? opts.keys.slice(opts.skip) : opts.keys;
   opts.keys = keys;
   opts.skip = 0;
+  delete opts.limit;
   if (opts.descending) {
     keys.reverse();
     opts.descending = false;
@@ -2583,9 +2584,9 @@ function parseAdapter(name, opts) {
     };
   }
 
-  var adapters = PouchDB$5.adapters;
-  var preferredAdapters = PouchDB$5.preferredAdapters;
-  var prefix = PouchDB$5.prefix;
+  var adapters = PouchDB.adapters;
+  var preferredAdapters = PouchDB.preferredAdapters;
+  var prefix = PouchDB.prefix;
   var adapterName = opts.adapter;
 
   if (!adapterName) { // automatically determine adapter
@@ -2645,12 +2646,12 @@ function prepareForDestruction(self) {
   self.constructor.emit('ref', self);
 }
 
-inherits(PouchDB$5, AbstractPouchDB);
-function PouchDB$5(name, opts) {
+inherits(PouchDB, AbstractPouchDB);
+function PouchDB(name, opts) {
   // In Node our test suite only tests this for PouchAlt unfortunately
   /* istanbul ignore if */
-  if (!(this instanceof PouchDB$5)) {
-    return new PouchDB$5(name, opts);
+  if (!(this instanceof PouchDB)) {
+    return new PouchDB(name, opts);
   }
 
   var self = this;
@@ -2665,7 +2666,7 @@ function PouchDB$5(name, opts) {
   this.__opts = opts = clone(opts);
 
   self.auto_compaction = opts.auto_compaction;
-  self.prefix = PouchDB$5.prefix;
+  self.prefix = PouchDB.prefix;
 
   if (typeof name !== 'string') {
     throw new Error('Missing/invalid DB name');
@@ -2679,10 +2680,10 @@ function PouchDB$5(name, opts) {
 
   self.name = name;
   self._adapter = opts.adapter;
-  PouchDB$5.emit('debug', ['adapter', 'Picked adapter: ', opts.adapter]);
+  PouchDB.emit('debug', ['adapter', 'Picked adapter: ', opts.adapter]);
 
-  if (!PouchDB$5.adapters[opts.adapter] ||
-      !PouchDB$5.adapters[opts.adapter].valid()) {
+  if (!PouchDB.adapters[opts.adapter] ||
+      !PouchDB.adapters[opts.adapter].valid()) {
     throw new Error('Invalid Adapter: ' + opts.adapter);
   }
 
@@ -2691,23 +2692,23 @@ function PouchDB$5(name, opts) {
 
   self.adapter = opts.adapter;
 
-  PouchDB$5.adapters[opts.adapter].call(self, opts, function (err) {
+  PouchDB.adapters[opts.adapter].call(self, opts, function (err) {
     if (err) {
       return self.taskqueue.fail(err);
     }
     prepareForDestruction(self);
 
     self.emit('created', self);
-    PouchDB$5.emit('created', self.name);
+    PouchDB.emit('created', self.name);
     self.taskqueue.ready(self);
   });
 
 }
 
-PouchDB$5.adapters = {};
-PouchDB$5.preferredAdapters = [];
+PouchDB.adapters = {};
+PouchDB.preferredAdapters = [];
 
-PouchDB$5.prefix = '_pouch_';
+PouchDB.prefix = '_pouch_';
 
 var eventEmitter = new EventEmitter();
 
@@ -2760,35 +2761,35 @@ function setUpEventEmitter(Pouch) {
   });
 }
 
-setUpEventEmitter(PouchDB$5);
+setUpEventEmitter(PouchDB);
 
-PouchDB$5.adapter = function (id, obj, addToPreferredAdapters) {
+PouchDB.adapter = function (id, obj, addToPreferredAdapters) {
   /* istanbul ignore else */
   if (obj.valid()) {
-    PouchDB$5.adapters[id] = obj;
+    PouchDB.adapters[id] = obj;
     if (addToPreferredAdapters) {
-      PouchDB$5.preferredAdapters.push(id);
+      PouchDB.preferredAdapters.push(id);
     }
   }
 };
 
-PouchDB$5.plugin = function (obj) {
+PouchDB.plugin = function (obj) {
   if (typeof obj === 'function') { // function style for plugins
-    obj(PouchDB$5);
+    obj(PouchDB);
   } else if (typeof obj !== 'object' || Object.keys(obj).length === 0) {
     throw new Error('Invalid plugin: got "' + obj + '", expected an object or a function');
   } else {
     Object.keys(obj).forEach(function (id) { // object style for plugins
-      PouchDB$5.prototype[id] = obj[id];
+      PouchDB.prototype[id] = obj[id];
     });
   }
   if (this.__defaults) {
-    PouchDB$5.__defaults = $inject_Object_assign({}, this.__defaults);
+    PouchDB.__defaults = $inject_Object_assign({}, this.__defaults);
   }
-  return PouchDB$5;
+  return PouchDB;
 };
 
-PouchDB$5.defaults = function (defaultOpts) {
+PouchDB.defaults = function (defaultOpts) {
   function PouchAlt(name, opts) {
     if (!(this instanceof PouchAlt)) {
       return new PouchAlt(name, opts);
@@ -2803,15 +2804,15 @@ PouchDB$5.defaults = function (defaultOpts) {
     }
 
     opts = $inject_Object_assign({}, PouchAlt.__defaults, opts);
-    PouchDB$5.call(this, name, opts);
+    PouchDB.call(this, name, opts);
   }
 
-  inherits(PouchAlt, PouchDB$5);
+  inherits(PouchAlt, PouchDB);
 
-  PouchAlt.preferredAdapters = PouchDB$5.preferredAdapters.slice();
-  Object.keys(PouchDB$5).forEach(function (key) {
+  PouchAlt.preferredAdapters = PouchDB.preferredAdapters.slice();
+  Object.keys(PouchDB).forEach(function (key) {
     if (!(key in PouchAlt)) {
-      PouchAlt[key] = PouchDB$5[key];
+      PouchAlt[key] = PouchDB[key];
     }
   });
 
@@ -2823,7 +2824,7 @@ PouchDB$5.defaults = function (defaultOpts) {
 };
 
 // managed automatically by set-version.js
-var version = "6.4.1";
+var version = "6.4.2";
 
 function debugPouch(PouchDB) {
   PouchDB.debug = debug;
@@ -3883,12 +3884,12 @@ function applyChangesFilterPlugin(PouchDB) {
 }
 
 // TODO: remove from pouchdb-core (breaking)
-PouchDB$5.plugin(debugPouch);
+PouchDB.plugin(debugPouch);
 
 // TODO: remove from pouchdb-core (breaking)
-PouchDB$5.plugin(applyChangesFilterPlugin);
+PouchDB.plugin(applyChangesFilterPlugin);
 
-PouchDB$5.version = version;
+PouchDB.version = version;
 
 function toObject(array) {
   return array.reduce(function (obj, item) {
@@ -6481,6 +6482,7 @@ function init(api, opts, callback) {
       storedMetaDoc = true;
       completeSetup();
     };
+    txn.onabort = idbError(callback);
   };
 
   req.onerror = function () {
@@ -6499,12 +6501,17 @@ IdbPouch.valid = function () {
     !/Chrome/.test(navigator.userAgent) &&
     !/BlackBerry/.test(navigator.platform);
 
+  // Safari <10.1 does not meet our requirements for IDB support (#5572)
+  // since Safari 10.1 shipped with fetch, we can use that to detect it
+  var hasFetch = typeof fetch === 'function' &&
+    fetch.toString().indexOf('[native code') !== -1;
+
   // On Firefox SecurityError is thrown while referencing indexedDB if cookies
   // are not allowed. `typeof indexedDB` also triggers the error.
   try {
     // some outdated implementations of IDB that appear on Samsung
     // and HTC Android devices <4.4 are missing IDBKeyRange
-    return !isSafari && typeof indexedDB !== 'undefined' &&
+    return (!isSafari || hasFetch) && typeof indexedDB !== 'undefined' &&
       typeof IDBKeyRange !== 'undefined';
   } catch (e) {
     return false;
@@ -7100,7 +7107,7 @@ function openDBSafely(opts) {
   }
 }
 
-function openDB$1(opts) {
+function openDB(opts) {
   var cachedResult = cachedDatabases.get(opts.name);
   if (!cachedResult) {
     cachedResult = openDBSafely(opts);
@@ -7174,7 +7181,7 @@ var SELECT_DOCS = BY_SEQ_STORE$1 + '.seq AS seq, ' +
   BY_SEQ_STORE$1 + '.rev AS rev, ' +
   DOC_STORE$1 + '.json AS metadata';
 
-function WebSqlPouch$1(opts, callback) {
+function WebSqlPouch(opts, callback) {
   var api = this;
   var instanceId = null;
   var size = getSize(opts);
@@ -7190,7 +7197,7 @@ function WebSqlPouch$1(opts, callback) {
     description: opts.name,
     size: size
   });
-  var openDBResult = openDB$1(websqlOpts);
+  var openDBResult = openDB(websqlOpts);
   if (openDBResult.error) {
     return websqlError(callback)(openDBResult.error);
   }
@@ -8228,24 +8235,27 @@ function valid() {
   return isValidWebSQL();
 }
 
-function openDB(name, version, description, size) {
+function openDB$2(name, version, description, size) {
   // Traditional WebSQL API
   return openDatabase(name, version, description, size);
 }
 
 function WebSQLPouch(opts, callback) {
+  var msg = 'WebSQL is deprecated and will be removed in future releases of PouchDB. ' +
+      'Please migrate to IndexedDB: https://pouchdb.com/2018/01/23/pouchdb-6.4.2.html';
+  guardedConsole('warn', msg);
   var _opts = $inject_Object_assign({
-    websql: openDB
+    websql: openDB$2
   }, opts);
 
-  WebSqlPouch$1.call(this, _opts, callback);
+  WebSqlPouch.call(this, _opts, callback);
 }
 
 WebSQLPouch.valid = valid;
 
 WebSQLPouch.use_prefix = true;
 
-function WebSqlPouch (PouchDB) {
+function WebSqlPouch$1 (PouchDB) {
   PouchDB.adapter('websql', WebSQLPouch, true);
 }
 
@@ -8462,12 +8472,14 @@ function xhRequest(options, callback) {
       if (timedout) {
         err = new Error('ETIMEDOUT');
         err.code = 'ETIMEDOUT';
-      } else if (typeof xhr.response === 'string') {
+      } else if (typeof xhr.response === 'string' && xhr.response !== '') {
         try {
           err = JSON.parse(xhr.response);
         } catch (e) {}
       }
+
       err.status = xhr.status;
+
       callback(err);
     }
     cleanUp();
@@ -8495,7 +8507,7 @@ function testXhr() {
 
 var hasXhr = testXhr();
 
-function ajax$1(options, callback) {
+function ajax(options, callback) {
   if (!false && (hasXhr || options.xhr)) {
     return xhRequest(options, callback);
   } else {
@@ -8509,7 +8521,7 @@ function defaultBody() {
   return '';
 }
 
-function ajaxCore$1(options, callback) {
+function ajaxCore(options, callback) {
 
   options = clone(options);
 
@@ -8566,7 +8578,7 @@ function ajaxCore$1(options, callback) {
     options.json = false;
   }
 
-  return ajax$1(options, function (err, response, body) {
+  return ajax(options, function (err, response, body) {
 
     if (err) {
       return callback(generateErrorFromResponse(err));
@@ -8597,7 +8609,7 @@ function ajaxCore$1(options, callback) {
   });
 }
 
-function ajax(opts, callback) {
+function ajax$1(opts, callback) {
 
   // cache-buster, specifically designed to work around IE's aggressive caching
   // see http://www.dashbay.com/2011/05/internet-explorer-caches-ajax/
@@ -8624,7 +8636,7 @@ function ajax(opts, callback) {
     opts.url += (hasArgs ? '&' : '?') + '_nonce=' + Date.now();
   }
 
-  return ajaxCore$1(opts, callback);
+  return ajaxCore(opts, callback);
 }
 
 // dead simple promise pool, inspired by https://github.com/timdp/es6-promise-pool
@@ -8818,9 +8830,9 @@ function HttpPouch(opts, callback) {
 
   // Not strictly necessary, but we do this because numerous tests
   // rely on swapping ajax in and out.
-  api._ajax = ajax;
+  api._ajax = ajax$1;
 
-  function ajax$$1(userOpts, options, callback) {
+  function ajax(userOpts, options, callback) {
     var reqAjax = (userOpts || {}).ajax || {};
     var reqOpts = $inject_Object_assign(clone(ajaxOpts), reqAjax, options);
     var defaultHeaders = clone(ajaxOpts.headers || {});
@@ -8835,7 +8847,7 @@ function HttpPouch(opts, callback) {
 
   function ajaxPromise(userOpts, opts) {
     return new PouchPromise(function (resolve, reject) {
-      ajax$$1(userOpts, opts, function (err, res) {
+      ajax(userOpts, opts, function (err, res) {
         /* istanbul ignore if */
         if (err) {
           return reject(err);
@@ -8908,7 +8920,7 @@ function HttpPouch(opts, callback) {
   };
 
   api.id = adapterFun$$1('id', function (callback) {
-    ajax$$1({}, {method: 'GET', url: genUrl(host, '')}, function (err, result) {
+    ajax({}, {method: 'GET', url: genUrl(host, '')}, function (err, result) {
       var uuid$$1 = (result && result.uuid) ?
         (result.uuid + host.db) : genDBUrl(host, '');
       callback(null, uuid$$1);
@@ -8917,7 +8929,7 @@ function HttpPouch(opts, callback) {
 
   api.request = adapterFun$$1('request', function (options, callback) {
     options.url = genDBUrl(host, options.url);
-    ajax$$1({}, options, callback);
+    ajax({}, options, callback);
   });
 
   // Sends a POST request to the host calling the couchdb _compact function
@@ -8928,7 +8940,7 @@ function HttpPouch(opts, callback) {
       opts = {};
     }
     opts = clone(opts);
-    ajax$$1(opts, {
+    ajax(opts, {
       url: genDBUrl(host, '_compact'),
       method: 'POST'
     }, function () {
@@ -8964,7 +8976,7 @@ function HttpPouch(opts, callback) {
       if (opts.latest) {
         params.latest = true;
       }
-      ajax$$1(opts, {
+      ajax(opts, {
         url: genDBUrl(host, '_bulk_get' + paramsToStr(params)),
         method: 'POST',
         body: { docs: opts.docs}
@@ -9038,7 +9050,7 @@ function HttpPouch(opts, callback) {
   //    version: The version of CouchDB it is running
   api._info = function (callback) {
     setup().then(function () {
-      ajax$$1({}, {
+      ajax({}, {
         method: 'GET',
         url: genDBUrl(host, '')
       }, function (err, res) {
@@ -9203,7 +9215,7 @@ function HttpPouch(opts, callback) {
     var rev$$1 = (doc._rev || opts.rev);
 
     // Delete the document
-    ajax$$1(opts, {
+    ajax(opts, {
       method: 'DELETE',
       url: genDBUrl(host, encodeDocId(doc._id)) + '?rev=' + rev$$1
     }, callback);
@@ -9224,7 +9236,7 @@ function HttpPouch(opts, callback) {
     var params = opts.rev ? ('?rev=' + opts.rev) : '';
     var url = genDBUrl(host, encodeDocId(docId)) + '/' +
       encodeAttachmentId(attachmentId) + params;
-    ajax$$1(opts, {
+    ajax(opts, {
       method: 'GET',
       url: url,
       binary: true
@@ -9239,7 +9251,7 @@ function HttpPouch(opts, callback) {
     var url = genDBUrl(host, encodeDocId(docId) + '/' +
       encodeAttachmentId(attachmentId)) + '?rev=' + rev$$1;
 
-    ajax$$1({}, {
+    ajax({}, {
       method: 'DELETE',
       url: url
     }, callback);
@@ -9284,7 +9296,7 @@ function HttpPouch(opts, callback) {
       timeout: ajaxOpts.timeout || 60000
     };
     // Add the attachment
-    ajax$$1({}, opts, callback);
+    ajax({}, opts, callback);
   });
 
   // Update/create multiple documents given by req in the database
@@ -9299,7 +9311,7 @@ function HttpPouch(opts, callback) {
       return PouchPromise.all(req.docs.map(preprocessAttachments$2));
     }).then(function () {
       // Update/create the documents
-      ajax$$1(opts, {
+      ajax(opts, {
         method: 'POST',
         url: genDBUrl(host, '_bulk_docs'),
         timeout: opts.timeout,
@@ -9323,7 +9335,7 @@ function HttpPouch(opts, callback) {
       return preprocessAttachments$2(doc);
     }).then(function () {
       // Update/create the document
-      ajax$$1(opts, {
+      ajax(opts, {
         method: 'PUT',
         url: genDBUrl(host, encodeDocId(doc._id)),
         body: doc
@@ -9595,7 +9607,7 @@ function HttpPouch(opts, callback) {
 
       // Get the changes
       setup().then(function () {
-        xhr = ajax$$1(opts, xhrOpts, callback);
+        xhr = ajax(opts, xhrOpts, callback);
       }).catch(callback);
     };
 
@@ -9691,7 +9703,7 @@ function HttpPouch(opts, callback) {
     }
 
     // Get the missing document/revision IDs
-    ajax$$1(opts, {
+    ajax(opts, {
       method: 'POST',
       url: genDBUrl(host, '_revs_diff'),
       body: req
@@ -9703,7 +9715,7 @@ function HttpPouch(opts, callback) {
   };
 
   api._destroy = function (options, callback) {
-    ajax$$1(options, {
+    ajax(options, {
       url: genDBUrl(host, ''),
       method: 'DELETE'
     }, function (err, resp) {
@@ -12331,8 +12343,8 @@ function replication(PouchDB) {
   };
 }
 
-PouchDB$5.plugin(IDBPouch)
-  .plugin(WebSqlPouch)
+PouchDB.plugin(IDBPouch)
+  .plugin(WebSqlPouch$1)
   .plugin(HttpPouch$1)
   .plugin(mapreduce)
   .plugin(replication);
@@ -12341,4 +12353,4 @@ PouchDB$5.plugin(IDBPouch)
 // are aggressively optimized and jsnext:main would normally give us this
 // aggressive bundle.
 
-export default PouchDB$5;
+export default PouchDB;

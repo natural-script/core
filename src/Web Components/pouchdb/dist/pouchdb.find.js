@@ -1,7 +1,7 @@
-// pouchdb-find plugin 6.4.1
+// pouchdb-find plugin 6.4.2
 // Based on Mango: https://github.com/cloudant/mango
 // 
-// (c) 2012-2017 Dale Harvey and the PouchDB team
+// (c) 2012-2018 Dale Harvey and the PouchDB team
 // PouchDB may be freely distributed under the Apache license, version 2.0.
 // For all details and documentation:
 // http://pouchdb.com
@@ -1657,30 +1657,30 @@ function bytesToUuid(buf, offset) {
 module.exports = bytesToUuid;
 
 },{}],10:[function(_dereq_,module,exports){
-(function (global){
 // Unique ID creation requires a high quality random # generator.  In the
 // browser this is a little complicated due to unknown quality of Math.random()
 // and inconsistent support for the `crypto` API.  We do the best we can via
 // feature-detection
-var rng;
 
-var crypto = global.crypto || global.msCrypto; // for IE 11
-if (crypto && crypto.getRandomValues) {
+// getRandomValues needs to be invoked in a context where "this" is a Crypto implementation.
+var getRandomValues = (typeof(crypto) != 'undefined' && crypto.getRandomValues.bind(crypto)) ||
+                      (typeof(msCrypto) != 'undefined' && msCrypto.getRandomValues.bind(msCrypto));
+if (getRandomValues) {
   // WHATWG crypto RNG - http://wiki.whatwg.org/wiki/Crypto
   var rnds8 = new Uint8Array(16); // eslint-disable-line no-undef
-  rng = function whatwgRNG() {
-    crypto.getRandomValues(rnds8);
+
+  module.exports = function whatwgRNG() {
+    getRandomValues(rnds8);
     return rnds8;
   };
-}
-
-if (!rng) {
+} else {
   // Math.random()-based (RNG)
   //
   // If all else fails, use Math.random().  It's fast, but is of unspecified
   // quality.
   var rnds = new Array(16);
-  rng = function() {
+
+  module.exports = function mathRNG() {
     for (var i = 0, r; i < 16; i++) {
       if ((i & 0x03) === 0) r = Math.random() * 0x100000000;
       rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
@@ -1690,9 +1690,6 @@ if (!rng) {
   };
 }
 
-module.exports = rng;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],11:[function(_dereq_,module,exports){
 var rng = _dereq_(10);
 var bytesToUuid = _dereq_(9);
@@ -1702,20 +1699,12 @@ var bytesToUuid = _dereq_(9);
 // Inspired by https://github.com/LiosK/UUID.js
 // and http://docs.python.org/library/uuid.html
 
-// random #'s we need to init node and clockseq
-var _seedBytes = rng();
-
-// Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
-var _nodeId = [
-  _seedBytes[0] | 0x01,
-  _seedBytes[1], _seedBytes[2], _seedBytes[3], _seedBytes[4], _seedBytes[5]
-];
-
-// Per 4.2.2, randomize (14 bit) clockseq
-var _clockseq = (_seedBytes[6] << 8 | _seedBytes[7]) & 0x3fff;
+var _nodeId;
+var _clockseq;
 
 // Previous uuid creation time
-var _lastMSecs = 0, _lastNSecs = 0;
+var _lastMSecs = 0;
+var _lastNSecs = 0;
 
 // See https://github.com/broofa/node-uuid for API details
 function v1(options, buf, offset) {
@@ -1723,8 +1712,26 @@ function v1(options, buf, offset) {
   var b = buf || [];
 
   options = options || {};
-
+  var node = options.node || _nodeId;
   var clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq;
+
+  // node and clockseq need to be initialized to random values if they're not
+  // specified.  We do this lazily to minimize issues related to insufficient
+  // system entropy.  See #189
+  if (node == null || clockseq == null) {
+    var seedBytes = rng();
+    if (node == null) {
+      // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+      node = _nodeId = [
+        seedBytes[0] | 0x01,
+        seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]
+      ];
+    }
+    if (clockseq == null) {
+      // Per 4.2.2, randomize (14 bit) clockseq
+      clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 0x3fff;
+    }
+  }
 
   // UUID timestamps are 100 nano-second units since the Gregorian epoch,
   // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
@@ -1785,7 +1792,6 @@ function v1(options, buf, offset) {
   b[i++] = clockseq & 0xff;
 
   // `node`
-  var node = options.node || _nodeId;
   for (var n = 0; n < 6; ++n) {
     b[i + n] = node[n];
   }
@@ -1803,7 +1809,7 @@ function v4(options, buf, offset) {
   var i = buf && offset || 0;
 
   if (typeof(options) == 'string') {
-    buf = options == 'binary' ? new Array(16) : null;
+    buf = options === 'binary' ? new Array(16) : null;
     options = null;
   }
   options = options || {};
@@ -1832,12 +1838,12 @@ module.exports = v4;
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var uuidV4 = _interopDefault(_dereq_(8));
 var lie = _interopDefault(_dereq_(5));
 var getArguments = _interopDefault(_dereq_(1));
+var nextTick = _interopDefault(_dereq_(3));
 var events = _dereq_(2);
 var inherits = _interopDefault(_dereq_(4));
-var nextTick = _interopDefault(_dereq_(3));
+var uuidV4 = _interopDefault(_dereq_(8));
 var Md5 = _interopDefault(_dereq_(7));
 
 /* istanbul ignore next */
@@ -4778,7 +4784,7 @@ function createDeepMultiMapper(fields, emit) {
       for (var j = 0, jLen = parsedField.length; j < jLen; j++) {
         var key = parsedField[j];
         value = value[key];
-        if (!value) {
+        if (typeof value === 'undefined') {
           return; // don't emit
         }
       }
@@ -4795,7 +4801,7 @@ function createDeepSingleMapper(field, emit) {
     for (var i = 0, len = parsedField.length; i < len; i++) {
       var key = parsedField[i];
       value = value[key];
-      if (!value) {
+      if (typeof value === 'undefined') {
         return; // do nothing
       }
     }
@@ -5314,6 +5320,7 @@ function checkFieldsLogicallySound(indexFields, selector) {
   var matcher = selector[firstField];
 
   if (typeof matcher === 'undefined') {
+    /* istanbul ignore next */
     return true;
   }
 
@@ -5408,6 +5415,7 @@ function findBestMatchingIndex(selector, userFields, sortOrder, indexes, useInde
       }
 
       if (index.ddoc === useIndexDdoc) {
+        /* istanbul ignore next */
         return true;
       }
 
@@ -5724,6 +5732,7 @@ function find$1(db, requestDef, explain) {
     if ('startkey' in opts && 'endkey' in opts &&
         collate(opts.startkey, opts.endkey) > 0) {
       // can't possibly return any results, startkey > endkey
+      /* istanbul ignore next */
       return {docs: []};
     }
 

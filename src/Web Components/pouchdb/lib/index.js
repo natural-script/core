@@ -2,24 +2,24 @@
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var uuidV4 = _interopDefault(require('uuid'));
 var lie = _interopDefault(require('lie'));
-var getArguments = _interopDefault(require('argsarray'));
 var cloneBuffer = _interopDefault(require('clone-buffer'));
+var getArguments = _interopDefault(require('argsarray'));
 var events = require('events');
 var events__default = _interopDefault(events);
 var inherits = _interopDefault(require('inherits'));
+var uuidV4 = _interopDefault(require('uuid'));
 var debug = _interopDefault(require('debug'));
 var vm = _interopDefault(require('vm'));
-var levelup = _interopDefault(require('levelup'));
 var ltgt = _interopDefault(require('ltgt'));
-var Codec = _interopDefault(require('level-codec'));
 var ReadableStreamCore = _interopDefault(require('readable-stream'));
-var through2 = require('through2');
-var Deque = _interopDefault(require('double-ended-queue'));
+var Codec = _interopDefault(require('level-codec'));
 var bufferFrom = _interopDefault(require('buffer-from'));
 var crypto = _interopDefault(require('crypto'));
 var vuvuzela = _interopDefault(require('vuvuzela'));
+var levelup = _interopDefault(require('levelup'));
+var through2 = require('through2');
+var Deque = _interopDefault(require('double-ended-queue'));
 var fs = _interopDefault(require('fs'));
 var path = _interopDefault(require('path'));
 var level = _interopDefault(require('level'));
@@ -293,12 +293,12 @@ var ExportedMap;
 }
 
 // like underscore/lodash _.pick()
-function pick(obj$$1, arr) {
+function pick(obj, arr) {
   var res = {};
   for (var i = 0, len = arr.length; i < len; i++) {
     var prop = arr[i];
-    if (prop in obj$$1) {
-      res[prop] = obj$$1[prop];
+    if (prop in obj) {
+      res[prop] = obj[prop];
     }
   }
   return res;
@@ -1521,8 +1521,8 @@ Changes$2.prototype.validateChanges = function (opts) {
   var self = this;
 
   /* istanbul ignore else */
-  if (PouchDB$5._changesFilterPlugin) {
-    PouchDB$5._changesFilterPlugin.validate(opts, function (err) {
+  if (PouchDB._changesFilterPlugin) {
+    PouchDB._changesFilterPlugin.validate(opts, function (err) {
       if (err) {
         return callback(err);
       }
@@ -1563,10 +1563,10 @@ Changes$2.prototype.doChanges = function (opts) {
   }
 
   /* istanbul ignore else */
-  if (PouchDB$5._changesFilterPlugin) {
-    PouchDB$5._changesFilterPlugin.normalize(opts);
-    if (PouchDB$5._changesFilterPlugin.shouldFilter(this, opts)) {
-      return PouchDB$5._changesFilterPlugin.filter(this, opts);
+  if (PouchDB._changesFilterPlugin) {
+    PouchDB._changesFilterPlugin.normalize(opts);
+    if (PouchDB._changesFilterPlugin.shouldFilter(this, opts)) {
+      return PouchDB._changesFilterPlugin.filter(this, opts);
     }
   } else {
     ['doc_ids', 'filter', 'selector', 'view'].forEach(function (key) {
@@ -1682,6 +1682,7 @@ function allDocsKeysParse(opts) {
     (opts.skip > 0) ? opts.keys.slice(opts.skip) : opts.keys;
   opts.keys = keys;
   opts.skip = 0;
+  delete opts.limit;
   if (opts.descending) {
     keys.reverse();
     opts.descending = false;
@@ -1846,25 +1847,25 @@ AbstractPouchDB.prototype.removeAttachment =
   adapterFun('removeAttachment', function (docId, attachmentId, rev$$1,
                                                  callback) {
   var self = this;
-  self.get(docId, function (err, obj$$1) {
+  self.get(docId, function (err, obj) {
     /* istanbul ignore if */
     if (err) {
       callback(err);
       return;
     }
-    if (obj$$1._rev !== rev$$1) {
+    if (obj._rev !== rev$$1) {
       callback(createError(REV_CONFLICT));
       return;
     }
     /* istanbul ignore if */
-    if (!obj$$1._attachments) {
+    if (!obj._attachments) {
       return callback();
     }
-    delete obj$$1._attachments[attachmentId];
-    if (Object.keys(obj$$1._attachments).length === 0) {
-      delete obj$$1._attachments;
+    delete obj._attachments[attachmentId];
+    if (Object.keys(obj._attachments).length === 0) {
+      delete obj._attachments;
     }
-    self.put(obj$$1, callback);
+    self.put(obj, callback);
   });
 });
 
@@ -2554,9 +2555,9 @@ function parseAdapter(name, opts) {
     };
   }
 
-  var adapters = PouchDB$5.adapters;
-  var preferredAdapters = PouchDB$5.preferredAdapters;
-  var prefix = PouchDB$5.prefix;
+  var adapters = PouchDB.adapters;
+  var preferredAdapters = PouchDB.preferredAdapters;
+  var prefix = PouchDB.prefix;
   var adapterName = opts.adapter;
 
   if (!adapterName) { // automatically determine adapter
@@ -2616,12 +2617,12 @@ function prepareForDestruction(self) {
   self.constructor.emit('ref', self);
 }
 
-inherits(PouchDB$5, AbstractPouchDB);
-function PouchDB$5(name, opts) {
+inherits(PouchDB, AbstractPouchDB);
+function PouchDB(name, opts) {
   // In Node our test suite only tests this for PouchAlt unfortunately
   /* istanbul ignore if */
-  if (!(this instanceof PouchDB$5)) {
-    return new PouchDB$5(name, opts);
+  if (!(this instanceof PouchDB)) {
+    return new PouchDB(name, opts);
   }
 
   var self = this;
@@ -2636,7 +2637,7 @@ function PouchDB$5(name, opts) {
   this.__opts = opts = clone(opts);
 
   self.auto_compaction = opts.auto_compaction;
-  self.prefix = PouchDB$5.prefix;
+  self.prefix = PouchDB.prefix;
 
   if (typeof name !== 'string') {
     throw new Error('Missing/invalid DB name');
@@ -2650,10 +2651,10 @@ function PouchDB$5(name, opts) {
 
   self.name = name;
   self._adapter = opts.adapter;
-  PouchDB$5.emit('debug', ['adapter', 'Picked adapter: ', opts.adapter]);
+  PouchDB.emit('debug', ['adapter', 'Picked adapter: ', opts.adapter]);
 
-  if (!PouchDB$5.adapters[opts.adapter] ||
-      !PouchDB$5.adapters[opts.adapter].valid()) {
+  if (!PouchDB.adapters[opts.adapter] ||
+      !PouchDB.adapters[opts.adapter].valid()) {
     throw new Error('Invalid Adapter: ' + opts.adapter);
   }
 
@@ -2662,23 +2663,23 @@ function PouchDB$5(name, opts) {
 
   self.adapter = opts.adapter;
 
-  PouchDB$5.adapters[opts.adapter].call(self, opts, function (err) {
+  PouchDB.adapters[opts.adapter].call(self, opts, function (err) {
     if (err) {
       return self.taskqueue.fail(err);
     }
     prepareForDestruction(self);
 
     self.emit('created', self);
-    PouchDB$5.emit('created', self.name);
+    PouchDB.emit('created', self.name);
     self.taskqueue.ready(self);
   });
 
 }
 
-PouchDB$5.adapters = {};
-PouchDB$5.preferredAdapters = [];
+PouchDB.adapters = {};
+PouchDB.preferredAdapters = [];
 
-PouchDB$5.prefix = '_pouch_';
+PouchDB.prefix = '_pouch_';
 
 var eventEmitter = new events.EventEmitter();
 
@@ -2731,35 +2732,35 @@ function setUpEventEmitter(Pouch) {
   });
 }
 
-setUpEventEmitter(PouchDB$5);
+setUpEventEmitter(PouchDB);
 
-PouchDB$5.adapter = function (id, obj$$1, addToPreferredAdapters) {
+PouchDB.adapter = function (id, obj, addToPreferredAdapters) {
   /* istanbul ignore else */
-  if (obj$$1.valid()) {
-    PouchDB$5.adapters[id] = obj$$1;
+  if (obj.valid()) {
+    PouchDB.adapters[id] = obj;
     if (addToPreferredAdapters) {
-      PouchDB$5.preferredAdapters.push(id);
+      PouchDB.preferredAdapters.push(id);
     }
   }
 };
 
-PouchDB$5.plugin = function (obj$$1) {
-  if (typeof obj$$1 === 'function') { // function style for plugins
-    obj$$1(PouchDB$5);
-  } else if (typeof obj$$1 !== 'object' || Object.keys(obj$$1).length === 0) {
-    throw new Error('Invalid plugin: got "' + obj$$1 + '", expected an object or a function');
+PouchDB.plugin = function (obj) {
+  if (typeof obj === 'function') { // function style for plugins
+    obj(PouchDB);
+  } else if (typeof obj !== 'object' || Object.keys(obj).length === 0) {
+    throw new Error('Invalid plugin: got "' + obj + '", expected an object or a function');
   } else {
-    Object.keys(obj$$1).forEach(function (id) { // object style for plugins
-      PouchDB$5.prototype[id] = obj$$1[id];
+    Object.keys(obj).forEach(function (id) { // object style for plugins
+      PouchDB.prototype[id] = obj[id];
     });
   }
   if (this.__defaults) {
-    PouchDB$5.__defaults = $inject_Object_assign({}, this.__defaults);
+    PouchDB.__defaults = $inject_Object_assign({}, this.__defaults);
   }
-  return PouchDB$5;
+  return PouchDB;
 };
 
-PouchDB$5.defaults = function (defaultOpts) {
+PouchDB.defaults = function (defaultOpts) {
   function PouchAlt(name, opts) {
     if (!(this instanceof PouchAlt)) {
       return new PouchAlt(name, opts);
@@ -2774,15 +2775,15 @@ PouchDB$5.defaults = function (defaultOpts) {
     }
 
     opts = $inject_Object_assign({}, PouchAlt.__defaults, opts);
-    PouchDB$5.call(this, name, opts);
+    PouchDB.call(this, name, opts);
   }
 
-  inherits(PouchAlt, PouchDB$5);
+  inherits(PouchAlt, PouchDB);
 
-  PouchAlt.preferredAdapters = PouchDB$5.preferredAdapters.slice();
-  Object.keys(PouchDB$5).forEach(function (key) {
+  PouchAlt.preferredAdapters = PouchDB.preferredAdapters.slice();
+  Object.keys(PouchDB).forEach(function (key) {
     if (!(key in PouchAlt)) {
-      PouchAlt[key] = PouchDB$5[key];
+      PouchAlt[key] = PouchDB[key];
     }
   });
 
@@ -2794,7 +2795,7 @@ PouchDB$5.defaults = function (defaultOpts) {
 };
 
 // managed automatically by set-version.js
-var version = "6.4.1";
+var version = "6.4.2";
 
 function debugPouch(PouchDB) {
   PouchDB.debug = debug;
@@ -2857,12 +2858,12 @@ function isCombinationalField(field) {
   return combinationFields.indexOf(field) > -1;
 }
 
-function getKey(obj$$1) {
-  return Object.keys(obj$$1)[0];
+function getKey(obj) {
+  return Object.keys(obj)[0];
 }
 
-function getValue(obj$$1) {
-  return obj$$1[getKey(obj$$1)];
+function getValue(obj) {
+  return obj[getKey(obj)];
 }
 
 
@@ -3236,11 +3237,11 @@ function parseNumber(str, i) {
 // move up the stack while parsing
 // this function moved outside of parseIndexableString for performance
 function pop(stack, metaStack) {
-  var obj$$1 = stack.pop();
+  var obj = stack.pop();
 
   if (metaStack.length) {
     var lastMetaElement = metaStack[metaStack.length - 1];
-    if (obj$$1 === lastMetaElement.element) {
+    if (obj === lastMetaElement.element) {
       // popping a meta-element, e.g. an object whose value is another object
       metaStack.pop();
       lastMetaElement = metaStack[metaStack.length - 1];
@@ -3248,12 +3249,12 @@ function pop(stack, metaStack) {
     var element = lastMetaElement.element;
     var lastElementIndex = lastMetaElement.index;
     if (Array.isArray(element)) {
-      element.push(obj$$1);
+      element.push(obj);
     } else if (lastElementIndex === stack.length - 2) { // obj with key+value
       var key = stack.pop();
-      element[key] = obj$$1;
+      element[key] = obj;
     } else {
-      stack.push(obj$$1); // obj with key only
+      stack.push(obj); // obj with key only
     }
   }
 }
@@ -3854,12 +3855,12 @@ function applyChangesFilterPlugin(PouchDB) {
 }
 
 // TODO: remove from pouchdb-core (breaking)
-PouchDB$5.plugin(debugPouch);
+PouchDB.plugin(debugPouch);
 
 // TODO: remove from pouchdb-core (breaking)
-PouchDB$5.plugin(applyChangesFilterPlugin);
+PouchDB.plugin(applyChangesFilterPlugin);
 
-PouchDB$5.version = version;
+PouchDB.version = version;
 
 function isFunction(f) {
   return 'function' === typeof f;
@@ -3873,11 +3874,11 @@ function getPrefix(db) {
 }
 
 function clone$2(_obj) {
-  var obj$$1 = {};
+  var obj = {};
   for (var k in _obj) {
-    obj$$1[k] = _obj[k];
+    obj[k] = _obj[k];
   }
-  return obj$$1;
+  return obj;
 }
 
 function nut(db, precodec, codec) {
@@ -4000,13 +4001,13 @@ inherits(NotFoundError, Error);
 
 NotFoundError.prototype.name = 'NotFoundError';
 
-var EventEmitter$1 = events__default.EventEmitter;
+var EventEmitter = events__default.EventEmitter;
 var version$1 = "6.5.4";
 
 var NOT_FOUND_ERROR = new NotFoundError();
 
-var sublevel$1 = function (nut, prefix, createStream, options) {
-  var emitter = new EventEmitter$1();
+var sublevel = function (nut, prefix, createStream, options) {
+  var emitter = new EventEmitter();
   emitter.sublevels = {};
   emitter.options = options;
 
@@ -4102,7 +4103,7 @@ var sublevel$1 = function (nut, prefix, createStream, options) {
 
   emitter.sublevel = function (name, opts) {
     return emitter.sublevels[name] =
-      emitter.sublevels[name] || sublevel$1(nut, prefix.concat(name), createStream, mergeOpts(opts));
+      emitter.sublevels[name] || sublevel(nut, prefix.concat(name), createStream, mergeOpts(opts));
   };
 
   emitter.readStream = emitter.createReadStream = function (opts) {
@@ -4237,7 +4238,7 @@ var precodec = {
 var codec = new Codec();
 
 function sublevelPouch(db) {
-  return sublevel$1(nut(db, precodec, codec), [], ReadStream, db.options);
+  return sublevel(nut(db, precodec, codec), [], ReadStream, db.options);
 }
 
 function allDocsKeysQuery(api, opts) {
@@ -4271,9 +4272,9 @@ function allDocsKeysQuery(api, opts) {
 }
 
 function toObject(array) {
-  return array.reduce(function (obj$$1, item) {
-    obj$$1[item] = true;
-    return obj$$1;
+  return array.reduce(function (obj, item) {
+    obj[item] = true;
+    return obj;
   }, {});
 }
 // List of top level reserved words for doc
@@ -4844,7 +4845,7 @@ function fetchAttachments(results, stores, opts) {
   }));
 }
 
-function LevelPouch$1(opts, callback) {
+function LevelPouch(opts, callback) {
   opts = clone(opts);
   var api = this;
   var instanceId;
@@ -6439,7 +6440,7 @@ function LevelDownPouch(opts, callback) {
     migrate: migrate
   }, opts);
 
-  LevelPouch$1.call(this, _opts, callback);
+  LevelPouch.call(this, _opts, callback);
 }
 
 // overrides for normal LevelDB behavior on Node
@@ -6448,7 +6449,7 @@ LevelDownPouch.valid = function () {
 };
 LevelDownPouch.use_prefix = false;
 
-function LevelPouch (PouchDB) {
+function LevelPouch$1 (PouchDB) {
   PouchDB.adapter('leveldb', LevelDownPouch, true);
 }
 
@@ -6467,7 +6468,7 @@ function defaultBody() {
   return bufferFrom('', 'binary');
 }
 
-function ajaxCore$1(options, callback) {
+function ajaxCore(options, callback) {
 
   options = clone(options);
 
@@ -6482,18 +6483,18 @@ function ajaxCore$1(options, callback) {
 
   options = $inject_Object_assign(defaultOptions, options);
 
-  function onSuccess(obj$$1, resp, cb) {
-    if (!options.binary && options.json && typeof obj$$1 === 'string') {
+  function onSuccess(obj, resp, cb) {
+    if (!options.binary && options.json && typeof obj === 'string') {
       /* istanbul ignore next */
       try {
-        obj$$1 = JSON.parse(obj$$1);
+        obj = JSON.parse(obj);
       } catch (e) {
         // Probably a malformed JSON from server
         return cb(e);
       }
     }
-    if (Array.isArray(obj$$1)) {
-      obj$$1 = obj$$1.map(function (v) {
+    if (Array.isArray(obj)) {
+      obj = obj.map(function (v) {
         if (v.error || v.missing) {
           return generateErrorFromResponse(v);
         } else {
@@ -6502,9 +6503,9 @@ function ajaxCore$1(options, callback) {
       });
     }
     if (options.binary) {
-      applyTypeToBuffer(obj$$1, resp);
+      applyTypeToBuffer(obj, resp);
     }
-    cb(null, obj$$1, resp);
+    cb(null, obj, resp);
   }
 
   if (options.json) {
@@ -6557,7 +6558,7 @@ function ajaxCore$1(options, callback) {
 
 function ajax(opts, callback) {
   // do nothing; all the action is in prerequest-browser.js
-  return ajaxCore$1(opts, callback);
+  return ajaxCore(opts, callback);
 }
 
 // dead simple promise pool, inspired by https://github.com/timdp/es6-promise-pool
@@ -7813,8 +7814,8 @@ function convertToTrueError(err) {
   return createBuiltInError(err.name);
 }
 
-function isBuiltInError(obj$$1) {
-  return obj$$1 && obj$$1.builtInError;
+function isBuiltInError(obj) {
+  return obj && obj.builtInError;
 }
 
 // All of this vm hullaballoo is to be able to run arbitrary code in a sandbox
@@ -10309,7 +10310,7 @@ function replication(PouchDB) {
   };
 }
 
-PouchDB$5.plugin(LevelPouch)
+PouchDB.plugin(LevelPouch$1)
   .plugin(HttpPouch$1)
   .plugin(mapreduce)
   .plugin(replication);
@@ -10318,4 +10319,4 @@ PouchDB$5.plugin(LevelPouch)
 // are aggressively optimized and jsnext:main would normally give us this
 // aggressive bundle.
 
-module.exports = PouchDB$5;
+module.exports = PouchDB;

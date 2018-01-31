@@ -1,7 +1,7 @@
-// PouchDB localStorage plugin 6.4.1
+// PouchDB localStorage plugin 6.4.2
 // Based on localstorage-down: https://github.com/No9/localstorage-down
 // 
-// (c) 2012-2017 Dale Harvey and the PouchDB team
+// (c) 2012-2018 Dale Harvey and the PouchDB team
 // PouchDB may be freely distributed under the Apache license, version 2.0.
 // For all details and documentation:
 // http://pouchdb.com
@@ -15563,30 +15563,30 @@ function bytesToUuid(buf, offset) {
 module.exports = bytesToUuid;
 
 },{}],147:[function(_dereq_,module,exports){
-(function (global){
 // Unique ID creation requires a high quality random # generator.  In the
 // browser this is a little complicated due to unknown quality of Math.random()
 // and inconsistent support for the `crypto` API.  We do the best we can via
 // feature-detection
-var rng;
 
-var crypto = global.crypto || global.msCrypto; // for IE 11
-if (crypto && crypto.getRandomValues) {
+// getRandomValues needs to be invoked in a context where "this" is a Crypto implementation.
+var getRandomValues = (typeof(crypto) != 'undefined' && crypto.getRandomValues.bind(crypto)) ||
+                      (typeof(msCrypto) != 'undefined' && msCrypto.getRandomValues.bind(msCrypto));
+if (getRandomValues) {
   // WHATWG crypto RNG - http://wiki.whatwg.org/wiki/Crypto
   var rnds8 = new Uint8Array(16); // eslint-disable-line no-undef
-  rng = function whatwgRNG() {
-    crypto.getRandomValues(rnds8);
+
+  module.exports = function whatwgRNG() {
+    getRandomValues(rnds8);
     return rnds8;
   };
-}
-
-if (!rng) {
+} else {
   // Math.random()-based (RNG)
   //
   // If all else fails, use Math.random().  It's fast, but is of unspecified
   // quality.
   var rnds = new Array(16);
-  rng = function() {
+
+  module.exports = function mathRNG() {
     for (var i = 0, r; i < 16; i++) {
       if ((i & 0x03) === 0) r = Math.random() * 0x100000000;
       rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
@@ -15596,9 +15596,6 @@ if (!rng) {
   };
 }
 
-module.exports = rng;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],148:[function(_dereq_,module,exports){
 var rng = _dereq_(147);
 var bytesToUuid = _dereq_(146);
@@ -15608,20 +15605,12 @@ var bytesToUuid = _dereq_(146);
 // Inspired by https://github.com/LiosK/UUID.js
 // and http://docs.python.org/library/uuid.html
 
-// random #'s we need to init node and clockseq
-var _seedBytes = rng();
-
-// Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
-var _nodeId = [
-  _seedBytes[0] | 0x01,
-  _seedBytes[1], _seedBytes[2], _seedBytes[3], _seedBytes[4], _seedBytes[5]
-];
-
-// Per 4.2.2, randomize (14 bit) clockseq
-var _clockseq = (_seedBytes[6] << 8 | _seedBytes[7]) & 0x3fff;
+var _nodeId;
+var _clockseq;
 
 // Previous uuid creation time
-var _lastMSecs = 0, _lastNSecs = 0;
+var _lastMSecs = 0;
+var _lastNSecs = 0;
 
 // See https://github.com/broofa/node-uuid for API details
 function v1(options, buf, offset) {
@@ -15629,8 +15618,26 @@ function v1(options, buf, offset) {
   var b = buf || [];
 
   options = options || {};
-
+  var node = options.node || _nodeId;
   var clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq;
+
+  // node and clockseq need to be initialized to random values if they're not
+  // specified.  We do this lazily to minimize issues related to insufficient
+  // system entropy.  See #189
+  if (node == null || clockseq == null) {
+    var seedBytes = rng();
+    if (node == null) {
+      // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+      node = _nodeId = [
+        seedBytes[0] | 0x01,
+        seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]
+      ];
+    }
+    if (clockseq == null) {
+      // Per 4.2.2, randomize (14 bit) clockseq
+      clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 0x3fff;
+    }
+  }
 
   // UUID timestamps are 100 nano-second units since the Gregorian epoch,
   // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
@@ -15691,7 +15698,6 @@ function v1(options, buf, offset) {
   b[i++] = clockseq & 0xff;
 
   // `node`
-  var node = options.node || _nodeId;
   for (var n = 0; n < 6; ++n) {
     b[i + n] = node[n];
   }
@@ -15709,7 +15715,7 @@ function v4(options, buf, offset) {
   var i = buf && offset || 0;
 
   if (typeof(options) == 'string') {
-    buf = options == 'binary' ? new Array(16) : null;
+    buf = options === 'binary' ? new Array(16) : null;
     options = null;
   }
   options = options || {};
@@ -16433,22 +16439,22 @@ function extend() {
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var uuidV4 = _interopDefault(_dereq_(145));
 var lie = _interopDefault(_dereq_(68));
 var getArguments = _interopDefault(_dereq_(4));
+var nextTick = _interopDefault(_dereq_(33));
 var events = _dereq_(25);
 var events__default = _interopDefault(events);
 var inherits = _interopDefault(_dereq_(35));
-var nextTick = _interopDefault(_dereq_(33));
-var levelup = _interopDefault(_dereq_(65));
+var uuidV4 = _interopDefault(_dereq_(145));
 var ltgt = _interopDefault(_dereq_(76));
-var Codec = _interopDefault(_dereq_(50));
 var ReadableStreamCore = _interopDefault(_dereq_(95));
+var Codec = _interopDefault(_dereq_(50));
+var Md5 = _interopDefault(_dereq_(100));
+var vuvuzela = _interopDefault(_dereq_(151));
+var levelup = _interopDefault(_dereq_(65));
 var through2 = _dereq_(127);
 var Deque = _interopDefault(_dereq_(22));
 var bufferFrom = _interopDefault(_dereq_(9));
-var Md5 = _interopDefault(_dereq_(100));
-var vuvuzela = _interopDefault(_dereq_(151));
 var localstoragedown = _interopDefault(_dereq_(69));
 
 /* istanbul ignore next */
@@ -16646,12 +16652,12 @@ var ExportedMap;
 }
 
 // like underscore/lodash _.pick()
-function pick(obj$$1, arr) {
+function pick(obj, arr) {
   var res = {};
   for (var i = 0, len = arr.length; i < len; i++) {
     var prop = arr[i];
-    if (prop in obj$$1) {
-      res[prop] = obj$$1[prop];
+    if (prop in obj) {
+      res[prop] = obj[prop];
     }
   }
   return res;
@@ -17016,11 +17022,11 @@ function getPrefix(db) {
 }
 
 function clone$2(_obj) {
-  var obj$$1 = {};
+  var obj = {};
   for (var k in _obj) {
-    obj$$1[k] = _obj[k];
+    obj[k] = _obj[k];
   }
-  return obj$$1;
+  return obj;
 }
 
 function nut(db, precodec, codec) {
@@ -17143,13 +17149,13 @@ inherits(NotFoundError, Error);
 
 NotFoundError.prototype.name = 'NotFoundError';
 
-var EventEmitter$1 = events__default.EventEmitter;
+var EventEmitter = events__default.EventEmitter;
 var version = "6.5.4";
 
 var NOT_FOUND_ERROR = new NotFoundError();
 
-var sublevel$1 = function (nut, prefix, createStream, options) {
-  var emitter = new EventEmitter$1();
+var sublevel = function (nut, prefix, createStream, options) {
+  var emitter = new EventEmitter();
   emitter.sublevels = {};
   emitter.options = options;
 
@@ -17245,7 +17251,7 @@ var sublevel$1 = function (nut, prefix, createStream, options) {
 
   emitter.sublevel = function (name, opts) {
     return emitter.sublevels[name] =
-      emitter.sublevels[name] || sublevel$1(nut, prefix.concat(name), createStream, mergeOpts(opts));
+      emitter.sublevels[name] || sublevel(nut, prefix.concat(name), createStream, mergeOpts(opts));
   };
 
   emitter.readStream = emitter.createReadStream = function (opts) {
@@ -17380,7 +17386,7 @@ var precodec = {
 var codec = new Codec();
 
 function sublevelPouch(db) {
-  return sublevel$1(nut(db, precodec, codec), [], ReadStream, db.options);
+  return sublevel(nut(db, precodec, codec), [], ReadStream, db.options);
 }
 
 function allDocsKeysQuery(api, opts) {
@@ -17414,9 +17420,9 @@ function allDocsKeysQuery(api, opts) {
 }
 
 function toObject(array) {
-  return array.reduce(function (obj$$1, item) {
-    obj$$1[item] = true;
-    return obj$$1;
+  return array.reduce(function (obj, item) {
+    obj[item] = true;
+    return obj;
   }, {});
 }
 // List of top level reserved words for doc

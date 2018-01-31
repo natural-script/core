@@ -2230,30 +2230,30 @@ function bytesToUuid(buf, offset) {
 module.exports = bytesToUuid;
 
 },{}],13:[function(_dereq_,module,exports){
-(function (global){
 // Unique ID creation requires a high quality random # generator.  In the
 // browser this is a little complicated due to unknown quality of Math.random()
 // and inconsistent support for the `crypto` API.  We do the best we can via
 // feature-detection
-var rng;
 
-var crypto = global.crypto || global.msCrypto; // for IE 11
-if (crypto && crypto.getRandomValues) {
+// getRandomValues needs to be invoked in a context where "this" is a Crypto implementation.
+var getRandomValues = (typeof(crypto) != 'undefined' && crypto.getRandomValues.bind(crypto)) ||
+                      (typeof(msCrypto) != 'undefined' && msCrypto.getRandomValues.bind(msCrypto));
+if (getRandomValues) {
   // WHATWG crypto RNG - http://wiki.whatwg.org/wiki/Crypto
   var rnds8 = new Uint8Array(16); // eslint-disable-line no-undef
-  rng = function whatwgRNG() {
-    crypto.getRandomValues(rnds8);
+
+  module.exports = function whatwgRNG() {
+    getRandomValues(rnds8);
     return rnds8;
   };
-}
-
-if (!rng) {
+} else {
   // Math.random()-based (RNG)
   //
   // If all else fails, use Math.random().  It's fast, but is of unspecified
   // quality.
   var rnds = new Array(16);
-  rng = function() {
+
+  module.exports = function mathRNG() {
     for (var i = 0, r; i < 16; i++) {
       if ((i & 0x03) === 0) r = Math.random() * 0x100000000;
       rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
@@ -2263,9 +2263,6 @@ if (!rng) {
   };
 }
 
-module.exports = rng;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}],14:[function(_dereq_,module,exports){
 var rng = _dereq_(13);
 var bytesToUuid = _dereq_(12);
@@ -2275,20 +2272,12 @@ var bytesToUuid = _dereq_(12);
 // Inspired by https://github.com/LiosK/UUID.js
 // and http://docs.python.org/library/uuid.html
 
-// random #'s we need to init node and clockseq
-var _seedBytes = rng();
-
-// Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
-var _nodeId = [
-  _seedBytes[0] | 0x01,
-  _seedBytes[1], _seedBytes[2], _seedBytes[3], _seedBytes[4], _seedBytes[5]
-];
-
-// Per 4.2.2, randomize (14 bit) clockseq
-var _clockseq = (_seedBytes[6] << 8 | _seedBytes[7]) & 0x3fff;
+var _nodeId;
+var _clockseq;
 
 // Previous uuid creation time
-var _lastMSecs = 0, _lastNSecs = 0;
+var _lastMSecs = 0;
+var _lastNSecs = 0;
 
 // See https://github.com/broofa/node-uuid for API details
 function v1(options, buf, offset) {
@@ -2296,8 +2285,26 @@ function v1(options, buf, offset) {
   var b = buf || [];
 
   options = options || {};
-
+  var node = options.node || _nodeId;
   var clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq;
+
+  // node and clockseq need to be initialized to random values if they're not
+  // specified.  We do this lazily to minimize issues related to insufficient
+  // system entropy.  See #189
+  if (node == null || clockseq == null) {
+    var seedBytes = rng();
+    if (node == null) {
+      // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+      node = _nodeId = [
+        seedBytes[0] | 0x01,
+        seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]
+      ];
+    }
+    if (clockseq == null) {
+      // Per 4.2.2, randomize (14 bit) clockseq
+      clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 0x3fff;
+    }
+  }
 
   // UUID timestamps are 100 nano-second units since the Gregorian epoch,
   // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
@@ -2358,7 +2365,6 @@ function v1(options, buf, offset) {
   b[i++] = clockseq & 0xff;
 
   // `node`
-  var node = options.node || _nodeId;
   for (var n = 0; n < 6; ++n) {
     b[i + n] = node[n];
   }
@@ -2376,7 +2382,7 @@ function v4(options, buf, offset) {
   var i = buf && offset || 0;
 
   if (typeof(options) == 'string') {
-    buf = options == 'binary' ? new Array(16) : null;
+    buf = options === 'binary' ? new Array(16) : null;
     options = null;
   }
   options = options || {};
@@ -2405,12 +2411,12 @@ module.exports = v4;
 
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
-var uuidV4 = _interopDefault(_dereq_(11));
 var lie = _interopDefault(_dereq_(7));
 var getArguments = _interopDefault(_dereq_(1));
+var nextTick = _interopDefault(_dereq_(5));
 var events = _dereq_(4);
 var inherits = _interopDefault(_dereq_(6));
-var nextTick = _interopDefault(_dereq_(5));
+var uuidV4 = _interopDefault(_dereq_(11));
 var debug = _interopDefault(_dereq_(2));
 var Md5 = _interopDefault(_dereq_(10));
 
@@ -3921,8 +3927,8 @@ Changes$1.prototype.validateChanges = function (opts) {
   var self = this;
 
   /* istanbul ignore else */
-  if (PouchDB$2._changesFilterPlugin) {
-    PouchDB$2._changesFilterPlugin.validate(opts, function (err) {
+  if (PouchDB._changesFilterPlugin) {
+    PouchDB._changesFilterPlugin.validate(opts, function (err) {
       if (err) {
         return callback(err);
       }
@@ -3963,10 +3969,10 @@ Changes$1.prototype.doChanges = function (opts) {
   }
 
   /* istanbul ignore else */
-  if (PouchDB$2._changesFilterPlugin) {
-    PouchDB$2._changesFilterPlugin.normalize(opts);
-    if (PouchDB$2._changesFilterPlugin.shouldFilter(this, opts)) {
-      return PouchDB$2._changesFilterPlugin.filter(this, opts);
+  if (PouchDB._changesFilterPlugin) {
+    PouchDB._changesFilterPlugin.normalize(opts);
+    if (PouchDB._changesFilterPlugin.shouldFilter(this, opts)) {
+      return PouchDB._changesFilterPlugin.filter(this, opts);
     }
   } else {
     ['doc_ids', 'filter', 'selector', 'view'].forEach(function (key) {
@@ -4082,6 +4088,7 @@ function allDocsKeysParse(opts) {
     (opts.skip > 0) ? opts.keys.slice(opts.skip) : opts.keys;
   opts.keys = keys;
   opts.skip = 0;
+  delete opts.limit;
   if (opts.descending) {
     keys.reverse();
     opts.descending = false;
@@ -4954,9 +4961,9 @@ function parseAdapter(name, opts) {
     };
   }
 
-  var adapters = PouchDB$2.adapters;
-  var preferredAdapters = PouchDB$2.preferredAdapters;
-  var prefix = PouchDB$2.prefix;
+  var adapters = PouchDB.adapters;
+  var preferredAdapters = PouchDB.preferredAdapters;
+  var prefix = PouchDB.prefix;
   var adapterName = opts.adapter;
 
   if (!adapterName) { // automatically determine adapter
@@ -5016,12 +5023,12 @@ function prepareForDestruction(self) {
   self.constructor.emit('ref', self);
 }
 
-inherits(PouchDB$2, AbstractPouchDB);
-function PouchDB$2(name, opts) {
+inherits(PouchDB, AbstractPouchDB);
+function PouchDB(name, opts) {
   // In Node our test suite only tests this for PouchAlt unfortunately
   /* istanbul ignore if */
-  if (!(this instanceof PouchDB$2)) {
-    return new PouchDB$2(name, opts);
+  if (!(this instanceof PouchDB)) {
+    return new PouchDB(name, opts);
   }
 
   var self = this;
@@ -5036,7 +5043,7 @@ function PouchDB$2(name, opts) {
   this.__opts = opts = clone(opts);
 
   self.auto_compaction = opts.auto_compaction;
-  self.prefix = PouchDB$2.prefix;
+  self.prefix = PouchDB.prefix;
 
   if (typeof name !== 'string') {
     throw new Error('Missing/invalid DB name');
@@ -5050,10 +5057,10 @@ function PouchDB$2(name, opts) {
 
   self.name = name;
   self._adapter = opts.adapter;
-  PouchDB$2.emit('debug', ['adapter', 'Picked adapter: ', opts.adapter]);
+  PouchDB.emit('debug', ['adapter', 'Picked adapter: ', opts.adapter]);
 
-  if (!PouchDB$2.adapters[opts.adapter] ||
-      !PouchDB$2.adapters[opts.adapter].valid()) {
+  if (!PouchDB.adapters[opts.adapter] ||
+      !PouchDB.adapters[opts.adapter].valid()) {
     throw new Error('Invalid Adapter: ' + opts.adapter);
   }
 
@@ -5062,23 +5069,23 @@ function PouchDB$2(name, opts) {
 
   self.adapter = opts.adapter;
 
-  PouchDB$2.adapters[opts.adapter].call(self, opts, function (err) {
+  PouchDB.adapters[opts.adapter].call(self, opts, function (err) {
     if (err) {
       return self.taskqueue.fail(err);
     }
     prepareForDestruction(self);
 
     self.emit('created', self);
-    PouchDB$2.emit('created', self.name);
+    PouchDB.emit('created', self.name);
     self.taskqueue.ready(self);
   });
 
 }
 
-PouchDB$2.adapters = {};
-PouchDB$2.preferredAdapters = [];
+PouchDB.adapters = {};
+PouchDB.preferredAdapters = [];
 
-PouchDB$2.prefix = '_pouch_';
+PouchDB.prefix = '_pouch_';
 
 var eventEmitter = new events.EventEmitter();
 
@@ -5131,35 +5138,35 @@ function setUpEventEmitter(Pouch) {
   });
 }
 
-setUpEventEmitter(PouchDB$2);
+setUpEventEmitter(PouchDB);
 
-PouchDB$2.adapter = function (id, obj, addToPreferredAdapters) {
+PouchDB.adapter = function (id, obj, addToPreferredAdapters) {
   /* istanbul ignore else */
   if (obj.valid()) {
-    PouchDB$2.adapters[id] = obj;
+    PouchDB.adapters[id] = obj;
     if (addToPreferredAdapters) {
-      PouchDB$2.preferredAdapters.push(id);
+      PouchDB.preferredAdapters.push(id);
     }
   }
 };
 
-PouchDB$2.plugin = function (obj) {
+PouchDB.plugin = function (obj) {
   if (typeof obj === 'function') { // function style for plugins
-    obj(PouchDB$2);
+    obj(PouchDB);
   } else if (typeof obj !== 'object' || Object.keys(obj).length === 0) {
     throw new Error('Invalid plugin: got "' + obj + '", expected an object or a function');
   } else {
     Object.keys(obj).forEach(function (id) { // object style for plugins
-      PouchDB$2.prototype[id] = obj[id];
+      PouchDB.prototype[id] = obj[id];
     });
   }
   if (this.__defaults) {
-    PouchDB$2.__defaults = $inject_Object_assign({}, this.__defaults);
+    PouchDB.__defaults = $inject_Object_assign({}, this.__defaults);
   }
-  return PouchDB$2;
+  return PouchDB;
 };
 
-PouchDB$2.defaults = function (defaultOpts) {
+PouchDB.defaults = function (defaultOpts) {
   function PouchAlt(name, opts) {
     if (!(this instanceof PouchAlt)) {
       return new PouchAlt(name, opts);
@@ -5174,15 +5181,15 @@ PouchDB$2.defaults = function (defaultOpts) {
     }
 
     opts = $inject_Object_assign({}, PouchAlt.__defaults, opts);
-    PouchDB$2.call(this, name, opts);
+    PouchDB.call(this, name, opts);
   }
 
-  inherits(PouchAlt, PouchDB$2);
+  inherits(PouchAlt, PouchDB);
 
-  PouchAlt.preferredAdapters = PouchDB$2.preferredAdapters.slice();
-  Object.keys(PouchDB$2).forEach(function (key) {
+  PouchAlt.preferredAdapters = PouchDB.preferredAdapters.slice();
+  Object.keys(PouchDB).forEach(function (key) {
     if (!(key in PouchAlt)) {
-      PouchAlt[key] = PouchDB$2[key];
+      PouchAlt[key] = PouchDB[key];
     }
   });
 
@@ -5194,7 +5201,7 @@ PouchDB$2.defaults = function (defaultOpts) {
 };
 
 // managed automatically by set-version.js
-var version = "6.4.1";
+var version = "6.4.2";
 
 function debugPouch(PouchDB) {
   PouchDB.debug = debug;
@@ -6002,12 +6009,12 @@ function applyChangesFilterPlugin(PouchDB) {
 }
 
 // TODO: remove from pouchdb-core (breaking)
-PouchDB$2.plugin(debugPouch);
+PouchDB.plugin(debugPouch);
 
 // TODO: remove from pouchdb-core (breaking)
-PouchDB$2.plugin(applyChangesFilterPlugin);
+PouchDB.plugin(applyChangesFilterPlugin);
 
-PouchDB$2.version = version;
+PouchDB.version = version;
 
 var thisAtob = function (str) {
   return atob(str);
@@ -6571,7 +6578,7 @@ function bulkDocs (db, req, opts, metadata, dbOpts, idbChanges, callback) {
         oldDocs[e.target.result.id] = e.target.result;
       }
       if (++fetched === docs.length) {
-        processDocs(txn, docs, oldDocs);
+        processDocs$$1(txn, docs, oldDocs);
       }
     }
 
@@ -6580,7 +6587,7 @@ function bulkDocs (db, req, opts, metadata, dbOpts, idbChanges, callback) {
     });
   }
 
-  function processDocs(txn, docs, oldDocs) {
+  function processDocs$$1(txn, docs, oldDocs) {
 
     docs.forEach(function (doc, i) {
       var newDoc;
@@ -7576,12 +7583,14 @@ function xhRequest(options, callback) {
       if (timedout) {
         err = new Error('ETIMEDOUT');
         err.code = 'ETIMEDOUT';
-      } else if (typeof xhr.response === 'string') {
+      } else if (typeof xhr.response === 'string' && xhr.response !== '') {
         try {
           err = JSON.parse(xhr.response);
         } catch (e) {}
       }
+
       err.status = xhr.status;
+
       callback(err);
     }
     cleanUp();
@@ -7609,7 +7618,7 @@ function testXhr() {
 
 var hasXhr = testXhr();
 
-function ajax$1(options, callback) {
+function ajax(options, callback) {
   if (!false && (hasXhr || options.xhr)) {
     return xhRequest(options, callback);
   } else {
@@ -7623,7 +7632,7 @@ function defaultBody() {
   return '';
 }
 
-function ajaxCore$1(options, callback) {
+function ajaxCore(options, callback) {
 
   options = clone(options);
 
@@ -7680,7 +7689,7 @@ function ajaxCore$1(options, callback) {
     options.json = false;
   }
 
-  return ajax$1(options, function (err, response, body) {
+  return ajax(options, function (err, response, body) {
 
     if (err) {
       return callback(generateErrorFromResponse(err));
@@ -7711,7 +7720,7 @@ function ajaxCore$1(options, callback) {
   });
 }
 
-function ajax(opts, callback) {
+function ajax$1(opts, callback) {
 
   // cache-buster, specifically designed to work around IE's aggressive caching
   // see http://www.dashbay.com/2011/05/internet-explorer-caches-ajax/
@@ -7738,7 +7747,7 @@ function ajax(opts, callback) {
     opts.url += (hasArgs ? '&' : '?') + '_nonce=' + Date.now();
   }
 
-  return ajaxCore$1(opts, callback);
+  return ajaxCore(opts, callback);
 }
 
 // dead simple promise pool, inspired by https://github.com/timdp/es6-promise-pool
@@ -7932,9 +7941,9 @@ function HttpPouch(opts, callback) {
 
   // Not strictly necessary, but we do this because numerous tests
   // rely on swapping ajax in and out.
-  api._ajax = ajax;
+  api._ajax = ajax$1;
 
-  function ajax$$1(userOpts, options, callback) {
+  function ajax(userOpts, options, callback) {
     var reqAjax = (userOpts || {}).ajax || {};
     var reqOpts = $inject_Object_assign(clone(ajaxOpts), reqAjax, options);
     var defaultHeaders = clone(ajaxOpts.headers || {});
@@ -7949,7 +7958,7 @@ function HttpPouch(opts, callback) {
 
   function ajaxPromise(userOpts, opts) {
     return new PouchPromise(function (resolve, reject) {
-      ajax$$1(userOpts, opts, function (err, res) {
+      ajax(userOpts, opts, function (err, res) {
         /* istanbul ignore if */
         if (err) {
           return reject(err);
@@ -8022,7 +8031,7 @@ function HttpPouch(opts, callback) {
   };
 
   api.id = adapterFun$$1('id', function (callback) {
-    ajax$$1({}, {method: 'GET', url: genUrl(host, '')}, function (err, result) {
+    ajax({}, {method: 'GET', url: genUrl(host, '')}, function (err, result) {
       var uuid$$1 = (result && result.uuid) ?
         (result.uuid + host.db) : genDBUrl(host, '');
       callback(null, uuid$$1);
@@ -8031,7 +8040,7 @@ function HttpPouch(opts, callback) {
 
   api.request = adapterFun$$1('request', function (options, callback) {
     options.url = genDBUrl(host, options.url);
-    ajax$$1({}, options, callback);
+    ajax({}, options, callback);
   });
 
   // Sends a POST request to the host calling the couchdb _compact function
@@ -8042,7 +8051,7 @@ function HttpPouch(opts, callback) {
       opts = {};
     }
     opts = clone(opts);
-    ajax$$1(opts, {
+    ajax(opts, {
       url: genDBUrl(host, '_compact'),
       method: 'POST'
     }, function () {
@@ -8078,7 +8087,7 @@ function HttpPouch(opts, callback) {
       if (opts.latest) {
         params.latest = true;
       }
-      ajax$$1(opts, {
+      ajax(opts, {
         url: genDBUrl(host, '_bulk_get' + paramsToStr(params)),
         method: 'POST',
         body: { docs: opts.docs}
@@ -8152,7 +8161,7 @@ function HttpPouch(opts, callback) {
   //    version: The version of CouchDB it is running
   api._info = function (callback) {
     setup().then(function () {
-      ajax$$1({}, {
+      ajax({}, {
         method: 'GET',
         url: genDBUrl(host, '')
       }, function (err, res) {
@@ -8317,7 +8326,7 @@ function HttpPouch(opts, callback) {
     var rev$$1 = (doc._rev || opts.rev);
 
     // Delete the document
-    ajax$$1(opts, {
+    ajax(opts, {
       method: 'DELETE',
       url: genDBUrl(host, encodeDocId(doc._id)) + '?rev=' + rev$$1
     }, callback);
@@ -8338,7 +8347,7 @@ function HttpPouch(opts, callback) {
     var params = opts.rev ? ('?rev=' + opts.rev) : '';
     var url = genDBUrl(host, encodeDocId(docId)) + '/' +
       encodeAttachmentId(attachmentId) + params;
-    ajax$$1(opts, {
+    ajax(opts, {
       method: 'GET',
       url: url,
       binary: true
@@ -8353,7 +8362,7 @@ function HttpPouch(opts, callback) {
     var url = genDBUrl(host, encodeDocId(docId) + '/' +
       encodeAttachmentId(attachmentId)) + '?rev=' + rev$$1;
 
-    ajax$$1({}, {
+    ajax({}, {
       method: 'DELETE',
       url: url
     }, callback);
@@ -8398,7 +8407,7 @@ function HttpPouch(opts, callback) {
       timeout: ajaxOpts.timeout || 60000
     };
     // Add the attachment
-    ajax$$1({}, opts, callback);
+    ajax({}, opts, callback);
   });
 
   // Update/create multiple documents given by req in the database
@@ -8413,7 +8422,7 @@ function HttpPouch(opts, callback) {
       return PouchPromise.all(req.docs.map(preprocessAttachments$2));
     }).then(function () {
       // Update/create the documents
-      ajax$$1(opts, {
+      ajax(opts, {
         method: 'POST',
         url: genDBUrl(host, '_bulk_docs'),
         timeout: opts.timeout,
@@ -8437,7 +8446,7 @@ function HttpPouch(opts, callback) {
       return preprocessAttachments$2(doc);
     }).then(function () {
       // Update/create the document
-      ajax$$1(opts, {
+      ajax(opts, {
         method: 'PUT',
         url: genDBUrl(host, encodeDocId(doc._id)),
         body: doc
@@ -8709,7 +8718,7 @@ function HttpPouch(opts, callback) {
 
       // Get the changes
       setup().then(function () {
-        xhr = ajax$$1(opts, xhrOpts, callback);
+        xhr = ajax(opts, xhrOpts, callback);
       })["catch"](callback);
     };
 
@@ -8805,7 +8814,7 @@ function HttpPouch(opts, callback) {
     }
 
     // Get the missing document/revision IDs
-    ajax$$1(opts, {
+    ajax(opts, {
       method: 'POST',
       url: genDBUrl(host, '_revs_diff'),
       body: req
@@ -8817,7 +8826,7 @@ function HttpPouch(opts, callback) {
   };
 
   api._destroy = function (options, callback) {
-    ajax$$1(options, {
+    ajax(options, {
       url: genDBUrl(host, ''),
       method: 'DELETE'
     }, function (err, resp) {
@@ -10166,7 +10175,7 @@ function replication(PouchDB) {
   };
 }
 
-var next = PouchDB$2
+var next = PouchDB
   .plugin(idbPouch)
   .plugin(httpPouch)
   .plugin(replication);
