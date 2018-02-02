@@ -1,8 +1,19 @@
+/*!
+ * Commands Analyzer
+ * https://project-jste.github.io/
+ *
+ * Copyright 2017 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-02-02
+ */
 var bot = new RiveScript({
-	utf8: true
+	utf8: true,
+	forceCase: true
 });
 bot.unicodePunctuation = new RegExp(/[]/g);
-bot.loadFile("https://rawgit.com/project-jste/framework/master/src/JS/Translations/commands.rive");
+bot.loadFile('../../src/JS/Translations/RiveScript/' + document.langCode + '.rive');
 window.analyzeCommand = function(commandRaw) {
 	bot.sortReplies();
 	var command = bot.reply("local-user", commandRaw).split(' ==> ');

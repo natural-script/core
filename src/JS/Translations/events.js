@@ -9,7 +9,7 @@
  * Date: 2017-09-14
  */
 document.E0 = '';
-if (document.lang == 0) {
+if (document.langID == 0) {
     document.E1 = 'When it has been clicked, ';
     document.E2 = 'When the mouse pointer has been moved over it, ';
     document.E3 = 'When the mouse pointer has been moved away from it, ';
@@ -29,7 +29,7 @@ if (document.lang == 0) {
     document.E17 = 'When the user said: ';
     document.E18 = 'When it becomes in the viewport, ';
     document.E19 = 'When it becomes out of the viewport, ';
-} else if (document.lang == 1) {
+} else if (document.langID == 1) {
     document.E1 = 'When it has been clicked, ';
     document.E2 = 'When the mouse pointer has been moved over it, ';
     document.E3 = 'When the mouse pointer has been moved away from it, ';
@@ -49,7 +49,7 @@ if (document.lang == 0) {
     document.E17 = 'When the user said: ';
     document.E18 = 'When it becomes in the viewport, ';
     document.E19 = 'When it becomes out of the viewport, ';
-} else if (document.lang == 2) {
+} else if (document.langID == 2) {
     document.E1 = 'Quand il a été cliqué, ';
     document.E2 = "Lorsque le pointeur de souris a été déplacé au dessus, ";
     document.E3 = "Lorsque le pointeur de la souris s'a été éloigné de lui, ";
@@ -69,7 +69,7 @@ if (document.lang == 0) {
     document.E17 = "Si l'utilisateur a dit: ";
     document.E18 = "Quand il devient dans la fenêtre d'affichage, ";
     document.E19 = "Quand il devient hors de la fenêtre d'affichage, ";
-} else if (document.lang == 3) {
+} else if (document.langID == 3) {
     document.E1 = 'إذا نقر عليه, ';
     document.E2 = 'إذا مر به مؤشر الفأرة, ';
     document.E3 = 'إذا خرج مؤشر الفأرة منه, ';
@@ -89,7 +89,7 @@ if (document.lang == 0) {
     document.E17 = 'إذا قال المستخدم: ';
     document.E18 = 'عندما يصبح في إطار العرض, ';
     document.E19 = 'عندما يصبح خارج إطار العرض, ';
-} else if (document.lang == 4) {
+} else if (document.langID == 4) {
     document.E1 = 'لما يضغط عليه, ';
     document.E2 = 'لما الماوس يعدى من فوقيه, ';
     document.E3 = 'لما الماوس يطلع منه, ';
@@ -109,7 +109,7 @@ if (document.lang == 0) {
     document.E17 = 'لو المستخدم قال: ';
     document.E18 = 'لما يبقى جوة إطار العرض, ';
     document.E19 = 'لما يبقى برة إطار العرض, ';
-} else if (document.lang == 5) {
+} else if (document.langID == 5) {
     document.E1 = 'それがクリックされた場合には、 ';
     document.E2 = 'マウスポインタがその上に移動されると、 ';
     document.E3 = 'マウスポインタがそれを離れると、 ';

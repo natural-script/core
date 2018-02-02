@@ -9,94 +9,94 @@
  * Date: 2017-09-6
  */
 $(function () {
-    $.fn[window.sliderTranslations[document.lang]] = function (options) {
+    $.fn[window.sliderTranslations[document.langID]] = function (options) {
         // Establish our default settings
         var settings = $.extend({
-            [window.maxTranslations[document.lang]]: null,
-            [window.minTranslations[document.lang]]: null,
-            [window.stepTranslations[document.lang]]: null,
-            [window.disabledTranslations[document.lang]]: null,
-            [window.fontColorTranslations[document.lang]]: null,
-            [window.fontSizeTranslations[document.lang]]: null,
-            [window.nameTranslations[document.lang]]: null,
-            [window.widthTranslations[document.lang]]: null,
-            [window.lengthTranslations[document.lang]]: null,
-            [window.fontThicknessTranslations[document.lang]]: null,
-            [window.fontStyleTranslations[document.lang]]: null,
-            [window.animationTranslations[document.lang]]: null,
-            [window.transparencyTranslations[document.lang]]: null,
-            [window.distanceFromBottomTranslations[document.lang]]: null,
-            [window.distanceFromTopTranslations[document.lang]]: null,
-            [window.distanceFromLeftTranslations[document.lang]]: null,
-            [window.distanceFromRightTranslations[document.lang]]: null,
-            [window.positionTranslations[document.lang]]: null,
-            [window.containerTranslations[document.lang]]: null,
-            [window.backgroundTranslations[document.lang]]: null,
-            [window.attributesTranslations[document.lang]]: null,
-            [window.commandsTranslations[document.lang]]: null
+            [window.maxTranslations[document.langID]]: null,
+            [window.minTranslations[document.langID]]: null,
+            [window.stepTranslations[document.langID]]: null,
+            [window.disabledTranslations[document.langID]]: null,
+            [window.fontColorTranslations[document.langID]]: null,
+            [window.fontSizeTranslations[document.langID]]: null,
+            [window.nameTranslations[document.langID]]: null,
+            [window.widthTranslations[document.langID]]: null,
+            [window.lengthTranslations[document.langID]]: null,
+            [window.fontThicknessTranslations[document.langID]]: null,
+            [window.fontStyleTranslations[document.langID]]: null,
+            [window.animationTranslations[document.langID]]: null,
+            [window.transparencyTranslations[document.langID]]: null,
+            [window.distanceFromBottomTranslations[document.langID]]: null,
+            [window.distanceFromTopTranslations[document.langID]]: null,
+            [window.distanceFromLeftTranslations[document.langID]]: null,
+            [window.distanceFromRightTranslations[document.langID]]: null,
+            [window.positionTranslations[document.langID]]: null,
+            [window.containerTranslations[document.langID]]: null,
+            [window.backgroundTranslations[document.langID]]: null,
+            [window.attributesTranslations[document.langID]]: null,
+            [window.commandsTranslations[document.langID]]: null
         }, options);
         return this.each(function () {
-            var name = settings[window.nameTranslations[document.lang]];
+            var name = settings[window.nameTranslations[document.langID]];
             var out = '<paper-slider '
-            if (settings[window.maxTranslations[document.lang]]) {
-                out += 'max="' + settings[window.maxTranslations[document.lang]] + '" ';
+            if (settings[window.maxTranslations[document.langID]]) {
+                out += 'max="' + settings[window.maxTranslations[document.langID]] + '" ';
             }
-            if (settings[window.minTranslations[document.lang]]) {
-                out += 'min="' + settings[window.minTranslations[document.lang]] + '" ';
+            if (settings[window.minTranslations[document.langID]]) {
+                out += 'min="' + settings[window.minTranslations[document.langID]] + '" ';
             }
-            if (settings[window.stepTranslations[document.lang]]) {
-                out += 'step="' + settings[window.stepTranslations[document.lang]] + '" ';
+            if (settings[window.stepTranslations[document.langID]]) {
+                out += 'step="' + settings[window.stepTranslations[document.langID]] + '" ';
             }
-            if (settings[window.attributesTranslations[document.lang]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
+            if (settings[window.attributesTranslations[document.langID]]) {
+                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.disabledTranslations[document.lang]) {
+                    if (propertiesArray[i] == window.disabledTranslations[document.langID]) {
                         out += 'disabled ';
-                    } else if (propertiesArray[i] == window.withPinTranslations[document.lang]) {
+                    } else if (propertiesArray[i] == window.withPinTranslations[document.langID]) {
                         out += 'pin ';
-                    } else if (propertiesArray[i] == withDigitalValueEditorTranslations[document.lang]) {
+                    } else if (propertiesArray[i] == withDigitalValueEditorTranslations[document.langID]) {
                         out += 'editable ';
                     }
                 }
             }
             out += 'id="' + name + '">';
             out += '</paper-slider>';
-            window.appendComponent(settings[window.containerTranslations[document.lang]], out);
-            if (settings[window.fontColorTranslations[document.lang]]) {
-                window.setFontColour(name, settings[window.fontColorTranslations[document.lang]]);
+            window.appendComponent(settings[window.containerTranslations[document.langID]], out);
+            if (settings[window.fontColorTranslations[document.langID]]) {
+                window.setFontColour(name, settings[window.fontColorTranslations[document.langID]]);
             }
-            if (settings[window.fontStyleTranslations[document.lang]]) {
-                $('#' + name + '').css('font-style', settings[window.fontStyleTranslations[document.lang]]);
+            if (settings[window.fontStyleTranslations[document.langID]]) {
+                $('#' + name + '').css('font-style', settings[window.fontStyleTranslations[document.langID]]);
             }
-            if (settings[window.attributesTranslations[document.lang]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
+            if (settings[window.attributesTranslations[document.langID]]) {
+                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.disabledTranslations[document.lang]) {
+                    if (propertiesArray[i] == window.disabledTranslations[document.langID]) {
                         $('#' + name + '').attr('disabled', '');
                     }
                 }
             }
-            if (settings[window.fontThicknessTranslations[document.lang]]) {
-                if (settings[window.fontThicknessTranslations[document.lang]] == window.thickTranslations[document.lang]) {
+            if (settings[window.fontThicknessTranslations[document.langID]]) {
+                if (settings[window.fontThicknessTranslations[document.langID]] == window.thickTranslations[document.langID]) {
                     $('#' + name + '').css('font-weight', 'bold');
                 } else {
-                    $('#' + name + '').css('font-weight', settings[window.fontThicknessTranslations[document.lang]]);
+                    $('#' + name + '').css('font-weight', settings[window.fontThicknessTranslations[document.langID]]);
                 }
             }
-            if (settings[window.fontSizeTranslations[document.lang]]) {
-                $('#' + name + '').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.lang]]));
+            if (settings[window.fontSizeTranslations[document.langID]]) {
+                $('#' + name + '').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.langID]]));
             }
-            if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('row') == true) {
+            if ($('#' + settings[window.containerTranslations[document.langID]] + '').hasClass('row') == true) {
                 $('#' + name + '').addClass('col');
             }
-            if (settings[window.positionTranslations[document.lang]]) {
-                $('#' + name + '').css('position', settings[window.positionTranslations[document.lang]]);
+            if (settings[window.positionTranslations[document.langID]]) {
+                $('#' + name + '').css('position', settings[window.positionTranslations[document.langID]]);
             } else {
                 $('#' + name + '').css('position', 'relative');
             }
             window.propSet(name, settings);
-            if (settings[window.transparencyTranslations[document.lang]]) {
-                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.lang]] + '%)');
+            if (settings[window.transparencyTranslations[document.langID]]) {
+                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.langID]] + '%)');
             }
         });
     };

@@ -6,45 +6,61 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-17
+ * Date: 2018-02-02
  */
 window.setDistance = function (name, direction, value) {
 	var landscapeValue = null;
 	var portraitValue = null;
-	if (value.includes(window.andTranslations[document.lang])) {
-		var availableValues = value.split(' ' + window.andTranslations[document.lang] + ' ');
+	if (value.includes(window.andTranslations[document.langID])) {
+		var availableValues = value.split(' ' + window.andTranslations[document.langID] + ' ');
 		for (var i = 0; i < availableValues.length; i++) {
-			if (availableValues[i].includes(window.inTheCaseOfLandscapeModeTranslations[document.lang])) {
-				landscapeValue = availableValues[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.lang])[0].split(' ')[0] + ' ' + availableValues[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.lang])[0].split(' ')[1];
-			} else if (availableValues[i].includes(window.inTheCaseOfPortraitModeTranslations[document.lang])) {
-				portraitValue = availableValues[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.lang])[0].split(' ')[0] + ' ' + availableValues[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.lang])[0].split(' ')[1];
+			if (availableValues[i].includes(window.inTheCaseOfLandscapeModeTranslations[document.langID])) {
+				landscapeValue = availableValues[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.langID])[0].split(' ')[0] + ' ' + availableValues[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.langID])[0].split(' ')[1];
+			} else if (availableValues[i].includes(window.inTheCaseOfPortraitModeTranslations[document.langID])) {
+				portraitValue = availableValues[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.langID])[0].split(' ')[0] + ' ' + availableValues[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.langID])[0].split(' ')[1];
 			}
 		}
 	}
 	var setDistanceFn = function (ratio, vhvwRatio) {
 		if (direction == 'bottom') {
 			if (document.pageDirection == 'horizontal') {
-				$('#' + name + '').css('bottom', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh');
+				$('#' + name + '').each(function () {
+					this.style.setProperty('bottom', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh', 'important');
+				});
 			} else if (document.pageDirection == 'vertical') {
-				$('#' + name + '').css('bottom', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw');
+				$('#' + name + '').each(function () {
+					this.style.setProperty('bottom', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important');
+				});
 			}
 		} else if (direction == 'top') {
 			if (document.pageDirection == 'horizontal') {
-				$('#' + name + '').css('top', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh');
+				$('#' + name + '').each(function () {
+					this.style.setProperty('top', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh', 'important');
+				});
 			} else if (document.pageDirection == 'vertical') {
-				$('#' + name + '').css('top', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw');
+				$('#' + name + '').each(function () {
+					this.style.setProperty('top', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important');
+				});
 			}
 		} else if (direction == 'left') {
 			if (document.pageDirection == 'horizontal') {
-				$('#' + name + '').css('left', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh');
+				$('#' + name + '').each(function () {
+					this.style.setProperty('left', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important');
+				});
 			} else if (document.pageDirection == 'vertical') {
-				$('#' + name + '').css('left', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw');
+				$('#' + name + '').each(function () {
+					this.style.setProperty('left', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important');
+				});
 			}
 		} else if (direction == 'right') {
 			if (document.pageDirection == 'horizontal') {
-				$('#' + name + '').css('right', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh');
+				$('#' + name + '').each(function () {
+					this.style.setProperty('right', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important');
+				});
 			} else if (document.pageDirection == 'vertical') {
-				$('#' + name + '').css('right', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw');
+				$('#' + name + '').each(function () {
+				this.style.setProperty('right', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important');
+				});
 			}
 		}
 	};

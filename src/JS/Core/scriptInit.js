@@ -6,20 +6,20 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-19
+ * Date: 2018-02-01
  */
 var meta = document.createElement('meta');
 meta.name = 'viewport';
 meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
 document.getElementsByTagName('head')[0].appendChild(meta);
 var code = 'jQuery(document).ready(\nfunction ($) {\nvar ';
-if (document.lang == 0) {
+if (document.langID == 0) {
 	document.isRTL = false;
 	if (window.isChrome) {
 		annyang.setLanguage("en-GB");
 	}
 	var i = -1;
-	code += 'add = $("body");' + $("en-uk").html();
+	code += 'add = $("body");' + $("jste").html();
 	code = code.replace(/^ +| +$/gm, "");
 	code = code.replace(/^add a text/gm, 'add a text0');
 	code = code.replace(/^configure this (.*?) (site|app) with the following properties:$/gm, 'add.setup({\nits mode is $2,\nits attributes are $1,');
@@ -54,14 +54,14 @@ if (document.lang == 0) {
 		i++;
 		return 'commands' + i + ': "' + p1 + ':' + p2 + '"\n});';
 	});
-	$("en-uk").remove();
-} else if (document.lang == 1) {
+	$("jste").remove();
+} else if (document.langID == 1) {
 	document.isRTL = false;
 	if (window.isChrome) {
 		annyang.setLanguage("en-US");
 	}
 	var i = -1;
-	code += 'add = $("body");' + $("en-us").html();
+	code += 'add = $("body");' + $("jste").html();
 	code = code.replace(/^add a text/gm, 'add a text0');
 	code = code.replace(/^configure this (.*?) (site|app) with the following properties:$/gm, 'add.setup({\nits mode is $2,\nits attributes are $1,');
 	code = code.replace(/^configure this (site|app) with the following properties:$/gm, 'add.setup({\nits mode is $1,');
@@ -95,14 +95,14 @@ if (document.lang == 0) {
 		i++;
 		return 'commands' + i + ': "' + p1 + ':' + p2 + '"\n});';
 	});
-	$("en-us").remove();
-} else if (document.lang == 2) {
+	$("jste").remove();
+} else if (document.langID == 2) {
 	document.isRTL = false;
 	if (window.isChrome) {
 		annyang.setLanguage("fr-FR");
 	}
 	var i = -1;
-	code += 'ajouter = $("body");' + $("fr-fr").html();
+	code += 'ajouter = $("body");' + $("jste").html();
 	code = code.replace(/^configurez ce (site|app) (.*?) avec les propriétés suivantes:$/gm, 'ajouter.installation({\nson mode est $1,\nses attributs sont $2,');
 	code = code.replace(/^configurez ce (site|app) avec les propriétés suivantes:$/gm, 'ajouter.installation({\nson mode est $1,');
 	code = code.replace(/^ajouter (le|la|un|une) (.*?) (.*?) avec les propriétés suivantes:$/gm, 'ajouter.$2({\nses attributs sont $3,');
@@ -131,15 +131,15 @@ if (document.lang == 0) {
 		i++;
 		return 'commandes' + i + ': "' + p1 + ':' + p2 + '"\n});';
 	});
-	$("fr-fr").remove();
-} else if (document.lang == 3) {
+	$("jste").remove();
+} else if (document.langID == 3) {
 	document.isRTL = true;
-	$("html").attr("dir", "rtl").attr("document.lang", "ar");
+	$("html").attr("dir", "rtl").attr("document.langID", "ar");
 	if (window.isChrome) {
 		annyang.setLanguage("ar-AE");
 	}
 	var i = -1;
-	code += 'اضف = $("body");' + $("ar-ar").html();
+	code += 'اضف = $("body");' + $("jste").html();
 	code = code.replace(/^هيئ هذا (الموقع|التطبيق) (.*?) بالخواص التالية:$/gm, 'اضف.الإعدادات({\nالوضعية الخاصة به $1,\nالصفات الخاصة به $2,');
 	code = code.replace(/^هيئ هذا (الموقع|التطبيق) بالخواص التالية:$/gm, 'اضف.الإعدادات({\nالوضعية الخاصة به $1,');
 	code = code.replace(/^اضف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (.*?) بالخواص التالية:$/gm, 'اضف.$1({\nالصفات الخاصة به $2,');
@@ -168,15 +168,15 @@ if (document.lang == 0) {
 		i++;
 		return 'أوامر' + i + ': "' + p1 + ':' + p2 + '"\n});';
 	});
-	$("ar-ar").remove();
-} else if (document.lang == 4) {
+	$("jste").remove();
+} else if (document.langID == 4) {
 	document.isRTL = true;
-	$("html").attr("dir", "rtl").attr("document.lang", "ar");
+	$("html").attr("dir", "rtl").attr("document.langID", "ar");
 	if (window.isChrome) {
 		annyang.setLanguage("ar-EG");
 	}
 	var i = -1;
-	code += 'ضيف = $("body");' + $("ar-eg").html();
+	code += 'ضيف = $("body");' + $("jste").html();
 	code = code.replace(/^هيئ (السايت|الآب) (.*?) دة بالخواص دى:$/gm, 'ضيف.الإعدادات({\المود بتاعه $1,\nالصفات بتاعته $2,');
 	code = code.replace(/^هيئ (السايت|الآب) دة بالخواص دى:$/gm, 'ضيف.الإعدادات({\المود بتاعه $1,');
 	code = code.replace(/^ضيف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (.*?) بالخواص دى:$/gm, 'ضيف.$1({\nالصفات بتاعته $2,');
@@ -205,21 +205,21 @@ if (document.lang == 0) {
 		i++;
 		return 'أوامر' + i + ': "' + p1 + ':' + p2 + '"\n});';
 	});
-	$("ar-eg").remove();
-} else if (document.lang == 5) {
+	$("jste").remove();
+} else if (document.langID == 5) {
 	document.isRTL = false;
 	if (window.isChrome) {
 		annyang.setLanguage("ja");
 	}
-	code += '追加する= $("body");' + $("ja-ja").html();
-	$("ja-ja").remove();
+	code += '追加する= $("body");' + $("jste").html();
+	$("jste").remove();
 }
 code += '});';
 console.log(code);
 $(function () {
 	$(function () {
 		setTimeout(function () {
-			if (document.lang != null) {
+			if (document.langID != null) {
 				eval(code);
 			}
 		}, 100);

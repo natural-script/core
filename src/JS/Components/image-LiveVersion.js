@@ -16,88 +16,89 @@ $(function () {
             $('#' + name + '').prop('isTitled', false);
         }
         $('#' + name + '').prop('type', 'img');
-        if (settings[window.backgroundTranslations[document.lang]]) {
-            window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
+        if (settings[window.backgroundTranslations[document.langID]]) {
+            window.setBG(name, settings[window.backgroundTranslations[document.langID]]);
         }
-        if (settings[window.titleTranslations[document.lang]]) {
-            $('#' + name + '').attr('alt', settings[window.titleTranslations[document.lang]]);
+        if (settings[window.titleTranslations[document.langID]]) {
+            $('#' + name + '').attr('alt', settings[window.titleTranslations[document.langID]]);
         }
-        if (settings[window.widthTranslations[document.lang]]) {
-            window.setDimension(name, 'width', settings[window.widthTranslations[document.lang]]);
+        if (settings[window.widthTranslations[document.langID]]) {
+            window.setDimension(name, 'width', settings[window.widthTranslations[document.langID]]);
         }
-        if (settings[window.lengthTranslations[document.lang]]) {
-            window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]]);
+        if (settings[window.lengthTranslations[document.langID]]) {
+            window.setDimension(name, 'length', settings[window.lengthTranslations[document.langID]]);
         }
-        if (settings[window.distanceFromBottomTranslations[document.lang]]) {
-            window.setDistance(name + '_container', 'bottom', settings[window.distanceFromBottomTranslations[document.lang]]);
+        if (settings[window.distanceFromBottomTranslations[document.langID]]) {
+            window.setDistance(name + '_container', 'bottom', settings[window.distanceFromBottomTranslations[document.langID]]);
         }
-        if (settings[window.distanceFromTopTranslations[document.lang]]) {
-            window.setDistance(name + '_container', 'top', settings[window.distanceFromTopTranslations[document.lang]]);
+        if (settings[window.distanceFromTopTranslations[document.langID]]) {
+            window.setDistance(name + '_container', 'top', settings[window.distanceFromTopTranslations[document.langID]]);
         }
-        if (settings[window.distanceFromLeftTranslations[document.lang]]) {
-            window.setDistance(name + '_container', 'left', settings[window.distanceFromLeftTranslations[document.lang]]);
+        if (settings[window.distanceFromLeftTranslations[document.langID]]) {
+            window.setDistance(name + '_container', 'left', settings[window.distanceFromLeftTranslations[document.langID]]);
         }
-        if (settings[window.distanceFromRightTranslations[document.lang]]) {
-            window.setDistance(name + '_container', 'right', settings[window.distanceFromRightTranslations[document.lang]]);
+        if (settings[window.distanceFromRightTranslations[document.langID]]) {
+            window.setDistance(name + '_container', 'right', settings[window.distanceFromRightTranslations[document.langID]]);
         }
-        if (settings[window.commandsTranslations[document.lang]]) {
-            window.execute(name, settings[window.commandsTranslations[document.lang]]);
+        if (settings[window.commandsTranslations[document.langID]]) {
+            window.execute(name, settings[window.commandsTranslations[document.langID]]);
         }
-        if (settings[window.animationTranslations[document.lang]]) {
-            window.setAnimation(name, settings[window.animationTranslations[document.lang]]);
+        if (settings[window.animationTranslations[document.langID]]) {
+            window.setAnimation(name, settings[window.animationTranslations[document.langID]]);
         }
-        if (settings[window.transparencyTranslations[document.lang]]) {
-            $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.lang]] + '%)');
+        if (settings[window.transparencyTranslations[document.langID]]) {
+            $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.langID]] + '%)');
         }
-        if (settings[window.FXTranslations[document.lang]] == 'rain') {
+        if (settings[window.FXTranslations[document.langID]] == 'rain') {
             $('#' + name + '').attr('fx', 'rain');
         }
     }
-    $.fn[window.imageTranslations[document.lang]] = function (options) {
+    $.fn[window.imageTranslations[document.langID]] = function (options) {
         // Establish our default settings
         var settings = $.extend({
-            [window.titleTranslations[document.lang]]: null,
-            [window.typeTranslations[document.lang]]: null,
-            [window.sourceTranslations[document.lang]]: null,
-            [window.nameTranslations[document.lang]]: null,
-            [window.widthTranslations[document.lang]]: null,
-            [window.lengthTranslations[document.lang]]: null,
-            [window.animationTranslations[document.lang]]: null,
-            [window.transparencyTranslations[document.lang]]: null,
-            [window.distanceFromBottomTranslations[document.lang]]: null,
-            [window.distanceFromTopTranslations[document.lang]]: null,
-            [window.distanceFromLeftTranslations[document.lang]]: null,
-            [window.distanceFromRightTranslations[document.lang]]: null,
-            [window.positionTranslations[document.lang]]: null,
-            [window.containerTranslations[document.lang]]: null,
-            [window.backgroundTranslations[document.lang]]: null,
-            [window.FXTranslations[document.lang]]: null,
-            [window.attributesTranslations[document.lang]]: null,
-            [window.commandsTranslations[document.lang]]: null
+            [window.titleTranslations[document.langID]]: null,
+            [window.typeTranslations[document.langID]]: null,
+            [window.sourceTranslations[document.langID]]: null,
+            [window.nameTranslations[document.langID]]: null,
+            [window.widthTranslations[document.langID]]: null,
+            [window.lengthTranslations[document.langID]]: null,
+            [window.animationTranslations[document.langID]]: null,
+            [window.transparencyTranslations[document.langID]]: null,
+            [window.distanceFromBottomTranslations[document.langID]]: null,
+            [window.distanceFromTopTranslations[document.langID]]: null,
+            [window.distanceFromLeftTranslations[document.langID]]: null,
+            [window.distanceFromRightTranslations[document.langID]]: null,
+            [window.positionTranslations[document.langID]]: null,
+            [window.containerTranslations[document.langID]]: null,
+            [window.backgroundTranslations[document.langID]]: null,
+            [window.FXTranslations[document.langID]]: null,
+            [window.attributesTranslations[document.langID]]: null,
+            [window.commandsTranslations[document.langID]]: null
         }, options);
         return this.each(function () {
             var isIcon = false;
             var isTitled = false;
-            var name = settings[window.nameTranslations[document.lang]];
-            var source = settings[window.sourceTranslations[document.lang]];
+            var name = settings[window.nameTranslations[document.langID]];
+            var source = settings[window.sourceTranslations[document.langID]];
             var URLID = encodeURIComponent(source).replace(/\./g, '%2E');
-            var imageContainerStartTag = 'paper-material elevation="2"';
-            var imageContainerEndTag = 'paper-material';
+            var subContainerStartTag = '<paper-material elevation="2" style="position: absolute;">';
+            var subContainerEndTag = '</paper-material>';
             window.analyseImage(name, source);
-            if (settings[window.attributesTranslations[document.lang]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
+            if (settings[window.attributesTranslations[document.langID]]) {
+                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.transparentTranslations[document.lang]) {
-                        imageContainerStartTag = 'div';
-                        imageContainerEndTag = 'div';
+                    if (propertiesArray[i] == window.transparentTranslations[document.langID]) {
+                        subContainerStartTag = '<div style="position: absolute;">';
+                        subContainerEndTag = '</div>';
                     }
                 }
             }
-            if (settings[window.typeTranslations[document.lang]] == window.iconTranslations[document.lang]) {
+            if (settings[window.typeTranslations[document.langID]] == window.iconTranslations[document.langID]) {
                 window.getFileSize(source, function (size) {
                     if (size.split(' kb')[0] < 100) {
                         isIcon = true;
-                        var out = '<' + imageContainerStartTag + ' id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+                        var out = '<div id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+                            ' + subContainerStartTag + ' \
                             <img id="' + name + '" src="" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
                             <div id="showImage_' + name + '_containerB" style="display: none;"> \
                             <div class="showImageConatainerB"> \
@@ -108,9 +109,11 @@ $(function () {
                             <paper-button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</paper-button></div>\
                             <div id="showImage_' + name + '_containerD" style="display: none;"> \
                             <p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
-                            </div></' + imageContainerEndTag + '>';
+                            </div> \
+                            ' + subContainerEndTag + '</div>';
                     } else {
-                        var out = '<' + imageContainerStartTag + ' id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+                        var out = '<div id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+                                ' + subContainerStartTag + ' \
 								<img id="' + name + '" src="" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
                                 <div id="showImage_' + name + '_containerA"> \
                                 <div class="showImageConatainerA"> \
@@ -126,9 +129,10 @@ $(function () {
 								<paper-button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</paper-button></div>\
                                 <div id="showImage_' + name + '_containerD" style="display: none;"> \
 								<p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
-								</div></' + imageContainerEndTag + '>';
+								</div> \
+                                ' + subContainerEndTag + '</div>';
                     }
-                    window.appendComponent(settings[window.containerTranslations[document.lang]], out);
+                    window.appendComponent(settings[window.containerTranslations[document.langID]], out);
                     if (isIcon) {
                         var uniqueID = document.uniqueID();
                         document[uniqueID + 'checker'] = setInterval(function () {
@@ -152,11 +156,12 @@ $(function () {
                     setImgProp(name, settings, isTitled);
                 });
             } else {
-                if (settings[window.titleTranslations[document.lang]]) {
+                if (settings[window.titleTranslations[document.langID]]) {
                     isTitled = true;
-                    var out = '<' + imageContainerStartTag + ' id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+                    var out = '<div id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+                                ' + subContainerStartTag + ' \
                                 <img id="' + name + '" src="" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
-                                <div class="imageTitle">' + settings[window.titleTranslations[document.lang]] + '</div> \
+                                <div class="imageTitle">' + settings[window.titleTranslations[document.langID]] + '</div> \
 								<div id="showImage_' + name + '_containerA"> \
                                 <div class="showImageContainerA"> \
 								<p id="' + name + '_imageData" class="imageData"></p> \
@@ -172,9 +177,11 @@ $(function () {
 								<paper-button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</paper-button></div>\
                                 <div id="showImage_' + name + '_containerD" style="display: none;"> \
 								<p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
-								</div></' + imageContainerEndTag + '>';
+								</div> \
+                                ' + subContainerEndTag + '</div>';
                 } else {
-                    var out = '<' + imageContainerStartTag + ' id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+                    var out = '<div id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+                                ' + subContainerStartTag + ' \
 								<img id="' + name + '" src="" crossorigin="anonymous" style="-webkit-filter: blur(10px);" /> \
                                 <div id="showImage_' + name + '_containerA"> \
                                 <div class="showImageContainerA"> \
@@ -190,9 +197,10 @@ $(function () {
                                 <paper-button class="yesRemoveTheBlur" onclick="showImageD(\'' + name + '\');">Continue</paper-button></div>\
                                 <div id="showImage_' + name + '_containerD" style="display: none;"> \
 								<p class="forbiddenContentWarning">You are prohibited from accessing this content</p> \
-								</div></' + imageContainerEndTag + '>';
+								</div> \
+                                ' + subContainerEndTag + '</div>';
                 }
-                window.appendComponent(settings[window.containerTranslations[document.lang]], out);
+                window.appendComponent(settings[window.containerTranslations[document.langID]], out);
                 window.getFileSize(source, function (size) {
                     $('#image_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size);
                 });

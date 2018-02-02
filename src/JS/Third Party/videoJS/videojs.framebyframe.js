@@ -44,4 +44,5 @@ function framebyframe(options) {
         });
     });
 }
-videojs.plugin('framebyframe', framebyframe);
+var registerPlugin = videojs.registerPlugin || videojs.plugin;
+registerPlugin('framebyframe', framebyframe);

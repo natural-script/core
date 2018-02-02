@@ -3938,7 +3938,7 @@ function findBestMatch(mainString, targetStrings) {
 var stringSimilarity = require('string-similarity');
 
 String.prototype.findBestMatch = function (match) {
-    return stringSimilarity.findBestMatch(this, match).bestMatch;
+    return stringSimilarity.findBestMatch(this.toString(), match).bestMatch;
 }
 
 },{"string-similarity":135}]},{},[136]);

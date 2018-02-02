@@ -9,53 +9,53 @@
  * Date: 2017-09-6
  */
 $(function () {
-    $.fn[window.tooltipTranslations[document.lang]] = function (options) {
+    $.fn[window.tooltipTranslations[document.langID]] = function (options) {
         // Establish our default settings
         var settings = $.extend({
-            [window.textTranslations[document.lang]]: 'It seems that you have typed nothing',
-            [window.titleTranslations[document.lang]]: null,
-            [window.fontColorTranslations[document.lang]]: null,
-            [window.fontSizeTranslations[document.lang]]: null,
-            [window.nameTranslations[document.lang]]: null,
-            [window.widthTranslations[document.lang]]: null,
-            [window.lengthTranslations[document.lang]]: null,
-            [window.fontThicknessTranslations[document.lang]]: null,
-            [window.fontStyleTranslations[document.lang]]: null,
-            [window.emitterTranslations[document.lang]]: null,
-            [window.directionTranslations[document.lang]]: window.fromTheTopTranslations[document.lang],
-            [window.animationTranslations[document.lang]]: null,
-            [window.backgroundTranslations[document.lang]]: null,
-            [window.transparencyTranslations[document.lang]]: null,
-            [window.containerTranslations[document.lang]]: null,
-            [window.commandsTranslations[document.lang]]: null
+            [window.textTranslations[document.langID]]: 'It seems that you have typed nothing',
+            [window.titleTranslations[document.langID]]: null,
+            [window.fontColorTranslations[document.langID]]: null,
+            [window.fontSizeTranslations[document.langID]]: null,
+            [window.nameTranslations[document.langID]]: null,
+            [window.widthTranslations[document.langID]]: null,
+            [window.lengthTranslations[document.langID]]: null,
+            [window.fontThicknessTranslations[document.langID]]: null,
+            [window.fontStyleTranslations[document.langID]]: null,
+            [window.emitterTranslations[document.langID]]: null,
+            [window.directionTranslations[document.langID]]: window.fromTheTopTranslations[document.langID],
+            [window.animationTranslations[document.langID]]: null,
+            [window.backgroundTranslations[document.langID]]: null,
+            [window.transparencyTranslations[document.langID]]: null,
+            [window.containerTranslations[document.langID]]: null,
+            [window.commandsTranslations[document.langID]]: null
         }, options);
         return this.each(function () {
             var position;
-            if (settings[window.directionTranslations[document.lang]] == window.fromTheRightTranslations[document.lang]) {
+            if (settings[window.directionTranslations[document.langID]] == window.fromTheRightTranslations[document.langID]) {
                 position = 'right';
-            } else if (settings[window.directionTranslations[document.lang]] == window.fromTheLeftTranslations[document.lang]) {
+            } else if (settings[window.directionTranslations[document.langID]] == window.fromTheLeftTranslations[document.langID]) {
                 position = 'left';
-            } else if (settings[window.directionTranslations[document.lang]] == window.fromTheTopTranslations[document.lang]) {
+            } else if (settings[window.directionTranslations[document.langID]] == window.fromTheTopTranslations[document.langID]) {
                 position = 'top';
-            } else if (settings[window.directionTranslations[document.lang]] == window.fromTheBottomTranslations[document.lang]) {
+            } else if (settings[window.directionTranslations[document.langID]] == window.fromTheBottomTranslations[document.langID]) {
                 position = 'bottom';
             }
-            if (settings[window.titleTranslations[document.lang]]) {
-                $('#' + settings[window.emitterTranslations[document.lang]]).tipso({
-                    titleContent: settings[window.titleTranslations[document.lang]],
-                    content: settings[window.textTranslations[document.lang]],
+            if (settings[window.titleTranslations[document.langID]]) {
+                $('#' + settings[window.emitterTranslations[document.langID]]).tipso({
+                    titleContent: settings[window.titleTranslations[document.langID]],
+                    content: settings[window.textTranslations[document.langID]],
                     position: position,
                     background: '#FE5970'
                 });
             } else {
-                $('#' + settings[window.emitterTranslations[document.lang]]).tipso({
-                    content: settings[window.textTranslations[document.lang]],
+                $('#' + settings[window.emitterTranslations[document.langID]]).tipso({
+                    content: settings[window.textTranslations[document.langID]],
                     position: position,
                     background: '#FE5970'
                 });
             }
-            if (settings[window.transparencyTranslations[document.lang]]) {
-                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.lang]] + '%)');
+            if (settings[window.transparencyTranslations[document.langID]]) {
+                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.langID]] + '%)');
             }
         });
     };

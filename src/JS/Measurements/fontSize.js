@@ -11,13 +11,13 @@
 window.setFontSize = function (elementName, size) {
 	var landscapeSize = null;
 	var portraitSize = null;
-	if (size.includes(window.andTranslations[document.lang])) {
-		var availableSizes = size.split(' ' + window.andTranslations[document.lang] + ' ');
+	if (size.includes(window.andTranslations[document.langID])) {
+		var availableSizes = size.split(' ' + window.andTranslations[document.langID] + ' ');
 		for (var i = 0; i < availableSizes.length; i++) {
-			if (availableSizes[i].includes(window.inTheCaseOfLandscapeModeTranslations[document.lang])) {
-				landscapeSize = availableSizes[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.lang])[0].split(' ')[0] + ' ' + availableSizes[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.lang])[0].split(' ')[1];
-			} else if (availableSizes[i].includes(window.inTheCaseOfPortraitModeTranslations[document.lang])) {
-				portraitSize = availableSizes[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.lang])[0].split(' ')[0] + ' ' + availableSizes[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.lang])[0].split(' ')[1];
+			if (availableSizes[i].includes(window.inTheCaseOfLandscapeModeTranslations[document.langID])) {
+				landscapeSize = availableSizes[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.langID])[0].split(' ')[0] + ' ' + availableSizes[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.langID])[0].split(' ')[1];
+			} else if (availableSizes[i].includes(window.inTheCaseOfPortraitModeTranslations[document.langID])) {
+				portraitSize = availableSizes[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.langID])[0].split(' ')[0] + ' ' + availableSizes[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.langID])[0].split(' ')[1];
 			}
 		}
 	}

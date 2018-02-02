@@ -10,12 +10,15 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
  *
  * Date: 2017-09-15
  */
+var eventSplit;
 function getTheEventCode(command) {
 	for (var i = 1; i <= 19; i++) {
 		if (command.startsWith(document['E' + i])) {
+			eventSplit = ".split(new RegExp('^' + document[getTheEventCode(pureCommand)], 'gimy'))[1]";
 			return 'E' + i;
 		}
 	}
+	eventSplit = '';
 	return 'E0';
 }
 window.execute = (() => {
@@ -40,7 +43,7 @@ window.execute = (() => {
 			commandInfo.elementName = elementName;
 			if (window.commandsFnTranslations('c52', 'E1', commands[commandID]).length > 1) {
 				commandType = 'T3';
-				var alternativeOptionsArray = commands[commandID].split(' ' + window.elseTranslations[document.lang] + ' ');
+				var alternativeOptionsArray = commands[commandID].split(' ' + window.elseTranslations[document.langID] + ' ');
 				yield window.evaluateStatement(alternativeOptionsArray[0]).then(function (condition) {
 					typeOptions.primaryCondition = condition;
 				});
@@ -51,7 +54,7 @@ window.execute = (() => {
 					typeOptions.secondryConditions = [];
 					for (var optionID = 0; optionID < alternativeOptionsArray.length; optionID++) {
 						typeOptions.secondryConditions[optionID] = [];
-						if (alternativeOptionsArray[optionID].includes(window.inTheCaseThatTranslations[document.lang])) {
+						if (alternativeOptionsArray[optionID].includes(window.inTheCaseThatTranslations[document.langID])) {
 							yield window.evaluateStatement(alternativeOptionsArray[optionID]).then(function (condition) {
 								typeOptions.secondryConditions[optionID].condition = condition;
 							});
@@ -93,9 +96,10 @@ window.execute = (() => {
 				codeParam = ", typeOptions";
 			}
 			commandInfo.pureCommand = pureCommand;
+
 			var result = eval("if (pureCommand.startsWith(document[getTheEventCode(pureCommand)])) { \
 			" + codePrefix + " \
-				" + operationPrefix + "window.evaluateScript(window.analyzeCommand(pureCommand.split(new RegExp('^' + document[getTheEventCode(pureCommand)], 'gimy'))[1].split(new RegExp(window.inTheCaseThatTranslations + '.*?$', 'gimy'))[0]), getTheEventCode(pureCommand), commandType, commandInfo" + codeParam + ")" + operationSuffix + " \
+				" + operationPrefix + "window.evaluateScript(window.analyzeCommand(pureCommand" + eventSplit + ".split(new RegExp(window.inTheCaseThatTranslations + '.*?$', 'gimy'))[0]), getTheEventCode(pureCommand), commandType, commandInfo" + codeParam + ")" + operationSuffix + " \
 			" + codeSuffix + "};");
 		}
 		return result;

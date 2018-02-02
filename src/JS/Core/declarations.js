@@ -6,20 +6,32 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-14
+ * Date: 2018-02-02
  */
-if ($("en-uk").length) {
-	document.lang = 0;
-} else if ($("en-us").length) {
-	document.lang = 1;
-} else if ($("fr-fr").length) {
-	document.lang = 2;
-} else if ($("ar-ar").length) {
-	document.lang = 3;
-} else if ($("ar-eg").length) {
-	document.lang = 4;
+var code = $("jste").html();
+var detectedLang = franc(code, {
+	whitelist: ['arab', 'eng', 'fra']
+});
+if (detectedLang == 'eng') {
+	if (code.includes('colour') || code.includes('centre')) {
+		document.langID = 0;
+	} else {
+		document.langID = 1;
+	}
+	document.langCode = 'en';
+} else if (detectedLang == 'fra') {
+	document.langID = 2;
+	document.langCode = 'fr';
+} else if (detectedLang == 'arab') {
+	if (code.includes('بتاعه') || code.includes('بتاعها') || code.includes('بتاعته') || code.includes('بتاعتها')) {
+		document.langID = 4;
+		document.langCode = 'arz';
+	} else {
+		document.langID = 3;
+		document.langCode = 'ar';
+	}
 } else if ($("ja-ja").length) {
-	document.lang = 5;
+	document.langID = 5;
 }
 if (navigator.platform == 'Win32') {
 	window.localAddress = 'localhost';

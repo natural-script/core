@@ -9,31 +9,44 @@
  * Date: 2017-09-20
  */
 $(function () {
-    $.fn[window.videoTranslations[document.lang]] = function (options) {
+    $.fn[window.videoTranslations[document.langID]] = function (options) {
         // Establish our default settings
         var settings = $.extend({
-            [window.titleTranslations[document.lang]]: null,
-            [window.sourceTranslations[document.lang]]: null,
-            [window.nameTranslations[document.lang]]: null,
-            [window.widthTranslations[document.lang]]: null,
-            [window.lengthTranslations[document.lang]]: null,
-            [window.animationTranslations[document.lang]]: null,
-            [window.transparencyTranslations[document.lang]]: null,
-            [window.distanceFromBottomTranslations[document.lang]]: null,
-            [window.distanceFromTopTranslations[document.lang]]: null,
-            [window.distanceFromLeftTranslations[document.lang]]: null,
-            [window.distanceFromRightTranslations[document.lang]]: null,
-            [window.positionTranslations[document.lang]]: null,
-            [window.containerTranslations[document.lang]]: null,
-            [window.backgroundTranslations[document.lang]]: null,
-            [window.commandsTranslations[document.lang]]: null
+            [window.titleTranslations[document.langID]]: null,
+            [window.sourceTranslations[document.langID]]: null,
+            [window.nameTranslations[document.langID]]: null,
+            [window.widthTranslations[document.langID]]: null,
+            [window.lengthTranslations[document.langID]]: null,
+            [window.animationTranslations[document.langID]]: null,
+            [window.transparencyTranslations[document.langID]]: null,
+            [window.distanceFromBottomTranslations[document.langID]]: null,
+            [window.distanceFromTopTranslations[document.langID]]: null,
+            [window.distanceFromLeftTranslations[document.langID]]: null,
+            [window.distanceFromRightTranslations[document.langID]]: null,
+            [window.positionTranslations[document.langID]]: null,
+            [window.containerTranslations[document.langID]]: null,
+            [window.backgroundTranslations[document.langID]]: null,
+            [window.attributesTranslations[document.langID]]: null,
+            [window.commandsTranslations[document.langID]]: null
         }, options);
         return this.each(function () {
-            var name = settings[window.nameTranslations[document.lang]];
-            var source = settings[window.sourceTranslations[document.lang]];
-            var title = settings[window.titleTranslations[document.lang]];
+            var name = settings[window.nameTranslations[document.langID]];
+            var source = settings[window.sourceTranslations[document.langID]];
+            var title = settings[window.titleTranslations[document.langID]];
             var URLID = encodeURIComponent(source).replace(/\./g, '%2E');
-            var out = '<paper-material id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+            var subContainerStartTag = '<paper-material elevation="2" style="position: absolute;">';
+            var subContainerEndTag = '</paper-material>';
+            if (settings[window.attributesTranslations[document.langID]]) {
+                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
+                for (i = 0; i < propertiesArray.length; i++) {
+                    if (propertiesArray[i] == window.transparentTranslations[document.langID]) {
+                        subContainerStartTag = '<div style="position: absolute;">';
+                        subContainerEndTag = '</div>';
+                    }
+                }
+            }
+            var out = '<div id="' + name + '_container" style="position: relative; overflow: hidden;"> \
+                            ' + subContainerStartTag + ' \
                             <video id="' + name + '" crossorigin="anonymous" class="video-js vjs-big-play-centered" style="-webkit-filter: blur(10px); background: black;" controls preload="auto" data-setup="{}" /> \
                             <div id="showVideo_' + name + '_containerA"> \
                             <div class="showVideoContainerA"> \
@@ -42,9 +55,10 @@ $(function () {
                             <div id="' + name + '_resolutionsBtnConatiner" class="resolutionsBtnConatiner row" style="display: none;"></div> \
                             <img class="showVideoContainerAIcon" src="' + window.mediaImageIconCamcorderA + '" /></div> \
                             <div id="showVideo_' + name + '_containerB" style="display: none;"> \
-                            <p style="position: relative; color: #FFFFFF; top: 20%; left: 50%; transform: translate(-50%, -50%);">Nudes found</p> \
-                            <button style="position: relative; top: 65%; left: 50%; background-color: silver; opacity: 0.5; border-radius: 100px; border: 5px solid; color: #FFFFFF; max-width: 200px; max-height: 60px; width: 50%; height: 30%; transform: translate(-50%, -50%);" onclick="showVideoB(\'' + name + '\');">Continue</button></paper-material>';
-            window.appendComponent(settings[window.containerTranslations[document.lang]], out);
+                            <p class="videoNudesFoundText">Nudes found</p> \
+                            <button class="showVideoBtnB" onclick="showVideoB(\'' + name + '\');">Continue</button></div> \
+                            ' + subContainerEndTag + '</div>';
+            window.appendComponent(settings[window.containerTranslations[document.langID]], out);
             $('#' + name + '').prop('isTitled', false);
             $('#' + name + '').prop('type', 'vid');
             if (window.getVideoProvider(source).videoProvider == 'webHosting') {
@@ -60,38 +74,38 @@ $(function () {
             } else {
                 window.getVideoInfo(name, window.getVideoProvider(source).videoProvider, window.getVideoProvider(source).videoID, window.getVideoProvider(source).videoURL, title);
             }
-            if (settings[window.backgroundTranslations[document.lang]]) {
-                window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
+            if (settings[window.backgroundTranslations[document.langID]]) {
+                window.setBG(name, settings[window.backgroundTranslations[document.langID]]);
             }
-            if (settings[window.titleTranslations[document.lang]]) {
-                $('#' + name + '').attr('alt', settings[window.titleTranslations[document.lang]]);
+            if (settings[window.titleTranslations[document.langID]]) {
+                $('#' + name + '').attr('alt', settings[window.titleTranslations[document.langID]]);
             }
-            if (settings[window.widthTranslations[document.lang]]) {
-                window.setDimension(name, 'width', settings[window.widthTranslations[document.lang]]);
+            if (settings[window.widthTranslations[document.langID]]) {
+                window.setDimension(name, 'width', settings[window.widthTranslations[document.langID]]);
             }
-            if (settings[window.lengthTranslations[document.lang]]) {
-                window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]]);
+            if (settings[window.lengthTranslations[document.langID]]) {
+                window.setDimension(name, 'length', settings[window.lengthTranslations[document.langID]]);
             }
-            if (settings[window.distanceFromBottomTranslations[document.lang]]) {
-                window.setDistance(name + '_container', 'bottom', settings[window.distanceFromBottomTranslations[document.lang]]);
+            if (settings[window.distanceFromBottomTranslations[document.langID]]) {
+                window.setDistance(name + '_container', 'bottom', settings[window.distanceFromBottomTranslations[document.langID]]);
             }
-            if (settings[window.distanceFromTopTranslations[document.lang]]) {
-                window.setDistance(name + '_container', 'top', settings[window.distanceFromTopTranslations[document.lang]]);
+            if (settings[window.distanceFromTopTranslations[document.langID]]) {
+                window.setDistance(name + '_container', 'top', settings[window.distanceFromTopTranslations[document.langID]]);
             }
-            if (settings[window.distanceFromLeftTranslations[document.lang]]) {
-                window.setDistance(name + '_container', 'left', settings[window.distanceFromLeftTranslations[document.lang]]);
+            if (settings[window.distanceFromLeftTranslations[document.langID]]) {
+                window.setDistance(name + '_container', 'left', settings[window.distanceFromLeftTranslations[document.langID]]);
             }
-            if (settings[window.distanceFromRightTranslations[document.lang]]) {
-                window.setDistance(name + '_container', 'right', settings[window.distanceFromRightTranslations[document.lang]]);
+            if (settings[window.distanceFromRightTranslations[document.langID]]) {
+                window.setDistance(name + '_container', 'right', settings[window.distanceFromRightTranslations[document.langID]]);
             }
-            if (settings[window.commandsTranslations[document.lang]]) {
-                window.execute(name, settings[window.commandsTranslations[document.lang]]);
+            if (settings[window.commandsTranslations[document.langID]]) {
+                window.execute(name, settings[window.commandsTranslations[document.langID]]);
             }
-            if (settings[window.animationTranslations[document.lang]]) {
-                window.setAnimation(name + '_container', settings[window.animationTranslations[document.lang]]);
+            if (settings[window.animationTranslations[document.langID]]) {
+                window.setAnimation(name + '_container', settings[window.animationTranslations[document.langID]]);
             }
-            if (settings[window.transparencyTranslations[document.lang]]) {
-                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.lang]] + '%)');
+            if (settings[window.transparencyTranslations[document.langID]]) {
+                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.langID]] + '%)');
             }
         });
     };

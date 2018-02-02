@@ -9,51 +9,51 @@
  * Date: 2017-09-6
  */
 $(function () {
-    $.fn[window.dialogBoxTranslations[document.lang]] = function (options) {
+    $.fn[window.dialogBoxTranslations[document.langID]] = function (options) {
         // Establish our default settings
         var settings = $.extend({
-            [window.titleTranslations[document.lang]]: null,
-            [window.acceptanceButtonTranslations[document.lang]]: null,
-            [window.cancellationButtonTranslations[document.lang]]: null,
-            [window.fontColorTranslations[document.lang]]: null,
-            [window.fontSizeTranslations[document.lang]]: null,
-            [window.nameTranslations[document.lang]]: null,
-            [window.widthTranslations[document.lang]]: null,
-            [window.lengthTranslations[document.lang]]: null,
-            [window.fontThicknessTranslations[document.lang]]: null,
-            [window.fontStyleTranslations[document.lang]]: null,
-            [window.animationTranslations[document.lang]]: null,
-            [window.transparencyTranslations[document.lang]]: null,
-            [window.distanceFromBottomTranslations[document.lang]]: null,
-            [window.distanceFromTopTranslations[document.lang]]: null,
-            [window.distanceFromLeftTranslations[document.lang]]: null,
-            [window.distanceFromRightTranslations[document.lang]]: null,
-            [window.positionTranslations[document.lang]]: null,
-            [window.containerTranslations[document.lang]]: null,
-            [window.backgroundTranslations[document.lang]]: null,
-            [window.commandsTranslations[document.lang]]: null
+            [window.titleTranslations[document.langID]]: null,
+            [window.acceptanceButtonTranslations[document.langID]]: null,
+            [window.cancellationButtonTranslations[document.langID]]: null,
+            [window.fontColorTranslations[document.langID]]: null,
+            [window.fontSizeTranslations[document.langID]]: null,
+            [window.nameTranslations[document.langID]]: null,
+            [window.widthTranslations[document.langID]]: null,
+            [window.lengthTranslations[document.langID]]: null,
+            [window.fontThicknessTranslations[document.langID]]: null,
+            [window.fontStyleTranslations[document.langID]]: null,
+            [window.animationTranslations[document.langID]]: null,
+            [window.transparencyTranslations[document.langID]]: null,
+            [window.distanceFromBottomTranslations[document.langID]]: null,
+            [window.distanceFromTopTranslations[document.langID]]: null,
+            [window.distanceFromLeftTranslations[document.langID]]: null,
+            [window.distanceFromRightTranslations[document.langID]]: null,
+            [window.positionTranslations[document.langID]]: null,
+            [window.containerTranslations[document.langID]]: null,
+            [window.backgroundTranslations[document.langID]]: null,
+            [window.commandsTranslations[document.langID]]: null
         }, options);
         return this.each(function () {
-            var name = settings[window.nameTranslations[document.lang]];
+            var name = settings[window.nameTranslations[document.langID]];
             var out = '<div id="' + name + '"></div>';
             $('body').append(out);
-            if (settings[window.emitterTranslations[document.lang]]) {
-                $('#' + settings[window.emitterTranslations[document.lang]] + '').attr('onclick', settings[window.nameTranslations[document.lang]] + '.open()');
+            if (settings[window.emitterTranslations[document.langID]]) {
+                $('#' + settings[window.emitterTranslations[document.langID]] + '').attr('onclick', settings[window.nameTranslations[document.langID]] + '.open()');
             }
-            if (settings[window.fontSizeTranslations[document.lang]]) {
-                $('#' + name + '').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.lang]]));
+            if (settings[window.fontSizeTranslations[document.langID]]) {
+                $('#' + name + '').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.langID]]));
             }
-            if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('row') == true) {
+            if ($('#' + settings[window.containerTranslations[document.langID]] + '').hasClass('row') == true) {
                 $('#' + name + '').addClass('col');
             }
-            if (settings[window.positionTranslations[document.lang]]) {
-                $('#' + name + '').css('position', settings[window.positionTranslations[document.lang]]);
+            if (settings[window.positionTranslations[document.langID]]) {
+                $('#' + name + '').css('position', settings[window.positionTranslations[document.langID]]);
             } else {
                 $('#' + name + '').css('position', 'relative');
             }
-            if (settings[window.titleTranslations[document.lang]]) {
+            if (settings[window.titleTranslations[document.langID]]) {
                 $('#' + name + '').iziModal({
-                    title: settings[window.titleTranslations[document.lang]],
+                    title: settings[window.titleTranslations[document.langID]],
                     rtl: document.isRTL
                 });
             } else {

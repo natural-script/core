@@ -9,125 +9,125 @@
  * Date: 2017-09-11
  */
 $(function () {
-    $.fn[window.containerTranslations[document.lang]] = function (options) {
+    $.fn[window.containerTranslations[document.langID]] = function (options) {
         // Establish our default settings
         var settings = $.extend({
-            [window.fontColorTranslations[document.lang]]: null,
-            [window.fontSizeTranslations[document.lang]]: null,
-            [window.nameTranslations[document.lang]]: null,
-            [window.widthTranslations[document.lang]]: null,
-            [window.lengthTranslations[document.lang]]: null,
-            [window.fontThicknessTranslations[document.lang]]: null,
-            [window.fontStyleTranslations[document.lang]]: null,
-            [window.animationTranslations[document.lang]]: null,
-            [window.transparencyTranslations[document.lang]]: null,
-            [window.distanceFromBottomTranslations[document.lang]]: null,
-            [window.distanceFromTopTranslations[document.lang]]: null,
-            [window.distanceFromLeftTranslations[document.lang]]: null,
-            [window.distanceFromRightTranslations[document.lang]]: null,
-            [window.positionTranslations[document.lang]]: null,
-            [window.containerTranslations[document.lang]]: null,
-            [window.attributesTranslations[document.lang]]: null,
-            [window.backgroundTranslations[document.lang]]: null,
-            [window.withoutShadowTranslations[document.lang]]: null,
-            [window.commandsTranslations[document.lang]]: null
+            [window.fontColorTranslations[document.langID]]: null,
+            [window.fontSizeTranslations[document.langID]]: null,
+            [window.nameTranslations[document.langID]]: null,
+            [window.widthTranslations[document.langID]]: null,
+            [window.lengthTranslations[document.langID]]: null,
+            [window.fontThicknessTranslations[document.langID]]: null,
+            [window.fontStyleTranslations[document.langID]]: null,
+            [window.animationTranslations[document.langID]]: null,
+            [window.transparencyTranslations[document.langID]]: null,
+            [window.distanceFromBottomTranslations[document.langID]]: null,
+            [window.distanceFromTopTranslations[document.langID]]: null,
+            [window.distanceFromLeftTranslations[document.langID]]: null,
+            [window.distanceFromRightTranslations[document.langID]]: null,
+            [window.positionTranslations[document.langID]]: null,
+            [window.containerTranslations[document.langID]]: null,
+            [window.attributesTranslations[document.langID]]: null,
+            [window.backgroundTranslations[document.langID]]: null,
+            [window.withoutShadowTranslations[document.langID]]: null,
+            [window.commandsTranslations[document.langID]]: null
         }, options);
         return this.each(function () {
             var elevation = 2;
-            var name = settings[window.nameTranslations[document.lang]];
-            if (settings[window.attributesTranslations[document.lang]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
+            var name = settings[window.nameTranslations[document.langID]];
+            if (settings[window.attributesTranslations[document.langID]]) {
+                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.withoutShadowTranslations[document.lang]) {
+                    if (propertiesArray[i] == window.withoutShadowTranslations[document.langID]) {
                         elevation = 0;
                     }
                 }
             }
             var out = '<paper-material elevation="' + elevation + '" id="' + name + '" class="' + name + '"></paper-material>';
-            window.appendComponent(settings[window.containerTranslations[document.lang]], out);
-            if (settings[window.attributesTranslations[document.lang]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
+            window.appendComponent(settings[window.containerTranslations[document.langID]], out);
+            if (settings[window.attributesTranslations[document.langID]]) {
+                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.gridTranslations[document.lang]) {
+                    if (propertiesArray[i] == window.gridTranslations[document.langID]) {
                         $('#' + name + '').addClass('row');
                         $('#' + name + '').css('text-align', 'center');
                     }
                 }
             }
-            if (settings[window.fontColorTranslations[document.lang]]) {
-                window.setFontColour(name, settings[window.fontColorTranslations[document.lang]]);
+            if (settings[window.fontColorTranslations[document.langID]]) {
+                window.setFontColour(name, settings[window.fontColorTranslations[document.langID]]);
             }
-            if (settings[window.fontStyleTranslations[document.lang]]) {
-                $('#' + name + '').css('font-style', settings[window.fontStyleTranslations[document.lang]]);
+            if (settings[window.fontStyleTranslations[document.langID]]) {
+                $('#' + name + '').css('font-style', settings[window.fontStyleTranslations[document.langID]]);
             }
-            if (settings[window.shapeTranslations[document.lang]]) {
-                if (settings[window.shapeTranslations[document.lang]] == window.triangleTranslations[document.lang]) {
+            if (settings[window.shapeTranslations[document.langID]]) {
+                if (settings[window.shapeTranslations[document.langID]] == window.triangleTranslations[document.langID]) {
                     $('#' + name + '').addClass('triangle');
-                } else if (settings[window.shapeTranslations[document.lang]] == window.trapezoidTranslations[document.lang]) {
+                } else if (settings[window.shapeTranslations[document.langID]] == window.trapezoidTranslations[document.langID]) {
                     $('#' + name + '').addClass('trapezoid');
-                } else if (settings[window.shapeTranslations[document.lang]] == window.parallelogramTranslations[document.lang]) {
+                } else if (settings[window.shapeTranslations[document.langID]] == window.parallelogramTranslations[document.langID]) {
                     $('#' + name + '').addClass('parallelogram');
-                } else if (settings[window.shapeTranslations[document.lang]] == window.rhombusTranslations[document.lang]) {
+                } else if (settings[window.shapeTranslations[document.langID]] == window.rhombusTranslations[document.langID]) {
                     $('#' + name + '').addClass('rhombus');
-                } else if (settings[window.shapeTranslations[document.lang]] == window.pentagonTranslations[document.lang]) {
+                } else if (settings[window.shapeTranslations[document.langID]] == window.pentagonTranslations[document.langID]) {
                     $('#' + name + '').addClass('pentagon');
-                } else if (settings[window.shapeTranslations[document.lang]] == window.hexagonTranslations[document.lang]) {
+                } else if (settings[window.shapeTranslations[document.langID]] == window.hexagonTranslations[document.langID]) {
                     $('#' + name + '').addClass('hexagon');
-                } else if (settings[window.shapeTranslations[document.lang]] == window.heptagonTranslations[document.lang]) {
+                } else if (settings[window.shapeTranslations[document.langID]] == window.heptagonTranslations[document.langID]) {
                     $('#' + name + '').addClass('heptagon');
-                } else if (settings[window.shapeTranslations[document.lang]] == window.octagonTranslations[document.lang]) {
+                } else if (settings[window.shapeTranslations[document.langID]] == window.octagonTranslations[document.langID]) {
                     $('#' + name + '').addClass('octagon');
-                } else if (settings[window.shapeTranslations[document.lang]] == window.decagonTranslations[document.lang]) {
+                } else if (settings[window.shapeTranslations[document.langID]] == window.decagonTranslations[document.langID]) {
                     $('#' + name + '').addClass('decagon');
-                } else if (settings[window.shapeTranslations[document.lang]] == window.circleTranslations[document.lang]) {
+                } else if (settings[window.shapeTranslations[document.langID]] == window.circleTranslations[document.langID]) {
                     $('#' + name + '').addClass('circle');
-                } else if (settings[window.shapeTranslations[document.lang]] == window.ellipseTranslations[document.lang]) {
+                } else if (settings[window.shapeTranslations[document.langID]] == window.ellipseTranslations[document.langID]) {
                     $('#' + name + '').addClass('ellipse');
                 }
             }
-            if (settings[window.fontThicknessTranslations[document.lang]]) {
-                if (settings[window.fontThicknessTranslations[document.lang]] == window.thickTranslations[document.lang]) {
+            if (settings[window.fontThicknessTranslations[document.langID]]) {
+                if (settings[window.fontThicknessTranslations[document.langID]] == window.thickTranslations[document.langID]) {
                     $('#' + name + '').css('font-weight', 'bold');
                 } else {
-                    $('#' + name + '').css('font-weight', settings[window.fontThicknessTranslations[document.lang]]);
+                    $('#' + name + '').css('font-weight', settings[window.fontThicknessTranslations[document.langID]]);
                 }
             }
-            if (settings[window.fontSizeTranslations[document.lang]]) {
-                $('#' + name + '').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.lang]]));
+            if (settings[window.fontSizeTranslations[document.langID]]) {
+                $('#' + name + '').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.langID]]));
             }
-            if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('row') == true) {
+            if ($('#' + settings[window.containerTranslations[document.langID]] + '').hasClass('row') == true) {
                 $('#' + name + '').addClass('col');
             }
-            if (settings[window.positionTranslations[document.lang]]) {
-                $('#' + name + '').css('position', settings[window.positionTranslations[document.lang]]);
+            if (settings[window.positionTranslations[document.langID]]) {
+                $('#' + name + '').css('position', settings[window.positionTranslations[document.langID]]);
             } else {
                 $('#' + name + '').css('position', 'absolute');
             }
-            if (settings[window.distanceFromBottomTranslations[document.lang]]) {
-                window.setDistance(name, 'bottom', settings[window.distanceFromBottomTranslations[document.lang]]);
+            if (settings[window.distanceFromBottomTranslations[document.langID]]) {
+                window.setDistance(name, 'bottom', settings[window.distanceFromBottomTranslations[document.langID]]);
             }
-            if (settings[window.distanceFromTopTranslations[document.lang]]) {
-                window.setDistance(name, 'top', settings[window.distanceFromTopTranslations[document.lang]]);
+            if (settings[window.distanceFromTopTranslations[document.langID]]) {
+                window.setDistance(name, 'top', settings[window.distanceFromTopTranslations[document.langID]]);
             }
-            if (settings[window.distanceFromLeftTranslations[document.lang]]) {
-                window.setDistance(name, 'left', settings[window.distanceFromLeftTranslations[document.lang]]);
+            if (settings[window.distanceFromLeftTranslations[document.langID]]) {
+                window.setDistance(name, 'left', settings[window.distanceFromLeftTranslations[document.langID]]);
             }
-            if (settings[window.distanceFromRightTranslations[document.lang]]) {
-                window.setDistance(name, 'right', settings[window.distanceFromRightTranslations[document.lang]]);
+            if (settings[window.distanceFromRightTranslations[document.langID]]) {
+                window.setDistance(name, 'right', settings[window.distanceFromRightTranslations[document.langID]]);
             }
-            if (settings[window.commandsTranslations[document.lang]]) {
-                window.execute(name, settings[window.commandsTranslations[document.lang]]);
+            if (settings[window.commandsTranslations[document.langID]]) {
+                window.execute(name, settings[window.commandsTranslations[document.langID]]);
             }
-            if (settings[window.widthTranslations[document.lang]]) {
-                window.setDimension(name, 'width', settings[window.widthTranslations[document.lang]]);
+            if (settings[window.widthTranslations[document.langID]]) {
+                window.setDimension(name, 'width', settings[window.widthTranslations[document.langID]]);
             }
-            if (settings[window.lengthTranslations[document.lang]]) {
-                window.setDimension(name, 'length', settings[window.lengthTranslations[document.lang]]);
+            if (settings[window.lengthTranslations[document.langID]]) {
+                window.setDimension(name, 'length', settings[window.lengthTranslations[document.langID]]);
             }
-            if (settings[window.attributesTranslations[document.lang]]) {
-                if (settings[window.attributesTranslations[document.lang]].indexOf(window.parallaxTranslations[document.lang]) > -1) {
-                    if (settings[window.backgroundTranslations[document.lang]]) {
-                        window.requestBLOB(settings[window.backgroundTranslations[document.lang]], encodeURIComponent(settings[window.backgroundTranslations[document.lang]]).replace(/\./g, '%2E'), function (BLOBURL) {
+            if (settings[window.attributesTranslations[document.langID]]) {
+                if (settings[window.attributesTranslations[document.langID]].indexOf(window.parallaxTranslations[document.langID]) > -1) {
+                    if (settings[window.backgroundTranslations[document.langID]]) {
+                        window.requestBLOB(settings[window.backgroundTranslations[document.langID]], encodeURIComponent(settings[window.backgroundTranslations[document.langID]]).replace(/\./g, '%2E'), function (BLOBURL) {
                             $('#' + name + '').css({'background': 'url(' + BLOBURL + ') no-repeat', 'background-size': 'cover'});
                             if (window.deviceForm == 'desktop') {
                                 $('#' + name + '').addClass('parallax');
@@ -138,20 +138,20 @@ $(function () {
                         });
                     }
                 } else {
-                    if (settings[window.backgroundTranslations[document.lang]]) {
-                        window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
+                    if (settings[window.backgroundTranslations[document.langID]]) {
+                        window.setBG(name, settings[window.backgroundTranslations[document.langID]]);
                     }
                 }
             } else {
-                if (settings[window.backgroundTranslations[document.lang]]) {
-                    window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
+                if (settings[window.backgroundTranslations[document.langID]]) {
+                    window.setBG(name, settings[window.backgroundTranslations[document.langID]]);
                 }
             }
-            if (settings[window.animationTranslations[document.lang]]) {
-                window.setAnimation(name, settings[window.animationTranslations[document.lang]]);
+            if (settings[window.animationTranslations[document.langID]]) {
+                window.setAnimation(name, settings[window.animationTranslations[document.langID]]);
             }
-            if (settings[window.transparencyTranslations[document.lang]]) {
-                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.lang]] + '%)');
+            if (settings[window.transparencyTranslations[document.langID]]) {
+                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.langID]] + '%)');
             }
         });
     };

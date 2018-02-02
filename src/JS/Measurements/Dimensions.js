@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-18
+ * Date: 2018-02-02
  */
 window.setDimension = function (name, dimension, value) {
 	document[name + dimension + '_updater'] = null;
@@ -14,13 +14,13 @@ window.setDimension = function (name, dimension, value) {
 	var isTitled = $('#' + name + '').prop('isTitled');
 	var landscapeValue = null;
 	var portraitValue = null;
-	if (value.includes(window.andTranslations[document.lang])) {
-		var availableValues = value.split(' ' + window.andTranslations[document.lang] + ' ');
+	if (value.includes(window.andTranslations[document.langID])) {
+		var availableValues = value.split(' ' + window.andTranslations[document.langID] + ' ');
 		for (var i = 0; i < availableValues.length; i++) {
-			if (availableValues[i].includes(window.inTheCaseOfLandscapeModeTranslations[document.lang])) {
-				landscapeValue = availableValues[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.lang])[0].split(' ')[0] + ' ' + availableValues[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.lang])[0].split(' ')[1];
-			} else if (availableValues[i].includes(window.inTheCaseOfPortraitModeTranslations[document.lang])) {
-				portraitValue = availableValues[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.lang])[0].split(' ')[0] + ' ' + availableValues[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.lang])[0].split(' ')[1];
+			if (availableValues[i].includes(window.inTheCaseOfLandscapeModeTranslations[document.langID])) {
+				landscapeValue = availableValues[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.langID])[0].split(' ')[0] + ' ' + availableValues[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.langID])[0].split(' ')[1];
+			} else if (availableValues[i].includes(window.inTheCaseOfPortraitModeTranslations[document.langID])) {
+				portraitValue = availableValues[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.langID])[0].split(' ')[0] + ' ' + availableValues[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.langID])[0].split(' ')[1];
 			}
 		}
 	}
@@ -30,39 +30,67 @@ window.setDimension = function (name, dimension, value) {
 			if (type == 'img' || type == 'vid') {
 				if (isTitled) {
 					if (document.pageDirection == 'horizontal') {
-						$('#' + name + '_container').css('height', ((parseFloat(ratio * screen.availHeight) + 40) * (100 / screen.availHeight)) + 'vh');
+						$('#' + name + '_container').each(function () {
+						this.style.setProperty('height', ((parseFloat(ratio * screen.availHeight) + 40) * (100 / screen.availHeight)) + 'vh', 'important');
+						});
 					} else if (document.pageDirection == 'vertical') {
-						$('#' + name + '_container').css('height', (((parseFloat(ratio * screen.availHeight) + 40) * (100 / screen.availHeight)) * vhvwRatio) + 'vw');
+						$('#' + name + '_container').each(function () {
+						this.style.setProperty('height', (((parseFloat(ratio * screen.availHeight) + 40) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important');
+						});
 					}
 				} else {
 					if (document.pageDirection == 'horizontal') {
-						$('#' + name + '_container').css('height', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh');
+						$('#' + name + '_container').each(function () {
+						this.style.setProperty('height', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh', 'important');
+						});
 					} else if (document.pageDirection == 'vertical') {
-						$('#' + name + '_container').css('height', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw');
+						$('#' + name + '_container').each(function () {
+						this.style.setProperty('height', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important');
+						});
 					}
 				}
 				if (document.pageDirection == 'horizontal') {
-					$('#' + name + '').css('height', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh');
+					$('#' + name + '').each(function () {
+						this.style.setProperty('height', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh', 'important');
+					});
 				} else if (document.pageDirection == 'vertical') {
-					$('#' + name + '').css('height', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw');
+					$('#' + name + '').each(function () {
+						this.style.setProperty('height', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important');
+					});
 				}
 			} else {
 				if (document.pageDirection == 'horizontal') {
-					$('#' + name + '').css('height', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh');
+					$('#' + name + '').each(function () {
+						this.style.setProperty('height', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh', 'important');
+					});
 				} else if (document.pageDirection == 'vertical') {
-					$('#' + name + '').css('height', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw');
+					$('#' + name + '').each(function () {
+						this.style.setProperty('height', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important');
+					});
 				}
 			}
 		} else if (dimension == 'width') {
 			if (type == 'img' || type == 'vid') {
 				if (document.pageDirection == 'horizontal') {
-					$('#' + name + '_container').css('width', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh');
-					$('#' + name + '_html5_api').css('width', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh');
-					$('#' + name + '').css('width', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh');
+					$('#' + name + '_container').each(function () {
+						this.style.setProperty('width', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important');
+					});
+					$('#' + name + '_html5_api').each(function () {
+						this.style.setProperty('width', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important');
+					});
+					$('#' + name + '').each(function () {
+						this.style.setProperty('width', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important');
+					});
 				} else if (document.pageDirection == 'vertical') {
-					$('#' + name + '_container').css('width', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw');
-					$('#' + name + '_html5_api').css('width', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw');
-					$('#' + name + '').css('width', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw');
+					$('#' + name + '_container').each(function () {
+						this.style.setProperty('width', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important');
+					});
+					$('#' + name + '_html5_api').each(function () {
+						this.style.setProperty('width', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important');
+					});
+					$('#' + name + '').each(function () {
+						this.style.setProperty('width', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important');
+					});
 				}
 			} else if ($('#' + name + '').hasClass('iziModal')) {
 				if (document.pageDirection == 'horizontal') {
@@ -72,9 +100,13 @@ window.setDimension = function (name, dimension, value) {
 				}
 			} else {
 				if (document.pageDirection == 'horizontal') {
-					$('#' + name + '').css('width', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh');
+					$('#' + name + '').each(function () {
+						this.style.setProperty('width', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important');
+					});
 				} else if (document.pageDirection == 'vertical') {
-					$('#' + name + '').css('width', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw');
+					$('#' + name + '').each(function () {
+						this.style.setProperty('width', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important');
+					});
 				}
 			}
 		}

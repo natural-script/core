@@ -6,14 +6,12 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-01-30
+ * Date: 2018-02-01
  */
 String.prototype.parseValue = function () {
-    if (this.startsWith(window.theValueOfTranslations[document.lang])) {
-        return elementValueFn.get(XRegExp('^' + window.theValueOfTranslations[document.lang] + '(\\pL+).*?$').exec(test)[1]);
-    } else if (this.startsWith(window.theResultOfTheMathematicalExpressionTranslations[document.lang])) {
-        return window.evaluateExpression(XRegExp('^' + window.theResultOfTheMathematicalExpressionTranslations[document.lang] + ': (.*?)$').exec(test)[1]);
-    } else {
-        return this;
-    }
+    return this.replace(XRegExp('&lt;&lt; ' + window.theValueOfTranslations[document.langID] + ' (\\pL+).*? &gt;&gt;'), function (match, p1, offset, string) {
+        return elementValue.get(p1);
+    }).replace(XRegExp('&lt;&lt; ' + window.theResultOfTheMathematicalExpressionTranslations[document.langID] + ': (.*?) &gt;&gt;'), function (match, p1, offset, string) {
+        return evaluateExpression(p1);
+    });
 }

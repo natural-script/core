@@ -11,7 +11,7 @@
 window.evaluateStatement = function (command) {
 	var promise = new Promise(function (resolve, reject) {
 		var statement;
-		if (document.lang == 0 || document.lang == 1) {
+		if (document.langID == 0 || document.langID == 1) {
 			statement = command.split(' in the case that ')[1];
 			var currentStatementBuildingStage = statement;
 			var previousStatementBuildingStage;
@@ -108,7 +108,7 @@ window.evaluateStatement = function (command) {
 					resolve(finalStatement);
 				}
 			}, 1);
-		} else if (document.lang == 2) {
+		} else if (document.langID == 2) {
 			statement = command.split('obtenir la valeur de la fente ')[1];
 			var currentStatementBuildingStage = statement;
 			var previousStatementBuildingStage;
@@ -201,7 +201,7 @@ window.evaluateStatement = function (command) {
 					resolve(finalStatement);
 				}
 			}, 1);
-		} else if (document.lang == 3) {
+		} else if (document.langID == 3) {
 			statement = command.split(' فى حالة أن ')[1];
 			var currentStatementBuildingStage = statement;
 			var previousStatementBuildingStage;
@@ -296,7 +296,7 @@ window.evaluateStatement = function (command) {
 					resolve(finalStatement);
 				}
 			}, 1);
-		} else if (document.lang == 4) {
+		} else if (document.langID == 4) {
 			statement = command.split(' فى حالة إن ')[1];
 			var currentStatementBuildingStage = statement;
 			var previousStatementBuildingStage;

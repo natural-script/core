@@ -220,7 +220,9 @@ var Resume = function Resume(options) {
   });
 };
 
-_videoJs2['default'].plugin('Resume', Resume);
+var registerPlugin = _videoJs2['default'].registerPlugin || _videoJs2['default'].plugin;
+
+registerPlugin('Resume', Resume);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}]},{},[1]);

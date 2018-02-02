@@ -9,7 +9,7 @@
  * Date: 2017-09-11
  */
 $(function () {
-    $.fn[window.loginFormTranslations[document.lang]] = function (options) {
+    $.fn[window.loginFormTranslations[document.langID]] = function (options) {
         // Establish our default settings
         var settings = $.extend({}, options);
         return this.each(function () {

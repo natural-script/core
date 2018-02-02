@@ -9,39 +9,39 @@
  * Date: 2017-09-6
  */
 $(function () {
-    $.fn[window.loaderTranslations[document.lang]] = function (options) {
+    $.fn[window.loaderTranslations[document.langID]] = function (options) {
         // Establish our default settings
         var settings = $.extend({
-            [window.nameTranslations[document.lang]]: null,
-            [window.widthTranslations[document.lang]]: null,
-            [window.lengthTranslations[document.lang]]: null,
-            [window.loadingTranslations[document.lang]]: null,
-            [window.animationTranslations[document.lang]]: null,
-            [window.backgroundTranslations[document.lang]]: null,
-            [window.transparencyTranslations[document.lang]]: null,
-            [window.distanceFromBottomTranslations[document.lang]]: null,
-            [window.distanceFromTopTranslations[document.lang]]: null,
-            [window.distanceFromLeftTranslations[document.lang]]: null,
-            [window.distanceFromRightTranslations[document.lang]]: null,
-            [window.positionTranslations[document.lang]]: null,
-            [window.containerTranslations[document.lang]]: null,
-            [window.typeTranslations[document.lang]]: window.spinnerTranslations[document.lang],
-            [window.attributesTranslations[document.lang]]: null,
-            [window.commandsTranslations[document.lang]]: null
+            [window.nameTranslations[document.langID]]: null,
+            [window.widthTranslations[document.langID]]: null,
+            [window.lengthTranslations[document.langID]]: null,
+            [window.loadingTranslations[document.langID]]: null,
+            [window.animationTranslations[document.langID]]: null,
+            [window.backgroundTranslations[document.langID]]: null,
+            [window.transparencyTranslations[document.langID]]: null,
+            [window.distanceFromBottomTranslations[document.langID]]: null,
+            [window.distanceFromTopTranslations[document.langID]]: null,
+            [window.distanceFromLeftTranslations[document.langID]]: null,
+            [window.distanceFromRightTranslations[document.langID]]: null,
+            [window.positionTranslations[document.langID]]: null,
+            [window.containerTranslations[document.langID]]: null,
+            [window.typeTranslations[document.langID]]: window.spinnerTranslations[document.langID],
+            [window.attributesTranslations[document.langID]]: null,
+            [window.commandsTranslations[document.langID]]: null
         }, options);
         return this.each(function () {
-            var name = settings[window.nameTranslations[document.lang]];
+            var name = settings[window.nameTranslations[document.langID]];
             var out;
-            if (settings[window.typeTranslations[document.lang]] == window.barTranslations[document.lang]) {
+            if (settings[window.typeTranslations[document.langID]] == window.barTranslations[document.langID]) {
                 out = '<paper-progress id="' + name + '"></paper-progress>';
-            } else if (settings[window.typeTranslations[document.lang]] == window.spinnerTranslations[document.lang]) {
+            } else if (settings[window.typeTranslations[document.langID]] == window.spinnerTranslations[document.langID]) {
                 out = '<paper-spinner id="' + name + '"></paper-spinner>';
             }
-            window.appendComponent(settings[window.containerTranslations[document.lang]], out);
-            if (settings[window.attributesTranslations[document.lang]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
+            window.appendComponent(settings[window.containerTranslations[document.langID]], out);
+            if (settings[window.attributesTranslations[document.langID]]) {
+                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.loadingTranslations[document.lang]) {
+                    if (propertiesArray[i] == window.loadingTranslations[document.langID]) {
                         $('#' + name + '').attr('active', '');
                     }
                 }

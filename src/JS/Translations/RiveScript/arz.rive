@@ -1,0 +1,255 @@
+/*!
+ * Egyptian Arabic Commands RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-02-02
+ */
+
+// امسحه
+
++ امسح(?:ه|ما)
+- command_id: S1 ==> lang: arz ==> target: itself
+
+// امسح العنصر دة
+
++ امسح العنصر دة
+- command_id: S1 ==> lang: arz ==> target: itself
+
+// امسح elephant_photo
+
++ امسح *
+- command_id: S1 ==> lang: arz ==> target: <star1>
+
+// افتح مربع الحوار learn_more
+
++ (?:روح|توجه|زور|افتح) (?:لل| إلى | )l* ((?![A-Za-z].*? )*)
+- command_id: S2 ==> lang: arz ==> targetType: <star1> ==> target: <star2>
+
+// شغلها
+
++ شغل(?:ه|ما)
+- command_id: S3 ==> lang: arz ==> target: itself
+
+// شغل اﻷغنية دى
+
++ شغل (?:اﻷغنية|الاغنية|الأغنية) دى
+- command_id: S3 ==> lang: arz ==> target: itself
+
+// شغل العنصر دة
+
++ شغل العنصر دة
+- command_id: S3 ==> lang: arz ==> target: itself
+
+// شغل الفيديو دة
+
++ شغل الفيديو دة
+- command_id: S3 ==> lang: arz ==> target: itself
+
+// شغل Close_To_You
+
++ شغل *
+- command_id: S3 ==> lang: arz ==> target: <star1>
+
+// وقفه
+
++ وقف(?:ه|ما)
+- command_id: S4 ==> lang: arz ==> target: itself
+
+// وقف اﻷغنية دى
+
++ وقف (?:اﻷغنية|الاغنية|الأغنية) دى
+- command_id: S4 ==> lang: arz ==> target: itself
+
+// وقف العنصر دة
+
++ وقف العنصر دة
+- command_id: S4 ==> lang: arz ==> target: itself
+
+// وقف الفيديو دة
+
++ وقف الفيديو دة
+- command_id: S4 ==> lang: arz ==> target: itself
+
+// وقف Close_To_You
+
++ وقف *
+- command_id: S4 ==> lang: arz ==> target: <star1>
+
+// set the time position of it to 51654
+
++ set the time position of it to *
+- command_id: S5 ==> lang: arz ==> target: itself ==> timePosition: <star1>
+
+// set the time position of this song to 13575
+
++ set the time position of this song to *
+- command_id: S5 ==> lang: arz ==> target: itself ==> timePosition: <star1>
+
+// set the time position of this element to 5566
+
++ set the time position of this element to *
+- command_id: S5 ==> lang: arz ==> target: itself ==> timePosition: <star1>
+
+// set the time position of this video to 5
+
++ set the time position of this video to *
+- command_id: S5 ==> lang: arz ==> target: itself ==> timePosition: <star1>
+
+// set the time position of Close_To_You to 2048
+
++ set the time position of * to *
+- command_id: S5 ==> lang: arz ==> target: <star1> ==> timePosition: <star2>
+
+// خلى القيمة بتاعته Hello World !
+
++ خلى القيمة بتاعت(?:ه|ما) *
+- command_id: S6 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى قيمة العنصر دة Hello World !
+
++ خلى قيمة العنصر دة *
+- command_id: S6 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// set the value of welcome_message to Welcome, folks !
+
++ (?:set|change) the value of * to *
+- command_id: S6 ==> lang: arz ==> target: <star1> ==> value: <star2>
+
+// بدل حالة الفلاش
+
++ بدل حالة (?:الفلاش|الكشاف)
+- command_id: S7 ==> lang: arz
+
+// ولع الفلاش
+
++ (?:ولع|شغل|افتح) (?:الفلاش|الكشاف)
+- command_id: S8 ==> lang: arz
+
+// طفى الكشاف
+
++ طفى (?:الفلاش|الكشاف)
+- command_id: S9 ==> lang: arz
+
+// شغل الواى فاى
+
++ (?:ولع|شغل|افتح) (?:الويفى|الويفي|الوافاى|الواى فاى|الانترنت اللاسلكى|الإنترنت اللاسلكى)
+- command_id: S10 ==> lang: arz
+
+// طفى الإنترنت اللاسلكى
+
++ طفى (?:الويفى|الويفي|الوافاى|الواى فاى|الانترنت اللاسلكى|الإنترنت اللاسلكى)
+- command_id: S11 ==> lang: arz
+
+// شغل البلوتوث
+
++ (?:ولع|شغل|افتح) (?:الإتصال بالبلوتوث|البلوتوث)
+- command_id: S12 ==> lang: arz
+
+// اظهر الكيبورد
+
++ (?:اظهر|افتح) (?:الكيبورد|الكى بورد|الكي بورد)
+- command_id: S13 ==> lang: arz
+
+// اقفل الكيبورد
+
++ (?:اخفى|اقفل) (?:الكيبورد|الكى بورد|الكي بورد)
+- command_id: S14 ==> lang: arz
+
+// go to the public database egypt the branch citizines and then insert the following data: the value of name_input in the slot name, the value of address_input in the slot address
+
++ (?:go|open a connection|open a new connection) to the * database * the branch * and then insert the following data: (* in the slot * [*])
+- command_id: S15 ==> lang: arz ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> data: IS_GROUPED: false SEPARATOR: ,  REGEX: (.*?) in the slot (.*?) ELEMENTS: ["value", "slotName"] DATA: <star4>
+
+// go to the public database egypt the branch citizines and then get the value of the slot address which has the same class of the value of name_input in the slot name and set it as the value of textB
+
++ (?:go|open a connection|open a new connection) to the * database * the branch * and then get the value of the slot * which has the same class of * in the slot * and set it as the value of *
+- command_id: S16 ==> lang: arz ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> requiredSlot: <star4> ==> resourceValue: <star5> ==> resourceSlot: <star6> ==> target: <star7>
+
+// go to the public database egypt the branch citizines and then get the value of the slot address which has the same class of the value of name_input in the slot name and set it as the value of this element
+
++ (?:go|open a connection|open a new connection) to the * database * the branch * and then get the value of the slot * which has the same class of * in the slot * and set it as the value of this element
+- command_id: S16 ==> lang: arz ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> requiredSlot: <star4> ==> resourceValue: <star5> ==> resourceSlot: <star6> ==> target: itself
+
+// خلى عرضه 30 بكسل
+
++ خلى عرض(?:ه|ما) *
+- command_id: S17 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى العرض بتاعه 30 بكسل
+
++ خلى العرض بتاع(?:ه|ما) *
+- command_id: S18 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى عرض العنصر دة 50 بكسل
+
++ خلى عرض العنصر دة *
+- command_id: S17 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// set the width of containerA to 30 pixels
+
++ (?:set|change) the width of * to *
+- command_id: S17 ==> lang: arz ==> target: <star1> ==> value: <star2>
+
+// خلى طوله 30 بكسل
+
++ خلى طول(?:ه|ما) *
+- command_id: S18 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى الطول بتاعه 30 بكسل
+
++ خلى الطول بتاع(?:ه|ما) *
+- command_id: S18 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى طول العنصر دة 50 بكسل
+
++ خلى طول العنصر دة *
+- command_id: S18 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// set the length of containerA to 30 pixels
+
++ (?:set|change) the length of * to *
+- command_id: S18 ==> lang: arz ==> target: <star1> ==> value: <star2>
+
+// خلى خلفيتها لون غامق عشوائى
+
++ خلى خلفيت(?:ه|ما) *
+- command_id: S19 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى الخلفية بتاعته 30 بكسل
+
++ خلى الخلفية بتاعت(?:ه|ما) *
+- command_id: S18 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// set the background of main_page to red
+
++ (?:set|change) the background of * to *
+- command_id: S19 ==> lang: arz ==> target: <star1> ==> value: <star2>
+
+// خلى خلفية العنصر دة لون فاتح عشوائى
+
++ خلى خلفية العنصر دة *
+- command_id: S19 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى لون خطه لون عشوائى
+
++ خلى لون خط(?:ه|ما) *
+- command_id: S20 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى لون الخط بتاعه 30 بكسل
+
++ خلى لون الخط بتاع(?:ه|ما) *
+- command_id: S18 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى لون خط العنصر دة لون فاتح عشوائى
+
++ خلى لون خط العنصر دة *
+- command_id: S20 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// set the font color of heading_title to blue
+
++ (?:set|change) (?:the font colour of|the font color of|the colour of the font of |the color of the font of ) * to *
+- command_id: S20 ==> lang: arz ==> target: <star1> ==> value: <star2>

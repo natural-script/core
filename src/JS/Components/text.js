@@ -9,37 +9,37 @@
  * Date: 2017-09-6
  */
 $(function () {
-    $.fn[window.textFnTranslations[document.lang]] = function (options) {
+    $.fn[window.textFnTranslations[document.langID]] = function (options) {
         // Establish our default settings
         var settings = $.extend({
-            [window.textTranslations[document.lang]]: null,
-            [window.fontColorTranslations[document.lang]]: null,
-            [window.fontSizeTranslations[document.lang]]: null,
-            [window.nameTranslations[document.lang]]: null,
-            [window.widthTranslations[document.lang]]: null,
-            [window.lengthTranslations[document.lang]]: null,
-            [window.fontThicknessTranslations[document.lang]]: null,
-            [window.fontStyleTranslations[document.lang]]: null,
-            [window.animationTranslations[document.lang]]: null,
-            [window.backgroundTranslations[document.lang]]: null,
-            [window.transparencyTranslations[document.lang]]: null,
-            [window.distanceFromBottomTranslations[document.lang]]: null,
-            [window.distanceFromTopTranslations[document.lang]]: null,
-            [window.distanceFromLeftTranslations[document.lang]]: null,
-            [window.distanceFromRightTranslations[document.lang]]: null,
-            [window.positionTranslations[document.lang]]: null,
-            [window.containerTranslations[document.lang]]: null,
-            [window.attributesTranslations[document.lang]]: null,
-            [window.commandsTranslations[document.lang]]: null
+            [window.textTranslations[document.langID]]: null,
+            [window.fontColorTranslations[document.langID]]: null,
+            [window.fontSizeTranslations[document.langID]]: null,
+            [window.nameTranslations[document.langID]]: null,
+            [window.widthTranslations[document.langID]]: null,
+            [window.lengthTranslations[document.langID]]: null,
+            [window.fontThicknessTranslations[document.langID]]: null,
+            [window.fontStyleTranslations[document.langID]]: null,
+            [window.animationTranslations[document.langID]]: null,
+            [window.backgroundTranslations[document.langID]]: null,
+            [window.transparencyTranslations[document.langID]]: null,
+            [window.distanceFromBottomTranslations[document.langID]]: null,
+            [window.distanceFromTopTranslations[document.langID]]: null,
+            [window.distanceFromLeftTranslations[document.langID]]: null,
+            [window.distanceFromRightTranslations[document.langID]]: null,
+            [window.positionTranslations[document.langID]]: null,
+            [window.containerTranslations[document.langID]]: null,
+            [window.attributesTranslations[document.langID]]: null,
+            [window.commandsTranslations[document.langID]]: null
         }, options);
         return this.each(function () {
-            var name = settings[window.nameTranslations[document.lang]];
-            var out = '<p id="' + name + '">' + settings[window.textTranslations[document.lang]] + '</p>';
-            window.appendComponent(settings[window.containerTranslations[document.lang]], out);
-            if (settings[window.attributesTranslations[document.lang]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.lang]].split(' ' + window.andTranslations[document.lang] + ' ');
+            var name = settings[window.nameTranslations[document.langID]];
+            var out = '<p id="' + name + '">' + settings[window.textTranslations[document.langID]] + '</p>';
+            window.appendComponent(settings[window.containerTranslations[document.langID]], out);
+            if (settings[window.attributesTranslations[document.langID]]) {
+                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.shareableTranslations[document.lang]) {
+                    if (propertiesArray[i] == window.shareableTranslations[document.langID]) {
                         window.shareThis({
                             selector: '#' + name + '',
                             sharers: [window.twitterSharer, window.facebookSharer, window.linkedInSharer, window.redditSharer, window.emailSharer]
@@ -47,26 +47,26 @@ $(function () {
                     }
                 }
             }
-            if (settings[window.directionTranslations[document.lang]]) {
-                if (settings[window.directionTranslations[document.lang]] == window.ltrTranslations[document.lang]) {
+            if (settings[window.directionTranslations[document.langID]]) {
+                if (settings[window.directionTranslations[document.langID]] == window.ltrTranslations[document.langID]) {
                     $('#' + name + '').css('direction', 'ltr');
-                } else if (settings[window.directionTranslations[document.lang]] == window.rtlTranslations[document.lang]) {
+                } else if (settings[window.directionTranslations[document.langID]] == window.rtlTranslations[document.langID]) {
                     $('#' + name + '').css('direction', 'rtl');
                 }
             }
-            if (settings[window.backgroundTranslations[document.lang]]) {
-                window.setBG(name, settings[window.backgroundTranslations[document.lang]]);
+            if (settings[window.backgroundTranslations[document.langID]]) {
+                window.setBG(name, settings[window.backgroundTranslations[document.langID]]);
             }
-            if ($('#' + settings[window.containerTranslations[document.lang]] + '').hasClass('row') == true) {
+            if ($('#' + settings[window.containerTranslations[document.langID]] + '').hasClass('row') == true) {
                 $('#' + name + '').addClass('col');
             }
-            if (settings[window.positionTranslations[document.lang]]) {
-                $('#' + name + '').css('position', settings[window.positionTranslations[document.lang]]);
+            if (settings[window.positionTranslations[document.langID]]) {
+                $('#' + name + '').css('position', settings[window.positionTranslations[document.langID]]);
             } else {
                 $('#' + name + '').css('position', 'relative');
             }
             window.propSet(name, settings);
-            $('#' + name + '').niceScroll();
+            document[document.uniqueID()] = new PerfectScrollbar('#' + name + '');
         });
     };
 });

@@ -53,7 +53,7 @@ function showVideoA(name, source, title, videoURLID, fps) {
 			player.dock({
 				title: title
 			});
-			if (document.lang == 3 || document.lang == 4) {
+			if (document.langID == 3 || document.langID == 4) {
 				$('.vjs-dock-text').css('padding', '1em 5% 2em 1em');
 			}
 			clearInterval(document[uniqueID + 'checker']);

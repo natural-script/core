@@ -34,7 +34,7 @@ window.customText = function (content, dynamic) {
 		keywordW,
 		keywordX,
 		keywordY;
-	if (document.lang == 0 || document.lang == 1) {
+	if (document.langID == 0 || document.langID == 1) {
 		keywordA = "write this text in a bold font";
 		keywordB = "write this text in an italic font";
 		keywordC = "write this text in an underlined font";
@@ -60,7 +60,7 @@ window.customText = function (content, dynamic) {
 		keywordW = "the user's name";
 		keywordX = "the user's email";
 		keywordY = "name this text";
-	} else if (document.lang == 2) {
+	} else if (document.langID == 2) {
 		keywordA = "écrire ce texte dans une police en gras";
 		keywordB = "écrire ce texte dans une police en italique";
 		keywordC = "écrire ce texte dans une police soulignée";
@@ -86,7 +86,7 @@ window.customText = function (content, dynamic) {
 		keywordW = "le nom de l'utilisateur";
 		keywordX = "le courrier électronique de l'utilisateur";
 		keywordY = "nommer ce texte";
-	} else if (document.lang == 3) {
+	} else if (document.langID == 3) {
 		keywordA = "اكتب هذا النص بخط سميك";
 		keywordB = "اكتب هذا النص بخط مائل";
 		keywordC = "اكتب هذا النص بخط مخطط";
@@ -112,7 +112,7 @@ window.customText = function (content, dynamic) {
 		keywordW = "اسم المستخدم";
 		keywordX = "بريد المستخدم";
 		keywordY = "سمى هذا النص";
-	} else if (document.lang == 4) {
+	} else if (document.langID == 4) {
 		keywordA = "اكتب الكلام دة بخط طخين";
 		keywordB = "اكتب الكلام دة بخط مايل";
 		keywordC = "اكتب الكلام دة بخط متخطط";
@@ -138,7 +138,7 @@ window.customText = function (content, dynamic) {
 		keywordW = "اسم المستخدم";
 		keywordX = "إيميل المستخدم";
 		keywordY = "سمى الكلام دة";
-	} else if (document.lang == 5) {
+	} else if (document.langID == 5) {
 
 	}
 	content = content.replace(new RegExp("&lt;&lt; (" + keywordA + "|" + keywordB + "|" + keywordC + "|" + keywordD + "|" + keywordE + "|" + keywordF + "|" + keywordG + "|" + keywordH + "|" + keywordI + "|" + keywordJ + "|" + keywordK + "|" + keywordL + "|" + keywordM + "|" + keywordN + "|" + keywordO + "): (.*?) &gt;&gt;", 'g'), function (match, p1, p2, offset, string) {

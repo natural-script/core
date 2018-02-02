@@ -9,33 +9,33 @@
  * Date: 2017-09-15
  */
 window.evaluateExpression = function (expression) {
-	var valNo = expression.match(RegExp(window.theValueOfTranslations[document.lang], "g"));
+	var valNo = expression.match(RegExp(window.theValueOfTranslations[document.langID], "g"));
 	var finalExpression = expression;
 	var valueResource = '';
 	var finalValue = '';
 	if (valNo != null) {
 		if (valNo.length > -1) {
 			for (i = 0; i < valNo.length; i++) {
-				if (document.lang == 0 || document.lang == 1) {
-					valueResource = finalExpression.split(window.theValueOfTranslations[document.lang])[1].split(' ')[1];
+				if (document.langID == 0 || document.langID == 1) {
+					valueResource = finalExpression.split(window.theValueOfTranslations[document.langID])[1].split(' ')[1];
 					finalValue = window.elementValue.get(valueResource);
-					finalExpression = finalExpression.replace(window.theValueOfTranslations[document.lang] + ' ' + valueResource, finalValue);
-				} else if (document.lang == 2) {
-					valueResource = finalExpression.split(window.theValueOfTranslations[document.lang])[1].split(' ')[1];
+					finalExpression = finalExpression.replace(window.theValueOfTranslations[document.langID] + ' ' + valueResource, finalValue);
+				} else if (document.langID == 2) {
+					valueResource = finalExpression.split(window.theValueOfTranslations[document.langID])[1].split(' ')[1];
 					finalValue = window.elementValue.get(valueResource);
-					finalExpression = finalExpression.replace(window.theValueOfTranslations[document.lang] + ' ' + valueResource, finalValue);
-				} else if (document.lang == 3) {
-					valueResource = finalExpression.split(window.theValueOfTranslations[document.lang])[1].split(' ')[1];
+					finalExpression = finalExpression.replace(window.theValueOfTranslations[document.langID] + ' ' + valueResource, finalValue);
+				} else if (document.langID == 3) {
+					valueResource = finalExpression.split(window.theValueOfTranslations[document.langID])[1].split(' ')[1];
 					finalValue = window.elementValue.get(valueResource);
-					finalExpression = finalExpression.replace(window.theValueOfTranslations[document.lang] + ' ' + valueResource, finalValue);
-				} else if (document.lang == 4) {
-					valueResource = finalExpression.split(window.theValueOfTranslations[document.lang])[1].split(' ')[1];
+					finalExpression = finalExpression.replace(window.theValueOfTranslations[document.langID] + ' ' + valueResource, finalValue);
+				} else if (document.langID == 4) {
+					valueResource = finalExpression.split(window.theValueOfTranslations[document.langID])[1].split(' ')[1];
 					finalValue = window.elementValue.get(valueResource);
-					finalExpression = finalExpression.replace(window.theValueOfTranslations[document.lang] + ' ' + valueResource, finalValue);
-				} else if (document.lang == 5) {
-					valueResource = finalExpression.split(window.theValueOfTranslations[document.lang])[1].split(' ')[1];
+					finalExpression = finalExpression.replace(window.theValueOfTranslations[document.langID] + ' ' + valueResource, finalValue);
+				} else if (document.langID == 5) {
+					valueResource = finalExpression.split(window.theValueOfTranslations[document.langID])[1].split(' ')[1];
 					finalValue = window.elementValue.get(valueResource);
-					finalExpression = finalExpression.replace(window.theValueOfTranslations[document.lang] + ' ' + valueResource, finalValue);
+					finalExpression = finalExpression.replace(window.theValueOfTranslations[document.langID] + ' ' + valueResource, finalValue);
 				}
 			}
 		}
@@ -49,18 +49,18 @@ window.evaluateExpression = function (expression) {
 		.replace(/جا/g, 'sin')
 		.replace(/جتا/g, 'cos')
 		.replace(/ظا/g, 'tan')
-		.replace(RegExp(window.centimetersTranslations[document.lang], "g"), "cm")
-		.replace(RegExp(window.millimetersTranslations[document.lang], "g"), "mm")
-		.replace(RegExp(window.inchesTranslations[document.lang], "g"), "in")
-		.replace(RegExp(window.pixelsTranslations[document.lang], "g"), "px")
-		.replace(RegExp(window.pointsTranslations[document.lang], "g"), "pt")
-		.replace(RegExp(window.picasTranslations[document.lang], "g"), "pc")
-		.replace(RegExp(window.centimeterTranslations[document.lang], "g"), "cm")
-		.replace(RegExp(window.millimeterTranslations[document.lang], "g"), "mm")
-		.replace(RegExp(window.inchTranslations[document.lang], "g"), "in")
-		.replace(RegExp(window.pixelTranslations[document.lang], "g"), "px")
-		.replace(RegExp(window.pointTranslations[document.lang], "g"), "pt")
-		.replace(RegExp(window.picaTranslations[document.lang], "g"), "pc")
+		.replace(RegExp(window.centimetersTranslations[document.langID], "g"), "cm")
+		.replace(RegExp(window.millimetersTranslations[document.langID], "g"), "mm")
+		.replace(RegExp(window.inchesTranslations[document.langID], "g"), "in")
+		.replace(RegExp(window.pixelsTranslations[document.langID], "g"), "px")
+		.replace(RegExp(window.pointsTranslations[document.langID], "g"), "pt")
+		.replace(RegExp(window.picasTranslations[document.langID], "g"), "pc")
+		.replace(RegExp(window.centimeterTranslations[document.langID], "g"), "cm")
+		.replace(RegExp(window.millimeterTranslations[document.langID], "g"), "mm")
+		.replace(RegExp(window.inchTranslations[document.langID], "g"), "in")
+		.replace(RegExp(window.pixelTranslations[document.langID], "g"), "px")
+		.replace(RegExp(window.pointTranslations[document.langID], "g"), "pt")
+		.replace(RegExp(window.picaTranslations[document.langID], "g"), "pc")
 		.replace(RegExp('سم', "g"), "cm")
 		.replace(RegExp('مم', "g"), "mm")
 		.replace(RegExp('÷', "g"), "/")

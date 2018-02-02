@@ -18,7 +18,7 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
 	var commandsCommonDeclarations = '';
 	var commandAvailableInfo = Object.keys(commandInfo);
 	for (var infoID = 0; infoID < commandAvailableInfo.length; infoID++) {
-		commandsCommonDeclarations += 'var ' + commandAvailableInfo[infoID] + ' = "' + commandInfo[commandAvailableInfo[infoID]] + '";\nvar script = ' + script + ';';
+		commandsCommonDeclarations += 'var ' + commandAvailableInfo[infoID] + ' = "' + commandInfo[commandAvailableInfo[infoID]] + '";\nvar script = ' + JSON.stringify(script) + ';';
 	}
 	if (event == 'E0') {
 		eventPrefix = "";
@@ -227,9 +227,10 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
                         targetElement = target; \
                     } \
 					" + eventPrefix + typePrefix + " \
+                    console.log(targetElement + ' ' + script.value.parseValue()); \
                         window.elementValue.set(targetElement, script.value.parseValue()); \
                         " + typeSuffix + eventSuffix + " \
-                    }();";
+                    })();";
 	} else if (script.command_id == 'S7') {
 		return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
@@ -322,10 +323,10 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
                         } \
                     } \
                     data = JSON.parse(data); \
-                    if (dbType == window.publicCTranslations[document.lang]) { \
+                    if (dbType == window.publicCTranslations[document.langID]) { \
                         var newPostKey = firebase.database().ref('public/' + dbname).child(tablename).push().key; \
                         firebase.database().ref('public/' + dbname + '/' + tablename + '/' + newPostKey).set(data); \
-                    } else if (dbType == window.privateCTranslations[document.lang]) { \
+                    } else if (dbType == window.privateCTranslations[document.langID]) { \
                         var newPostKey = firebase.database().ref('private/' + window.user.uid + '/' + dbname).child(tablename).push().key; \
                         firebase.database().ref('private/' + window.user.uid + '/' + dbname + '/' + tablename + '/' + newPostKey).set(data); \
                     } \
@@ -348,14 +349,14 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
             } \
             (function (" + commandVarB + ") { \
                 " + eventPrefix + typePrefix + " \
-                    if (dbType.findBestMatch(window.publicCTranslations[document.lang]).rating > 0.5) { \
+                    if (dbType.findBestMatch(window.publicCTranslations[document.langID]).rating > 0.5) { \
                         var dbRef = firebase.database().ref('public/' + dbname + '/' + tablename); \
                         dbRef.orderByChild(resourceSlotName).equalTo($('#' + resourceSlotValueResource + '').val()).on('value', function (snapshot) { \
                             snapshot.forEach(function (data) { \
                                 $('#' + targetElement + '').val(data.val()[calledSlot]); \
                             }); \
                         }); \
-                    } else if (dbType.findBestMatch(window.privateCTranslations[document.lang]).rating > 0.5) { \
+                    } else if (dbType.findBestMatch(window.privateCTranslations[document.langID]).rating > 0.5) { \
                         var dbRef = firebase.database().ref('private/' + window.user.uid + '/' + dbname + '/' + tablename); \
                         dbRef.orderByChild(resourceSlotName).equalTo($('#' + resourceSlotValueResource + '').val()).on('value', function (snapshot) { \
                             snapshot.forEach(function (data) { \

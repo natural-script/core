@@ -2,7 +2,7 @@
 //----------------------------------------Changing The Current Page Function------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 window.changePage = function (pageName) {
-	var currentPage = window.getAllUrlParams().page || window.indexPageTranslations[document.lang];
+	var currentPage = window.getAllUrlParams().page || window.indexPageTranslations[document.langID];
 	if (decodeURIComponent(currentPage) != pageName) {
 		window.fadeOut(decodeURIComponent(currentPage));
 		window.fadeIn(pageName, 'inline-block');

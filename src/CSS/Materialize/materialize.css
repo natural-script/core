@@ -3408,7 +3408,7 @@ nav ul a span.badge {
 .row {
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
+  margin-bottom: auto;
 }
 
 .row:after {
@@ -7347,8 +7347,8 @@ input[type=range]:focus::-ms-fill-upper {
 .side-nav {
   position: fixed;
   width: 300px;
-  left: 0;
-  top: 0;
+  left: auto;
+  top: auto;
   margin: 0;
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
