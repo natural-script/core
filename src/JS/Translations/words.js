@@ -183,4 +183,5 @@ window.defaultWindowResolutionTranslations = ['default_window_resolution', 'defa
 window.inTheCaseOfPortraitModeTranslations = ['in the case of the portrait mode', 'in the case of the portrait mode', "dans le cas du mode portrait", 'فى حالة الوضع العمودى', 'فى حالة الوضع العمودى', '主な色'];
 window.rtlTranslations = ['from right to left', 'from right to left', "de droite à gauche", 'من اليمين إلى الشمال', 'من اللمين للشمال', '主な色'];
 window.indexPageTranslations = ['home', 'home', "page_principale", 'الرئيسية', 'الرئيسية', 'ホーム'];
+window.addTranslations = ['add', 'add', "ajouter", 'اضف', 'ضيف', 'ホーム'];
 window.theResultOfTheMathematicalExpressionTranslations = ['the result of the mathematical expression', 'the result of the mathematical expression', "le résultat de l'expression mathématique", 'ناتج التعبير الرياضى', 'ناتج التعبير الرياضى', 'ホーム'];

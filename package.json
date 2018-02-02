@@ -9,12 +9,9 @@
     "test": "node build.js"
   },
   "dependencies": [
-    "vulcanize",
+    "polymer-bundler",
     "html-minifier",
     "figlet",
-    "babel-preset-es2017",
-    "babel-core",
-    "replace",
     "shelljs"
   ],
   "repository": {

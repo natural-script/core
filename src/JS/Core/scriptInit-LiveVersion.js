@@ -6,220 +6,246 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-01
+ * Date: 2018-02-02
  */
-var meta = document.createElement('meta');
-meta.name = 'viewport';
-meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
-document.getElementsByTagName('head')[0].appendChild(meta);
-var code = 'jQuery(document).ready(\nfunction ($) {\nvar ';
-if (document.langID == 0) {
-	document.isRTL = false;
-	if (window.isChrome) {
-		annyang.setLanguage("en-GB");
+window.scriptInit = async function () {
+	var meta = document.createElement('meta');
+	meta.name = 'viewport';
+	meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
+	document.getElementsByTagName('head')[0].appendChild(meta);
+	var code = $("jste").html();
+	if (navigator.onLine) {
+		var isReachable = await window.isReachable('https://jste-manager.herokuapp.com/autoCorrect');
+		if (isReachable) {
+			var codeChunks = code.match(/^(.|[\r\n]){0,5000}(,|\.)$/gmi);
+			code = '';
+			for (var i = 0; i < codeChunks.length; i++) {
+				code += '\n' + await $.ajax({
+					url: 'https://jste-manager.herokuapp.com/autoCorrect',
+					method: 'POST',
+					data: {
+						lang: document.langCode == 'arz' ? 'ar' : document.langCode,
+						input: codeChunks[i]
+					}
+				});
+			}
+		}
 	}
-	var i = -1;
-	code += 'add = $("body");' + $("jste").html();
-	code = code.replace(/^add a text/gm, 'add a text0');
-	code = code.replace(/^configure this (.*?) (site|app) with the following properties:$/gm, 'add.setup({\nits mode is $2,\nits attributes are $1,');
-	code = code.replace(/^configure this (site|app) with the following properties:$/gm, 'add.setup({\nits mode is $1,');
-	code = code.replace(/^add (a|an) (.*?) (\w+) without (.*?) with the following properties:$/gm, 'add.$3({\nits attributes are $2 and without $4,');
-	code = code.replace(/^add (a|an) (.*?) (\w+) with (.*?) with the following properties:$/gm, 'add.$3({\nits attributes are $2 and with $4,');
-	code = code.replace(/^add (a|an) (\w+) with (.*?) with the following properties:$/gm, 'add.$2({\nits attributes are with $3,');
-	code = code.replace(/^add (a|an) (\w+) without (.*?) with the following properties:$/gm, 'add.$2({\nits attributes are without $3,');
-	code = code.replace(/^add (a|an) (.*?) (\w+) with the following properties:$/gm, 'add.$3({\nits attributes are $2,');
-	code = code.replace(/^add (a|an) (\w+) with the following properties:$/gm, 'add.$2({');
-	code = code.replace(/^assign the following properties to the element (\w+):$/gm, 'add.properties_assignor({\nits name is $1,');
-	code = code.replace(/^clone (\w+) including its commands with the following properties:$/gm, 'add.clone0({\nits cloned element is $1,\nits attributes are with commands,');
-	code = code.replace(/^clone (\w+) with the following properties:$/gm, 'add.clone0({\nits cloned element is $1,');
-	code = window.customText(code, false);
-	code = code.replace(/^its (.*?) (is|are) (.*)\,$/gm, function (match, p1, p2, p3, offset, string) {
-		if (p1 == 'text') {
-			p3 = window.customText(p3);
+	var code = 'jQuery(document).ready(\nfunction ($) {\nvar ' + window.addTranslations[document.langID] + ' = $("body");' + code;
+	if (document.langID == 0) {
+		document.isRTL = false;
+		if (window.isChrome) {
+			annyang.setLanguage("en-GB");
 		}
-		return p1.replace(/ /g, "_") + ': "' + p3.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '",';
-	});
-	code = code.replace(/^its (.*?) (is|are) (.*)\.$/gm, function (match, p1, p2, p3, offset, string) {
-		if (p1 == 'text') {
-			p3 = window.customText(p3);
+		var i = -1;
+		code = code.replace(XRegExp("^ +| +$", 'gmi'), "");
+		code = code.replace(XRegExp("^((.*?)[^,|\.])$\s", 'gmi', '$1 '));
+		code = code.replace(XRegExp("^add a text", 'gmi'), 'add a text0');
+		code = code.replace(XRegExp("^configure this (.*?) (site|app) with the following properties:$", 'gmi'), 'add.setup({\nits mode is $2,\nits attributes are $1,');
+		code = code.replace(XRegExp("^configure this (site|app) with the following properties:$", 'gmi'), 'add.setup({\nits mode is $1,');
+		code = code.replace(XRegExp("^add (a|an) (.*?) (\\pL.+(?!\s)) without (.*?) with the following properties:$", 'gmi'), 'add.$3({\nits attributes are $2 and without $4,');
+		code = code.replace(XRegExp("^add (a|an) (.*?) (\\pL.+(?!\s)) with (.*?) with the following properties:$", 'gmi'), 'add.$3({\nits attributes are $2 and with $4,');
+		code = code.replace(XRegExp("^add (a|an) (\\pL.+(?!\s)) with (.*?) with the following properties:$", 'gmi'), 'add.$2({\nits attributes are with $3,');
+		code = code.replace(XRegExp("^add (a|an) (\\pL.+(?!\s)) without (.*?) with the following properties:$", 'gmi'), 'add.$2({\nits attributes are without $3,');
+		code = code.replace(XRegExp("^add (a|an) (.*?) (\\pL.+(?!\s)) with the following properties:$", 'gmi'), 'add.$3({\nits attributes are $2,');
+		code = code.replace(XRegExp("^add (a|an) (\\pL.+(?!\s)) with the following properties:$", 'gmi'), 'add.$2({');
+		code = code.replace(XRegExp("^assign the following properties to the element (\\pL.+(?!\s)):$", 'gmi'), 'add.properties_assignor({\nits name is $1,');
+		code = code.replace(XRegExp("^clone (\\pL.+(?!\s)) including its commands with the following properties:$", 'gmi'), 'add.clone0({\nits cloned element is $1,\nits attributes are with commands,');
+		code = code.replace(XRegExp("^clone (\\pL.+(?!\s)) with the following properties:$", 'gmi'), 'add.clone0({\nits cloned element is $1,');
+		code = window.customText(code, false);
+		code = code.replace(XRegExp("^its (.*?) (is|are) (.*)\,$", 'gmi'), function (match, p1, p2, p3, offset, string) {
+			if (p1 == 'text') {
+				p3 = window.customText(p3);
+			}
+			return p1.replace(XRegExp(" ", 'gi'), "_") + ': "' + p3.replace(XRegExp('^(.*?)"(.*)$', 'gmi'), '$1\\"$2') + '",';
+		});
+		code = code.replace(XRegExp("^its (.*?) (is|are) (.*)\.$", 'gmi'), function (match, p1, p2, p3, offset, string) {
+			if (p1 == 'text') {
+				p3 = window.customText(p3);
+			}
+			return p1.replace(XRegExp(" ", 'gi'), "_") + ': "' + p3.replace(XRegExp('^(.*?)"(.*)$', 'gmi'), '$1\\"$2') + '"\n});';
+		});
+		code = code.replace(XRegExp("^the commands of the item (.*?) are that (.*?)\,$", 'gmi'), function (match, p1, p2, offset, string) {
+			i++;
+			return 'commands' + i + ': "' + p1 + ':' + p2 + '",';
+		});
+		code = code.replace(XRegExp("^the commands of the item (.*?) are that (.*?)\.$", 'gmi'), function (match, p1, p2, offset, string) {
+			i++;
+			return 'commands' + i + ': "' + p1 + ':' + p2 + '"\n});';
+		});
+		$("jste").remove();
+	} else if (document.langID == 1) {
+		document.isRTL = false;
+		if (window.isChrome) {
+			annyang.setLanguage("en-US");
 		}
-		return p1.replace(/ /g, "_") + ': "' + p3.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '"\n});';
-	});
-	code = code.replace(/^the commands of the item (.*?) are that (.*?)\,$/gm, function (match, p1, p2, offset, string) {
-		i++;
-		return 'commands' + i + ': "' + p1 + ':' + p2 + '",';
-	});
-	code = code.replace(/^the commands of the item (.*?) are that (.*?)\.$/gm, function (match, p1, p2, offset, string) {
-		i++;
-		return 'commands' + i + ': "' + p1 + ':' + p2 + '"\n});';
-	});
-	$("jste").remove();
-} else if (document.langID == 1) {
-	document.isRTL = false;
-	if (window.isChrome) {
-		annyang.setLanguage("en-US");
+		var i = -1;
+		code = code.replace(XRegExp("^ +| +$", 'gmi'), "");
+		code = code.replace(XRegExp("^((.*?)[^,|\.])$\s", 'gmi', '$1 '));
+		code = code.replace(XRegExp("^add a text", 'gmi'), 'add a text0');
+		code = code.replace(XRegExp("^configure this (.*?) (site|app) with the following properties:$", 'gmi'), 'add.setup({\nits mode is $2,\nits attributes are $1,');
+		code = code.replace(XRegExp("^configure this (site|app) with the following properties:$", 'gmi'), 'add.setup({\nits mode is $1,');
+		code = code.replace(XRegExp("^add (a|an) (.*?) (\\pL.+(?!\s)) without (.*?) with the following properties:$", 'gmi'), 'add.$3({\nits attributes are $2 and without $4,');
+		code = code.replace(XRegExp("^add (a|an) (.*?) (\\pL.+(?!\s)) with (.*?) with the following properties:$", 'gmi'), 'add.$3({\nits attributes are $2 and with $4,');
+		code = code.replace(XRegExp("^add (a|an) (\\pL.+(?!\s)) with (.*?) with the following properties:$", 'gmi'), 'add.$2({\nits attributes are with $3,');
+		code = code.replace(XRegExp("^add (a|an) (\\pL.+(?!\s)) without (.*?) with the following properties:$", 'gmi'), 'add.$2({\nits attributes are without $3,');
+		code = code.replace(XRegExp("^add (a|an) (.*?) (\\pL.+(?!\s)) with the following properties:$", 'gmi'), 'add.$3({\nits attributes are $2,');
+		code = code.replace(XRegExp("^add (a|an) (\\pL.+(?!\s)) with the following properties:$", 'gmi'), 'add.$2({');
+		code = code.replace(XRegExp("^assign the following properties to the element (\\pL.+(?!\s)):$", 'gmi'), 'add.properties_assignor({\nits name is $1,');
+		code = code.replace(XRegExp("^clone (\\pL.+(?!\s)) including its commands with the following properties:$", 'gmi'), 'add.clone0({\nits cloned element is $1,\nits attributes are with commands,');
+		code = code.replace(XRegExp("^clone (\\pL.+(?!\s)) with the following properties:$", 'gmi'), 'add.clone0({\nits cloned element is $1,');
+		code = window.customText(code, false);
+		code = code.replace(XRegExp("^its (.*?) (is|are) (.*)\,$", 'gmi'), function (match, p1, p2, p3, offset, string) {
+			if (p1 == 'text') {
+				p3 = window.customText(p3);
+			}
+			return p1.replace(XRegExp(" ", 'gi'), "_") + ': "' + p3.replace(XRegExp('^(.*?)"(.*)$', 'gmi'), '$1\\"$2') + '",';
+		});
+		code = code.replace(XRegExp("^its (.*?) (is|are) (.*)\.$", 'gmi'), function (match, p1, p2, p3, offset, string) {
+			if (p1 == 'text') {
+				p3 = window.customText(p3);
+			}
+			return p1.replace(XRegExp(" ", 'gi'), "_") + ': "' + p3.replace(XRegExp('^(.*?)"(.*)$', 'gmi'), '$1\\"$2') + '"\n});';
+		});
+		code = code.replace(XRegExp("^the commands of the item (.*?) are that (.*?)\,$", 'gmi'), function (match, p1, p2, offset, string) {
+			i++;
+			return 'commands' + i + ': "' + p1 + ':' + p2 + '",';
+		});
+		code = code.replace(XRegExp("^the commands of the item (.*?) are that (.*?)\.$", 'gmi'), function (match, p1, p2, offset, string) {
+			i++;
+			return 'commands' + i + ': "' + p1 + ':' + p2 + '"\n});';
+		});
+		$("jste").remove();
+	} else if (document.langID == 2) {
+		document.isRTL = false;
+		if (window.isChrome) {
+			annyang.setLanguage("fr-FR");
+		}
+		var i = -1;
+		code = code.replace(XRegExp("^ +| +$", 'gmi'), "");
+		code = code.replace(XRegExp("^((.*?)[^,|\.])$\s", 'gmi', '$1 '));
+		code = code.replace(XRegExp("^configurez ce (site|app) (.*?) avec les propriétés suivantes:$", 'gmi'), 'ajouter.installation({\nson mode est $1,\nses attributs sont $2,');
+		code = code.replace(XRegExp("^configurez ce (site|app) avec les propriétés suivantes:$", 'gmi'), 'ajouter.installation({\nson mode est $1,');
+		code = code.replace(XRegExp("^ajouter (le|la|un|une) (.*?) (.*?) avec les propriétés suivantes:$", 'gmi'), 'ajouter.$2({\nses attributs sont $3,');
+		code = code.replace(XRegExp("^ajouter (le|la|un|une) (.*?) avec les propriétés suivantes:$", 'gmi'), 'ajouter.$2({');
+		code = code.replace(XRegExp("^affectez les propriétés suivantes à l'élément (\\pL.+(?!\s)):$", 'gmi'), 'ajouter.cédant_des_propriétés({\nson nom est $1,');
+		code = code.replace(XRegExp("^cloner (.*?) y compris ses commandes avec les propriétés suivantes:$", 'gmi'), 'ajouter.clone0({\nson élément clone est $1,\nses attributs sont avec des commandes,');
+		code = code.replace(XRegExp("^cloner (.*?) avec les propriétés suivantes:$", 'gmi'), 'ajouter.clone0({\nson élément clone est $1,');
+		code = window.customText(code, false);
+		code = code.replace(XRegExp("^(son|sa|ses) (.*?) (est|sont) (.*)\,$", 'gmi'), function (match, p1, p2, p3, p4, offset, string) {
+			if (p2 == 'text') {
+				p4 = window.customText(p4);
+			}
+			return p2.replace(XRegExp(" ", 'gi'), "_") + ': "' + p4.replace(XRegExp('^(.*?)"(.*)$', 'gmi'), '$1\\"$2') + '",';
+		});
+		code = code.replace(XRegExp("^(son|sa|ses) (.*?) (est|sont) (.*)\.$", 'gmi'), function (match, p1, p2, p3, p4, offset, string) {
+			if (p2 == 'text') {
+				p4 = window.customText(p4);
+			}
+			return p2.replace(XRegExp(" ", 'gi'), "_") + ': "' + p4.replace(XRegExp('^(.*?)"(.*)$', 'gmi'), '$1\\"$2') + '"\n});';
+		});
+		code = code.replace(XRegExp("^les commandes de l'élément (.*?) sont (.*?)\,$", 'gmi'), function (match, p1, p2, offset, string) {
+			i++;
+			return 'commandes' + i + ': "' + p1 + ':' + p2 + '",';
+		});
+		code = code.replace(XRegExp("^les commandes de l'élément (.*?) sont (.*?)\.$", 'gmi'), function (match, p1, p2, offset, string) {
+			i++;
+			return 'commandes' + i + ': "' + p1 + ':' + p2 + '"\n});';
+		});
+		$("jste").remove();
+	} else if (document.langID == 3) {
+		document.isRTL = true;
+		$("html").attr("dir", "rtl").attr("document.langID", "ar");
+		if (window.isChrome) {
+			annyang.setLanguage("ar-AE");
+		}
+		var i = -1;
+		code = code.replace(XRegExp("^ +| +$", 'gmi'), "");
+		code = code.replace(XRegExp("^((.*?)[^,|\.])$\s", 'gmi', '$1 '));
+		code = code.replace(XRegExp("^هيئ هذا (الموقع|التطبيق) (.*?) بالخواص التالية:$", 'gmi'), 'اضف.الإعدادات({\nالوضعية الخاصة به $1,\nالصفات الخاصة به $2,');
+		code = code.replace(XRegExp("^هيئ هذا (الموقع|التطبيق) بالخواص التالية:$", 'gmi'), 'اضف.الإعدادات({\nالوضعية الخاصة به $1,');
+		code = code.replace(XRegExp("^اضف (\\pL.+(?!\s)) (.*?) بالخواص التالية:$", 'gmi'), 'اضف.$1({\nالصفات الخاصة به $2,');
+		code = code.replace(XRegExp("^اضف (\\pL.+(?!\s)) بالخواص التالية:$", 'gmi'), 'اضف.$1({');
+		code = code.replace(XRegExp("^اضف هذه الخواص التالية إلى العنصر (\\pL.+(?!\s)):$", 'gmi'), 'اضف.مضيف_الخواص({\nالاسم الخاص به $1,');
+		code = code.replace(XRegExp("^استنسخ (\\pL.+(?!\s)) بأوامره بالخواص التالية:$", 'gmi'), 'اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,\nالصفات الخاصة به بالأوامر,');
+		code = code.replace(XRegExp("^استنسخ (\\pL.+(?!\s)) بالخواص دى:$", 'gmi'), 'اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,');
+		code = window.customText(code, false);
+		code = code.replace(XRegExp("^(.*?) (الخاص به|الخاصة به|الخاص بها|الخاصة بها) (.*)\,$", 'gmi'), function (match, p1, p2, p3, offset, string) {
+			if (p1 == 'النص') {
+				p3 = window.customText(p3);
+			}
+			return p1.replace(XRegExp(" ", 'gi'), "_").replace(XRegExp("^ال", 'gmi'), "") + ': "' + p3.replace(XRegExp('^(.*?)"(.*)$', 'gmi'), '$1\\"$2') + '",';
+		});
+		code = code.replace(XRegExp("^(.*?) (الخاص به|الخاصة به|الخاص بها|الخاصة بها) (.*)\.$", 'gmi'), function (match, p1, p2, p3, offset, string) {
+			if (p1 == 'النص') {
+				p3 = window.customText(p3);
+			}
+			return p1.replace(XRegExp(" ", 'gi'), "_").replace(XRegExp("^ال", 'gmi'), "") + ': "' + p3.replace(XRegExp('^(.*?)"(.*)$', 'gmi'), '$1\\"$2') + '"\n});';
+		});
+		code = code.replace(XRegExp("^الأوامر الخاصة بالعنصر (.*?) هى أنه (.*?)\,$", 'gmi'), function (match, p1, p2, offset, string) {
+			i++;
+			return 'أوامر' + i + ': "' + p1 + ':' + p2 + '",';
+		});
+		code = code.replace(XRegExp("^الأوامر الخاصة بالعنصر (.*?) هى أنه (.*?)\.$", 'gmi'), function (match, p1, p2, offset, string) {
+			i++;
+			return 'أوامر' + i + ': "' + p1 + ':' + p2 + '"\n});';
+		});
+		$("jste").remove();
+	} else if (document.langID == 4) {
+		document.isRTL = true;
+		$("html").attr("dir", "rtl").attr("document.langID", "ar");
+		if (window.isChrome) {
+			annyang.setLanguage("ar-EG");
+		}
+		var i = -1;
+		code = code.replace(XRegExp("^ +| +$", 'gmi'), "");
+		code = code.replace(XRegExp("^((.*?)[^,|\.])$\s", 'gmi', '$1 '));
+		code = code.replace(XRegExp("^هيئ (السايت|الآب) (.*?) دة بالخواص دى:$", 'gmi'), 'ضيف.الإعدادات({\المود بتاعه $1,\nالصفات بتاعته $2,');
+		code = code.replace(XRegExp("^هيئ (السايت|الآب) دة بالخواص دى:$", 'gmi'), 'ضيف.الإعدادات({\المود بتاعه $1,');
+		code = code.replace(XRegExp("^ضيف (\\pL.+(?!\s)) (.*?) بالخواص دى:$", 'gmi'), 'ضيف.$1({\nالصفات بتاعته $2,');
+		code = code.replace(XRegExp("^ضيف (\\pL.+(?!\s)) بالخواص دى:$", 'gmi'), 'ضيف.$1({');
+		code = code.replace(XRegExp("^ضيف الخواص دى للعنصر (\\pL.+(?!\s)):$", 'gmi'), 'ضيف.مضيف_الخواص({\nالاسم بتاعه $1,');
+		code = code.replace(XRegExp("^استنسخ (\\pL.+(?!\s)) بأوامره بالخواص دى:$", 'gmi'), 'ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,\nالصفات بتاعته بالأوامر,');
+		code = code.replace(XRegExp("^استنسخ (\\pL.+(?!\s)) بالخواص دى:$", 'gmi'), 'ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,');
+		code = window.customText(code, false);
+		code = code.replace(XRegExp("^(.*?) (بتاعه|بتاعته|بتاعها|بتاعتها) (.*)\,$", 'gmi'), function (match, p1, p2, p3, offset, string) {
+			if (p1 == 'الكلام') {
+				p3 = window.customText(p3);
+			}
+			return p1.replace(XRegExp(" ", 'gi'), "_").replace(XRegExp("^ال", 'gmi'), "") + ': "' + p3.replace(XRegExp('^(.*?)"(.*)$', 'gmi'), '$1\\"$2') + '",';
+		});
+		code = code.replace(XRegExp("^(.*?) (بتاعه|بتاعته|بتاعها|بتاعتها) (.*)\.$", 'gmi'), function (match, p1, p2, p3, offset, string) {
+			if (p1 == 'الكلام') {
+				p3 = window.customText(p3);
+			}
+			return p1.replace(XRegExp(" ", 'gi'), "_").replace(XRegExp("^ال", 'gmi'), "") + ': "' + p3.replace(XRegExp('^(.*?)"(.*)$', 'gmi'), '$1\\"$2') + '"\n});';
+		});
+		code = code.replace(XRegExp("^الأوامر بتاعت العنصر (.*?) هية إنه (.*?)\,$", 'gmi'), function (match, p1, p2, offset, string) {
+			i++;
+			return 'أوامر' + i + ': "' + p1 + ':' + p2 + '",';
+		});
+		code = code.replace(XRegExp("^الأوامر بتاعت العنصر (.*?) هية إنه (.*?)\.$", 'gmi'), function (match, p1, p2, offset, string) {
+			i++;
+			return 'أوامر' + i + ': "' + p1 + ':' + p2 + '"\n});';
+		});
+		$("jste").remove();
+	} else if (document.langID == 5) {
+		document.isRTL = false;
+		if (window.isChrome) {
+			annyang.setLanguage("ja");
+		}
+		code += '追加する= $("body");' + $("jste").html();
+		$("jste").remove();
 	}
-	var i = -1;
-	code += 'add = $("body");' + $("jste").html();
-	code = code.replace(/^add a text/gm, 'add a text0');
-	code = code.replace(/^configure this (.*?) (site|app) with the following properties:$/gm, 'add.setup({\nits mode is $2,\nits attributes are $1,');
-	code = code.replace(/^configure this (site|app) with the following properties:$/gm, 'add.setup({\nits mode is $1,');
-	code = code.replace(/^add (a|an) (.*?) (\w+) without (.*?) with the following properties:$/gm, 'add.$3({\nits attributes are $2 and without $4,');
-	code = code.replace(/^add (a|an) (.*?) (\w+) with (.*?) with the following properties:$/gm, 'add.$3({\nits attributes are $2 and with $4,');
-	code = code.replace(/^add (a|an) (\w+) with (.*?) with the following properties:$/gm, 'add.$2({\nits attributes are with $3,');
-	code = code.replace(/^add (a|an) (\w+) without (.*?) with the following properties:$/gm, 'add.$2({\nits attributes are without $3,');
-	code = code.replace(/^add (a|an) (.*?) (\w+) with the following properties:$/gm, 'add.$3({\nits attributes are $2,');
-	code = code.replace(/^add (a|an) (\w+) with the following properties:$/gm, 'add.$2({');
-	code = code.replace(/^assign the following properties to the element (\w+):$/gm, 'add.properties_assignor({\nits name is $1,');
-	code = code.replace(/^clone (\w+) including its commands with the following properties:$/gm, 'add.clone0({\nits cloned element is $1,\nits attributes are with commands,');
-	code = code.replace(/^clone (\w+) with the following properties:$/gm, 'add.clone0({\nits cloned element is $1,');
-	code = window.customText(code, false);
-	code = code.replace(/^its (.*?) (is|are) (.*)\,$/gm, function (match, p1, p2, p3, offset, string) {
-		if (p1 == 'text') {
-			p3 = window.customText(p3);
-		}
-		return p1.replace(/ /g, "_") + ': "' + p3.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '",';
-	});
-	code = code.replace(/^its (.*?) (is|are) (.*)\.$/gm, function (match, p1, p2, p3, offset, string) {
-		if (p1 == 'text') {
-			p3 = window.customText(p3);
-		}
-		return p1.replace(/ /g, "_") + ': "' + p3.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '"\n});';
-	});
-	code = code.replace(/^the commands of the item (.*?) are that (.*?)\,$/gm, function (match, p1, p2, offset, string) {
-		i++;
-		return 'commands' + i + ': "' + p1 + ':' + p2 + '",';
-	});
-	code = code.replace(/^the commands of the item (.*?) are that (.*?)\.$/gm, function (match, p1, p2, offset, string) {
-		i++;
-		return 'commands' + i + ': "' + p1 + ':' + p2 + '"\n});';
-	});
-	$("jste").remove();
-} else if (document.langID == 2) {
-	document.isRTL = false;
-	if (window.isChrome) {
-		annyang.setLanguage("fr-FR");
-	}
-	var i = -1;
-	code += 'ajouter = $("body");' + $("jste").html();
-	code = code.replace(/^configurez ce (site|app) (.*?) avec les propriétés suivantes:$/gm, 'ajouter.installation({\nson mode est $1,\nses attributs sont $2,');
-	code = code.replace(/^configurez ce (site|app) avec les propriétés suivantes:$/gm, 'ajouter.installation({\nson mode est $1,');
-	code = code.replace(/^ajouter (le|la|un|une) (.*?) (.*?) avec les propriétés suivantes:$/gm, 'ajouter.$2({\nses attributs sont $3,');
-	code = code.replace(/^ajouter (le|la|un|une) (.*?) avec les propriétés suivantes:$/gm, 'ajouter.$2({');
-	code = code.replace(/^affectez les propriétés suivantes à l'élément (\w+):$/gm, 'ajouter.cédant_des_propriétés({\nson nom est $1,');
-	code = code.replace(/^cloner (.*?) y compris ses commandes avec les propriétés suivantes:$/gm, 'ajouter.clone0({\nson élément clone est $1,\nses attributs sont avec des commandes,');
-	code = code.replace(/^cloner (.*?) avec les propriétés suivantes:$/gm, 'ajouter.clone0({\nson élément clone est $1,');
-	code = window.customText(code, false);
-	code = code.replace(/^(son|sa|ses) (.*?) (est|sont) (.*)\,$/gm, function (match, p1, p2, p3, p4, offset, string) {
-		if (p2 == 'text') {
-			p4 = window.customText(p4);
-		}
-		return p2.replace(/ /g, "_") + ': "' + p4.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '",';
-	});
-	code = code.replace(/^(son|sa|ses) (.*?) (est|sont) (.*)\.$/gm, function (match, p1, p2, p3, p4, offset, string) {
-		if (p2 == 'text') {
-			p4 = window.customText(p4);
-		}
-		return p2.replace(/ /g, "_") + ': "' + p4.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '"\n});';
-	});
-	code = code.replace(/^les commandes de l'élément (.*?) sont (.*?)\,$/gm, function (match, p1, p2, offset, string) {
-		i++;
-		return 'commandes' + i + ': "' + p1 + ':' + p2 + '",';
-	});
-	code = code.replace(/^les commandes de l'élément (.*?) sont (.*?)\.$/gm, function (match, p1, p2, offset, string) {
-		i++;
-		return 'commandes' + i + ': "' + p1 + ':' + p2 + '"\n});';
-	});
-	$("jste").remove();
-} else if (document.langID == 3) {
-	document.isRTL = true;
-	$("html").attr("dir", "rtl").attr("document.langID", "ar");
-	if (window.isChrome) {
-		annyang.setLanguage("ar-AE");
-	}
-	var i = -1;
-	code += 'اضف = $("body");' + $("jste").html();
-	code = code.replace(/^هيئ هذا (الموقع|التطبيق) (.*?) بالخواص التالية:$/gm, 'اضف.الإعدادات({\nالوضعية الخاصة به $1,\nالصفات الخاصة به $2,');
-	code = code.replace(/^هيئ هذا (الموقع|التطبيق) بالخواص التالية:$/gm, 'اضف.الإعدادات({\nالوضعية الخاصة به $1,');
-	code = code.replace(/^اضف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (.*?) بالخواص التالية:$/gm, 'اضف.$1({\nالصفات الخاصة به $2,');
-	code = code.replace(/^اضف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص التالية:$/gm, 'اضف.$1({');
-	code = code.replace(/^اضف هذه الخواص التالية إلى العنصر ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+):$/gm, 'اضف.مضيف_الخواص({\nالاسم الخاص به $1,');
-	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بأوامره بالخواص التالية:$/gm, 'اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,\nالصفات الخاصة به بالأوامر,');
-	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, 'اضف.استنساخ({\nالعنصر المستنسخ الخاص به $1,');
-	code = window.customText(code, false);
-	code = code.replace(/^(.*?) (الخاص به|الخاصة به|الخاص بها|الخاصة بها) (.*)\,$/gm, function (match, p1, p2, p3, offset, string) {
-		if (p1 == 'النص') {
-			p3 = window.customText(p3);
-		}
-		return p1.replace(/ /g, "_").replace(/^ال/gm, "") + ': "' + p3.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '",';
-	});
-	code = code.replace(/^(.*?) (الخاص به|الخاصة به|الخاص بها|الخاصة بها) (.*)\.$/gm, function (match, p1, p2, p3, offset, string) {
-		if (p1 == 'النص') {
-			p3 = window.customText(p3);
-		}
-		return p1.replace(/ /g, "_").replace(/^ال/gm, "") + ': "' + p3.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '"\n});';
-	});
-	code = code.replace(/^الأوامر الخاصة بالعنصر (.*?) هى أنه (.*?)\,$/gm, function (match, p1, p2, offset, string) {
-		i++;
-		return 'أوامر' + i + ': "' + p1 + ':' + p2 + '",';
-	});
-	code = code.replace(/^الأوامر الخاصة بالعنصر (.*?) هى أنه (.*?)\.$/gm, function (match, p1, p2, offset, string) {
-		i++;
-		return 'أوامر' + i + ': "' + p1 + ':' + p2 + '"\n});';
-	});
-	$("jste").remove();
-} else if (document.langID == 4) {
-	document.isRTL = true;
-	$("html").attr("dir", "rtl").attr("document.langID", "ar");
-	if (window.isChrome) {
-		annyang.setLanguage("ar-EG");
-	}
-	var i = -1;
-	code += 'ضيف = $("body");' + $("jste").html();
-	code = code.replace(/^هيئ (السايت|الآب) (.*?) دة بالخواص دى:$/gm, 'ضيف.الإعدادات({\المود بتاعه $1,\nالصفات بتاعته $2,');
-	code = code.replace(/^هيئ (السايت|الآب) دة بالخواص دى:$/gm, 'ضيف.الإعدادات({\المود بتاعه $1,');
-	code = code.replace(/^ضيف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) (.*?) بالخواص دى:$/gm, 'ضيف.$1({\nالصفات بتاعته $2,');
-	code = code.replace(/^ضيف ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, 'ضيف.$1({');
-	code = code.replace(/^ضيف الخواص دى للعنصر ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+):$/gm, 'ضيف.مضيف_الخواص({\nالاسم بتاعه $1,');
-	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بأوامره بالخواص دى:$/gm, 'ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,\nالصفات بتاعته بالأوامر,');
-	code = code.replace(/^استنسخ ([\u0600-\u065F\u066A-\u06EF\u06FA\-\u06FF_0-9]+) بالخواص دى:$/gm, 'ضيف.استنساخ({\nالعنصر المستنسخ بتاعه $1,');
-	code = window.customText(code, false);
-	code = code.replace(/^(.*?) (بتاعه|بتاعته|بتاعها|بتاعتها) (.*)\,$/gm, function (match, p1, p2, p3, offset, string) {
-		if (p1 == 'الكلام') {
-			p3 = window.customText(p3);
-		}
-		return p1.replace(/ /g, "_").replace(/^ال/gm, "") + ': "' + p3.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '",';
-	});
-	code = code.replace(/^(.*?) (بتاعه|بتاعته|بتاعها|بتاعتها) (.*)\.$/gm, function (match, p1, p2, p3, offset, string) {
-		if (p1 == 'الكلام') {
-			p3 = window.customText(p3);
-		}
-		return p1.replace(/ /g, "_").replace(/^ال/gm, "") + ': "' + p3.replace(/^(.*?)"(.*)$/gm, '$1\\"$2') + '"\n});';
-	});
-	code = code.replace(/^الأوامر بتاعت العنصر (.*?) هية إنه (.*?)\,$/gm, function (match, p1, p2, offset, string) {
-		i++;
-		return 'أوامر' + i + ': "' + p1 + ':' + p2 + '",';
-	});
-	code = code.replace(/^الأوامر بتاعت العنصر (.*?) هية إنه (.*?)\.$/gm, function (match, p1, p2, offset, string) {
-		i++;
-		return 'أوامر' + i + ': "' + p1 + ':' + p2 + '"\n});';
-	});
-	$("jste").remove();
-} else if (document.langID == 5) {
-	document.isRTL = false;
-	if (window.isChrome) {
-		annyang.setLanguage("ja");
-	}
-	code += '追加する= $("body");' + $("jste").html();
-	$("jste").remove();
+	code += '});';
+	eval(code);
+	$('<iframe>').attr('id', 'receiver').attr('src', 'https://jste-manager.herokuapp.com/db-manager.min.html').hide().appendTo('body');
 }
-code += '});';
 $(function () {
 	$(function () {
 		setTimeout(function () {
 			if (document.langID != null) {
-				eval(code);
-				$('<iframe>').attr('id', 'receiver').attr('src', 'https://jste-manager.herokuapp.com/db-manager.min.html').hide().appendTo('body');
+				window.scriptInit();
 			}
 		}, 100);
 	});
