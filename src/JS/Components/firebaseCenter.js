@@ -6,16 +6,11 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-6
+ * Date: 2018-02-04
  */
 $(function () {
-    $.fn[window.firebaseCenterTranslations[document.langID]] = function (options) {
-        // Establish our default settings
-        var settings = $.extend({
-            [window.usernameTranslations[document.langID]]: null,
-            [window.passwordTranslations[document.langID]]: null
-        }, options);
-        return this.each(function () {
+    function firebaseCenter(el, settings) {
+        el.each(function () {
             sessionStorage.firebaseID = settings[window.usernameTranslations[document.langID]];
             sessionStorage.firebaseKey = settings[window.passwordTranslations[document.langID]];
             var config = {
@@ -27,5 +22,8 @@ $(function () {
             firebase.initializeApp(config);
             var database = firebase.database();
         });
+    }
+    $.fn[window.firebaseCenterTranslations[document.langID]] = function (settings) {
+        firebaseCenter(this, settings);
     };
 });

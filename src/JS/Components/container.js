@@ -6,33 +6,11 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-11
+ * Date: 2018-02-04
  */
 $(function () {
-    $.fn[window.containerTranslations[document.langID]] = function (options) {
-        // Establish our default settings
-        var settings = $.extend({
-            [window.fontColorTranslations[document.langID]]: null,
-            [window.fontSizeTranslations[document.langID]]: null,
-            [window.nameTranslations[document.langID]]: null,
-            [window.widthTranslations[document.langID]]: null,
-            [window.lengthTranslations[document.langID]]: null,
-            [window.fontThicknessTranslations[document.langID]]: null,
-            [window.fontStyleTranslations[document.langID]]: null,
-            [window.animationTranslations[document.langID]]: null,
-            [window.transparencyTranslations[document.langID]]: null,
-            [window.distanceFromBottomTranslations[document.langID]]: null,
-            [window.distanceFromTopTranslations[document.langID]]: null,
-            [window.distanceFromLeftTranslations[document.langID]]: null,
-            [window.distanceFromRightTranslations[document.langID]]: null,
-            [window.positionTranslations[document.langID]]: null,
-            [window.containerTranslations[document.langID]]: null,
-            [window.attributesTranslations[document.langID]]: null,
-            [window.backgroundTranslations[document.langID]]: null,
-            [window.withoutShadowTranslations[document.langID]]: null,
-            [window.commandsTranslations[document.langID]]: null
-        }, options);
-        return this.each(function () {
+    function containerFn(el, settings) {
+        el.each(function () {
             var elevation = 2;
             var name = settings[window.nameTranslations[document.langID]];
             if (settings[window.attributesTranslations[document.langID]]) {
@@ -128,7 +106,10 @@ $(function () {
                 if (settings[window.attributesTranslations[document.langID]].indexOf(window.parallaxTranslations[document.langID]) > -1) {
                     if (settings[window.backgroundTranslations[document.langID]]) {
                         window.requestBLOB(settings[window.backgroundTranslations[document.langID]], encodeURIComponent(settings[window.backgroundTranslations[document.langID]]).replace(/\./g, '%2E'), function (BLOBURL) {
-                            $('#' + name + '').css({'background': 'url(' + BLOBURL + ') no-repeat', 'background-size': 'cover'});
+                            $('#' + name + '').css({
+                                'background': 'url(' + BLOBURL + ') no-repeat',
+                                'background-size': 'cover'
+                            });
                             if (window.deviceForm == 'desktop') {
                                 $('#' + name + '').addClass('parallax');
                             }
@@ -154,5 +135,8 @@ $(function () {
                 $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.langID]] + '%)');
             }
         });
+    }
+    $.fn[window.containerTranslations[document.langID]] = function (settings) {
+        containerFn(this, settings);
     };
 });

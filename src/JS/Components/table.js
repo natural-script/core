@@ -6,33 +6,11 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-6
+ * Date: 2018-02-04
  */
 $(function () {
-    $.fn[window.tableTranslations[document.langID]] = function (options) {
-        // Establish our default settings
-        var settings = $.extend({
-            [window.fontColorTranslations[document.langID]]: null,
-            [window.fontSizeTranslations[document.langID]]: null,
-            [window.dataTranslations[document.langID]]: null,
-            [window.nameTranslations[document.langID]]: null,
-            [window.widthTranslations[document.langID]]: null,
-            [window.lengthTranslations[document.langID]]: null,
-            [window.fontThicknessTranslations[document.langID]]: null,
-            [window.fontStyleTranslations[document.langID]]: null,
-            [window.animationTranslations[document.langID]]: null,
-            [window.transparencyTranslations[document.langID]]: null,
-            [window.distanceFromBottomTranslations[document.langID]]: null,
-            [window.distanceFromTopTranslations[document.langID]]: null,
-            [window.distanceFromLeftTranslations[document.langID]]: null,
-            [window.distanceFromRightTranslations[document.langID]]: null,
-            [window.positionTranslations[document.langID]]: null,
-            [window.containerTranslations[document.langID]]: null,
-            [window.attributesTranslations[document.langID]]: null,
-            [window.backgroundTranslations[document.langID]]: null,
-            [window.commandsTranslations[document.langID]]: null
-        }, options);
-        return this.each(function () {
+    function tableFn(el, settings) {
+        el.each(function () {
             var name = settings[window.nameTranslations[document.langID]];
             var out = '<table id="' + name + '" class="responsive-table centered highlight"><thead></thead><tbody class="list"></tbody></table>';
             window.appendComponent(settings[window.containerTranslations[document.langID]], out);
@@ -77,11 +55,11 @@ $(function () {
                 template += '<td class="' + keys[i] + '"></td>';
             }
             template += '</tr>';
-            var options = {
+            var settings = {
                 valueNames: keys,
                 item: template
             };
-            var userList = new List(name, options, inputData);
+            var userList = new List(name, settings, inputData);
             if (settings[window.attributesTranslations[document.langID]]) {
                 var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
@@ -100,5 +78,8 @@ $(function () {
             }
             window.propSet(name, settings);
         });
+    }
+    $.fn[window.tableTranslations[document.langID]] = function (settings) {
+        tableFn(this, settings);
     };
 });

@@ -51,9 +51,9 @@ var ResumeButton = (function (_Button) {
     key: 'handleClick',
     value: function handleClick() {
       this.player_.resumeModal.close();
-      this.player_.currentTime(this.resumeFromTime);
-      this.player_.play();
-      this.player_.trigger('resumevideo');
+      this.player.currentTime(this.resumeFromTime);
+      this.player.play();
+      this.player.trigger('resumevideo');
     }
   }, {
     key: 'handleKeyPress',
@@ -220,9 +220,7 @@ var Resume = function Resume(options) {
   });
 };
 
-var registerPlugin = _videoJs2['default'].registerPlugin || _videoJs2['default'].plugin;
-
-registerPlugin('Resume', Resume);
+_videoJs2['default'].registerPlugin('Resume', Resume);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{}]},{},[1]);

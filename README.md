@@ -6,8 +6,8 @@
 2. Automatic language detection thanks to Franc JS library.
 3. Jste Command Studio which will make the community be able to translate Jste to more languages in very easy way.
 4. Storing all the commands in a Rivescript file so that anyone can access, adding or modifying them easily.
-4. Jste build script Windows compatibility.
-5. Updated web components.
+5. Jste build script Windows compatibility.
+6. Updated web components.
 
 # Jste Framework
 

@@ -6,20 +6,11 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-6
+ * Date: 2018-02-04
  */
 $(function () {
-    $.fn[window.audioTranslations[document.langID]] = function (options) {
-        // Establish our default settings
-        var settings = $.extend({
-            [window.titleTranslations[document.langID]]: null,
-            [window.authorTranslations[document.langID]]: null,
-            [window.coverTranslations[document.langID]]: null,
-            [window.autoplayTranslations[document.langID]]: null,
-            [window.audioPlayerTranslations]: 'false',
-            [window.sourceTranslations[document.langID]]: null,
-        }, options);
-        return this.each(function () {
+    function audioFn(el, settings) {
+        el.each(function () {
             var source = settings[window.sourceTranslations[document.langID]];
             window.requestBLOB(source, encodeURIComponent(source).replace(/\./g, '%2E'), function (dataURL) {
                 if (settings[window.coverTranslations[document.langID]]) {
@@ -48,5 +39,8 @@ $(function () {
                 }
             });
         });
+    }
+    $.fn[window.audioTranslations[document.langID]] = function (settings) {
+        audioFn(this, settings);
     };
 });

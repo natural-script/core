@@ -6,13 +6,11 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-11
+ * Date: 2018-02-04
  */
 $(function () {
-    $.fn[window.loginFormTranslations[document.langID]] = function (options) {
-        // Establish our default settings
-        var settings = $.extend({}, options);
-        return this.each(function () {
+    function loginFormFn(el, settings) {
+        el.each(function () {
             $('body').append('<div id="firebaseui-container"></div>');
 
             function getRecaptchaMode() {
@@ -33,7 +31,7 @@ $(function () {
                     },
                     // Opens IDP Providers sign-in flow in a popup.
                     'signInFlow': 'popup',
-                    'signInOptions': [
+                    'signInsettings': [
                         // TODO(developer): Remove the providers you don't need for your app.
                         {
                             provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -127,5 +125,8 @@ $(function () {
                 ui.start('#firebaseui-container', getUiConfig());
             }
         });
+    }
+    $.fn[window.loginFormTranslations[document.langID]] = function (settings) {
+        loginFormFn(this, settings);
     };
 });

@@ -6,35 +6,16 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-6
+ * Date: 2018-02-04
  */
 $(function () {
-    $.fn[window.loaderTranslations[document.langID]] = function (options) {
-        // Establish our default settings
-        var settings = $.extend({
-            [window.nameTranslations[document.langID]]: null,
-            [window.widthTranslations[document.langID]]: null,
-            [window.lengthTranslations[document.langID]]: null,
-            [window.loadingTranslations[document.langID]]: null,
-            [window.animationTranslations[document.langID]]: null,
-            [window.backgroundTranslations[document.langID]]: null,
-            [window.transparencyTranslations[document.langID]]: null,
-            [window.distanceFromBottomTranslations[document.langID]]: null,
-            [window.distanceFromTopTranslations[document.langID]]: null,
-            [window.distanceFromLeftTranslations[document.langID]]: null,
-            [window.distanceFromRightTranslations[document.langID]]: null,
-            [window.positionTranslations[document.langID]]: null,
-            [window.containerTranslations[document.langID]]: null,
-            [window.typeTranslations[document.langID]]: window.spinnerTranslations[document.langID],
-            [window.attributesTranslations[document.langID]]: null,
-            [window.commandsTranslations[document.langID]]: null
-        }, options);
+    function loaderFn(el, settings) {
         return this.each(function () {
             var name = settings[window.nameTranslations[document.langID]];
             var out;
             if (settings[window.typeTranslations[document.langID]] == window.barTranslations[document.langID]) {
                 out = '<paper-progress id="' + name + '"></paper-progress>';
-            } else if (settings[window.typeTranslations[document.langID]] == window.spinnerTranslations[document.langID]) {
+            } else if (settings[window.typeTranslations[document.langID]] == window.spinnerTranslations[document.langID] || settings[window.typeTranslations[document.langID]] == undefined) {
                 out = '<paper-spinner id="' + name + '"></paper-spinner>';
             }
             window.appendComponent(settings[window.containerTranslations[document.langID]], out);
@@ -48,5 +29,8 @@ $(function () {
             }
             window.propSet(name, settings);
         });
+    }
+    $.fn[window.loaderTranslations[document.langID]] = function (settings) {
+        loaderFn(this, settings);
     };
 });

@@ -2,38 +2,15 @@
  * Dropdown Menu
  * https://project-jste.github.io/
  *
- * Copyright 2017 Jste Team
+ * Copyright 2018 Jste Team
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-11
+ * Date: 2018-02-04
  */
 $(function () {
-    $.fn[window.dropdownMenuTranslations[document.langID]] = function (options) {
-        // Establish our default settings
-        var settings = $.extend({
-            [window.itemsTranslations[document.langID]]: null,
-            [window.fontColorTranslations[document.langID]]: null,
-            [window.fontSizeTranslations[document.langID]]: null,
-            [window.nameTranslations[document.langID]]: null,
-            [window.widthTranslations[document.langID]]: null,
-            [window.lengthTranslations[document.langID]]: null,
-            [window.fontThicknessTranslations[document.langID]]: null,
-            [window.fontStyleTranslations[document.langID]]: null,
-            [window.animationTranslations[document.langID]]: null,
-            [window.transparencyTranslations[document.langID]]: null,
-            [window.distanceFromBottomTranslations[document.langID]]: null,
-            [window.distanceFromTopTranslations[document.langID]]: null,
-            [window.distanceFromLeftTranslations[document.langID]]: null,
-            [window.distanceFromRightTranslations[document.langID]]: null,
-            [window.positionTranslations[document.langID]]: null,
-            [window.containerTranslations[document.langID]]: null,
-            [window.backgroundTranslations[document.langID]]: null,
-            [window.attributesTranslations[document.langID]]: null,
-            [window.emitterTranslations[document.langID]]: null,
-            [window.commandsTranslations[document.langID]]: null
-        }, options);
-        return this.each(function () {
+    function dropdownMenuFn (el, settings) {
+        el.each(function () {
             var name = settings[window.nameTranslations[document.langID]];
             var out = '<ul id="' + name + '" class="dropdown-content">';
             if (settings[window.itemsTranslations[document.langID]]) {
@@ -52,14 +29,14 @@ $(function () {
             if (settings[window.emitterTranslations[document.langID]]) {
                 var emitter = settings[window.emitterTranslations[document.langID]];
                 $('contents').append(out);
-                $('#' + emitter + '').attr('data-activates', name).addClass('dropdown-button');
+                $('#' + emitter + '').attr('data-target', name).addClass('dropdown-button');
                 $('#' + emitter + '').dropdown({
                     inDuration: 300,
                     outDuration: 225,
                     constrainWidth: true,
                     hover: true,
                     gutter: 0,
-                    belowOrigin: true,
+                    coverTrigger: true,
                     alignment: 'left',
                     stopPropagation: true
                 });
@@ -93,7 +70,6 @@ $(function () {
                 while (settings[window.commandsTranslations[document.langID] + commandsNo] != undefined) {
                     commandsNo++;
                 }
-                console.log(commandsNo)
                 for (var i = 0; i < commandsNo; i++) {
                     preCommands = settings[window.commandsTranslations[document.langID] + i];
                     itemName = preCommands.split(':')[0].split(' ').join('_') + '_dropdownItem';
@@ -103,5 +79,8 @@ $(function () {
             }
             window.propSet(name, settings);
         });
+    }
+    $.fn[window.dropdownMenuTranslations[document.langID]] = function (settings) {
+        dropdownMenuFn(this, settings);
     };
 });

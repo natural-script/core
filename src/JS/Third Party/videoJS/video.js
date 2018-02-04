@@ -1,6 +1,6 @@
 /**
  * @license
- * Video.js 6.7.0 <http://videojs.com/>
+ * Video.js 6.7.1 <http://videojs.com/>
  * Copyright Brightcove, Inc. <https://www.brightcove.com/>
  * Available under Apache License Version 2.0
  * <https://github.com/videojs/video.js/blob/master/LICENSE>
@@ -16,7 +16,7 @@
 	(global.videojs = factory());
 }(this, (function () {
 
-var version = "6.7.0";
+var version = "6.7.1";
 
 var commonjsGlobal = typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -11454,7 +11454,9 @@ function executeRight(mws, method, value, terminated) {
   for (var i = mws.length - 1; i >= 0; i--) {
     var mw = mws[i];
 
-    mw[method](terminated, value);
+    if (mw[method]) {
+      mw[method](terminated, value);
+    }
   }
 }
 
@@ -25950,5 +25952,3 @@ videojs.url = Url;
 return videojs;
 
 })));
-
-!function(){!function(a){var b=a&&a.videojs;b&&(b.CDN_VERSION="6.7.0")}(window),function(a,b,c,d,e,f,g){b&&b.HELP_IMPROVE_VIDEOJS!==!1&&(e.random()>.01||(f=b.location,g=b.videojs||{},a.src="//www.google-analytics.com/__utm.gif?utmwv=5.4.2&utmac=UA-16505296-3&utmn=1&utmhn="+d(f.hostname)+"&utmsr="+b.screen.availWidth+"x"+b.screen.availHeight+"&utmul="+(c.language||c.userLanguage||"").toLowerCase()+"&utmr="+d(f.href)+"&utmp="+d(f.hostname+f.pathname)+"&utmcc=__utma%3D1."+e.floor(1e10*e.random())+".1.1.1.1%3B&utme=8(vjsv*cdnv)9("+g.VERSION+"*"+g.CDN_VERSION+")"))}(new Image,window,navigator,encodeURIComponent,Math)}();

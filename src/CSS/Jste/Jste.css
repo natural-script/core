@@ -1,8 +1,8 @@
-* {
+*:not(.dropdown-content, .ps__rail-x, .ps__rail-y) {
     transition: all 0.4s ease-out;
 }
 
-*::before,
+*:not(.vjs-icon-placeholder)::before,
 *::after {
     display: none !important;
 }

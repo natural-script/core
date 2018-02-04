@@ -27,7 +27,7 @@ function framebyframe(options) {
         options.steps.forEach(function(opt) {
             player.controlBar.addChild(
                 new FBFButton(player, {
-                    el: videojs.createEl(
+                    el: videojs.dom.createEl(
                         'button',
                         {
                             className: 'vjs-res-button vjs-control',

@@ -6,37 +6,11 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-10
+ * Date: 2018-02-04
  */
 $(function () {
-    $.fn[window.selectMenuTranslations[document.langID]] = function (options) {
-        // Establish our default settings
-        var settings = $.extend({
-            [window.titleTranslations[document.langID]]: null,
-            [window.itemsTranslations[document.langID]]: null,
-            [window.rippleTranslations[document.langID]]: null,
-            preselected: null,
-            [window.disabledTranslations[document.langID]]: null,
-            [window.fontColorTranslations[document.langID]]: null,
-            [window.fontSizeTranslations[document.langID]]: null,
-            [window.nameTranslations[document.langID]]: null,
-            [window.widthTranslations[document.langID]]: null,
-            [window.lengthTranslations[document.langID]]: null,
-            [window.fontThicknessTranslations[document.langID]]: null,
-            [window.fontStyleTranslations[document.langID]]: null,
-            [window.animationTranslations[document.langID]]: null,
-            [window.transparencyTranslations[document.langID]]: null,
-            [window.distanceFromBottomTranslations[document.langID]]: null,
-            [window.distanceFromTopTranslations[document.langID]]: null,
-            [window.distanceFromLeftTranslations[document.langID]]: null,
-            [window.distanceFromRightTranslations[document.langID]]: null,
-            [window.positionTranslations[document.langID]]: null,
-            [window.containerTranslations[document.langID]]: null,
-            [window.backgroundTranslations[document.langID]]: null,
-            [window.attributesTranslations[document.langID]]: null,
-            [window.commandsTranslations[document.langID]]: null
-        }, options);
-        return this.each(function () {
+    function selectMenuFn(el, settings) {
+        el.each(function () {
             var name = settings[window.nameTranslations[document.langID]];
             var out = '<div id="' + name + '_container" class="input-field"> \
                         <select id="' + name + '">';
@@ -89,12 +63,15 @@ $(function () {
             } else {
                 $('#' + name + '_container').css('position', 'relative');
             }
-            $('#' + name + '').material_select();
+            $('#' + name + '').select();
             if (document.langID == 3 || document.langID == 4) {
                 $('#' + name + '_container > .select-wrapper > .caret').css('right', '97%');
                 $('#' + name + '_container > label').css('right', '0px');
             }
             window.propSet(name + '_container', settings);
         });
+    }
+    $.fn[window.selectMenuTranslations[document.langID]] = function (settings) {
+        selectMenuFn(this, settings);
     };
 });

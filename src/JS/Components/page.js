@@ -6,16 +6,11 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-6
+ * Date: 2018-02-04
  */
 $(function () {
-    $.fn[window.pageTranslations[document.langID]] = function (options) {
-        // Establish our default settings
-        var settings = $.extend({
-            [window.nameTranslations[document.langID]]: null,
-            [window.commandsTranslations[document.langID]]: null
-        }, options);
-        return this.each(function () {
+    function pageFn(el, settings) {
+        el.each(function () {
             $('contents').append('<page id="' + settings[window.nameTranslations[document.langID]] + '" style="display: none;"></page>');
             var currentPageRaw = window.getAllUrlParams().page || window.indexPageTranslations[document.langID];
             var currentPage = decodeURIComponent(currentPageRaw);
@@ -32,5 +27,8 @@ $(function () {
                 window.execute(name, settings[window.commandsTranslations[document.langID]]);
             }
         });
+    }
+    $.fn[window.pageTranslations[document.langID]] = function (settings) {
+        pageFn(this, settings);
     };
 });

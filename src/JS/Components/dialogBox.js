@@ -9,31 +9,8 @@
  * Date: 2017-09-6
  */
 $(function () {
-    $.fn[window.dialogBoxTranslations[document.langID]] = function (options) {
-        // Establish our default settings
-        var settings = $.extend({
-            [window.titleTranslations[document.langID]]: null,
-            [window.acceptanceButtonTranslations[document.langID]]: null,
-            [window.cancellationButtonTranslations[document.langID]]: null,
-            [window.fontColorTranslations[document.langID]]: null,
-            [window.fontSizeTranslations[document.langID]]: null,
-            [window.nameTranslations[document.langID]]: null,
-            [window.widthTranslations[document.langID]]: null,
-            [window.lengthTranslations[document.langID]]: null,
-            [window.fontThicknessTranslations[document.langID]]: null,
-            [window.fontStyleTranslations[document.langID]]: null,
-            [window.animationTranslations[document.langID]]: null,
-            [window.transparencyTranslations[document.langID]]: null,
-            [window.distanceFromBottomTranslations[document.langID]]: null,
-            [window.distanceFromTopTranslations[document.langID]]: null,
-            [window.distanceFromLeftTranslations[document.langID]]: null,
-            [window.distanceFromRightTranslations[document.langID]]: null,
-            [window.positionTranslations[document.langID]]: null,
-            [window.containerTranslations[document.langID]]: null,
-            [window.backgroundTranslations[document.langID]]: null,
-            [window.commandsTranslations[document.langID]]: null
-        }, options);
-        return this.each(function () {
+    function dialogBoxFn(el, settings) {
+        el.each(function () {
             var name = settings[window.nameTranslations[document.langID]];
             var out = '<div id="' + name + '"></div>';
             $('body').append(out);
@@ -64,5 +41,8 @@ $(function () {
             window.propSet(name, settings);
             $('#' + name + '').css('position', 'fixed');
         });
+    }
+    $.fn[window.dialogBoxTranslations[document.langID]] = function (settings) {
+        dialogBoxFn(this, settings);
     };
 });
