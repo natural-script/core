@@ -6,39 +6,42 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-04
+ * Date: 2018-02-05
  */
 $(function () {
     function audioFn(el, settings) {
         el.each(function () {
-            var source = settings[window.sourceTranslations[document.langID]];
-            if (settings[window.coverTranslations[document.langID]]) {
+            var source = elementSettingsAnalyze(settings, 'source');
+            if (elementSettingsAnalyze(settings, 'cover')) {
                 var audioInfo = [{
-                    title: settings[window.titleTranslations[document.langID]],
-                    author: settings[window.authorTranslations[document.langID]],
-                    url: settings[window.sourceTranslations[document.langID]],
-                    pic: settings[window.coverTranslations[document.langID]]
+                    title: elementSettingsAnalyze(settings, 'title'),
+                    author: elementSettingsAnalyze(settings, 'author'),
+                    url: elementSettingsAnalyze(settings, 'source'),
+                    pic: elementSettingsAnalyze(settings, 'cover')
                 }];
-                if ($('#' + settings[window.audioPlayerTranslations[document.langID]]).html().trim() != "") {
-                    document[settings[window.audioPlayerTranslations[document.langID]]].addMusic(audioInfo);
+                if ($('#' + elementSettingsAnalyze(settings, 'audioPlayer')).html().trim() != "") {
+                    document[elementSettingsAnalyze(settings, 'audioPlayer')].addMusic(audioInfo);
                 } else {
-                    document.initializeAudioPlayerB[settings[window.audioPlayerTranslations[document.langID]]](settings[window.titleTranslations[document.langID]], settings[window.authorTranslations[document.langID]], settings[window.sourceTranslations[document.langID]], settings[window.coverTranslations[document.langID]]);
+                    document.initializeAudioPlayerB[elementSettingsAnalyze(settings, 'audioPlayer')](elementSettingsAnalyze(settings, 'title'), elementSettingsAnalyze(settings, 'author'), elementSettingsAnalyze(settings, 'source'), elementSettingsAnalyze(settings, 'cover'));
                 }
             } else {
                 var audioInfo = [{
-                    title: settings[window.titleTranslations[document.langID]],
-                    author: settings[window.authorTranslations[document.langID]],
-                    url: settings[window.sourceTranslations[document.langID]]
+                    title: elementSettingsAnalyze(settings, 'title'),
+                    author: elementSettingsAnalyze(settings, 'author'),
+                    url: elementSettingsAnalyze(settings, 'source')
                 }];
-                if ($('#' + settings[window.audioPlayerTranslations[document.langID]]).html().trim() != "") {
-                    document[settings[window.audioPlayerTranslations[document.langID]]].addMusic(audioInfo);
+                if ($('#' + elementSettingsAnalyze(settings, 'audioPlayer')).html().trim() != "") {
+                    document[elementSettingsAnalyze(settings, 'audioPlayer')].addMusic(audioInfo);
                 } else {
-                    document.initializeAudioPlayerA[settings[window.audioPlayerTranslations[document.langID]]](settings[window.titleTranslations[document.langID]], settings[window.authorTranslations[document.langID]], settings[window.sourceTranslations[document.langID]]);
+                    document.initializeAudioPlayerA[elementSettingsAnalyze(settings, 'audioPlayer')](elementSettingsAnalyze(settings, 'title'), elementSettingsAnalyze(settings, 'author'), elementSettingsAnalyze(settings, 'source'));
                 }
             }
         });
     }
-    $.fn[window.audioTranslations[document.langID]] = function (settings) {
+    var audioTranslations = window.wordsTranslationsDB.Words['audio'][document.langCode];
+    for (var i = 0; i < audioTranslations.length;i++) {
+    $.fn[audioTranslations[i]] = function (settings) {
         audioFn(this, settings);
     };
+}
 });

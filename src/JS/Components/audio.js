@@ -6,41 +6,44 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-04
+ * Date: 2018-02-05
  */
 $(function () {
     function audioFn(el, settings) {
         el.each(function () {
-            var source = settings[window.sourceTranslations[document.langID]];
+            var source = elementSettingsAnalyze(settings, 'source');
             window.requestBLOB(source, encodeURIComponent(source).replace(/\./g, '%2E'), function (dataURL) {
-                if (settings[window.coverTranslations[document.langID]]) {
+                if (elementSettingsAnalyze(settings, 'cover')) {
                     var audioInfo = [{
-                        title: settings[window.titleTranslations[document.langID]],
-                        author: settings[window.authorTranslations[document.langID]],
+                        title: elementSettingsAnalyze(settings, 'title'),
+                        author: elementSettingsAnalyze(settings, 'author'),
                         url: dataURL,
-                        pic: settings[window.coverTranslations[document.langID]]
+                        pic: elementSettingsAnalyze(settings, 'cover')
                     }];
-                    if ($('#' + settings[window.audioPlayerTranslations[document.langID]]).html().trim() != "") {
-                        document[settings[window.audioPlayerTranslations[document.langID]]].addMusic(audioInfo);
+                    if ($('#' + elementSettingsAnalyze(settings, 'audioPlayer')).html().trim() != "") {
+                        document[elementSettingsAnalyze(settings, 'audioPlayer')].addMusic(audioInfo);
                     } else {
-                        document.initializeAudioPlayerB[settings[window.audioPlayerTranslations[document.langID]]](settings[window.titleTranslations[document.langID]], settings[window.authorTranslations[document.langID]], dataURL, settings[window.coverTranslations[document.langID]]);
+                        document.initializeAudioPlayerB[elementSettingsAnalyze(settings, 'audioPlayer')](elementSettingsAnalyze(settings, 'title'), elementSettingsAnalyze(settings, 'author'), dataURL, elementSettingsAnalyze(settings, 'cover'));
                     }
                 } else {
                     var audioInfo = [{
-                        title: settings[window.titleTranslations[document.langID]],
-                        author: settings[window.authorTranslations[document.langID]],
+                        title: elementSettingsAnalyze(settings, 'title'),
+                        author: elementSettingsAnalyze(settings, 'author'),
                         url: dataURL
                     }];
-                    if ($('#' + settings[window.audioPlayerTranslations[document.langID]]).html().trim() != "") {
-                        document[settings[window.audioPlayerTranslations[document.langID]]].addMusic(audioInfo);
+                    if ($('#' + elementSettingsAnalyze(settings, 'audioPlayer')).html().trim() != "") {
+                        document[elementSettingsAnalyze(settings, 'audioPlayer')].addMusic(audioInfo);
                     } else {
-                        document.initializeAudioPlayerA[settings[window.audioPlayerTranslations[document.langID]]](settings[window.titleTranslations[document.langID]], settings[window.authorTranslations[document.langID]], dataURL);
+                        document.initializeAudioPlayerA[elementSettingsAnalyze(settings, 'audioPlayer')](elementSettingsAnalyze(settings, 'title'), elementSettingsAnalyze(settings, 'author'), dataURL);
                     }
                 }
             });
         });
     }
-    $.fn[window.audioTranslations[document.langID]] = function (settings) {
+    var audioTranslations = window.wordsTranslationsDB.Words['audio'][document.langCode];
+    for (var i = 0; i < audioTranslations.length;i++) {
+    $.fn[audioTranslations[i]] = function (settings) {
         audioFn(this, settings);
     };
+}
 });

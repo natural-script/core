@@ -6,26 +6,29 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-03
+ * Date: 2018-02-05
  */
 $(function () {
-    function cardFn (el, settings) {
+    function cardFn(el, settings) {
         el.each(function () {
-            var name = settings[window.nameTranslations[document.langID]];
+            var name = elementSettingsAnalyze(settings, 'name');
             var out = '<paper-card id="' + name + '"><div class="card-content"></div></paper-card>';
-            window.appendComponent(settings[window.containerTranslations[document.langID]], out);
-            if (settings[window.imageSourceTranslations[document.langID]]) {
-                $('#' + name + '').attr('image', settings[window.imageSourceTranslations[document.langID]]);
+            window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);
+            if (elementSettingsAnalyze(settings, 'imageSource')) {
+                $('#' + name + '').attr('image', elementSettingsAnalyze(settings, 'imageSource'));
             }
-            if (settings[window.positionTranslations[document.langID]]) {
-                $('#' + name + '').css('position', settings[window.positionTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'position')) {
+                $('#' + name + '').css('position', elementSettingsAnalyze(settings, 'position'));
             } else {
                 $('#' + name + '').css('position', 'relative');
             }
             window.propSet(name, settings);
         });
     }
-    $.fn[window.sectionTranslations[document.langID]] = function (settings) {
-        cardFn(this, settings);
-    };
+    var sectionTranslations = window.wordsTranslationsDB.Words['section'][document.langCode];
+    for (var i = 0; i < sectionTranslations.length; i++) {
+        $.fn[sectionTranslations[i]] = function (settings) {
+            cardFn(this, settings);
+        };
+    }
 });

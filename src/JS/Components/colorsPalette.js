@@ -6,21 +6,24 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-04
+ * Date: 2018-02-05
  */
 $(function () {
     function colorsPaletteFn(el, settings) {
         el.each(function () {
-            var name = settings[window.nameTranslations[document.langID]];
+            var name = elementSettingsAnalyze(settings, 'name');
             var out = '<paper-swatch-picker id="' + name + '" color="{{selectedColor}}"></paper-swatch-picker>';
-            window.appendComponent(settings[window.containerTranslations[document.langID]], out);
-            if (settings[window.fontColorTranslations[document.langID]]) {
-                window.setFontColour(name, settings[window.fontColorTranslations[document.langID]]);
+            window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);
+            if (elementSettingsAnalyze(settings, 'fontColor')) {
+                window.setFontColour(name, elementSettingsAnalyze(settings, 'fontColor'));
             }
             window.propSet(name, settings);
         });
     }
-    $.fn[window.colorsPaletteTranslations[document.langID]] = function (settings) {
-        colorsPaletteFn(this, settings);
-    };
+    var colorsPaletteTranslations = window.wordsTranslationsDB.Words['colorsPalette'][document.langCode];
+    for (var i = 0; i < colorsPaletteTranslations.length; i++) {
+        $.fn[colorsPaletteTranslations[i]] = function (settings) {
+            colorsPaletteFn(this, settings);
+        };
+    }
 });

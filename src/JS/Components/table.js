@@ -6,16 +6,16 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-04
+ * Date: 2018-02-05
  */
 $(function () {
     function tableFn(el, settings) {
         el.each(function () {
-            var name = settings[window.nameTranslations[document.langID]];
+            var name = elementSettingsAnalyze(settings, 'name');
             var out = '<table id="' + name + '" class="responsive-table centered highlight"><thead></thead><tbody class="list"></tbody></table>';
-            window.appendComponent(settings[window.containerTranslations[document.langID]], out);
-            if (settings[window.dataTranslations[document.langID]]) {
-                var inputDataPlainA = settings[window.dataTranslations[document.langID]].split(' &amp;&amp;&amp;&amp; ');
+            window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);
+            if (elementSettingsAnalyze(settings, 'data')) {
+                var inputDataPlainA = elementSettingsAnalyze(settings, 'data').split(' &amp;&amp;&amp;&amp; ');
                 var inputDataRaw = '[';
                 for (var a = 0; a < inputDataPlainA.length; a++) {
                     var inputDataPlainB = inputDataPlainA[a].split(' &amp;&amp;&amp; ');
@@ -60,26 +60,29 @@ $(function () {
                 item: template
             };
             var userList = new List(name, settings, inputData);
-            if (settings[window.attributesTranslations[document.langID]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
+            if (elementSettingsAnalyze(settings, 'attributes')) {
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.gridTranslations[document.langID]) {
+                    if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['grid'][document.langCode]).rating > 0.8) {
                         $('#' + name + '').addClass('row');
                     }
                 }
             }
-            if ($('#' + settings[window.containerTranslations[document.langID]] + '').hasClass('row') == true) {
+            if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('row') == true) {
                 $('#' + name + '').addClass('col');
             }
-            if (settings[window.positionTranslations[document.langID]]) {
-                $('#' + name + '').css('position', settings[window.positionTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'position')) {
+                $('#' + name + '').css('position', elementSettingsAnalyze(settings, 'position'));
             } else {
                 $('#' + name + '').css('position', 'relative');
             }
             window.propSet(name, settings);
         });
     }
-    $.fn[window.tableTranslations[document.langID]] = function (settings) {
-        tableFn(this, settings);
-    };
+    var tableTranslations = window.wordsTranslationsDB.Words['table'][document.langCode];
+    for (var i = 0; i < tableTranslations.length; i++) {
+        $.fn[tableTranslations[i]] = function (settings) {
+            tableFn(this, settings);
+        };
+    }
 });

@@ -2,60 +2,68 @@
  * Properties Setter
  * https://project-jste.github.io/
  *
- * Copyright 2017 Jste Team
+ * Copyright 2018 Jste Team
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-16
+ * Date: 2018-02-07
  */
 window.propSet = function (elementName, properties, param1, param2, param3) {
-    if (properties[window.distanceFromBottomTranslations[document.langID]]) {
-        window.setDistance(elementName, 'bottom', properties[window.distanceFromBottomTranslations[document.langID]]);
+    if (elementSettingsAnalyze(properties, "distanceFromBottom")) {
+        window.setDistance(elementName, 'bottom', elementSettingsAnalyze(properties, "distanceFromBottom"));
     }
-    if (properties[window.distanceFromTopTranslations[document.langID]]) {
-        window.setDistance(elementName, 'top', properties[window.distanceFromTopTranslations[document.langID]]);
+    if (elementSettingsAnalyze(properties, "distanceFromTop")) {
+        window.setDistance(elementName, 'top', elementSettingsAnalyze(properties, "distanceFromTop"));
     }
-    if (properties[window.distanceFromLeftTranslations[document.langID]]) {
-        window.setDistance(elementName, 'left', properties[window.distanceFromLeftTranslations[document.langID]]);
+    if (elementSettingsAnalyze(properties, "distanceFromLeft")) {
+        window.setDistance(elementName, 'left', elementSettingsAnalyze(properties, "distanceFromLeft"));
     }
-    if (properties[window.distanceFromRightTranslations[document.langID]]) {
-        window.setDistance(elementName, 'right', properties[window.distanceFromRightTranslations[document.langID]]);
+    if (elementSettingsAnalyze(properties, "distanceFromRight")) {
+        window.setDistance(elementName, 'right', elementSettingsAnalyze(properties, "distanceFromRight"));
     }
-    if (properties[window.commandsTranslations[document.langID]]) {
-        window.execute(elementName, properties[window.commandsTranslations[document.langID]]);
+    if (elementSettingsAnalyze(properties, "commands")) {
+        window.execute(elementName, elementSettingsAnalyze(properties, "commands"));
     }
-    if (properties[window.widthTranslations[document.langID]]) {
-        window.setDimension(elementName, 'width', properties[window.widthTranslations[document.langID]]);
+    if (elementSettingsAnalyze(properties, "width")) {
+        window.setDimension(elementName, 'width', elementSettingsAnalyze(properties, "width"));
     }
-    if (properties[window.lengthTranslations[document.langID]]) {
-        window.setDimension(elementName, 'length', properties[window.lengthTranslations[document.langID]]);
+    if (elementSettingsAnalyze(properties, "length")) {
+        window.setDimension(elementName, 'length', elementSettingsAnalyze(properties, "length"));
     }
-    if (properties[window.animationTranslations[document.langID]]) {
-        window.setAnimation(elementName, properties[window.animationTranslations[document.langID]]);
+    if (elementSettingsAnalyze(properties, "animation")) {
+        window.setAnimation(elementName, elementSettingsAnalyze(properties, "animation"));
     }
-    if (properties[window.transparencyTranslations[document.langID]]) {
-        $('#' + elementName + '').css('-webkit-filter', 'opacity(' + properties[window.transparencyTranslations[document.langID]] + '%)');
+    if (elementSettingsAnalyze(properties, "transparency")) {
+        $('#' + elementName + '').css('-webkit-filter', 'opacity(' + elementSettingsAnalyze(properties, "transparency") + '%)');
     }
-    if (properties[window.backgroundTranslations[document.langID]]) {
-        window.setBG(elementName, properties[window.backgroundTranslations[document.langID]]);
+    if (elementSettingsAnalyze(properties, "background")) {
+        window.setBG(elementName, elementSettingsAnalyze(properties, "background"));
     }
-    if (properties[window.fontColorTranslations[document.langID]]) {
-        window.setFontColour(elementName, properties[window.fontColorTranslations[document.langID]]);
+    if (elementSettingsAnalyze(properties, "fontColor")) {
+        window.setFontColour(elementName, elementSettingsAnalyze(properties, "fontColor"));
     }
-    if (properties[window.fontStyleTranslations[document.langID]]) {
-        $('#' + elementName + '').css('font-style', properties[window.fontStyleTranslations[document.langID]]);
+    if (elementSettingsAnalyze(properties, "fontStyle")) {
+        $('#' + elementName + '').css('font-style', elementSettingsAnalyze(properties, "fontStyle"));
     }
-    if (properties[window.fontThicknessTranslations[document.langID]]) {
-        if (properties[window.fontThicknessTranslations[document.langID]] == window.thickTranslations[document.langID]) {
+    if (elementSettingsAnalyze(properties, "fontThickness")) {
+        if (elementSettingsAnalyze(properties, "fontThickness").findBestMatch(window.wordsTranslationsDB.Words['thick'][document.langCode]).rating > 0.8) {
             $('#' + elementName + '').css('font-weight', 'bold');
         } else {
-            $('#' + elementName + '').css('font-weight', properties[window.fontThicknessTranslations[document.langID]]);
+            $('#' + elementName + '').css('font-weight', elementSettingsAnalyze(properties, "fontThickness"));
         }
     }
-    if (properties[window.fontSizeTranslations[document.langID]]) {
-        window.setFontSize(elementName, properties[window.fontSizeTranslations[document.langID]]);
+    if (elementSettingsAnalyze(properties, "fontSize")) {
+        window.setFontSize(elementName, elementSettingsAnalyze(properties, "fontSize"));
     }
-    if ($('#' + properties[window.containerTranslations[document.langID]] + '').hasClass('row') == true) {
+    if ($('#' + elementSettingsAnalyze(properties, "container") + '').hasClass('row') == true) {
         $('#' + elementName + '').addClass('col');
+    }
+    if (elementSettingsAnalyze(properties, 'attributes')) {
+        var propertiesArray = elementSettingsAnalyze(properties, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
+        for (i = 0; i < propertiesArray.length; i++) {
+            if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['scrollable'][document.langCode]).rating > 0.8) {
+                document[document.uniqueID()] = new PerfectScrollbar('#' + elementName + '');
+            }
+        }
     }
 };

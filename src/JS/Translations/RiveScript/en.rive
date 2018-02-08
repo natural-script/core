@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-02
+ * Date: 2018-02-07
  */
 
 // remove it
@@ -26,7 +26,7 @@
 
 // open the dialog box learn_more
 
-+ (?:go to|navigate to|visit|open) the * ((?![A-Za-z].*? )*)
++ (?:go to|navigate to|visit|open) the * %
 - command_id: S2 ==> lang: en ==> targetType: <star1> ==> target: <star2>
 
 // play it
@@ -36,17 +36,7 @@
 
 // play this song
 
-+ play this song
-- command_id: S3 ==> lang: en ==> target: itself
-
-// play this element
-
-+ play this element
-- command_id: S3 ==> lang: en ==> target: itself
-
-// play this video
-
-+ play this video
++ play this (?:song|element|video)
 - command_id: S3 ==> lang: en ==> target: itself
 
 // play Close_To_You
@@ -59,19 +49,9 @@
 + (?:pause|stop|suspend) it
 - command_id: S4 ==> lang: en ==> target: itself
 
-// stop this song
+// stop this (?:song|element|video)
 
 + (?:pause|stop|suspend) this song
-- command_id: S4 ==> lang: en ==> target: itself
-
-// suspend this element
-
-+ (?:pause|stop|suspend) this element
-- command_id: S4 ==> lang: en ==> target: itself
-
-// pause this video
-
-+ (?:pause|stop|suspend) this video
 - command_id: S4 ==> lang: en ==> target: itself
 
 // stop Close_To_You
@@ -84,19 +64,9 @@
 + set the time position of it to *
 - command_id: S5 ==> lang: en ==> target: itself ==> timePosition: <star1>
 
-// set the time position of this song to 13575
+// set the time position of (?:this song|this element|this video) to 13575
 
 + set the time position of this song to *
-- command_id: S5 ==> lang: en ==> target: itself ==> timePosition: <star1>
-
-// set the time position of this element to 5566
-
-+ set the time position of this element to *
-- command_id: S5 ==> lang: en ==> target: itself ==> timePosition: <star1>
-
-// set the time position of this video to 5
-
-+ set the time position of this video to *
 - command_id: S5 ==> lang: en ==> target: itself ==> timePosition: <star1>
 
 // set the time position of Close_To_You to 2048

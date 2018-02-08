@@ -12,6 +12,7 @@
     "polymer-bundler",
     "html-minifier",
     "figlet",
+    "datauri",
     "shelljs"
   ],
   "repository": {

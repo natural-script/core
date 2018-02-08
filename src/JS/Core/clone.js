@@ -9,76 +9,60 @@
  * Date: 2017-09-6
  */
 $(function () {
-    $.fn[window.cloneFnTranslations[document.langID]] = function (options) {
-        // Establish our default settings
-        var settings = $.extend({
-            [window.clonedElementTranslations[document.langID]]: null,
-            [window.fontColorTranslations[document.langID]]: null,
-            [window.textTranslations[document.langID]]: null,
-            [window.fontSizeTranslations[document.langID]]: null,
-            [window.nameTranslations[document.langID]]: null,
-            [window.widthTranslations[document.langID]]: null,
-            [window.lengthTranslations[document.langID]]: null,
-            [window.fontThicknessTranslations[document.langID]]: null,
-            [window.fontStyleTranslations[document.langID]]: null,
-            [window.animationTranslations[document.langID]]: null,
-            [window.transparencyTranslations[document.langID]]: null,
-            [window.distanceFromBottomTranslations[document.langID]]: null,
-            [window.distanceFromTopTranslations[document.langID]]: null,
-            [window.distanceFromLeftTranslations[document.langID]]: null,
-            [window.distanceFromRightTranslations[document.langID]]: null,
-            [window.positionTranslations[document.langID]]: null,
-            [window.containerTranslations[document.langID]]: null,
-            [window.attributesTranslations[document.langID]]: null,
-            [window.commandsTranslations[document.langID]]: null
-        }, options);
-        return this.each(function () {
-            var clonedElement = settings[window.clonedElementTranslations[document.langID]];
-            var name = settings[window.nameTranslations[document.langID]];
+    function cloneFn(el, settings) {
+        el.each(function () {
+            var clonedElement = elementSettingsAnalyze(settings, 'clonedElement');
+            var name = elementSettingsAnalyze(settings, 'name');
             var out = $('#' + clonedElement + '').clone(false).attr('id', name);
-            if (settings[window.attributesTranslations[document.langID]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
+            if (elementSettingsAnalyze(settings, 'attributes')) {
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.withCommandsTranslations[document.langID]) {
+                    if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withCommands'][document.langCode]).rating > 0.8) {
                         out = $('#' + clonedElement + '').clone(true).attr('id', name);
                     }
                 }
             }
-            if (settings[window.containerTranslations[document.langID]]) {
-                if ($('#' + settings[window.containerTranslations[document.langID]] + '').hasClass('modal')) {
-                    $('#' + settings[window.containerTranslations[document.langID]] + ' > .modal-content').append(out);
+            if (elementSettingsAnalyze(settings, 'container')) {
+                if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('modal')) {
+                    $('#' + elementSettingsAnalyze(settings, 'container') + ' > .modal-content').append(out);
                 } else {
-                    $('#' + settings[window.containerTranslations[document.langID]] + '').append(out);
+                    $('#' + elementSettingsAnalyze(settings, 'container') + '').append(out);
                 }
             } else {
                 $('contents').append(out);
             }
-            if (settings[window.textTranslations[document.langID]]) {
-                $('#' + name + '').text(settings[window.textTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'text')) {
+                $('#' + name + '').text(elementSettingsAnalyze(settings, 'text'));
             }
-            if (settings[window.fontColorTranslations[document.langID]]) {
-                window.setFontColour(name, settings[window.fontColorTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'fontColor')) {
+                window.setFontColour(name, elementSettingsAnalyze(settings, 'fontColor'));
             }
-            if (settings[window.fontStyleTranslations[document.langID]]) {
-                $('#' + name + '').css('font-style', settings[window.fontStyleTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'fontStyle')) {
+                $('#' + name + '').css('font-style', elementSettingsAnalyze(settings, 'fontStyle'));
             }
-            if (settings[window.fontThicknessTranslations[document.langID]]) {
-                if (settings[window.fontThicknessTranslations[document.langID]] == window.thickTranslations[document.langID]) {
+            if (elementSettingsAnalyze(settings, 'fontThickness')) {
+                if (window.getSafe(() => elementSettingsAnalyze(settings, 'fontThickness').findBestMatch(window.wordsTranslationsDB.Words['thick'][document.langCode]).rating > 0.8)) {
                     $('#' + name + '').css('font-weight', 'bold');
                 } else {
-                    $('#' + name + '').css('font-weight', settings[window.fontThicknessTranslations[document.langID]]);
+                    $('#' + name + '').css('font-weight', elementSettingsAnalyze(settings, 'fontThickness'));
                 }
             }
-            if (settings[window.fontSizeTranslations[document.langID]]) {
-                $('#' + name + '').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.langID]]));
+            if (elementSettingsAnalyze(settings, 'fontSize')) {
+                $('#' + name + '').css('font-size', window.convertLengthCSS(elementSettingsAnalyze(settings, 'fontSize')));
             }
-            if ($('#' + settings[window.containerTranslations[document.langID]] + '').hasClass('row') == true) {
+            if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('row') == true) {
                 $('#' + name + '').addClass('col');
             }
             window.propSet(name, settings);
-            if (!settings[window.widthTranslations[document.langID]]) {
+            if (!elementSettingsAnalyze(settings, 'width')) {
                 $('#' + name + '').css('width', 'auto');
             }
         });
-    };
+    }
+    var cloneFnTranslations = window.wordsTranslationsDB.Words['cloneFn'][document.langCode];
+    for (var i = 0; i < cloneFnTranslations.length; i++) {
+        $.fn[cloneFnTranslations[i]] = function (settings) {
+            cloneFn(this, settings);
+        };
+    }
 });

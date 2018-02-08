@@ -11,8 +11,9 @@
 $(function () {
     function firebaseCenter(el, settings) {
         el.each(function () {
-            sessionStorage.firebaseID = settings[window.usernameTranslations[document.langID]];
-            sessionStorage.firebaseKey = settings[window.passwordTranslations[document.langID]];
+            console.log(elementSettingsAnalyze(settings, 'username'));
+            sessionStorage.firebaseID = elementSettingsAnalyze(settings, 'username');
+            sessionStorage.firebaseKey = elementSettingsAnalyze(settings, 'password');
             var config = {
                 apiKey: sessionStorage.firebaseKey,
                 authDomain: sessionStorage.firebaseID + ".firebaseapp.com",
@@ -23,7 +24,10 @@ $(function () {
             var database = firebase.database();
         });
     }
-    $.fn[window.firebaseCenterTranslations[document.langID]] = function (settings) {
+    var firebaseCenterTranslations = window.wordsTranslationsDB.Words['firebaseCenter'][document.langCode];
+    for (var i = 0; i < firebaseCenterTranslations.length; i++) {
+    $.fn[firebaseCenterTranslations[i]] = function (settings) {
         firebaseCenter(this, settings);
     };
+}
 });

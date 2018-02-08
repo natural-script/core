@@ -6,59 +6,51 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-10
+ * Date: 2018-02-05
  */
 $(function () {
-    $.fn[setupTranslations[document.langID]] = function (options) {
-        // Establish our default settings
-        var settings = $.extend({
-            [logoTranslations[document.langID]]: null,
-            [titleTranslations[document.langID]]: null,
-            [modeTranslations[document.langID]]: siteTranslations[document.langID],
-            [defaultWindowResolutionTranslations[document.langID]]: screen.availWidth + ' × ' + screen.availHeight,
-            [mainColorTranslations[document.langID]]: window.blueTranslations[document.langID],
-            [directionTranslations[document.langID]]: window.verticalTranslations[document.langID],
-            [attributesTranslations[document.langID]]: null
-        }, options);
-        return this.each(function () {
-            if (settings[window.defaultWindowResolutionTranslations[document.langID]]) {
-                var resolution = settings[window.defaultWindowResolutionTranslations[document.langID]];
-                var landscapeResolution = null;
-                var portraitResolution = null;
-                if (resolution.includes(window.andTranslations[document.langID])) {
-                    var availableResolutions = resolution.split(' ' + window.andTranslations[document.langID] + ' ');
-                    for (var i = 0; i < availableResolutions.length; i++) {
-                        if (availableResolutions[i].includes(window.inTheCaseOfLandscapeModeTranslations[document.langID])) {
-                            landscapeResolution = availableResolutions[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.langID])[0].split(' ')[0] + ' ' + availableResolutions[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.langID])[0].split(' ')[1] + ' ' + availableResolutions[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.langID])[0].split(' ')[2];
-                            document.defaultLandscapeWindowWidth = landscapeResolution.split(' × ')[0];
-                            document.defaultLandscapeWindowLength = landscapeResolution.split(' × ')[1];
-                            document.defaultWindowWidth = document.defaultLandscapeWindowLength;
-                            document.defaultWindowLength = document.defaultLandscapeWindowLength;
-                        } else if (availableResolutions[i].includes(window.inTheCaseOfPortraitModeTranslations[document.langID])) {
-                            portraitResolution = availableResolutions[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.langID])[0].split(' ')[0] + ' ' + availableResolutions[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.langID])[0].split(' ')[1] + ' ' + availableResolutions[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.langID])[0].split(' ')[2];
-                            document.defaultPortraitWindowWidth = portraitResolution.split(' × ')[0];
-                            document.defaultPortraitWindowLength = portraitResolution.split(' × ')[1];
-                        }
-                    }
-                } else {
-                    document.defaultWindowWidth = resolution.split(' × ')[0];
-                    document.defaultWindowLength = resolution.split(' × ')[1];
-                }
-
+    function setupFn(el, settings) {
+        el.each(function () {
+            var resolution;
+            if (elementSettingsAnalyze(settings, 'defaultWindowResolution')) {
+                resolution = elementSettingsAnalyze(settings, 'defaultWindowResolution');
+            } else {
+                resolution = screen.availWidth + ' × ' + screen.availHeight;
             }
-            if (settings[modeTranslations[document.langID]] == siteTranslations[document.langID]) {
+            var landscapeResolution = null;
+            var portraitResolution = null;
+            if (resolution.includes(window.andTranslations[document.langID])) {
+                var availableResolutions = resolution.split(' ' + window.andTranslations[document.langID] + ' ');
+                for (var i = 0; i < availableResolutions.length; i++) {
+                    if (availableResolutions[i].includes(window.inTheCaseOfLandscapeModeTranslations[document.langID])) {
+                        landscapeResolution = availableResolutions[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.langID])[0].split(' ')[0] + ' ' + availableResolutions[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.langID])[0].split(' ')[1] + ' ' + availableResolutions[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.langID])[0].split(' ')[2];
+                        document.defaultLandscapeWindowWidth = landscapeResolution.split(' × ')[0];
+                        document.defaultLandscapeWindowLength = landscapeResolution.split(' × ')[1];
+                        document.defaultWindowWidth = document.defaultLandscapeWindowLength;
+                        document.defaultWindowLength = document.defaultLandscapeWindowLength;
+                    } else if (availableResolutions[i].includes(window.inTheCaseOfPortraitModeTranslations[document.langID])) {
+                        portraitResolution = availableResolutions[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.langID])[0].split(' ')[0] + ' ' + availableResolutions[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.langID])[0].split(' ')[1] + ' ' + availableResolutions[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.langID])[0].split(' ')[2];
+                        document.defaultPortraitWindowWidth = portraitResolution.split(' × ')[0];
+                        document.defaultPortraitWindowLength = portraitResolution.split(' × ')[1];
+                    }
+                }
+            } else {
+                document.defaultWindowWidth = resolution.split(' × ')[0];
+                document.defaultWindowLength = resolution.split(' × ')[1];
+            }
+            if (window.getSafe(() => elementSettingsAnalyze(settings, 'mode') == undefined || elementSettingsAnalyze(settings, 'mode').findBestMatch(window.wordsTranslationsDB.Words['site'][document.langCode]).rating > 0.8)) {
                 window.mode = 'site';
                 $('body').append('<contents></contents>');
-            } else if (settings[modeTranslations[document.langID]] == appTranslations[document.langID]) {
+            } else if (window.getSafe(() => elementSettingsAnalyze(settings, 'mode').findBestMatch(window.wordsTranslationsDB.Words['app'][document.langCode]).rating > 0.8)) {
                 window.mode = 'app';
-                $('body').append('<app-header reveals><app-toolbar><paper-icon-button icon="menu" class="menuBtn"></paper-icon-button><div main-title class="appTitle">' + settings[titleTranslations[document.langID]] + '</div></app-toolbar><div><contents></contents></div></app-header>');
+                $('body').append('<app-header reveals><app-toolbar><paper-icon-button icon="menu" class="menuBtn"></paper-icon-button><div main-title class="appTitle">' + elementSettingsAnalyze(settings, 'title') + '</div></app-toolbar><div><contents></contents></div></app-header>');
             }
-            if (settings[logoTranslations[document.langID]]) {
-                $('head').append('<link rel="icon" type="image/png" href="' + settings[logoTranslations[document.langID]] + '">');
+            if (elementSettingsAnalyze(settings, 'logo')) {
+                $('head').append('<link rel="icon" type="image/png" href="' + elementSettingsAnalyze(settings, 'logo') + '">');
             }
-            if (settings[titleTranslations[document.langID]]) {
-                $('head').append('<title>' + settings[titleTranslations[document.langID]] + '</title>');
-                window.title = settings[titleTranslations[document.langID]].replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
+            if (elementSettingsAnalyze(settings, 'title')) {
+                $('head').append('<title>' + elementSettingsAnalyze(settings, 'title') + '</title>');
+                window.title = elementSettingsAnalyze(settings, 'title').replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
                     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
                 });
                 if (typeof cordova !== 'undefined') {
@@ -67,20 +59,20 @@ $(function () {
                     }
                 }
             }
-            if (settings[mainColorTranslations[document.langID]]) {
-                window.setMainColor(settings[mainColorTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'mainColor')) {
+                window.setMainColor(elementSettingsAnalyze(settings, 'mainColor'));
+            } else {
+                window.setMainColor('#2196F3');
             }
-            if (settings[directionTranslations[document.langID]]) {
-                if (settings[directionTranslations[document.langID]] == window.verticalTranslations[document.langID]) {
-                    document.pageDirection = 'vertical';
-                } else if (settings[directionTranslations[document.langID]] == window.horizontalTranslations[document.langID]) {
-                    document.pageDirection = 'horizontal';
-                }
+            if (window.getSafe(() => elementSettingsAnalyze(settings, 'direction') == undefined || elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['vertical'][document.langCode]).rating > 0.8)) {
+                document.pageDirection = 'vertical';
+            } else if (window.getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['horizontal'][document.langCode]).rating > 0.8)) {
+                document.pageDirection = 'horizontal';
             }
-            if (settings[attributesTranslations[document.langID]]) {
-                var propertiesArray = settings[attributesTranslations[document.langID]].split(' &amp;&amp;&amp; ');
+            if (elementSettingsAnalyze(settings, 'attributes')) {
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' &amp;&amp;&amp; ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == remoteScrollingTranslations[document.langID]) {
+                    if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['remoteScrolling'][document.langCode]).rating > 0.8) {
                         var canvas = $('<canvas style="display: none;">').get(0),
                             context = canvas.getContext('2d'),
                             video = document.createElement('video'),
@@ -151,5 +143,11 @@ $(function () {
             }
             document[document.uniqueID()] = new PerfectScrollbar('body');
         });
-    };
+    }
+    var setupTranslations = window.wordsTranslationsDB.Words['setup'][document.langCode];
+    for (var i = 0; i < setupTranslations.length; i++) {
+        $.fn[setupTranslations[i]] = function (settings) {
+            setupFn(this, settings);
+        };
+    }
 });

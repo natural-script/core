@@ -6,15 +6,15 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-04
+ * Date: 2018-02-05
  */
 $(function () {
-    function dropdownMenuFn (el, settings) {
+    function dropdownMenuFn(el, settings) {
         el.each(function () {
-            var name = settings[window.nameTranslations[document.langID]];
+            var name = elementSettingsAnalyze(settings, 'name');
             var out = '<ul id="' + name + '" class="dropdown-content">';
-            if (settings[window.itemsTranslations[document.langID]]) {
-                var itemsGroups = settings[window.itemsTranslations[document.langID]].split(' &amp;&amp;&amp;&amp; ');
+            if (elementSettingsAnalyze(settings, 'items')) {
+                var itemsGroups = elementSettingsAnalyze(settings, 'items').split(' &amp;&amp;&amp;&amp; ');
                 for (a = 0; a < itemsGroups.length; a++) {
                     if (a > 0) {
                         out += '<li class="divider"></li>';
@@ -26,8 +26,13 @@ $(function () {
                 }
             }
             out += '</ul>';
-            if (settings[window.emitterTranslations[document.langID]]) {
-                var emitter = settings[window.emitterTranslations[document.langID]];
+            if (elementSettingsAnalyze(settings, 'emitter')) {
+                var emitter = elementSettingsAnalyze(settings, 'emitter');
+                var alignment = 'left';
+                if (document.langID == 3 || document.langID == 4) {
+                    alignment = 'right';
+                }
+                console.log(emitter);
                 $('contents').append(out);
                 $('#' + emitter + '').attr('data-target', name).addClass('dropdown-button');
                 $('#' + emitter + '').dropdown({
@@ -37,28 +42,28 @@ $(function () {
                     hover: true,
                     gutter: 0,
                     coverTrigger: true,
-                    alignment: 'left',
+                    alignment: alignment,
                     stopPropagation: true
                 });
             }
-            if (settings[window.attributesTranslations[document.langID]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
+            if (elementSettingsAnalyze(settings, 'attributes')) {
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.disabledTranslations[document.langID]) {
+                    if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][document.langCode]).rating > 0.8) {
                         $('#' + name + '').attr('disabled', '');
-                    } else if (propertiesArray[i] == window.rippleTranslations[document.langID]) {
+                    } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['ripple'][document.langCode]).rating > 0.8) {
                         $('#' + name + '').attr('noink', '');
                     }
                 }
             }
-            if (settings[window.fontSizeTranslations[document.langID]]) {
-                $('#' + name + '').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.langID]]));
+            if (elementSettingsAnalyze(settings, 'fontSize')) {
+                $('#' + name + '').css('font-size', window.convertLengthCSS(elementSettingsAnalyze(settings, 'fontSize')));
             }
-            if ($('#' + settings[window.containerTranslations[document.langID]] + '').hasClass('row') == true) {
+            if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('row') == true) {
                 $('#' + name + '').addClass('col');
             }
-            if (settings[window.positionTranslations[document.langID]]) {
-                $('#' + name + '').css('position', settings[window.positionTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'position')) {
+                $('#' + name + '').css('position', elementSettingsAnalyze(settings, 'position'));
             } else {
                 $('#' + name + '').css('position', 'relative');
             }
@@ -78,9 +83,20 @@ $(function () {
                 }
             }
             window.propSet(name, settings);
+            if (document.langID == 3 || document.langID == 4) {
+                $('#' + name + '').each(function () {
+                    this.style.setProperty('padding-right', '0', 'important');
+                });
+                $('#' + name + '').find('li').each(function () {
+                    this.style.setProperty('text-align', 'right', 'important');
+                });
+            }
         });
     }
-    $.fn[window.dropdownMenuTranslations[document.langID]] = function (settings) {
-        dropdownMenuFn(this, settings);
-    };
+    var dropdownMenuTranslations = window.wordsTranslationsDB.Words['dropdownMenu'][document.langCode];
+    for (var i = 0; i < dropdownMenuTranslations.length; i++) {
+        $.fn[dropdownMenuTranslations[i]] = function (settings) {
+            dropdownMenuFn(this, settings);
+        };
+    }
 });

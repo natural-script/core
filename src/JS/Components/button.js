@@ -6,39 +6,42 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-03
+ * Date: 2018-02-05
  */
 $(function () {
     function buttonFn (el, settings) {
         el.each(function () {
-            var name = settings[window.nameTranslations[document.langID]];
+            var name = elementSettingsAnalyze(settings, 'name');
             var out = '<paper-button id="' + name + '"></paper-button>';
-            window.appendComponent(settings[window.containerTranslations[document.langID]], out);
-            $('#' + name + '').text(settings[window.textTranslations[document.langID]]);
-            if (settings[window.attributesTranslations[document.langID]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
+            window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);
+            $('#' + name + '').text(elementSettingsAnalyze(settings, 'text'));
+            if (elementSettingsAnalyze(settings, 'attributes')) {
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.disabledTranslations[document.langID]) {
+                    if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][document.langCode]).rating > 0.8) {
                         $('#' + name + '').attr('disabled', '');
-                    } else if (propertiesArray[i] == window.raisedTranslations[document.langID]) {
+                    } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['raised'][document.langCode]).rating > 0.8) {
                         $('#' + name + '').attr('raised', '');
-                    } else if (propertiesArray[i] == window.switchedTranslations[document.langID]) {
+                    } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['switched'][document.langCode]).rating > 0.8) {
                         $('#' + name + '').attr('toggled', '');
                     }
                 }
             }
-            if ($('#' + settings[window.containerTranslations[document.langID]] + '').hasClass('row') == true) {
+            if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('row') == true) {
                 $('#' + name + '').addClass('col');
             }
-            if (settings[window.positionTranslations[document.langID]]) {
-                $('#' + name + '').css('position', settings[window.positionTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'position')) {
+                $('#' + name + '').css('position', elementSettingsAnalyze(settings, 'position'));
             } else {
                 $('#' + name + '').css('position', 'relative');
             }
             window.propSet(name, settings);
         });
     }
-    $.fn[window.buttonTranslations[document.langID]] = function (settings) {
+    var buttonTranslations = window.wordsTranslationsDB.Words['button'][document.langCode];
+    for (var i = 0; i < buttonTranslations.length; i++) {
+    $.fn[buttonTranslations[i]] = function (settings) {
         buttonFn(this, settings);
     };
+}
 });

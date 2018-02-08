@@ -1,6 +1,16 @@
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//----------------------------------------Changing The Current Page Function------------------------------------------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+/*!
+ * Changing & Navigating The Pages
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-02-07
+ */
+function getLocation() {
+	return location.pathname + location.search;
+}
 window.changePage = function (pageName) {
 	var currentPage = window.getAllUrlParams().page || window.indexPageTranslations[document.langID];
 	if (decodeURIComponent(currentPage) != pageName) {
@@ -16,19 +26,11 @@ window.changePage = function (pageName) {
 		}
 	}
 };
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//------------------------------Changing The Current Page On Back Or Forward------------------------------------------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-function getLocation() {
-	return location.pathname + location.search;
-}
-
-var currentLocation = getLocation();
-
 $(function () {
+	document.currentLocation = getLocation();
 	$(window).on("popstate", function () {
 		var newLocation = getLocation();
-		if (newLocation != currentLocation) {
+		if (newLocation != document.currentLocation) {
 			window.fadeOut($("page:visible").attr('id'));
 			window.fadeIn(decodeURIComponent(window.getAllUrlParams().page), 'inline-block');
 			$('title').html(decodeURIComponent(window.getAllUrlParams().page).replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
@@ -40,6 +42,6 @@ $(function () {
 				}));
 			}
 		}
-		currentLocation = newLocation;
+		document.currentLocation = newLocation;
 	});
 })

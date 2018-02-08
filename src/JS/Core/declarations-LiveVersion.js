@@ -10,7 +10,7 @@
  */
 var code = $("jste").html();
 var detectedLang = franc(code, {
-	whitelist: ['arab', 'eng', 'fra']
+	whitelist: ['arb', 'eng', 'fra']
 });
 if (detectedLang == 'eng') {
 	if (code.includes('colour') || code.includes('centre')) {
@@ -22,7 +22,7 @@ if (detectedLang == 'eng') {
 } else if (detectedLang == 'fra') {
 	document.langID = 2;
 	document.langCode = 'fr';
-} else if (detectedLang == 'arab') {
+} else if (detectedLang == 'arb') {
 	if (code.includes('بتاعه') || code.includes('بتاعها') || code.includes('بتاعته') || code.includes('بتاعتها')) {
 		document.langID = 4;
 		document.langCode = 'arz';
@@ -44,6 +44,7 @@ $.get("https://jste-manager.herokuapp.com/deviceForm", function (data) {
 window.isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 document.isRTL = false;
 window.corsPolicy = 'https://jste-cors-proxy.herokuapp.com/';
+window.autoCorrectionAddress = "https://jste-manager.herokuapp.com/autoCorrect"
 window.shareThis = window.ShareThis;
 window.twitterSharer = window.ShareThisViaTwitter;
 window.facebookSharer = window.ShareThisViaFacebook;

@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-01-31
+ * Date: 2018-02-07
  */
 window.evaluateScript = function(script, event, type, commandInfo, typeOptions) {
 	var typePrefix;
@@ -142,21 +142,22 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
             " + commandsCommonDeclarations + " \
 				$('#' + elementName + '').css('cursor', 'pointer'); \
                 " + eventPrefix + typePrefix + " \
-                    var hyperlinkType = script.targetType; \
-                    var hyperlink = script.target; \
+                console.log(script.targetType); \
+                    var hyperlinkType = script.targetType.punctuationAndArticleRemover(); \
+                    var hyperlink = decodeURI(script.target); \
                     event.preventDefault(); \
-                    if (hyperlinkType.findBestMatch(['url', 'link']).rating > 0.5) { \
+                    if (hyperlinkType.findBestMatch(wordsTranslationsDB.Words['url'][document.langCode]).rating > 0.5) { \
                         window.open(hyperlink); \
-                    } else if (hyperlinkType.findBestMatch(['element']).rating > 0.5) { \
+                    } else if (hyperlinkType.findBestMatch(wordsTranslationsDB.Words['element'][document.langCode]).rating > 0.5) { \
                         window.location.hash = '#' + hyperlink; \
-                    } else if (hyperlinkType.findBestMatch(['email']).rating > 0.5) { \
+                    } else if (hyperlinkType.findBestMatch(wordsTranslationsDB.Words['email'][document.langCode]).rating > 0.5) { \
                         window.open('mailto:' + hyperlink); \
-                    } else if (hyperlinkType.findBestMatch(['page']).rating > 0.5) { \
+                    } else if (hyperlinkType.findBestMatch(wordsTranslationsDB.Words['page'][document.langCode]).rating > 0.5) { \
                         window.changePage(hyperlink); \
                         window.setURLParameter('page', hyperlink); \
-                    } else if (hyperlinkType.findBestMatch(['dialog box']).rating > 0.5) { \
+                    } else if (hyperlinkType.findBestMatch(wordsTranslationsDB.Words['dialogBox'][document.langCode]).rating > 0.5) { \
                         $('#' + hyperlink + '').iziModal('open'); \
-                    } else if (hyperlinkType.findBestMatch(['sidebar']).rating > 0.5) { \
+                    } else if (hyperlinkType.findBestMatch(wordsTranslationsDB.Words['sidebar'][document.langCode]).rating > 0.5) { \
                         $('#' + hyperlink + '').sideNav('show'); \
                     } \
                     " + typeSuffix + eventSuffix + " \
@@ -323,10 +324,10 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
                         } \
                     } \
                     data = JSON.parse(data); \
-                    if (dbType == window.publicCTranslations[document.langID]) { \
+                    if (dbType.findBestMatch(window.wordsTranslationsDB.Words['publicC'][document.langCode]).rating > 0.8) { \
                         var newPostKey = firebase.database().ref('public/' + dbname).child(tablename).push().key; \
                         firebase.database().ref('public/' + dbname + '/' + tablename + '/' + newPostKey).set(data); \
-                    } else if (dbType == window.privateCTranslations[document.langID]) { \
+                    } else if (dbType.findBestMatch(window.wordsTranslationsDB.Words['privateC'][document.langCode]).rating > 0.8) { \
                         var newPostKey = firebase.database().ref('private/' + window.user.uid + '/' + dbname).child(tablename).push().key; \
                         firebase.database().ref('private/' + window.user.uid + '/' + dbname + '/' + tablename + '/' + newPostKey).set(data); \
                     } \

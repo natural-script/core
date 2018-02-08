@@ -6,12 +6,12 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-04
+ * Date: 2018-02-05
  */
 $(function () {
     function pageFn(el, settings) {
         el.each(function () {
-            $('contents').append('<page id="' + settings[window.nameTranslations[document.langID]] + '" style="display: none;"></page>');
+            $('contents').append('<page id="' + elementSettingsAnalyze(settings, 'name') + '" style="display: none;"></page>');
             var currentPageRaw = window.getAllUrlParams().page || window.indexPageTranslations[document.langID];
             var currentPage = decodeURIComponent(currentPageRaw);
             $('#' + currentPage + '').fadeIn(500);
@@ -23,12 +23,15 @@ $(function () {
                     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
                 }));
             }
-            if (settings[window.commandsTranslations[document.langID]]) {
-                window.execute(name, settings[window.commandsTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'commands')) {
+                window.execute(name, elementSettingsAnalyze(settings, 'commands'));
             }
         });
     }
-    $.fn[window.pageTranslations[document.langID]] = function (settings) {
-        pageFn(this, settings);
-    };
+    var pageTranslations = window.wordsTranslationsDB.Words['page'][document.langCode];
+    for (var i = 0; i < pageTranslations.length; i++) {
+        $.fn[pageTranslations[i]] = function (settings) {
+            pageFn(this, settings);
+        };
+    }
 });

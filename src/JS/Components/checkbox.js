@@ -6,37 +6,40 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-03
+ * Date: 2018-02-05
  */
 $(function () {
-    function checkboxFn (el, settings) {
+    function checkboxFn(el, settings) {
         el.each(function () {
-            var name = settings[window.nameTranslations[document.langID]];
-            var out = '<paper-checkbox id="' + name + '">' + settings[window.titleTranslations[document.langID]] + '';
-            if (settings[window.descriptionTranslations[document.langID]]) {
-                out += '<span class="subtitle">' + settings[window.descriptionTranslations[document.langID]] + '</span>';
+            var name = elementSettingsAnalyze(settings, 'name');
+            var out = '<paper-checkbox id="' + name + '">' + elementSettingsAnalyze(settings, 'title') + '';
+            if (elementSettingsAnalyze(settings, 'description')) {
+                out += '<span class="subtitle">' + elementSettingsAnalyze(settings, 'description') + '</span>';
             }
             out += '</paper-checkbox>';
-            window.appendComponent(settings[window.containerTranslations[document.langID]], out);
-            if (settings[window.attributesTranslations[document.langID]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
+            window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);
+            if (elementSettingsAnalyze(settings, 'attributes')) {
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.disabledTranslations[document.langID]) {
+                    if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][document.langCode]).rating > 0.8) {
                         $('#' + name + '').attr('disabled', '');
-                    } else if (propertiesArray[i] == window.checkedTranslations[document.langID]) {
+                    } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['checked'][document.langCode]).rating > 0.8) {
                         $('#' + name + '').attr('checked', '');
                     }
                 }
             }
-            if (settings[window.positionTranslations[document.langID]]) {
-                $('#' + name + '').css('position', settings[window.positionTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'position')) {
+                $('#' + name + '').css('position', elementSettingsAnalyze(settings, 'position'));
             } else {
                 $('#' + name + '').css('position', 'relative');
             }
             window.propSet(name, settings);
         });
     }
-    $.fn[window.checkboxTranslations[document.langID]] = function (settings) {
-        checkboxFn(this, settings);
-    };
+    var checkboxTranslations = window.wordsTranslationsDB.Words['checkbox'][document.langCode];
+    for (var i = 0; i < checkboxTranslations.length; i++) {
+        $.fn[checkboxTranslations[i]] = function (settings) {
+            checkboxFn(this, settings);
+        };
+    }
 });

@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-04
+ * Date: 2018-02-05
  */
 $(function () {
     function loginFormFn(el, settings) {
@@ -126,7 +126,10 @@ $(function () {
             }
         });
     }
-    $.fn[window.loginFormTranslations[document.langID]] = function (settings) {
-        loginFormFn(this, settings);
-    };
+    var loginFormTranslations = window.wordsTranslationsDB.Words['loginForm'][document.langCode];
+    for (var i = 0; i < loginFormTranslations.length; i++) {
+        $.fn[loginFormTranslations[i]] = function (settings) {
+            loginFormFn(this, settings);
+        };
+    }
 });

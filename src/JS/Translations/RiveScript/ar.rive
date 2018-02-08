@@ -6,5 +6,240 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-02
+ * Date: 2018-02-07
  */
+
+// احذفه
+
++ (?:امسح|احذف)(?:ه|ها)
+- command_id: S1 ==> lang: ar ==> target: itself
+
+// احذف هذا العنصر
+
++ (?:امسح|احذف) هذا العنصر
+- command_id: S1 ==> lang: ar ==> target: itself
+
+// امسح elephant_photo
+
++ (?:امسح|احذف) *
+- command_id: S1 ==> lang: ar ==> target: <star1>
+
+// افتح مربع الحوار learn_more
+
++ (?:توجه|زور|افتح) [إلى] * %
+- command_id: S2 ==> lang: ar ==> targetType: <star1> ==> target: <star2>
+
+// شغلها
+
++ شغل(?:ه|ها)
+- command_id: S3 ==> lang: ar ==> target: itself
+
+// شغل هذه اﻷغنية
+
++ شغل هذه (?:اﻷغنية|الاغنية|الأغنية)
+- command_id: S3 ==> lang: ar ==> target: itself
+
+// شغل هذا العنصر
+
++ شغل هذا العنصر
+- command_id: S3 ==> lang: ar ==> target: itself
+
+// شغل هذا الفيديو
+
++ شغل هذا الفيديو
+- command_id: S3 ==> lang: ar ==> target: itself
+
+// شغل Close_To_You
+
++ شغل *
+- command_id: S3 ==> lang: ar ==> target: <star1>
+
+// اوقفه
+
++ (?:اوقف|أوقف)(?:ه|ها)
+- command_id: S4 ==> lang: ar ==> target: itself
+
+// أوقف اﻷغنية دى
+
++ (?:اوقف|أوقف) هذه (?:اﻷغنية|الاغنية|الأغنية)
+- command_id: S4 ==> lang: ar ==> target: itself
+
+// أوقف هذا العنصر
+
++ (?:اوقف|أوقف) هذا العنصر
+- command_id: S4 ==> lang: ar ==> target: itself
+
+// أوقف الفيديو دة
+
++ (?:اوقف|أوقف) هذا الفيديو
+- command_id: S4 ==> lang: ar ==> target: itself
+
+// أوقف Close_To_You
+
++ (?:اوقف|أوقف) *
+- command_id: S4 ==> lang: ar ==> target: <star1>
+
+// اجعل الوقت الذى عدى منها 51654
+
++ اجعل الوقت الذى مر من(?:ه|ها) *
+- command_id: S5 ==> lang: ar ==> target: itself ==> timePosition: <star1>
+
+// اجعل الوقت الذى عدى من الفيديو دة 13575
+
++ اجعل الوقت الذى مر من (?:الفيديو|الأغنية|الاغنية|العنصر) (?:دة|دى) *
+- command_id: S5 ==> lang: ar ==> target: itself ==> timePosition: <star1>
+
+// اجعل الوقت الذى عدا من Close_To_You 1536
+
++ اجعل الوقت الذى مر من % *
+- command_id: S5 ==> lang: ar ==> target: <star1> ==> timePosition: <star2>
+
+// اجعل القيمة الخاصة به Hello World !
+
++ اجعل القيمة الخاصة ب(?:ه|ها) *
+- command_id: S6 ==> lang: ar ==> target: itself ==> value: <star1>
+
+// اجعل قيمة هذا العنصر Hello World !
+
++ اجعل قيمة هذا العنصر *
+- command_id: S6 ==> lang: ar ==> target: itself ==> value: <star1>
+
+// اجعل قيمة welcome_message Welcome, folks !
+
++ اجعل قيمة % *
+- command_id: S6 ==> lang: ar ==> target: <star1> ==> value: <star2>
+
+// بدل حالة الفلاش
+
++ بدل حالة (?:الفلاش|الكشاف)
+- command_id: S7 ==> lang: ar
+
+// ولع الفلاش
+
++ (?:شغل|افتح) (?:الفلاش|الكشاف)
+- command_id: S8 ==> lang: ar
+
+// أطفئ الكشاف
+
++ (?:أطفئ|اطفئ) (?:الفلاش|الكشاف)
+- command_id: S9 ==> lang: ar
+
+// شغل الواى فاى
+
++ (?:شغل|افتح) (?:الويفى|الويفي|الوافاى|الواى فاى|الانترنت اللاسلكى|الإنترنت اللاسلكى)
+- command_id: S10 ==> lang: ar
+
+// أطفئ الإنترنت اللاسلكى
+
++ (?:أطفئ|اطفئ) (?:الويفى|الويفي|الوافاى|الواى فاى|الانترنت اللاسلكى|الإنترنت اللاسلكى)
+- command_id: S11 ==> lang: ar
+
+// شغل البلوتوث
+
++ (?:شغل|افتح) (?:الإتصال بالبلوتوث|البلوتوث)
+- command_id: S12 ==> lang: ar
+
+// اظهر الكيبورد
+
++ (?:اظهر|افتح) (?:الكيبورد|الكى بورد|الكي بورد)
+- command_id: S13 ==> lang: ar
+
+// اقفل الكيبورد
+
++ (?:اخفى|اقفل) (?:الكيبورد|الكى بورد|الكي بورد)
+- command_id: S14 ==> lang: ar
+
+// روح لقاعدة البيانات العامة egypt الفرع citizines ثم دخل البيانات دى: قيمة name_input فى الشريحة, قيمة address_input فى الشريحة address
+
++ روح لقاعدة البيانات * * الفرع * ثم دخل البيانات دى: (* فى الشريحة * [*])
+- command_id: S15 ==> lang: ar ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> data: IS_GROUPED: false SEPARATOR: ,  REGEX: (.*?) in the slot (.*?) ELEMENTS: ["value", "slotName"] DATA: <star4>
+
+// روح لقاعدة البيانات العامة egypt الفرع citizines ثم اجلب قيمة الشريحة address التى عندها نفس نوع قيمة name_input فى الشريحة name و اجعلها قيمة textB
+
++ روح لقاعدة البيانات * * الفرع * ثم اجلب قيمة الشريحة * التى عندها نفس نوع قيمة * فى الشريحة * و اجعلها قيمة *
+- command_id: S16 ==> lang: ar ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> requiredSlot: <star4> ==> resourceValue: <star5> ==> resourceSlot: <star6> ==> target: <star7>
+
+// روح لقاعدة البيانات العامة egypt الفرع citizines ثم اجلب قيمة الشريحة address التى عندها نفس نوع قيمة name_input فى الشريحة name و اجعلها قيمة هذا العنصر
+
++ روح لقاعدة البيانات * * الفرع * ثم اجلب قيمة الشريحة * التى عندها نفس نوع قيمة * فى الشريحة * و اجعلها قيمة هذا العنصر
+- command_id: S16 ==> lang: ar ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> requiredSlot: <star4> ==> resourceValue: <star5> ==> resourceSlot: <star6> ==> target: itself
+
+// اجعل عرضه 30 بكسل
+
++ اجعل عرض(?:ه|ها) *
+- command_id: S17 ==> lang: ar ==> target: itself ==> value: <star1>
+
+// اجعل العرض الخاص به 30 بكسل
+
++ اجعل العرض الخاص ب(?:ه|ها) *
+- command_id: S18 ==> lang: ar ==> target: itself ==> value: <star1>
+
+// اجعل عرض هذا العنصر 50 بكسل
+
++ اجعل عرض هذا العنصر *
+- command_id: S17 ==> lang: ar ==> target: itself ==> value: <star1>
+
+// اجعل عرض containerA 30 بكسل
+
++ اجعل عرض % *
+- command_id: S17 ==> lang: ar ==> target: <star1> ==> value: <star2>
+
+// اجعل طوله 30 بكسل
+
++ اجعل طول(?:ه|ها) *
+- command_id: S18 ==> lang: ar ==> target: itself ==> value: <star1>
+
+// اجعل الطول الخاص به 30 بكسل
+
++ اجعل الطول الخاص ب(?:ه|ها) *
+- command_id: S18 ==> lang: ar ==> target: itself ==> value: <star1>
+
+// اجعل طول هذا العنصر 50 بكسل
+
++ اجعل طول هذا العنصر *
+- command_id: S18 ==> lang: ar ==> target: itself ==> value: <star1>
+
+// اجعل طول containerA 30 بكسل
+
++ اجعل طول % *
+- command_id: S18 ==> lang: ar ==> target: <star1> ==> value: <star2>
+
+// اجعل خلفيتها لون غامق عشوائى
+
++ اجعل خلفيت(?:ه|ها) *
+- command_id: S19 ==> lang: ar ==> target: itself ==> value: <star1>
+
+// اجعل الخلفية الخاصة به 30 بكسل
+
++ اجعل الخلفية الخاصة ب(?:ه|ها) *
+- command_id: S18 ==> lang: ar ==> target: itself ==> value: <star1>
+
+// اجعل خلفية main_page حمرة
+
++ اجعل خلفية % *
+- command_id: S19 ==> lang: ar ==> target: <star1> ==> value: <star2>
+
+// اجعل خلفية هذا العنصر لون فاتح عشوائى
+
++ اجعل خلفية هذا العنصر *
+- command_id: S19 ==> lang: ar ==> target: itself ==> value: <star1>
+
+// اجعل لون خطه لون عشوائى
+
++ اجعل لون خط(?:ه|ها) *
+- command_id: S20 ==> lang: ar ==> target: itself ==> value: <star1>
+
+// اجعل لون الخط الخاص به 30 بكسل
+
++ اجعل لون الخط الخاص ب(?:ه|ها) *
+- command_id: S18 ==> lang: ar ==> target: itself ==> value: <star1>
+
+// اجعل لون خط هذا العنصر لون فاتح عشوائى
+
++ اجعل لون خط هذا العنصر *
+- command_id: S20 ==> lang: ar ==> target: itself ==> value: <star1>
+
+// حلى لون خط heading_title ازرق
+
++ اجعل لون خط % *
+- command_id: S20 ==> lang: ar ==> target: <star1> ==> value: <star2>

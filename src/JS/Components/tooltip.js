@@ -6,41 +6,44 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-04
+ * Date: 2018-02-05
  */
 $(function () {
     function tooltipFn(el, settings) {
         el.each(function () {
             var position;
-            if (settings[window.directionTranslations[document.langID]] == window.fromTheRightTranslations[document.langID]) {
+            if (window.getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['fromTheRight'][document.langCode]).rating > 0.8)) {
                 position = 'right';
-            } else if (settings[window.directionTranslations[document.langID]] == window.fromTheLeftTranslations[document.langID]) {
+            } else if (window.getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['fromTheLeft'][document.langCode]).rating > 0.8)) {
                 position = 'left';
-            } else if (settings[window.directionTranslations[document.langID]] == window.fromTheTopTranslations[document.langID] || settings[window.directionTranslations[document.langID]] == undefined) {
+            } else if (window.getSafe(() => elementSettingsAnalyze(settings, 'direction') == undefined || elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['fromTheTop'][document.langCode]).rating > 0.8)) {
                 position = 'top';
-            } else if (settings[window.directionTranslations[document.langID]] == window.fromTheBottomTranslations[document.langID]) {
+            } else if (window.getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['fromTheBottom'][document.langCode]).rating > 0.8)) {
                 position = 'bottom';
             }
-            if (settings[window.titleTranslations[document.langID]]) {
-                $('#' + settings[window.emitterTranslations[document.langID]]).tipso({
-                    titleContent: settings[window.titleTranslations[document.langID]],
-                    content: settings[window.textTranslations[document.langID]],
+            if (elementSettingsAnalyze(settings, 'title')) {
+                $('#' + elementSettingsAnalyze(settings, 'emitter')).tipso({
+                    titleContent: elementSettingsAnalyze(settings, 'title'),
+                    content: elementSettingsAnalyze(settings, 'text'),
                     position: position,
                     background: '#FE5970'
                 });
             } else {
-                $('#' + settings[window.emitterTranslations[document.langID]]).tipso({
-                    content: settings[window.textTranslations[document.langID]],
+                $('#' + elementSettingsAnalyze(settings, 'emitter')).tipso({
+                    content: elementSettingsAnalyze(settings, 'text'),
                     position: position,
                     background: '#FE5970'
                 });
             }
-            if (settings[window.transparencyTranslations[document.langID]]) {
-                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.langID]] + '%)');
+            if (elementSettingsAnalyze(settings, 'transparency')) {
+                $('#' + name + '').css('-webkit-filter', 'opacity(' + elementSettingsAnalyze(settings, 'transparency') + '%)');
             }
         });
     }
-    $.fn[window.tooltipTranslations[document.langID]] = function (settings) {
-        tooltipFn(this, settings);
-    };
+    var tooltipTranslations = window.wordsTranslationsDB.Words['tooltip'][document.langCode];
+    for (var i = 0; i < tooltipTranslations.length; i++) {
+        $.fn[tooltipTranslations[i]] = function (settings) {
+            tooltipFn(this, settings);
+        };
+    }
 });

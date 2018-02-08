@@ -1,187 +1,1334 @@
-/*!
- * Properties Translations
- * https://project-jste.github.io/
- *
- * Copyright 2018 Jste Team
- * Released under the GNU AGPLv3 license
- * https://project-jste.github.io/license
- *
- * Date: 2018-01-30
- */
-window.yesTranslations = ['yes', 'yup', 'oui', 'نعم', 'ايوة', 'はい'];
-window.noTranslations = ['no', 'nope', 'non', 'لا', 'لأ', 'いいえ'];
-window.andTranslations = ['and', 'and', 'et', 'و', 'و', 'そして'];
-window.orTranslations = ['or', 'or', 'ou', 'أو', 'أو', 'または'];
-window.blackTranslations = ['black', 'black', 'noir', 'اسود', 'اسود', '黒'];
-window.redTranslations = ['red', 'red', 'rouge', 'احمر', 'احمر', '赤'];
-window.blueTranslations = ['blue', 'blue', 'bleu', 'ازرق', 'ازرق', '青'];
-window.cyanTranslations = ['cyan', 'cyan', 'cyan', 'سماوى', 'لبنى', 'シアン'];
-window.grayTranslations = ['gray', 'gray', 'gris', 'رصاصى', 'فرانى', 'グレー'];
-window.greenTranslations = ['green', 'green', 'vert', 'اخضر', 'اخضر', '緑'];
-window.whiteTranslations = ['white', 'white', 'blanc', 'ابيض', 'ابيض', '白'];
-window.orangeTranslations = ['orange', 'orange', 'orange', 'برتقالى', 'برتقانى', 'オレンジ'];
-window.yellowTranslations = ['yellow', 'yellow', 'jaun', 'اصفر', 'اصفر', '黄'];
-window.brownTranslations = ['brown', 'brown', 'marron', 'بنى', 'بنى', '褐色', '棕色', '棕色'];
-window.tealTranslations = ['teal', 'teal', 'sarcelle', 'تركواز', 'تركواز', 'ティール'];
-window.pinkTranslations = ['pink', 'pink', 'rose', 'زهرى', 'بمبى', 'ピンク'];
-window.lightGreenTranslations = ['light green', 'light green', 'Vert clair', 'اخضر فاتح', 'اخضر فاتح', 'ライトグリーン'];
-window.colorTranslations = ['colour', 'color', 'couleur', 'لون', 'لون', 'カラー'];
-window.withPinTranslations = ['with a pin', 'with a pin', 'épingle', 'بدبوس', 'بدبوس', 'ピン'];
-window.animationTranslations = ['animation', 'animation', 'animation', 'حركة', 'حركة', 'アニメーション'];
-window.commandsTranslations = ['commands', 'commands', 'commandes', 'أوامر', 'أوامر', 'コマンド'];
-window.sliderTranslations = ['slider', 'slider', 'curseur', 'منزلق', 'منزلق', 'スライダー'];
-window.buttonTranslations = ['button', 'button', 'bouton', 'زر', 'زرار', 'ボタン'];
-window.FABTranslations = ['FAB', 'FAB', 'épingle', 'دبوس', 'دبوس', 'ピン'];
-window.colorsPaletteTranslations = ['colours_palette', 'colors_palette', 'palette_de_couleurs', 'لوحة_الوان', 'بلتة_الوان', 'カラーパレット'];
-window.textFnTranslations = ['text0', 'text0', 'texte', 'نص', 'كلام', 'テキスト'];
-window.buttonWithAnIconTranslations = ['button_with_an_icon', 'button_with_an_icon', 'bouton_avec_icône', 'زر_بأيقونة', 'زرار_بأيكونة', 'アイコン付きボタン'];
-window.iconTranslations = ['icon', 'icon', 'icône', 'ايقونة', 'ايكونة', 'アイコン'];
-window.imageTranslations = ['image', 'image', 'image', 'صورة', 'صورة', 'ピクチャー'];
-window.videoTranslations = ['video', 'video', 'vidéo', 'فيديو', 'فيديو', 'ビデオ'];
-window.audioTranslations = ['audio', 'audio', "l'audio", 'صوت', 'صوت', 'オーディオ'];
-window.writingZoneTranslations = ['writing_zone', 'writing_zone', 'champ_de_texte', 'صندوق_النص', 'مكان_الكتابة', 'テキストボックス'];
-window.sectionTranslations = ['section', 'section', 'section', 'دبوس', 'دبوس', 'セクション'];
-window.checkboxTranslations = ['checkbox', 'checkbox', 'case_à_cocher', 'مربع_الإختيار', 'مربع_الإختيار', 'チェックボックス'];
-window.checkedTranslations = ['checked', 'checked', 'choisi', 'مختار', 'مختار', 'チェックボックス'];
-window.spinnerTranslations = ['spinner', 'spinner', 'fileur', 'دوار', 'دوار', 'スピナー'];
-window.barTranslations = ['bar', 'bar', 'bar', 'شريط', 'شريط', 'バー'];
-window.loaderTranslations = ['loader', 'loader', 'chargeur', 'دبوس', 'دبوس', 'ローダ'];
-window.notificationCountTranslations = ['notification_count', 'notification_count', 'nombre_de_notifications', 'عدد_الإشعارات', 'عدد_الإشعارات', '通知回数'];
-window.dialogBoxTranslations = ['dialog_box', 'dialog_box', 'boîte_de_dialogue', 'مربع_حوار', 'مربع_حوار', 'ピン'];
-window.dropdownTranslations = ['dropdown_menu', 'dropdown_menu', 'menu_déroulant', 'دبوس', 'دبوس', 'ピン'];
-window.backgroundTranslations = ['background', 'background', 'fond', 'خلفية', 'خلفية', 'ピン'];
-window.tooltipTranslations = ['tooltip', 'tooltip', 'info-bulle', 'خلفية', 'خلفية', 'ツールチップ'];
-window.textTranslations = ['text', 'text', 'texte', 'نص', 'كلام', 'テキスト'];
-window.widthTranslations = ['width', 'width', 'largeur', 'عرض', 'عرض', '幅'];
-window.lengthTranslations = ['length', 'length', 'longueur', 'طول', 'طول', '長さ'];
-window.positionTranslations = ['position', 'position', 'position', 'مكان', 'مكان', 'ポジション'];
-window.distanceFromLeftTranslations = ['distance_from_the_left', 'distance_from_the_left', 'distance_de_la_gauche', 'مسافة_من_الشمال', 'مسافة_من_الشمال', '左からの距離'];
-window.distanceFromRightTranslations = ['distance_from_the_right', 'distance_from_the_right', 'distance_de_droite', 'مسافة_من_اليمين', 'مسافة_من_اللمين', '右からの距離'];
-window.distanceFromTopTranslations = ['distance_from_the_top', 'distance_from_the_top', 'distance_du_haut', 'مسافة_من_أعلى', 'مسافة_من_فوق', '上からの距離'];
-window.distanceFromBottomTranslations = ['distance_from_the_bottom', 'distance_from_the_bottom', 'distance_du_fond', 'مسافة_من_أسفل', 'مسافة_من_تحت', '底からの距離'];
-window.firebaseCenterTranslations = ['firebase_centre', 'firebase_center', 'centre_de_firebase', 'مركز_البيانات', 'مركز_البيانات', 'ピン'];
-window.usernameTranslations = ['username', 'username', "nom_de_utilisateur", 'اسم_المستخدم', 'اسم_المستخدم', 'ピン'];
-window.passwordTranslations = ['password', 'password', 'mot_de_passe', 'كلمة_المرور', 'كلمة_السر', 'ピン'];
-window.timeTranslations = ['time', 'time', 'temps', 'توقيت', 'توقيت', 'ピン'];
-window.dateTranslations = ['date', 'date', 'date', 'تاريخ', 'تاريخ', 'ピン'];
-window.numberTranslations = ['number', 'number', 'nombre', 'رقم', 'رقم', '数'];
-window.setupTranslations = ['setup', 'setup', 'installation', 'الإعدادات', 'الإعدادات', 'セットアップ'];
-window.logoTranslations = ['logo', 'logo', 'logo', 'شعار', 'لوجو', 'ロゴ'];
-window.titleTranslations = ['title', 'title', 'titre', 'عنوان', 'عنوان', 'タイトル'];
-window.modeTranslations = ['mode', 'mode', 'mode', 'وضعية', 'مود', 'モード'];
-window.pageTranslations = ['page', 'page', 'page', 'صفحة', 'صفحة', 'ページ'];
-window.nameTranslations = ['name', 'name', 'nom', 'اسم', 'اسم', '名'];
-window.transparentTranslations = ['transparent', 'transparent', 'transparente', 'شفافة', 'شفافة', 'トランスペアレント'];
-window.transparencyTranslations = ['transparency', 'transparency', 'transparence', 'شفافية', 'شفافية', '透明性'];
-window.fontSizeTranslations = ['font_size', 'font_size', 'taille_de_police', 'حجم_الخط', 'حجم_الخط', 'フォントサイズ'];
-window.fontThicknessTranslations = ['font_thickness', 'font_thickness', 'épaisseur_de_police', 'سمك_الخط', 'طخن_الخط', '厚さ'];
-window.switchedTranslations = ['switched', 'switched', 'commuté', 'مفتوح', 'مفتوح', 'スイッチされる'];
-window.raisedTranslations = ['raised', 'raised', 'élevé', 'مرفوع', 'مرفوع', '育てられる'];
-window.disabledTranslations = ['disabled', 'disabled', 'désactivée', 'معطل', 'مقفول', '無効'];
-window.fontStyleTranslations = ['font_style', 'font_style', 'le_style_de_police', 'شكل_الخط', 'شكل_الخط', 'フォントスタイル'];
-window.fontColorTranslations = ['font_colour', 'font_color', 'couleur_de_police', 'لون_الخط', 'لون_الخط', 'フォントの色'];
-window.bodyTranslations = ['body', 'body', 'corps', 'جسم', 'جسم', '体'];
-window.rippleTranslations = ['ripple', 'ripple', 'ondulation', 'تموج', 'تموج', '波紋'];
-window.minTranslations = ['minimum', 'minimum', 'minimum', 'حد_الأدنى', 'حد_الأدنى', '最小'];
-window.maxTranslations = ['maximum', 'maximum', 'maximum', 'حد_الأقصى', 'حد_الأقصى', '最大'];
-window.requirementTranslations = ['requirement', 'requirement', 'exigence', 'مطلوب', 'مطلوب', '要件'];
-window.typeTranslations = ['type', 'type', 'type', 'نوع', 'نوع', 'タイプ'];
-window.inputTypeTranslations = ['input_type', 'input_type', "type_d'entrée", 'نوع_الإدخال', 'نوع_الإدخال', '入力タイプ'];
-window.multilineTranslations = ['multiline', 'multiline', 'multilignes', 'متعدد الأسطر', 'متعدد الأسطر', '複数行'];
-window.clearButtonTranslations = ['clear_button', 'clear_button', 'bouton_de_suppression', 'زر_الحذف', 'زرار_المسح', '削除ボタン'];
-window.suffixTranslations = ['suffix', 'suffix', 'suffixe', 'نهاية', 'نهاية', 'サフィックス'];
-window.prefixTranslations = ['prefix', 'prefix', 'préfixe', 'بداية', 'بداية', 'プレフィックス'];
-window.stepTranslations = ['step', 'step', 'étape', 'خطوة', 'خطوة', 'ステップ'];
-window.withDigitalValueEditorTranslations = ['with a digital value editor', 'with a digital value editor', 'avec un éditeur de valeur numérique', 'بمعدل رقمى للقيمة', 'بمعدل رقمى للقيمة', 'ピン'];
-window.iconColorTranslations = ['icon_colour', 'icon_color', "couleur_de_l'icône", 'لون_الأيقونة', 'لون_الأيكونة', 'アイコンの色'];
-window.imageSourceTranslations = ['image_source', 'image_source', "source_de_image", 'مصدر_الصورة', 'مصدر_الصورة', 'イメージソース'];
-window.FXTranslations = ['FX', 'FX', 'FX', 'FX', 'FX', 'FX'];
-window.emitterTranslations = ['emitter', 'emitter', 'émetteur', 'باعث', 'باعث', 'エミッタ'];
-window.directionTranslations = ['direction', 'direction', 'direction', 'إتجاه', 'إتجاه', '方向'];
-window.loadingTranslations = ['loading', 'loading', 'chargement', 'يحمل', 'بيحمل', '読み込み中'];
-window.sourceTranslations = ['source', 'source', "source", 'مصدر', 'مصدر', 'ソース'];
-window.itemsTranslations = ['items', 'items', "articles", 'عناصر', 'عناصر', 'アイテム'];
-window.descriptionTranslations = ['description', 'description', "la_description", 'وصف', 'وصف', '説明'];
-window.privateTranslations = ['private', 'private', "privé", 'خاص', 'خاص', 'プライベート'];
-window.loginFormTranslations = ['login_form', 'login_form', "formulaire_de_connexion", 'خاص', 'فورم_الدخول', 'ログインフォーム'];
-window.targetTranslations = ['target', 'target', "cible", 'هدف', 'هدف', 'ターゲット'];
-window.containerTranslations = ['container', 'container', "récipient", 'حاوية', 'طبق', 'コンテナ'];
-window.shapeTranslations = ['shape', 'shape', "forme", 'شكل', 'شكل', '形状'];
-window.triangleTranslations = ['triangle', 'triangle', "triangle", 'مثلث', 'مثلث', '三角形'];
-window.trapezoidTranslations = ['trapezoid', 'trapezoid', "trapézoïdal", 'شبه_منحرف', 'شبه_منحرف', '台形'];
-window.parallelogramTranslations = ['parallelogram', 'parallelogram', "parallélogramme", 'متوازى_الأضلاع', 'متوازى_الأضلاع', '平行四辺形'];
-window.rhombusTranslations = ['rhombus', 'rhombus', "rhombe", 'معين', 'معين', '菱形'];
-window.pentagonTranslations = ['pentagon', 'pentagon', "pentagone", 'خماسى_الأضلاع', 'خماسى_الأضلاع', '五角形'];
-window.hexagonTranslations = ['hexagon', 'hexagon', "hexagone", 'سداسى_الأضلاع', 'سداسى_الأضلاع', '六角形'];
-window.heptagonTranslations = ['heptagon', 'heptagon', "heptagone", 'سباعى_الأضلاع', 'سباعى_الأضلاع', 'ヘプタゴン'];
-window.octagonTranslations = ['octagon', 'octagon', "octagone", 'ثمانى_الأضلاع', 'ثمانى_الأضلاع', '八角形'];
-window.decagonTranslations = ['decagon', 'decagon', "décagone", 'معشر_الأضلاع', 'معشر_الأضلاع', 'デカゴン'];
-window.circleTranslations = ['circle', 'circle', "cercle", 'دائرة', 'دايرة', 'サークル'];
-window.ellipseTranslations = ['ellipse', 'ellipse', "ellipse", 'بيضاوى', 'بيضاوى', '楕円'];
-window.fromTheRightTranslations = ['from the right', 'from the right', "à partir de la droite", 'من اليمين', 'من اللمين', '右から'];
-window.fromTheLeftTranslations = ['from the left', 'from the left', "à partir de la gauche", 'من الشمال', 'من الشمال', '左から'];
-window.fromTheTopTranslations = ['from the top', 'from the top', "à partir de le haut", 'من فوق', 'من فوق', '上から'];
-window.fromTheBottomTranslations = ['from the bottom', 'from the bottom', "à partir de le fond", 'من أسفل', 'من أسفل', '下から'];
-window.attributesTranslations = ['attributes', 'attributes', "attributs", 'صفات', 'صفات', '属性'];
-window.gridTranslations = ['grid', 'grid', "grille", 'شبكة', 'شبكة', '属性'];
-window.shareableTranslations = ['shareable', 'shareable', "les_attributs", 'صفات', 'صفات', '属性'];
-window.remoteScrollingTranslations = ['remote scrolling', 'remote scrolling', "défilement à distance", 'التمرير عن بعد', 'التمرير عن بعد', '属性'];
-window.parallaxTranslations = ['parallax', 'parallax', "parallaxe", 'مختلف المنظر', 'مختلف المنظر', '属性'];
-window.centimeterTranslations = ['centimetre', 'centimeter', "centimètre", 'سنتيمتر', 'سنتيمتر', 'センチメートル'];
-window.millimeterTranslations = ['millimetre', 'millimeter', "millimètre", 'ملليمتر', 'ملليمتر', 'ミリメートル'];
-window.inchTranslations = ['inch', 'inch', "pouce", 'بوصة', 'بوصة', 'インチ'];
-window.pixelTranslations = ['pixel', 'pixel', "pixel", 'بكسل', 'بكسل', 'ピクセル'];
-window.pointTranslations = ['point', 'point', "point", 'نقطة', 'نقطة', 'ポイント'];
-window.picaTranslations = ['pica', 'pica', "pica", 'بيكا', 'بيكا', 'パイカ'];
-window.centimetersTranslations = ['centimetres', 'centimeters', "centimètres", 'سنتيمتر', 'سنتيمتر', 'センチメートル'];
-window.millimetersTranslations = ['millimetres', 'millimeters', "millimètres", 'ملليمتر', 'ملليمتر', 'ミリメートル'];
-window.inchesTranslations = ['inches', 'inches', "pouces", 'بوصة', 'بوصة', 'インチ'];
-window.pixelsTranslations = ['pixels', 'pixels', "pixels", 'بكسل', 'بكسل', 'ピクセル'];
-window.pointsTranslations = ['points', 'points', "points", 'نقطة', 'نقطة', 'ポイント'];
-window.picasTranslations = ['picas', 'picas', "picas", 'بيكا', 'بيكا', 'パイカ'];
-window.authorTranslations = ['author', 'author', "auteur", 'فنان', 'فنان', '著者'];
-window.coverTranslations = ['cover', 'cover', "couverture", 'غلاف', 'غلاف', 'カバー'];
-window.autoplayTranslations = ['autoplay', 'autoplay', "couverture", 'يبدأ تلقائيا', 'بيشتغل الوحده', 'カバー'];
-window.audioPlayerTranslations = ['audio_player', 'audio_player', "lecteur_audio", 'مشغل_الصوت', 'مشغل_الصوت', 'オーディオプレーヤー'];
-window.theValueOfTranslations = ['the value of', 'the value of', "la valeur de", 'قيمة', 'قيمة', 'の価値'];
-window.thickTranslations = ['thick', 'thick', "épais", 'سميك', 'طخين', '厚い'];
-window.publicCTranslations = ['public', 'public', "publique", 'العامة', 'العامة', 'パブリック'];
-window.privateCTranslations = ['private', 'private', "privée", 'الخاصة', 'الخاصة', 'プライベート'];
-window.tableTranslations = ['table', 'table', "tableau", 'جدول', 'جدول', '表'];
-window.dataTranslations = ['data', 'data', "les_données", 'بيانات', 'بيانات', 'データ'];
-window.inTheCellTranslations = ['in the cell', 'in the cell', "dans la cellule", 'فى الخلية', 'فى الخانة', 'セル'];
-window.inTheGroupTranslations = ['in the group', 'in the group', "dans la cellule", 'فى الخلية', 'فى الخانة', 'セル'];
-window.slideShowTranslations = ['slideshow', 'slideshow', "dans la cellule", 'فى الخلية', 'فى الخانة', 'セル'];
-window.slideShowItemTranslations = ['slideshow_item', 'slideshow_item', "dans la cellule", 'فى الخلية', 'فى الخانة', 'セル'];
-window.acceptanceButtonTranslations = ['acceptance_button', 'acceptance_button', "Bouton_d'acceptation", 'زر_الموافقة', 'زرار_الموافقة', '受諾ボタン'];
-window.cancellationButtonTranslations = ['cancellation_button', 'cancellation_button', "Bouton_d'annulation", 'زر_الإلغاء', 'زرار_الإلغاء', 'キャンセルボタン'];
-window.selectMenuTranslations = ['select_menu', 'select_menu', "menu_de_sélection", 'قائمة_الإختيار', 'قايمة_الإختيار', 'キャンセルボタン'];
-window.aRandomColorTranslations = ['a random colour', 'a random color', "une couleur aléatoire", 'لون عشوائى', 'لون عشوائى', 'ランダムな色'];
-window.aRandomLightColorTranslations = ['a random light colour', 'a random light color', "une couleur claire aléatoire", 'لون فاتح عشوائى', 'لون فاتح عشوائى', 'ランダムな明るい色'];
-window.aRandomDarkColorTranslations = ['a random dark colour', 'a random dark color', "une couleur sombre aléatoire", 'لون غامق عشوائى', 'لون غامق عشوائى', 'ランダムな暗い色'];
-window.dropdownMenuTranslations = ['dropdown_menu', 'dropdown_menu', "menu_déroulant", 'قائمة_منسدلة', 'قايمة_منسدلة', 'ドロップダウンメニュー'];
-window.cloneFnTranslations = ['clone0', 'clone0', "clone0", 'استنساخ', 'استنساخ', 'クローン'];
-window.withCommandsTranslations = ['with commands', 'with commands', "avec des commandes", 'بالأوامر', 'بالأوامر', 'コマンド付き'];
-window.withoutShadowTranslations = ['without a shadow', 'without a shadow', "sans ombre", 'بدون ظل', 'من غير ضل', 'クローンされた要素'];
-window.chooseTranslations = ['choose', 'choose', "choisir", 'اختر', 'اختار', '選択する'];
-window.withFlexibleFontSizeTranslations = ['with a flexible font size', 'with a flexible font size', "avec une taille de police flexible", 'بمرونة حجم الخط', 'بمرونة حجم الخط', 'フレキシブルなフォントサイズで'];
-window.withCounterTranslations = ['with a counter', 'with a counter', "avec un compteur", 'بعداد', 'بعداد', 'カウンター付き'];
-window.ifTranslations = ['if', 'if', "si", 'لو', 'لو', 'と'];
-window.verticalTranslations = ['vertical', 'vertical', "verticale", 'عمودى', 'عمودى', '垂直'];
-window.horizontalTranslations = ['horizontal', 'horizontal', "horizontal", 'أفقي', 'أفقي', '水平'];
-window.siteTranslations = ['site', 'site', "site", 'الموقع', 'السايت', 'サイト'];
-window.appTranslations = ['app', 'app', "app", 'التطبيق', 'الآب', 'アプリ'];
-window.sidebarTranslations = ['sidebar', 'sidebar', "barre_latérale", 'شريط_جانبى', 'شريط_جانبى', 'サイドバー'];
-window.elseTranslations = ['else', 'else', "sinon", 'و إلا', 'و إلا', '主な色'];
-window.mainColorTranslations = ['main_colour', 'main_color', "couleur_principale", 'لون_الرئيسى', 'لون_الرئيسى', '主な色'];
-window.propertiesAssignorTranslations = ['properties_assignor', 'properties_assignor', "cédant_des_propriétés", 'مضيف_الخواص', 'مضيف_الخواص', '主な色'];
-window.inTheCaseThatTranslations = ['in the case that', 'in the case that', "si", 'فى حالة أن', 'فى حالة إن', '主な色'];
-window.clonedElementTranslations = ['cloned_element', 'cloned_element', "élément_clone", 'عنصر_المستنسخ', 'عنصر_المستنسخ', 'クローンされた要素'];
-window.ltrTranslations = ['from left to right', 'from left to right', "de gauche à droite", 'من الشمال إلى اليمين', 'من الشمال لللمين', '主な色'];
-window.inTheCaseOfLandscapeModeTranslations = ['in the case of the landscape mode', 'in the case of the landscape mode', "dans le cas du mode paysage", 'فى حالة الوضع الأفقى', 'فى حالة الوضع الأفقى', '主な色'];
-window.defaultWindowResolutionTranslations = ['default_window_resolution', 'default_window_resolution', "résolution_par_défaut_de_fenêtre", 'دقة_الإفتراضية_للنافذة', 'دقة_الإفتراضية_للنافذة', '主な色'];
-window.inTheCaseOfPortraitModeTranslations = ['in the case of the portrait mode', 'in the case of the portrait mode', "dans le cas du mode portrait", 'فى حالة الوضع العمودى', 'فى حالة الوضع العمودى', '主な色'];
-window.rtlTranslations = ['from right to left', 'from right to left', "de droite à gauche", 'من اليمين إلى الشمال', 'من اللمين للشمال', '主な色'];
-window.indexPageTranslations = ['home', 'home', "page_principale", 'الرئيسية', 'الرئيسية', 'ホーム'];
-window.addTranslations = ['add', 'add', "ajouter", 'اضف', 'ضيف', 'ホーム'];
-window.theResultOfTheMathematicalExpressionTranslations = ['the result of the mathematical expression', 'the result of the mathematical expression', "le résultat de l'expression mathématique", 'ناتج التعبير الرياضى', 'ناتج التعبير الرياضى', 'ホーム'];
+window.wordsTranslationsDB = {
+    "Words": {
+        "yes": {
+            "en": ["yes"],
+            "fr": ["oui"],
+            "ar": ["نعم"],
+            "arz": ["ايوة"],
+            "jp": ["はい"]
+        },
+        "no": {
+            "en": ["no"],
+            "fr": ["non"],
+            "ar": ["لا"],
+            "arz": ["لأ"],
+            "jp": ["いいえ"]
+        },
+        "and": {
+            "en": ["and"],
+            "fr": ["et"],
+            "ar": ["و"],
+            "arz": ["و"],
+            "jp": ["そして"]
+        },
+        "or": {
+            "en": ["or"],
+            "fr": ["ou"],
+            "ar": ["أو"],
+            "arz": ["أو"],
+            "jp": ["または"]
+        },
+        "black": {
+            "en": ["black"],
+            "fr": ["noir"],
+            "ar": ["اسود"],
+            "arz": ["اسود"],
+            "jp": ["黒"]
+        },
+        "red": {
+            "en": ["red"],
+            "fr": ["rouge"],
+            "ar": ["احمر"],
+            "arz": ["احمر"],
+            "jp": ["赤"]
+        },
+        "blue": {
+            "en": ["blue"],
+            "fr": ["bleu"],
+            "ar": ["ازرق"],
+            "arz": ["ازرق"],
+            "jp": ["青"]
+        },
+        "cyan": {
+            "en": ["cyan"],
+            "fr": ["cyan"],
+            "ar": ["سماوى"],
+            "arz": ["لبنى"],
+            "jp": ["シアン"]
+        },
+        "gray": {
+            "en": ["gray"],
+            "fr": ["gris"],
+            "ar": ["رصاصى"],
+            "arz": ["فرانى"],
+            "jp": ["グレー"]
+        },
+        "green": {
+            "en": ["green"],
+            "fr": ["vert"],
+            "ar": ["اخضر"],
+            "arz": ["اخضر"],
+            "jp": ["緑"]
+        },
+        "white": {
+            "en": ["white"],
+            "fr": ["blanc"],
+            "ar": ["ابيض"],
+            "arz": ["ابيض"],
+            "jp": ["白"]
+        },
+        "orange": {
+            "en": ["orange"],
+            "fr": ["orange"],
+            "ar": ["برتقالى"],
+            "arz": ["برتقانى"],
+            "jp": ["オレンジ"]
+        },
+        "yellow": {
+            "en": ["yellow"],
+            "fr": ["jaun"],
+            "ar": ["اصفر"],
+            "arz": ["اصفر"],
+            "jp": ["黄"]
+        },
+        "brown": {
+            "en": ["brown"],
+            "fr": ["marron"],
+            "ar": ["بنى"],
+            "arz": ["بنى"],
+            "jp": ["褐色', '棕色', '棕色"]
+        },
+        "teal": {
+            "en": ["teal"],
+            "fr": ["sarcelle"],
+            "ar": ["تركواز"],
+            "arz": ["تركواز"],
+            "jp": ["ティール"]
+        },
+        "pink": {
+            "en": ["pink"],
+            "fr": ["rose"],
+            "ar": ["زهرى"],
+            "arz": ["بمبى"],
+            "jp": ["ピンク"]
+        },
+        "lightGreen": {
+            "en": ["light green"],
+            "fr": ["Vert clair"],
+            "ar": ["اخضر فاتح"],
+            "arz": ["اخضر فاتح"],
+            "jp": ["ライトグリーン"]
+        },
+        "color": {
+            "en": ["colour", "color"],
+            "fr": ["couleur"],
+            "ar": ["لون"],
+            "arz": ["لون"],
+            "jp": ["カラー"]
+        },
+        "withPin": {
+            "type": "attribute",
+            "en": ["with a pin"],
+            "fr": ["épingle"],
+            "ar": ["بدبوس"],
+            "arz": ["بدبوس"],
+            "jp": ["ピン"]
+        },
+        "scrollable": {
+            "type": "attribute",
+            "en": ["scrollable"],
+            "fr": ["épingle"],
+            "ar": ["قابل للتمرير"],
+            "arz": ["قابل للتمرير"],
+            "jp": ["ピン"]
+        },
+        "animation": {
+            "en": ["animation"],
+            "fr": ["animation"],
+            "ar": ["حركة"],
+            "arz": ["حركة"],
+            "jp": ["アニメーション"]
+        },
+        "commands": {
+            "en": ["commands"],
+            "fr": ["commandes"],
+            "ar": ["أوامر"],
+            "arz": ["أوامر"],
+            "jp": ["コマンド"]
+        },
+        "slider": {
+            "type": "component",
+            "en": ["slider"],
+            "fr": ["curseur"],
+            "ar": ["منزلق"],
+            "arz": ["منزلق"],
+            "jp": ["スライダー"]
+        },
+        "button": {
+            "type": "component",
+            "en": ["button"],
+            "fr": ["bouton"],
+            "ar": ["زر"],
+            "arz": ["زرار"],
+            "jp": ["ボタン"]
+        },
+        "FAB": {
+            "type": "component",
+            "en": ["FAB"],
+            "fr": ["épingle"],
+            "ar": ["دبوس"],
+            "arz": ["دبوس"],
+            "jp": ["ピン"]
+        },
+        "colorsPalette": {
+            "type": "component",
+            "en": ["colours palette", "colors palette"],
+            "fr": ["palette de couleurs"],
+            "ar": ["لوحة الوان"],
+            "arz": ["بلتة الوان"],
+            "jp": ["カラーパレット"]
+        },
+        "textFn": {
+            "type": "component",
+            "en": ["text0"],
+            "fr": ["texte"],
+            "ar": ["نص"],
+            "arz": ["كلام"],
+            "jp": ["テキスト"]
+        },
+        "buttonWithAnIcon": {
+            "type": "component",
+            "en": ["button with an icon"],
+            "fr": ["bouton avec icône"],
+            "ar": ["زر بأيقونة"],
+            "arz": ["زرار بأيكونة"],
+            "jp": ["アイコン付きボタン"]
+        },
+        "icon": {
+            "en": ["icon"],
+            "fr": ["icône"],
+            "ar": ["ايقونة"],
+            "arz": ["ايكونة"],
+            "jp": ["アイコン"]
+        },
+        "image": {
+            "type": "component",
+            "en": ["image"],
+            "fr": ["image"],
+            "ar": ["صورة"],
+            "arz": ["صورة"],
+            "jp": ["ピクチャー"]
+        },
+        "video": {
+            "type": "component",
+            "en": ["video"],
+            "fr": ["vidéo"],
+            "ar": ["فيديو"],
+            "arz": ["فيديو"],
+            "jp": ["ビデオ"]
+        },
+        "audio": {
+            "type": "component",
+            "en": ["audio"],
+            "fr": ["l'audio"],
+            "ar": ["صوت"],
+            "arz": ["صوت"],
+            "jp": ["オーディオ"]
+        },
+        "writingZone": {
+            "type": "component",
+            "en": ["writing zone"],
+            "fr": ["champ de texte"],
+            "ar": ["صندوق النص"],
+            "arz": ["مكان الكتابة"],
+            "jp": ["テキストボックス"]
+        },
+        "section": {
+            "type": "component",
+            "en": ["section"],
+            "fr": ["section"],
+            "ar": ["دبوس"],
+            "arz": ["دبوس"],
+            "jp": ["セクション"]
+        },
+        "checkbox": {
+            "type": "component",
+            "en": ["checkbox"],
+            "fr": ["case à cocher"],
+            "ar": ["مربع الإختيار"],
+            "arz": ["مربع الإختيار"],
+            "jp": ["チェックボックス"]
+        },
+        "checked": {
+            "type": "attribute",
+            "en": ["checked"],
+            "fr": ["choisi"],
+            "ar": ["مختار"],
+            "arz": ["مختار"],
+            "jp": ["チェックボックス"]
+        },
+        "spinner": {
+            "en": ["spinner"],
+            "fr": ["fileur"],
+            "ar": ["دوار"],
+            "arz": ["دوار"],
+            "jp": ["スピナー"]
+        },
+        "bar": {
+            "en": ["bar"],
+            "fr": ["bar"],
+            "ar": ["شريط"],
+            "arz": ["شريط"],
+            "jp": ["バー"]
+        },
+        "loader": {
+            "type": "component",
+            "en": ["loader"],
+            "fr": ["chargeur"],
+            "ar": ["دبوس"],
+            "arz": ["دبوس"],
+            "jp": ["ローダ"]
+        },
+        "notificationCount": {
+            "type": "component",
+            "en": ["notification count"],
+            "fr": ["nombre de notifications"],
+            "ar": ["عدد الإشعارات"],
+            "arz": ["عدد الإشعارات"],
+            "jp": ["通知回数"]
+        },
+        "dialogBox": {
+            "type": "component",
+            "en": ["dialog box"],
+            "fr": ["boîte de dialogue"],
+            "ar": ["مربع حوار"],
+            "arz": ["مربع حوار"],
+            "jp": ["ピン"]
+        },
+        "dropdown": {
+            "type": "component",
+            "en": ["dropdown menu"],
+            "fr": ["menu déroulant"],
+            "ar": ["دبوس"],
+            "arz": ["دبوس"],
+            "jp": ["ピン"]
+        },
+        "background": {
+            "en": ["background"],
+            "fr": ["fond"],
+            "ar": ["خلفية"],
+            "arz": ["خلفية"],
+            "jp": ["ピン"]
+        },
+        "tooltip": {
+            "en": ["tooltip"],
+            "fr": ["info-bulle"],
+            "ar": ["خلفية"],
+            "arz": ["خلفية"],
+            "jp": ["ツールチップ"]
+        },
+        "text": {
+            "type": "component",
+            "en": ["text"],
+            "fr": ["texte"],
+            "ar": ["نص"],
+            "arz": ["كلام"],
+            "jp": ["テキスト"]
+        },
+        "width": {
+            "en": ["width"],
+            "fr": ["largeur"],
+            "ar": ["عرض"],
+            "arz": ["عرض"],
+            "jp": ["幅"]
+        },
+        "length": {
+            "en": ["length"],
+            "fr": ["longueur"],
+            "ar": ["طول"],
+            "arz": ["طول"],
+            "jp": ["長さ"]
+        },
+        "position": {
+            "en": ["position"],
+            "fr": ["position"],
+            "ar": ["مكان"],
+            "arz": ["مكان"],
+            "jp": ["ポジション"]
+        },
+        "distanceFromLeft": {
+            "en": ["distance from the left"],
+            "fr": ["distance de la gauche"],
+            "ar": ["مسافة من شمال"],
+            "arz": ["مسافة من شمال"],
+            "jp": ["左からの距離"]
+        },
+        "distanceFromRight": {
+            "en": ["distance from the right"],
+            "fr": ["distance de droite"],
+            "ar": ["مسافة من يمين"],
+            "arz": ["مسافة من لمين"],
+            "jp": ["右からの距離"]
+        },
+        "distanceFromTop": {
+            "en": ["distance from the top"],
+            "fr": ["distance du haut"],
+            "ar": ["مسافة من أعلى"],
+            "arz": ["مسافة من فوق"],
+            "jp": ["上からの距離"]
+        },
+        "distanceFromBottom": {
+            "en": ["distance from the bottom"],
+            "fr": ["distance du fond"],
+            "ar": ["مسافة من أسفل"],
+            "arz": ["مسافة من تحت"],
+            "jp": ["底からの距離"]
+        },
+        "firebaseCenter": {
+            "type": "component",
+            "en": ["firebase centre", "firebase center"],
+            "fr": ["centre de firebase"],
+            "ar": ["مركز البيانات"],
+            "arz": ["مركز البيانات"],
+            "jp": ["ピン"]
+        },
+        "username": {
+            "en": ["username"],
+            "fr": ["nom de utilisateur"],
+            "ar": ["اسم مستخدم"],
+            "arz": ["اسم مستخدم"],
+            "jp": ["ピン"]
+        },
+        "password": {
+            "en": ["password"],
+            "fr": ["mot de passe"],
+            "ar": ["كلمة مرور"],
+            "arz": ["كلمة سر"],
+            "jp": ["ピン"]
+        },
+        "time": {
+            "en": ["time"],
+            "fr": ["temps"],
+            "ar": ["توقيت"],
+            "arz": ["توقيت"],
+            "jp": ["ピン"]
+        },
+        "date": {
+            "en": ["date"],
+            "fr": ["date"],
+            "ar": ["تاريخ"],
+            "arz": ["تاريخ"],
+            "jp": ["ピン"]
+        },
+        "number": {
+            "en": ["number"],
+            "fr": ["nombre"],
+            "ar": ["رقم"],
+            "arz": ["رقم"],
+            "jp": ["数"]
+        },
+        "setup": {
+            "type": "component",
+            "en": ["setup"],
+            "fr": ["installation"],
+            "ar": ["الإعدادات"],
+            "arz": ["الإعدادات"],
+            "jp": ["セットアップ"]
+        },
+        "logo": {
+            "en": ["logo"],
+            "fr": ["logo"],
+            "ar": ["شعار"],
+            "arz": ["لوجو"],
+            "jp": ["ロゴ"]
+        },
+        "title": {
+            "en": ["title"],
+            "fr": ["titre"],
+            "ar": ["عنوان"],
+            "arz": ["عنوان"],
+            "jp": ["タイトル"]
+        },
+        "mode": {
+            "en": ["mode"],
+            "fr": ["mode"],
+            "ar": ["وضعية"],
+            "arz": ["مود"],
+            "jp": ["モード"]
+        },
+        "page": {
+            "type": "component",
+            "en": ["page"],
+            "fr": ["page"],
+            "ar": ["صفحة"],
+            "arz": ["صفحة"],
+            "jp": ["ページ"]
+        },
+        "name": {
+            "en": ["name"],
+            "fr": ["nom"],
+            "ar": ["اسم"],
+            "arz": ["اسم"],
+            "jp": ["名"]
+        },
+        "transparent": {
+            "type": "attribute",
+            "en": ["transparent"],
+            "fr": ["transparente"],
+            "ar": ["شفافة"],
+            "arz": ["شفافة"],
+            "jp": ["トランスペアレント"]
+        },
+        "transparency": {
+            "en": ["transparency"],
+            "fr": ["transparence"],
+            "ar": ["شفافية"],
+            "arz": ["شفافية"],
+            "jp": ["透明性"]
+        },
+        "fontSize": {
+            "en": ["font size"],
+            "fr": ["taille de police"],
+            "ar": ["حجم خط"],
+            "arz": ["حجم خط"],
+            "jp": ["フォントサイズ"]
+        },
+        "fontThickness": {
+            "en": ["font thickness"],
+            "fr": ["épaisseur de police"],
+            "ar": ["سمك خط"],
+            "arz": ["طخن خط"],
+            "jp": ["厚さ"]
+        },
+        "switched": {
+            "type": "attribute",
+            "en": ["switched"],
+            "fr": ["commuté"],
+            "ar": ["مفتوح"],
+            "arz": ["مفتوح"],
+            "jp": ["スイッチされる"]
+        },
+        "raised": {
+            "type": "attribute",
+            "en": ["raised"],
+            "fr": ["élevé"],
+            "ar": ["مرفوع"],
+            "arz": ["مرفوع"],
+            "jp": ["育てられる"]
+        },
+        "disabled": {
+            "type": "attribute",
+            "en": ["disabled"],
+            "fr": ["désactivée"],
+            "ar": ["معطل"],
+            "arz": ["مقفول"],
+            "jp": ["無効"]
+        },
+        "fontStyle": {
+            "en": ["font style"],
+            "fr": ["le style de police"],
+            "ar": ["شكل خط"],
+            "arz": ["شكل خط"],
+            "jp": ["フォントスタイル"]
+        },
+        "fontColor": {
+            "en": ["font colour", "font color"],
+            "fr": ["couleur de police"],
+            "ar": ["لون خط"],
+            "arz": ["لون خط"],
+            "jp": ["フォントの色"]
+        },
+        "body": {
+            "en": ["body"],
+            "fr": ["corps"],
+            "ar": ["جسم"],
+            "arz": ["جسم"],
+            "jp": ["体"]
+        },
+        "ripple": {
+            "en": ["ripple"],
+            "fr": ["ondulation"],
+            "ar": ["تموج"],
+            "arz": ["تموج"],
+            "jp": ["波紋"]
+        },
+        "min": {
+            "en": ["minimum"],
+            "fr": ["minimum"],
+            "ar": ["حد أدنى"],
+            "arz": ["حد أدنى"],
+            "jp": ["最小"]
+        },
+        "max": {
+            "en": ["maximum"],
+            "fr": ["maximum"],
+            "ar": ["حد أقصى"],
+            "arz": ["حد أقصى"],
+            "jp": ["最大"]
+        },
+        "requirement": {
+            "en": ["requirement"],
+            "fr": ["exigence"],
+            "ar": ["مطلوب"],
+            "arz": ["مطلوب"],
+            "jp": ["要件"]
+        },
+        "type": {
+            "en": ["type"],
+            "fr": ["type"],
+            "ar": ["نوع"],
+            "arz": ["نوع"],
+            "jp": ["タイプ"]
+        },
+        "inputType": {
+            "en": ["input type"],
+            "fr": ["type d'entrée"],
+            "ar": ["نوع إدخال"],
+            "arz": ["نوع إدخال"],
+            "jp": ["入力タイプ"]
+        },
+        "multiline": {
+            "en": ["multiline"],
+            "fr": ["multilignes"],
+            "ar": ["متعدد أسطر"],
+            "arz": ["متعدد أسطر"],
+            "jp": ["複数行"]
+        },
+        "clearButton": {
+            "en": ["clear button"],
+            "fr": ["bouton de suppression"],
+            "ar": ["زر حذف"],
+            "arz": ["زرار مسح"],
+            "jp": ["削除ボタン"]
+        },
+        "suffix": {
+            "en": ["suffix"],
+            "fr": ["suffixe"],
+            "ar": ["نهاية"],
+            "arz": ["نهاية"],
+            "jp": ["サフィックス"]
+        },
+        "prefix": {
+            "en": ["prefix"],
+            "fr": ["préfixe"],
+            "ar": ["بداية"],
+            "arz": ["بداية"],
+            "jp": ["プレフィックス"]
+        },
+        "step": {
+            "en": ["step"],
+            "fr": ["étape"],
+            "ar": ["خطوة"],
+            "arz": ["خطوة"],
+            "jp": ["ステップ"]
+        },
+        "withDigitalValueEditor": {
+            "type": "attribute",
+            "en": ["with a digital value editor"],
+            "fr": ["avec un éditeur de valeur numérique"],
+            "ar": ["بمعدل رقمى للقيمة"],
+            "arz": ["بمعدل رقمى للقيمة"],
+            "jp": ["ピン"]
+        },
+        "iconColor": {
+            "en": ["icon colour", "icon color"],
+            "fr": ["couleur de l'icône"],
+            "ar": ["لون أيقونة"],
+            "arz": ["لون أيكونة"],
+            "jp": ["アイコンの色"]
+        },
+        "imageSource": {
+            "en": ["image source"],
+            "fr": ["source de image"],
+            "ar": ["مصدر صورة"],
+            "arz": ["مصدر صورة"],
+            "jp": ["イメージソース"]
+        },
+        "FX": {
+            "en": ["FX"],
+            "fr": ["FX"],
+            "ar": ["FX"],
+            "arz": ["FX"],
+            "jp": ["FX"]
+        },
+        "emitter": {
+            "en": ["emitter"],
+            "fr": ["émetteur"],
+            "ar": ["باعث"],
+            "arz": ["باعث"],
+            "jp": ["エミッタ"]
+        },
+        "direction": {
+            "en": ["direction"],
+            "fr": ["direction"],
+            "ar": ["إتجاه"],
+            "arz": ["إتجاه"],
+            "jp": ["方向"]
+        },
+        "loading": {
+            "en": ["loading"],
+            "fr": ["chargement"],
+            "ar": ["يحمل"],
+            "arz": ["بيحمل"],
+            "jp": ["読み込み中"]
+        },
+        "source": {
+            "en": ["source"],
+            "fr": ["source"],
+            "ar": ["مصدر"],
+            "arz": ["مصدر"],
+            "jp": ["ソース"]
+        },
+        "items": {
+            "en": ["items"],
+            "fr": ["articles"],
+            "ar": ["عناصر"],
+            "arz": ["عناصر"],
+            "jp": ["アイテム"]
+        },
+        "description": {
+            "en": ["description"],
+            "fr": ["la description"],
+            "ar": ["وصف"],
+            "arz": ["وصف"],
+            "jp": ["説明"]
+        },
+        "private": {
+            "en": ["private"],
+            "fr": ["privé"],
+            "ar": ["خاص"],
+            "arz": ["خاص"],
+            "jp": ["プライベート"]
+        },
+        "loginForm": {
+            "type": "component",
+            "en": ["login form"],
+            "fr": ["formulaire de connexion"],
+            "ar": ["خاص"],
+            "arz": ["فورم الدخول"],
+            "jp": ["ログインフォーム"]
+        },
+        "target": {
+            "en": ["target"],
+            "fr": ["cible"],
+            "ar": ["هدف"],
+            "arz": ["هدف"],
+            "jp": ["ターゲット"]
+        },
+        "container": {
+            "type": "component",
+            "en": ["container"],
+            "fr": ["récipient"],
+            "ar": ["حاوية"],
+            "arz": ["طبق"],
+            "jp": ["コンテナ"]
+        },
+        "shape": {
+            "en": ["shape"],
+            "fr": ["forme"],
+            "ar": ["شكل"],
+            "arz": ["شكل"],
+            "jp": ["形状"]
+        },
+        "triangle": {
+            "en": ["triangle"],
+            "fr": ["triangle"],
+            "ar": ["مثلث"],
+            "arz": ["مثلث"],
+            "jp": ["三角形"]
+        },
+        "trapezoid": {
+            "en": ["trapezoid"],
+            "fr": ["trapézoïdal"],
+            "ar": ["شبه منحرف"],
+            "arz": ["شبه منحرف"],
+            "jp": ["台形"]
+        },
+        "parallelogram": {
+            "en": ["parallelogram"],
+            "fr": ["parallélogramme"],
+            "ar": ["متوازى الأضلاع"],
+            "arz": ["متوازى الأضلاع"],
+            "jp": ["平行四辺形"]
+        },
+        "rhombus": {
+            "en": ["rhombus"],
+            "fr": ["rhombe"],
+            "ar": ["معين"],
+            "arz": ["معين"],
+            "jp": ["菱形"]
+        },
+        "pentagon": {
+            "en": ["pentagon"],
+            "fr": ["pentagone"],
+            "ar": ["خماسى الأضلاع"],
+            "arz": ["خماسى الأضلاع"],
+            "jp": ["五角形"]
+        },
+        "hexagon": {
+            "en": ["hexagon"],
+            "fr": ["hexagone"],
+            "ar": ["سداسى الأضلاع"],
+            "arz": ["سداسى الأضلاع"],
+            "jp": ["六角形"]
+        },
+        "heptagon": {
+            "en": ["heptagon"],
+            "fr": ["heptagone"],
+            "ar": ["سباعى الأضلاع"],
+            "arz": ["سباعى الأضلاع"],
+            "jp": ["ヘプタゴン"]
+        },
+        "octagon": {
+            "en": ["octagon"],
+            "fr": ["octagone"],
+            "ar": ["ثمانى الأضلاع"],
+            "arz": ["ثمانى الأضلاع"],
+            "jp": ["八角形"]
+        },
+        "decagon": {
+            "en": ["decagon"],
+            "fr": ["décagone"],
+            "ar": ["معشر الأضلاع"],
+            "arz": ["معشر الأضلاع"],
+            "jp": ["デカゴン"]
+        },
+        "circle": {
+            "en": ["circle"],
+            "fr": ["cercle"],
+            "ar": ["دائرة"],
+            "arz": ["دايرة"],
+            "jp": ["サークル"]
+        },
+        "ellipse": {
+            "en": ["ellipse"],
+            "fr": ["ellipse"],
+            "ar": ["بيضاوى"],
+            "arz": ["بيضاوى"],
+            "jp": ["楕円"]
+        },
+        "fromTheRight": {
+            "en": ["from the right"],
+            "fr": ["à partir de la droite"],
+            "ar": ["من اليمين"],
+            "arz": ["من اللمين"],
+            "jp": ["右から"]
+        },
+        "fromTheLeft": {
+            "en": ["from the left"],
+            "fr": ["à partir de la gauche"],
+            "ar": ["من الشمال"],
+            "arz": ["من الشمال"],
+            "jp": ["左から"]
+        },
+        "fromTheTop": {
+            "en": ["from the top"],
+            "fr": ["à partir de le haut"],
+            "ar": ["من فوق"],
+            "arz": ["من فوق"],
+            "jp": ["上から"]
+        },
+        "fromTheBottom": {
+            "en": ["from the bottom"],
+            "fr": ["à partir de le fond"],
+            "ar": ["من أسفل"],
+            "arz": ["من أسفل"],
+            "jp": ["下から"]
+        },
+        "attributes": {
+            "en": ["attributes"],
+            "fr": ["attributs"],
+            "ar": ["صفات"],
+            "arz": ["صفات"],
+            "jp": ["属性"]
+        },
+        "grid": {
+            "type": "attribute",
+            "en": ["grid"],
+            "fr": ["grille"],
+            "ar": ["شبكة"],
+            "arz": ["شبكة"],
+            "jp": ["属性"]
+        },
+        "shareable": {
+            "type": "attribute",
+            "en": ["shareable"],
+            "fr": ["les attributs"],
+            "ar": ["صفات"],
+            "arz": ["صفات"],
+            "jp": ["属性"]
+        },
+        "remoteScrolling": {
+            "type": "attribute",
+            "en": ["remote scrolling"],
+            "fr": ["défilement à distance"],
+            "ar": ["التمرير عن بعد"],
+            "arz": ["التمرير عن بعد"],
+            "jp": ["属性"]
+        },
+        "parallax": {
+            "type": "attribute",
+            "en": ["parallax"],
+            "fr": ["parallaxe"],
+            "ar": ["مختلف المنظر"],
+            "arz": ["مختلف المنظر"],
+            "jp": ["属性"]
+        },
+        "centimeter": {
+            "en": ["centimetre"],
+            "fr": ["centimètre"],
+            "ar": ["سنتيمتر"],
+            "arz": ["سنتيمتر"],
+            "jp": ["センチメートル"]
+        },
+        "millimeter": {
+            "en": ["millimetre"],
+            "fr": ["millimètre"],
+            "ar": ["ملليمتر"],
+            "arz": ["ملليمتر"],
+            "jp": ["ミリメートル"]
+        },
+        "inch": {
+            "en": ["inch"],
+            "fr": ["pouce"],
+            "ar": ["بوصة"],
+            "arz": ["بوصة"],
+            "jp": ["インチ"]
+        },
+        "pixel": {
+            "en": ["pixel"],
+            "fr": ["pixel"],
+            "ar": ["بكسل"],
+            "arz": ["بكسل"],
+            "jp": ["ピクセル"]
+        },
+        "point": {
+            "en": ["point"],
+            "fr": ["point"],
+            "ar": ["نقطة"],
+            "arz": ["نقطة"],
+            "jp": ["ポイント"]
+        },
+        "pica": {
+            "en": ["pica"],
+            "fr": ["pica"],
+            "ar": ["بيكا"],
+            "arz": ["بيكا"],
+            "jp": ["パイカ"]
+        },
+        "centimeters": {
+            "en": ["centimetres"],
+            "fr": ["centimètres"],
+            "ar": ["سنتيمتر"],
+            "arz": ["سنتيمتر"],
+            "jp": ["センチメートル"]
+        },
+        "millimeters": {
+            "en": ["millimetres"],
+            "fr": ["millimètres"],
+            "ar": ["ملليمتر"],
+            "arz": ["ملليمتر"],
+            "jp": ["ミリメートル"]
+        },
+        "inches": {
+            "en": ["inches"],
+            "fr": ["pouces"],
+            "ar": ["بوصة"],
+            "arz": ["بوصة"],
+            "jp": ["インチ"]
+        },
+        "pixels": {
+            "en": ["pixels"],
+            "fr": ["pixels"],
+            "ar": ["بكسل"],
+            "arz": ["بكسل"],
+            "jp": ["ピクセル"]
+        },
+        "points": {
+            "en": ["points"],
+            "fr": ["points"],
+            "ar": ["نقطة"],
+            "arz": ["نقطة"],
+            "jp": ["ポイント"]
+        },
+        "picas": {
+            "en": ["picas"],
+            "fr": ["picas"],
+            "ar": ["بيكا"],
+            "arz": ["بيكا"],
+            "jp": ["パイカ"]
+        },
+        "author": {
+            "en": ["author"],
+            "fr": ["auteur"],
+            "ar": ["فنان"],
+            "arz": ["فنان"],
+            "jp": ["著者"]
+        },
+        "cover": {
+            "en": ["cover"],
+            "fr": ["couverture"],
+            "ar": ["غلاف"],
+            "arz": ["غلاف"],
+            "jp": ["カバー"]
+        },
+        "autoplay": {
+            "en": ["autoplay"],
+            "fr": ["couverture"],
+            "ar": ["يبدأ تلقائيا"],
+            "arz": ["بيشتغل الوحده"],
+            "jp": ["カバー"]
+        },
+        "audioPlayer": {
+            "type": "component",
+            "en": ["audio player"],
+            "fr": ["lecteur audio"],
+            "ar": ["مشغل الصوت"],
+            "arz": ["مشغل الصوت"],
+            "jp": ["オーディオプレーヤー"]
+        },
+        "theValueOf": {
+            "en": ["the value of"],
+            "fr": ["la valeur de"],
+            "ar": ["قيمة"],
+            "arz": ["قيمة"],
+            "jp": ["の価値"]
+        },
+        "thick": {
+            "type": "attribute",
+            "en": ["thick"],
+            "fr": ["épais"],
+            "ar": ["سميك"],
+            "arz": ["طخين"],
+            "jp": ["厚い"]
+        },
+        "publicC": {
+            "en": ["public"],
+            "fr": ["publique"],
+            "ar": ["العامة"],
+            "arz": ["العامة"],
+            "jp": ["パブリック"]
+        },
+        "privateC": {
+            "en": ["private"],
+            "fr": ["privée"],
+            "ar": ["الخاصة"],
+            "arz": ["الخاصة"],
+            "jp": ["プライベート"]
+        },
+        "table": {
+            "en": ["table"],
+            "fr": ["tableau"],
+            "ar": ["جدول"],
+            "arz": ["جدول"],
+            "jp": ["表"]
+        },
+        "data": {
+            "en": ["data"],
+            "fr": ["les données"],
+            "ar": ["بيانات"],
+            "arz": ["بيانات"],
+            "jp": ["データ"]
+        },
+        "inTheCell": {
+            "en": ["in the cell"],
+            "fr": ["dans la cellule"],
+            "ar": ["فى الخلية"],
+            "arz": ["فى الخانة"],
+            "jp": ["セル"]
+        },
+        "inTheGroup": {
+            "en": ["in the group"],
+            "fr": ["dans la cellule"],
+            "ar": ["فى الخلية"],
+            "arz": ["فى الخانة"],
+            "jp": ["セル"]
+        },
+        "slideShow": {
+            "type": "component",
+            "en": ["slideshow"],
+            "fr": ["dans la cellule"],
+            "ar": ["فى الخلية"],
+            "arz": ["فى الخانة"],
+            "jp": ["セル"]
+        },
+        "slideShowItem": {
+            "type": "component",
+            "en": ["slideshow item"],
+            "fr": ["dans la cellule"],
+            "ar": ["فى الخلية"],
+            "arz": ["فى الخانة"],
+            "jp": ["セル"]
+        },
+        "acceptanceButton": {
+            "en": ["acceptance button"],
+            "fr": ["Bouton d'acceptation"],
+            "ar": ["زر الموافقة"],
+            "arz": ["زرار الموافقة"],
+            "jp": ["受諾ボタン"]
+        },
+        "cancellationButton": {
+            "en": ["cancellation button"],
+            "fr": ["Bouton d'annulation"],
+            "ar": ["زر الإلغاء"],
+            "arz": ["زرار الإلغاء"],
+            "jp": ["キャンセルボタン"]
+        },
+        "selectMenu": {
+            "type": "component",
+            "en": ["select menu"],
+            "fr": ["menu de sélection"],
+            "ar": ["قائمة الإختيار"],
+            "arz": ["قايمة الإختيار"],
+            "jp": ["キャンセルボタン"]
+        },
+        "aRandomColor": {
+            "en": ["a random colour", "a random color"],
+            "fr": ["une couleur aléatoire"],
+            "ar": ["لون عشوائى"],
+            "arz": ["لون عشوائى"],
+            "jp": ["ランダムな色"]
+        },
+        "aRandomLightColor": {
+            "en": ["a random light colour", "a random light color"],
+            "fr": ["une couleur claire aléatoire"],
+            "ar": ["لون فاتح عشوائى"],
+            "arz": ["لون فاتح عشوائى"],
+            "jp": ["ランダムな明るい色"]
+        },
+        "aRandomDarkColor": {
+            "en": ["a random dark colour", "a radom dark color"],
+            "fr": ["une couleur sombre aléatoire"],
+            "ar": ["لون غامق عشوائى"],
+            "arz": ["لون غامق عشوائى"],
+            "jp": ["ランダムな暗い色"]
+        },
+        "dropdownMenu": {
+            "type": "component",
+            "en": ["dropdown menu"],
+            "fr": ["menu déroulant"],
+            "ar": ["قائمة منسدلة"],
+            "arz": ["قايمة منسدلة"],
+            "jp": ["ドロップダウンメニュー"]
+        },
+        "cloneFn": {
+            "type": "component",
+            "en": ["clone0"],
+            "fr": ["clone0"],
+            "ar": ["استنساخ"],
+            "arz": ["استنساخ"],
+            "jp": ["クローン"]
+        },
+        "withCommands": {
+            "type": "attribute",
+            "en": ["with commands"],
+            "fr": ["avec des commandes"],
+            "ar": ["بالأوامر"],
+            "arz": ["بالأوامر"],
+            "jp": ["コマンド付き"]
+        },
+        "withoutShadow": {
+            "type": "attribute",
+            "en": ["without a shadow"],
+            "fr": ["sans ombre"],
+            "ar": ["بدون ظل"],
+            "arz": ["من غير ضل"],
+            "jp": ["クローンされた要素"]
+        },
+        "choose": {
+            "en": ["choose"],
+            "fr": ["choisir"],
+            "ar": ["اختر"],
+            "arz": ["اختار"],
+            "jp": ["選択する"]
+        },
+        "withFlexibleFontSize": {
+            "type": "attribute",
+            "en": ["with a flexible font size"],
+            "fr": ["avec une taille de police flexible"],
+            "ar": ["بمرونة حجم الخط"],
+            "arz": ["بمرونة حجم الخط"],
+            "jp": ["フレキシブルなフォントサイズで"]
+        },
+        "withCounter": {
+            "type": "attribute",
+            "en": ["with a counter"],
+            "fr": ["avec un compteur"],
+            "ar": ["بعداد"],
+            "arz": ["بعداد"],
+            "jp": ["カウンター付き"]
+        },
+        "if": {
+            "en": ["if"],
+            "fr": ["si"],
+            "ar": ["لو"],
+            "arz": ["لو"],
+            "jp": ["と"]
+        },
+        "vertical": {
+            "en": ["vertical"],
+            "fr": ["verticale"],
+            "ar": ["عمودى"],
+            "arz": ["عمودى"],
+            "jp": ["垂直"]
+        },
+        "horizontal": {
+            "en": ["horizontal"],
+            "fr": ["horizontal"],
+            "ar": ["أفقي"],
+            "arz": ["أفقي"],
+            "jp": ["水平"]
+        },
+        "site": {
+            "en": ["site"],
+            "fr": ["site"],
+            "ar": ["الموقع"],
+            "arz": ["السايت"],
+            "jp": ["サイト"]
+        },
+        "app": {
+            "en": ["app"],
+            "fr": ["app"],
+            "ar": ["التطبيق"],
+            "arz": ["الآب"],
+            "jp": ["アプリ"]
+        },
+        "sidebar": {
+            "type": "component",
+            "en": ["sidebar"],
+            "fr": ["barre latérale"],
+            "ar": ["شريط جانبى"],
+            "arz": ["شريط جانبى"],
+            "jp": ["サイドバー"]
+        },
+        "else": {
+            "en": ["else"],
+            "fr": ["sinon"],
+            "ar": ["و إلا"],
+            "arz": ["و إلا"],
+            "jp": ["主な色"]
+        },
+        "mainColor": {
+            "en": ["main colour", "main color"],
+            "fr": ["couleur principale"],
+            "ar": ["لون رئيسى"],
+            "arz": ["لون رئيسى"],
+            "jp": ["主な色"]
+        },
+        "propertiesAssignor": {
+            "type": "component",
+            "en": ["properties assignor"],
+            "fr": ["cédant des propriétés"],
+            "ar": ["مضيف الخواص"],
+            "arz": ["مضيف الخواص"],
+            "jp": ["主な色"]
+        },
+        "inTheCaseThat": {
+            "en": ["in the case that"],
+            "fr": ["si"],
+            "ar": ["فى حالة أن"],
+            "arz": ["فى حالة إن"],
+            "jp": ["主な色"]
+        },
+        "clonedElement": {
+            "en": ["cloned element"],
+            "fr": ["élément clone"],
+            "ar": ["عنصر المستنسخ"],
+            "arz": ["عنصر المستنسخ"],
+            "jp": ["クローンされた要素"]
+        },
+        "ltr": {
+            "en": ["from left to right"],
+            "fr": ["de gauche à droite"],
+            "ar": ["من الشمال إلى اليمين"],
+            "arz": ["من الشمال لللمين"],
+            "jp": ["主な色"]
+        },
+        "inTheCaseOfLandscapeMode": {
+            "en": ["in the case of the landscape mode"],
+            "fr": ["dans le cas du mode paysage"],
+            "ar": ["فى حالة الوضع الأفقى"],
+            "arz": ["فى حالة الوضع الأفقى"],
+            "jp": ["主な色"]
+        },
+        "defaultWindowResolution": {
+            "en": ["default window resolution"],
+            "fr": ["résolution par défaut de fenêtre"],
+            "ar": ["دقة الإفتراضية للنافذة"],
+            "arz": ["دقة الإفتراضية للنافذة"],
+            "jp": ["主な色"]
+        },
+        "inTheCaseOfPortraitMode": {
+            "en": ["in the case of the portrait mode"],
+            "fr": ["dans le cas du mode portrait"],
+            "ar": ["فى حالة الوضع العمودى"],
+            "arz": ["فى حالة الوضع العمودى"],
+            "jp": ["主な色"]
+        },
+        "rtl": {
+            "en": ["from right to left"],
+            "fr": ["de droite à gauche"],
+            "ar": ["من اليمين إلى الشمال"],
+            "arz": ["من اللمين للشمال"],
+            "jp": ["主な色"]
+        },
+        "indexPage": {
+            "en": ["home"],
+            "fr": ["page principale"],
+            "ar": ["الرئيسية"],
+            "arz": ["الرئيسية"],
+            "jp": ["ホーム"]
+        },
+        "add": {
+            "en": ["add"],
+            "fr": ["ajouter"],
+            "ar": ["اضف"],
+            "arz": ["ضيف"],
+            "jp": ["ホーム"]
+        },
+        "theResultOfTheMathematicalExpression": {
+            "en": ["the result of the mathematical expression"],
+            "fr": ["le résultat de l'expression mathématique"],
+            "ar": ["ناتج التعبير الرياضى"],
+            "arz": ["ناتج التعبير الرياضى"],
+            "jp": ["ホーム"]
+        },
+        "url": {
+            "en": ["url", "link"],
+            "fr": ["url"],
+            "ar": ["رابط", "موقع"],
+            "arz": ["رابط", "موقع"],
+            "jp": ["ホーム"]
+        },
+        "email": {
+            "en": ["email", "electronic mail"],
+            "fr": ["le résultat de l'expression mathématique"],
+            "ar": ["الإيميل"],
+            "arz": ["الإيميل"],
+            "jp": ["ホーム"]
+        },
+        "element": {
+            "en": ["element"],
+            "fr": ["élément"],
+            "ar": ["عنصر"],
+            "arz": ["عنصر"],
+            "jp": ["ホーム"]
+        }
+    }
+};
+$(function () {
+    window.componentsDB = [];
+    window.attributesDB = [];
+    var wordsTranslationsDBKeys = Object.keys(wordsTranslationsDB.Words);
+    for (var i = 0; i < wordsTranslationsDBKeys.length; i++) {
+        if (wordsTranslationsDB.Words[wordsTranslationsDBKeys[i]].type == 'component') {
+            wordsTranslationsDB.Words[wordsTranslationsDBKeys[i]][document.langCode].forEach(element => {
+                componentsDB.push(element);
+            });
+        } else if (wordsTranslationsDB.Words[wordsTranslationsDBKeys[i]].type == 'attribute') {
+            wordsTranslationsDB.Words[wordsTranslationsDBKeys[i]][document.langCode].forEach(element => {
+                attributesDB.push(element);
+            });
+        }
+    }
+}(jQuery));

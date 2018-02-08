@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-02
+ * Date: 2018-02-07
  */
 
 // retirer il
@@ -26,7 +26,7 @@
 
 // aller à l'url https://www.google.fr/
 
-+ (?:aller à|aller vers|visiter|ouvrir) (?:le|la|l')[ ]* ((?![A-Za-z].*? )*)
++ (?:aller à|aller vers|visiter|ouvrir) (?:le|la|l')[ ]* %
 - command_id: S2 ==> lang: fr ==> targetType: <star1> ==> target: <star2>
 
 // lecture il
@@ -36,17 +36,7 @@
 
 // lecture cette chanson
 
-+ lecture cette chanson
-- command_id: S3 ==> lang: fr ==> target: itself
-
-// lecture cet élément
-
-+ lecture cet élément
-- command_id: S3 ==> lang: fr ==> target: itself
-
-// lecture cette vidéo
-
-+ lecture cette vidéo
++ lecture (?:cette|cet) (?:chanson|élément|vidéo)
 - command_id: S3 ==> lang: fr ==> target: itself
 
 // lecture Close_To_You
@@ -61,17 +51,7 @@
 
 // arrêter this song
 
-+ (?:pauser|arrêter|suspendre) cette chanson
-- command_id: S4 ==> lang: fr ==> target: itself
-
-// suspendre cet élément
-
-+ (?:pauser|arrêter|suspendre) cet élément
-- command_id: S4 ==> lang: fr ==> target: itself
-
-// pauser cette vidéo
-
-+ (?:pauser|arrêter|suspendre) cette vidéo
++ (?:pauser|arrêter|suspendre) (?:cette|cet) (?:chanson|élément|vidéo)
 - command_id: S4 ==> lang: fr ==> target: itself
 
 // arrêter Close_To_You
@@ -79,24 +59,14 @@
 + (?:pauser|arrêter|suspendre) *
 - command_id: S4 ==> lang: fr ==> target: <star1>
 
-// définir the time position de it à 51654
+// définir the time position de il à 51654
 
 + définir the time position de (?:il|elle) à *
 - command_id: S5 ==> lang: fr ==> target: itself ==> timePosition: <star1>
 
-// définir the time position de this song à 13575
+// définir the time position de cette vidéo à 13575
 
-+ définir the time position de this song à *
-- command_id: S5 ==> lang: fr ==> target: itself ==> timePosition: <star1>
-
-// définir the time position de cet élément à 5566
-
-+ définir the time position de cet élément à *
-- command_id: S5 ==> lang: fr ==> target: itself ==> timePosition: <star1>
-
-// définir the time position de cette vidéo à 5
-
-+ définir the time position de cette vidéo à *
++ définir the time position de (?:cette|cet) (?:chanson|élément|vidéo) à *
 - command_id: S5 ==> lang: fr ==> target: itself ==> timePosition: <star1>
 
 // définir the time position de Close_To_You à 2048
@@ -104,7 +74,7 @@
 + définir the time position de * à *
 - command_id: S5 ==> lang: fr ==> target: <star1> ==> timePosition: <star2>
 
-// définir its value à Hello World !
+// définir sa valeur à Hello World !
 
 + (?:définir|changerr) sa valeur à *
 - command_id: S6 ==> lang: fr ==> target: itself ==> value: <star1>

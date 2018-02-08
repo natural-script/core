@@ -6,21 +6,21 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-04
+ * Date: 2018-02-05
  */
 $(function () {
     function videoFn(el, settings) {
         el.each(function () {
-            var name = settings[window.nameTranslations[document.langID]];
-            var source = settings[window.sourceTranslations[document.langID]];
-            var title = settings[window.titleTranslations[document.langID]];
+            var name = elementSettingsAnalyze(settings, 'name');
+            var source = elementSettingsAnalyze(settings, 'source');
+            var title = elementSettingsAnalyze(settings, 'title');
             var URLID = encodeURIComponent(source).replace(/\./g, '%2E');
             var subContainerStartTag = '<paper-material elevation="2" style="position: absolute;">';
             var subContainerEndTag = '</paper-material>';
-            if (settings[window.attributesTranslations[document.langID]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
+            if (elementSettingsAnalyze(settings, 'attributes')) {
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.transparentTranslations[document.langID]) {
+                    if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['transparent'][document.langCode]).rating > 0.8) {
                         subContainerStartTag = '<div style="position: absolute;">';
                         subContainerEndTag = '</div>';
                     }
@@ -39,7 +39,7 @@ $(function () {
                             <p class="videoNudesFoundText">Nudes found</p> \
                             <button class="showVideoBtnB" onclick="showVideoB(\'' + name + '\');">Continue</button></div> \
                             ' + subContainerEndTag + '</div>';
-            window.appendComponent(settings[window.containerTranslations[document.langID]], out);
+            window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);
             $('#' + name + '').prop('isTitled', false);
             $('#' + name + '').prop('type', 'vid');
             if (window.getVideoProvider(source).videoProvider == 'webHosting') {
@@ -55,42 +55,45 @@ $(function () {
             } else {
                 window.getVideoInfo(name, window.getVideoProvider(source).videoProvider, window.getVideoProvider(source).videoID, window.getVideoProvider(source).videoURL, title);
             }
-            if (settings[window.backgroundTranslations[document.langID]]) {
-                window.setBG(name, settings[window.backgroundTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'background')) {
+                window.setBG(name, elementSettingsAnalyze(settings, 'background'));
             }
-            if (settings[window.titleTranslations[document.langID]]) {
-                $('#' + name + '').attr('alt', settings[window.titleTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'title')) {
+                $('#' + name + '').attr('alt', elementSettingsAnalyze(settings, 'title'));
             }
-            if (settings[window.widthTranslations[document.langID]]) {
-                window.setDimension(name, 'width', settings[window.widthTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'width')) {
+                window.setDimension(name, 'width', elementSettingsAnalyze(settings, 'width'));
             }
-            if (settings[window.lengthTranslations[document.langID]]) {
-                window.setDimension(name, 'length', settings[window.lengthTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'length')) {
+                window.setDimension(name, 'length', elementSettingsAnalyze(settings, 'length'));
             }
-            if (settings[window.distanceFromBottomTranslations[document.langID]]) {
-                window.setDistance(name + '_container', 'bottom', settings[window.distanceFromBottomTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'distanceFromBottom')) {
+                window.setDistance(name + '_container', 'bottom', elementSettingsAnalyze(settings, 'distanceFromBottom'));
             }
-            if (settings[window.distanceFromTopTranslations[document.langID]]) {
-                window.setDistance(name + '_container', 'top', settings[window.distanceFromTopTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'distanceFromTop')) {
+                window.setDistance(name + '_container', 'top', elementSettingsAnalyze(settings, 'distanceFromTop'));
             }
-            if (settings[window.distanceFromLeftTranslations[document.langID]]) {
-                window.setDistance(name + '_container', 'left', settings[window.distanceFromLeftTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'distanceFromLeft')) {
+                window.setDistance(name + '_container', 'left', elementSettingsAnalyze(settings, 'distanceFromLeft'));
             }
-            if (settings[window.distanceFromRightTranslations[document.langID]]) {
-                window.setDistance(name + '_container', 'right', settings[window.distanceFromRightTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'distanceFromRight')) {
+                window.setDistance(name + '_container', 'right', elementSettingsAnalyze(settings, 'distanceFromRight'));
             }
-            if (settings[window.commandsTranslations[document.langID]]) {
-                window.execute(name, settings[window.commandsTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'commands')) {
+                window.execute(name, elementSettingsAnalyze(settings, 'commands'));
             }
-            if (settings[window.animationTranslations[document.langID]]) {
-                window.setAnimation(name + '_container', settings[window.animationTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'animation')) {
+                window.setAnimation(name + '_container', elementSettingsAnalyze(settings, 'animation'));
             }
-            if (settings[window.transparencyTranslations[document.langID]]) {
-                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.langID]] + '%)');
+            if (elementSettingsAnalyze(settings, 'transparency')) {
+                $('#' + name + '').css('-webkit-filter', 'opacity(' + elementSettingsAnalyze(settings, 'transparency') + '%)');
             }
         });
     }
-    $.fn[window.videoTranslations[document.langID]] = function (settings) {
-        videoFn(this, settings);
-    };
+    var videoTranslations = window.wordsTranslationsDB.Words['video'][document.langCode];
+    for (var i = 0; i < videoTranslations.length; i++) {
+        $.fn[videoTranslations[i]] = function (settings) {
+            videoFn(this, settings);
+        };
+    }
 });

@@ -6,23 +6,23 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-04
+ * Date: 2018-02-05
  */
 $(function () {
     function loaderFn(el, settings) {
         return this.each(function () {
-            var name = settings[window.nameTranslations[document.langID]];
+            var name = elementSettingsAnalyze(settings, 'name');
             var out;
-            if (settings[window.typeTranslations[document.langID]] == window.barTranslations[document.langID]) {
+            if (window.getSafe(() => elementSettingsAnalyze(settings, 'type').findBestMatch(window.wordsTranslationsDB.Words['bar'][document.langCode]).rating > 0.8)) {
                 out = '<paper-progress id="' + name + '"></paper-progress>';
-            } else if (settings[window.typeTranslations[document.langID]] == window.spinnerTranslations[document.langID] || settings[window.typeTranslations[document.langID]] == undefined) {
+            } else if (window.getSafe(() => elementSettingsAnalyze(settings, 'type') == undefined || elementSettingsAnalyze(settings, 'type').findBestMatch(window.wordsTranslationsDB.Words['spinner'][document.langCode]).rating > 0.8)) {
                 out = '<paper-spinner id="' + name + '"></paper-spinner>';
             }
-            window.appendComponent(settings[window.containerTranslations[document.langID]], out);
-            if (settings[window.attributesTranslations[document.langID]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
+            window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);
+            if (elementSettingsAnalyze(settings, 'attributes')) {
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.loadingTranslations[document.langID]) {
+                    if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['loading'][document.langCode]).rating > 0.8) {
                         $('#' + name + '').attr('active', '');
                     }
                 }
@@ -30,7 +30,10 @@ $(function () {
             window.propSet(name, settings);
         });
     }
-    $.fn[window.loaderTranslations[document.langID]] = function (settings) {
-        loaderFn(this, settings);
-    };
+    var loaderTranslations = window.wordsTranslationsDB.Words['loader'][document.langCode];
+    for (var i = 0; i < loaderTranslations.length; i++) {
+        $.fn[loaderTranslations[i]] = function (settings) {
+            loaderFn(this, settings);
+        };
+    }
 });

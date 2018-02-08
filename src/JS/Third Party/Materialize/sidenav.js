@@ -107,8 +107,12 @@
       overlay.classList.add('sidenav-overlay');
 
       overlay.addEventListener('click', this._closeBound);
-
-      document.body.appendChild(overlay);
+      
+      if ($('app-header').length > 0) {
+        $('app-header')[0].appendChild(overlay);
+      } else {
+        document.body.appendChild(overlay);
+      }
       this._overlay = overlay;
     }
 

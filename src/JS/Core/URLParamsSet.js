@@ -1,6 +1,16 @@
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-//----------------------------------------------------Settings The URL Params------------------------------------------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+/*!
+ * Setting The URL Params
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-02-07
+ */
+function getLocation() {
+	return location.pathname + location.search;
+}
 window.setURLParameter = function (paramName, paramValue) {
 	var url = window.location.href;
 	var hash = location.hash;
@@ -16,4 +26,5 @@ window.setURLParameter = function (paramName, paramValue) {
 		else url += "&" + paramName + "=" + paramValue;
 	}
 	window.history.pushState("", "", url + hash);
+	document.currentLocation = getLocation();
 };

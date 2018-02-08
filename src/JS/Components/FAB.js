@@ -6,113 +6,116 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-04
+ * Date: 2018-02-05
  */
 $(function () {
     function FABFn(el, settings) {
         el.each(function () {
-            var name = settings[window.nameTranslations[document.langID]];
+            var name = elementSettingsAnalyze(settings, 'name');
             var out = '<paper-fab ';
-            if (settings[window.attributesTranslations[document.langID]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
+            if (elementSettingsAnalyze(settings, 'attributes')) {
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (settings.mini == window.yesTranslations[document.langID]) {
+                    if (settings.mini.findBestMatch(window.wordsTranslationsDB.Words['yes'][document.langCode]).rating > 0.8) {
                         out += 'mini ';
-                    } else if (propertiesArray[i] == window.disabledTranslations[document.langID]) {
+                    } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][document.langCode]).rating > 0.8) {
                         out += 'disabled ';
                     }
                 }
             }
-            if (settings[window.rippleTranslations[document.langID]] == window.noTranslations[document.langID]) {
+            if (window.getSafe(() => elementSettingsAnalyze(settings, 'ripple').findBestMatch(window.wordsTranslationsDB.Words['no'][document.langCode]).rating > 0.8)) {
                 out += 'noink ';
             }
-            if (settings[window.textTranslations[document.langID]]) {
-                out += 'label="' + settings[window.textTranslations[document.langID]] + '" ';
+            if (elementSettingsAnalyze(settings, 'text')) {
+                out += 'label="' + elementSettingsAnalyze(settings, 'text') + '" ';
             }
-            if (settings[window.iconTranslations[document.langID]]) {
-                out += 'icon="' + settings[window.iconTranslations[document.langID]] + '" ';
+            if (elementSettingsAnalyze(settings, 'icon')) {
+                out += 'icon="' + elementSettingsAnalyze(settings, 'icon') + '" ';
             }
-            if (settings[window.descriptionTranslations[document.langID]]) {
-                out += 'title="' + settings[window.descriptionTranslations[document.langID]] + '" ';
+            if (elementSettingsAnalyze(settings, 'description')) {
+                out += 'title="' + elementSettingsAnalyze(settings, 'description') + '" ';
             }
             out += 'id="' + name + '"></paper-fab>';
-            if (settings[window.containerTranslations[document.langID]]) {
-                if ($('#' + settings[window.containerTranslations[document.langID]] + '').hasClass('modal')) {
-                    $('#' + settings[window.containerTranslations[document.langID]] + ' > .modal-content').append(out);
+            if (elementSettingsAnalyze(settings, 'container')) {
+                if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('modal')) {
+                    $('#' + elementSettingsAnalyze(settings, 'container') + ' > .modal-content').append(out);
                 } else {
-                    $('#' + settings[window.containerTranslations[document.langID]] + '').append(out);
+                    $('#' + elementSettingsAnalyze(settings, 'container') + '').append(out);
                 }
             } else {
                 $('contents').append(out);
             }
-            if (settings[window.fontColorTranslations[document.langID]]) {
-                window.setFontColour(name, settings[window.fontColorTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'fontColor')) {
+                window.setFontColour(name, elementSettingsAnalyze(settings, 'fontColor'));
             }
-            if (settings[window.fontStyleTranslations[document.langID]]) {
-                $('#' + name + '').css('font-style', settings[window.fontStyleTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'fontStyle')) {
+                $('#' + name + '').css('font-style', elementSettingsAnalyze(settings, 'fontStyle'));
             }
-            if (settings[window.attributesTranslations[document.langID]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
+            if (elementSettingsAnalyze(settings, 'attributes')) {
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.disabledTranslations[document.langID]) {
+                    if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][document.langCode]).rating > 0.8) {
                         $('#' + name + '').attr('disabled', '');
                     }
                 }
             }
-            if (settings[window.rippleTranslations[document.langID]] == window.noTranslations[document.langID]) {
+            if (window.getSafe(() => elementSettingsAnalyze(settings, 'ripple').findBestMatch(window.wordsTranslationsDB.Words['no'][document.langCode]).rating > 0.8)) {
                 $('#' + name + '').attr('noink', '');
             }
-            if (settings[window.fontThicknessTranslations[document.langID]]) {
-                if (settings[window.fontThicknessTranslations[document.langID]] == window.thickTranslations[document.langID]) {
+            if (elementSettingsAnalyze(settings, 'fontThickness')) {
+                if (window.getSafe(() => elementSettingsAnalyze(settings, 'fontThickness').findBestMatch(window.wordsTranslationsDB.Words['thick'][document.langCode]).rating > 0.8)) {
                     $('#' + name + '').css('font-weight', 'bold');
                 } else {
-                    $('#' + name + '').css('font-weight', settings[window.fontThicknessTranslations[document.langID]]);
+                    $('#' + name + '').css('font-weight', elementSettingsAnalyze(settings, 'fontThickness'));
                 }
             }
-            if (settings[window.fontSizeTranslations[document.langID]]) {
-                $('#' + name + '').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.langID]]));
+            if (elementSettingsAnalyze(settings, 'fontSize')) {
+                $('#' + name + '').css('font-size', window.convertLengthCSS(elementSettingsAnalyze(settings, 'fontSize')));
             }
-            if ($('#' + settings[window.containerTranslations[document.langID]] + '').hasClass('row') == true) {
+            if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('row') == true) {
                 $('#' + name + '').addClass('col');
             }
-            if (settings[window.positionTranslations[document.langID]]) {
-                $('#' + name + '').css('position', settings[window.positionTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'position')) {
+                $('#' + name + '').css('position', elementSettingsAnalyze(settings, 'position'));
             } else {
                 $('#' + name + '').css('position', 'relative');
             }
-            if (settings[window.distanceFromBottomTranslations[document.langID]]) {
-                window.setDistance(name, 'bottom', settings[window.distanceFromBottomTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'distanceFromBottom')) {
+                window.setDistance(name, 'bottom', elementSettingsAnalyze(settings, 'distanceFromBottom'));
             }
-            if (settings[window.distanceFromTopTranslations[document.langID]]) {
-                window.setDistance(name, 'top', settings[window.distanceFromTopTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'distanceFromTop')) {
+                window.setDistance(name, 'top', elementSettingsAnalyze(settings, 'distanceFromTop'));
             }
-            if (settings[window.distanceFromLeftTranslations[document.langID]]) {
-                window.setDistance(name, 'left', settings[window.distanceFromLeftTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'distanceFromLeft')) {
+                window.setDistance(name, 'left', elementSettingsAnalyze(settings, 'distanceFromLeft'));
             }
-            if (settings[window.distanceFromRightTranslations[document.langID]]) {
-                window.setDistance(name, 'right', settings[window.distanceFromRightTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'distanceFromRight')) {
+                window.setDistance(name, 'right', elementSettingsAnalyze(settings, 'distanceFromRight'));
             }
-            if (settings[window.commandsTranslations[document.langID]]) {
-                window.execute(name, settings[window.commandsTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'commands')) {
+                window.execute(name, elementSettingsAnalyze(settings, 'commands'));
             }
-            if (settings[window.widthTranslations[document.langID]]) {
-                window.setDimension(name, 'width', settings[window.widthTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'width')) {
+                window.setDimension(name, 'width', elementSettingsAnalyze(settings, 'width'));
             }
-            if (settings[window.lengthTranslations[document.langID]]) {
-                window.setDimension(name, 'length', settings[window.lengthTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'length')) {
+                window.setDimension(name, 'length', elementSettingsAnalyze(settings, 'length'));
             }
-            if (settings[window.backgroundTranslations[document.langID]]) {
-                window.setBG(name, settings[window.backgroundTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'background')) {
+                window.setBG(name, elementSettingsAnalyze(settings, 'background'));
             }
-            if (settings[window.animationTranslations[document.langID]]) {
-                window.setAnimation(name, settings[window.animationTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'animation')) {
+                window.setAnimation(name, elementSettingsAnalyze(settings, 'animation'));
             }
-            if (settings[window.transparencyTranslations[document.langID]]) {
-                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.langID]] + '%)');
+            if (elementSettingsAnalyze(settings, 'transparency')) {
+                $('#' + name + '').css('-webkit-filter', 'opacity(' + elementSettingsAnalyze(settings, 'transparency') + '%)');
             }
         });
     }
-    $.fn[window.FABTranslations[document.langID]] = function (settings) {
+    var FABTranslations = window.wordsTranslationsDB.Words['FAB'][document.langCode];
+    for (var i = 0; i < FABTranslations.length; i++) {
+    $.fn[FABTranslations[i]] = function (settings) {
         FABFn(this, settings);
     };
+}
 });

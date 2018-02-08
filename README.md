@@ -1,6 +1,6 @@
 # Announcement
 
-## Jste v0.5 Alpha is coming soon on 5~15 February 2018 with many new features and bug fixes including:
+## Jste v0.5 Alpha is coming soon on 15 February 2018 with many new features and bug fixes including:
 
 1. Automatic spelling correction thanks to Google Translate.
 2. Automatic language detection thanks to Franc JS library.
@@ -8,6 +8,7 @@
 4. Storing all the commands in a Rivescript file so that anyone can access, adding or modifying them easily.
 5. Jste build script Windows compatibility.
 6. Updated web components.
+7. Updated algorithm for translating words.
 
 # Jste Framework
 

@@ -6,76 +6,79 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-04
+ * Date: 2018-02-05
  */
 $(function () {
     function sliderFn(el, settings) {
         el.each(function () {
-            var name = settings[window.nameTranslations[document.langID]];
+            var name = elementSettingsAnalyze(settings, 'name');
             var out = '<paper-slider '
-            if (settings[window.maxTranslations[document.langID]]) {
-                out += 'max="' + settings[window.maxTranslations[document.langID]] + '" ';
+            if (elementSettingsAnalyze(settings, 'max')) {
+                out += 'max="' + elementSettingsAnalyze(settings, 'max') + '" ';
             }
-            if (settings[window.minTranslations[document.langID]]) {
-                out += 'min="' + settings[window.minTranslations[document.langID]] + '" ';
+            if (elementSettingsAnalyze(settings, 'min')) {
+                out += 'min="' + elementSettingsAnalyze(settings, 'min') + '" ';
             }
-            if (settings[window.stepTranslations[document.langID]]) {
-                out += 'step="' + settings[window.stepTranslations[document.langID]] + '" ';
+            if (elementSettingsAnalyze(settings, 'step')) {
+                out += 'step="' + elementSettingsAnalyze(settings, 'step') + '" ';
             }
-            if (settings[window.attributesTranslations[document.langID]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
+            if (elementSettingsAnalyze(settings, 'attributes')) {
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.disabledTranslations[document.langID]) {
+                    if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][document.langCode]).rating > 0.8) {
                         out += 'disabled ';
-                    } else if (propertiesArray[i] == window.withPinTranslations[document.langID]) {
+                    } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withPin'][document.langCode]).rating > 0.8) {
                         out += 'pin ';
-                    } else if (propertiesArray[i] == withDigitalValueEditorTranslations[document.langID]) {
+                    } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withDigitalValueEditor'][document.langCode]).rating > 0.8) {
                         out += 'editable ';
                     }
                 }
             }
             out += 'id="' + name + '">';
             out += '</paper-slider>';
-            window.appendComponent(settings[window.containerTranslations[document.langID]], out);
-            if (settings[window.fontColorTranslations[document.langID]]) {
-                window.setFontColour(name, settings[window.fontColorTranslations[document.langID]]);
+            window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);
+            if (elementSettingsAnalyze(settings, 'fontColor')) {
+                window.setFontColour(name, elementSettingsAnalyze(settings, 'fontColor'));
             }
-            if (settings[window.fontStyleTranslations[document.langID]]) {
-                $('#' + name + '').css('font-style', settings[window.fontStyleTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'fontStyle')) {
+                $('#' + name + '').css('font-style', elementSettingsAnalyze(settings, 'fontStyle'));
             }
-            if (settings[window.attributesTranslations[document.langID]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
+            if (elementSettingsAnalyze(settings, 'attributes')) {
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.disabledTranslations[document.langID]) {
+                    if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][document.langCode]).rating > 0.8) {
                         $('#' + name + '').attr('disabled', '');
                     }
                 }
             }
-            if (settings[window.fontThicknessTranslations[document.langID]]) {
-                if (settings[window.fontThicknessTranslations[document.langID]] == window.thickTranslations[document.langID]) {
+            if (elementSettingsAnalyze(settings, 'fontThickness')) {
+                if (window.getSafe(() => elementSettingsAnalyze(settings, 'fontThickness').findBestMatch(window.wordsTranslationsDB.Words['thick'][document.langCode]).rating > 0.8)) {
                     $('#' + name + '').css('font-weight', 'bold');
                 } else {
-                    $('#' + name + '').css('font-weight', settings[window.fontThicknessTranslations[document.langID]]);
+                    $('#' + name + '').css('font-weight', elementSettingsAnalyze(settings, 'fontThickness'));
                 }
             }
-            if (settings[window.fontSizeTranslations[document.langID]]) {
-                $('#' + name + '').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.langID]]));
+            if (elementSettingsAnalyze(settings, 'fontSize')) {
+                $('#' + name + '').css('font-size', window.convertLengthCSS(elementSettingsAnalyze(settings, 'fontSize')));
             }
-            if ($('#' + settings[window.containerTranslations[document.langID]] + '').hasClass('row') == true) {
+            if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('row') == true) {
                 $('#' + name + '').addClass('col');
             }
-            if (settings[window.positionTranslations[document.langID]]) {
-                $('#' + name + '').css('position', settings[window.positionTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'position')) {
+                $('#' + name + '').css('position', elementSettingsAnalyze(settings, 'position'));
             } else {
                 $('#' + name + '').css('position', 'relative');
             }
             window.propSet(name, settings);
-            if (settings[window.transparencyTranslations[document.langID]]) {
-                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.langID]] + '%)');
+            if (elementSettingsAnalyze(settings, 'transparency')) {
+                $('#' + name + '').css('-webkit-filter', 'opacity(' + elementSettingsAnalyze(settings, 'transparency') + '%)');
             }
         });
     }
-    $.fn[window.sliderTranslations[document.langID]] = function (settings) {
-        sliderFn(this, settings);
-    };
+    var sliderTranslations = window.wordsTranslationsDB.Words['slider'][document.langCode];
+    for (var i = 0; i < sliderTranslations.length; i++) {
+        $.fn[sliderTranslations[i]] = function (settings) {
+            sliderFn(this, settings);
+        };
+    }
 });

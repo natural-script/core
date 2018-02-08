@@ -1132,7 +1132,7 @@ var PerfectScrollbar = function PerfectScrollbar(element, userSettings) {
   var focus = function () { return element.classList.add(cls.state.focus); };
   var blur = function () { return element.classList.remove(cls.state.focus); };
 
-  this.isRtl = get(element).direction === 'rtl';
+  // this.isRtl = get(element).direction === 'rtl';
   this.isNegativeScroll = (function () {
     var originalScrollLeft = element.scrollLeft;
     var result = null;

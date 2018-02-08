@@ -6,18 +6,18 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-04
+ * Date: 2018-02-05
  */
 $(function () {
     function textFn(el, settings) {
         el.each(function () {
-            var name = settings[window.nameTranslations[document.langID]];
-            var out = '<p id="' + name + '">' + settings[window.textTranslations[document.langID]] + '</p>';
-            window.appendComponent(settings[window.containerTranslations[document.langID]], out);
-            if (settings[window.attributesTranslations[document.langID]]) {
-                var propertiesArray = settings[window.attributesTranslations[document.langID]].split(' ' + window.andTranslations[document.langID] + ' ');
+            var name = elementSettingsAnalyze(settings, 'name');
+            var out = '<p id="' + name + '">' + elementSettingsAnalyze(settings, 'text') + '</p>';
+            window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);
+            if (elementSettingsAnalyze(settings, 'attributes')) {
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
                 for (i = 0; i < propertiesArray.length; i++) {
-                    if (propertiesArray[i] == window.shareableTranslations[document.langID]) {
+                    if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['shareable'][document.langCode]).rating > 0.8) {
                         window.shareThis({
                             selector: '#' + name + '',
                             sharers: [window.twitterSharer, window.facebookSharer, window.linkedInSharer, window.redditSharer, window.emailSharer]
@@ -25,30 +25,31 @@ $(function () {
                     }
                 }
             }
-            if (settings[window.directionTranslations[document.langID]]) {
-                if (settings[window.directionTranslations[document.langID]] == window.ltrTranslations[document.langID]) {
+            if (elementSettingsAnalyze(settings, 'direction')) {
+                if (window.getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['ltr'][document.langCode]).rating > 0.8)) {
                     $('#' + name + '').css('direction', 'ltr');
-                } else if (settings[window.directionTranslations[document.langID]] == window.rtlTranslations[document.langID]) {
+                } else if (window.getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['rtl'][document.langCode]).rating > 0.8)) {
                     $('#' + name + '').css('direction', 'rtl');
                 }
             }
-            if (settings[window.backgroundTranslations[document.langID]]) {
-                window.setBG(name, settings[window.backgroundTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'background')) {
+                window.setBG(name, elementSettingsAnalyze(settings, 'background'));
             }
-            if ($('#' + settings[window.containerTranslations[document.langID]] + '').hasClass('row') == true) {
+            if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('row') == true) {
                 $('#' + name + '').addClass('col');
             }
-            if (settings[window.positionTranslations[document.langID]]) {
-                $('#' + name + '').css('position', settings[window.positionTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'position')) {
+                $('#' + name + '').css('position', elementSettingsAnalyze(settings, 'position'));
             } else {
                 $('#' + name + '').css('position', 'relative');
             }
             window.propSet(name, settings);
-            document[document.uniqueID()] = new PerfectScrollbar('#' + name + '');
         });
     }
-    $.fn[window.textFnTranslations[document.langID]] = function (settings) {
-
-        textFn(this, settings);
-    };
+    var textFnTranslations = window.wordsTranslationsDB.Words['textFn'][document.langCode];
+    for (var i = 0; i < textFnTranslations.length; i++) {
+        $.fn[textFnTranslations[i]] = function (settings) {
+            textFn(this, settings);
+        };
+    }
 });

@@ -2,14 +2,14 @@
  * Math Expressions Builder
  * https://project-jste.github.io/
  *
- * Copyright 2017 Jste Team
+ * Copyright 2018 Jste Team
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-15
+ * Date: 2018-02-06
  */
 window.evaluateExpression = function (expression) {
-	var valNo = expression.match(RegExp(window.theValueOfTranslations[document.langID], "g"));
+	var valNo = expression.match(XRegExp(window.theValueOfTranslations[document.langID], "g"));
 	var finalExpression = expression;
 	var valueResource = '';
 	var finalValue = '';
@@ -49,23 +49,23 @@ window.evaluateExpression = function (expression) {
 		.replace(/جا/g, 'sin')
 		.replace(/جتا/g, 'cos')
 		.replace(/ظا/g, 'tan')
-		.replace(RegExp(window.centimetersTranslations[document.langID], "g"), "cm")
-		.replace(RegExp(window.millimetersTranslations[document.langID], "g"), "mm")
-		.replace(RegExp(window.inchesTranslations[document.langID], "g"), "in")
-		.replace(RegExp(window.pixelsTranslations[document.langID], "g"), "px")
-		.replace(RegExp(window.pointsTranslations[document.langID], "g"), "pt")
-		.replace(RegExp(window.picasTranslations[document.langID], "g"), "pc")
-		.replace(RegExp(window.centimeterTranslations[document.langID], "g"), "cm")
-		.replace(RegExp(window.millimeterTranslations[document.langID], "g"), "mm")
-		.replace(RegExp(window.inchTranslations[document.langID], "g"), "in")
-		.replace(RegExp(window.pixelTranslations[document.langID], "g"), "px")
-		.replace(RegExp(window.pointTranslations[document.langID], "g"), "pt")
-		.replace(RegExp(window.picaTranslations[document.langID], "g"), "pc")
-		.replace(RegExp('سم', "g"), "cm")
-		.replace(RegExp('مم', "g"), "mm")
-		.replace(RegExp('÷', "g"), "/")
-		.replace(RegExp('%', "g"), "/100")
-		.replace(RegExp('(×|x)', "g"), "*");
+		.replace(XRegExp(window.centimetersTranslations[document.langID], "g"), "cm")
+		.replace(XRegExp(window.millimetersTranslations[document.langID], "g"), "mm")
+		.replace(XRegExp(window.inchesTranslations[document.langID], "g"), "in")
+		.replace(XRegExp(window.pixelsTranslations[document.langID], "g"), "px")
+		.replace(XRegExp(window.pointsTranslations[document.langID], "g"), "pt")
+		.replace(XRegExp(window.picasTranslations[document.langID], "g"), "pc")
+		.replace(XRegExp(window.centimeterTranslations[document.langID], "g"), "cm")
+		.replace(XRegExp(window.millimeterTranslations[document.langID], "g"), "mm")
+		.replace(XRegExp(window.inchTranslations[document.langID], "g"), "in")
+		.replace(XRegExp(window.pixelTranslations[document.langID], "g"), "px")
+		.replace(XRegExp(window.pointTranslations[document.langID], "g"), "pt")
+		.replace(XRegExp(window.picaTranslations[document.langID], "g"), "pc")
+		.replace(XRegExp('سم', "g"), "cm")
+		.replace(XRegExp('مم', "g"), "mm")
+		.replace(XRegExp('÷', "g"), "/")
+		.replace(XRegExp('%', "g"), "/100")
+		.replace(XRegExp('(×|x)', "g"), "*");
 		var openingBracketsNo = (finalExpression.match(/\(/g) || []).length;
 		var closingBracketsNo = (finalExpression.match(/\)/g) || []).length;
 		for (var i = 0; i < (openingBracketsNo - closingBracketsNo); i++){

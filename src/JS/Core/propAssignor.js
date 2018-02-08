@@ -30,50 +30,50 @@ $(function () {
             [window.commandsTranslations[document.langID]]: null
         }, options);
         return this.each(function () {
-            if (settings[window.fontStyleTranslations[document.langID]]) {
-                $('#' + name + '').css('font-style', settings[window.fontStyleTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'fontStyle')) {
+                $('#' + name + '').css('font-style', elementSettingsAnalyze(settings, 'fontStyle'));
             }
-            if (settings[window.fontThicknessTranslations[document.langID]]) {
-                if (settings[window.fontThicknessTranslations[document.langID]] == window.thickTranslations[document.langID]) {
+            if (elementSettingsAnalyze(settings, 'fontThickness')) {
+                if (window.getSafe(() => elementSettingsAnalyze(settings, 'fontThickness').findBestMatch(window.wordsTranslationsDB.Words['thick'][document.langCode]).rating > 0.8)) {
                     $('#' + name + '').css('font-weight', 'bold');
                 } else {
-                    $('#' + name + '').css('font-weight', settings[window.fontThicknessTranslations[document.langID]]);
+                    $('#' + name + '').css('font-weight', elementSettingsAnalyze(settings, 'fontThickness'));
                 }
             }
-            if (settings[window.fontSizeTranslations[document.langID]]) {
-                $('#' + name + '').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.langID]]));
+            if (elementSettingsAnalyze(settings, 'fontSize')) {
+                $('#' + name + '').css('font-size', window.convertLengthCSS(elementSettingsAnalyze(settings, 'fontSize')));
             }
-            if (settings[window.positionTranslations[document.langID]]) {
-                $('#' + name + '').css('position', settings[window.positionTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'position')) {
+                $('#' + name + '').css('position', elementSettingsAnalyze(settings, 'position'));
             } else {
                 $('#' + name + '').css('position', 'absolute');
             }
-            if (settings[window.distanceFromBottomTranslations[document.langID]]) {
-                window.setDistance(name, 'bottom', settings[window.distanceFromBottomTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'distanceFromBottom')) {
+                window.setDistance(name, 'bottom', elementSettingsAnalyze(settings, 'distanceFromBottom'));
             }
-            if (settings[window.distanceFromTopTranslations[document.langID]]) {
-                window.setDistance(name, 'top', settings[window.distanceFromTopTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'distanceFromTop')) {
+                window.setDistance(name, 'top', elementSettingsAnalyze(settings, 'distanceFromTop'));
             }
-            if (settings[window.distanceFromLeftTranslations[document.langID]]) {
-                window.setDistance(name, 'left', settings[window.distanceFromLeftTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'distanceFromLeft')) {
+                window.setDistance(name, 'left', elementSettingsAnalyze(settings, 'distanceFromLeft'));
             }
-            if (settings[window.distanceFromRightTranslations[document.langID]]) {
-                window.setDistance(name, 'right', settings[window.distanceFromRightTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'distanceFromRight')) {
+                window.setDistance(name, 'right', elementSettingsAnalyze(settings, 'distanceFromRight'));
             }
-            if (settings[window.commandsTranslations[document.langID]]) {
-                window.execute(name, settings[window.commandsTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'commands')) {
+                window.execute(name, elementSettingsAnalyze(settings, 'commands'));
             }
-            if (settings[window.widthTranslations[document.langID]]) {
-                window.setDimension(name, 'width', settings[window.widthTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'width')) {
+                window.setDimension(name, 'width', elementSettingsAnalyze(settings, 'width'));
             }
-            if (settings[window.lengthTranslations[document.langID]]) {
-                window.setDimension(name, 'length', settings[window.lengthTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'length')) {
+                window.setDimension(name, 'length', elementSettingsAnalyze(settings, 'length'));
             }
-            if (settings[window.animationTranslations[document.langID]]) {
-                window.setAnimation(name, settings[window.animationTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'animation')) {
+                window.setAnimation(name, elementSettingsAnalyze(settings, 'animation'));
             }
-            if (settings[window.transparencyTranslations[document.langID]]) {
-                $('#' + name + '').css('-webkit-filter', 'opacity(' + settings[window.transparencyTranslations[document.langID]] + '%)');
+            if (elementSettingsAnalyze(settings, 'transparency')) {
+                $('#' + name + '').css('-webkit-filter', 'opacity(' + elementSettingsAnalyze(settings, 'transparency') + '%)');
             }
         });
     };

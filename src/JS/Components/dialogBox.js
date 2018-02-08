@@ -6,31 +6,31 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-6
+ * Date: 2018-02-05
  */
 $(function () {
     function dialogBoxFn(el, settings) {
         el.each(function () {
-            var name = settings[window.nameTranslations[document.langID]];
+            var name = elementSettingsAnalyze(settings, 'name');
             var out = '<div id="' + name + '"></div>';
             $('body').append(out);
-            if (settings[window.emitterTranslations[document.langID]]) {
-                $('#' + settings[window.emitterTranslations[document.langID]] + '').attr('onclick', settings[window.nameTranslations[document.langID]] + '.open()');
+            if (elementSettingsAnalyze(settings, 'emitter')) {
+                $('#' + elementSettingsAnalyze(settings, 'emitter') + '').attr('onclick', elementSettingsAnalyze(settings, 'name') + '.open()');
             }
-            if (settings[window.fontSizeTranslations[document.langID]]) {
-                $('#' + name + '').css('font-size', window.convertLengthCSS(settings[window.fontSizeTranslations[document.langID]]));
+            if (elementSettingsAnalyze(settings, 'fontSize')) {
+                $('#' + name + '').css('font-size', window.convertLengthCSS(elementSettingsAnalyze(settings, 'fontSize')));
             }
-            if ($('#' + settings[window.containerTranslations[document.langID]] + '').hasClass('row') == true) {
+            if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('row') == true) {
                 $('#' + name + '').addClass('col');
             }
-            if (settings[window.positionTranslations[document.langID]]) {
-                $('#' + name + '').css('position', settings[window.positionTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'position')) {
+                $('#' + name + '').css('position', elementSettingsAnalyze(settings, 'position'));
             } else {
                 $('#' + name + '').css('position', 'relative');
             }
-            if (settings[window.titleTranslations[document.langID]]) {
+            if (elementSettingsAnalyze(settings, 'title')) {
                 $('#' + name + '').iziModal({
-                    title: settings[window.titleTranslations[document.langID]],
+                    title: elementSettingsAnalyze(settings, 'title'),
                     rtl: document.isRTL
                 });
             } else {
@@ -42,7 +42,10 @@ $(function () {
             $('#' + name + '').css('position', 'fixed');
         });
     }
-    $.fn[window.dialogBoxTranslations[document.langID]] = function (settings) {
+    var dialogBoxTranslations = window.wordsTranslationsDB.Words['dialogBox'][document.langCode];
+    for (var i = 0; i < dialogBoxTranslations.length; i++) {
+    $.fn[dialogBoxTranslations[i]] = function (settings) {
         dialogBoxFn(this, settings);
     };
+}
 });

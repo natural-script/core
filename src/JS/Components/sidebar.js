@@ -6,46 +6,50 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-04
+ * Date: 2018-02-05
  */
 $(function () {
     function sidebarFn(el, settings) {
 
         el.each(function () {
-            var name = settings[window.nameTranslations[document.langID]];
+            var name = elementSettingsAnalyze(settings, 'name');
             var edge;
             if (document.isRTL) {
                 edge = 'right';
             } else {
                 edge = 'left';
             }
-            var out = '<ul id="' + name + '" data-activates="' + name + '" class="side-nav"></ul>';
-            window.appendComponent(settings[window.containerTranslations[document.langID]], out);
-            $('#' + name + '').sideNav({
+            var out = '<ul id="' + name + '" data-activates="' + name + '" class="sidenav"></ul>';
+            window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);
+            var elem = document.querySelector('#' + name + '');
+            var instance = M.Sidenav.init(elem, {
                 edge: edge,
-                draggable: false,
+                draggable: true,
                 closeOnClick: false
             });
-            if ($('#' + settings[window.containerTranslations[document.langID]] + '').hasClass('row') == true) {
+            if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('row') == true) {
                 $('#' + name + '').addClass('col');
             }
-            if (settings[window.positionTranslations[document.langID]]) {
-                $('#' + name + '').css('position', settings[window.positionTranslations[document.langID]]);
+            if (elementSettingsAnalyze(settings, 'position')) {
+                $('#' + name + '').css('position', elementSettingsAnalyze(settings, 'position'));
             } else {
                 $('#' + name + '').css('position', 'relative');
             }
             window.propSet(name, settings);
             $('#' + name + '').css('position', 'fixed');
             if (window.mode == 'app') {
-                if ($('.side-nav').length == 1) {
+                if ($('.sidenav').length == 1) {
                     $('.menuBtn').on('click', function () {
-                        $('#' + name + '').sideNav('show');
+                        instance.open();
                     });
                 }
             }
         });
     }
-    $.fn[window.sidebarTranslations[document.langID]] = function (settings) {
-        sidebarFn(this, settings);
-    };
+    var sidebarTranslations = window.wordsTranslationsDB.Words['sidebar'][document.langCode];
+    for (var i = 0; i < sidebarTranslations.length; i++) {
+        $.fn[sidebarTranslations[i]] = function (settings) {
+            sidebarFn(this, settings);
+        };
+    }
 });
