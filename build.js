@@ -8,7 +8,6 @@ const path = require("path");
 const srcAbsolutePath = path.resolve("./src");
 const gzip = zlib.createGzip();
 const algorithm = 'sha1';
-const shasum = crypto.createHash(algorithm);
 
 figlet('JSTE FRAMEWORK', function (err, data) {
     console.log(data);
@@ -26,6 +25,7 @@ figlet('JSTE FRAMEWORK', function (err, data) {
     var out = fs.createWriteStream('compressed/framework.min.html.gz');
     inp.pipe(gzip).pipe(out);
     console.log(' Hashing the framework compressed file ');
+    var shasum = crypto.createHash(algorithm);
     shasum.update(fs.readFileSync('compressed/framework.min.html.gz', 'utf8'))
     fs.writeFileSync('compressed/framework.sha1', shasum.digest('hex'));
     console.log(' Jste Framework has been built properly ;) ');
@@ -41,6 +41,7 @@ figlet('JSTE FRAMEWORK', function (err, data) {
     var out = fs.createWriteStream('compressed/framework-LiveVersion.min.html.gz');
     inp.pipe(gzip).pipe(out);
     console.log(' Hashing the framework compressed file ');
+    var shasum = crypto.createHash(algorithm);
     shasum.update(fs.readFileSync('compressed/framework-LiveVersion.min.html.gz', 'utf8'))
     fs.writeFileSync('compressed/framework-LiveVersion.sha1', shasum.digest('hex'));
     console.log(' Jste Framework Live Version has been built properly ;) ');
@@ -54,6 +55,7 @@ figlet('JSTE FRAMEWORK', function (err, data) {
     var out = fs.createWriteStream('compressed/db-manager.min.html.gz');
     inp.pipe(gzip).pipe(out);
     console.log(' Hashing the BLOB DB Manager compressed file ');
+    var shasum = crypto.createHash(algorithm);
     shasum.update(fs.readFileSync('compressed/db-manager.min.html.gz', 'utf8'))
     fs.writeFileSync('compressed/db-manager.sha1', shasum.digest('hex'));
     console.log(' The BLOB DB Manager for Jste Framework Live Version has been built properly ;) ');
