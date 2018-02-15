@@ -1,6 +1,6 @@
 # Announcement
 
-## Jste v0.5 Alpha is coming soon on 15 February 2018 with many new features and bug fixes including:
+## Jste v0.5 Alpha is coming soon on 25 February 2018 with many new features and bug fixes including:
 
 1. Automatic spelling correction thanks to Google Translate.
 2. Automatic language detection thanks to Franc JS library.
@@ -9,6 +9,8 @@
 5. Jste build script Windows compatibility.
 6. Updated web components.
 7. Updated algorithm for translating words.
+8. Jste Documentation For Arabic And Egyptian Versions.
+9. Much Improved Loader.
 
 # Jste Framework
 
@@ -136,7 +138,10 @@ https://github.com/project-jste/framework/projects/1
 
 ## Documentation:
 
-https://project-jste.github.io/docs/en-uk
+EN-US: https://project-jste.github.io/docs/en-us
+EN-UK: https://project-jste.github.io/docs/en-uk
+Egyptian: https://project-jste.github.io/docs/arz
+Arabic: https://project-jste.github.io/docs/ar
 
 ## How to build:
 
@@ -144,7 +149,7 @@ https://project-jste.github.io/docs/en-uk
 
 1. NodeJS v7+
 
-2. Vulcanize
+2. Polymer Bundler
 
 3. HTML Minifier
 
@@ -155,8 +160,6 @@ https://project-jste.github.io/docs/en-uk
 ### How to install the dependencies:
 
 <code>cd <FRAMEWORK_REPO_ROOT></code>
-
-<code>npm install -g vulcanize  html-minifier</code>
 
 <code>npm install</code>
 
