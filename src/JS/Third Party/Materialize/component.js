@@ -1,4 +1,4 @@
-class Component {
+window.Component = class {
   /**
    * Generic constructor for all components
    * @constructor

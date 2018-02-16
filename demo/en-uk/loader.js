@@ -851,154 +851,163 @@ if (navigator.platform == 'Win32') {
 	localAddress = '0.0.0.0';
 }
 window.onload = function () {
-	window.handleOpenURL = function (url) {
-		var ref = cordova.InAppBrowser.open(url.split('jste://')[1], '_self', 'location=yes');
-	};
-	var meta = document.createElement('meta');
-	meta.name = 'viewport';
-	meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
-	document.getElementsByTagName('head')[0].appendChild(meta);
-	document.jsteCode = document.getElementsByTagName("BODY")[0].innerHTML;
-	document.code = '<jste>\n' + document.jsteCode + '\n</jste>';
-	document.getElementsByTagName("BODY")[0].innerHTML = '';
-	var css = 'body.pg-loading{overflow:hidden}.pg-loading-screen{position:fixed;bottom:0;left:0;right:0;top:0;z-index:1000000;opacity:1;background-color:#FFF;-webkit-transition:background-color .4s ease-in-out 0s;-moz-transition:background-color .4s ease-in-out 0s;-ms-transition:background-color .4s ease-in-out 0s;-o-transition:background-color .4s ease-in-out 0s;transition:background-color .4s ease-in-out 0s}.pg-loading-screen.pg-loaded{opacity:0;-webkit-animation:pgAnimLoaded .5s cubic-bezier(.7,0,.3,1) both;-moz-animation:pgAnimLoaded .5s cubic-bezier(.7,0,.3,1) both;-ms-animation:pgAnimLoaded .5s cubic-bezier(.7,0,.3,1) both;-o-animation:pgAnimLoaded .5s cubic-bezier(.7,0,.3,1) both;animation:pgAnimLoaded .5s cubic-bezier(.7,0,.3,1) both}.pg-loading-screen.pg-loading .pg-loading-html,.pg-loading-screen.pg-loading .pg-loading-logo-header{opacity:1}.pg-loading-screen.pg-loading .pg-loading-html:not(.pg-loaded),.pg-loading-screen.pg-loading .pg-loading-logo-header{-webkit-animation:pgAnimLoading 1s cubic-bezier(.7,0,.3,1) both;-moz-animation:pgAnimLoading 1s cubic-bezier(.7,0,.3,1) both;-ms-animation:pgAnimLoading 1s cubic-bezier(.7,0,.3,1) both;-o-animation:pgAnimLoading 1s cubic-bezier(.7,0,.3,1) both;animation:pgAnimLoading 1s cubic-bezier(.7,0,.3,1) both}.pg-loading-screen.pg-loading .pg-loading-html:not(.pg-loaded){-webkit-animation-delay:.3s;-moz-animation-delay:.3s;-ms-animation-delay:.3s;-o-animation-delay:.3s;animation-delay:.3s}.pg-loading-screen .pg-loading-inner{height:100%;width:100%;margin:0;padding:0;position:static}.pg-loading-screen .pg-loading-center-outer{width:100%;padding:0;display:table!important;height:100%;position:absolute;top:0;left:0;margin:0}.pg-loading-screen .pg-loading-center-middle{padding:0;vertical-align:middle;display:table-cell!important;margin:0;text-align:center}.pg-loading-screen .pg-loading-html,.pg-loading-screen .pg-loading-logo-header{width:100%;opacity:0}.pg-loading-screen .pg-loading-logo-header{text-align:center}.pg-loading-screen .pg-loading-logo-header img{display:inline-block!important}.pg-loading-screen .pg-loading-html{margin-top:90px}.pg-loading-screen .pg-loading-html.pg-loaded{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1);-moz-transition:opacity .5s cubic-bezier(.7,0,.3,1);-ms-transition:opacity .5s cubic-bezier(.7,0,.3,1);-o-transition:opacity .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1)}.pg-loading-screen .pg-loading-html.pg-loaded.pg-removing{opacity:0}.pg-loading-screen .pg-loading-html.pg-loaded.pg-loading{opacity:1}@-webkit-keyframes pgAnimLoading{from{opacity:0}}@-moz-keyframes pgAnimLoading{from{opacity:0}}@-o-keyframes pgAnimLoading{from{opacity:0}}@-ms-keyframes pgAnimLoading{from{opacity:0}}@keyframes pgAnimLoading{from{opacity:0}}@-webkit-keyframes pgAnimLoaded{from{opacity:1}}@-moz-keyframes pgAnimLoaded{from{opacity:1}}@-o-keyframes pgAnimLoaded{from{opacity:1}}@-ms-keyframes pgAnimLoaded{from{opacity:1}}@keyframes pgAnimLoaded{from{opacity:1}}.spinner{color:#FFFFFF;margin:100px auto;width:40px;height:40px;position:relative;text-align:center;-webkit-animation:sk-rotate 2s infinite linear;animation:sk-rotate 2s infinite linear}.dot1,.dot2{color:#FFFFFF;width:60%;height:60%;display:inline-block;position:absolute;top:0;background-color:#FFFFFF;border-radius:100%;-webkit-animation:sk-bounce 2s infinite ease-in-out;animation:sk-bounce 2s infinite ease-in-out}.dot2{top:auto;bottom:0;-webkit-animation-delay:-1s;animation-delay:-1s}@-webkit-keyframes sk-rotate{100%{-webkit-transform:rotate(360deg)}}@keyframes sk-rotate{100%{transform:rotate(360deg);-webkit-transform:rotate(360deg)}}@-webkit-keyframes sk-bounce{0%,100%{-webkit-transform:scale(0)}50%{-webkit-transform:scale(1)}}@keyframes sk-bounce{0%,100%{transform:scale(0);-webkit-transform:scale(0)}50%{transform:scale(1);-webkit-transform:scale(1)}}',
-		head = document.head || document.getElementsByTagName('head')[0],
-		style = document.createElement('style');
-	style.type = 'text/css';
-	if (style.styleSheet) {
-		style.styleSheet.cssText = css;
-	} else {
-		style.appendChild(document.createTextNode(css));
-	}
-	head.appendChild(style);
-	var logoURL;
-	if (/^its logo is .*?$/gmi.test(document.jsteCode)) {
-		logoURL = document.jsteCode.split("its logo is ").pop().split(",").shift();
-	} else if (document.jsteCode.match(/^son logo est .*?$/gmyi)) {
-		logoURL = document.jsteCode.split("son logo est ").pop().split(",").shift();
-	} else if (document.jsteCode.match(/^الشعار الخاص به .*?$/gmyi)) {
-		logoURL = document.jsteCode.split("الشعار الخاص به ").pop().split(",").shift();
-	} else if (document.jsteCode.match(/^اللوجو بتاعه .*?$/gmyi)) {
-		logoURL = document.jsteCode.split("اللوجو بتاعه ").pop().split(",").shift();
-	} else if (document.jsteCode.match(/^ロゴ: .*?$/gmyi)) {
-		logoURL = document.jsteCode.split("ロゴ: ").pop().split(",").shift();
-	}
-	window.loading_screen = pleaseWait({
-		logo: logoURL,
-		backgroundColor: '#f46d3b',
-		loadingHtml: '<div class="spinner"><div class="dot1"></div><div class="dot2"></div></div>'
-	});
-	window.importLiveVersion = function () {
-		console.clear();
-		document.getElementsByTagName("BODY")[0].removeAttribute('class');
-		document.getElementsByTagName("BODY")[0].removeAttribute('style');
+		window.handleOpenURL = function (url) {
+			var ref = cordova.InAppBrowser.open(url.split('jste://')[1], '_self', 'location=yes');
+		};
+		var meta = document.createElement('meta');
+		meta.name = 'viewport';
+		meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
+		document.getElementsByTagName('head')[0].appendChild(meta);
+		document.jsteCode = document.getElementsByTagName("BODY")[0].innerHTML;
+		document.code = '<jste style="display: none;">\n' + document.jsteCode + '\n</jste>';
+		document.getElementsByTagName("BODY")[0].innerHTML = '';
+		var css = 'body.pg-loading{overflow:hidden}.pg-loading-screen{position:fixed;bottom:0;left:0;right:0;top:0;z-index:1000000;opacity:1;background-color:#FFF;-webkit-transition:background-color .4s ease-in-out 0s;-moz-transition:background-color .4s ease-in-out 0s;-ms-transition:background-color .4s ease-in-out 0s;-o-transition:background-color .4s ease-in-out 0s;transition:background-color .4s ease-in-out 0s}.pg-loading-screen.pg-loaded{opacity:0;-webkit-animation:pgAnimLoaded .5s cubic-bezier(.7,0,.3,1) both;-moz-animation:pgAnimLoaded .5s cubic-bezier(.7,0,.3,1) both;-ms-animation:pgAnimLoaded .5s cubic-bezier(.7,0,.3,1) both;-o-animation:pgAnimLoaded .5s cubic-bezier(.7,0,.3,1) both;animation:pgAnimLoaded .5s cubic-bezier(.7,0,.3,1) both}.pg-loading-screen.pg-loading .pg-loading-html,.pg-loading-screen.pg-loading .pg-loading-logo-header{opacity:1}.pg-loading-screen.pg-loading .pg-loading-html:not(.pg-loaded),.pg-loading-screen.pg-loading .pg-loading-logo-header{-webkit-animation:pgAnimLoading 1s cubic-bezier(.7,0,.3,1) both;-moz-animation:pgAnimLoading 1s cubic-bezier(.7,0,.3,1) both;-ms-animation:pgAnimLoading 1s cubic-bezier(.7,0,.3,1) both;-o-animation:pgAnimLoading 1s cubic-bezier(.7,0,.3,1) both;animation:pgAnimLoading 1s cubic-bezier(.7,0,.3,1) both}.pg-loading-screen.pg-loading .pg-loading-html:not(.pg-loaded){-webkit-animation-delay:.3s;-moz-animation-delay:.3s;-ms-animation-delay:.3s;-o-animation-delay:.3s;animation-delay:.3s}.pg-loading-screen .pg-loading-inner{height:100%;width:100%;margin:0;padding:0;position:static}.pg-loading-screen .pg-loading-center-outer{width:100%;padding:0;display:table!important;height:100%;position:absolute;top:0;left:0;margin:0}.pg-loading-screen .pg-loading-center-middle{padding:0;vertical-align:middle;display:table-cell!important;margin:0;text-align:center}.pg-loading-screen .pg-loading-html,.pg-loading-screen .pg-loading-logo-header{width:100%;opacity:0}.pg-loading-screen .pg-loading-logo-header{text-align:center}.pg-loading-screen .pg-loading-logo-header img{display:inline-block!important}.pg-loading-screen .pg-loading-html{margin-top:90px}.pg-loading-screen .pg-loading-html.pg-loaded{-webkit-transition:opacity .5s cubic-bezier(.7,0,.3,1);-moz-transition:opacity .5s cubic-bezier(.7,0,.3,1);-ms-transition:opacity .5s cubic-bezier(.7,0,.3,1);-o-transition:opacity .5s cubic-bezier(.7,0,.3,1);transition:opacity .5s cubic-bezier(.7,0,.3,1)}.pg-loading-screen .pg-loading-html.pg-loaded.pg-removing{opacity:0}.pg-loading-screen .pg-loading-html.pg-loaded.pg-loading{opacity:1}@-webkit-keyframes pgAnimLoading{from{opacity:0}}@-moz-keyframes pgAnimLoading{from{opacity:0}}@-o-keyframes pgAnimLoading{from{opacity:0}}@-ms-keyframes pgAnimLoading{from{opacity:0}}@keyframes pgAnimLoading{from{opacity:0}}@-webkit-keyframes pgAnimLoaded{from{opacity:1}}@-moz-keyframes pgAnimLoaded{from{opacity:1}}@-o-keyframes pgAnimLoaded{from{opacity:1}}@-ms-keyframes pgAnimLoaded{from{opacity:1}}@keyframes pgAnimLoaded{from{opacity:1}}.spinner{color:#FFFFFF;margin:100px auto;width:40px;height:40px;position:relative;text-align:center;-webkit-animation:sk-rotate 2s infinite linear;animation:sk-rotate 2s infinite linear}.dot1,.dot2{color:#FFFFFF;width:60%;height:60%;display:inline-block;position:absolute;top:0;background-color:#FFFFFF;border-radius:100%;-webkit-animation:sk-bounce 2s infinite ease-in-out;animation:sk-bounce 2s infinite ease-in-out}.dot2{top:auto;bottom:0;-webkit-animation-delay:-1s;animation-delay:-1s}@-webkit-keyframes sk-rotate{100%{-webkit-transform:rotate(360deg)}}@keyframes sk-rotate{100%{transform:rotate(360deg);-webkit-transform:rotate(360deg)}}@-webkit-keyframes sk-bounce{0%,100%{-webkit-transform:scale(0)}50%{-webkit-transform:scale(1)}}@keyframes sk-bounce{0%,100%{transform:scale(0);-webkit-transform:scale(0)}50%{transform:scale(1);-webkit-transform:scale(1)}}',
+			head = document.head || document.getElementsByTagName('head')[0],
+			style = document.createElement('style');
+		style.type = 'text/css';
+		if (style.styleSheet) {
+			style.styleSheet.cssText = css;
+		} else {
+			style.appendChild(document.createTextNode(css));
+		}
+		head.appendChild(style);
+		var logoURL;
+		if (/^its logo is .*?$/gmi.test(document.jsteCode)) {
+			logoURL = document.jsteCode.split("its logo is ").pop().split(",").shift();
+		} else if (document.jsteCode.match(/^son logo est .*?$/gmyi)) {
+			logoURL = document.jsteCode.split("son logo est ").pop().split(",").shift();
+		} else if (document.jsteCode.match(/^الشعار الخاص به .*?$/gmyi)) {
+			logoURL = document.jsteCode.split("الشعار الخاص به ").pop().split(",").shift();
+		} else if (document.jsteCode.match(/^اللوجو بتاعه .*?$/gmyi)) {
+			logoURL = document.jsteCode.split("اللوجو بتاعه ").pop().split(",").shift();
+		} else if (document.jsteCode.match(/^ロゴ: .*?$/gmyi)) {
+			logoURL = document.jsteCode.split("ロゴ: ").pop().split(",").shift();
+		}
 		window.loading_screen = pleaseWait({
 			logo: logoURL,
 			backgroundColor: '#f46d3b',
-			loadingHtml: '<div id="liveVersionLoader"><progress id="liveVersionLoadingProgress"></progress></div>'
+			loadingHtml: '<div class="spinner"><div class="dot1"></div><div class="dot2"></div></div>'
 		});
-		var progressBar = document.getElementById('liveVersionLoadingProgress');
-		var request = new XMLHttpRequest();
-		request.onprogress = function (e) {
-			if (e.lengthComputable) {
-				progressBar.max = e.total;
-				progressBar.value = e.loaded;
-			}
-		};
-		request.onloadstart = function (e) {
-			progressBar.value = 0;
-		};
-		request.onloadend = function (e) {
-			progressBar.value = e.loaded;
-		};
-		request.open('GET', 'https://jste-manager.herokuapp.com/framework-LiveVersion.min.html', true);
+		window.importLiveVersion = function () {
+			console.clear();
+			document.getElementsByTagName("BODY")[0].removeAttribute('class');
+			document.getElementsByTagName("BODY")[0].removeAttribute('style');
+			window.loading_screen = pleaseWait({
+				logo: logoURL,
+				backgroundColor: '#f46d3b',
+				loadingHtml: '<div id="liveVersionLoader"><progress id="liveVersionLoadingProgress"></progress></div>'
+			});
+			var getFramworkLiveVersionFileInfo = new XMLHttpRequest();
+			getFramworkLiveVersionFileInfo.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					var fileInfo = JSON.parse(this.responseText);
+					window.genuineFileSize = fileInfo.size;
+					var progressBar = document.getElementById('liveVersionLoadingProgress');
+					var request = new XMLHttpRequest();
+					request.onprogress = function (e) {
+						progressBar.max = window.genuineFileSize;
+						progressBar.value = e.loaded;
+					};
+					request.onloadstart = function (e) {
+						progressBar.value = 0;
+					};
+					request.onloadend = function (e) {
+						progressBar.value = e.loaded;
+					};
+					request.open('GET', 'https://jste-manager.herokuapp.com/framework-LiveVersion.min.html', true);
 
-		request.onload = function () {
-			if (request.status >= 200 && request.status < 400) {
-				document.getElementById('liveVersionLoader').innerHTML = '<div class="spinner"><div class="dot1"></div><div class="dot2"></div></div>';
-				document.getElementsByTagName("BODY")[0].innerHTML = document.code;
-				var pageLoadingChecker = setInterval(function () {
-					if (document.getElementsByTagName("CONTENTS").length > 0) {
-						window.loading_screen.finish();
-						clearInterval(pageLoadingChecker);
-					}
-				}, 1);
-				setTimeout(function () {
-					document.getElementsByTagName("HEAD")[0].innerHTML += request.responseText;
-					JSScriptsExec(document.getElementsByTagName("HEAD")[0]);
-				}, 1000);
-			}
-		};
-		request.send();
-	};
-	if (location.protocol == 'http:') {
-		var JsteInstallationCheckingRequest = new XMLHttpRequest();
-		JsteInstallationCheckingRequest.open('HEAD', 'http://' + localAddress + ':5050/framework.min.html', false);
-		JsteInstallationCheckingRequest.onreadystatechange = function () {
-			if (JsteInstallationCheckingRequest.readyState === 4) {
-				if (JsteInstallationCheckingRequest.status === 200) {
-					var getFramworkFileHash = new XMLHttpRequest();
-					getFramworkFileHash.onreadystatechange = function () {
-						if (this.readyState == 4 && this.status == 200) {
-							window.genuineFileHash = this.responseText;
-							var reader = new XMLHttpRequest();
-							var checkFor = 'http://' + localAddress + ':5050/framework.min.html';
-							reader.open('get', checkFor, true);
-							reader.onreadystatechange = checkReadyState;
-
-							function checkReadyState() {
-								if (reader.readyState === 4) {
-									if ((reader.status == 200)) {
-										var request = new XMLHttpRequest();
-										request.open('GET', 'http://' + localAddress + ':5050/framework.min.html', false);
-										request.onload = function () {
-											var file_result = request.response; // this == reader, get the loaded file "result"
-											var sha1_hash = new Rusha().digestFromArrayBuffer(file_result);
-											window.currentFileHash = sha1_hash.toString();
-											if (window.currentFileHash === window.genuineFileHash) {
-												var pageLoadingChecker = setInterval(function () {
-													if (document.getElementsByTagName("CONTENTS").length > 0) {
-														window.loading_screen.finish();
-														clearInterval(pageLoadingChecker);
-													}
-												}, 1);
-												setTimeout(function () {
-													document.getElementsByTagName("HEAD")[0].innerHTML += file_result;
-													JSScriptsExec(document.getElementsByTagName("HEAD")[0]);
-												}, 1000);
-											} else {
-												console.error('The SHA-1 hash of the imported Jste framework file is: ' + window.currentFileHash + ', while that of the genuine Jste framework file is ' + window.genuineFileHash);
-												window.loading_screen.finish();
-												document.getElementsByTagName("BODY")[0].style.background = 'black';
-												document.getElementsByTagName("BODY")[0].innerHTML = '<center><h1 style="color: white;">It seems that you have modified version of Jste :(</h1><button onclick="window.importLiveVersion();">Use the live version instead</button></center>';
-											}
-										};
-										request.send();
-									}
+					request.onload = function () {
+						if (request.status >= 200 && request.status < 400) {
+							document.getElementById('liveVersionLoader').innerHTML = '<div class="spinner"><div class="dot1"></div><div class="dot2"></div></div>';
+							document.getElementsByTagName("BODY")[0].innerHTML = document.code;
+							var pageLoadingChecker = setInterval(function () {
+								if (document.getElementsByTagName("CONTENTS").length > 0) {
+									window.loading_screen.finish();
+									clearInterval(pageLoadingChecker);
 								}
-							}
-							reader.send(null);
+							}, 1);
+							setTimeout(function () {
+								document.getElementsByTagName("HEAD")[0].innerHTML += request.responseText;
+								JSScriptsExec(document.getElementsByTagName("HEAD")[0]);
+							}, 1000);
 						}
 					};
-					getFramworkFileHash.open("GET", "https://rawgit.com/project-jste/framework/master/build/compressed/framework.sha1");
-					getFramworkFileHash.send();
-				} else {
+					request.send();
+				}
+
+				getFramworkLiveVersionFileInfo.open("GET", "https://rawgit.com/project-jste/framework/master/build/compressed/framework-LiveVersion.info.json");
+				getFramworkLiveVersionFileInfo.send();
+			};
+			if (location.protocol == 'http:') {
+				var JsteInstallationCheckingRequest = new XMLHttpRequest();
+				JsteInstallationCheckingRequest.open('HEAD', 'http://' + localAddress + ':5050/framework.min.html', false);
+				JsteInstallationCheckingRequest.onreadystatechange = function () {
+					if (JsteInstallationCheckingRequest.readyState === 4) {
+						if (JsteInstallationCheckingRequest.status === 200) {
+							var getFramworkFileInfo = new XMLHttpRequest();
+							getFramworkFileInfo.onreadystatechange = function () {
+								if (this.readyState == 4 && this.status == 200) {
+									var fileInfo = JSON.parse(this.responseText);
+									window.genuineFileSize = fileInfo.size;
+									window.genuineFileHash = fileInfo.sha1;
+									var reader = new XMLHttpRequest();
+									var checkFor = 'http://' + localAddress + ':5050/framework.min.html';
+									reader.open('get', checkFor, true);
+									reader.onreadystatechange = checkReadyState;
+
+									function checkReadyState() {
+										if (reader.readyState === 4) {
+											if ((reader.status == 200)) {
+												var request = new XMLHttpRequest();
+												request.open('GET', 'http://' + localAddress + ':5050/framework.min.html', false);
+												request.onload = function () {
+													var file_result = request.response; // this == reader, get the loaded file "result"
+													var sha1_hash = new Rusha().digestFromArrayBuffer(file_result);
+													window.currentFileHash = sha1_hash.toString();
+													if (window.currentFileHash === window.genuineFileHash) {
+														var pageLoadingChecker = setInterval(function () {
+															if (document.getElementsByTagName("CONTENTS").length > 0) {
+																window.loading_screen.finish();
+																clearInterval(pageLoadingChecker);
+															}
+														}, 1);
+														setTimeout(function () {
+															document.getElementsByTagName("HEAD")[0].innerHTML += file_result;
+															JSScriptsExec(document.getElementsByTagName("HEAD")[0]);
+														}, 1000);
+													} else {
+														console.error('The SHA-1 hash of the imported Jste framework file is: ' + window.currentFileHash + ', while that of the genuine Jste framework file is ' + window.genuineFileHash);
+														window.loading_screen.finish();
+														document.getElementsByTagName("BODY")[0].style.background = 'black';
+														document.getElementsByTagName("BODY")[0].innerHTML = '<center><h1 style="color: white;">It seems that you have modified version of Jste :(</h1><button onclick="window.importLiveVersion();">Use the live version instead</button></center>';
+													}
+												};
+												request.send();
+											}
+										}
+									}
+									reader.send(null);
+								}
+							};
+							getFramworkFileInfo.open("GET", "https://rawgit.com/project-jste/framework/master/build/compressed/framework.info.json");
+							getFramworkFileInfo.send();
+						} else {
+							window.loading_screen.finish();
+							document.getElementsByTagName("BODY")[0].style.background = 'black';
+							document.getElementsByTagName("BODY")[0].innerHTML = "<center><h1 style='color: white;'>It seems that Jste isn't installed on your device :(</h1><button onclick='window.importLiveVersion();'>Use the live version instead</button></center>";
+						}
+					}
+				};
+				try {
+					JsteInstallationCheckingRequest.send();
+				} catch (e) {
 					window.loading_screen.finish();
 					document.getElementsByTagName("BODY")[0].style.background = 'black';
 					document.getElementsByTagName("BODY")[0].innerHTML = "<center><h1 style='color: white;'>It seems that Jste isn't installed on your device :(</h1><button onclick='window.importLiveVersion();'>Use the live version instead</button></center>";
 				}
+			} else {
+				window.loading_screen.finish();
+				document.getElementsByTagName("BODY")[0].style.background = 'black';
+				document.getElementsByTagName("BODY")[0].innerHTML = '<center><h1 style="color: white;">Unfortunately, Jste local version doesn\'t support https yet :(</h1><button onclick="window.importLiveVersion();">Use the live version instead</button></center>';
 			}
 		};
-		try {
-			JsteInstallationCheckingRequest.send();
-		} catch (e) {
-			window.loading_screen.finish();
-			document.getElementsByTagName("BODY")[0].style.background = 'black';
-			document.getElementsByTagName("BODY")[0].innerHTML = "<center><h1 style='color: white;'>It seems that Jste isn't installed on your device :(</h1><button onclick='window.importLiveVersion();'>Use the live version instead</button></center>";
-		}
-	} else {
-		window.loading_screen.finish();
-		document.getElementsByTagName("BODY")[0].style.background = 'black';
-		document.getElementsByTagName("BODY")[0].innerHTML = '<center><h1 style="color: white;">Unfortunately, Jste local version doesn\'t support https yet :(</h1><button onclick="window.importLiveVersion();">Use the live version instead</button></center>';
-	}
-};
