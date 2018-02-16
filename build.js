@@ -42,14 +42,14 @@ figlet('JSTE FRAMEWORK', function (err, data) {
         silent: true
     });
     replace({
-        regex: 'src="',
+        regex: 'src="(?!http)',
         replacement: 'src="src/',
         paths: [absolutePath + '/temp/Res.html', absolutePath + '/temp/Res-LiveVersion.html'],
         recursive: true,
         silent: true
     });
     replace({
-        regex: 'href="',
+        regex: 'href="(?!http)',
         replacement: 'href="src/',
         paths: [absolutePath + '/temp/Res.html', absolutePath + '/temp/Res-LiveVersion.html'],
         recursive: true,

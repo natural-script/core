@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-07
+ * Date: 2018-02-16
  */
 
 // احذفه
@@ -26,7 +26,7 @@
 
 // افتح مربع الحوار learn_more
 
-+ (?:توجه|زور|افتح) [إلى] * %
++ (?:توجه|زور|افتح|اذهب) [إلى] * (%)
 - command_id: S2 ==> lang: ar ==> targetType: <star1> ==> target: <star2>
 
 // شغلها
@@ -91,7 +91,7 @@
 
 // اجعل الوقت الذى عدا من Close_To_You 1536
 
-+ اجعل الوقت الذى مر من % *
++ اجعل الوقت الذى مر من (%) *
 - command_id: S5 ==> lang: ar ==> target: <star1> ==> timePosition: <star2>
 
 // اجعل القيمة الخاصة به Hello World !
@@ -106,7 +106,7 @@
 
 // اجعل قيمة welcome_message Welcome, folks !
 
-+ اجعل قيمة % *
++ اجعل قيمة (%) *
 - command_id: S6 ==> lang: ar ==> target: <star1> ==> value: <star2>
 
 // بدل حالة الفلاش
@@ -181,7 +181,7 @@
 
 // اجعل عرض containerA 30 بكسل
 
-+ اجعل عرض % *
++ اجعل عرض (%) *
 - command_id: S17 ==> lang: ar ==> target: <star1> ==> value: <star2>
 
 // اجعل طوله 30 بكسل
@@ -201,7 +201,7 @@
 
 // اجعل طول containerA 30 بكسل
 
-+ اجعل طول % *
++ اجعل طول (%) *
 - command_id: S18 ==> lang: ar ==> target: <star1> ==> value: <star2>
 
 // اجعل خلفيتها لون غامق عشوائى
@@ -216,7 +216,7 @@
 
 // اجعل خلفية main_page حمرة
 
-+ اجعل خلفية % *
++ اجعل خلفية (%) *
 - command_id: S19 ==> lang: ar ==> target: <star1> ==> value: <star2>
 
 // اجعل خلفية هذا العنصر لون فاتح عشوائى
@@ -241,5 +241,5 @@
 
 // حلى لون خط heading_title ازرق
 
-+ اجعل لون خط % *
++ اجعل لون خط (%) *
 - command_id: S20 ==> lang: ar ==> target: <star1> ==> value: <star2>

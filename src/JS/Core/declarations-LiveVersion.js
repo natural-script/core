@@ -2,11 +2,11 @@
  * Declarations Live Version
  * https://project-jste.github.io/
  *
- * Copyright 2017 Jste Team
+ * Copyright 2018 Jste Team
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-02
+ * Date: 2018-02-16
  */
 var code = $("jste").html();
 var detectedLang = franc(code, {
@@ -41,7 +41,6 @@ if (navigator.platform == 'Win32') {
 $.get("https://jste-manager.herokuapp.com/deviceForm", function (data) {
 	window.deviceForm = data;
 });
-window.isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 document.isRTL = false;
 window.corsPolicy = 'https://jste-cors-proxy.herokuapp.com/';
 window.autoCorrectionAddress = "https://jste-manager.herokuapp.com/autoCorrect"

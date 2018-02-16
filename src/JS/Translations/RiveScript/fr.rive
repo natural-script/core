@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-07
+ * Date: 2018-02-16
  */
 
 // retirer il
@@ -26,7 +26,7 @@
 
 // aller à l'url https://www.google.fr/
 
-+ (?:aller à|aller vers|visiter|ouvrir) (?:le|la|l')[ ]* %
++ (?:aller à|aller vers|visiter|ouvrir) (?:le|la|l')[ ]* (%)
 - command_id: S2 ==> lang: fr ==> targetType: <star1> ==> target: <star2>
 
 // lecture il

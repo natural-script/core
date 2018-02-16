@@ -32,7 +32,6 @@ $(function () {
                 if (document.langID == 3 || document.langID == 4) {
                     alignment = 'right';
                 }
-                console.log(emitter);
                 $('contents').append(out);
                 $('#' + emitter + '').attr('data-target', name).addClass('dropdown-button');
                 $('#' + emitter + '').dropdown({

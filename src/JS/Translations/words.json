@@ -832,7 +832,7 @@
             "en": ["from the bottom"],
             "fr": ["à partir de le fond"],
             "ar": ["من أسفل"],
-            "arz": ["من أسفل"],
+            "arz": ["من تحت"],
             "jp": ["下から"]
         },
         "attributes": {
@@ -1233,8 +1233,8 @@
         "clonedElement": {
             "en": ["cloned element"],
             "fr": ["élément clone"],
-            "ar": ["عنصر المستنسخ"],
-            "arz": ["عنصر المستنسخ"],
+            "ar": ["عنصر مستنسخ"],
+            "arz": ["عنصر مستنسخ"],
             "jp": ["クローンされた要素"]
         },
         "ltr": {
@@ -1302,9 +1302,9 @@
         },
         "email": {
             "en": ["email", "electronic mail"],
-            "fr": ["le résultat de l'expression mathématique"],
-            "ar": ["الإيميل"],
-            "arz": ["الإيميل"],
+            "fr": ["email"],
+            "ar": ["إيميل"],
+            "arz": ["إيميل"],
             "jp": ["ホーム"]
         },
         "element": {

@@ -2,11 +2,11 @@
  * Commands Evaluation
  * https://project-jste.github.io/
  *
- * Copyright 2017 Jste Team
+ * Copyright 2018 Jste Team
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2017-09-15
+ * Date: 2018-02-16
  */
 var eventSplit;
 function getTheEventCode(command) {
@@ -81,7 +81,7 @@ window.execute = async function (elementName, command, execute) {
 			pureCommand = commands[commandID];
 		}
 		if (document[getTheEventCode(pureCommand)] == 'E17') {
-			codePrefix = "if (window.isChrome) { \
+			codePrefix = "if (Modernizr.speechrecognition) { \
 				annyang.start(); \
 				var voiceCommand = window.commandsFnTranslations('c40', 'E17', pureCommand);";
 			codeSuffix = "};";

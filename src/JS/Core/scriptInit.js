@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-07
+ * Date: 2018-02-16
  */
 window.scriptInit = async function () {
 	var meta = document.createElement('meta');
@@ -18,8 +18,7 @@ window.scriptInit = async function () {
 	if (navigator.onLine) {
 		var isReachable = await window.isReachable('https://translate.google.com/');
 		if (isReachable) {
-			var codeChunks = code.match(/^(.|[\r\n]){0,5000}(,|\.)$/gmi);
-			console.log(codeChunks);
+			var codeChunks = code.match(/^(.|[\r\n]){0,3000}(,|\.)$/gmi);
 			code = '';
 			for (var i = 0; i < codeChunks.length; i++) {
 				code += '\n' + await $.ajax({
@@ -37,7 +36,7 @@ window.scriptInit = async function () {
 	var code = 'jQuery(document).ready(\nfunction ($) {\nvar ' + window.addTranslations[document.langID] + ' = $("body");' + code;
 	if (document.langID == 0) {
 		document.isRTL = false;
-		if (window.isChrome) {
+		if (Modernizr.speechrecognition) {
 			annyang.setLanguage("en-GB");
 		}
 		var i = -1;
@@ -80,7 +79,7 @@ window.scriptInit = async function () {
 		$("jste").remove();
 	} else if (document.langID == 1) {
 		document.isRTL = false;
-		if (window.isChrome) {
+		if (Modernizr.speechrecognition) {
 			annyang.setLanguage("en-US");
 		}
 		var i = -1;
@@ -123,7 +122,7 @@ window.scriptInit = async function () {
 		$("jste").remove();
 	} else if (document.langID == 2) {
 		document.isRTL = false;
-		if (window.isChrome) {
+		if (Modernizr.speechrecognition) {
 			annyang.setLanguage("fr-FR");
 		}
 		var i = -1;
@@ -131,7 +130,7 @@ window.scriptInit = async function () {
 		code = code.replace(XRegExp("^((.*?)[^,|\.])$\s", 'gmi', '$1 '));
 		code = code.replace(XRegExp("^configurez ce (site|app) (.*?) avec les propriétés suivantes:$", 'gmi'), 'ajouter.installation({\nson mode est $1,\nses attributs sont $2,');
 		code = code.replace(XRegExp("^configurez ce (site|app) avec les propriétés suivantes:$", 'gmi'), 'ajouter.installation({\nson mode est $1,');
-		code = code.replace(XRegExp("^ajouter (le|la|un|une) " + componentsRegex + " (.*?) avec les propriétés suivantes:$", 'gmi'), "ajouter['$2']({nses attributs sont $3,");
+		code = code.replace(XRegExp("^ajouter (le|la|un|une) " + componentsRegex + " (.*?) avec les propriétés suivantes:$", 'gmi'), "ajouter['$2']({\nses attributs sont $3,");
 		code = code.replace(XRegExp("^ajouter (le|la|un|une) " + componentsRegex + " avec les propriétés suivantes:$", 'gmi'), "ajouter['$2']({");
 		code = code.replace(XRegExp("^affectez les propriétés suivantes à l'élément (\\S+):$", 'gmi'), 'ajouter.cédant_des_propriétés({\nson nom est $1,');
 		code = code.replace(XRegExp("^cloner (.*?) y compris ses commandes avec les propriétés suivantes:$", 'gmi'), 'ajouter.clone0({\nson élément clone est $1,\nses attributs sont avec des commandes,');
@@ -141,13 +140,13 @@ window.scriptInit = async function () {
 			if (p2 == 'text') {
 				p4 = window.customText(p4);
 			}
-			return p2.replace(XRegExp(" ", 'gi'), "_") + ': "' + p4.replace(XRegExp('^(.*?)"(.*)$', 'gmi'), '$1\\"$2') + '",';
+			return '"' + p2 + '"' + ': "' + p4.replace(XRegExp('^(.*?)"(.*)$', 'gmi'), '$1\\"$2') + '",';
 		});
 		code = code.replace(XRegExp("^(son|sa|ses) (.*?) (est|sont) (.*)\.$", 'gmi'), function (match, p1, p2, p3, p4, offset, string) {
 			if (p2 == 'text') {
 				p4 = window.customText(p4);
 			}
-			return p2.replace(XRegExp(" ", 'gi'), "_") + ': "' + p4.replace(XRegExp('^(.*?)"(.*)$', 'gmi'), '$1\\"$2') + '"\n});';
+			return '"' + p2 + '"' + ': "' + p4.replace(XRegExp('^(.*?)"(.*)$', 'gmi'), '$1\\"$2') + '"\n});';
 		});
 		code = code.replace(XRegExp("^les commandes de l'élément (.*?) sont (.*?)\,$", 'gmi'), function (match, p1, p2, offset, string) {
 			i++;
@@ -161,7 +160,7 @@ window.scriptInit = async function () {
 	} else if (document.langID == 3) {
 		document.isRTL = true;
 		$("html").attr("dir", "rtl").attr("document.langID", "ar");
-		if (window.isChrome) {
+		if (Modernizr.speechrecognition) {
 			annyang.setLanguage("ar-AE");
 		}
 		var i = -1;
@@ -199,7 +198,7 @@ window.scriptInit = async function () {
 	} else if (document.langID == 4) {
 		document.isRTL = true;
 		$("html").attr("dir", "rtl").attr("document.langID", "ar");
-		if (window.isChrome) {
+		if (Modernizr.speechrecognition) {
 			annyang.setLanguage("ar-EG");
 		}
 		var i = -1;
@@ -236,7 +235,7 @@ window.scriptInit = async function () {
 		$("jste").remove();
 	} else if (document.langID == 5) {
 		document.isRTL = false;
-		if (window.isChrome) {
+		if (Modernizr.speechrecognition) {
 			annyang.setLanguage("ja");
 		}
 		code += '追加する= $("body");' + $("jste").html();

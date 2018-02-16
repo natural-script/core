@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-07
+ * Date: 2018-02-16
  */
 
 // remove it
@@ -26,7 +26,7 @@
 
 // open the dialog box learn_more
 
-+ (?:go to|navigate to|visit|open) the * %
++ (?:go to|navigate to|visit|open) the * (%)
 - command_id: S2 ==> lang: en ==> targetType: <star1> ==> target: <star2>
 
 // play it

@@ -2,11 +2,11 @@
  * Commands Analyzer Compilation Template
  * https://project-jste.github.io/
  *
- * Copyright 2017 Jste Team
+ * Copyright 2018 Jste Team
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-15
+ * Date: 2018-02-16
  */
 var bot = new RiveScript({
 	utf8: true,
@@ -64,7 +64,6 @@ window.analyzeCommand = function (commandRaw) {
 				// The result can be accessed through the `m`-variable.
 				z.forEach((match, matchIndex) => {
 					if (matchIndex != 0) {
-						console.log(groupIndex);
 						objectPath.set(commandAnalysed, loops[i] + '.' + mainGroupIndex + '.' + groupIndex + '.' + elements[matchIndex - 1], match);
 					}
 					if (/^.*?&&&& $/gmiy.test(match)) {

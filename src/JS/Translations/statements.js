@@ -104,7 +104,6 @@ window.evaluateStatement = function (command) {
 						return p1 + condition;
 					});
 					finalStatement = currentStatementBuildingStage;
-					console.log(finalStatement);
 					resolve(finalStatement);
 				}
 			}, 1);
@@ -197,7 +196,6 @@ window.evaluateStatement = function (command) {
 						return p1 + condition;
 					});
 					finalStatement = currentStatementBuildingStage;
-					console.log(finalStatement);
 					resolve(finalStatement);
 				}
 			}, 1);
@@ -292,7 +290,6 @@ window.evaluateStatement = function (command) {
 						return p1 + condition;
 					});
 					finalStatement = currentStatementBuildingStage;
-					console.log(finalStatement);
 					resolve(finalStatement);
 				}
 			}, 1);
@@ -389,7 +386,6 @@ window.evaluateStatement = function (command) {
 						return p1 + condition;
 					});
 					finalStatement = currentStatementBuildingStage;
-					console.log(finalStatement);
 					resolve(finalStatement);
 				}
 			}, 1);

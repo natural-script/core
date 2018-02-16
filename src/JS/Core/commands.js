@@ -6,125 +6,125 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-07
+ * Date: 2018-02-16
  */
-window.evaluateScript = function(script, event, type, commandInfo, typeOptions) {
-	var typePrefix;
-	var typeSuffix;
-	var commandVarA;
-	var commandVarB;
-	var eventPrefix;
+window.evaluateScript = function (script, event, type, commandInfo, typeOptions) {
+    var typePrefix;
+    var typeSuffix;
+    var commandVarA;
+    var commandVarB;
+    var eventPrefix;
     var eventSuffix;
-	var commandsCommonDeclarations = '';
-	var commandAvailableInfo = Object.keys(commandInfo);
-	for (var infoID = 0; infoID < commandAvailableInfo.length; infoID++) {
-		commandsCommonDeclarations += 'var ' + commandAvailableInfo[infoID] + ' = "' + commandInfo[commandAvailableInfo[infoID]] + '";\nvar script = ' + JSON.stringify(script) + ';';
-	}
-	if (event == 'E0') {
-		eventPrefix = "";
-		eventSuffix = "";
-	} else if (event == 'E1') {
-		eventPrefix = "$('#' + elementName + '').on('tap', function (event) {";
-		eventSuffix = "});";
-	} else if (event == 'E2') {
-		eventPrefix = "$('#' + elementName + '').mouseenter(function (event) {";
-		eventSuffix = "});";
-	} else if (event == 'E3') {
-		eventPrefix = "$('#' + elementName + '').mouseleave(function (event) {";
-		eventSuffix = "});";
-	} else if (event == 'E4') {
-		eventPrefix = "$('#' + elementName + '').mouseout(function (event) {";
-		eventSuffix = "});";
-	} else if (event == 'E5') {
-		eventPrefix = "$('#' + elementName + '').mousemove(function (event) {";
-		eventSuffix = "});";
-	} else if (event == 'E6') {
-		eventPrefix = "$('#' + elementName + '').on('up', function (event) {";
-		eventSuffix = "});";
-	} else if (event == 'E7') {
-		eventPrefix = "$('#' + elementName + '').dblclick(function (event) {";
-		eventSuffix = "});";
-	} else if (event == 'E8') {
-		eventPrefix = "$('#' + elementName + '').contextmenu(function (event) {";
-		eventSuffix = "});";
-	} else if (event == 'E9') {
-		eventPrefix = "$('#' + elementName + '').keypress(function (event) {";
-		eventSuffix = "});";
-	} else if (event == 'E10') {
-		eventPrefix = "$('#' + elementName + '').keydown(function (event) {";
-		eventSuffix = "});";
-	} else if (event == 'E11') {
-		eventPrefix = "$('#' + elementName + '').change(function (event) {";
-		eventSuffix = "});";
-	} else if (event == 'E12') {
-		eventPrefix = "$('#' + elementName + '').focus(function (event) {";
-		eventSuffix = "});";
-	} else if (event == 'E13') {
-		eventPrefix = "$('#' + elementName + '').focusin(function (event) {";
-		eventSuffix = "});";
-	} else if (event == 'E14') {
-		eventPrefix = "$('#' + elementName + '').focusout(function (event) {";
-		eventSuffix = "});";
-	} else if (event == 'E15') {
-		eventPrefix = "$('#' + elementName + '').submit(function (event) {";
-		eventSuffix = "});";
-	} else if (event == 'E16') {
-		eventPrefix = "$('#' + elementName + '').scroll(function (event) {";
-		eventSuffix = "});";
-	} else if (event == 'E17') {
-		eventPrefix = "annyang.addCommands({ [voiceCommand]: function (event) {";
-		eventSuffix = "}});";
-	} else if (event == 'E18') {
-		eventPrefix = "$('#' + elementName + '').visibilityChanged({ callback: function (element, visible) { if (visible == true) {";
-		eventSuffix = "}}, runOnLoad: false, frequency: 100});";
-	} else if (event == 'E19') {
-		eventPrefix = "$('#' + elementName + '').visibilityChanged({ callback: function (element, visible) { if (visible == false) {";
-		eventSuffix = "}}, runOnLoad: false, frequency: 100});";
-	}
-	if (type == 'T0') {
-		typePrefix = "";
-		typeSuffix = "";
-		if (event == 'E17') {
-			commandVarA = "pureCommand, voiceCommand";
-		} else {
-			commandVarA = "pureCommand";
-		}
-		commandVarB = "pureCommand";
-	} else if (type == 'T1') {
-		typePrefix = "setTimeout(function () {";
-		typeSuffix = "}, timeoutPeriod);";
-		if (event == 'E17') {
-			commandVarA = "pureCommand, voiceCommand";
-		} else {
-			commandVarA = "pureCommand";
-		}
-		commandVarB = "pureCommand";
-	} else if (type == 'T2') {
-		typePrefix = "setInterval(function () {";
-		typeSuffix = "}, intervalPeriod);";
-		if (event == 'E17') {
-			commandVarA = "pureCommand, voiceCommand";
-		} else {
-			commandVarA = "pureCommand";
-		}
-		commandVarB = "pureCommand";
-	} else if (type == 'T3') {
-		typePrefix = "if (" + typeOptions.primaryCondition + ") {";
-		typeSuffix = "}";
-		if (typeOptions.secondryConditions) {
-			for (var conditionID = 0; conditionID < typeOptions.secondryConditions.length; conditionID++) {
-				typeSuffix += " else if (" + typeOptions.secondryConditions[conditionID].condition + ") { " + typeOptions.secondryConditions[conditionID].command + "}";
-			}
-		}
-		if (event == 'E17') {
-			commandVarA = "pureCommand, voiceCommand";
-		} else {
-			commandVarA = "pureCommand";
-		}
-		commandVarB = "pureCommand";
-	}
-	if (script.command_id == 'S1') {
-		return "(function () { \
+    var commandsCommonDeclarations = '';
+    var commandAvailableInfo = Object.keys(commandInfo);
+    for (var infoID = 0; infoID < commandAvailableInfo.length; infoID++) {
+        commandsCommonDeclarations += 'var ' + commandAvailableInfo[infoID] + ' = "' + commandInfo[commandAvailableInfo[infoID]] + '";\nvar script = ' + JSON.stringify(script) + ';';
+    }
+    if (event == 'E0') {
+        eventPrefix = "";
+        eventSuffix = "";
+    } else if (event == 'E1') {
+        eventPrefix = "$('#' + elementName + '').on('tap', function (event) {";
+        eventSuffix = "});";
+    } else if (event == 'E2') {
+        eventPrefix = "$('#' + elementName + '').mouseenter(function (event) {";
+        eventSuffix = "});";
+    } else if (event == 'E3') {
+        eventPrefix = "$('#' + elementName + '').mouseleave(function (event) {";
+        eventSuffix = "});";
+    } else if (event == 'E4') {
+        eventPrefix = "$('#' + elementName + '').mouseout(function (event) {";
+        eventSuffix = "});";
+    } else if (event == 'E5') {
+        eventPrefix = "$('#' + elementName + '').mousemove(function (event) {";
+        eventSuffix = "});";
+    } else if (event == 'E6') {
+        eventPrefix = "$('#' + elementName + '').on('up', function (event) {";
+        eventSuffix = "});";
+    } else if (event == 'E7') {
+        eventPrefix = "$('#' + elementName + '').dblclick(function (event) {";
+        eventSuffix = "});";
+    } else if (event == 'E8') {
+        eventPrefix = "$('#' + elementName + '').contextmenu(function (event) {";
+        eventSuffix = "});";
+    } else if (event == 'E9') {
+        eventPrefix = "$('#' + elementName + '').keypress(function (event) {";
+        eventSuffix = "});";
+    } else if (event == 'E10') {
+        eventPrefix = "$('#' + elementName + '').keydown(function (event) {";
+        eventSuffix = "});";
+    } else if (event == 'E11') {
+        eventPrefix = "$('#' + elementName + '').change(function (event) {";
+        eventSuffix = "});";
+    } else if (event == 'E12') {
+        eventPrefix = "$('#' + elementName + '').focus(function (event) {";
+        eventSuffix = "});";
+    } else if (event == 'E13') {
+        eventPrefix = "$('#' + elementName + '').focusin(function (event) {";
+        eventSuffix = "});";
+    } else if (event == 'E14') {
+        eventPrefix = "$('#' + elementName + '').focusout(function (event) {";
+        eventSuffix = "});";
+    } else if (event == 'E15') {
+        eventPrefix = "$('#' + elementName + '').submit(function (event) {";
+        eventSuffix = "});";
+    } else if (event == 'E16') {
+        eventPrefix = "$('#' + elementName + '').scroll(function (event) {";
+        eventSuffix = "});";
+    } else if (event == 'E17') {
+        eventPrefix = "annyang.addCommands({ [voiceCommand]: function (event) {";
+        eventSuffix = "}});";
+    } else if (event == 'E18') {
+        eventPrefix = "$('#' + elementName + '').visibilityChanged({ callback: function (element, visible) { if (visible == true) {";
+        eventSuffix = "}}, runOnLoad: false, frequency: 100});";
+    } else if (event == 'E19') {
+        eventPrefix = "$('#' + elementName + '').visibilityChanged({ callback: function (element, visible) { if (visible == false) {";
+        eventSuffix = "}}, runOnLoad: false, frequency: 100});";
+    }
+    if (type == 'T0') {
+        typePrefix = "";
+        typeSuffix = "";
+        if (event == 'E17') {
+            commandVarA = "pureCommand, voiceCommand";
+        } else {
+            commandVarA = "pureCommand";
+        }
+        commandVarB = "pureCommand";
+    } else if (type == 'T1') {
+        typePrefix = "setTimeout(function () {";
+        typeSuffix = "}, timeoutPeriod);";
+        if (event == 'E17') {
+            commandVarA = "pureCommand, voiceCommand";
+        } else {
+            commandVarA = "pureCommand";
+        }
+        commandVarB = "pureCommand";
+    } else if (type == 'T2') {
+        typePrefix = "setInterval(function () {";
+        typeSuffix = "}, intervalPeriod);";
+        if (event == 'E17') {
+            commandVarA = "pureCommand, voiceCommand";
+        } else {
+            commandVarA = "pureCommand";
+        }
+        commandVarB = "pureCommand";
+    } else if (type == 'T3') {
+        typePrefix = "if (" + typeOptions.primaryCondition + ") {";
+        typeSuffix = "}";
+        if (typeOptions.secondryConditions) {
+            for (var conditionID = 0; conditionID < typeOptions.secondryConditions.length; conditionID++) {
+                typeSuffix += " else if (" + typeOptions.secondryConditions[conditionID].condition + ") { " + typeOptions.secondryConditions[conditionID].command + "}";
+            }
+        }
+        if (event == 'E17') {
+            commandVarA = "pureCommand, voiceCommand";
+        } else {
+            commandVarA = "pureCommand";
+        }
+        commandVarB = "pureCommand";
+    }
+    if (script.command_id == 'S1') {
+        return "(function () { \
             " + commandsCommonDeclarations + " \
             var targetElement; \
             var target = script.target; \
@@ -137,12 +137,11 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
             $('#' + targetElement + '').remove(); \
             " + typeSuffix + eventSuffix + " \
             })();";
-	} else if (script.command_id == 'S2') {
-		return "(function (" + commandVarB + ") { \
+    } else if (script.command_id == 'S2') {
+        return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
 				$('#' + elementName + '').css('cursor', 'pointer'); \
                 " + eventPrefix + typePrefix + " \
-                console.log(script.targetType); \
                     var hyperlinkType = script.targetType.punctuationAndArticleRemover(); \
                     var hyperlink = decodeURI(script.target); \
                     event.preventDefault(); \
@@ -162,8 +161,8 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
                     } \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-	} else if (script.command_id == 'S3') {
-		return "(function () { \
+    } else if (script.command_id == 'S3') {
+        return "(function () { \
             " + commandsCommonDeclarations + " \
             var targetElement; \
             var target = script.target; \
@@ -179,8 +178,8 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
 			document.getElementById(targetElement).play(); \
 		  } \
               " + typeSuffix + eventSuffix + "})();";
-	} else if (script.command_id == 'S4') {
-		return "(function () { \
+    } else if (script.command_id == 'S4') {
+        return "(function () { \
             " + commandsCommonDeclarations + " \
             var targetElement; \
             var target = script.target; \
@@ -196,8 +195,8 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
 				document.getElementById(targetElement).pause(); \
 			  } \
                 " + typeSuffix + eventSuffix + "})();";
-	} else if (script.command_id == 'S5') {
-		return "(function () { \
+    } else if (script.command_id == 'S5') {
+        return "(function () { \
             " + commandsCommonDeclarations + " \
             var targetElement; \
             var target = script.target; \
@@ -217,8 +216,8 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
 					  } \
                         " + typeSuffix + eventSuffix + " \
                     })();";
-	} else if (script.command_id == 'S6') {
-		return "(function () { \
+    } else if (script.command_id == 'S6') {
+        return "(function () { \
             " + commandsCommonDeclarations + " \
                     var targetElement; \
                     var target = script.target; \
@@ -228,12 +227,11 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
                         targetElement = target; \
                     } \
 					" + eventPrefix + typePrefix + " \
-                    console.log(targetElement + ' ' + script.value.parseValue()); \
                         window.elementValue.set(targetElement, script.value.parseValue()); \
                         " + typeSuffix + eventSuffix + " \
                     })();";
-	} else if (script.command_id == 'S7') {
-		return "(function (" + commandVarB + ") { \
+    } else if (script.command_id == 'S7') {
+        return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
                 window.plugins.flashlight.available(function(isAvailable) { \
@@ -245,8 +243,8 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
                 }); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-	} else if (script.command_id == 'S8') {
-		return "(function (" + commandVarB + ") { \
+    } else if (script.command_id == 'S8') {
+        return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
                 window.plugins.flashlight.available(function(isAvailable) { \
@@ -258,8 +256,8 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
                 }); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-	} else if (script.command_id == 'S9') {
-		return "(function (" + commandVarB + ") { \
+    } else if (script.command_id == 'S9') {
+        return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
                 window.plugins.flashlight.available(function(isAvailable) { \
@@ -271,44 +269,44 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
                 }); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-	} else if (script.command_id == 'S10') {
-		return "(function (" + commandVarB + ") { \
+    } else if (script.command_id == 'S10') {
+        return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
                 WifiWizard.setWifiEnabled(enabled, win, fail); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-	} else if (script.command_id == 'S11') {
-		return "(function (" + commandVarB + ") { \
+    } else if (script.command_id == 'S11') {
+        return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
                 WifiWizard.setWifiEnabled(false, win, fail); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-	} else if (script.command_id == 'S12') {
-		return "(function (" + commandVarB + ") { \
+    } else if (script.command_id == 'S12') {
+        return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
                 cordova.plugins.BluetoothStatus.initPlugin(); \
                 cordova.plugins.BluetoothStatus.promptForBT(); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-	} else if (script.command_id == 'S13') {
-		return "(function (" + commandVarB + ") { \
+    } else if (script.command_id == 'S13') {
+        return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
                 Keyboard.show(); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-	} else if (script.command_id == 'S14') {
-		return "(function (" + commandVarB + ") { \
+    } else if (script.command_id == 'S14') {
+        return "(function (" + commandVarB + ") { \
             " + commandsCommonDeclarations + " \
                 " + eventPrefix + typePrefix + " \
                 Keyboard.hide(); \
                     " + typeSuffix + eventSuffix + " \
             })(" + commandVarB + ");";
-	} else if (script.command_id == 'S15') {
-		return "(function () { \
+    } else if (script.command_id == 'S15') {
+        return "(function () { \
             " + commandsCommonDeclarations + " \
                 var dbType = script.dbType; \
                 var dbname = script.dbName; \
@@ -332,8 +330,8 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
                         firebase.database().ref('private/' + window.user.uid + '/' + dbname + '/' + tablename + '/' + newPostKey).set(data); \
                     } \
                     " + typeSuffix + eventSuffix + "})();";
-	} else if (script.command_id == 'S16') {
-		return "(function () { \
+    } else if (script.command_id == 'S16') {
+        return "(function () { \
             " + commandsCommonDeclarations + " \
             var dbType = script.dbType; \
             var dbname = script.dbName; \
@@ -367,8 +365,8 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
                     }; \
                 " + eventSuffix + typeSuffix + " \
             })(" + commandVarB + ");})();";
-	} else if (script.command_id == 'S17') {
-		return "(function () { \
+    } else if (script.command_id == 'S17') {
+        return "(function () { \
             " + commandsCommonDeclarations + " \
             var targetElement; \
             var target = script.target; \
@@ -381,8 +379,8 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
 					    window.setDimension(targetElement, 'width', value.parseValue()); \
                         " + typeSuffix + eventSuffix + " \
                     })()";
-	} else if (script.command_id == 'S18') {
-		return "(function () { \
+    } else if (script.command_id == 'S18') {
+        return "(function () { \
             " + commandsCommonDeclarations + " \
             var targetElement; \
             var target = script.target; \
@@ -395,8 +393,8 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
 					    window.setDimension(targetElement, 'length', value.parseValue()); \
                         " + typeSuffix + eventSuffix + " \
                     })()";
-	} else if (script.command_id == 'S19') {
-		return "(function () { \
+    } else if (script.command_id == 'S19') {
+        return "(function () { \
             " + commandsCommonDeclarations + " \
             var targetElement; \
             var target = script.target; \
@@ -409,8 +407,8 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
 					    window.setBG(targetElement, value.parseValue()); \
                         " + typeSuffix + eventSuffix + " \
                     })()";
-	} else if (script.command_id == 'S20') {
-		return "(function () { \
+    } else if (script.command_id == 'S20') {
+        return "(function () { \
             " + commandsCommonDeclarations + " \
             var targetElement; \
             var target = script.target; \
@@ -423,5 +421,5 @@ window.evaluateScript = function(script, event, type, commandInfo, typeOptions) 
 					    window.setFontColour(targetElement, value.parseValue()); \
                         " + typeSuffix + eventSuffix + " \
                     })()";
-	}
+    }
 }

@@ -2,17 +2,20 @@
  * Page
  * https://project-jste.github.io/
  *
- * Copyright 2017 Jste Team
+ * Copyright 2018 Jste Team
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-05
+ * Date: 2018-02-16
  */
 $(function () {
     function pageFn(el, settings) {
         el.each(function () {
             $('contents').append('<page id="' + elementSettingsAnalyze(settings, 'name') + '" style="display: none;"></page>');
             var currentPageRaw = window.getAllUrlParams().page || window.indexPageTranslations[document.langID];
+            if (currentPageRaw == window.indexPageTranslations[document.langID]) {
+                window.setURLParameter('page', window.indexPageTranslations[document.langID]);
+            }
             var currentPage = decodeURIComponent(currentPageRaw);
             $('#' + currentPage + '').fadeIn(500);
             $('title').html(currentPage.replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
