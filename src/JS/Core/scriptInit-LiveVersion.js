@@ -18,7 +18,7 @@ window.scriptInit = async function () {
 	if (navigator.onLine) {
 		var isReachable = await window.isReachable('https://jste-manager.herokuapp.com/autoCorrect');
 		if (isReachable) {
-			var codeChunks = code.match(/^(.|[\r\n]){0,5000}(,|\.)$/gmi);
+			var codeChunks = code.match(/^(.|[\r\n]){0,3000}(,|\.)$/gmi);
 			code = '';
 			for (var i = 0; i < codeChunks.length; i++) {
 				code += '\n' + await $.ajax({
