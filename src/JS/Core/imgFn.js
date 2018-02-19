@@ -5,19 +5,17 @@ function showImageA(name, URLID, source) {
 	var nudity = $('#' + name + '').attr('nude');
 	var fx = $('#' + name + '').attr('fx');
 	if (typeof nudity !== typeof undefined && nudity !== false) {
-		$.get("http://" + window.localAddress + ":5050/childModeStatus", function (data) {
-			if (data == 'off') {
+			if (window.childModeStatus == 'off') {
 				if ($('#showImage_' + name + '_containerA').length > 0) {
 					window.fadeOut('showImage_' + name + '_containerA');
 				}
 				window.fadeIn('showImage_' + name + '_containerB');
-			} else if (data == 'on') {
+			} else if (window.childModeStatus == 'on') {
 				if ($('#showImage_' + name + '_containerA').length > 0) {
 					window.fadeOut('showImage_' + name + '_containerA');
 				}
 				window.fadeIn('showImage_' + name + '_containerD');
 			}
-		});
 	} else {
 		window.requestBLOB(source, URLID, function (BLOBURL) {
 			$('#' + name + '').attr('src', BLOBURL);

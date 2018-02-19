@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-16
+ * Date: 2018-02-19
  */
 var code = $("jste").html();
 var detectedLang = franc(code, {
@@ -40,6 +40,12 @@ if (navigator.platform == 'Win32') {
 }
 $.get("http://" + window.localAddress + ":5050/deviceForm", function (data) {
 	window.deviceForm = data;
+});
+$.get("http://" + window.localAddress + ":5050/childModeStatus", function (data) {
+	window.childModeStatus == data;
+});
+$.get("http://" + window.localAddress + ":5050/nudityDetectionStatus", function (data) {
+	window.nudityDetectionStatus == data;
 });
 document.isRTL = false;
 window.corsPolicy = 'http://' + window.localAddress + ':6060/';
