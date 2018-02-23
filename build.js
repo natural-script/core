@@ -211,10 +211,9 @@ function startBuild() {
         shell.cd('../manager-phone/src');
         console.log(' ');
         console.log(' Updating framework file ');
-        shell.cp('-Rf', '../../framework/build/compressed/framework.min.html', 'www/jxcore/assets');
+        shell.cp('-Rf', '../../framework/build/minified/framework.min.html', 'www/jxcore/assets');
         console.log(' ');
         console.log(' Starting building Jste Manager phone version ');
-        shell.exec('cordova clean');
         shell.exec('cordova build');
         shell.cd('../');
         shell.cp('-Rf', 'src/platforms/android/build/outputs/apk/debug/android-debug.apk', 'build');
@@ -261,7 +260,7 @@ figlet('JSTE FRAMEWORK', function (err, data) {
                             message: 'Please enter your GitHub password '
                         }
                     ]).then(git_info => {
-                        global.gitURLPrefix = 'https://' + git_info.username + ':' + git_info.username + '@github.com/project-jste';
+                        global.gitURLPrefix = 'https://' + git_info.git_username + ':' + git_info.git_password + '@github.com/project-jste';
                         global.commitMessage = git_info.commit_message;
                         startBuild();
                     })
