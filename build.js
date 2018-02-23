@@ -167,7 +167,7 @@ function startBuild() {
         shell.cd('../manager');
         console.log(' ');
         console.log(' Updating framework file ');
-        fs.writeFile('src/assets/framework.min.html.gz', fs.readFile('../framework/build/compressed/framework.min.html.gz'));
+        shell.cp('../framework/build/minified/framework.min.html', 'src/assets');
         console.log(' ');
         console.log(' Starting building Jste Manager ');
         shell.exec('node build');
