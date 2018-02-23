@@ -167,7 +167,7 @@ function startBuild() {
         shell.cd('../manager');
         console.log(' ');
         console.log(' Updating framework file ');
-        shell.cp('-Rf', '../framework/build/compressed/framework.min.html.gz', 'src/assets');
+        shell.cp('../framework/build/compressed/framework.min.html.gz', 'src/assets');
         console.log(' ');
         console.log(' Starting building Jste Manager ');
         shell.exec('node build');
@@ -189,7 +189,7 @@ function startBuild() {
         shell.cd('../manager-heroku');
         console.log(' ');
         console.log(' Updating framework file ');
-        shell.cp('-Rf', '../framework/build/compressed/framework-LiveVersion.min.html.gz', '../framework/build/compressed/db-manager.min.html.gz', 'assets');
+        shell.cp(['../framework/build/compressed/framework-LiveVersion.min.html.gz', '../framework/build/compressed/db-manager.min.html.gz'], 'assets');
         if (global.gitURLPrefix) {
             console.log(' ');
             console.log(' Updating the index ');
@@ -211,12 +211,12 @@ function startBuild() {
         shell.cd('../manager-phone/src');
         console.log(' ');
         console.log(' Updating framework file ');
-        shell.cp('-Rf', '../../framework/build/minified/framework.min.html', 'www/jxcore/assets');
+        shell.cp('../../framework/build/minified/framework.min.html', 'www/jxcore/assets');
         console.log(' ');
         console.log(' Starting building Jste Manager phone version ');
         shell.exec('cordova build');
         shell.cd('../');
-        shell.cp('-Rf', 'src/platforms/android/build/outputs/apk/debug/android-debug.apk', 'build');
+        shell.cp('src/platforms/android/build/outputs/apk/debug/android-debug.apk', 'build');
         if (global.gitURLPrefix) {
             console.log(' ');
             console.log(' Updating the index ');
