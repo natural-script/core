@@ -166,7 +166,7 @@ function startBuild() {
         shell.cd('../manager');
         console.log(' ');
         console.log(' Updating framework file ');
-        fse.copySync(path.resolve('..') + '/framework/build/compressed/framework.min.html.gz', path.resolve('.') + '/src/assets');
+        fse.copySync(path.resolve('..') + '/framework/build/compressed/framework.min.html.gz', path.resolve('.') + '/src/assets/framework.min.html.gz');
         console.log(' ');
         console.log(' Starting building Jste Manager ');
         shell.exec('node build');
@@ -188,8 +188,8 @@ function startBuild() {
         shell.cd('../manager-heroku');
         console.log(' ');
         console.log(' Updating framework file ');
-        fse.copySync(path.resolve('..') + '/framework/build/compressed/framework-LiveVersion.min.html.gz', path.resolve('.') + '/assets');
-        fse.copySync(path.resolve('..') + '/framework/build/compressed/db-manager.min.html.gz', path.resolve('.') + '/assets');
+        fse.copySync(path.resolve('..') + '/framework/build/compressed/framework-LiveVersion.min.html.gz', path.resolve('.') + '/assets/framework-LiveVersion.min.html.gz');
+        fse.copySync(path.resolve('..') + '/framework/build/compressed/db-manager.min.html.gz', path.resolve('.') + '/assets/db-manager.min.html.gz');
         if (global.gitURLPrefix) {
             console.log(' ');
             console.log(' Updating the index ');
@@ -211,7 +211,7 @@ function startBuild() {
         shell.cd('../manager-phone/src');
         console.log(' ');
         console.log(' Updating framework file ');
-        fse.copySync(path.resolve('../..') + '/framework/build/minified/framework.min.html', path.resolve('.') + '/www/jxcore/assets');
+        fse.copySync(path.resolve('../..') + '/framework/build/minified/framework.min.html', path.resolve('.') + '/www/jxcore/assets/framework.min.html');
         console.log(' ');
         console.log(' Starting building Jste Manager phone version ');
         shell.exec('cordova build');
