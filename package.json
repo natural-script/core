@@ -15,7 +15,8 @@
     "datauri",
     "shelljs",
     "replace",
-    "fs-extra"
+    "fs-extra",
+    "inquirer"
   ],
   "repository": {
     "type": "git",

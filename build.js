@@ -1,5 +1,6 @@
 const fse = require('fs-extra');
 const os = require('os');
+const inquirer = require('inquirer');
 const crypto = require('crypto')
 const zlib = require('zlib');
 const fs = require('fs');
@@ -11,25 +12,24 @@ const Datauri = require('datauri').sync;
 const absolutePath = path.resolve(".");
 const algorithm = 'sha1';
 
-figlet('JSTE FRAMEWORK', function (err, data) {
-    console.log(data);
-    console.log(' Preparing For Building Jste Framework ');
-    shell.rm('-rf', 'temp');
-    shell.mkdir('temp');
-    shell.ln('-sf', absolutePath + '/src', 'temp/src');
+function startBuild() {
+    console.log(' Preparing for building Jste Framework ');
+    shell.rm('-rf', 'tmp');
+    shell.mkdir('tmp');
+    shell.ln('-sf', absolutePath + '/src', 'tmp/src');
     shell.cd('build');
     shell.rm('-rf', '*');
     shell.mkdir('minified', 'compressed');
-    fse.copySync(absolutePath + '/src/JS/Core/analyzeCommand-CompilationTemplate.js', absolutePath + '/temp/analyzeCommand-Compiled.js');
-    fse.copySync(absolutePath + '/src/JS/Core/wordsTranslationsInit-CompilationTemplate.js', absolutePath + '/temp/wordsTranslationsInit-Compiled.js');
-    fse.copySync(absolutePath + '/src/Res.html', absolutePath + '/temp/Res.html');
-    fse.copySync(absolutePath + '/src/Res-LiveVersion.html', absolutePath + '/temp/Res-LiveVersion.html');
+    fse.copySync(absolutePath + '/src/JS/Core/analyzeCommand-CompilationTemplate.js', absolutePath + '/tmp/analyzeCommand-Compiled.js');
+    fse.copySync(absolutePath + '/src/JS/Core/wordsTranslationsInit-CompilationTemplate.js', absolutePath + '/tmp/wordsTranslationsInit-Compiled.js');
+    fse.copySync(absolutePath + '/src/Res.html', absolutePath + '/tmp/Res.html');
+    fse.copySync(absolutePath + '/src/Res-LiveVersion.html', absolutePath + '/tmp/Res-LiveVersion.html');
     var langCodes = ['en', 'fr', 'ar', 'arz'];
     for (var i = 0; i < langCodes.length; i++) {
         replace({
             regex: langCodes[i].toUpperCase() + "_RIVESCRIPT",
             replacement: Datauri(absolutePath + '/src/JS/Translations/RiveScript/' + langCodes[i] + '.rive'),
-            paths: [absolutePath + '/temp/analyzeCommand-Compiled.js'],
+            paths: [absolutePath + '/tmp/analyzeCommand-Compiled.js'],
             recursive: true,
             silent: true,
         });
@@ -37,35 +37,35 @@ figlet('JSTE FRAMEWORK', function (err, data) {
     replace({
         regex: "DICTIONARY_URL",
         replacement: Datauri(absolutePath + '/src/JS/Translations/words.json'),
-        paths: [absolutePath + '/temp/wordsTranslationsInit-Compiled.js'],
+        paths: [absolutePath + '/tmp/wordsTranslationsInit-Compiled.js'],
         recursive: true,
         silent: true
     });
     replace({
         regex: 'src="(?!http)',
         replacement: 'src="src/',
-        paths: [absolutePath + '/temp/Res.html', absolutePath + '/temp/Res-LiveVersion.html'],
+        paths: [absolutePath + '/tmp/Res.html', absolutePath + '/tmp/Res-LiveVersion.html'],
         recursive: true,
         silent: true
     });
     replace({
         regex: 'href="(?!http)',
         replacement: 'href="src/',
-        paths: [absolutePath + '/temp/Res.html', absolutePath + '/temp/Res-LiveVersion.html'],
+        paths: [absolutePath + '/tmp/Res.html', absolutePath + '/tmp/Res-LiveVersion.html'],
         recursive: true,
         silent: true
     });
     replace({
         regex: 'src/JS/Core/wordsTranslationsInit\.js',
         replacement: 'wordsTranslationsInit-Compiled.js',
-        paths: [absolutePath + '/temp/Res.html', absolutePath + '/temp/Res-LiveVersion.html'],
+        paths: [absolutePath + '/tmp/Res.html', absolutePath + '/tmp/Res-LiveVersion.html'],
         recursive: true,
         silent: true
     });
     replace({
         regex: 'src/JS/Core/analyzeCommand\.js',
         replacement: 'analyzeCommand-Compiled.js',
-        paths: [absolutePath + '/temp/Res.html', absolutePath + '/temp/Res-LiveVersion.html'],
+        paths: [absolutePath + '/tmp/Res.html', absolutePath + '/tmp/Res-LiveVersion.html'],
         recursive: true,
         silent: true
     });
@@ -74,7 +74,7 @@ figlet('JSTE FRAMEWORK', function (err, data) {
     var frameworkMinifiedFileInfo = {};
     var frameworkCompressedFileInfo = {};
     console.log(' Bundling the framework files into one HTML file ');
-    shell.exec('polymer-bundler -r ' + absolutePath + '/temp Res.html  --strip-comments --inline-scripts --inline-css --rewrite-urls-in-templates > framework.html');
+    shell.exec('polymer-bundler -r ' + absolutePath + '/tmp Res.html  --strip-comments --inline-scripts --inline-css --rewrite-urls-in-templates > framework.html');
     console.log(' Minifying the framework bundled file ');
     shell.exec('html-minifier framework.html --remove-comments --minify-css --minify-js --remove-comments --use-short-doctype > minified/framework.min.html');
     frameworkMinifiedFileInfo.size = fs.statSync('minified/framework.min.html').size;
@@ -101,7 +101,7 @@ figlet('JSTE FRAMEWORK', function (err, data) {
     var frameworkLiveVersionMinifiedFileInfo = {};
     var frameworkLiveVersionCompressedFileInfo = {};
     console.log(' Bundling the framework files into one HTML file ');
-    shell.exec('polymer-bundler -r ' + absolutePath + '/temp Res-LiveVersion.html  --strip-comments --inline-scripts --inline-css --rewrite-urls-in-templates > framework-LiveVersion.html');
+    shell.exec('polymer-bundler -r ' + absolutePath + '/tmp Res-LiveVersion.html  --strip-comments --inline-scripts --inline-css --rewrite-urls-in-templates > framework-LiveVersion.html');
     console.log(' Minifying the framework bundled file ');
     shell.exec('html-minifier framework-LiveVersion.html --remove-comments --minify-css --minify-js --remove-comments --use-short-doctype > minified/framework-LiveVersion.min.html');
     frameworkLiveVersionMinifiedFileInfo.size = fs.statSync('minified/framework-LiveVersion.min.html').size;
@@ -149,5 +149,124 @@ figlet('JSTE FRAMEWORK', function (err, data) {
     fs.writeFileSync('compressed/db-manager.info.json', JSON.stringify(dbManagerCompressedFileInfo));
     console.log(' The BLOB DB Manager for Jste Framework Live Version has been built properly ;) ');
     shell.cd('../');
-    shell.rm('-rf', 'temp');
+    shell.rm('-rf', 'tmp');
+    if (global.gitURLPrefix) {
+        console.log(' ');
+        console.log(' Updating the index ');
+        shell.exec('git add .');
+        console.log(' ');
+        console.log(' Recording the change to the local repo ');
+        shell.exec('git commit -m "' + global.commitMessage + '"');
+        console.log(' ');
+        console.log(' Pushing the updates to GitHub ');
+        shell.exec('git push ' + gitURLPrefix + 'framework.git master');
+    }
+    if (shell.test('-d', '../manager')) {
+        console.log(' ');
+        console.log(' Preparing for building Jste Manager ');
+        shell.cd('../manager');
+        console.log(' ');
+        console.log(' Updating framework file ');
+        shell.cp('-Rf', '../framework/build/compressed/framework.min.html.gz', 'src/assets');
+        console.log(' ');
+        console.log(' Starting building Jste Manager ');
+        shell.exec('node build');
+        if (global.gitURLPrefix) {
+            console.log(' ');
+            console.log(' Updating the index ');
+            shell.exec('git add .');
+            console.log(' ');
+            console.log(' Recording the change to the local repo ');
+            shell.exec('git commit -m "Updating Framework Files"');
+            console.log(' ');
+            console.log(' Pushing the updates to GitHub ');
+            shell.exec('git push ' + gitURLPrefix + 'manager.git master');
+        }
+    }
+    if (shell.test('-d', '../manager-heroku')) {
+        console.log(' ');
+        console.log(' Preparing for building Jste Manager Heroku version ');
+        shell.cd('../manager-heroku');
+        console.log(' ');
+        console.log(' Updating framework file ');
+        shell.cp('-Rf', ['../framework/build/compressed/framework-LiveVersion.min.html.gz', '../framework/build/compressed/db-manager.min.html.gz'], 'assets');
+        if (global.gitURLPrefix) {
+            console.log(' ');
+            console.log(' Updating the index ');
+            shell.exec('git add .');
+            console.log(' ');
+            console.log(' Recording the change to the local repo ');
+            shell.exec('git commit -m "Updating Framework Files"');
+            console.log(' ');
+            console.log(' Pushing the updates to GitHub ');
+            shell.exec('git push ' + gitURLPrefix + 'manager-heroku.git master');
+            console.log(' ');
+            console.log(' Pushing the updates to Heroku ');
+            shell.exec('git push heroku master');
+        }
+    }
+    if (shell.test('-d', '../manager-phone')) {
+        console.log(' ');
+        console.log(' Preparing for building Jste Manager phone version ');
+        shell.cd('../manager-phone/src');
+        console.log(' ');
+        console.log(' Updating framework file ');
+        shell.cp('-Rf', '../../framework/build/compressed/framework.min.html', 'www/jxcore/assets');
+        console.log(' ');
+        console.log(' Starting building Jste Manager phone version ');
+        shell.exec('cordova clean');
+        shell.exec('cordova build');
+        shell.cd('../');
+        shell.cp('-Rf', 'src/platforms/android/build/outputs/apk/debug/android-debug.apk', 'build');
+        if (global.gitURLPrefix) {
+            console.log(' ');
+            console.log(' Updating the index ');
+            shell.exec('git add .');
+            console.log(' ');
+            console.log(' Recording the change to the local repo ');
+            shell.exec('git commit -m "Updating Framework Files"');
+            console.log(' ');
+            console.log(' Pushing the updates to GitHub ');
+            shell.exec('git push ' + gitURLPrefix + 'manager-phone.git master');
+        }
+    }
+}
+
+figlet('JSTE FRAMEWORK', function (err, data) {
+    console.log(data);
+    console.log('');
+    console.log(' Welcome to Jste Framework builder :) ')
+    inquirer
+        .prompt([{
+            type: 'confirm',
+            name: 'deploy',
+            message: 'Do you want to deploy this build ?'
+        }])
+        .then(options => {
+            if (options.deploy == true) {
+                inquirer
+                    .prompt([{
+                        type: 'input',
+                        name: 'commit_message',
+                        message: 'Please enter the commit message '
+                    },{
+                            type: 'input',
+                            name: 'git_username',
+                            message: 'Please enter your GitHub username '
+                        },
+                        {
+                            type: 'password',
+                            name: 'git_password',
+                            mask: '*',
+                            message: 'Please enter your GitHub password '
+                        }
+                    ]).then(git_info => {
+                        global.gitURLPrefix = 'https://' + git_info.username + ':' + git_info.username + '@github.com/project-jste';
+                        global.commitMessage = git_info.commit_message;
+                        startBuild();
+                    })
+            } else {
+                startBuild();
+            }
+        });
 });
