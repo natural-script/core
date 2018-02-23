@@ -260,7 +260,7 @@ figlet('JSTE FRAMEWORK', function (err, data) {
                             message: 'Please enter your GitHub password '
                         }
                     ]).then(git_info => {
-                        global.gitURLPrefix = 'https://' + git_info.git_username + ':' + git_info.git_password + '@github.com/project-jste';
+                        global.gitURLPrefix = 'https://' + git_info.git_username + ':' + git_info.git_password + '@github.com/project-jste/';
                         global.commitMessage = git_info.commit_message;
                         startBuild();
                     })
