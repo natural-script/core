@@ -189,7 +189,7 @@ function startBuild() {
         shell.cd('../manager-heroku');
         console.log(' ');
         console.log(' Updating framework file ');
-        shell.cp('-Rf', ['../framework/build/compressed/framework-LiveVersion.min.html.gz', '../framework/build/compressed/db-manager.min.html.gz'], 'assets');
+        shell.cp('-Rf', '../framework/build/compressed/framework-LiveVersion.min.html.gz', '../framework/build/compressed/db-manager.min.html.gz', 'assets');
         if (global.gitURLPrefix) {
             console.log(' ');
             console.log(' Updating the index ');
