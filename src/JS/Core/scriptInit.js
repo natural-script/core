@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-16
+ * Date: 2018-02-23
  */
 window.scriptInit = async function () {
 	var meta = document.createElement('meta');
@@ -14,14 +14,14 @@ window.scriptInit = async function () {
 	meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
 	document.getElementsByTagName('head')[0].appendChild(meta);
 	var componentsRegex = '(' + window.componentsDB.join('|') + ')';
-	var code = $("jste").html();
+	var rawCode = $("jste").html();
 	if (navigator.onLine) {
 		var isReachable = await window.isReachable('https://translate.google.com/');
 		if (isReachable) {
-			var codeChunks = code.match(/^(.|[\r\n]){0,3000}(,|\.)$/gmi);
-			code = '';
+			var codeChunks = rawCode.match(/^(.|[\r\n]){0,3000}(,|\.)$/gmi);
+			rawCode = '';
 			for (var i = 0; i < codeChunks.length; i++) {
-				code += '\n' + await $.ajax({
+				rawCode += '\n' + await $.ajax({
 					url: window.autoCorrectionAddress,
 					method: 'POST',
 					data: {
@@ -30,10 +30,15 @@ window.scriptInit = async function () {
 					}
 				});
 			}
-			console.log(code);
+			console.log(rawCode);
 		}
 	}
-	var code = 'jQuery(document).ready(\nfunction ($) {\nvar ' + window.addTranslations[document.langID] + ' = $("body");' + code;
+	var code = 'jQuery(document).ready(\nfunction ($) {';
+	var addTranslations = window.wordsTranslationsDB.Words['add'][document.langCode];
+	for (var i = 0; i < addTranslations.length; i++) {
+		code += '\nvar ' + addTranslations[i] + ' = $("body");';
+	}
+	code += rawCode;
 	if (document.langID == 0) {
 		document.isRTL = false;
 		if (Modernizr.speechrecognition) {
