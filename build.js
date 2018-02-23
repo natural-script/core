@@ -3,7 +3,6 @@ const os = require('os');
 const inquirer = require('inquirer');
 const crypto = require('crypto')
 const zlib = require('zlib');
-const fs = require('fs');
 const shell = require('shelljs');
 const figlet = require('figlet');
 const path = require("path");
@@ -77,24 +76,24 @@ function startBuild() {
     shell.exec('polymer-bundler -r ' + absolutePath + '/tmp Res.html  --strip-comments --inline-scripts --inline-css --rewrite-urls-in-templates > framework.html');
     console.log(' Minifying the framework bundled file ');
     shell.exec('html-minifier framework.html --remove-comments --minify-css --minify-js --remove-comments --use-short-doctype > minified/framework.min.html');
-    frameworkMinifiedFileInfo.size = fs.statSync('minified/framework.min.html').size;
+    frameworkMinifiedFileInfo.size = fse.statSync('minified/framework.min.html').size;
     frameworkCompressedFileInfo.size = frameworkMinifiedFileInfo.size;
     console.log(' Hashing the framework minified file ');
     var shasum = crypto.createHash(algorithm);
-    shasum.update(fs.readFileSync('minified/framework.min.html', 'utf8'));
+    shasum.update(fse.readFileSync('minified/framework.min.html', 'utf8'));
     frameworkMinifiedFileInfo.sha1 = shasum.digest('hex');
-    fs.writeFileSync('minified/framework.info.json', JSON.stringify(frameworkMinifiedFileInfo));
+    fse.writeFileSync('minified/framework.info.json', JSON.stringify(frameworkMinifiedFileInfo));
     shell.rm('-rf', 'framework.html');
     console.log(' Compresssing the framework minified file ');
     var gzip = zlib.createGzip();
-    var inp = fs.createReadStream('minified/framework.min.html');
-    var out = fs.createWriteStream('compressed/framework.min.html.gz');
+    var inp = fse.createReadStream('minified/framework.min.html');
+    var out = fse.createWriteStream('compressed/framework.min.html.gz');
     inp.pipe(gzip).pipe(out);
     console.log(' Hashing the framework compressed file ');
     var shasum = crypto.createHash(algorithm);
-    shasum.update(fs.readFileSync('compressed/framework.min.html.gz', 'utf8'));
+    shasum.update(fse.readFileSync('compressed/framework.min.html.gz', 'utf8'));
     frameworkCompressedFileInfo.sha1 = shasum.digest('hex');
-    fs.writeFileSync('compressed/framework.info.json', JSON.stringify(frameworkCompressedFileInfo));
+    fse.writeFileSync('compressed/framework.info.json', JSON.stringify(frameworkCompressedFileInfo));
     console.log(' Jste Framework has been built properly ;) ');
     console.log(' ');
     console.log(' Starting building Jste Framework Live Version ');
@@ -104,24 +103,24 @@ function startBuild() {
     shell.exec('polymer-bundler -r ' + absolutePath + '/tmp Res-LiveVersion.html  --strip-comments --inline-scripts --inline-css --rewrite-urls-in-templates > framework-LiveVersion.html');
     console.log(' Minifying the framework bundled file ');
     shell.exec('html-minifier framework-LiveVersion.html --remove-comments --minify-css --minify-js --remove-comments --use-short-doctype > minified/framework-LiveVersion.min.html');
-    frameworkLiveVersionMinifiedFileInfo.size = fs.statSync('minified/framework-LiveVersion.min.html').size;
+    frameworkLiveVersionMinifiedFileInfo.size = fse.statSync('minified/framework-LiveVersion.min.html').size;
     frameworkLiveVersionCompressedFileInfo.size = frameworkLiveVersionMinifiedFileInfo.size;
     console.log(' Hashing the framework minified file ');
     var shasum = crypto.createHash(algorithm);
-    shasum.update(fs.readFileSync('minified/framework-LiveVersion.min.html', 'utf8'));
+    shasum.update(fse.readFileSync('minified/framework-LiveVersion.min.html', 'utf8'));
     frameworkLiveVersionMinifiedFileInfo.sha1 = shasum.digest('hex');
-    fs.writeFileSync('minified/framework-LiveVersion.info.json', JSON.stringify(frameworkLiveVersionMinifiedFileInfo));
+    fse.writeFileSync('minified/framework-LiveVersion.info.json', JSON.stringify(frameworkLiveVersionMinifiedFileInfo));
     shell.rm('-rf', 'framework-LiveVersion.html');
     console.log(' Compresssing the framework minified file ');
     var gzip = zlib.createGzip();
-    var inp = fs.createReadStream('minified/framework-LiveVersion.min.html');
-    var out = fs.createWriteStream('compressed/framework-LiveVersion.min.html.gz');
+    var inp = fse.createReadStream('minified/framework-LiveVersion.min.html');
+    var out = fse.createWriteStream('compressed/framework-LiveVersion.min.html.gz');
     inp.pipe(gzip).pipe(out);
     console.log(' Hashing the framework compressed file ');
     var shasum = crypto.createHash(algorithm);
-    shasum.update(fs.readFileSync('compressed/framework-LiveVersion.min.html.gz', 'utf8'));
+    shasum.update(fse.readFileSync('compressed/framework-LiveVersion.min.html.gz', 'utf8'));
     frameworkLiveVersionCompressedFileInfo.sha1 = shasum.digest('hex');
-    fs.writeFileSync('compressed/framework-LiveVersion.info.json', JSON.stringify(frameworkLiveVersionCompressedFileInfo));
+    fse.writeFileSync('compressed/framework-LiveVersion.info.json', JSON.stringify(frameworkLiveVersionCompressedFileInfo));
     console.log(' Jste Framework Live Version has been built properly ;) ');
     console.log(' ');
     console.log(' Starting building the BLOB DB Manager for Jste Framework Live Version ');
@@ -129,24 +128,24 @@ function startBuild() {
     var dbManagerCompressedFileInfo = {};
     console.log(' Minifying the BLOB DB Manager file ');
     shell.exec('html-minifier ../utils/db-manager.html --remove-comments --minify-css --minify-js --remove-comments --use-short-doctype > minified/db-manager.min.html');
-    dbManagerMinifiedFileInfo.size = fs.statSync('minified/db-manager.min.html').size;
+    dbManagerMinifiedFileInfo.size = fse.statSync('minified/db-manager.min.html').size;
     dbManagerCompressedFileInfo.size = dbManagerMinifiedFileInfo.size;
     console.log(' Hashing the BLOB DB Manager minified file ');
     var shasum = crypto.createHash(algorithm);
-    shasum.update(fs.readFileSync('minified/db-manager.min.html', 'utf8'));
+    shasum.update(fse.readFileSync('minified/db-manager.min.html', 'utf8'));
     dbManagerMinifiedFileInfo.sha1 = shasum.digest('hex');
-    fs.writeFileSync('minified/db-manager.info.json', JSON.stringify(dbManagerMinifiedFileInfo));
+    fse.writeFileSync('minified/db-manager.info.json', JSON.stringify(dbManagerMinifiedFileInfo));
     shell.rm('-rf', 'db-manager.html');
     console.log(' Compresssing the BLOB DB Manager minified file ');
     var gzip = zlib.createGzip();
-    var inp = fs.createReadStream('minified/db-manager.min.html');
-    var out = fs.createWriteStream('compressed/db-manager.min.html.gz');
+    var inp = fse.createReadStream('minified/db-manager.min.html');
+    var out = fse.createWriteStream('compressed/db-manager.min.html.gz');
     inp.pipe(gzip).pipe(out);
     console.log(' Hashing the BLOB DB Manager compressed file ');
     var shasum = crypto.createHash(algorithm);
-    shasum.update(fs.readFileSync('compressed/db-manager.min.html.gz', 'utf8'));
+    shasum.update(fse.readFileSync('compressed/db-manager.min.html.gz', 'utf8'));
     dbManagerCompressedFileInfo.sha1 = shasum.digest('hex');
-    fs.writeFileSync('compressed/db-manager.info.json', JSON.stringify(dbManagerCompressedFileInfo));
+    fse.writeFileSync('compressed/db-manager.info.json', JSON.stringify(dbManagerCompressedFileInfo));
     console.log(' The BLOB DB Manager for Jste Framework Live Version has been built properly ;) ');
     shell.cd('../');
     shell.rm('-rf', 'tmp');
@@ -167,7 +166,7 @@ function startBuild() {
         shell.cd('../manager');
         console.log(' ');
         console.log(' Updating framework file ');
-        shell.cp('../framework/build/compressed/framework.min.html.gz', 'src/assets');
+        fse.copySync(path.resolve('..') + '/framework/build/compressed/framework.min.html.gz', path.resolve('.') + '/src/assets');
         console.log(' ');
         console.log(' Starting building Jste Manager ');
         shell.exec('node build');
@@ -189,7 +188,8 @@ function startBuild() {
         shell.cd('../manager-heroku');
         console.log(' ');
         console.log(' Updating framework file ');
-        shell.cp(['../framework/build/compressed/framework-LiveVersion.min.html.gz', '../framework/build/compressed/db-manager.min.html.gz'], 'assets');
+        fse.copySync(path.resolve('..') + '/framework/build/compressed/framework-LiveVersion.min.html.gz', path.resolve('.') + '/assets');
+        fse.copySync(path.resolve('..') + '/framework/build/compressed/db-manager.min.html.gz', path.resolve('.') + '/assets');
         if (global.gitURLPrefix) {
             console.log(' ');
             console.log(' Updating the index ');
@@ -211,7 +211,7 @@ function startBuild() {
         shell.cd('../manager-phone/src');
         console.log(' ');
         console.log(' Updating framework file ');
-        shell.cp('../../framework/build/minified/framework.min.html', 'www/jxcore/assets');
+        fse.copySync(path.resolve('../..') + '/framework/build/minified/framework.min.html', path.resolve('.') + '/www/jxcore/assets');
         console.log(' ');
         console.log(' Starting building Jste Manager phone version ');
         shell.exec('cordova build');
@@ -245,10 +245,10 @@ figlet('JSTE FRAMEWORK', function (err, data) {
             if (options.deploy == true) {
                 inquirer
                     .prompt([{
-                        type: 'input',
-                        name: 'commit_message',
-                        message: 'Please enter the commit message '
-                    },{
+                            type: 'input',
+                            name: 'commit_message',
+                            message: 'Please enter the commit message '
+                        }, {
                             type: 'input',
                             name: 'git_username',
                             message: 'Please enter your GitHub username '
