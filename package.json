@@ -17,7 +17,8 @@
     "replace",
     "fs-extra",
     "inquirer",
-    "gzipy"
+    "gzipy",
+    "is-travis"
   ],
   "repository": {
     "type": "git",
