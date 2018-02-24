@@ -167,7 +167,10 @@ function startBuild() {
         shell.cd('../manager');
         console.log(' ');
         console.log(' Updating framework file ');
-        shell.exec('cp -af ../framework/build/compressed/framework.min.html.gz src/assets');
+        fs.renameSync('../framework/build/compressed/framework.min.html.gz', '../framework/build/compressed/framework.min.html');
+        shell.cp('../framework/build/compressed/framework.min.html', 'src/assets');
+        fs.renameSync('src/assets/framework.min.html', 'src/assets/framework.min.html.gz');
+        fs.renameSync('../framework/build/compressed/framework.min.html', '../framework/build/compressed/framework.min.html.gz');
         console.log(' ');
         console.log(' Starting building Jste Manager ');
         shell.exec('node build');
@@ -189,7 +192,7 @@ function startBuild() {
         shell.cd('../manager-heroku');
         console.log(' ');
         console.log(' Updating framework file ');
-        shell.exec('cp -af ../framework/build/compressed/{framework-LiveVersion,db-manager}.min.html.gz assets');
+        shell.cp(['../framework/build/compressed/framework-LiveVersion.min.html.gz', '../framework/build/compressed/db-manager.min.html.gz'], 'assets');
         if (global.gitURLPrefix) {
             console.log(' ');
             console.log(' Updating the index ');
