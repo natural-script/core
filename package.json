@@ -16,7 +16,8 @@
     "shelljs",
     "replace",
     "fs-extra",
-    "inquirer"
+    "inquirer",
+    "gzipy"
   ],
   "repository": {
     "type": "git",
