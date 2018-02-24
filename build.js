@@ -158,10 +158,7 @@ async function startBuild() {
                                     shell.cd('../manager');
                                     console.log(' ');
                                     console.log(' Updating framework file ');
-                                    fs.renameSync('../framework/build/compressed/framework.min.html.gz', '../framework/build/compressed/framework.min.html');
-                                    shell.cp('../framework/build/compressed/framework.min.html', 'src/assets');
-                                    fs.renameSync('src/assets/framework.min.html', 'src/assets/framework.min.html.gz');
-                                    fs.renameSync('../framework/build/compressed/framework.min.html', '../framework/build/compressed/framework.min.html.gz');
+                                    shell.cp('../framework/build/compressed/framework.min.html.gz', 'src/assets');
                                     console.log(' ');
                                     console.log(' Starting building Jste Manager ');
                                     shell.exec('node build');
