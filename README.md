@@ -138,13 +138,13 @@ https://github.com/project-jste/framework/projects/1
 
 ## Documentation:
 
-<b>EN-US:</b> https://project-jste.github.io/docs/en-us
+<b>EN-US:</b> https://project-jste.github.io/docs/#/en-us
 
-<b>EN-UK:</b> https://project-jste.github.io/docs/en-uk
+<b>EN-UK:</b> https://project-jste.github.io/docs/#/en-uk
 
-<b>Egyptian:</b> https://project-jste.github.io/docs/arz
+<b>Egyptian:</b> https://project-jste.github.io/docs/#/arz
 
-<b>Arabic:</b> https://project-jste.github.io/docs/ar
+<b>Arabic:</b> https://project-jste.github.io/docs/#/ar
 
 ## How to build:
 
