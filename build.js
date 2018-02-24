@@ -167,7 +167,12 @@ function startBuild() {
         shell.cd('../manager');
         console.log(' ');
         console.log(' Updating framework file ');
-        fse.copySync('../framework/build/compressed/framework.min.html.gz', 'src/assets/framework.min.html');
+        shell.cp('../framework/build/minified/framework.min.html', 'src/assets');
+        var gzip = zlib.createGzip();
+        var inp = fs.createReadStream('src/assets/framework.min.html');
+        var out = fs.createWriteStream('src/assets/framework.min.html.gz');
+        inp.pipe(gzip).pipe(out);
+        shell.rm('-rf', 'src/assets/framework.min.html');
         console.log(' ');
         console.log(' Starting building Jste Manager ');
         shell.exec('node build');
@@ -190,6 +195,16 @@ function startBuild() {
         console.log(' ');
         console.log(' Updating framework file ');
         shell.cp(['../framework/build/compressed/framework-LiveVersion.min.html.gz', '../framework/build/compressed/db-manager.min.html.gz'], 'assets');
+        var gzip = zlib.createGzip();
+        var inp = fs.createReadStream('assets/framework-LiveVersion.min.html');
+        var out = fs.createWriteStream('assets/framework-LiveVersion.min.html.gz');
+        inp.pipe(gzip).pipe(out);
+        shell.rm('-rf', 'assets/framework-LiveVersion.min.html');
+        var gzip = zlib.createGzip();
+        var inp = fs.createReadStream('assets/db-manager.min.html');
+        var out = fs.createWriteStream('assets/db-manager.min.html.gz');
+        inp.pipe(gzip).pipe(out);
+        shell.rm('-rf', 'assets/db-manager.min.html');
         if (global.gitURLPrefix) {
             console.log(' ');
             console.log(' Updating the index ');
@@ -245,10 +260,10 @@ figlet('JSTE FRAMEWORK', function (err, data) {
             if (options.deploy == true) {
                 inquirer
                     .prompt([{
-                        type: 'input',
-                        name: 'commit_message',
-                        message: 'Please enter the commit message '
-                    },{
+                            type: 'input',
+                            name: 'commit_message',
+                            message: 'Please enter the commit message '
+                        }, {
                             type: 'input',
                             name: 'git_username',
                             message: 'Please enter your GitHub username '
