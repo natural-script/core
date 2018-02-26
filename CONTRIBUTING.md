@@ -40,5 +40,5 @@ Notice a mistake? Please file any bugs, requests, or questions in our [issue tra
 
 ## Communication channels
 
-Do you have a chat room or email list you use to discuss this project? List them all here! Provide clear contact info, and outline the process for getting in touch, for anyone with questions.
+Contributors can join Jste chat room for contributors on Gitter at: https://gitter.im/Project-Jste/Contributors to stay up to date and work on Project Jste together in an easy way.
 
