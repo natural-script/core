@@ -1,17 +1,3 @@
-# Announcement
-
-## Jste v0.5 Alpha is coming soon on 25 February 2018 with many new features and bug fixes including:
-
-1. Automatic spelling correction thanks to Google Translate.
-2. Automatic language detection thanks to Franc JS library.
-3. Jste Command Studio which will make the community be able to translate Jste to more languages in very easy way.
-4. Storing all the commands in a Rivescript file so that anyone can access, adding or modifying them easily.
-5. Jste build script Windows compatibility.
-6. Updated web components.
-7. Updated algorithm for translating words.
-8. Jste Documentation For Arabic And Egyptian Versions.
-9. Much Improved Loader.
-
 # Jste Framework
 
 [![Build Status](https://travis-ci.org/project-jste/framework.svg?branch=master)](https://travis-ci.org/project-jste/framework)
@@ -146,19 +132,11 @@ https://github.com/project-jste/framework/projects/1
 
 <b>Arabic:</b> https://project-jste.github.io/docs/#/ar
 
+## Official Project Blog On Medium:
+
+https://medium.com/project-jste
+
 ## How to build:
-
-### Dependencies:
-
-1. NodeJS v7+
-
-2. Polymer Bundler
-
-3. HTML Minifier
-
-4. ShellJS
-
-5. Figlet
 
 ### How to install the dependencies:
 
@@ -170,7 +148,7 @@ https://github.com/project-jste/framework/projects/1
 
 <code>cd <FRAMEWORK_REPO_ROOT></code>
 
-<code>npm start</code>
+<code>node build</code>
 
 ## Contact us:
 
