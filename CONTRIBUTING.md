@@ -2,7 +2,7 @@
 
 Thank you for your interest in contributing to Project Jste :tada:! 
 
-Project Jste is the first transalted JS framework in the world which makes anyone be able to develop his/her own code using his/her local natural language instead of the currently used complex syntax
+Project Jste is the first transalted JS framework in the world which will make anyone be able to develop his/her own code using his/her local natural language instead of the currently used complex syntax
 
 This documents is a set of guidelines for contributing to Project Jste on GitHub. These are guidelines, not rules. This guide is meant to make it easy for you to get involved.
 
@@ -34,6 +34,8 @@ Once you've identified one of the issues above that you feel you can contribute 
 
 First time contributing to open source? Check out this *free* series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
 
+If you want an easier way to contribute to Jste Translations, feel free to submit your commands and words translations throguh Jste Command Studio at: https://project-jste.github.io/command-studio
+
 ## How to report bugs
 
 Notice a mistake? Please file any bugs, requests, or questions in our [issue tracker](https://github.com/project-jste/framework/issues)!
@@ -41,4 +43,4 @@ Notice a mistake? Please file any bugs, requests, or questions in our [issue tra
 ## Communication channels
 
 Contributors can join Jste chat room for contributors on Gitter at: https://gitter.im/Project-Jste/Contributors to stay up to date and work on Project Jste together in an easy way.
-
+You can also contact us directly through our email at: [project-jste@outlook.com](mailto:project-jste@outlook.com) or by sending us on our official page on Facebook at: [https://www.facebook.com/ProjectJste](https://www.facebook.com/ProjectJste).
