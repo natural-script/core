@@ -6,10 +6,10 @@ Jste is the first plain natural language based JavaScript framework whch is tran
 
 ## Table Of Contents:
 
-* [Features & Goals](#features-&-goals)
+* [Features & Goals](#features--goals)
 * [What Have Been Done](#what-have-been-done)
-* [The Creativity & The New Innovation](#the-creativity-&-the-new-innovation)
-* [Market Size & The Target Audience](#market-size-&-the-target-audience)
+* [The Creativity & The New Innovation](#the-creativity--the-new-innovation)
+* [Market Size & The Target Audience](#market-size--the-target-audience)
 * [The Competitors](#the-competitors)
 * [Building Instructions](#building-instructions)
 * [Roadmap](#roadmap)
