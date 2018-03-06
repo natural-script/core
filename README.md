@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/project-jste/framework.svg?branch=master)](https://travis-ci.org/project-jste/framework)
 
-Jste is the first plain natural language based JavaScript framework whch is translated to various languages from many countries all around the world to make it easier for everyone to code and develop his/her own website or application and exploit all the latest web technologies in his/her local language which he/she uses during his/her daily life without the need to any experiences rather than the way of using the computer and typing on the keyboard, in addition to other extra features like data saving and media moderating.
+Jste is the first plain natural language based JavaScript framework which is translated to various languages from many countries all around the world to make it easier for everyone to code and develop his/her own website or application and exploit all the latest web technologies in his/her local language which he/she uses during his/her daily life without the need to any experiences rather than the way of using the computer and typing on the keyboard, in addition to other extra features like data saving and media moderating.
 
 ## Table Of Contents:
 
