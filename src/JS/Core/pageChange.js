@@ -6,13 +6,13 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-07
+ * Date: 2018-03-10
  */
 function getLocation() {
 	return location.pathname + location.search;
 }
 window.changePage = function (pageName) {
-	var currentPage = window.getAllUrlParams().page || window.indexPageTranslations[document.langID];
+	var currentPage = window.getAllUrlParams().page || wordsTranslationsDB.Words['indexPage'][document.langCode][0];
 	if (decodeURIComponent(currentPage) != pageName) {
 		window.fadeOut(decodeURIComponent(currentPage));
 		window.fadeIn(pageName, 'inline-block');

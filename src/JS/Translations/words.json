@@ -994,6 +994,20 @@
             "arz": ["قيمة"],
             "jp": ["の価値"]
         },
+        "variable": {
+            "en": ["the variable", "variable"],
+            "fr": ["la variable", "variable"],
+            "ar": ["المتغير", "متغير"],
+            "arz": ["المتغير", "متغير"],
+            "jp": ["の価値"]
+        },
+        "theFollowingList": {
+            "en": ["the following list"],
+            "fr": ["la liste suivante"],
+            "ar": ["القائمة التالية"],
+            "arz": ["القايمة دى"],
+            "jp": ["の価値"]
+        },
         "thick": {
             "type": "attribute",
             "en": ["thick"],

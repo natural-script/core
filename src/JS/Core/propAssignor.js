@@ -9,27 +9,8 @@
  * Date: 2017-09-15
  */
 $(function () {
-    $.fn[window.propertiesAssignorTranslations[document.langID]] = function (options) {
-        // Establish our default settings
-        var settings = $.extend({
-            [window.fontColorTranslations[document.langID]]: null,
-            [window.fontSizeTranslations[document.langID]]: null,
-            [window.nameTranslations[document.langID]]: null,
-            [window.widthTranslations[document.langID]]: null,
-            [window.lengthTranslations[document.langID]]: null,
-            [window.fontThicknessTranslations[document.langID]]: null,
-            [window.fontStyleTranslations[document.langID]]: null,
-            [window.animationTranslations[document.langID]]: null,
-            [window.transparencyTranslations[document.langID]]: null,
-            [window.distanceFromBottomTranslations[document.langID]]: null,
-            [window.distanceFromTopTranslations[document.langID]]: null,
-            [window.distanceFromLeftTranslations[document.langID]]: null,
-            [window.distanceFromRightTranslations[document.langID]]: null,
-            [window.positionTranslations[document.langID]]: null,
-            [window.attributesTranslations[document.langID]]: null,
-            [window.commandsTranslations[document.langID]]: null
-        }, options);
-        return this.each(function () {
+    function propertiesAssignorFn(el, settings) {
+        el.each(function () {
             if (elementSettingsAnalyze(settings, 'fontStyle')) {
                 $('#' + name + '').css('font-style', elementSettingsAnalyze(settings, 'fontStyle'));
             }
@@ -77,4 +58,10 @@ $(function () {
             }
         });
     };
+    var propertiesAssignorTranslations = window.wordsTranslationsDB.Words['propertiesAssignor'][document.langCode];
+    for (var i = 0; i < propertiesAssignorTranslations.length; i++) {
+        $.fn[propertiesAssignorTranslations[i]] = function (settings) {
+            propertiesAssignorFn(this, settings);
+        };
+    }
 });

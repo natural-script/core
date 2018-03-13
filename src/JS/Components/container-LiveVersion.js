@@ -14,7 +14,7 @@ $(function () {
             var elevation = 2;
             var name = elementSettingsAnalyze(settings, 'name');
             if (elementSettingsAnalyze(settings, 'attributes')) {
-                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(' ' + getTranslations("and") + ' ', 'gmi'));
                 for (i = 0; i < propertiesArray.length; i++) {
                     if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withoutShadow'][document.langCode]).rating > 0.8) {
                         elevation = 0;
@@ -24,7 +24,7 @@ $(function () {
             var out = '<paper-material elevation="' + elevation + '" id="' + name + '" class="' + name + '"></paper-material>';
             window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);
             if (elementSettingsAnalyze(settings, 'attributes')) {
-                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(' ' + getTranslations("and") + ' ', 'gmi'));
                 for (i = 0; i < propertiesArray.length; i++) {
                     if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['grid'][document.langCode]).rating > 0.8) {
                         $('#' + name + '').addClass('row');
@@ -103,7 +103,7 @@ $(function () {
                 window.setDimension(name, 'length', elementSettingsAnalyze(settings, 'length'));
             }
             if (elementSettingsAnalyze(settings, 'attributes')) {
-                if (elementSettingsAnalyze(settings, 'attributes').indexOf(window.parallaxTranslations[document.langID]) > -1) {
+                if (elementSettingsAnalyze(settings, 'attributes').search(XRegExp('' + getTranslations("parallax") + '', 'gmi')) > -1) {
                     if (elementSettingsAnalyze(settings, 'background')) {
                         $('#' + name + '').css({
                             'background': 'url(' + elementSettingsAnalyze(settings, 'background') + ') no-repeat',

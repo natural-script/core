@@ -12,9 +12,9 @@ $(function () {
     function pageFn(el, settings) {
         el.each(function () {
             $('contents').append('<page id="' + elementSettingsAnalyze(settings, 'name') + '" style="display: none;"></page>');
-            var currentPageRaw = window.getAllUrlParams().page || window.indexPageTranslations[document.langID];
-            if (currentPageRaw == window.indexPageTranslations[document.langID]) {
-                window.setURLParameter('page', window.indexPageTranslations[document.langID]);
+            var currentPageRaw = window.getAllUrlParams().page || wordsTranslationsDB.Words['indexPage'][document.langCode][0];
+            if (XRegExp('' + getTranslations("indexPage") + '', 'gmi').test(currentPageRaw)) {
+                window.setURLParameter('page', wordsTranslationsDB.Words['indexPage'][document.langCode][0]);
             }
             var currentPage = decodeURIComponent(currentPageRaw);
             $('#' + currentPage + '').fadeIn(500);

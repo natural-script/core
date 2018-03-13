@@ -46,7 +46,7 @@ $(function () {
                 });
             }
             if (elementSettingsAnalyze(settings, 'attributes')) {
-                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(' ' + getTranslations("and") + ' ', 'gmi'));
                 for (i = 0; i < propertiesArray.length; i++) {
                     if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][document.langCode]).rating > 0.8) {
                         $('#' + name + '').attr('disabled', '');
@@ -66,16 +66,16 @@ $(function () {
             } else {
                 $('#' + name + '').css('position', 'relative');
             }
-            if (settings[window.commandsTranslations[document.langID] + 0]) {
+            if (settings[wordsTranslationsDB.Words['commands'][document.langCode][0] + 0]) {
                 var commandsNo = 0;
                 var preCommands;
                 var itemName;
                 var pureCommands;
-                while (settings[window.commandsTranslations[document.langID] + commandsNo] != undefined) {
+                while (settings[wordsTranslationsDB.Words['commands'][document.langCode][0] + commandsNo] != undefined) {
                     commandsNo++;
                 }
                 for (var i = 0; i < commandsNo; i++) {
-                    preCommands = settings[window.commandsTranslations[document.langID] + i];
+                    preCommands = settings[wordsTranslationsDB.Words['commands'][document.langCode][0] + i];
                     itemName = preCommands.split(':')[0].split(' ').join('_') + '_dropdownItem';
                     pureCommands = preCommands.split(':')[1];
                     window.execute(itemName, pureCommands);

@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-16
+ * Date: 2018-03-10
  */
 var bot = new RiveScript({
 	utf8: true,
@@ -24,10 +24,10 @@ if (document.langCode == 'en') {
 }
 window.analyzeCommand = function (commandRaw) {
 	bot.sortReplies();
-	var command = bot.reply("local-user", commandRaw).split(' ==> ');
+	var command = bot.reply("local-user", commandRaw.replace(new XRegExp("\n", 'gmi'), '&lt;&lt;br&gt;&gt;')).replace(new XRegExp("&lt;&lt;br&gt;&gt;", 'gmi'), '\n').split(' ==> ');
 	var commandAnalysed = {};
 	for (var i = 0; i < command.length; i++) {
-		commandAnalysed[/^(.*?):/gmiy.exec(command[i])[1]] = /^.*?: (.*)/gmiy.exec(command[i])[1];
+		commandAnalysed[/^(.*?):/miy.exec(command[i])[1]] = /^.*?: ((?:.*|[\r\n])+)/miy.exec(command[i])[1];
 	}
 	var loops = [];
 	for (var i = 0; i < Object.keys(commandAnalysed).length; i++) {

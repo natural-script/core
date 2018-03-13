@@ -40,7 +40,7 @@ window.execute = async function (elementName, command, execute) {
 		commandInfo.elementName = elementName;
 		if (window.commandsFnTranslations('c52', 'E1', commands[commandID]).length > 1) {
 			commandType = 'T3';
-			var alternativeOptionsArray = commands[commandID].split(' ' + window.elseTranslations[document.langID] + ' ');
+			var alternativeOptionsArray = commands[commandID].split(XRegExp(' ' + getTranslations("else") + ' ', 'gmi'));
 			await window.evaluateStatement(alternativeOptionsArray[0]).then(function (condition) {
 				typeOptions.primaryCondition = condition;
 			});
@@ -51,7 +51,7 @@ window.execute = async function (elementName, command, execute) {
 				typeOptions.secondryConditions = [];
 				for (var optionID = 0; optionID < alternativeOptionsArray.length; optionID++) {
 					typeOptions.secondryConditions[optionID] = [];
-					if (alternativeOptionsArray[optionID].includes(window.inTheCaseThatTranslations[document.langID])) {
+					if (XRegExp('' + getTranslations("inTheCaseThat") + '', 'gmi').test(alternativeOptionsArray[optionID])) {
 						await window.evaluateStatement(alternativeOptionsArray[optionID]).then(function (condition) {
 							typeOptions.secondryConditions[optionID].condition = condition;
 						});
@@ -96,7 +96,7 @@ window.execute = async function (elementName, command, execute) {
 
 		var result = eval("if (pureCommand.startsWith(document[getTheEventCode(pureCommand)])) { \
 			" + codePrefix + " \
-				" + operationPrefix + "window.evaluateScript(window.analyzeCommand(pureCommand" + eventSplit + ".split(new RegExp(window.inTheCaseThatTranslations + '.*?$', 'gimy'))[0]), getTheEventCode(pureCommand), commandType, commandInfo" + codeParam + ")" + operationSuffix + " \
+				" + operationPrefix + "window.evaluateScript(window.analyzeCommand(pureCommand" + eventSplit + ".split(new RegExp(getTranslations('inTheCaseThat') + '.*?$', 'gimy'))[0]), getTheEventCode(pureCommand), commandType, commandInfo" + codeParam + ")" + operationSuffix + " \
 			" + codeSuffix + "};");
 	}
 	return result;

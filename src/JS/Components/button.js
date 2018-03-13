@@ -16,7 +16,7 @@ $(function () {
             window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);
             $('#' + name + '').text(elementSettingsAnalyze(settings, 'text'));
             if (elementSettingsAnalyze(settings, 'attributes')) {
-                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(' ' + getTranslations("and") + ' ', 'gmi'));
                 for (i = 0; i < propertiesArray.length; i++) {
                     if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][document.langCode]).rating > 0.8) {
                         $('#' + name + '').attr('disabled', '');

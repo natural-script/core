@@ -203,3 +203,8 @@
 
 + (?:définir|changer) la couleur de la police de * à *
 - command_id: S20 ==> lang: fr ==> target: <star1> ==> value: <star2>
+
+// définir la variable âge 15 ans !
+
++ (?:définir|changerr) la variable * à *
+- command_id: S21 ==> lang: fr ==> variableName: <star1> ==> value: <star2>

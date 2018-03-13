@@ -208,3 +208,8 @@
 
 + (?:set|change) (?:the font colour of|the font color of|the colour of the font of |the color of the font of ) * to *
 - command_id: S20 ==> lang: en ==> target: <star1> ==> value: <star2>
+
+// set the value of the variable age to 15 years old !
+
++ (?:set|change) the value of the variable * to *
+- command_id: S21 ==> lang: en ==> variableName: <star1> ==> value: <star2>

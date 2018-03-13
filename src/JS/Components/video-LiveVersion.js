@@ -18,7 +18,7 @@ $(function () {
 			var subContainerStartTag = '<paper-material elevation="2" style="position: absolute;">';
 			var subContainerEndTag = '</paper-material>';
 			if (elementSettingsAnalyze(settings, 'attributes')) {
-				var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
+				var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(' ' + getTranslations("and") + ' ', 'gmi'));
 				for (i = 0; i < propertiesArray.length; i++) {
 					if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['transparent'][document.langCode]).rating > 0.8) {
 						subContainerStartTag = '<div style="position: absolute;">';

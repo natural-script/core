@@ -15,17 +15,17 @@ $(function () {
             var out = '<div id="' + name + '_container" class="input-field"> \
                         <select id="' + name + '">';
             if (elementSettingsAnalyze(settings, 'title')) {
-                out += '<option value="" disabled selected>' + window.chooseTranslations[document.langID] + ' ' + elementSettingsAnalyze(settings, 'title') + '</option>';
+                out += '<option value="" disabled selected>' + wordsTranslationsDB.Words['choose'][document.langCode][0] + ' ' + elementSettingsAnalyze(settings, 'title') + '</option>';
             } else {
-                out += '<option value="" disabled selected>' + window.chooseTranslations[document.langID] + '</option>';
+                out += '<option value="" disabled selected>' + wordsTranslationsDB.Words['choose'][document.langCode][0] + '</option>';
             }
             if (elementSettingsAnalyze(settings, 'items')) {
-                if (elementSettingsAnalyze(settings, 'items').includes(window.inTheGroupTranslations[document.langID])) {
+                if (XRegExp('' + getTranslations("inTheGroup") + '', 'gmi').test(elementSettingsAnalyze(settings, 'items'))) {
                     var itemsGroups = elementSettingsAnalyze(settings, 'items').split(' &amp;&amp;&amp;&amp; ');
                     for (a = 0; a < itemsGroups.length; a++) {
-                        if (itemsGroups[a].includes(window.inTheGroupTranslations[document.langID])) {
-                            var items = itemsGroups[a].split(' ' + window.inTheGroupTranslations[document.langID])[0].split(' &amp;&amp;&amp; ');
-                            out += '<optgroup label="' + itemsGroups[a].split(' ' + window.inTheGroupTranslations[document.langID])[1] + '">'
+                        if (XRegExp('' + getTranslations("inTheGroup") + '', 'gmi').test(itemsGroups[a])) {
+                            var items = itemsGroups[a].split(XRegExp(' ' + getTranslations("inTheGroup") + '', 'gmi'))[0].split(' &amp;&amp;&amp; ');
+                            out += '<optgroup label="' + itemsGroups[a].split(XRegExp('' + getTranslations("inTheGroup") + '', 'gmi'))[1] + '">'
                             for (i = 0; i < items.length; i++) {
                                 out += '<option value="' + items[i] + '">' + items[i] + '</option>';
                             }
@@ -51,7 +51,7 @@ $(function () {
             }
             window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);
             if (elementSettingsAnalyze(settings, 'attributes')) {
-                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(' ' + getTranslations("and") + ' ', 'gmi'));
                 for (i = 0; i < propertiesArray.length; i++) {
                     if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][document.langCode]).rating > 0.8) {
                         $('#' + name + '').attr('disabled', '');

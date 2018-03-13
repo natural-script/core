@@ -243,3 +243,8 @@
 
 + خلى لون خط (%) *
 - command_id: S20 ==> lang: arz ==> target: <star1> ==> value: <star2>
+
+// خلى قيمة المتغير العمر 15 سنة !
+
++ خلى قيمة المتغير (%) *
+- command_id: S21 ==> lang: arz ==> variableName: <star1> ==> value: <star2>

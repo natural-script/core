@@ -22,12 +22,12 @@ $(function () {
                     inputDataRaw += '{';
                     for (var i = 0; i < inputDataPlainB.length; i++) {
                         if (i == inputDataPlainB.length - 1) {
-                            var cellData = inputDataPlainB[i].split(' ' + window.inTheCellTranslations[document.langID] + ' ')[0];
-                            var cellName = inputDataPlainB[i].split(' ' + window.inTheCellTranslations[document.langID] + ' ')[1];
+                            var cellData = inputDataPlainB[i].split(XRegExp('' + getTranslations("inTheCell") + '', 'gmi'))[0];
+                            var cellName = inputDataPlainB[i].split(XRegExp('' + getTranslations("inTheCell") + '', 'gmi'))[1];
                             inputDataRaw += '"' + cellName + '": "' + cellData + '"';
                         } else {
-                            var cellData = inputDataPlainB[i].split(' ' + window.inTheCellTranslations[document.langID] + ' ')[0];
-                            var cellName = inputDataPlainB[i].split(' ' + window.inTheCellTranslations[document.langID] + ' ')[1];
+                            var cellData = inputDataPlainB[i].split(XRegExp('' + getTranslations("inTheCell") + '', 'gmi'))[0];
+                            var cellName = inputDataPlainB[i].split(XRegExp('' + getTranslations("inTheCell") + '', 'gmi'))[1];
                             inputDataRaw += '"' + cellName + '": "' + cellData + '", ';
                         }
                     }
@@ -61,7 +61,7 @@ $(function () {
             };
             var userList = new List(name, settings, inputData);
             if (elementSettingsAnalyze(settings, 'attributes')) {
-                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(' ' + getTranslations("and") + ' ', 'gmi'));
                 for (i = 0; i < propertiesArray.length; i++) {
                     if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['grid'][document.langCode]).rating > 0.8) {
                         $('#' + name + '').addClass('row');

@@ -243,3 +243,8 @@
 
 + اجعل لون خط (%) *
 - command_id: S20 ==> lang: ar ==> target: <star1> ==> value: <star2>
+
+// اجعل قيمة المتغير العمر 15 سنة !
+
++ اجعل قيمة المتغير (%) *
+- command_id: S21 ==> lang: ar ==> variableName: <star1> ==> value: <star2>

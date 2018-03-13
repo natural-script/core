@@ -14,13 +14,13 @@ window.setDimension = function (name, dimension, value) {
 	var isTitled = $('#' + name + '').prop('isTitled');
 	var landscapeValue = null;
 	var portraitValue = null;
-	if (value.includes(window.andTranslations[document.langID])) {
-		var availableValues = value.split(' ' + window.andTranslations[document.langID] + ' ');
+	if (XRegExp(' ' + getTranslations("and") + ' ', 'gmi').test(value)) {
+		var availableValues = value.split(XRegExp(' ' + getTranslations("and") + '', 'gmi'));
 		for (var i = 0; i < availableValues.length; i++) {
-			if (availableValues[i].includes(window.inTheCaseOfLandscapeModeTranslations[document.langID])) {
-				landscapeValue = availableValues[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.langID])[0].split(' ')[0] + ' ' + availableValues[i].split(' ' + window.inTheCaseOfLandscapeModeTranslations[document.langID])[0].split(' ')[1];
-			} else if (availableValues[i].includes(window.inTheCaseOfPortraitModeTranslations[document.langID])) {
-				portraitValue = availableValues[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.langID])[0].split(' ')[0] + ' ' + availableValues[i].split(' ' + window.inTheCaseOfPortraitModeTranslations[document.langID])[0].split(' ')[1];
+			if (XRegExp('' + getTranslations("inTheCaseOfLandscapeMode") + '', 'gmi').test(availableValues[i])) {
+				landscapeValue = availableValues[i].split(XRegExp(' ' + getTranslations("inTheCaseOfLandscapeMode") + '', 'gmi'))[0].split(' ')[0] + ' ' + availableValues[i].split(XRegExp('' + getTranslations("inTheCaseOfLandscapeMode") + '', 'gmi'))[0].split(' ')[1];
+			} else if (XRegExp('' + getTranslations("inTheCaseOfPortraitMode") + '', 'gmi').test(availableValues[i])) {
+				portraitValue = availableValues[i].split(XRegExp(' ' + getTranslations("inTheCaseOfPortraitMode") + '', 'gmi'))[0].split(' ')[0] + ' ' + availableValues[i].split(XRegExp('' + getTranslations("inTheCaseOfPortraitMode") + '', 'gmi'))[0].split(' ')[1];
 			}
 		}
 	}

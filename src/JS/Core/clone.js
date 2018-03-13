@@ -15,7 +15,7 @@ $(function () {
             var name = elementSettingsAnalyze(settings, 'name');
             var out = $('#' + clonedElement + '').clone(false).attr('id', name);
             if (elementSettingsAnalyze(settings, 'attributes')) {
-                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
+                var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(' ' + getTranslations("and") + ' ', 'gmi'));
                 for (i = 0; i < propertiesArray.length; i++) {
                     if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withCommands'][document.langCode]).rating > 0.8) {
                         out = $('#' + clonedElement + '').clone(true).attr('id', name);

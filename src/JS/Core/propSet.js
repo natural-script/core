@@ -59,7 +59,7 @@ window.propSet = function (elementName, properties, param1, param2, param3) {
         $('#' + elementName + '').addClass('col');
     }
     if (elementSettingsAnalyze(properties, 'attributes')) {
-        var propertiesArray = elementSettingsAnalyze(properties, 'attributes').split(' ' + window.andTranslations[document.langID] + ' ');
+        var propertiesArray = elementSettingsAnalyze(properties, 'attributes').split(XRegExp(' ' + getTranslations("and") + ' ', 'gmi'));
         for (i = 0; i < propertiesArray.length; i++) {
             if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['scrollable'][document.langCode]).rating > 0.8) {
                 document[document.uniqueID()] = new PerfectScrollbar('#' + elementName + '');
