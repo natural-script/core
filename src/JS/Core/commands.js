@@ -314,8 +314,8 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
                 var dataRaw = script.data; \
                 " + eventPrefix + typePrefix + " \
                     var data = '{'; \
-                    for (i = 0; i < dataRaw.length; i++) { \
-                        if (i != dataRaw.length - 1) { \
+                    for (var i = 0; i < Object.keys(dataRaw).length; i++) { \
+                        if (i != Object.keys(dataRaw).length - 1) { \
                             data += '\"' + dataRaw[i].slotName + '\":\"' + dataRaw[i].value.parseValue().replace(/\\n/g, '<br />') + '\", '; \
                         } else { \
                             data += '\"' + dataRaw[i].slotName + '\":\"' + dataRaw[i].value.parseValue().replace(/\\n/g, '<br />') + '\"}'; \
