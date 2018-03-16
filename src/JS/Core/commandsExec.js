@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-16
+ * Date: 2018-03-15
  */
 var eventSplit;
 function getTheEventCode(command) {
@@ -38,13 +38,13 @@ window.execute = async function (elementName, command, execute) {
 		var typeOptions = [];
 		var commandInfo = [];
 		commandInfo.elementName = elementName;
-		if (window.commandsFnTranslations('c52', 'E1', commands[commandID]).length > 1) {
+		if (window.commandsFnTranslations('c52', commands[commandID]).length > 1) {
 			commandType = 'T3';
 			var alternativeOptionsArray = commands[commandID].split(XRegExp(' ' + getTranslations("else") + ' ', 'gmi'));
 			await window.evaluateStatement(alternativeOptionsArray[0]).then(function (condition) {
 				typeOptions.primaryCondition = condition;
 			});
-			pureCommand = window.commandsFnTranslations('c54', 'E1', alternativeOptionsArray[0]);
+			pureCommand = window.commandsFnTranslations('c54', alternativeOptionsArray[0]);
 			alternativeOptionsArray.shift();
 			if (alternativeOptionsArray.length > 0) {
 				typeOptions.elementName = elementName;
@@ -55,26 +55,26 @@ window.execute = async function (elementName, command, execute) {
 						await window.evaluateStatement(alternativeOptionsArray[optionID]).then(function (condition) {
 							typeOptions.secondryConditions[optionID].condition = condition;
 						});
-						await window.execute(typeOptions.elementName, window.commandsFnTranslations('c54', 'E1', alternativeOptionsArray[optionID]), false).then(function (conditionalCommand) {
+						await window.execute(typeOptions.elementName, window.commandsFnTranslations('c54', alternativeOptionsArray[optionID])).then(function (conditionalCommand) {
 							typeOptions.secondryConditions[optionID].command = conditionalCommand;
 						});
 					} else {
 						typeOptions.secondryConditions[optionID].condition = 'true';
-						await window.execute(typeOptions.elementName, alternativeOptionsArray[optionID], false).then(function (conditionalCommand) {
+						await window.execute(typeOptions.elementName, alternativeOptionsArray[optionID]).then(function (conditionalCommand) {
 							typeOptions.secondryConditions[optionID].command = conditionalCommand;
 						});
 					}
 				}
 			}
-		} else if (window.commandsFnTranslations('c34', 'E1', commands[commandID]).length > 1) {
+		} else if (window.commandsFnTranslations('c34', commands[commandID]).length > 1) {
 			commandType = 'T1';
-			pureCommand = window.commandsFnTranslations('c35', 'E1', commands[commandID]);
-			timeoutPeriod = window.commandsFnTranslations('c36', 'E1', commands[commandID]);
+			pureCommand = window.commandsFnTranslations('c35', commands[commandID]);
+			timeoutPeriod = window.commandsFnTranslations('c36', commands[commandID]);
 			commandInfo.timeoutPeriod = timeoutPeriod;
-		} else if (window.commandsFnTranslations('c37', 'E1', commands[commandID]).length > 1) {
+		} else if (window.commandsFnTranslations('c37', commands[commandID]).length > 1) {
 			commandType = 'T2';
-			intervalCommand = window.commandsFnTranslations('c38', 'E1', commands[commandID]);
-			intervalPeriod = window.commandsFnTranslations('c39', 'E1', commands[commandID]);
+			intervalCommand = window.commandsFnTranslations('c38', commands[commandID]);
+			intervalPeriod = window.commandsFnTranslations('c39', commands[commandID]);
 			commandInfo.intervalPeriod = intervalPeriod;
 		} else if (commands[commandID].startsWith(document[getTheEventCode(commands[commandID])])) {
 			commandType = 'T0';
@@ -83,7 +83,7 @@ window.execute = async function (elementName, command, execute) {
 		if (document[getTheEventCode(pureCommand)] == 'E17') {
 			codePrefix = "if (Modernizr.speechrecognition) { \
 				annyang.start(); \
-				var voiceCommand = window.commandsFnTranslations('c40', 'E17', pureCommand);";
+				var voiceCommand = window.commandsFnTranslations('c40', pureCommand);";
 			codeSuffix = "};";
 			codeParam = "";
 		}

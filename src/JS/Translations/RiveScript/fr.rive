@@ -26,7 +26,7 @@
 
 // aller à l'url https://www.google.fr/
 
-+ (?:aller à|aller vers|visiter|ouvrir) (?:le|la|l')[ ]* (%)
++ (?:aller à|aller vers|visiter|ouvrir) (?:le |la |l')* (%)
 - command_id: S2 ==> lang: fr ==> targetType: <star1> ==> target: <star2>
 
 // lecture il
@@ -181,12 +181,12 @@
 
 // définir l'arrière-plan de main_page à rouge
 
-+ (?:définir|changer) (?:le|l')[ ](?:arrière-plan|fond) de * à *
++ (?:définir|changer) (?:le |l')(?:arrière-plan|fond) de * à *
 - command_id: S19 ==> lang: fr ==> target: <star1> ==> value: <star2>
 
 // définir le fond de cet élément à une couleur claire aléatoire
 
-+ (?:définir|changer) (?:le|l')[ ](?:arrière-plan|fond) de cet élément à *
++ (?:définir|changer) (?:le |l')(?:arrière-plan|fond) de cet élément à *
 - command_id: S19 ==> lang: fr ==> target: itself ==> value: <star1>
 
 // définir la couleur de sa police à une couleur aléatoire

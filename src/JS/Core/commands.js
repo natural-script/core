@@ -24,52 +24,52 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
         eventPrefix = ``;
         eventSuffix = ``;
     } else if (event == 'E1') {
-        eventPrefix = `$('#' + elementName + '').on('tap', function (event) {`;
+        eventPrefix = `$('#' + elementName + '').on('tap', function (event) { event.stopPropagation();`;
         eventSuffix = `});`;
     } else if (event == 'E2') {
-        eventPrefix = `$('#' + elementName + '').mouseenter(function (event) {`;
+        eventPrefix = `$('#' + elementName + '').mouseenter(function (event) { event.stopPropagation();`;
         eventSuffix = `});`;
     } else if (event == 'E3') {
-        eventPrefix = `$('#' + elementName + '').mouseleave(function (event) {`;
+        eventPrefix = `$('#' + elementName + '').mouseleave(function (event) { event.stopPropagation();`;
         eventSuffix = `});`;
     } else if (event == 'E4') {
-        eventPrefix = `$('#' + elementName + '').mouseout(function (event) {`;
+        eventPrefix = `$('#' + elementName + '').mouseout(function (event) { event.stopPropagation();`;
         eventSuffix = `});`;
     } else if (event == 'E5') {
-        eventPrefix = `$('#' + elementName + '').mousemove(function (event) {`;
+        eventPrefix = `$('#' + elementName + '').mousemove(function (event) { event.stopPropagation();`;
         eventSuffix = `});`;
     } else if (event == 'E6') {
-        eventPrefix = `$('#' + elementName + '').on('up', function (event) {`;
+        eventPrefix = `$('#' + elementName + '').on('up', function (event) { event.stopPropagation();`;
         eventSuffix = `});`;
     } else if (event == 'E7') {
-        eventPrefix = `$('#' + elementName + '').dblclick(function (event) {`;
+        eventPrefix = `$('#' + elementName + '').dblclick(function (event) { event.stopPropagation();`;
         eventSuffix = `});`;
     } else if (event == 'E8') {
-        eventPrefix = `$('#' + elementName + '').contextmenu(function (event) {`;
+        eventPrefix = `$('#' + elementName + '').contextmenu(function (event) { event.stopPropagation();`;
         eventSuffix = `});`;
     } else if (event == 'E9') {
-        eventPrefix = `$('#' + elementName + '').keypress(function (event) {`;
+        eventPrefix = `$('#' + elementName + '').keypress(function (event) { event.stopPropagation();`;
         eventSuffix = `});`;
     } else if (event == 'E10') {
-        eventPrefix = `$('#' + elementName + '').keydown(function (event) {`;
+        eventPrefix = `$('#' + elementName + '').keydown(function (event) { event.stopPropagation();`;
         eventSuffix = `});`;
     } else if (event == 'E11') {
-        eventPrefix = `$('#' + elementName + '').change(function (event) {`;
+        eventPrefix = `$('#' + elementName + '').change(function (event) { event.stopPropagation();`;
         eventSuffix = `});`;
     } else if (event == 'E12') {
-        eventPrefix = `$('#' + elementName + '').focus(function (event) {`;
+        eventPrefix = `$('#' + elementName + '').focus(function (event) { event.stopPropagation();`;
         eventSuffix = `});`;
     } else if (event == 'E13') {
-        eventPrefix = `$('#' + elementName + '').focusin(function (event) {`;
+        eventPrefix = `$('#' + elementName + '').focusin(function (event) { event.stopPropagation();`;
         eventSuffix = `});`;
     } else if (event == 'E14') {
-        eventPrefix = `$('#' + elementName + '').focusout(function (event) {`;
+        eventPrefix = `$('#' + elementName + '').focusout(function (event) { event.stopPropagation();`;
         eventSuffix = `});`;
     } else if (event == 'E15') {
-        eventPrefix = `$('#' + elementName + '').submit(function (event) {`;
+        eventPrefix = `$('#' + elementName + '').submit(function (event) { event.stopPropagation();`;
         eventSuffix = `});`;
     } else if (event == 'E16') {
-        eventPrefix = `$('#' + elementName + '').scroll(function (event) {`;
+        eventPrefix = `$('#' + elementName + '').scroll(function (event) { event.stopPropagation();`;
         eventSuffix = `});`;
     } else if (event == 'E17') {
         eventPrefix = `annyang.addCommands({ [voiceCommand]: function (event) {`;
@@ -127,7 +127,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
         return "(function () { \
             " + commandsCommonDeclarations + " \
             var targetElement; \
-            var target = script.target; \
+            var target = script.target.parseValue(); \
             if (target == 'itself') { \
                 targetElement = elementName; \
             } else { \
@@ -143,7 +143,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
 				$('#' + elementName + '').css('cursor', 'pointer'); \
                 " + eventPrefix + typePrefix + " \
                     var hyperlinkType = script.targetType.punctuationAndArticleRemover(); \
-                    var hyperlink = decodeURI(script.target); \
+                    var hyperlink = decodeURI(script.target.parseValue()); \
                     event.preventDefault(); \
                     if (hyperlinkType.findBestMatch(wordsTranslationsDB.Words['url'][document.langCode]).rating > 0.5) { \
                         window.open(hyperlink); \
@@ -165,7 +165,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
         return "(function () { \
             " + commandsCommonDeclarations + " \
             var targetElement; \
-            var target = script.target; \
+            var target = script.target.parseValue(); \
             if (target == 'itself') { \
                 targetElement = elementName; \
             } else { \
@@ -182,7 +182,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
         return "(function () { \
             " + commandsCommonDeclarations + " \
             var targetElement; \
-            var target = script.target; \
+            var target = script.target.parseValue(); \
             if (target == 'itself') { \
                 targetElement = elementName; \
             } else { \
@@ -199,7 +199,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
         return "(function () { \
             " + commandsCommonDeclarations + " \
             var targetElement; \
-            var target = script.target; \
+            var target = script.target.parseValue(); \
             if (target == 'itself') { \
                 targetElement = elementName; \
             } else { \
@@ -220,7 +220,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
         return "(function () { \
             " + commandsCommonDeclarations + " \
                     var targetElement; \
-                    var target = script.target; \
+                    var target = script.target.parseValue(); \
                     if (target == 'itself') { \
                         targetElement = elementName; \
                     } else { \
@@ -308,17 +308,17 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
     } else if (script.command_id == 'S15') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
-                var dbType = script.dbType; \
-                var dbname = script.dbName; \
-                var tablename = script.branchName; \
+                var dbType = script.dbType.parseValue(); \
+                var dbname = script.dbName.parseValue(); \
+                var tablename = script.branchName.parseValue(); \
                 var dataRaw = script.data; \
                 " + eventPrefix + typePrefix + " \
                     var data = '{'; \
                     for (var i = 0; i < Object.keys(dataRaw).length; i++) { \
                         if (i != Object.keys(dataRaw).length - 1) { \
-                            data += '\"' + dataRaw[i].slotName + '\":\"' + dataRaw[i].value.parseValue().replace(/\\n/g, '<br />') + '\", '; \
+                            data += '\"' + dataRaw[i].slotName.parseValue() + '\":\"' + dataRaw[i].value.parseValue().replace(/\\n/g, '<br />') + '\", '; \
                         } else { \
-                            data += '\"' + dataRaw[i].slotName + '\":\"' + dataRaw[i].value.parseValue().replace(/\\n/g, '<br />') + '\"}'; \
+                            data += '\"' + dataRaw[i].slotName.parseValue() + '\":\"' + dataRaw[i].value.parseValue().replace(/\\n/g, '<br />') + '\"}'; \
                         } \
                     } \
                     data = JSON.parse(data); \
@@ -333,14 +333,14 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
     } else if (script.command_id == 'S16') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
-            var dbType = script.dbType; \
-            var dbname = script.dbName; \
-            var tablename = script.branchName; \
-            var calledSlot = script.requiredSlot; \
+            var dbType = script.dbType.parseValue(); \
+            var dbname = script.dbName.parseValue(); \
+            var tablename = script.branchName.parseValue(); \
+            var calledSlot = script.requiredSlot.parseValue(); \
             var resourceSlotValueResource = script.resourceValue.parseValue(); \
-            var resourceSlotName = script.resourceSlot; \
+            var resourceSlotName = script.resourceSlot.parseValue(); \
             var targetElement; \
-            var target = script.target; \
+            var target = script.target.parseValue(); \
             if (target == 'itself') { \
                 targetElement = elementName; \
             } else { \
@@ -369,56 +369,60 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
         return "(function () { \
             " + commandsCommonDeclarations + " \
             var targetElement; \
-            var target = script.target; \
+            var target = script.target.parseValue(); \
+            var value = script.value.parseValue(); \
             if (target == 'itself') { \
                 targetElement = elementName; \
             } else { \
                 targetElement = target; \
             } \
                     " + eventPrefix + typePrefix + " \
-					    window.setDimension(targetElement, 'width', value.parseValue()); \
+					    window.setDimension(targetElement, 'width', value); \
                         " + typeSuffix + eventSuffix + " \
                     })()";
     } else if (script.command_id == 'S18') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
             var targetElement; \
-            var target = script.target; \
+            var target = script.target.parseValue(); \
+            var value = script.value.parseValue(); \
             if (target == 'itself') { \
                 targetElement = elementName; \
             } else { \
                 targetElement = target; \
             } \
                     " + eventPrefix + typePrefix + " \
-					    window.setDimension(targetElement, 'length', value.parseValue()); \
+					    window.setDimension(targetElement, 'length', value); \
                         " + typeSuffix + eventSuffix + " \
                     })()";
     } else if (script.command_id == 'S19') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
             var targetElement; \
-            var target = script.target; \
+            var target = script.target.parseValue(); \
+            var value = script.value.parseValue(); \
             if (target == 'itself') { \
                 targetElement = elementName; \
             } else { \
                 targetElement = target; \
             } \
                     " + eventPrefix + typePrefix + " \
-					    window.setBG(targetElement, value.parseValue()); \
+					    window.setBG(targetElement, value); \
                         " + typeSuffix + eventSuffix + " \
                     })()";
     } else if (script.command_id == 'S20') {
         return "(function () { \
             " + commandsCommonDeclarations + " \
             var targetElement; \
-            var target = script.target; \
+            var target = script.target.parseValue(); \
+            var value = script.value.parseValue(); \
             if (target == 'itself') { \
                 targetElement = elementName; \
             } else { \
                 targetElement = target; \
             } \
                     " + eventPrefix + typePrefix + " \
-					    window.setFontColour(targetElement, value.parseValue()); \
+					    window.setFontColour(targetElement, value); \
                         " + typeSuffix + eventSuffix + " \
                     })()";
     } else if (script.command_id == 'S21') {

@@ -1288,7 +1288,7 @@
         },
         "indexPage": {
             "en": ["home"],
-            "fr": ["page principale"],
+            "fr": ["page_principale"],
             "ar": ["الرئيسية"],
             "arz": ["الرئيسية"],
             "jp": ["ホーム"]
@@ -1327,6 +1327,127 @@
             "ar": ["عنصر"],
             "arz": ["عنصر"],
             "jp": ["ホーム"]
+        }
+    },
+    "Operators": {
+        "operator1": {
+            "en": ["write this text in a bold font"],
+            "fr": ["écrire ce texte dans une police en gras"],
+            "ar": ["اكتب هذا النص بخط سميك"],
+            "arz": ["اكتب الكلام دة بخط طخين"],
+            "jp": ["いいえ"]
+        },
+        "operator2": {
+            "en": ["write this text in an italic font"],
+            "fr": ["écrire ce texte dans une police en italique"],
+            "ar": ["اكتب هذا النص بخط مائل"],
+            "arz": ["اكتب الكلام دة بخط مايل"],
+            "jp": ["いいえ"]
+        },
+        "operator3": {
+            "en": ["write this text in an underlined font"],
+            "fr": ["écrire ce texte dans une police soulignée"],
+            "ar": ["اكتب هذا النص بخط مخطط"],
+            "arz": ["اكتب الكلام دة بخط متخطط"],
+            "jp": ["いいえ"]
+        },
+        "operator4": {
+            "en": ["write this text in a bold and italic font", "write this text in an italic and bold font"],
+            "fr": ["écrire ce texte dans une police en gras et en italique", "écrire ce texte dans une police en italique et en gras"],
+            "ar": ["اكتب هذا النص بخط سميك و مائل", "اكتب هذا النص بخط مائل و سميك"],
+            "arz": ["اكتب الكلام دة بخط طخين و مايل", "اكتب الكلام دة بخط مايل و طخين"],
+            "jp": ["いいえ"]
+        },
+        "operator5": {
+            "en": ["write this text in a bold and underlined font", "write this text in an underlined and bold font"],
+            "fr": ["écrire ce texte dans une police en gras et soulignée", "écrire ce texte dans une police soulignée et en gras"],
+            "ar": ["اكتب هذا النص بخط سميك و مخطط", "اكتب هذا النص بخط مخطط و سميك"],
+            "arz": ["اكتب الكلام دة بخط طخين و متخطط", "اكتب الكلام دة بخط متخطط و طخين"],
+            "jp": ["いいえ"]
+        },
+        "operator6": {
+            "en": ["write this text in an underlined and italic font", "write this text in an italic and underlined font"],
+            "fr": ["écrire ce texte dans une police soulignée et en italique", "écrire ce texte dans une police en italique et soulignée"],
+            "ar": ["اكتب هذا النص بخط مخطط و مائل", "اكتب هذا النص بخط مائل و مخطط"],
+            "arz": ["اكتب الكلام دة بخط متخطط و مايل", "اكتب الكلام دة بخط مايل و متخطط"],
+            "jp": ["いいえ"]
+        },
+        "operator7": {
+            "en": ["write this text in a bold, italic and underlined font", "write this text in a bold, underlined and italic font", "write this text in an italic, bold and underlined font", "write this text in an italic, underlined and bold font", "write this text in an underlined, italic and bold font", "write this text in an underlined, bold and italic font"],
+            "fr": ["écrire ce texte dans une police en gras, en italique et soulignée", "écrire ce texte dans une police en gras, soulignée et en italique", "écrire ce texte dans une police en italique, en gras et soulignée", "écrire ce texte dans une police en italique, soulignée et en gras", "écrire ce texte dans une police soulignée, en italique et en gras", "écrire ce texte dans une police soulignée, en gras et en italique"],
+            "ar": ["اكتب هذا النص بخط سميك, مائل و مخطط", "اكتب هذا النص بخط سميك, مخطط و مائل", "اكتب هذا النص بخط مائل, سميك و مخطط", "اكتب هذا النص بخط مائل, مخطط و سميك", "اكتب هذا النص بخط مخطط, مائل و سميك", "اكتب هذا النص بخط مخطط, سميك و مائل"],
+            "arz": ["اكتب الكلام دة بخط طخين, مايل و متخطط", "اكتب الكلام دة بخط طخين, متخطط و مايل", "اكتب الكلام دة بخط مايل, طخين و متخطط", "اكتب الكلام دة بخط مايل, متخطط و طخين", "اكتب الكلام دة بخط متخطط, مايل و طخين", "اكتب الكلام دة بخط متخطط, طخين و مايل"],
+            "jp": ["いいえ"]
+        },
+        "operator8": {
+            "en": ["the window length"],
+            "fr": ["la longueur de la fenêtre"],
+            "ar": ["طول النافذة"],
+            "arz": ["طول النافذة"],
+            "jp": ["いいえ"]
+        },
+        "operator9": {
+            "en": ["the window width"],
+            "fr": ["la largeur de la fenêtre"],
+            "ar": ["عرض النافذة"],
+            "arz": ["عرض النافذة"],
+            "jp": ["いいえ"]
+        },
+        "operator10": {
+            "en": ["the screen length"],
+            "fr": ["la longueur de l'écran"],
+            "ar": ["طول الشاشة"],
+            "arz": ["طول الشاشة"],
+            "jp": ["いいえ"]
+        },
+        "operator11": {
+            "en": ["the screen width"],
+            "fr": ["la largeur de l'écran"],
+            "ar": ["عرض الشاشة"],
+            "arz": ["عرض الشاشة"],
+            "jp": ["いいえ"]
+        },
+        "operator12": {
+            "en": ["an icon of"],
+            "fr": ["une icône de"],
+            "ar": ["ايقونة"],
+            "arz": ["ايكونة"],
+            "jp": ["いいえ"]
+        },
+        "operator13": {
+            "en": ["a line break"],
+            "fr": ["un saut de ligne"],
+            "ar": ["سطر جديد"],
+            "arz": ["سطر جديد"],
+            "jp": ["いいえ"]
+        },
+        "operator14": {
+            "en": ["the value of "],
+            "fr": ["la valeur de "],
+            "ar": ["قيمة "],
+            "arz": ["قيمة "],
+            "jp": ["いいえ"]
+        },
+        "operator15": {
+            "en": ["the user's name"],
+            "fr": ["le nom de l'utilisateur"],
+            "ar": ["اسم المستخدم"],
+            "arz": ["اسم المستخدم"],
+            "jp": ["いいえ"]
+        },
+        "operator16": {
+            "en": ["the user's email"],
+            "fr": ["le courrier électronique de l'utilisateur"],
+            "ar": ["بريد المستخدم"],
+            "arz": ["إيميل المستخدم"],
+            "jp": ["いいえ"]
+        },
+        "operator17": {
+            "en": ["name this text", "call this text"],
+            "fr": ["nommer ce texte"],
+            "ar": ["سمى هذا النص"],
+            "arz": ["سمى الكلام دة"],
+            "jp": ["いいえ"]
         }
     }
 }
