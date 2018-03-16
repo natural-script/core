@@ -6,9 +6,10 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-03-15
+ * Date: 2018-03-16
  */
 var eventSplit;
+
 function getTheEventCode(command) {
 	for (var i = 1; i <= 19; i++) {
 		if (command.startsWith(document['E' + i])) {
@@ -21,12 +22,6 @@ function getTheEventCode(command) {
 }
 window.execute = async function (elementName, command, execute) {
 	var commands = command.split(' &amp;&amp;&amp; ');
-	var operationPrefix = 'eval(';
-	var operationSuffix = ');';
-	if (execute == false) {
-		operationPrefix = '(';
-		operationSuffix = ')';
-	}
 	for (var commandID = 0; commandID < commands.length; commandID++) {
 		var commandType;
 		var pureCommand;
@@ -55,12 +50,12 @@ window.execute = async function (elementName, command, execute) {
 						await window.evaluateStatement(alternativeOptionsArray[optionID]).then(function (condition) {
 							typeOptions.secondryConditions[optionID].condition = condition;
 						});
-						await window.execute(typeOptions.elementName, window.commandsFnTranslations('c54', alternativeOptionsArray[optionID])).then(function (conditionalCommand) {
+						await window.execute(typeOptions.elementName, window.commandsFnTranslations('c54', alternativeOptionsArray[optionID]), false).then(function (conditionalCommand) {
 							typeOptions.secondryConditions[optionID].command = conditionalCommand;
 						});
 					} else {
 						typeOptions.secondryConditions[optionID].condition = 'true';
-						await window.execute(typeOptions.elementName, alternativeOptionsArray[optionID]).then(function (conditionalCommand) {
+						await window.execute(typeOptions.elementName, alternativeOptionsArray[optionID], false).then(function (conditionalCommand) {
 							typeOptions.secondryConditions[optionID].command = conditionalCommand;
 						});
 					}
@@ -93,11 +88,15 @@ window.execute = async function (elementName, command, execute) {
 			codeParam = ", typeOptions";
 		}
 		commandInfo.pureCommand = pureCommand;
-
-		var result = eval("if (pureCommand.startsWith(document[getTheEventCode(pureCommand)])) { \
+		var commandEvaluation = eval("window.evaluateScript(window.analyzeCommand(pureCommand" + eventSplit + ".split(new RegExp(getTranslations('inTheCaseThat') + '.*?$', 'gimy'))[0]), getTheEventCode(pureCommand), commandType, commandInfo" + codeParam + ")");
+		if (execute == false) {
+			return commandEvaluation;
+		} else {
+			eval("if (pureCommand.startsWith(document[getTheEventCode(pureCommand)])) { \
 			" + codePrefix + " \
-				" + operationPrefix + "window.evaluateScript(window.analyzeCommand(pureCommand" + eventSplit + ".split(new RegExp(getTranslations('inTheCaseThat') + '.*?$', 'gimy'))[0]), getTheEventCode(pureCommand), commandType, commandInfo" + codeParam + ")" + operationSuffix + " \
+				" + commandEvaluation + " \
 			" + codeSuffix + "};");
+
+		}
 	}
-	return result;
 };
