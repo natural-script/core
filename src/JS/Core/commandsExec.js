@@ -20,7 +20,7 @@ function getTheEventCode(command) {
 	eventSplit = '';
 	return 'E0';
 }
-window.execute = async function (elementName, command, execute) {
+window.execute = async function (elementName, command, execute, functionName) {
 	var commands = command.split(' &amp;&amp;&amp; ');
 	for (var commandID = 0; commandID < commands.length; commandID++) {
 		var commandType;
@@ -32,6 +32,9 @@ window.execute = async function (elementName, command, execute) {
 		var codeParam = '';
 		var typeOptions = [];
 		var commandInfo = [];
+		if (functionName) {
+			var functionCommands = [];
+		}
 		commandInfo.elementName = elementName;
 		if (window.commandsFnTranslations('c52', commands[commandID]).length > 1) {
 			commandType = 'T3';
@@ -91,11 +94,21 @@ window.execute = async function (elementName, command, execute) {
 		var commandEvaluation = eval("window.evaluateScript(window.analyzeCommand(pureCommand" + eventSplit + ".split(new RegExp(getTranslations('inTheCaseThat') + '.*?$', 'gimy'))[0]), getTheEventCode(pureCommand), commandType, commandInfo" + codeParam + ")");
 		if (execute == false) {
 			return commandEvaluation;
-		} else {
-			eval("if (pureCommand.startsWith(document[getTheEventCode(pureCommand)])) { \
-			" + codePrefix + " \
+		} else if (functionName) {
+			if (commandID == commands.length - 1) {
+				functionCommands.push(codePrefix + " \
 				" + commandEvaluation + " \
-			" + codeSuffix + "};");
+			" + codeSuffix);
+			} else {
+				eval("window.jsteFunctionsStore['" + functionName + "'] = function(arguments) { \
+				" + codePrefix + " \
+					" + functionCommands.join('\n') + " \
+				" + codeSuffix + "};");
+			}
+		} else {
+			eval(codePrefix + " \
+				" + commandEvaluation + " \
+			" + codeSuffix);
 
 		}
 	}

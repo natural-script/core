@@ -29,9 +29,9 @@ window.setVariable = function (name, value) {
     if (XRegExp('^(' + wordsTranslationsDB.Words['theFollowingList'][document.langCode].join('|') + '):', 'gmi').test(value)) {
         var inputtedList = value.match(/^\d(?:.*|[\r\n])+/mi)[0].parseList();
         for (var i = 0; i < inputtedList.length; i++) {
-            assignValue(keyPath.push(i), value.parseValue(), true);
+            assignValue(keyPath.push(i), value, true);
         }
     } else {
-        assignValue(keyPath, value.parseValue(), false);
+        assignValue(keyPath, value, false);
     }
 }

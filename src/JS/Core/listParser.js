@@ -8,9 +8,14 @@
  *
  * Date: 2018-03-10
  */
-String.prototype.parseList = function () {
-    const regex = /^(\d)\. (.*)$/gmi;
-    var output = [];
+String.prototype.parseList = function (isObject) {
+    if (isObject) {
+        const regex = /^\d\. (.*?): (.*)$/gmi;
+        var output = {};
+    } else {
+        const regex = /^(\d)\. (.*)$/gmi;
+        var output = [];
+    }
     // ^the following list:(\n^\d\. .*$)+
     while ((m = regex.exec(this)) !== null) {
         // This is necessary to avoid infinite loops with zero-width matches
@@ -25,7 +30,11 @@ String.prototype.parseList = function () {
                 itemKey = match;
             } else if (groupIndex == 2) {
                 item = match;
-                output[itemKey - 1] = item.parseValue();
+                if (isObject) {
+                    output[itemKey] = item.parseValue();
+                } else {
+                    output[itemKey - 1] = item.parseValue();
+                }
             }
         });
     }

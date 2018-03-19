@@ -8,7 +8,7 @@
  *
  * Date: 2018-03-15
  */
-String.prototype.parseValue = function (dynamic) {
+String.prototype.parseValue = function (dynamic, arguments) {
     var output = this.replace(XRegExp('^' + getTranslations("theValueOf") + ' ' + getTranslations("variable") + ' (\\S+)$', 'mi'), function (match, p1, offset, string) {
             var variable = 'window.jsteVariablesStore';
             var branches = p1.split(" ==> ");
@@ -61,7 +61,7 @@ String.prototype.parseValue = function (dynamic) {
         .replace(new RegExp("&lt;&lt; " + getTranslations("operator17") + " (.*?): (.*?) &gt;&gt;", "g"), function (match, p1, p2, offset, string) {
             return "<span id='" + p1 + "'>" + p2 + "</span>";
         });
-    if (dynamic == undefined) {
+    if (dynamic == undefined || dynamic == true) {
         output = output.replace(new RegExp("&lt;&lt; (" + getTranslations(["operator14", "operator15", "operator16", "operator8", "operator9", "operator10", "operator11"]) + ")(|.*?) &gt;&gt;", 'g'), function (match, p1, p2, offset, string) {
             if (XRegExp('^' + getTranslations("operator15") + '$', 'gmi').test(p1)) {
                 p2 = 'currentUserName';

@@ -213,3 +213,15 @@
 
 + (?:set|change) the value of the variable * to *
 - command_id: S21 ==> lang: en ==> variableName: <star1> ==> value: <star2>
+
+/* execute the function send data with the following params:
+1. Link: https://example.com/POST
+2. Data: << the value of data_input >> */
+
++ (?:call|execute|run) the funciton * with the following (?:arguemnts|paramaters|params) *
+- command_id: S22 ==> lang: en ==> functionName: <star1> ==> arguemnts: <star2>
+
+// execute the function alert
+
++ (?:call|execute|run) the funciton *
+- command_id: S22 ==> lang: en ==> functionName: <star1>

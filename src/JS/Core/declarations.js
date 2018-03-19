@@ -9,6 +9,7 @@
  * Date: 2018-03-10
  */
 window.jsteVariablesStore = {};
+window.jsteFunctionsStore = {};
 var code = $("jste").html();
 var detectedLang = franc(code, {
 	whitelist: ['arb', 'eng', 'fra']
