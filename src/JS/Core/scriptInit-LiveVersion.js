@@ -40,7 +40,7 @@ window.scriptInit = async function () {
 	var code = rawCode;
 	code = code.replace(XRegExp(`((^ +| +$)|(^\\s*$(?:\\r\\n?|\\n)))`, 'gmi'), ``);
 	code = code.replace(XRegExp(`^((.*?)[^,|\\.|:])$\\s(?!^\\d\\.)`, 'gmi'), '$1 ');
-	code = codePrefix + code + `\n});`;
+	code = `${codePrefix}\n${code}\n});`;
 	if (document.langID == 0) {
 		document.isRTL = false;
 		if (Modernizr.speechrecognition) {
