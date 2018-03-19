@@ -210,7 +210,6 @@ window.scriptInit = async function () {
 		if (Modernizr.speechrecognition) {
 			annyang.setLanguage(`ja`);
 		}
-		code += '追加する= $(`body`);' + $(`jste`).html();
 		$(`jste`).remove();
 	}
 	eval(code);
