@@ -175,10 +175,10 @@ async function startBuild() {
                         shell.exec('git push ' + gitURLPrefix + 'manager.git master');
                     }
                 }
-                if (shell.test('-d', '../manager-heroku')) {
+                if (shell.test('-d', '../manager-cloud')) {
                     console.log(' ');
                     console.log(' Preparing for building Jste Manager Heroku version ');
-                    shell.cd('../manager-heroku');
+                    shell.cd('../manager-cloud');
                     console.log(' ');
                     console.log(' Updating framework file ');
                     shell.cp(['../framework/build/compressed/framework-LiveVersion.min.html.gz', '../framework/build/compressed/db-manager.min.html.gz'], 'assets');
@@ -191,7 +191,7 @@ async function startBuild() {
                         shell.exec('git commit -m "Updating Framework Files"');
                         console.log(' ');
                         console.log(' Pushing the updates to GitHub ');
-                        shell.exec('git push ' + gitURLPrefix + 'manager-heroku.git master');
+                        shell.exec('git push ' + gitURLPrefix + 'manager-cloud.git master');
                         console.log(' ');
                         console.log(' Pushing the updates to Heroku ');
                         shell.exec('git push heroku master');
