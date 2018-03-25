@@ -16,9 +16,9 @@ window.scriptInit = async function () {
 	var componentsRegex = '(' + window.componentsDB.join('|') + ')';
 	var rawCode = $(`jste`).html();
 	if (navigator.onLine) {
-		var isReachable = await window.isReachable('https://translate.google.com/');
+		var isReachable = await window.isReachable('https://jste-manager.azurewebsites.net/autoCorrect');
 		if (isReachable) {
-			var codeChunks = rawCode.match(/^(.|[\r\n]){0,3000}(,|\.)$/gmi);
+			var codeChunks = rawCode.match(/^(.|[\r\n]){0,10000}(,|\.)$/gmi);
 			rawCode = '';
 			for (var i = 0; i < codeChunks.length; i++) {
 				rawCode += '\n' + await $.ajax({

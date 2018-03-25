@@ -2,7 +2,7 @@
 //------------------------------------------------Requesting The Files Sizes------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 window.getFileSize = function (url, callback) {
-	$.post('https://jste-manager.herokuapp.com/getFileSize', {fileURL: url}).done(function(data) {
+	$.post('https://jste-manager.azurewebsites.net/getFileSize', {fileURL: url}).done(function(data) {
 			size = parseInt(data);
 			if (size < 1000) {
 				callback(size + ' Bytes');

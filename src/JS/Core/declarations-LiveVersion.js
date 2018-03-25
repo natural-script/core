@@ -40,12 +40,12 @@ if (navigator.platform == 'Win32') {
 } else {
 	window.localAddress = '0.0.0.0';
 }
-$.get("https://jste-manager.herokuapp.com/deviceForm", function (data) {
+$.get("https://jste-manager.azurewebsites.net/deviceForm", function (data) {
 	window.deviceForm = data;
 });
 document.isRTL = false;
-window.corsPolicy = 'https://jste-cors-proxy.herokuapp.com/';
-window.autoCorrectionAddress = "https://jste-manager.herokuapp.com/autoCorrect"
+window.corsPolicy = 'https://jste-cors-proxy.azurewebsites.net/';
+window.autoCorrectionAddress = "https://jste-manager.azurewebsites.net/autoCorrect"
 window.shareThis = window.ShareThis;
 window.twitterSharer = window.ShareThisViaTwitter;
 window.facebookSharer = window.ShareThisViaFacebook;

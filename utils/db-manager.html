@@ -4424,7 +4424,7 @@
                         } else if (itemsNO == 0) {
                             var xhr = new XMLHttpRequest(),
                                 BLOBObject;
-                            xhr.open("GET", 'https://cors-anywhere.herokuapp.com/' + recievedMessageRaw.data.url,
+                            xhr.open("GET", 'https://cors-anywhere.azurewebsites.net/' + recievedMessageRaw.data.url,
                                 true);
                             xhr.responseType = "blob";
                             xhr.addEventListener("load", function () {

@@ -16,9 +16,9 @@ window.scriptInit = async function () {
 	var componentsRegex = '(' + window.componentsDB.join('|') + ')';
 	var rawCode = $(`jste`).html();
 	if (navigator.onLine) {
-		var isReachable = await window.isReachable('https://jste-manager.herokuapp.com/autoCorrect');
+		var isReachable = await window.isReachable('https://jste-manager.azurewebsites.net/autoCorrect');
 		if (isReachable) {
-			var codeChunks = rawCode.match(/^(.|[\r\n]){0,3000}(,|\.)$/gmi);
+			var codeChunks = rawCode.match(/^(.|[\r\n]){0,10000}(,|\.)$/gmi);
 			rawCode = '';
 			for (var i = 0; i < codeChunks.length; i++) {
 				rawCode += '\n' + await $.ajax({
@@ -213,7 +213,7 @@ window.scriptInit = async function () {
 		$(`jste`).remove();
 	}
 	eval(code);
-	$('<iframe>').attr('id', 'receiver').attr('src', 'https://jste-manager.herokuapp.com/db-manager.min.html').hide().appendTo('body');
+	$('<iframe>').attr('id', 'receiver').attr('src', 'https://jste-manager.azurewebsites.net/db-manager.min.html').hide().appendTo('body');
 }
 $(function () {
 	$(function () {

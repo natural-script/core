@@ -77,6 +77,7 @@ $(function () {
              */
             var handleSignedInUser = function (user) {
                 window.user = user;
+                window.uid = user.uid;
                 console.log(user.uid);
                 window.displayName = user.displayName;
                 window.email = user.email;
