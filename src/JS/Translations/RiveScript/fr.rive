@@ -208,3 +208,15 @@
 
 + (?:définir|changerr) la variable * à *
 - command_id: S21 ==> lang: fr ==> variableName: <star1> ==> value: <star2>
+
+/* exécuter la fonction send data avec les params suivantes:
+1. Link: https://example.com/POST
+2. Data: << la valeur de data_input >> */
+
++ (?:apeler|exécuter|courir) la fonction * avec les (?:arguemnts|paramètres|params) suivantes *
+- command_id: S22 ==> lang: fr ==> functionName: <star1> ==> arguemnts: <star2>
+
+// exécuter la fonction alert
+
++ (?:apeler|exécuter|courir) la fonction *
+- command_id: S22 ==> lang: fr ==> functionName: <star1>

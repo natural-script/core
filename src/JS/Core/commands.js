@@ -8,7 +8,7 @@
  *
  * Date: 2018-03-19
  */
-window.evaluateScript = function (script, event, type, commandInfo, typeOptions) {
+window.evaluateScript = function (script, event, type, commandInfo, isFunction, typeOptions) {
     var typePrefix;
     var typeSuffix;
     var commandVarA;
@@ -123,7 +123,7 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
         }
         commandVarB = `script`;
     }
-    var functionArgumentsParam = `, arguments`;
+    var functionArgumentsParam = isFunction ? `, params` : ``;
     if (script.command_id == 'S1') {
         return `(function () {
             ${commandsCommonDeclarations}
@@ -464,11 +464,11 @@ window.evaluateScript = function (script, event, type, commandInfo, typeOptions)
             (function (${commandVarB + functionArgumentsParam}) {
                     ${eventPrefix + typePrefix}
                     var functionName = script.functionName.parseValue(false${functionArgumentsParam});
-                    var arguments = script.arguemtns;
-                    if (arguemnts) {
-                    window.jsteFunctionsStore[functionName](arguemnts.parseList(true));
+                    var params = script.arguemtns;
+                    if (params) {
+                    window.jsteFunctionsStore[functionName](elementName, params.parseList(true));
                     } else {
-                        window.jsteFunctionsStore[functionName]();
+                        window.jsteFunctionsStore[functionName](elementName);
                     }
                         ${typeSuffix + eventSuffix}
                     })(${commandVarB + functionArgumentsParam});})();`;

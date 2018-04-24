@@ -11,6 +11,7 @@
 $(function () {
     function textFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var out = '<p id="' + name + '">' + elementSettingsAnalyze(settings, 'text') + '</p>';
             window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);

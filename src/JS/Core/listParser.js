@@ -9,11 +9,12 @@
  * Date: 2018-03-10
  */
 String.prototype.parseList = function (isObject) {
+    let regex;
     if (isObject) {
-        const regex = /^\d\. (.*?): (.*)$/gmi;
+        regex = /^\d\. (.*?): (.*)$/gmi;
         var output = {};
     } else {
-        const regex = /^(\d)\. (.*)$/gmi;
+        regex = /^(\d)\. (.*)$/gmi;
         var output = [];
     }
     // ^the following list:(\n^\d\. .*$)+

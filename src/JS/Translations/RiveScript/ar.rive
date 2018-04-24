@@ -248,3 +248,15 @@
 
 + اجعل قيمة المتغير (%) *
 - command_id: S21 ==> lang: ar ==> variableName: <star1> ==> value: <star2>
+
+/* نفذ الدالة send data بالمعاملات التالية:
+1. Link: https://example.com/POST
+2. Data: << قيمة data_input >> */
+
++ (?:نادى|نفذ|شغل) الدالة * بال(?:خيارات|معاملات) التالية *
+- command_id: S22 ==> lang: ar ==> functionName: <star1> ==> arguemnts: <star2>
+
+// نفذ الدالة alert
+
++ (?:نادى|نفذ|شغل) الدالة *
+- command_id: S22 ==> lang: ar ==> functionName: <star1>

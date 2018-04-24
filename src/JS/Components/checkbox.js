@@ -11,6 +11,7 @@
 $(function () {
     function checkboxFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var out = '<paper-checkbox id="' + name + '">' + elementSettingsAnalyze(settings, 'title') + '';
             if (elementSettingsAnalyze(settings, 'description')) {

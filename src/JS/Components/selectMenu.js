@@ -11,6 +11,7 @@
 $(function () {
     function selectMenuFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var out = '<div id="' + name + '_container" class="input-field"> \
                         <select id="' + name + '">';

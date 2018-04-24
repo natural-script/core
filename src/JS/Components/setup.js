@@ -11,6 +11,7 @@
 $(function () {
     function setupFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var resolution;
             if (elementSettingsAnalyze(settings, 'defaultWindowResolution')) {
                 resolution = elementSettingsAnalyze(settings, 'defaultWindowResolution');

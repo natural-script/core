@@ -56,6 +56,7 @@ $(function () {
 
     function imageFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var isIcon = false;
             var isTitled = false;
             var name = elementSettingsAnalyze(settings, 'name');

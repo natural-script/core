@@ -156,7 +156,7 @@ https://github.com/project-jste/framework/projects/1
 
 ## Demos:
 
-http://jste-demos.azurewebsites.net/
+http://jste-demos.herokuapp.com/
 
 ## Documentation:
 

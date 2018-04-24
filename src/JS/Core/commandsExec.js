@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-03-16
+ * Date: 2018-04-19
  */
 var eventSplit;
 
@@ -21,6 +21,9 @@ function getTheEventCode(command) {
 	return 'E0';
 }
 window.execute = async function (elementName, command, execute, functionName) {
+	if (functionName) {
+		var functionCommands = [];
+	}
 	var commands = command.split(' &amp;&amp;&amp; ');
 	for (var commandID = 0; commandID < commands.length; commandID++) {
 		var commandType;
@@ -32,10 +35,9 @@ window.execute = async function (elementName, command, execute, functionName) {
 		var codeParam = '';
 		var typeOptions = [];
 		var commandInfo = [];
-		if (functionName) {
-			var functionCommands = [];
+		if (elementName) {
+			commandInfo.elementName = elementName;
 		}
-		commandInfo.elementName = elementName;
 		if (window.commandsFnTranslations('c52', commands[commandID]).length > 1) {
 			commandType = 'T3';
 			var alternativeOptionsArray = commands[commandID].split(XRegExp(' ' + getTranslations("else") + ' ', 'gmi'));
@@ -91,7 +93,7 @@ window.execute = async function (elementName, command, execute, functionName) {
 			codeParam = ", typeOptions";
 		}
 		commandInfo.pureCommand = pureCommand;
-		var commandEvaluation = eval("window.evaluateScript(window.analyzeCommand(pureCommand" + eventSplit + ".split(new RegExp(getTranslations('inTheCaseThat') + '.*?$', 'gimy'))[0]), getTheEventCode(pureCommand), commandType, commandInfo" + codeParam + ")");
+		var commandEvaluation = eval("window.evaluateScript(window.analyzeCommand(pureCommand" + eventSplit + ".split(new RegExp(getTranslations('inTheCaseThat') + '.*?$', 'gimy'))[0]), getTheEventCode(pureCommand), commandType, commandInfo, " + (functionName ? 'true' : 'false') + codeParam + ")");
 		if (execute == false) {
 			return commandEvaluation;
 		} else if (functionName) {
@@ -99,11 +101,14 @@ window.execute = async function (elementName, command, execute, functionName) {
 				functionCommands.push(codePrefix + " \
 				" + commandEvaluation + " \
 			" + codeSuffix);
-			} else {
-				eval("window.jsteFunctionsStore['" + functionName + "'] = function(arguments) { \
+				eval("window.jsteFunctionsStore['" + functionName + "'] = function(elementName, params) { \
 				" + codePrefix + " \
 					" + functionCommands.join('\n') + " \
 				" + codeSuffix + "};");
+			} else {
+				functionCommands.push(codePrefix + " \
+				" + commandEvaluation + " \
+			" + codeSuffix);
 			}
 		} else {
 			eval(codePrefix + " \

@@ -11,6 +11,7 @@
 $(function () {
     function dropdownMenuFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var out = '<ul id="' + name + '" class="dropdown-content">';
             if (elementSettingsAnalyze(settings, 'items')) {

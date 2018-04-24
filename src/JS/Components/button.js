@@ -11,6 +11,7 @@
 $(function () {
     function buttonFn (el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var out = '<paper-button id="' + name + '"></paper-button>';
             window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);

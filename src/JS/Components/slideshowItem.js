@@ -11,6 +11,7 @@
 $(function () {
     function slideShowItemFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var source = elementSettingsAnalyze(settings, 'source');
             if (window.getSafe(() => elementSettingsAnalyze(settings, 'type') == undefined || elementSettingsAnalyze(settings, 'type').findBestMatch(window.wordsTranslationsDB.Words['image'][document.langCode]).rating > 0.8)) {

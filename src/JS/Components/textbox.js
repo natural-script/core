@@ -11,6 +11,7 @@
 $(function () {
     function textboxFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var tagName = 'paper-input';
             if (elementSettingsAnalyze(settings, 'attributes')) {

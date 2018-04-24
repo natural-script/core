@@ -192,9 +192,6 @@ async function startBuild() {
                         console.log(' ');
                         console.log(' Pushing the updates to GitHub ');
                         shell.exec('git push ' + gitURLPrefix + 'manager-cloud.git master');
-                        console.log(' ');
-                        console.log(' Pushing the updates to Heroku ');
-                        shell.exec('git push heroku master');
                     }
                 }
                 if (shell.test('-d', '../manager-phone')) {

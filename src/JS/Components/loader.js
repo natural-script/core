@@ -11,6 +11,7 @@
 $(function () {
     function loaderFn(el, settings) {
         return this.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var out;
             if (window.getSafe(() => elementSettingsAnalyze(settings, 'type').findBestMatch(window.wordsTranslationsDB.Words['bar'][document.langCode]).rating > 0.8)) {

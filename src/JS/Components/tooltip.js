@@ -11,6 +11,7 @@
 $(function () {
     function tooltipFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var position;
             if (window.getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['fromTheRight'][document.langCode]).rating > 0.8)) {
                 position = 'right';

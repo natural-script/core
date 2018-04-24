@@ -11,6 +11,7 @@
 $(function () {
     function tableFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var out = '<table id="' + name + '" class="responsive-table centered highlight"><thead></thead><tbody class="list"></tbody></table>';
             window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);

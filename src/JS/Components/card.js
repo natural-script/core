@@ -11,6 +11,7 @@
 $(function () {
     function cardFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var out = '<paper-card id="' + name + '"><div class="card-content"></div></paper-card>';
             window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);

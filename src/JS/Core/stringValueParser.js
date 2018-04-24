@@ -6,30 +6,48 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-03-15
+ * Date: 2018-04-22
  */
-String.prototype.parseValue = function (dynamic, arguments) {
-    var output = this.replace(XRegExp('^' + getTranslations("theValueOf") + ' ' + getTranslations("variable") + ' (\\S+)$', 'mi'), function (match, p1, offset, string) {
+String.prototype.parseValue = function (dynamic, params) {
+    var output = this.replace(XRegExp('NORMALTEXTPREFIX(.*?)NORMALTEXTSUFFIX', 'gmi'), function (match, p1, offset, string) {
+            return atob(p1);
+        }).replace(XRegExp(getTranslations("operator20"), 'mi'), function (match, p1, offset, string) {
             var variable = 'window.jsteVariablesStore';
             var branches = p1.split(" ==> ");
             for (var i = 0; i < branches.length; i++) {
-                variable += '[' + branches[i] + ']'
+                variable += '[`' + branches[i] + '`]'
             }
             return exec('window.getSafe(() => ' + variable + ')');
-        }).replace(XRegExp('^' + getTranslations("theValueOf") + ' (\\S+)$', 'mi'), function (match, p1, offset, string) {
+        }).replace(XRegExp(getTranslations("operator21"), 'mi'), function (match, p1, p2, offset, string) {
+            var variable = 'window.jsteVariablesStore';
+            var branches = p2.split(" ==> ");
+            for (var i = 0; i < branches.length; i++) {
+                variable += '[`' + branches[i] + '`]';
+            }
+            variable += '[' + parseInt(p1.parseValue()) + ']';
+            return exec('window.getSafe(() => ' + variable + ')');
+        }).replace(XRegExp(getTranslations("operator22"), 'mi'), function (match, p1, offset, string) {
             return elementValue.get(p1);
-        }).replace(XRegExp('&lt;&lt; ' + getTranslations("theValueOf") + ' ' + getTranslations("variable") + ' (\\S+).*? &gt;&gt;', 'gmi'), function (match, p1, offset, string) {
+        }).replace(XRegExp(getTranslations("operator23"), 'gmi'), function (match, p1, offset, string) {
             var variable = 'window.jsteVariablesStore';
             var branches = p1.split(" ==> ");
             for (var i = 0; i < branches.length; i++) {
-                variable += '[' + branches[i] + ']'
+                variable += '[`' + branches[i] + '`]'
             }
             return exec('window.getSafe(() => ' + variable + ')');
-        }).replace(XRegExp('&lt;&lt; ' + getTranslations("theValueOf") + ' (\\S+).*? &gt;&gt;', 'gmi'), function (match, p1, offset, string) {
+        }).replace(XRegExp(getTranslations("operator24"), 'gmi'), function (match, p1, p2, offset, string) {
+            var variable = 'window.jsteVariablesStore';
+            var branches = p2.split(" ==> ");
+            for (var i = 0; i < branches.length; i++) {
+                variable += '[`' + branches[i] + '`]';
+            }
+            variable += '[' + parseInt(p1.parseValue()) + ']';
+            return exec('window.getSafe(() => ' + variable + ')');
+        }).replace(XRegExp(getTranslations("operator25"), 'gmi'), function (match, p1, offset, string) {
             return elementValue.get(p1);
-        }).replace(XRegExp('&lt;&lt; ' + getTranslations("theResultOfTheMathematicalExpression") + ': (.*?) &gt;&gt;', 'gmi'), function (match, p1, offset, string) {
+        }).replace(XRegExp('&lt;&lt; ' + getTranslations("theResultOfTheMathematicalExpression") + ': ((?:(?:.*?&lt;&lt;.*?&gt;&gt;.*?)|.*?)+?) &gt;&gt;', 'gmi'), function (match, p1, offset, string) {
             return evaluateExpression(p1);
-        }).replace(new RegExp("&lt;&lt; (" + getTranslations(["operator1", "operator2", "operator3", "operator4", "operator5", "operator6", "operator7"]) + "): (.*?) &gt;&gt;", 'g'), function (match, p1, p2, offset, string) {
+        }).replace(new RegExp("&lt;&lt; (" + getTranslations(["operator1", "operator2", "operator3", "operator4", "operator5", "operator6", "operator7"]) + "): ((?:(?:.*?&lt;&lt;.*?&gt;&gt;.*?)|.*?)+?) &gt;&gt;", 'g'), function (match, p1, p2, offset, string) {
             var prefix,
                 suffix;
             if (XRegExp('^' + getTranslations("operator1") + '$', 'gmi').test(p1)) {
@@ -56,10 +74,13 @@ String.prototype.parseValue = function (dynamic, arguments) {
             }
             return prefix + p2 + suffix;
         })
-        .replace(new RegExp("&lt;&lt; " + getTranslations("operator12") + " (.*?) &gt;&gt;", 'g'), "<i class='fa fa-$1' aria-hidden='true'></i>")
+        .replace(new RegExp("&lt;&lt; " + getTranslations("operator12") + " ((?:(?:.*?&lt;&lt;.*?&gt;&gt;.*?)|.*?)+?) &gt;&gt;", 'g'), "<i class='fa fa-$1' aria-hidden='true'></i>")
         .replace(new RegExp("&lt;&lt; " + getTranslations("operator13") + " &gt;&gt;", "g"), "<br />")
-        .replace(new RegExp("&lt;&lt; " + getTranslations("operator17") + " (.*?): (.*?) &gt;&gt;", "g"), function (match, p1, p2, offset, string) {
+        .replace(new RegExp("&lt;&lt; " + getTranslations("operator17") + " (.*?): ((?:(?:.*?&lt;&lt;.*?&gt;&gt;.*?)|.*?)+?) &gt;&gt;", "g"), function (match, p1, p2, offset, string) {
             return "<span id='" + p1 + "'>" + p2 + "</span>";
+        })
+        .replace(new RegExp("&lt;&lt; " + getTranslations("operator18") + " ((?:(?:.*?&lt;&lt;.*?&gt;&gt;.*?)|.*?)+?) &gt;&gt;", "g"), function (match, p1, offset, string) {
+            return params[p1];
         });
     if (dynamic == undefined || dynamic == true) {
         output = output.replace(new RegExp("&lt;&lt; (" + getTranslations(["operator14", "operator15", "operator16", "operator8", "operator9", "operator10", "operator11"]) + ")(|.*?) &gt;&gt;", 'g'), function (match, p1, p2, offset, string) {

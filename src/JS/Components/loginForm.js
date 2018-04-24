@@ -11,6 +11,7 @@
 $(function () {
     function loginFormFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             $('body').append('<div id="firebaseui-container"></div>');
 
             function getRecaptchaMode() {

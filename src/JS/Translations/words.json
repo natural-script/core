@@ -531,6 +531,13 @@
             "arz": ["شكل خط"],
             "jp": ["フォントスタイル"]
         },
+        "style": {
+            "en": ["style"],
+            "fr": ["style"],
+            "ar": ["شكل"],
+            "arz": ["شكل", "ستايل"],
+            "jp": ["フォントスタイル"]
+        },
         "fontColor": {
             "en": ["font colour", "font color"],
             "fr": ["couleur de police"],
@@ -1286,6 +1293,20 @@
             "arz": ["من اللمين للشمال"],
             "jp": ["主な色"]
         },
+        "the": {
+            "en": ["the "],
+            "fr": ["le ", "la ", "les ", "l'"],
+            "ar": ["ال"],
+            "arz": ["ال"],
+            "jp": ["主な色"]
+        },
+        "in": {
+            "en": ["in"],
+            "fr": ["dans", "à"],
+            "ar": ["فى"],
+            "arz": ["فى"],
+            "jp": ["主な色"]
+        },
         "indexPage": {
             "en": ["home"],
             "fr": ["page_principale"],
@@ -1326,6 +1347,27 @@
             "fr": ["élément"],
             "ar": ["عنصر"],
             "arz": ["عنصر"],
+            "jp": ["ホーム"]
+        },
+        "theItemNumber": {
+            "en": ["the item number"],
+            "fr": ["le élément nombre"],
+            "ar": ["العنصر رقم"],
+            "arz": ["العنصر رقم"],
+            "jp": ["ホーム"]
+        },
+        "function": {
+            "en": ["function", "functions"],
+            "fr": ["fonction"],
+            "ar": ["دالة", "دوال"],
+            "arz": ["دالة", "فانكشن", "دوال"],
+            "jp": ["ホーム"]
+        },
+        "arguments": {
+            "en": ["arguemnts", "paramaters", "params", "param", "parameter"],
+            "fr": ["paramètre", "arguments"],
+            "ar": ["خيارات", "معاملات"],
+            "arz": ["خيارات", "معاملات"],
             "jp": ["ホーム"]
         }
     },
@@ -1447,6 +1489,62 @@
             "fr": ["nommer ce texte"],
             "ar": ["سمى هذا النص"],
             "arz": ["سمى الكلام دة"],
+            "jp": ["いいえ"]
+        },
+        "operator18": {
+            "en": ["the argument", "the param", "the parameter", "the paramater"],
+            "fr": ["le paramètre", "paramètre", "l'argument", "argument"],
+            "ar": ["الخيار", "خيار", "المعامل", "معامل"],
+            "arz": ["الخيار", "خيار", "المعامل", "معامل"],
+            "jp": ["いいえ"]
+        },
+        "operator19": {
+            "en": ["consider this text as a normal text", "consider the following text as a normal text"],
+            "fr": ["considère ce texte comme un texte normal"],
+            "ar": ["اعتبر هذا النص نصا عاديا", "اعتبر هذا النص نصاً عادياً", "اعتبر هذا النص نصاً عاديا", "اعتبر هذا النص نصا عادياً", "اعتبر النص الآتى نصا عاديا", "اعتبر النص الآتى نصاً عادياً", "اعتبر النص الآتى نصاً عاديا", "اعتبر النص الآتى نصا عادياً"],
+            "arz": ["اعتبر الكلام دة كلام عادى"],
+            "jp": ["いいえ"]
+        },
+        "operator20": {
+            "en": ["^the value of the variable (\\S+)$"],
+            "fr": ["^la valeur de la variable (\\S+)$"],
+            "ar": ["^قيمة النتغير (\\S+)$"],
+            "arz": ["^قيمة المتغير (\\S+)$"],
+            "jp": ["いいえ"]
+        },
+        "operator21": {
+            "en": ["^the value of the item number (.*?) in the variable (\\S+)$"],
+            "fr": ["^la valeur de l'élément nombre (.*?) dans la variable (\\S+)$"],
+            "ar": ["^قيمة العنصر رقم (.*?) فى المتغير (\\S+)$"],
+            "arz": ["^قيمة العنصر رقم (.*?) فى المتغير (\\S+)$"],
+            "jp": ["いいえ"]
+        },
+        "operator22": {
+            "en": ["^the value of (\\S+)$"],
+            "fr": ["^la valeur de (\\S+)$"],
+            "ar": ["^قيمة (\\S+)$"],
+            "arz": ["^قيمة (\\S+)$"],
+            "jp": ["いいえ"]
+        },
+        "operator23": {
+            "en": ["&lt;&lt; the value of the variable (\\S+).*? &gt;&gt;"],
+            "fr": ["&lt;&lt; la valeur de la variable (\\S+).*? &gt;&gt;"],
+            "ar": ["&lt;&lt; قيمة النتغير (\\S+).*? &gt;&gt;"],
+            "arz": ["&lt;&lt; قيمة المتغير (\\S+).*? &gt;&gt;"],
+            "jp": ["いいえ"]
+        },
+        "operator24": {
+            "en": ["&lt;&lt; the value of the item number (.*?) in the variable (\\S+).*? &gt;&gt;"],
+            "fr": ["&lt;&lt; la valeur de l'élément nombre (.*?) dans la variable (\\S+).*? &gt;&gt;"],
+            "ar": ["&lt;&lt; قيمة العنصر رقم (.*?) فى المتغير (\\S+).*? &gt;&gt;"],
+            "arz": ["&lt;&lt; قيمة العنصر رقم (.*?) فى المتغير (\\S+).*? &gt;&gt;"],
+            "jp": ["いいえ"]
+        },
+        "operator25": {
+            "en": ["&lt;&lt; the value of (\\S+).*? &gt;&gt;"],
+            "fr": ["&lt;&lt; la valeur de (\\S+).*? &gt;&gt;"],
+            "ar": ["&lt;&lt; قيمة (\\S+).*? &gt;&gt;"],
+            "arz": ["&lt;&lt; قيمة (\\S+).*? &gt;&gt;"],
             "jp": ["いいえ"]
         }
     }

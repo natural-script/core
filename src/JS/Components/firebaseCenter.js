@@ -9,24 +9,30 @@
  * Date: 2018-02-16
  */
 $(function () {
-    function firebaseCenter(el, settings) {
-        el.each(function () {
-            sessionStorage.firebaseID = elementSettingsAnalyze(settings, 'username');
-            sessionStorage.firebaseKey = elementSettingsAnalyze(settings, 'password');
-            var config = {
-                apiKey: sessionStorage.firebaseKey,
-                authDomain: sessionStorage.firebaseID + ".firebaseapp.com",
-                databaseURL: "https://" + sessionStorage.firebaseID + ".firebaseio.com",
-                storageBucket: sessionStorage.firebaseID + ".appspot.com",
-            };
-            firebase.initializeApp(config);
-            var database = firebase.database();
-        });
+    var firebaseCenter = async function (el, settings) {
+        if (navigator.onLine) {
+            var isReachable = await window.isReachable(`https://${elementSettingsAnalyze(settings, 'username')}.firebaseio.com/`);
+            if (isReachable) {
+                el.each(function () {
+                    settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
+                    sessionStorage.firebaseID = elementSettingsAnalyze(settings, 'username');
+                    sessionStorage.firebaseKey = elementSettingsAnalyze(settings, 'password');
+                    var config = {
+                        apiKey: sessionStorage.firebaseKey,
+                        authDomain: sessionStorage.firebaseID + ".firebaseapp.com",
+                        databaseURL: "https://" + sessionStorage.firebaseID + ".firebaseio.com",
+                        storageBucket: sessionStorage.firebaseID + ".appspot.com",
+                    };
+                    firebase.initializeApp(config);
+                    var database = firebase.database();
+                });
+            }
+        }
     }
     var firebaseCenterTranslations = window.wordsTranslationsDB.Words['firebaseCenter'][document.langCode];
     for (var i = 0; i < firebaseCenterTranslations.length; i++) {
-        $.fn[firebaseCenterTranslations[i]] = function (settings) {
-            firebaseCenter(this, settings);
+        $.fn[firebaseCenterTranslations[i]] = async function (settings) {
+            await firebaseCenter(this, settings);
         };
     }
 });

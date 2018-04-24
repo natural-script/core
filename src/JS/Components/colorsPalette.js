@@ -11,6 +11,7 @@
 $(function () {
     function colorsPaletteFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var out = '<paper-swatch-picker id="' + name + '" color="{{selectedColor}}"></paper-swatch-picker>';
             window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);

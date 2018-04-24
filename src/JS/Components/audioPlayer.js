@@ -11,6 +11,7 @@
 $(function () {
     function audioPlayerFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var autoplay = false;
             var out = '<div id="' + name + '" class="aplayer"></div>';

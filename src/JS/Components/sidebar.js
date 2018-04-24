@@ -10,8 +10,8 @@
  */
 $(function () {
     function sidebarFn(el, settings) {
-
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var edge;
             if (document.isRTL) {

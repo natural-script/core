@@ -11,6 +11,7 @@
 $(function () {
     function containerFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var elevation = 2;
             var name = elementSettingsAnalyze(settings, 'name');
             if (elementSettingsAnalyze(settings, 'attributes')) {

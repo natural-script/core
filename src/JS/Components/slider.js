@@ -11,6 +11,7 @@
 $(function () {
     function sliderFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var out = '<paper-slider '
             if (elementSettingsAnalyze(settings, 'max')) {

@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-03-19
+ * Date: 2018-04-23
  */
 window.scriptInit = async function () {
 	var meta = document.createElement('meta');
@@ -40,8 +40,11 @@ window.scriptInit = async function () {
 	}
 	var code = rawCode;
 	code = code.replace(XRegExp(`((^ +| +$)|(^\\s*$(?:\\r\\n?|\\n)))`, 'gmi'), ``);
-	code = code.replace(XRegExp(`^((.*?)[^,|\\.|:])$\\s(?!^\\d\\.)`, 'gmi'), '$1 ');
+	code = code.replace(XRegExp(`^((?!^(?:\\d|[A-Z])\\. )(.*?)[^,|\\.|:])$\\s(?!^(?:\\d|[A-Z])\\. )`, 'gmi'), '$1 ');
 	code = `${codePrefix}\n${code}\n});`;
+	code = code.replace(XRegExp('&lt;&lt; ' + getTranslations("operator19") + ': ((?:(?:.*?&lt;&lt;.*?&gt;&gt;.*?)|.*?)+?) &gt;&gt;', 'gmi'), function (match, p1, offset, string) {
+		return `NORMALTEXTPREFIX${btoa(p1.replace(XRegExp('\n', 'gmi'), ' '))}NORMALTEXTSUFFIX`;
+	});
 	if (document.langID == 0) {
 		document.isRTL = false;
 		if (Modernizr.speechrecognition) {
@@ -50,6 +53,13 @@ window.scriptInit = async function () {
 		var i = -1;
 		code = code.replace(XRegExp(`^add a text`, 'gmi'), 'add a text0');
 		code = code.replace(XRegExp(`^add a (.*?) text`, 'gmi'), 'add a $1 text0');
+		code = code.replace(XRegExp(`^define the (${getTranslations('function')}) (.*?) with the following commands:\\n((?:(?:\\n?)^(?:[A-Z]|\\d)\\..*?(?:(?:$\\n^(?:[A-Z]|\\d)\\..*?$)|\\.$))+)`, 'gmi'), function (match, p1, p2, p3, offset, string) {
+			p3 = p3.replace(XRegExp(`^[A-Z]\\. (.*?)\\.$\\n(?=^[A-Z]\\.)`, 'gmis'), '$1 &amp;&amp;&amp; ').replace(XRegExp(` &amp;&amp;&amp; [A-Z]\\. (.*?)\\.$`, 'gmi'), ' &amp;&amp;&amp; $1');
+			return `add['${p1}']({\nits name is ${p2},\nits commands are ${p3}.`;
+		});
+		code = code.replace(XRegExp(`^define the (${getTranslations('style')}) (.*?) with the following properties:`, 'gmi'), function (match, p1, p2, offset, string) {
+			return `add['${p1}']({\nits name is ${p2},`;
+		});
 		code = code.replace(XRegExp(`^configure this (.*?) (site|app) with the following properties:$`, 'gmi'), 'add.setup({\nits mode is $2,\nits attributes are $1,');
 		code = code.replace(XRegExp(`^configure this (site|app) with the following properties:$`, 'gmi'), 'add.setup({\nits mode is $1,');
 		code = code.replace(XRegExp(`^add (a|an) (.*?) ${componentsRegex} without (.*?) with the following properties:$`, 'gmi'), `add['$3']({\nits attributes are $2 and without $4,`);
@@ -86,6 +96,13 @@ window.scriptInit = async function () {
 		var i = -1;
 		code = code.replace(XRegExp(`^add a text`, 'gmi'), 'add a text0');
 		code = code.replace(XRegExp(`^add a (.*?) text`, 'gmi'), 'add a $1 text0');
+		code = code.replace(XRegExp(`^define the (${getTranslations('function')}) (.*?) with the following commands:\\n((?:(?:\\n?)^(?:[A-Z]|\\d)\\..*?(?:(?:$\\n^(?:[A-Z]|\\d)\\..*?$)|\\.$))+)`, 'gmi'), function (match, p1, p2, p3, offset, string) {
+			p3 = p3.replace(XRegExp(`^[A-Z]\\. (.*?)\\.$\\n(?=^[A-Z]\\.)`, 'gmis'), '$1 &amp;&amp;&amp; ').replace(XRegExp(` &amp;&amp;&amp; [A-Z]\\. (.*?)\\.$`, 'gmi'), ' &amp;&amp;&amp; $1');
+			return `add['${p1}']({\nits name is ${p2},\nits commands are ${p3}.`;
+		});
+		code = code.replace(XRegExp(`^define the (${getTranslations('style')}) (.*?) with the following properties:`, 'gmi'), function (match, p1, p2, offset, string) {
+			return `add['${p1}']({\nits name is ${p2},`;
+		});
 		code = code.replace(XRegExp(`^configure this (.*?) (site|app) with the following properties:$`, 'gmi'), 'add.setup({\nits mode is $2,\nits attributes are $1,');
 		code = code.replace(XRegExp(`^configure this (site|app) with the following properties:$`, 'gmi'), 'add.setup({\nits mode is $1,');
 		code = code.replace(XRegExp(`^add (a|an) (.*?) ${componentsRegex} without (.*?) with the following properties:$`, 'gmi'), `add['$3']({\nits attributes are $2 and without $4,`);
@@ -120,6 +137,13 @@ window.scriptInit = async function () {
 			annyang.setLanguage(`fr-FR`);
 		}
 		var i = -1;
+		code = code.replace(XRegExp(`^définir la (${getTranslations('function')}) (.*?) avec les commandes suivantes:\\n((?:(?:\\n?)^(?:[A-Z]|\\d)\\..*?(?:(?:$\\n^(?:[A-Z]|\\d)\\..*?$)|\\.$))+)`, 'gmi'), function (match, p1, p2, p3, offset, string) {
+			p3 = p3.replace(XRegExp(`^[A-Z]\\. (.*?)\\.$\\n(?=^[A-Z]\\.)`, 'gmis'), '$1 &amp;&amp;&amp; ').replace(XRegExp(` &amp;&amp;&amp; [A-Z]\\. (.*?)\\.$`, 'gmi'), ' &amp;&amp;&amp; $1');
+			return `add['${p1}']({\nsa nom est ${p2},\nses commandes sont ${p3}.`;
+		});
+		code = code.replace(XRegExp(`^définir le (${getTranslations('style')}) (.*?) avec les propriétés suivantes:`, 'gmi'), function (match, p1, p2, offset, string) {
+			return `add['${p1}']({\nson nom est ${p2},`;
+		});
 		code = code.replace(XRegExp(`^configurez ce (site|app) (.*?) avec les propriétés suivantes:$`, 'gmi'), 'ajouter.installation({\nson mode est $1,\nses attributs sont $2,');
 		code = code.replace(XRegExp(`^configurez ce (site|app) avec les propriétés suivantes:$`, 'gmi'), 'ajouter.installation({\nson mode est $1,');
 		code = code.replace(XRegExp(`^ajouter (le|la|un|une) ${componentsRegex} (.*?) avec les propriétés suivantes:$`, 'gmi'), `ajouter['$2']({\nses attributs sont $3,`);
@@ -151,6 +175,13 @@ window.scriptInit = async function () {
 			annyang.setLanguage(`ar-AE`);
 		}
 		var i = -1;
+		code = code.replace(XRegExp(`^عرف ال(${getTranslations('function')}) (.*?) بالأوامر التالية:\\n((?:(?:\\n?)^(?:[A-Z]|\\d)\\..*?(?:(?:$\\n^(?:[A-Z]|\\d)\\..*?$)|\\.$))+)`, 'gmi'), function (match, p1, p2, p3, offset, string) {
+			p3 = p3.replace(XRegExp(`^[A-Z]\\. (.*?)\\.$\\n(?=^[A-Z]\\.)`, 'gmis'), '$1 &amp;&amp;&amp; ').replace(XRegExp(` &amp;&amp;&amp; [A-Z]\\. (.*?)\\.$`, 'gmi'), ' &amp;&amp;&amp; $1');
+			return `اضف['${p1}']({\nالاسم الخاص بها ${p2},\nالأوامر الخاصة بها ${p3}.`;
+		});
+		code = code.replace(XRegExp(`^عرف ال(${getTranslations('style')}) (.*?) بالخواص التالية:`, 'gmi'), function (match, p1, p2, p3, offset, string) {
+			return `اضف['${p1}']({\nالاسم الخاص به ${p2},`;
+		});
 		code = code.replace(XRegExp(`^هيئ هذا (الموقع|التطبيق) (.*?) بالخواص التالية:$`, 'gmi'), 'اضف.الإعدادات({\nالوضعية الخاصة به $1,\nالصفات الخاصة به $2,');
 		code = code.replace(XRegExp(`^هيئ هذا (الموقع|التطبيق) بالخواص التالية:$`, 'gmi'), 'اضف.الإعدادات({\nالوضعية الخاصة به $1,');
 		code = code.replace(XRegExp(`^اضف ${componentsRegex} (.*?) بالخواص التالية:$`, 'gmi'), `اضف['$1']({\nالصفات الخاصة به $2,`);
@@ -182,6 +213,13 @@ window.scriptInit = async function () {
 			annyang.setLanguage(`ar-EG`);
 		}
 		var i = -1;
+		code = code.replace(XRegExp(`^عرف ال(${getTranslations('function')}) (.*?) بالأوامر دى:\\n((?:(?:\\n?)^(?:[A-Z]|\\d)\\..*?(?:(?:$\\n^(?:[A-Z]|\\d)\\..*?$)|\\.$))+)`, 'gmi'), function (match, p1, p2, p3, offset, string) {
+			p3 = p3.replace(XRegExp(`^[A-Z]\\. (.*?)\\.$\\n(?=^[A-Z]\\.)`, 'gmis'), '$1 &amp;&amp;&amp; ').replace(XRegExp(` &amp;&amp;&amp; [A-Z]\\. (.*?)\\.$`, 'gmi'), ' &amp;&amp;&amp; $1');
+			return `ضيف['${p1}']({\nالاسم بتاعها ${p2},\nالأوامر بتاعتها ${p3}.`;
+		});
+		code = code.replace(XRegExp(`^عرف ال(${getTranslations('style')}) (.*?) بالخواص دى:`, 'gmi'), function (match, p1, p2, p3, offset, string) {
+			return `ضيف['${p1}']({\nالاسم بتاعه ${p2},`;
+		});
 		code = code.replace(XRegExp(`^هيئ (السايت|الآب) (.*?) دة بالخواص دى:$`, 'gmi'), 'ضيف.الإعدادات({\nالمود بتاعه $1,\nالصفات بتاعته $2,');
 		code = code.replace(XRegExp(`^هيئ (السايت|الآب) دة بالخواص دى:$`, 'gmi'), 'ضيف.الإعدادات({\nالمود بتاعه $1,');
 		code = code.replace(XRegExp(`^ضيف ${componentsRegex} (.*?) بالخواص دى:$`, 'gmi'), `ضيف['$1']({\nالصفات بتاعته $2,`);

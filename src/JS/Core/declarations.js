@@ -6,10 +6,11 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-03-10
+ * Date: 2018-04-23
  */
 window.jsteVariablesStore = {};
 window.jsteFunctionsStore = {};
+window.jsteStylesStore = {};
 var code = $("jste").html();
 var detectedLang = franc(code, {
 	whitelist: ['arb', 'eng', 'fra']

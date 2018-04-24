@@ -11,6 +11,7 @@
 $(function () {
     function pageFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             $('contents').append('<page id="' + elementSettingsAnalyze(settings, 'name') + '" style="display: none;"></page>');
             var currentPageRaw = window.getAllUrlParams().page || wordsTranslationsDB.Words['indexPage'][document.langCode][0];
             if (XRegExp('' + getTranslations("indexPage") + '', 'gmi').test(currentPageRaw)) {

@@ -11,6 +11,7 @@
 $(function () {
     function audioFn(el, settings) {
         el.each(function () {
+            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var source = elementSettingsAnalyze(settings, 'source');
             window.requestBLOB(source, encodeURIComponent(source).replace(/\./g, '%2E'), function (dataURL) {
                 if (elementSettingsAnalyze(settings, 'cover')) {
