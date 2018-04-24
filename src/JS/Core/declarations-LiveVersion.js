@@ -12,20 +12,18 @@ window.jsteVariablesStore = {};
 window.jsteFunctionsStore = {};
 window.jsteStylesStore = {};
 var code = $("jste").html();
-var detectedLang = franc(code, {
-	whitelist: ['arb', 'eng', 'fra']
-});
-if (detectedLang == 'eng') {
+var detectedLang = detectLanguage(code);
+if (detectedLang == 'English') {
 	if (code.includes('colour') || code.includes('centre')) {
 		document.langID = 0;
 	} else {
 		document.langID = 1;
 	}
 	document.langCode = 'en';
-} else if (detectedLang == 'fra') {
+} else if (detectedLang == 'French') {
 	document.langID = 2;
 	document.langCode = 'fr';
-} else if (detectedLang == 'arb') {
+} else if (detectedLang == 'Arabic') {
 	if (code.includes('بتاعه') || code.includes('بتاعها') || code.includes('بتاعته') || code.includes('بتاعتها')) {
 		document.langID = 4;
 		document.langCode = 'arz';
@@ -33,7 +31,7 @@ if (detectedLang == 'eng') {
 		document.langID = 3;
 		document.langCode = 'ar';
 	}
-} else if ($("ja-ja").length) {
+} else if (detectedLang == 'Japanese') {
 	document.langID = 5;
 }
 if (navigator.platform == 'Win32') {
