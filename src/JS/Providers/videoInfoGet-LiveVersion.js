@@ -1,7 +1,7 @@
 window.getVideoInfo = function (name, provider, videoID, url, title) {
     var request = new XMLHttpRequest();
 
-    request.open('POST', 'https://jste-manager.azurewebsites.net/getVideoInfo');
+    request.open('POST', 'https://jste-manager.herokuapp.com/getVideoInfo');
 
     request.setRequestHeader('Content-Type', 'application/json');
 

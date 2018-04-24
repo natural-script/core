@@ -20,7 +20,7 @@ window.requestBLOB = function (name, type, url, URLID) {
 	sentMessageRaw.action = 'request';
 	sentMessageRaw.url = url;
 	sentMessageRaw.URLID = URLID;
-	receiver.postMessage(sentMessageRaw, 'https://jste-manager.azurewebsites.net/db-manager.min.html');
+	receiver.postMessage(sentMessageRaw, 'https://jste-manager.herokuapp.com/db-manager.min.html');
 };
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //---------------------------------------Verifying If A Specific BLOB Exists------------------------------------------------------------------------------------------------------------------------------------------//
@@ -37,13 +37,13 @@ window.verifyBLOB = function (name, type, url, URLID, title) {
 	if (title) {
 		sentMessageRaw.title = title;
 	}
-	receiver.postMessage(sentMessageRaw, 'https://jste-manager.azurewebsites.net/db-manager.min.html');
+	receiver.postMessage(sentMessageRaw, 'https://jste-manager.herokuapp.com/db-manager.min.html');
 };
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 //---------------------------------------Dealing With The Incoming BLOB Info------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 window.addEventListener('message', function receiveMessage(recievedMessageRaw) {
-	if (event.origin !== 'https://jste-manager.azurewebsites.net') return;
+	if (event.origin !== 'https://jste-manager.herokuapp.com') return;
 	if (recievedMessageRaw.data.action == 'ready') {
 		$('#receiver').prop('ready', true);
 	} else if (recievedMessageRaw.data.action == 'verify') {

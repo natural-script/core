@@ -16,7 +16,7 @@ window.scriptInit = async function () {
 	var componentsRegex = '(' + window.componentsDB.join('|') + ')';
 	var rawCode = $(`jste`).html();
 	if (navigator.onLine) {
-		var isReachable = await window.isReachable('https://jste-manager.azurewebsites.net/autoCorrect');
+		var isReachable = await window.isReachable('https://jste-manager.herokuapp.com/autoCorrect');
 		if (isReachable) {
 			var codeChunks = rawCode.match(/^(.|[\r\n]){0,10000}(,|\.)$/gmi);
 			rawCode = '';

@@ -21,7 +21,7 @@ Or if you'd just like to download the library, check out our [releases page](htt
 
 ## Polymer 2.0 is out!
 
-Polymer 2.0 is released, and will be the future focus of Polymer development going forward.  We intend to keep the 2.x public API stable barring critical issues.  For background and migration information on the 2.x see the [2.0 documentation](https://www.polymer-project.org/2.0/docs/about_20) on the website or the [2.0 section below](#2-0), and we welcome your feedback via [issues](https://github.com/Polymer/polymer/issues/new) or [Slack](https://polymer-slack.azurewebsites.net/).
+Polymer 2.0 is released, and will be the future focus of Polymer development going forward.  We intend to keep the 2.x public API stable barring critical issues.  For background and migration information on the 2.x see the [2.0 documentation](https://www.polymer-project.org/2.0/docs/about_20) on the website or the [2.0 section below](#2-0), and we welcome your feedback via [issues](https://github.com/Polymer/polymer/issues/new) or [Slack](https://polymer-slack.herokuapp.com/).
 
 **To evaluate Polymer 2.0**, please point your bower at the latest `2.0.0` tag for polymer, and be sure load to the `webcomponentsjs/webcomponents-lite.js` or `webcomponentsjs/webcomponents-loader.js` polyfills from the latest `v1.0.0` tag of [`webcomponentsjs`](https://github.com/webcomponents/webcomponentsjs).
 
