@@ -2,11 +2,11 @@
  * Audio Player
  * https://project-jste.github.io/
  *
- * Copyright 2017 Jste Team
+ * Copyright 2018 Jste Team
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-02-05
+ * Date: 2018-04-26
  */
 $(function () {
     function audioPlayerFn(el, settings) {
@@ -26,8 +26,8 @@ $(function () {
             }
             document.initializeAudioPlayerA = [];
             document.initializeAudioPlayerB = [];
-            document.initializeAudioPlayerA[name] = new Function("title, author, url", "document." + name + " = new APlayer({element: document.getElementById('" + name + "'), narrow: false, autoplay: " + autoplay + ", showlrc: 0, mutex: true, theme: '#e6d0b2', mode: 'random', preload: 'metadata', listmaxheight: '513px', music: {title: title, author: author, url: url}});");
-            document.initializeAudioPlayerB[name] = new Function("title, author, url, coverURL", "document." + name + " = new APlayer({element: document.getElementById('" + name + "'), narrow: false, autoplay: " + autoplay + ", showlrc: 0, mutex: true, theme: '#e6d0b2', mode: 'random', preload: 'metadata', listmaxheight: '513px', music: {title: title, author: author, url: url, pic: coverURL}});");
+            document.initializeAudioPlayerA[name] = new Function("title, author, url", "document." + name + " = new APlayer({container: document.getElementById('" + name + "'), mini: false, autoplay: " + autoplay + ", lrcType: 0, mutex: true, theme: '#e6d0b2', order: 'random', preload: 'metadata', listMaxHeight: '513px', audio: {name: title, artist: author, url: url}});");
+            document.initializeAudioPlayerB[name] = new Function("title, author, url, coverURL", "document." + name + " = new APlayer({container: document.getElementById('" + name + "'), mini: false, autoplay: " + autoplay + ", lrcType: 0, mutex: true, theme: '#e6d0b2', order: 'random', preload: 'metadata', listMaxHeight: '513px', audio: {name: title, artist: author, url: url, cover: coverURL}});");
             if (elementSettingsAnalyze(settings, 'position')) {
                 $('#' + name + '').css('position', elementSettingsAnalyze(settings, 'position'));
             } else {
@@ -45,5 +45,4 @@ $(function () {
             audioPlayerFn(this, settings);
         };
     }
-
 });

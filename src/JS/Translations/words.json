@@ -532,6 +532,7 @@
             "jp": ["フォントスタイル"]
         },
         "style": {
+            "type": "component",
             "en": ["style"],
             "fr": ["style"],
             "ar": ["شكل"],
@@ -1357,6 +1358,7 @@
             "jp": ["ホーム"]
         },
         "function": {
+            "type": "component",
             "en": ["function", "functions"],
             "fr": ["fonction"],
             "ar": ["دالة", "دوال"],
