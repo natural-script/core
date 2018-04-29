@@ -8,9 +8,11 @@
  *
  * Date: 2018-04-23
  */
+console.log("\n %c Jste v1.0.0 Nightly %c https://project-jste.github.io \n","color: #fadfa3; background: #030307; padding:5px 0;","background: #fadfa3; padding:5px 0;");
 window.jsteVariablesStore = {};
 window.jsteFunctionsStore = {};
 window.jsteStylesStore = {};
+window.isLive = false;
 var code = $("jste").html();
 var detectedLang = detectLanguage(code);
 if (detectedLang == 'English') {

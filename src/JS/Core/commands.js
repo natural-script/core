@@ -156,7 +156,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                         window.open('mailto:' + hyperlink);
                     } else if (hyperlinkType.findBestMatch(wordsTranslationsDB.Words['page'][document.langCode]).rating > 0.5) {
                         window.changePage(hyperlink);
-                        window.setURLParameter('page', hyperlink);
+                        window.setURLParameter('page', (($(\`page#\$\{hyperlink\}\`).length > 0) ? hyperlink : 'page_not_found'));
                     } else if (hyperlinkType.findBestMatch(wordsTranslationsDB.Words['dialogBox'][document.langCode]).rating > 0.5) {
                         $('#' + hyperlink + '').iziModal('open');
                     } else if (hyperlinkType.findBestMatch(wordsTranslationsDB.Words['sidebar'][document.langCode]).rating > 0.5) {

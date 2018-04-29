@@ -9,7 +9,7 @@
  * Date: 2018-02-15
  */
 $.ajax({
-    url: '../../src/JS/Translations/words.json',
+    url: '../../src/JS/Translations/dictionary.json',
     dataType: 'json',
     async: false,
     success: function (json) {

@@ -143,6 +143,7 @@ $(function () {
                 }
             }
             document[document.uniqueID()] = new PerfectScrollbar('body');
+            window.notFoundPageInit();
         });
     }
     var setupTranslations = window.wordsTranslationsDB.Words['setup'][document.langCode];

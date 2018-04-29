@@ -9,7 +9,7 @@
  * Date: 2018-03-15
  */
 window.getTranslations = function (phrase) {
-    var phraseType = (XRegExp('^operator\\d+', 'mi').test(phrase)) ? 'Operators' : 'Words';
+    var phraseType = (XRegExp('^operator\\d+', 'mi').test(phrase)) ? 'Operators' : (XRegExp('^syntax\\d+', 'mi').test(phrase)) ? 'Syntax' : 'Words';
     var output = '';
     if (typeof phrase == 'object') {
         for (i in phrase) {
@@ -21,5 +21,5 @@ window.getTranslations = function (phrase) {
     } else {
         output = wordsTranslationsDB[phraseType][phrase][document.langCode].join('|');
     }
-    return '(?:' + output + ')';
+    return `(?:${output})`.replace(/\\/gmi, '\\\\');
 }

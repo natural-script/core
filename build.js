@@ -37,7 +37,7 @@ async function startBuild() {
     }
     replace({
         regex: "DICTIONARY_URL",
-        replacement: Datauri(absolutePath + '/src/JS/Translations/words.json'),
+        replacement: Datauri(absolutePath + '/src/JS/Translations/dictionary.json'),
         paths: [absolutePath + '/tmp/wordsTranslationsInit-Compiled.js'],
         recursive: true,
         silent: true
