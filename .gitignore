@@ -4,5 +4,5 @@ npm-debug.log
 .DS_Store
 /*.env
 tmp
-build
-package-lock.json
+/build
+/package-lock.json
