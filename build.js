@@ -19,7 +19,13 @@ async function upload(parent) {
         await client.connect(global.ftpAuth.hostname, 21);
         await client.login(global.ftpAuth.username, global.ftpAuth.password);
         await client.useDefaultSettings();
-        await client.ensureDir(`htdocs/build/${parent}`)
+        await client.ensureDir(`htdocs/build/${parent}`);
+        client.trackProgress(info => {
+            console.log("File", info.name);
+            console.log("Type", info.type);
+            console.log("Transferred", info.bytes);
+            console.log("Transferred Overall", info.bytesOverall);
+        });
         await client.uploadDir("build");
     } catch (err) {
         console.log(err)
@@ -100,7 +106,7 @@ async function startBuild() {
     fs.writeFileSync('minified/framework.info.json', JSON.stringify(frameworkMinifiedFileInfo));
     shell.rm('-rf', 'framework.html');
     console.log(' Compresssing the framework minified file ');
-    gzipy.compress('minified/framework.min.html', 'compressed/framework.min.html.gz', function (error) {
+    gzipy.compress('minified/framework.min.html', 'compressed/framework.min.html.gz', async function (error) {
         console.log(' Hashing the framework compressed file ');
         var shasum = crypto.createHash(algorithm);
         shasum.update(fs.readFileSync('compressed/framework.min.html.gz', 'utf8'));
@@ -124,7 +130,7 @@ async function startBuild() {
         fs.writeFileSync('minified/framework-LiveVersion.info.json', JSON.stringify(frameworkLiveVersionMinifiedFileInfo));
         shell.rm('-rf', 'framework-LiveVersion.html');
         console.log(' Compresssing the framework minified file ');
-        gzipy.compress('minified/framework-LiveVersion.min.html', 'compressed/framework-LiveVersion.min.html.gz', function (error) {
+        gzipy.compress('minified/framework-LiveVersion.min.html', 'compressed/framework-LiveVersion.min.html.gz', async function (error) {
             console.log(' Hashing the framework compressed file ');
             var shasum = crypto.createHash(algorithm);
             shasum.update(fs.readFileSync('compressed/framework-LiveVersion.min.html.gz', 'utf8'));
@@ -146,7 +152,7 @@ async function startBuild() {
             fs.writeFileSync('minified/db-manager.info.json', JSON.stringify(dbManagerMinifiedFileInfo));
             shell.rm('-rf', 'db-manager.html');
             console.log(' Compresssing the BLOB DB Manager minified file ');
-            gzipy.compress('minified/db-manager.min.html', 'compressed/db-manager.min.html.gz', function (error) {
+            gzipy.compress('minified/db-manager.min.html', 'compressed/db-manager.min.html.gz', async function (error) {
                 console.log(' Hashing the BLOB DB Manager compressed file ');
                 var shasum = crypto.createHash(algorithm);
                 shasum.update(fs.readFileSync('compressed/db-manager.min.html.gz', 'utf8'));
@@ -167,9 +173,9 @@ async function startBuild() {
                     shell.exec('git push ' + gitURLPrefix + 'framework.git master');
                     console.log(' ');
                     console.log(' Uploading built framework files ');
-                    upload('framework');
+                    await upload('framework');
                 }
-/*                 if (shell.test('-d', '../manager')) {
+                if (shell.test('-d', '../manager')) {
                     console.log(' ');
                     console.log(' Preparing for building Jste Manager ');
                     shell.cd('../manager');
@@ -191,7 +197,7 @@ async function startBuild() {
                         shell.exec('git push ' + gitURLPrefix + 'manager.git master');
                         console.log(' ');
                         console.log(' Uploading built Jste Manager files ');
-                        upload('manager');
+                        await upload('manager');
                     }
                 }
                 if (shell.test('-d', '../manager-cloud')) {
@@ -237,9 +243,9 @@ async function startBuild() {
                         shell.exec('git push ' + gitURLPrefix + 'manager-phone.git master');
                         console.log(' ');
                         console.log(' Uploading built Jste Manager phone version files ');
-                        upload('manager-phone');
+                        await upload('manager-phone');
                     }
-                } */
+                }
             });
         });
     });
