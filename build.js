@@ -16,8 +16,8 @@ const algorithm = 'sha1';
 async function upload(parent) {
     const client = new ftp.Client()
     try {
-        await client.connect(global.ftpAuth.ftp_hostname, 21);
-        await client.login(global.ftpAuth.ftp_username, global.ftpAuth.ftp_password);
+        await client.connect(global.ftpAuth.hostname, 21);
+        await client.login(global.ftpAuth.username, global.ftpAuth.password);
         await client.useDefaultSettings();
         await client.ensureDir(`htdocs/build/${parent}`)
         await client.uploadDir("build");
@@ -277,17 +277,17 @@ figlet('JSTE FRAMEWORK', function (err, data) {
                                 message: 'Please enter your GitHub password '
                             },
                             {
-                                type: 'ftphostname',
+                                type: 'input',
                                 name: 'ftp_hostname',
                                 message: 'Please enter your FTP hostname '
                             },
                             {
-                                type: 'ftpUsername',
+                                type: 'input',
                                 name: 'ftp_username',
                                 message: 'Please enter your FTP username '
                             },
                             {
-                                type: 'ftpPassword',
+                                type: 'password',
                                 name: 'ftp_password',
                                 mask: '*',
                                 message: 'Please enter your FTP password '
