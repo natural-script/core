@@ -9,7 +9,7 @@
  * Date: 2018-03-15
  */
 window.getTranslations = function (phrase) {
-    var phraseType = (XRegExp('^operator\\d+', 'mi').test(phrase)) ? 'Operators' : (XRegExp('^syntax\\d+', 'mi').test(phrase)) ? 'Syntax' : 'Words';
+    var phraseType = (XRegExp('^operator\\d+', 'mi').test(phrase)) ? 'Operators' : (XRegExp('^syntax\\d+', 'mi').test(phrase)) ? 'Syntax' : (XRegExp('^event\\d+', 'mi').test(phrase)) ? 'Events' : 'Words';
     var output = '';
     if (typeof phrase == 'object') {
         for (i in phrase) {

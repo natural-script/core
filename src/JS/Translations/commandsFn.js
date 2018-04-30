@@ -335,17 +335,17 @@ window.commandsFnTranslations = function (commandCode, commandValue) {
 		}
 	} else if (commandCode == 'c40') {
 		if (document.langID == 0) {
-			return commandValue.split(document.E17)[1].split(', ')[0];
+			return commandValue.split(XRegExp(`^${window.getTranslations('event17')}`, 'gmi'))[1].split(', ')[0];
 		} else if (document.langID == 1) {
-			return commandValue.split(document.E17)[1].split(', ')[0];
+			return commandValue.split(XRegExp(`^${window.getTranslations('event17')}`, 'gmi'))[1].split(', ')[0];
 		} else if (document.langID == 2) {
-			return commandValue.split(document.E17)[1].split(', ')[0];
+			return commandValue.split(XRegExp(`^${window.getTranslations('event17')}`, 'gmi'))[1].split(', ')[0];
 		} else if (document.langID == 3) {
-			return commandValue.split(document.E17)[1].split(', ')[0];
+			return commandValue.split(XRegExp(`^${window.getTranslations('event17')}`, 'gmi'))[1].split(', ')[0];
 		} else if (document.langID == 4) {
-			return commandValue.split(document.E17)[1].split(', ')[0];
+			return commandValue.split(XRegExp(`^${window.getTranslations('event17')}`, 'gmi'))[1].split(', ')[0];
 		} else if (document.langID == 5) {
-			return commandValue.split(document.E17)[1].split(', ')[0];
+			return commandValue.split(XRegExp(`^${window.getTranslations('event17')}`, 'gmi'))[1].split(', ')[0];
 		}
 	} else if (commandCode == 'c52') {
 		if (document.langID == 0) {

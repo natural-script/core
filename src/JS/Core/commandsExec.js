@@ -11,9 +11,10 @@
 var eventSplit;
 
 function getTheEventCode(command) {
-	for (var i = 1; i <= 19; i++) {
-		if (command.startsWith(document['E' + i])) {
-			eventSplit = ".split(new RegExp('^' + document[getTheEventCode(pureCommand)], 'gimy'))[1]";
+	var eventsNumber = Object.keys(wordsTranslationsDB['Events']).length;
+	for (var i = 1; i <= eventsNumber; i++) {
+		if (XRegExp(`^${window.getTranslations('event' + i)}`, 'gmi').test(command)) {
+			eventSplit = `.split(XRegExp(\`^${window.getTranslations('event' + i)}\`, 'gmiy'))[1]`;
 			return 'E' + i;
 		}
 	}
@@ -76,11 +77,11 @@ window.execute = async function (elementName, command, execute, functionName) {
 			intervalCommand = window.commandsFnTranslations('c38', commands[commandID]);
 			intervalPeriod = window.commandsFnTranslations('c39', commands[commandID]);
 			commandInfo.intervalPeriod = intervalPeriod;
-		} else if (commands[commandID].startsWith(document[getTheEventCode(commands[commandID])])) {
+		} else if (getTheEventCode(commands[commandID]) == 'E0' || XRegExp(`^${window.getTranslations('event' + getTheEventCode(commands[commandID]).split('E')[1])}`, 'gmi').test(commands[commandID])) {
 			commandType = 'T0';
 			pureCommand = commands[commandID];
 		}
-		if (document[getTheEventCode(pureCommand)] == 'E17') {
+		if (getTheEventCode(pureCommand) == 'E17') {
 			codePrefix = "if (Modernizr.speechrecognition) { \
 				annyang.start(); \
 				var voiceCommand = window.commandsFnTranslations('c40', pureCommand);";

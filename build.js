@@ -9,10 +9,23 @@ const figlet = require('figlet');
 const path = require("path");
 const replace = require("replace");
 const Datauri = require('datauri').sync;
+const ftp = require("basic-ftp")
 const isTravis = require('is-travis');
 const absolutePath = path.resolve(".");
 const algorithm = 'sha1';
-
+async function upload(parent) {
+    const client = new ftp.Client()
+    try {
+        await client.connect(global.ftpAuth.ftp_hostname, 21);
+        await client.login(global.ftpAuth.ftp_username, global.ftpAuth.ftp_password);
+        await client.useDefaultSettings();
+        await client.ensureDir(`htdocs/build/${parent}`)
+        await client.uploadDir("build");
+    } catch (err) {
+        console.log(err)
+    }
+    client.close()
+}
 async function startBuild() {
     console.log(' Preparing for building Jste Framework ');
     shell.rm('-rf', 'tmp');
@@ -152,6 +165,9 @@ async function startBuild() {
                     console.log(' ');
                     console.log(' Pushing the updates to GitHub ');
                     shell.exec('git push ' + gitURLPrefix + 'framework.git master');
+                    console.log(' ');
+                    console.log(' Uploading built framework files ');
+                    upload('framework');
                 }
                 if (shell.test('-d', '../manager')) {
                     console.log(' ');
@@ -173,6 +189,9 @@ async function startBuild() {
                         console.log(' ');
                         console.log(' Pushing the updates to GitHub ');
                         shell.exec('git push ' + gitURLPrefix + 'manager.git master');
+                        console.log(' ');
+                        console.log(' Uploading built Jste Manager files ');
+                        upload('manager');
                     }
                 }
                 if (shell.test('-d', '../manager-cloud')) {
@@ -216,6 +235,9 @@ async function startBuild() {
                         console.log(' ');
                         console.log(' Pushing the updates to GitHub ');
                         shell.exec('git push ' + gitURLPrefix + 'manager-phone.git master');
+                        console.log(' ');
+                        console.log(' Uploading built Jste Manager phone version files ');
+                        upload('manager-phone');
                     }
                 }
             });
@@ -253,10 +275,31 @@ figlet('JSTE FRAMEWORK', function (err, data) {
                                 name: 'git_password',
                                 mask: '*',
                                 message: 'Please enter your GitHub password '
+                            },
+                            {
+                                type: 'ftphostname',
+                                name: 'ftp_hostname',
+                                message: 'Please enter your FTP hostname '
+                            },
+                            {
+                                type: 'ftpUsername',
+                                name: 'ftp_username',
+                                message: 'Please enter your FTP username '
+                            },
+                            {
+                                type: 'ftpPassword',
+                                name: 'ftp_password',
+                                mask: '*',
+                                message: 'Please enter your FTP password '
                             }
-                        ]).then(git_info => {
-                            global.gitURLPrefix = 'https://' + git_info.git_username + ':' + git_info.git_password + '@github.com/project-jste/';
-                            global.commitMessage = git_info.commit_message;
+                        ]).then(deploy_info => {
+                            global.gitURLPrefix = 'https://' + deploy_info.git_username + ':' + deploy_info.git_password + '@github.com/project-jste/';
+                            global.ftpAuth = {
+                                hostname: deploy_info.ftp_hostname,
+                                username: deploy_info.ftp_username,
+                                password: deploy_info.ftp_password,
+                            };
+                            global.commitMessage = deploy_info.commit_message;
                             startBuild();
                         })
                 } else {

@@ -1,2 +1,0 @@
-build/minified/*.html filter=lfs diff=lfs merge=lfs -text
-build/compressed/*.gz filter=lfs diff=lfs merge=lfs -text
