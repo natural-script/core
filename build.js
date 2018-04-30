@@ -169,7 +169,7 @@ async function startBuild() {
                     console.log(' Uploading built framework files ');
                     upload('framework');
                 }
-                if (shell.test('-d', '../manager')) {
+/*                 if (shell.test('-d', '../manager')) {
                     console.log(' ');
                     console.log(' Preparing for building Jste Manager ');
                     shell.cd('../manager');
@@ -239,7 +239,7 @@ async function startBuild() {
                         console.log(' Uploading built Jste Manager phone version files ');
                         upload('manager-phone');
                     }
-                }
+                } */
             });
         });
     });
