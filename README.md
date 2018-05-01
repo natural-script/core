@@ -182,10 +182,6 @@ http://jste-demos.herokuapp.com/
 
 <code>node build</code>
 
-## Official Builds:
-
-You can download the latest Jste Framework builds at: http://jste.epizy.com/builds/framework
-
 ## Official Blog On Medium:
 
 https://medium.com/project-jste

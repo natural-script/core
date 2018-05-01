@@ -18,7 +18,6 @@
     "fs-extra",
     "inquirer",
     "gzipy",
-    "basic-ftp",
     "is-travis"
   ],
   "repository": {

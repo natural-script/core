@@ -9,29 +9,9 @@ const figlet = require('figlet');
 const path = require("path");
 const replace = require("replace");
 const Datauri = require('datauri').sync;
-const ftp = require("basic-ftp")
 const isTravis = require('is-travis');
 const absolutePath = path.resolve(".");
 const algorithm = 'sha1';
-async function upload(parent) {
-    const client = new ftp.Client()
-    try {
-        await client.connect(global.ftpAuth.hostname, 21);
-        await client.login(global.ftpAuth.username, global.ftpAuth.password);
-        await client.useDefaultSettings();
-        await client.ensureDir(`htdocs/build/${parent}`);
-        client.trackProgress(info => {
-            console.log("File", info.name);
-            console.log("Type", info.type);
-            console.log("Transferred", info.bytes);
-            console.log("Transferred Overall", info.bytesOverall);
-        });
-        await client.uploadDir("builds");
-    } catch (err) {
-        console.log(err)
-    }
-    client.close()
-}
 async function startBuild() {
     console.log(' Preparing for building Jste Framework ');
     shell.rm('-rf', 'tmp');
@@ -105,7 +85,7 @@ async function startBuild() {
     fs.writeFileSync('minified/framework.info.json', JSON.stringify(frameworkMinifiedFileInfo));
     shell.rm('-rf', 'framework.html');
     console.log(' Compresssing the framework minified file ');
-    gzipy.compress('minified/framework.min.html', 'compressed/framework.min.html.gz', async function (error) {
+    gzipy.compress('minified/framework.min.html', 'compressed/framework.min.html.gz', function (error) {
         console.log(' Hashing the framework compressed file ');
         var shasum = crypto.createHash(algorithm);
         shasum.update(fs.readFileSync('compressed/framework.min.html.gz', 'utf8'));
@@ -127,7 +107,7 @@ async function startBuild() {
         fs.writeFileSync('minified/db-manager.info.json', JSON.stringify(dbManagerMinifiedFileInfo));
         shell.rm('-rf', 'db-manager.html');
         console.log(' Compresssing the BLOB DB Manager minified file ');
-        gzipy.compress('minified/db-manager.min.html', 'compressed/db-manager.min.html.gz', async function (error) {
+        gzipy.compress('minified/db-manager.min.html', 'compressed/db-manager.min.html.gz', function (error) {
             console.log(' Hashing the BLOB DB Manager compressed file ');
             var shasum = crypto.createHash(algorithm);
             shasum.update(fs.readFileSync('compressed/db-manager.min.html.gz', 'utf8'));
@@ -146,9 +126,6 @@ async function startBuild() {
                 console.log(' ');
                 console.log(' Pushing the updates to GitHub ');
                 shell.exec('git push ' + gitURLPrefix + 'framework.git master');
-                console.log(' ');
-                console.log(' Uploading built framework files ');
-                await upload('framework');
             }
             if (shell.test('-d', '../manager')) {
                 console.log(' ');
@@ -170,9 +147,6 @@ async function startBuild() {
                     console.log(' ');
                     console.log(' Pushing the updates to GitHub ');
                     shell.exec('git push ' + gitURLPrefix + 'manager.git master');
-                    console.log(' ');
-                    console.log(' Uploading built Jste Manager files ');
-                    await upload('manager');
                 }
             }
             if (shell.test('-d', '../manager-cloud')) {
@@ -216,9 +190,6 @@ async function startBuild() {
                     console.log(' ');
                     console.log(' Pushing the updates to GitHub ');
                     shell.exec('git push ' + gitURLPrefix + 'manager-phone.git master');
-                    console.log(' ');
-                    console.log(' Uploading built Jste Manager phone version files ');
-                    await upload('manager-phone');
                 }
             }
         });
@@ -255,30 +226,9 @@ figlet('JSTE FRAMEWORK', function (err, data) {
                                 name: 'git_password',
                                 mask: '*',
                                 message: 'Please enter your GitHub password '
-                            },
-                            {
-                                type: 'input',
-                                name: 'ftp_hostname',
-                                message: 'Please enter your FTP hostname '
-                            },
-                            {
-                                type: 'input',
-                                name: 'ftp_username',
-                                message: 'Please enter your FTP username '
-                            },
-                            {
-                                type: 'password',
-                                name: 'ftp_password',
-                                mask: '*',
-                                message: 'Please enter your FTP password '
                             }
                         ]).then(deploy_info => {
                             global.gitURLPrefix = 'https://' + deploy_info.git_username + ':' + deploy_info.git_password + '@github.com/project-jste/';
-                            global.ftpAuth = {
-                                hostname: deploy_info.ftp_hostname,
-                                username: deploy_info.ftp_username,
-                                password: deploy_info.ftp_password,
-                            };
                             global.commitMessage = deploy_info.commit_message;
                             startBuild();
                         })
