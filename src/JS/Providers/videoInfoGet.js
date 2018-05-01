@@ -37,7 +37,7 @@ window.getVideoInfo = function (name, provider, videoID, url, title) {
 };
 window.verifyVideoURL = function (name, source, title, URLID, fps) {
     if (window.isLive) {
-        window.verifyBLOB(name, 'vid', source, videoURLID, title, fps);
+        window.verifyBLOB(name, 'vid', source, URLID, title, fps);
     } else {
         window.verifyBLOB(URLID, function (data) {
             if (data == 'exists') {
