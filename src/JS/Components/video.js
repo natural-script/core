@@ -92,8 +92,8 @@ $(function () {
         });
     }
     var videoTranslations = window.wordsTranslationsDB.Words['video'][document.langCode];
-    for (var i = 0; i < videoTranslations.length; i++) {
-        $.fn[videoTranslations[i]] = function (settings) {
+    for (const i of videoTranslations) {
+        $.fn[i] = function (settings) {
             videoFn(this, settings);
         };
     }

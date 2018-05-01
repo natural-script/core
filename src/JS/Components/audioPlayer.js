@@ -40,8 +40,8 @@ $(function () {
         });
     }
     var audioPlayerTranslations = window.wordsTranslationsDB.Words['audioPlayer'][document.langCode];
-    for (var i = 0; i < audioPlayerTranslations.length; i++) {
-        $.fn[audioPlayerTranslations[i]] = function (settings) {
+    for (const i of audioPlayerTranslations) {
+        $.fn[i] = function (settings) {
             audioPlayerFn(this, settings);
         };
     }

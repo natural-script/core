@@ -147,8 +147,8 @@ $(function () {
         });
     }
     var setupTranslations = window.wordsTranslationsDB.Words['setup'][document.langCode];
-    for (var i = 0; i < setupTranslations.length; i++) {
-        $.fn[setupTranslations[i]] = function (settings) {
+    for (const i of setupTranslations) {
+        $.fn[i] = function (settings) {
             setupFn(this, settings);
         };
     }

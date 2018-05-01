@@ -73,8 +73,8 @@ $(function () {
         });
     }
     var selectMenuTranslations = window.wordsTranslationsDB.Words['selectMenu'][document.langCode];
-    for (var i = 0; i < selectMenuTranslations.length; i++) {
-        $.fn[selectMenuTranslations[i]] = function (settings) {
+    for (const i of selectMenuTranslations) {
+        $.fn[i] = function (settings) {
             selectMenuFn(this, settings);
         };
     }

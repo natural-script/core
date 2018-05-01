@@ -44,8 +44,8 @@ $(function () {
         });
     }
     var dialogBoxTranslations = window.wordsTranslationsDB.Words['dialogBox'][document.langCode];
-    for (var i = 0; i < dialogBoxTranslations.length; i++) {
-    $.fn[dialogBoxTranslations[i]] = function (settings) {
+    for (const i of dialogBoxTranslations) {
+    $.fn[i] = function (settings) {
         dialogBoxFn(this, settings);
     };
 }

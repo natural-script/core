@@ -32,8 +32,8 @@ $(function () {
         });
     }
     var loaderTranslations = window.wordsTranslationsDB.Words['loader'][document.langCode];
-    for (var i = 0; i < loaderTranslations.length; i++) {
-        $.fn[loaderTranslations[i]] = function (settings) {
+    for (const i of loaderTranslations) {
+        $.fn[i] = function (settings) {
             loaderFn(this, settings);
         };
     }

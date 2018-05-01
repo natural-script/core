@@ -50,8 +50,8 @@ $(function () {
         });
     }
     var slideShowTranslations = window.wordsTranslationsDB.Words['slideShow'][document.langCode];
-    for (var i = 0; i < slideShowTranslations.length; i++) {
-        $.fn[slideShowTranslations[i]] = function (settings) {
+    for (const i of slideShowTranslations) {
+        $.fn[i] = function (settings) {
             sliderFn(this, settings);
         };
     }

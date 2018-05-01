@@ -48,8 +48,8 @@ $(function () {
         });
     }
     var textFnTranslations = window.wordsTranslationsDB.Words['textFn'][document.langCode];
-    for (var i = 0; i < textFnTranslations.length; i++) {
-        $.fn[textFnTranslations[i]] = function (settings) {
+    for (const i of textFnTranslations) {
+        $.fn[i] = function (settings) {
             textFn(this, settings);
         };
     }

@@ -30,8 +30,8 @@ $(function () {
         }
     }
     var firebaseCenterTranslations = window.wordsTranslationsDB.Words['firebaseCenter'][document.langCode];
-    for (var i = 0; i < firebaseCenterTranslations.length; i++) {
-        $.fn[firebaseCenterTranslations[i]] = async function (settings) {
+    for (const i of firebaseCenterTranslations) {
+        $.fn[i] = async function (settings) {
             await firebaseCenter(this, settings);
         };
     }

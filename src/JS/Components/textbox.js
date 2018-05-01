@@ -108,8 +108,8 @@ $(function () {
         });
     }
     var writingZoneTranslations = window.wordsTranslationsDB.Words['writingZone'][document.langCode];
-    for (var i = 0; i < writingZoneTranslations.length; i++) {
-        $.fn[writingZoneTranslations[i]] = function (settings) {
+    for (const i of writingZoneTranslations) {
+        $.fn[i] = function (settings) {
             textboxFn(this, settings);
         };
     }

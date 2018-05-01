@@ -22,8 +22,8 @@ $(function () {
         });
     }
     var colorsPaletteTranslations = window.wordsTranslationsDB.Words['colorsPalette'][document.langCode];
-    for (var i = 0; i < colorsPaletteTranslations.length; i++) {
-        $.fn[colorsPaletteTranslations[i]] = function (settings) {
+    for (const i of colorsPaletteTranslations) {
+        $.fn[i] = function (settings) {
             colorsPaletteFn(this, settings);
         };
     }

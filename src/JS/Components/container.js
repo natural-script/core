@@ -138,8 +138,8 @@ $(function () {
         });
     }
     var containerTranslations = window.wordsTranslationsDB.Words['container'][document.langCode];
-    for (var i = 0; i < containerTranslations.length; i++) {
-        $.fn[containerTranslations[i]] = function (settings) {
+    for (const i of containerTranslations) {
+        $.fn[i] = function (settings) {
             containerFn(this, settings);
         };
     }

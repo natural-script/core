@@ -60,8 +60,8 @@ $(function () {
         });
     }
     var cloneFnTranslations = window.wordsTranslationsDB.Words['cloneFn'][document.langCode];
-    for (var i = 0; i < cloneFnTranslations.length; i++) {
-        $.fn[cloneFnTranslations[i]] = function (settings) {
+    for (const i of cloneFnTranslations) {
+        $.fn[i] = function (settings) {
             cloneFn(this, settings);
         };
     }

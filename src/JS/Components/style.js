@@ -18,8 +18,8 @@ $(function () {
         });
     }
     var styleTranslations = window.wordsTranslationsDB.Words['style'][document.langCode];
-    for (var i = 0; i < styleTranslations.length; i++) {
-        $.fn[styleTranslations[i]] = function (settings) {
+    for (const i of styleTranslations) {
+        $.fn[i] = function (settings) {
             styleFn(this, settings);
         };
     }

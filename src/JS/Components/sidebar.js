@@ -47,8 +47,8 @@ $(function () {
         });
     }
     var sidebarTranslations = window.wordsTranslationsDB.Words['sidebar'][document.langCode];
-    for (var i = 0; i < sidebarTranslations.length; i++) {
-        $.fn[sidebarTranslations[i]] = function (settings) {
+    for (const i of sidebarTranslations) {
+        $.fn[i] = function (settings) {
             sidebarFn(this, settings);
         };
     }

@@ -27,8 +27,8 @@ $(function () {
         });
     }
     var sectionTranslations = window.wordsTranslationsDB.Words['section'][document.langCode];
-    for (var i = 0; i < sectionTranslations.length; i++) {
-        $.fn[sectionTranslations[i]] = function (settings) {
+    for (const i of sectionTranslations) {
+        $.fn[i] = function (settings) {
             cardFn(this, settings);
         };
     }

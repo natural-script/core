@@ -32,8 +32,8 @@ $(function () {
         });
     }
     var slideShowItemTranslations = window.wordsTranslationsDB.Words['slideShowItem'][document.langCode];
-    for (var i = 0; i < slideShowItemTranslations.length; i++) {
-        $.fn[slideShowItemTranslations[i]] = function (settings) {
+    for (const i of slideShowItemTranslations) {
+        $.fn[i] = function (settings) {
             slideShowItemFn(this, settings);
         };
     }

@@ -77,8 +77,8 @@ $(function () {
         });
     }
     var sliderTranslations = window.wordsTranslationsDB.Words['slider'][document.langCode];
-    for (var i = 0; i < sliderTranslations.length; i++) {
-        $.fn[sliderTranslations[i]] = function (settings) {
+    for (const i of sliderTranslations) {
+        $.fn[i] = function (settings) {
             sliderFn(this, settings);
         };
     }

@@ -42,8 +42,8 @@ $(function () {
         });
     }
     var tooltipTranslations = window.wordsTranslationsDB.Words['tooltip'][document.langCode];
-    for (var i = 0; i < tooltipTranslations.length; i++) {
-        $.fn[tooltipTranslations[i]] = function (settings) {
+    for (const i of tooltipTranslations) {
+        $.fn[i] = function (settings) {
             tooltipFn(this, settings);
         };
     }

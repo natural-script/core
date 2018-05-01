@@ -114,8 +114,8 @@ $(function () {
         });
     }
     var FABTranslations = window.wordsTranslationsDB.Words['FAB'][document.langCode];
-    for (var i = 0; i < FABTranslations.length; i++) {
-    $.fn[FABTranslations[i]] = function (settings) {
+    for (const i of FABTranslations) {
+    $.fn[i] = function (settings) {
         FABFn(this, settings);
     };
 }

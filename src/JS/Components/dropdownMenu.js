@@ -94,8 +94,8 @@ $(function () {
         });
     }
     var dropdownMenuTranslations = window.wordsTranslationsDB.Words['dropdownMenu'][document.langCode];
-    for (var i = 0; i < dropdownMenuTranslations.length; i++) {
-        $.fn[dropdownMenuTranslations[i]] = function (settings) {
+    for (const i of dropdownMenuTranslations) {
+        $.fn[i] = function (settings) {
             dropdownMenuFn(this, settings);
         };
     }

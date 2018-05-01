@@ -189,8 +189,8 @@ $(function () {
         });
     }
     var imageTranslations = window.wordsTranslationsDB.Words['image'][document.langCode];
-    for (var i = 0; i < imageTranslations.length; i++) {
-        $.fn[imageTranslations[i]] = function (settings) {
+    for (const i of imageTranslations) {
+        $.fn[i] = function (settings) {
             imageFn(this, settings);
         };
     }

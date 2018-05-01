@@ -19,8 +19,8 @@ $(function () {
         });
     }
     var pageTranslations = window.wordsTranslationsDB.Words['page'][document.langCode];
-    for (var i = 0; i < pageTranslations.length; i++) {
-        $.fn[pageTranslations[i]] = function (settings) {
+    for (const i of pageTranslations) {
+        $.fn[i] = function (settings) {
             pageFn(this, settings);
         };
     }

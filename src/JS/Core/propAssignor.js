@@ -59,8 +59,8 @@ $(function () {
         });
     };
     var propertiesAssignorTranslations = window.wordsTranslationsDB.Words['propertiesAssignor'][document.langCode];
-    for (var i = 0; i < propertiesAssignorTranslations.length; i++) {
-        $.fn[propertiesAssignorTranslations[i]] = function (settings) {
+    for (const i of propertiesAssignorTranslations) {
+        $.fn[i] = function (settings) {
             propertiesAssignorFn(this, settings);
         };
     }

@@ -42,8 +42,8 @@ $(function () {
         });
     }
     var audioTranslations = window.wordsTranslationsDB.Words['audio'][document.langCode];
-    for (var i = 0; i < audioTranslations.length; i++) {
-        $.fn[audioTranslations[i]] = function (settings) {
+    for (const i of audioTranslations) {
+        $.fn[i] = function (settings) {
             audioFn(this, settings);
         };
     }

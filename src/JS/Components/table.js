@@ -81,8 +81,8 @@ $(function () {
         });
     }
     var tableTranslations = window.wordsTranslationsDB.Words['table'][document.langCode];
-    for (var i = 0; i < tableTranslations.length; i++) {
-        $.fn[tableTranslations[i]] = function (settings) {
+    for (const i of tableTranslations) {
+        $.fn[i] = function (settings) {
             tableFn(this, settings);
         };
     }

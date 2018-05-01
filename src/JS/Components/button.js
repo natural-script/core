@@ -40,8 +40,8 @@ $(function () {
         });
     }
     var buttonTranslations = window.wordsTranslationsDB.Words['button'][document.langCode];
-    for (var i = 0; i < buttonTranslations.length; i++) {
-    $.fn[buttonTranslations[i]] = function (settings) {
+    for (const i of buttonTranslations) {
+    $.fn[i] = function (settings) {
         buttonFn(this, settings);
     };
 }

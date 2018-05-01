@@ -34,8 +34,8 @@ window.scriptInit = async function () {
 	}
 	var codePrefix = 'jQuery(document).ready(\nfunction ($) {';
 	var addTranslations = window.wordsTranslationsDB.Words['add'][document.langCode];
-	for (var i = 0; i < addTranslations.length; i++) {
-		codePrefix += '\nvar ' + addTranslations[i] + ' = $(`body`);';
+	for (const i of addTranslations) {
+		codePrefix += '\nvar ' + i + ' = $(`body`);';
 	}
 	var code = rawCode;
 	code = XRegExp.replace(code, XRegExp(`((^ +| +$)|(^\\s*$(?:\\r\\n?|\\n)))`, 'gmi'), ``);

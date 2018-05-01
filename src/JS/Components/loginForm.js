@@ -129,8 +129,8 @@ $(function () {
         });
     }
     var loginFormTranslations = window.wordsTranslationsDB.Words['loginForm'][document.langCode];
-    for (var i = 0; i < loginFormTranslations.length; i++) {
-        $.fn[loginFormTranslations[i]] = function (settings) {
+    for (const i of loginFormTranslations) {
+        $.fn[i] = function (settings) {
             loginFormFn(this, settings);
         };
     }

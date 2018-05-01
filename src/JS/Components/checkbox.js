@@ -38,8 +38,8 @@ $(function () {
         });
     }
     var checkboxTranslations = window.wordsTranslationsDB.Words['checkbox'][document.langCode];
-    for (var i = 0; i < checkboxTranslations.length; i++) {
-        $.fn[checkboxTranslations[i]] = function (settings) {
+    for (const i of checkboxTranslations) {
+        $.fn[i] = function (settings) {
             checkboxFn(this, settings);
         };
     }
