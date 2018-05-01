@@ -13,7 +13,7 @@ window.scriptInit = async function () {
 	meta.name = 'viewport';
 	meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0');
 	document.getElementsByTagName('head')[0].appendChild(meta);
-	var componentsRegex = '(' + window.componentsDB.join('|') + ')';
+	var componentsRegex = `(${window.componentsDB.join('|')})`;
 	var rawCode = $(`jste`).html();
 	if (navigator.onLine) {
 		var isReachable = await window.isReachable('https://jste-manager.herokuapp.com/autoCorrect');
@@ -35,7 +35,7 @@ window.scriptInit = async function () {
 	var codePrefix = 'jQuery(document).ready(\nfunction ($) {';
 	var addTranslations = window.wordsTranslationsDB.Words['add'][document.langCode];
 	for (const i of addTranslations) {
-		codePrefix += '\nvar ' + i + ' = $(`body`);';
+		codePrefix += `\nvar ${i} = $(\`body\`);`;
 	}
 	var code = rawCode;
 	code = XRegExp.replace(code, XRegExp(`((^ +| +$)|(^\\s*$(?:\\r\\n?|\\n)))`, 'gmi'), ``);
