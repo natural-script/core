@@ -9,18 +9,16 @@
  * Date: 2018-04-23
  */
 $(function () {
-    function styleFn(el, settings) {
-        el.each(function () {
-            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
-            if (elementSettingsAnalyze(settings, "name")) {
-                window.jsteStylesStore[elementSettingsAnalyze(settings, "name")] = settings;
-            }
-        });
+    function styleFn(settings) {
+        settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
+        if (elementSettingsAnalyze(settings, "name")) {
+            window.jsteStylesStore[elementSettingsAnalyze(settings, "name")] = settings;
+        }
     }
     var styleTranslations = window.wordsTranslationsDB.Words['style'][document.langCode];
     for (const i of styleTranslations) {
-        $.fn[i] = function (settings) {
-            styleFn(this, settings);
+        window.jsteComponentsFnStore[i] = function (settings) {
+            styleFn(settings);
         };
     }
 });

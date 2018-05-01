@@ -34,7 +34,7 @@ window.propSet = function (elementName, properties, param1, param2, param3) {
         window.setAnimation(elementName, elementSettingsAnalyze(properties, "animation"));
     }
     if (elementSettingsAnalyze(properties, "transparency")) {
-        $('#' + elementName + '').css('-webkit-filter', 'opacity(' + elementSettingsAnalyze(properties, "transparency") + '%)');
+        $(`#${elementName}`).css('-webkit-filter', 'opacity(' + elementSettingsAnalyze(properties, "transparency") + '%)');
     }
     if (elementSettingsAnalyze(properties, "background")) {
         window.setBG(elementName, elementSettingsAnalyze(properties, "background"));
@@ -43,26 +43,26 @@ window.propSet = function (elementName, properties, param1, param2, param3) {
         window.setFontColour(elementName, elementSettingsAnalyze(properties, "fontColor"));
     }
     if (elementSettingsAnalyze(properties, "fontStyle")) {
-        $('#' + elementName + '').css('font-style', elementSettingsAnalyze(properties, "fontStyle"));
+        $(`#${elementName}`).css('font-style', elementSettingsAnalyze(properties, "fontStyle"));
     }
     if (elementSettingsAnalyze(properties, "fontThickness")) {
         if (elementSettingsAnalyze(properties, "fontThickness").findBestMatch(window.wordsTranslationsDB.Words['thick'][document.langCode]).rating > 0.8) {
-            $('#' + elementName + '').css('font-weight', 'bold');
+            $(`#${elementName}`).css('font-weight', 'bold');
         } else {
-            $('#' + elementName + '').css('font-weight', elementSettingsAnalyze(properties, "fontThickness"));
+            $(`#${elementName}`).css('font-weight', elementSettingsAnalyze(properties, "fontThickness"));
         }
     }
     if (elementSettingsAnalyze(properties, "fontSize")) {
         window.setFontSize(elementName, elementSettingsAnalyze(properties, "fontSize"));
     }
     if ($('#' + elementSettingsAnalyze(properties, "container") + '').hasClass('row') == true) {
-        $('#' + elementName + '').addClass('col');
+        $(`#${elementName}`).addClass('col');
     }
     if (elementSettingsAnalyze(properties, 'attributes')) {
-        var propertiesArray = elementSettingsAnalyze(properties, 'attributes').split(XRegExp(' ' + getTranslations("and") + ' ', 'gmi'));
+        var propertiesArray = elementSettingsAnalyze(properties, 'attributes').split(XRegExp(` ${getTranslations("and")} `, 'gmi'));
         for (i = 0; i < propertiesArray.length; i++) {
             if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['scrollable'][document.langCode]).rating > 0.8) {
-                document[document.uniqueID()] = new PerfectScrollbar('#' + elementName + '');
+                document[document.uniqueID()] = new PerfectScrollbar(`#${elementName}`);
             }
         }
     }

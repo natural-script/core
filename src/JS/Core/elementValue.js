@@ -10,20 +10,20 @@
  */
 function elementValueFn(name, newValue) {
     this.get = function (name) {
-        if (['P', 'B', 'I', 'SPAN', 'U', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'].indexOf($('#' + name + '').prop('tagName')) + 1) {
-            return $('#' + name + '').text();
-        } else if ($('#' + name + '').prop('tagName') == 'PAPER-SWATCH-PICKER') {
-            return $('#' + name + '').prop('color');
+        if (['P', 'B', 'I', 'SPAN', 'U', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'].indexOf($(`#${name}`).prop('tagName')) + 1) {
+            return $(`#${name}`).text();
+        } else if ($(`#${name}`).prop('tagName') == 'PAPER-SWATCH-PICKER') {
+            return $(`#${name}`).prop('color');
         } else {
-            return $('#' + name + '').val();
+            return $(`#${name}`).val();
         }
     };
 
     this.set = function (name, newValue) {
-        if (['P', 'B', 'I', 'SPAN', 'U', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'].indexOf($('#' + name + '').prop('tagName')) + 1) {
-            return $('#' + name + '').text(newValue);
+        if (['P', 'B', 'I', 'SPAN', 'U', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'].indexOf($(`#${name}`).prop('tagName')) + 1) {
+            return $(`#${name}`).text(newValue);
         } else {
-            return $('#' + name + '').val(newValue);
+            return $(`#${name}`).val(newValue);
         }
     };
 }

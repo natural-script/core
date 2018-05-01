@@ -9,8 +9,7 @@
  * Date: 2018-02-05
  */
 $(function () {
-    function colorsPaletteFn(el, settings) {
-        el.each(function () {
+    function colorsPaletteFn (settings) {
             settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var out = '<paper-swatch-picker id="' + name + '" color="{{selectedColor}}"></paper-swatch-picker>';
@@ -19,12 +18,11 @@ $(function () {
                 window.setFontColour(name, elementSettingsAnalyze(settings, 'fontColor'));
             }
             window.propSet(name, settings);
-        });
     }
     var colorsPaletteTranslations = window.wordsTranslationsDB.Words['colorsPalette'][document.langCode];
     for (const i of colorsPaletteTranslations) {
-        $.fn[i] = function (settings) {
-            colorsPaletteFn(this, settings);
+        window.jsteComponentsFnStore[i] = function (settings) {
+            colorsPaletteFn(settings);
         };
     }
 });

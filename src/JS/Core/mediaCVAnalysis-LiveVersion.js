@@ -42,7 +42,7 @@
 							var imageData = snapshot.val();
 							var encodedSource = encodeURIComponent(source).replace(/\./g, '%2E');
 							if (imageData[encodedSource].nfsw.rawData.outputs[0].data.concepts[0].name == 'nfsw') {
-								$('#' + name + '').attr('nude', '')
+								$(`#${name}`).attr('nude', '')
 							}
 							detectedObjectsRaw = imageData[encodedSource].general;
 							var detectedObjects;
@@ -74,7 +74,7 @@
 						app.models.predict("e9576d86d2004ed1a38ba0cf39ecb4b1", source).then(function (response) {
 							window.jsteFirebase.database().ref('clarifai/' + encodeURIComponent(source).replace(/\./g, '%2E') + '/nfsw').set(response);
 							if (response.rawData.outputs[0].data.concepts[0].name == 'nfsw') {
-								$('#' + name + '').attr('nude', '')
+								$(`#${name}`).attr('nude', '')
 							}
 						}, function (err) {
 							console.error(err);

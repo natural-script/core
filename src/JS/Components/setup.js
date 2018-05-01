@@ -9,8 +9,7 @@
  * Date: 2018-02-05
  */
 $(function () {
-    function setupFn(el, settings) {
-        el.each(function () {
+    function setupFn (settings) {
             settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var resolution;
             if (elementSettingsAnalyze(settings, 'defaultWindowResolution')) {
@@ -20,8 +19,8 @@ $(function () {
             }
             var landscapeResolution = null;
             var portraitResolution = null;
-            if (XRegExp(' ' + getTranslations("and") + ' ', 'gmi').test(resolution)) {
-                var availableResolutions = resolution.split(XRegExp(' ' + getTranslations("and") + ' ', 'gmi'));
+            if (XRegExp(` ${getTranslations("and")} `, 'gmi').test(resolution)) {
+                var availableResolutions = resolution.split(XRegExp(` ${getTranslations("and")} `, 'gmi'));
                 for (var i = 0; i < availableResolutions.length; i++) {
                     if (XRegExp('' + getTranslations("inTheCaseOfLandscapeMode") + '', 'gmi').test(availableResolutions[i])) {
                         landscapeResolution = availableResolutions[i].split(XRegExp('' + getTranslations("inTheCaseOfLandscapeMode") + '', 'gmi'))[0].split(' ')[0] + ' ' + availableResolutions[i].split(XRegExp('' + getTranslations("inTheCaseOfLandscapeMode") + '', 'gmi'))[0].split(' ')[1] + ' ' + availableResolutions[i].split(XRegExp('' + getTranslations("inTheCaseOfLandscapeMode") + '', 'gmi'))[0].split(' ')[2];
@@ -144,12 +143,11 @@ $(function () {
             }
             document[document.uniqueID()] = new PerfectScrollbar('body');
             window.notFoundPageInit();
-        });
     }
     var setupTranslations = window.wordsTranslationsDB.Words['setup'][document.langCode];
     for (const i of setupTranslations) {
-        $.fn[i] = function (settings) {
-            setupFn(this, settings);
+        window.jsteComponentsFnStore[i] = function (settings) {
+            setupFn(settings);
         };
     }
 });

@@ -11,7 +11,7 @@
 window.setDistance = function (name, direction, value) {
 	var landscapeValue = null;
 	var portraitValue = null;
-	if (XRegExp(' ' + getTranslations("and") + ' ', 'gmi').test(value)) {
+	if (XRegExp(` ${getTranslations("and")} `, 'gmi').test(value)) {
 		var availableValues = value.split(XRegExp(' ' + getTranslations("and") + '', 'gmi'));
 		for (var i = 0; i < availableValues.length; i++) {
 			if (XRegExp('' + getTranslations("inTheCaseOfLandscapeMode") + '', 'gmi').test(availableValues[i])) {
@@ -24,41 +24,41 @@ window.setDistance = function (name, direction, value) {
 	var setDistanceFn = function (ratio, vhvwRatio) {
 		if (direction == 'bottom') {
 			if (document.pageDirection == 'horizontal') {
-				$('#' + name + '').each(function () {
+				$(`#${name}`).each(function () {
 					this.style.setProperty('bottom', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh', 'important');
 				});
 			} else if (document.pageDirection == 'vertical') {
-				$('#' + name + '').each(function () {
+				$(`#${name}`).each(function () {
 					this.style.setProperty('bottom', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important');
 				});
 			}
 		} else if (direction == 'top') {
 			if (document.pageDirection == 'horizontal') {
-				$('#' + name + '').each(function () {
+				$(`#${name}`).each(function () {
 					this.style.setProperty('top', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh', 'important');
 				});
 			} else if (document.pageDirection == 'vertical') {
-				$('#' + name + '').each(function () {
+				$(`#${name}`).each(function () {
 					this.style.setProperty('top', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important');
 				});
 			}
 		} else if (direction == 'left') {
 			if (document.pageDirection == 'horizontal') {
-				$('#' + name + '').each(function () {
+				$(`#${name}`).each(function () {
 					this.style.setProperty('left', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important');
 				});
 			} else if (document.pageDirection == 'vertical') {
-				$('#' + name + '').each(function () {
+				$(`#${name}`).each(function () {
 					this.style.setProperty('left', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important');
 				});
 			}
 		} else if (direction == 'right') {
 			if (document.pageDirection == 'horizontal') {
-				$('#' + name + '').each(function () {
+				$(`#${name}`).each(function () {
 					this.style.setProperty('right', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important');
 				});
 			} else if (document.pageDirection == 'vertical') {
-				$('#' + name + '').each(function () {
+				$(`#${name}`).each(function () {
 				this.style.setProperty('right', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important');
 				});
 			}

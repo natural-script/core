@@ -9,8 +9,7 @@
  * Date: 2018-02-05
  */
 $(function () {
-    function sidebarFn(el, settings) {
-        el.each(function () {
+    function sidebarFn (settings) {
             settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var edge;
@@ -19,7 +18,7 @@ $(function () {
             } else {
                 edge = 'left';
             }
-            var out = '<ul id="' + name + '" data-activates="' + name + '" class="sidenav"></ul>';
+            var out = `<ul id="${name}" data-activates="${name}" class="sidenav"></ul>`;
             window.appendComponent(elementSettingsAnalyze(settings, 'container'), out);
             var elem = document.querySelector('#' + name + '');
             var instance = M.Sidenav.init(elem, {
@@ -28,15 +27,15 @@ $(function () {
                 closeOnClick: false
             });
             if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('row') == true) {
-                $('#' + name + '').addClass('col');
+                $(`#${name}`).addClass('col');
             }
             if (elementSettingsAnalyze(settings, 'position')) {
-                $('#' + name + '').css('position', elementSettingsAnalyze(settings, 'position'));
+                $(`#${name}`).css('position', elementSettingsAnalyze(settings, 'position'));
             } else {
-                $('#' + name + '').css('position', 'relative');
+                $(`#${name}`).css('position', 'relative');
             }
             window.propSet(name, settings);
-            $('#' + name + '').css('position', 'fixed');
+            $(`#${name}`).css('position', 'fixed');
             if (window.mode == 'app') {
                 if ($('.sidenav').length == 1) {
                     $('.menuBtn').on('click', function () {
@@ -44,12 +43,11 @@ $(function () {
                     });
                 }
             }
-        });
     }
     var sidebarTranslations = window.wordsTranslationsDB.Words['sidebar'][document.langCode];
     for (const i of sidebarTranslations) {
-        $.fn[i] = function (settings) {
-            sidebarFn(this, settings);
+        window.jsteComponentsFnStore[i] = function (settings) {
+            sidebarFn(settings);
         };
     }
 });

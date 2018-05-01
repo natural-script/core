@@ -17,7 +17,7 @@ $.fn.extend({
     }
 });
 window.setAnimation = function (elementName, animation) {
-    $('#' + elementName + '').visibilityChanged({
+    $(`#${elementName}`).visibilityChanged({
         callback: function (element, visible) {
             if (visible == true) {
                 if (animation == 'bounce') {

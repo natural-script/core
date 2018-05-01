@@ -9,8 +9,7 @@
  * Date: 2018-04-26
  */
 $(function () {
-    function audioFn(el, settings) {
-        el.each(function () {
+    function audioFn (settings) {
             settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var source = elementSettingsAnalyze(settings, 'source');
             window.requestBLOB(source, encodeURIComponent(source).replace(/\./g, '%2E'), function (dataURL) {
@@ -39,12 +38,11 @@ $(function () {
                     }
                 }
             });
-        });
     }
     var audioTranslations = window.wordsTranslationsDB.Words['audio'][document.langCode];
     for (const i of audioTranslations) {
-        $.fn[i] = function (settings) {
-            audioFn(this, settings);
+        window.jsteComponentsFnStore[i] = function (settings) {
+            audioFn(settings);
         };
     }
 });

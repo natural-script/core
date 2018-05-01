@@ -9,19 +9,17 @@
  * Date: 2018-04-28
  */
 $(function () {
-    function pageFn(el, settings) {
-        el.each(function () {
-            settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
-            $('contents').append('<page id="' + elementSettingsAnalyze(settings, 'name') + '" style="display: none;"></page>');
-            if (elementSettingsAnalyze(settings, 'commands')) {
-                window.execute(name, elementSettingsAnalyze(settings, 'commands'));
-            }
-        });
+    function pageFn(settings) {
+        settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
+        $('contents').append('<page id="' + elementSettingsAnalyze(settings, 'name') + '" style="display: none;"></page>');
+        if (elementSettingsAnalyze(settings, 'commands')) {
+            window.execute(name, elementSettingsAnalyze(settings, 'commands'));
+        }
     }
     var pageTranslations = window.wordsTranslationsDB.Words['page'][document.langCode];
     for (const i of pageTranslations) {
-        $.fn[i] = function (settings) {
-            pageFn(this, settings);
+        window.jsteComponentsFnStore[i] = function (settings) {
+            pageFn(settings);
         };
     }
 });

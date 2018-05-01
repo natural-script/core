@@ -8,11 +8,11 @@
  *
  * Date: 2018-04-23
  */
-console.log("\n %c Jste v1.0.0 Nightly %c https://project-jste.github.io \n","color: #fadfa3; background: #030307; padding:5px 0;","background: #fadfa3; padding:5px 0;");
+console.log(`\n %c Jste v1.0.0 Nightly ${window.isLive ? '( Live Edition )' : ''} %c https://project-jste.github.io \n`, "color: #fadfa3; background: #030307; padding:5px 0;", "background: #fadfa3; padding:5px 0;");
 window.jsteVariablesStore = {};
 window.jsteFunctionsStore = {};
 window.jsteStylesStore = {};
-window.isLive = false;
+window.jsteComponentsFnStore = {};
 var code = $("jste").html();
 var detectedLang = detectLanguage(code);
 if (detectedLang == 'English') {
@@ -36,23 +36,27 @@ if (detectedLang == 'English') {
 } else if (detectedLang == 'Japanese') {
 	document.langID = 5;
 }
-if (navigator.platform == 'Win32') {
-	window.localAddress = 'localhost';
-} else {
-	window.localAddress = '0.0.0.0';
+if (!window.isLive) {
+	if (navigator.platform == 'Win32') {
+		window.localAddress = 'localhost';
+	} else {
+		window.localAddress = '0.0.0.0';
+	}
 }
-$.get("http://" + window.localAddress + ":5050/deviceForm", function (data) {
-	window.deviceForm = data;
-});
-$.get("http://" + window.localAddress + ":5050/childModeStatus", function (data) {
-	window.childModeStatus == data;
-});
-$.get("http://" + window.localAddress + ":5050/nudityDetectionStatus", function (data) {
-	window.nudityDetectionStatus == data;
-});
+fetch(window.isLive ? 'https://jste-manager.herokuapp.com/deviceForm' : `http://${window.localAddress}:5050/deviceForm`)
+	.then(res => res.text())
+	.then(data => window.deviceForm = data);
+if (!window.isLive) {
+	fetch(`http://${window.localAddress}:5050/childModeStatus`)
+		.then(res => res.text())
+		.then(data => window.childModeStatus = data);
+	fetch(`http://${window.localAddress}:5050/nudityDetectionStatus`)
+		.then(res => res.text())
+		.then(data => window.nudityDetectionStatus = data);
+}
 document.isRTL = false;
-window.corsPolicy = 'http://' + window.localAddress + ':6060/';
-window.autoCorrectionAddress = "http://" + window.localAddress + ":5050/autoCorrect"
+window.corsPolicy = window.isLive ? 'https://jste-cors-proxy.herokuapp.com/' : `http://${window.localAddress}:6060/`;
+window.autoCorrectionAddress = window.isLive ? 'https://jste-manager.herokuapp.com/autoCorrect' : `http://${window.localAddress}:5050/autoCorrect`;
 window.shareThis = window.ShareThis;
 window.twitterSharer = window.ShareThisViaTwitter;
 window.facebookSharer = window.ShareThisViaFacebook;

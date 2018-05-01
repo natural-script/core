@@ -10,11 +10,11 @@
  */
 window.setDimension = function (name, dimension, value) {
 	document[name + dimension + '_updater'] = null;
-	var type = $('#' + name + '').prop('type');
-	var isTitled = $('#' + name + '').prop('isTitled');
+	var type = $(`#${name}`).prop('type');
+	var isTitled = $(`#${name}`).prop('isTitled');
 	var landscapeValue = null;
 	var portraitValue = null;
-	if (XRegExp(' ' + getTranslations("and") + ' ', 'gmi').test(value)) {
+	if (XRegExp(` ${getTranslations("and")} `, 'gmi').test(value)) {
 		var availableValues = value.split(XRegExp(' ' + getTranslations("and") + '', 'gmi'));
 		for (var i = 0; i < availableValues.length; i++) {
 			if (XRegExp('' + getTranslations("inTheCaseOfLandscapeMode") + '', 'gmi').test(availableValues[i])) {
@@ -50,21 +50,21 @@ window.setDimension = function (name, dimension, value) {
 					}
 				}
 				if (document.pageDirection == 'horizontal') {
-					$('#' + name + '').each(function () {
+					$(`#${name}`).each(function () {
 						this.style.setProperty('height', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh', 'important');
 					});
 				} else if (document.pageDirection == 'vertical') {
-					$('#' + name + '').each(function () {
+					$(`#${name}`).each(function () {
 						this.style.setProperty('height', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important');
 					});
 				}
 			} else {
 				if (document.pageDirection == 'horizontal') {
-					$('#' + name + '').each(function () {
+					$(`#${name}`).each(function () {
 						this.style.setProperty('height', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh', 'important');
 					});
 				} else if (document.pageDirection == 'vertical') {
-					$('#' + name + '').each(function () {
+					$(`#${name}`).each(function () {
 						this.style.setProperty('height', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important');
 					});
 				}
@@ -78,7 +78,7 @@ window.setDimension = function (name, dimension, value) {
 					$('#' + name + '_html5_api').each(function () {
 						this.style.setProperty('width', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important');
 					});
-					$('#' + name + '').each(function () {
+					$(`#${name}`).each(function () {
 						this.style.setProperty('width', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important');
 					});
 				} else if (document.pageDirection == 'vertical') {
@@ -88,23 +88,23 @@ window.setDimension = function (name, dimension, value) {
 					$('#' + name + '_html5_api').each(function () {
 						this.style.setProperty('width', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important');
 					});
-					$('#' + name + '').each(function () {
+					$(`#${name}`).each(function () {
 						this.style.setProperty('width', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important');
 					});
 				}
-			} else if ($('#' + name + '').hasClass('iziModal')) {
+			} else if ($(`#${name}`).hasClass('iziModal')) {
 				if (document.pageDirection == 'horizontal') {
-					$('#' + name + '').iziModal('setWidth', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh');
+					$(`#${name}`).iziModal('setWidth', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh');
 				} else if (document.pageDirection == 'vertical') {
-					$('#' + name + '').iziModal('setWidth', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw');
+					$(`#${name}`).iziModal('setWidth', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw');
 				}
 			} else {
 				if (document.pageDirection == 'horizontal') {
-					$('#' + name + '').each(function () {
+					$(`#${name}`).each(function () {
 						this.style.setProperty('width', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important');
 					});
 				} else if (document.pageDirection == 'vertical') {
-					$('#' + name + '').each(function () {
+					$(`#${name}`).each(function () {
 						this.style.setProperty('width', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important');
 					});
 				}

@@ -11,8 +11,8 @@
 window.setFontSize = function (elementName, size) {
 	var landscapeSize = null;
 	var portraitSize = null;
-	if (XRegExp(' ' + getTranslations("and") + ' ', 'gmi').test(size)) {
-		var availableSizes = size.split(XRegExp(' ' + getTranslations("and") + ' ', 'gmi'));
+	if (XRegExp(` ${getTranslations("and")} `, 'gmi').test(size)) {
+		var availableSizes = size.split(XRegExp(` ${getTranslations("and")} `, 'gmi'));
 		for (var i = 0; i < availableSizes.length; i++) {
 			if (XRegExp('' + getTranslations("inTheCaseOfLandscapeMode") + '', 'gmi').test(availableSizes[i])) {
 				landscapeSize = availableSizes[i].split(XRegExp('' + getTranslations("inTheCaseOfLandscapeMode") + '', 'gmi'))[0].split(' ')[0] + ' ' + availableSizes[i].split(XRegExp('' + getTranslations("inTheCaseOfLandscapeMode") + '', 'gmi'))[0].split(' ')[1];
@@ -23,9 +23,9 @@ window.setFontSize = function (elementName, size) {
 	}
 	var setFontSizeFn = function (ratio, vhvwRatio) {
 		if (document.pageDirection == 'horizontal') {
-			$('#' + elementName + '').css('font-size', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh');
+			$(`#${elementName}`).css('font-size', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh');
 		} else if (document.pageDirection == 'vertical') {
-			$('#' + elementName + '').css('font-size', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw');
+			$(`#${elementName}`).css('font-size', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw');
 		}
 	};
 	var updateFontSize = function () {

@@ -9,8 +9,7 @@
  * Date: 2018-02-05
  */
 $(function () {
-    function dialogBoxFn(el, settings) {
-        el.each(function () {
+    function dialogBoxFn (settings) {
             settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var out = '<div id="' + name + '"></div>';
@@ -19,34 +18,33 @@ $(function () {
                 $('#' + elementSettingsAnalyze(settings, 'emitter') + '').attr('onclick', elementSettingsAnalyze(settings, 'name') + '.open()');
             }
             if (elementSettingsAnalyze(settings, 'fontSize')) {
-                $('#' + name + '').css('font-size', window.convertLengthCSS(elementSettingsAnalyze(settings, 'fontSize')));
+                $(`#${name}`).css('font-size', window.convertLengthCSS(elementSettingsAnalyze(settings, 'fontSize')));
             }
             if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('row') == true) {
-                $('#' + name + '').addClass('col');
+                $(`#${name}`).addClass('col');
             }
             if (elementSettingsAnalyze(settings, 'position')) {
-                $('#' + name + '').css('position', elementSettingsAnalyze(settings, 'position'));
+                $(`#${name}`).css('position', elementSettingsAnalyze(settings, 'position'));
             } else {
-                $('#' + name + '').css('position', 'relative');
+                $(`#${name}`).css('position', 'relative');
             }
             if (elementSettingsAnalyze(settings, 'title')) {
-                $('#' + name + '').iziModal({
+                $(`#${name}`).iziModal({
                     title: elementSettingsAnalyze(settings, 'title'),
                     rtl: document.isRTL
                 });
             } else {
-                $('#' + name + '').iziModal({
+                $(`#${name}`).iziModal({
                     rtl: document.isRTL
                 });
             }
             window.propSet(name, settings);
-            $('#' + name + '').css('position', 'fixed');
-        });
+            $(`#${name}`).css('position', 'fixed');
     }
     var dialogBoxTranslations = window.wordsTranslationsDB.Words['dialogBox'][document.langCode];
     for (const i of dialogBoxTranslations) {
-    $.fn[i] = function (settings) {
-        dialogBoxFn(this, settings);
+    window.jsteComponentsFnStore[i] = function (settings) {
+        dialogBoxFn(settings);
     };
 }
 });

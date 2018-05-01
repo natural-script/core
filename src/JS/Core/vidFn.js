@@ -10,15 +10,19 @@ function showVideoA(name, source, title, videoURLID, fps) {
 	}
 	var uniqueID = document.uniqueID();
 	var v = document.getElementById(name);
-	window.requestBLOB(source, videoURLID, function (BLOBURL) {
-		$('#' + name + '').html('<source src="' + BLOBURL + '" type="video/mp4" />');
-		document[uniqueID + 'src'] = BLOBURL;
-	});
+	if (window.isLive) {
+		window.requestBLOB(name, 'vid', source, videoURLID);
+	} else {
+		window.requestBLOB(source, videoURLID, function (BLOBURL) {
+			$(`#${name}`).html('<source src="' + BLOBURL + '" type="video/mp4" />');
+			document[uniqueID + 'src'] = BLOBURL;
+		});
+	}
 	document[uniqueID + 'checker'] = setInterval(function () {
 		if (v.readyState === 4) {
-			$('#' + name + '').attr('controls', '');
+			$(`#${name}`).attr('controls', '');
 			window.fadeOut('showVideo_' + name + '_containerA');
-			$('#' + name + '').css('-webkit-filter', 'blur(0px)');
+			$(`#${name}`).css('-webkit-filter', 'blur(0px)');
 			document[name] = videojs(name, {
 				plugins: {
 					framebyframe: {
@@ -62,6 +66,6 @@ function showVideoA(name, source, title, videoURLID, fps) {
 }
 
 function showVideoB(name) {
-	$('#' + name + '').css('-webkit-filter', 'blur(0px)');
+	$(`#${name}`).css('-webkit-filter', 'blur(0px)');
 	window.fadeOut('showVideo_' + name + '_containerB');
 }

@@ -9,8 +9,7 @@
  * Date: 2018-02-05
  */
 $(function () {
-    function slideShowItemFn(el, settings) {
-        el.each(function () {
+    function slideShowItemFn (settings) {
             settings = window.inheritStyle(settings, elementSettingsAnalyze(settings, 'style'));
             var name = elementSettingsAnalyze(settings, 'name');
             var source = elementSettingsAnalyze(settings, 'source');
@@ -21,20 +20,19 @@ $(function () {
             }
             $('#' + elementSettingsAnalyze(settings, 'slideShow') + '').append(out);
             if (elementSettingsAnalyze(settings, 'position')) {
-                $('#' + name + '').css('position', elementSettingsAnalyze(settings, 'position'));
+                $(`#${name}`).css('position', elementSettingsAnalyze(settings, 'position'));
             } else {
-                $('#' + name + '').css('position', 'relative');
+                $(`#${name}`).css('position', 'relative');
             }
             window.propSet(name, settings);
             if (elementSettingsAnalyze(settings, 'title')) {
-                $('#' + name + '').attr('alt', elementSettingsAnalyze(settings, 'title'));
+                $(`#${name}`).attr('alt', elementSettingsAnalyze(settings, 'title'));
             }
-        });
     }
     var slideShowItemTranslations = window.wordsTranslationsDB.Words['slideShowItem'][document.langCode];
     for (const i of slideShowItemTranslations) {
-        $.fn[i] = function (settings) {
-            slideShowItemFn(this, settings);
+        window.jsteComponentsFnStore[i] = function (settings) {
+            slideShowItemFn(settings);
         };
     }
 });

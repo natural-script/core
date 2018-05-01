@@ -3,7 +3,7 @@
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 // fade out
 window.fadeOut = function (elementName) {
-	var el = document.querySelector('#' + elementName + '');
+	var el = document.querySelector(`#${elementName}`);
 	if (el != null) {
 		el.style.opacity = 1;
 		(function fade() {
@@ -17,7 +17,7 @@ window.fadeOut = function (elementName) {
 };
 // fade in
 window.fadeIn = function (elementName, display) {
-	var el = document.querySelector('#' + elementName + '');
+	var el = document.querySelector(`#${elementName}`);
 	if (el != null) {
 		el.style.opacity = 0;
 		el.style.display = display || "block";

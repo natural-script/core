@@ -43,7 +43,7 @@
                             var encodedSource = encodeURIComponent(source).replace(/\./g, '%2E');
                             if (window.nudityDetectionStatus) {
                                 if (imageData[encodedSource].nfsw.rawData.outputs[0].data.concepts[0].name == 'nfsw') {
-                                    $('#' + name + '').attr('nude', '')
+                                    $(`#${name}`).attr('nude', '')
                                 }
                             }
                             detectedObjectsRaw = imageData[encodedSource].general;
@@ -77,7 +77,7 @@
                             window.jsteFirebase.database().ref('clarifai/' + encodeURIComponent(source).replace(/\./g, '%2E') + '/nfsw').set(response);
                             if (window.nudityDetectionStatus) {
                                 if (response.rawData.outputs[0].data.concepts[0].name == 'nfsw') {
-                                    $('#' + name + '').attr('nude', '')
+                                    $(`#${name}`).attr('nude', '')
                                 }
                             }
                         }, function (err) {
