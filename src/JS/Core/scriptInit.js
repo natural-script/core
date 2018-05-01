@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-04-30
+ * Date: 2018-05-01
  */
 window.scriptInit = async function () {
 	var meta = document.createElement('meta');
@@ -183,8 +183,8 @@ window.scriptInit = async function () {
 	console.groupCollapsed('Compiled Syntax');
 	console.log(code);
 	console.groupEnd();
-	await eval(code);
-	window.showCurrentPage();
+	eval(code);
+	setTimeout(() => window.showCurrentPage(), 1);
 }
 $(function () {
 	$(function () {

@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-04-23
+ * Date: 2018-05-01
  */
 console.log(`\n %c Jste v1.0.0 Nightly ${window.isLive ? '( Live Edition )' : ''} %c https://project-jste.github.io \n`, "color: #fadfa3; background: #030307; padding:5px 0;", "background: #fadfa3; padding:5px 0;");
 window.jsteVariablesStore = {};

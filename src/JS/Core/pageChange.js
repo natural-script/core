@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-03-10
+ * Date: 2018-05-01
  */
 function getLocation() {
 	return location.pathname + location.search;
@@ -20,9 +20,7 @@ window.showCurrentPage = function () {
 		window.setURLParameter('page', wordsTranslationsDB.Words['indexPage'][document.langCode][0]);
 	}
 	var currentPage = decodeURIComponent(currentPageRaw);
-	setTimeout(function () {
-		$('#' + currentPage + '').fadeIn(500);
-	}, 1);
+	setTimeout(() => $('#' + currentPage + '').fadeIn(500), 1);
 	$('title').html(currentPage.replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
 		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
 	}) + ' | ' + window.title);
