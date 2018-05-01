@@ -26,7 +26,7 @@ async function upload(parent) {
             console.log("Transferred", info.bytes);
             console.log("Transferred Overall", info.bytesOverall);
         });
-        await client.uploadDir("build");
+        await client.uploadDir("builds");
     } catch (err) {
         console.log(err)
     }
