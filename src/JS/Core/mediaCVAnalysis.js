@@ -41,7 +41,7 @@
                         ref.on('value', function (snapshot) {
                             var imageData = snapshot.val();
                             var encodedSource = encodeURIComponent(source).replace(/\./g, '%2E');
-                            if (window.nudityDetectionStatus) {
+                            if (window.nudityDetectionStatus || window.isLive) {
                                 if (imageData[encodedSource].nfsw.rawData.outputs[0].data.concepts[0].name == 'nfsw') {
                                     $(`#${name}`).attr('nude', '')
                                 }
@@ -75,7 +75,7 @@
                         });
                         app.models.predict("e9576d86d2004ed1a38ba0cf39ecb4b1", source).then(function (response) {
                             window.jsteFirebase.database().ref('clarifai/' + encodeURIComponent(source).replace(/\./g, '%2E') + '/nfsw').set(response);
-                            if (window.nudityDetectionStatus) {
+                            if (window.nudityDetectionStatus || window.isLive) {
                                 if (response.rawData.outputs[0].data.concepts[0].name == 'nfsw') {
                                     $(`#${name}`).attr('nude', '')
                                 }

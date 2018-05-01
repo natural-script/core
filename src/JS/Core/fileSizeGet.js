@@ -2,7 +2,7 @@
 //------------------------------------------------Requesting The Files Sizes------------------------------------------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 window.getFileSize = function (url, callback) {
-	$.post('http://' + window.localAddress + ':5050/getFileSize', {
+	$.post(window.isLive ? 'https://jste-manager.herokuapp.com/getFileSize' : `http://${window.localAddress}:5050/getFileSize`, {
 		fileURL: url
 	}).done(function (data) {
 		size = parseInt(data);
