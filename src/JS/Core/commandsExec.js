@@ -6,7 +6,7 @@
  * Released under the GNU AGPLv3 license
  * https://project-jste.github.io/license
  *
- * Date: 2018-04-19
+ * Date: 2018-05-01
  */
 var eventSplit;
 
@@ -52,7 +52,7 @@ window.execute = async function (elementName, command, execute, functionName) {
 				typeOptions.secondryConditions = [];
 				for (var optionID = 0; optionID < alternativeOptionsArray.length; optionID++) {
 					typeOptions.secondryConditions[optionID] = [];
-					if (XRegExp('' + getTranslations("inTheCaseThat") + '', 'gmi').test(alternativeOptionsArray[optionID])) {
+					if (XRegExp(`${getTranslations("inTheCaseThat")}`, 'gmi').test(alternativeOptionsArray[optionID])) {
 						await window.evaluateStatement(alternativeOptionsArray[optionID]).then(function (condition) {
 							typeOptions.secondryConditions[optionID].condition = condition;
 						});
@@ -82,9 +82,9 @@ window.execute = async function (elementName, command, execute, functionName) {
 			pureCommand = commands[commandID];
 		}
 		if (getTheEventCode(pureCommand) == 'E17') {
-			codePrefix = "if (Modernizr.speechrecognition) { \
-				annyang.start(); \
-				var voiceCommand = window.commandsFnTranslations('c40', pureCommand);";
+			codePrefix = `if (Modernizr.speechrecognition) { 
+				annyang.start(); 
+				var voiceCommand = window.commandsFnTranslations('c40', pureCommand);`;
 			codeSuffix = "};";
 			codeParam = "";
 		}
@@ -94,27 +94,27 @@ window.execute = async function (elementName, command, execute, functionName) {
 			codeParam = ", typeOptions";
 		}
 		commandInfo.pureCommand = pureCommand;
-		var commandEvaluation = eval("window.evaluateScript(window.analyzeCommand(pureCommand" + eventSplit + ".split(new RegExp(getTranslations('inTheCaseThat') + '.*?$', 'gimy'))[0]), getTheEventCode(pureCommand), commandType, commandInfo, " + (functionName ? 'true' : 'false') + codeParam + ")");
+		var commandEvaluation = eval(`window.evaluateScript(window.analyzeCommand(pureCommand${eventSplit}.split(new RegExp(\`\${getTranslations('inTheCaseThat')}.*?$\`, 'gimy'))[0]), getTheEventCode(pureCommand), commandType, commandInfo, ${functionName ? 'true' : 'false'}${codeParam})`);
 		if (execute == false) {
 			return commandEvaluation;
 		} else if (functionName) {
 			if (commandID == commands.length - 1) {
-				functionCommands.push(codePrefix + " \
-				" + commandEvaluation + " \
-			" + codeSuffix);
-				eval("window.jsteFunctionsStore['" + functionName + "'] = function(elementName, params) { \
-				" + codePrefix + " \
-					" + functionCommands.join('\n') + " \
-				" + codeSuffix + "};");
+				functionCommands.push(`${codePrefix} 
+				   ${commandEvaluation} 
+			    ${codeSuffix}`);
+				eval(`window.jsteFunctionsStore[\`${functionName}\`] = function(elementName, params) { 
+				    ${codePrefix} 
+					    ${functionCommands.join('\n')} 
+				    ${codeSuffix}};`);
 			} else {
-				functionCommands.push(codePrefix + " \
-				" + commandEvaluation + " \
-			" + codeSuffix);
+				functionCommands.push(`${codePrefix} 
+				    ${commandEvaluation} 
+			    ${codeSuffix}`);
 			}
 		} else {
-			eval(codePrefix + " \
-				" + commandEvaluation + " \
-			" + codeSuffix);
+			eval(`${codePrefix} 
+				    ${commandEvaluation} 
+			    ${codeSuffix}`);
 
 		}
 	}
