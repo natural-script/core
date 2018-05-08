@@ -1,3 +1,6 @@
+# Announcement: Project Jste will take part in Mozilla Global Sprint That Year.....!
+Learn More At: https://medium.com/project-jste/contribute-to-our-code-at-mozilla-global-sprint-2018-8c0753fd715
+
 # Jste Framework
 
 [![Build Status](https://travis-ci.org/project-jste/framework.svg?branch=master)](https://travis-ci.org/project-jste/framework)
