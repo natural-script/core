@@ -46,6 +46,7 @@ window.scriptInit = async function () {
 	});
 	if (document.langID == 3 || document.langID == 4) {
 		document.isRTL = true;
+		$(`html`).attr(`dir`, `rtl`).attr(`document.langID`, `ar`);
 	} else {
 		document.isRTL = false;
 	}
