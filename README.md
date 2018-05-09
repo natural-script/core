@@ -191,13 +191,21 @@ https://medium.com/project-jste
 
 ## Contact Us:
 
-### Email:
+### Project Email:
 
 project-jste@outlook.com
+
+### Project Founder Email:
+
+ahmed__hassan@outlook.com
 
 ### Facebook:
 
 https://www.facebook.com/ProjectJste
+
+### Gitter:
+
+https://gitter.im/Project-Jste/Contributors
 
 ## License
 
