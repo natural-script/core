@@ -1,5 +1,15 @@
-# Announcement: Project Jste will take part in Mozilla Global Sprint That Year.....!
-Learn More At: https://medium.com/project-jste/contribute-to-our-code-at-mozilla-global-sprint-2018-8c0753fd715
+# Mozilla Global Sprint 2018 Updates 🎉
+
+## Jste Participation @ Global Sprint 2018 Announcement: https://medium.com/project-jste/contribute-to-our-code-at-mozilla-global-sprint-2018-8c0753fd715
+
+## Who Can To Contribute To Jste At The Sprint ?
+* Anyone who can understand English, Arabic, Egyptian, French, Chinese, Japanese or Hindi is able to contribute ti Jste with his/her translations. See: https://github.com/project-jste/framework/issues/1
+* Web developers are able to port more JS functions and commands to Jste. See: https://github.com/project-jste/framework/issues/2
+* Web developers and web designers can add new visual components to Jste or even enhance the current ones. See: https://github.com/project-jste/framework/issues/3
+
+## Will Be There Any Rewards For The Contributers ?
+Yup, all the contributers who has been contributed to Jste with considerable contributions will be senior members @ Jste Team after its establishing at the end of May 2018. In addition, every contributer will be honored by putting his/her name & email in the list of Jste contributers.
+
 
 # Jste Framework
 
