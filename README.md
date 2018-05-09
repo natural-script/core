@@ -2,10 +2,13 @@
 
 ## Jste Participation @ Global Sprint 2018 Announcement: https://medium.com/project-jste/contribute-to-our-code-at-mozilla-global-sprint-2018-8c0753fd715
 
+## Before Starting Contributing To Jste, please read Jste v0.5 Alpha announcement article at: https://medium.com/project-jste/introducing-jste-v0-1-alpha-c77b33643f1e
+
 ## Who Can To Contribute To Jste At The Sprint ?
 * Anyone who can understand English, Arabic, Egyptian, French, Chinese, Japanese or Hindi is able to contribute ti Jste with his/her translations. See: https://github.com/project-jste/framework/issues/1
 * Web developers are able to port more JS functions and commands to Jste. See: https://github.com/project-jste/framework/issues/2
 * Web developers and web designers can add new visual components to Jste or even enhance the current ones. See: https://github.com/project-jste/framework/issues/3
+* If your aren't good at anything, please consider starring this repository to show your support and help in making Jste more popular and famous.
 
 ## Will Be There Any Rewards For The Contributers ?
 Yup, all the contributers who has been contributed to Jste with considerable contributions will be senior members @ Jste Team after its establishing at the end of May 2018. In addition, every contributer will be honored by putting his/her name & email in the list of Jste contributers.
@@ -14,6 +17,8 @@ Yup, all the contributers who has been contributed to Jste with considerable con
 # Jste Framework
 
 [![Build Status](https://travis-ci.org/project-jste/framework.svg?branch=master)](https://travis-ci.org/project-jste/framework)
+
+<span style="display:block;text-align:center">![Jste French Code Example](https://assets.mofoprod.net/network-pulse/images/entries/2018-03-31_025517.9964150000.jpg)</span>
 
 Jste is the first plain natural language based JavaScript framework which is translated to various languages from many countries all around the world to make it easier for everyone to code and develop his/her own website or application and exploit all the latest web technologies in his/her local language which he/she uses during his/her daily life without the need to any experiences rather than the way of using the computer and typing on the keyboard, in addition to other extra features like data saving and media moderating.
 
