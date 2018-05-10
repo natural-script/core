@@ -5,7 +5,7 @@
 ## Before Starting Contributing To Jste, please read Jste v0.5 Alpha announcement article at: https://medium.com/project-jste/introducing-jste-v0-1-alpha-c77b33643f1e
 
 ## Who Can To Contribute To Jste At The Sprint ?
-* Anyone who can understand English, Arabic, Egyptian, French, Chinese, Japanese or Hindi is able to contribute ti Jste with his/her translations. See: https://github.com/project-jste/framework/issues/1
+* Anyone who can understand any language especially English, Arabic, Egyptian, French, Chinese, Japanese or Hindi is able to contribute to Jste with his/her translations. See: https://github.com/project-jste/framework/issues/1
 * Web developers are able to port more JS functions and commands to Jste. See: https://github.com/project-jste/framework/issues/2
 * Web developers and web designers can add new visual components to Jste or even enhance the current ones. See: https://github.com/project-jste/framework/issues/3
 * If your aren't good at anything, please consider starring this repository to show your support and help in making Jste more popular and famous.
