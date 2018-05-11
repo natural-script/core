@@ -4,6 +4,9 @@
 
 ## Before Starting Contributing To Jste, please read Jste v0.5 Alpha announcement article at: https://medium.com/project-jste/introducing-jste-v0-1-alpha-c77b33643f1e
 
+## For Anyone Who Want To Join Jste Team:
+Feel free to contact us through our email at: project-jste@outlook.com
+
 ## Who Can To Contribute To Jste At The Sprint ?
 * Anyone who can understand any language especially English, Arabic, Egyptian, French, Chinese, Japanese or Hindi is able to contribute to Jste with his/her translations. See: https://github.com/project-jste/framework/issues/1
 * Web developers are able to port more JS functions and commands to Jste. See: https://github.com/project-jste/framework/issues/2
