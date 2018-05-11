@@ -125,6 +125,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
     }
     var functionArgumentsParam = isFunction ? `, params` : ``;
     if (script.command_id == 'S1') {
+        /* Command Example: remove <targetElement> */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -140,6 +141,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
             ${typeSuffix + eventSuffix}
             })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S2') {
+        /* Command Example: navigate to <hyperlink> */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -165,6 +167,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                     ${typeSuffix + eventSuffix}
             })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S3') {
+        /* Command Example: play <targetElement> */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -184,6 +187,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                     ${typeSuffix + eventSuffix}
               })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S4') {
+        /* Command Example: pause <targetElement> */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -203,6 +207,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                     ${typeSuffix + eventSuffix}
                 })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S5') {
+        /* Command Example: set the time position of <targetElement> to <timePosition> */
         return `(function () {
             ${commandsCommonDeclarations} 
             (function (${commandVarB + functionArgumentsParam}) {
@@ -225,6 +230,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                         ${typeSuffix + eventSuffix}
                     })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S6') {
+        /* Command Example: set the value of <targetElement> to <value> */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -240,6 +246,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                         ${typeSuffix + eventSuffix}
                     })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S7') {
+        /* Command Example: toggle the flashlight */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -254,6 +261,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                     ${typeSuffix + eventSuffix}
             })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S8') {
+        /* Command Example: turn on the flashlight */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -268,6 +276,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                     ${typeSuffix + eventSuffix}
             })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S9') {
+        /* Command Example: turn off the flashlight */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -282,6 +291,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                     ${typeSuffix + eventSuffix}
             })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S10') {
+        /* Command Example: turn on WIFI */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -290,6 +300,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                     ${typeSuffix + eventSuffix}
             })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S11') {
+        /* Command Example: switch off WIFI */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -298,6 +309,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                     ${typeSuffix + eventSuffix}
             })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S12') {
+        /* Command Example: turn on Bluetooth */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -307,6 +319,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                     ${typeSuffix + eventSuffix}
             })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S13') {
+        /* Command Example: show the on-screen keyboard */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -315,6 +328,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                     ${typeSuffix + eventSuffix}
             })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S14') {
+        /* Command Example: hide the on-screen keyboard */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -385,6 +399,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                 ${eventSuffix + typeSuffix}
             })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S17') {
+        /* Command Example: set the width of <targetElement> to <value> */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -401,6 +416,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                         ${typeSuffix + eventSuffix}
                     })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S18') {
+        /* Command Example: set the length of <targetElement> to <value> */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -417,6 +433,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                         ${typeSuffix + eventSuffix}
                     })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S19') {
+        /* Command Example: set the background of <targetElement> to <value> */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -433,6 +450,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                         ${typeSuffix + eventSuffix}
                     })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S20') {
+        /* Command Example: set the font color of <targetElement> to <value> */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -449,6 +467,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                         ${typeSuffix + eventSuffix}
                     })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S21') {
+        /* Command Example: set the value of the variable <variableName> to <value> */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
@@ -459,6 +478,7 @@ window.evaluateScript = function (script, event, type, commandInfo, isFunction, 
                         ${typeSuffix + eventSuffix}
                     })(${commandVarB + functionArgumentsParam});})();`;
     } else if (script.command_id == 'S22') {
+        /* Command Example: execute the function <functionName> */
         return `(function () {
             ${commandsCommonDeclarations}
             (function (${commandVarB + functionArgumentsParam}) {
