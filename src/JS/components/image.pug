@@ -1,0 +1,21 @@
+div(id=`${name}_container` style='position: relative; overflow: hidden;')
+  paper-material(elevation='2' style='position: absolute;')
+    img(id=name src='' crossorigin='anonymous' style='-webkit-filter: blur(10px);')
+    .imageTitle= title
+    div(id=`showImage_${name}_containerA`)
+      .showImageContainerA
+        p.imageData(id=`${name}_imageData`)
+        paper-button.imageMainButton(id=`image_${name}_mainButton` onclick=`showImageA('${name}', '${URLID}', '${source}');`)
+          i.material-icons file_download
+          |  Loading...
+        img.showImageContainerAIcon(src=photoIcon)
+    div(id=`showImage_${name}_containerB` style='display: none;')
+      .showImageConatainerB
+        p.nudesFoundWarningText Nudes found
+        paper-button.yesShowTheNudes(onclick=`showImageC('${name}', '${URLID}', '${source}');`) Continue
+        paper-button.showBlurredNudes(onclick=`showImageB('${name}', '${URLID}', '${source}');`) Show Blurred
+    div(id=`showImage_${name}_containerC` style='display: none;')
+      p.showTheFullContentWarning Show the full content ?
+      paper-button.yesRemoveTheBlur(onclick=`showImageD('${name}');`) Continue
+    div(id=`showImage_${name}_containerD` style='display: none;')
+      p.forbiddenContentWarning You are prohibited from accessing this content

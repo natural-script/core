@@ -1,7 +1,5 @@
-phpmyadmin
 /node_modules
 npm-debug.log
 .DS_Store
 /*.env
-tmp
 /package-lock.json

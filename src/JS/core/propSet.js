@@ -1,0 +1,165 @@
+/*!
+ * Properties Setter
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-02-07
+ */
+import {
+  setAnimation
+} from 'core/animations.js'
+import {
+  setFontColour,
+  setBG
+} from 'core/colors.js'
+import {
+  execute
+} from 'core/commandsExec.js'
+import {
+  elementSettingsAnalyze
+} from 'core/elementSettingsAnalyze.js'
+import {
+  getTranslations
+} from 'core/translationsGet.js'
+import {
+  setDimension
+} from 'measurements/Dimensions.js'
+import {
+  setDistance
+} from 'measurements/Distances.js'
+import {
+  setFontSize
+} from 'measurements/fontSize.js'
+import {
+  getUniqueID
+} from './uniqueID.js'
+import {
+  requestBLOB
+} from 'core/BLOBGet.js'
+import PerfectScrollbar from 'perfect-scrollbar'
+import 'perfect-scrollbar/css/perfect-scrollbar.css'
+export const propSet = function (elementName, properties, param1, param2, param3) {
+  if (elementSettingsAnalyze(properties, 'distanceFromBottom')) {
+    setDistance(elementName, 'bottom', elementSettingsAnalyze(properties, 'distanceFromBottom'))
+  }
+  if (elementSettingsAnalyze(properties, 'distanceFromTop')) {
+    setDistance(elementName, 'top', elementSettingsAnalyze(properties, 'distanceFromTop'))
+  }
+  if (elementSettingsAnalyze(properties, 'distanceFromLeft')) {
+    setDistance(elementName, 'left', elementSettingsAnalyze(properties, 'distanceFromLeft'))
+  }
+  if (elementSettingsAnalyze(properties, 'distanceFromRight')) {
+    setDistance(elementName, 'right', elementSettingsAnalyze(properties, 'distanceFromRight'))
+  }
+  if (elementSettingsAnalyze(properties, 'commands')) {
+    execute(elementName, elementSettingsAnalyze(properties, 'commands'))
+  }
+  if (elementSettingsAnalyze(properties, 'width')) {
+    setDimension(elementName, 'width', elementSettingsAnalyze(properties, 'width'))
+  }
+  if (elementSettingsAnalyze(properties, 'length')) {
+    setDimension(elementName, 'length', elementSettingsAnalyze(properties, 'length'))
+  }
+  if (elementSettingsAnalyze(properties, 'animation')) {
+    setAnimation(elementName, elementSettingsAnalyze(properties, 'animation'))
+  }
+  if (elementSettingsAnalyze(properties, 'transparency')) {
+    $(`#${elementName}`).css('-webkit-filter', 'opacity(' + elementSettingsAnalyze(properties, 'transparency') + '%)')
+  }
+  if (elementSettingsAnalyze(properties, 'attributes')) {
+    if (elementSettingsAnalyze(properties, 'attributes').search(XRegExp('' + getTranslations('parallax') + '', 'gmi')) > -1) {
+      if (elementSettingsAnalyze(properties, 'background')) {
+        if (window.isLive) {
+          $(`#${elementName}`).css({
+            'background': 'url(' + elementSettingsAnalyze(properties, 'background') + ') no-repeat',
+            'background-size': 'cover'
+          })
+          if (window.deviceForm == 'desktop') {
+            $(`#${elementName}`).addClass('parallax')
+          }
+        } else {
+          requestBLOB(elementSettingsAnalyze(properties, 'background'), encodeURIComponent(elementSettingsAnalyze(properties, 'background')).replace(/\./g, '%2E'), function (BLOBURL) {
+            $(`#${elementName}`).css({
+              'background': 'url(' + BLOBURL + ') no-repeat',
+              'background-size': 'cover'
+            })
+            if (window.deviceForm == 'desktop') {
+              $(`#${elementName}`).addClass('parallax')
+            }
+            setTimeout(function () {
+              window.URL.revokeObjectURL(BLOBURL)
+            }, 10000)
+          })
+        }
+      }
+    } else {
+      if (elementSettingsAnalyze(properties, 'background')) {
+        setBG(elementName, elementSettingsAnalyze(properties, 'background'))
+      }
+    }
+  } else {
+    if (elementSettingsAnalyze(properties, 'background')) {
+      setBG(elementName, elementSettingsAnalyze(properties, 'background'))
+    }
+  }
+  if (elementSettingsAnalyze(properties, 'fontColor')) {
+    setFontColour(elementName, elementSettingsAnalyze(properties, 'fontColor'))
+  }
+  if (elementSettingsAnalyze(properties, 'fontStyle')) {
+    $(`#${elementName}`).css('font-style', elementSettingsAnalyze(properties, 'fontStyle'))
+  }
+  if (elementSettingsAnalyze(properties, 'fontThickness')) {
+    if (elementSettingsAnalyze(properties, 'fontThickness').findBestMatch(window.wordsTranslationsDB.Words['thick'][document.langCode]).rating > 0.8) {
+      $(`#${elementName}`).css('font-weight', 'bold')
+    } else {
+      $(`#${elementName}`).css('font-weight', elementSettingsAnalyze(properties, 'fontThickness'))
+    }
+  }
+  if (elementSettingsAnalyze(properties, 'shape')) {
+    if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['triangle'][document.langCode]).rating > 0.8)) {
+      $(`#${elementName}`).addClass('triangle')
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['trapezoid'][document.langCode]).rating > 0.8)) {
+      $(`#${elementName}`).addClass('trapezoid')
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['parallelogram'][document.langCode]).rating > 0.8)) {
+      $(`#${elementName}`).addClass('parallelogram')
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['rhombus'][document.langCode]).rating > 0.8)) {
+      $(`#${elementName}`).addClass('rhombus')
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['pentagon'][document.langCode]).rating > 0.8)) {
+      $(`#${elementName}`).addClass('pentagon')
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['hexagon'][document.langCode]).rating > 0.8)) {
+      $(`#${elementName}`).addClass('hexagon')
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['heptagon'][document.langCode]).rating > 0.8)) {
+      $(`#${elementName}`).addClass('heptagon')
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['octagon'][document.langCode]).rating > 0.8)) {
+      $(`#${elementName}`).addClass('octagon')
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['decagon'][document.langCode]).rating > 0.8)) {
+      $(`#${elementName}`).addClass('decagon')
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['circle'][document.langCode]).rating > 0.8)) {
+      $(`#${elementName}`).addClass('circle')
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['ellipse'][document.langCode]).rating > 0.8)) {
+      $(`#${elementName}`).addClass('ellipse')
+    }
+  }
+  if (elementSettingsAnalyze(properties, 'fontSize')) {
+    setFontSize(elementName, elementSettingsAnalyze(properties, 'fontSize'))
+  }
+  if ($('#' + elementSettingsAnalyze(properties, 'container') + '').hasClass('row') == true) {
+    $(`#${elementName}`).addClass('col')
+  }
+  if (elementSettingsAnalyze(properties, 'position')) {
+    $(`#${elementName}`).css('position', elementSettingsAnalyze(properties, 'position'))
+  } else {
+    $(`#${elementName}`).css('position', 'relative')
+  }
+  if (elementSettingsAnalyze(properties, 'attributes')) {
+    var propertiesArray = elementSettingsAnalyze(properties, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
+    for (var i = 0; i < propertiesArray.length; i++) {
+      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['scrollable'][document.langCode]).rating > 0.8) {
+        document[getUniqueID()] = new PerfectScrollbar(`#${elementName}`)
+      }
+    }
+  }
+}

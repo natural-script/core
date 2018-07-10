@@ -1,0 +1,1575 @@
+{
+    "Words": {
+        "yes": {
+            "en": ["yes"],
+            "fr": ["oui"],
+            "ar": ["نعم"],
+            "arz": ["ايوة"]
+        },
+        "no": {
+            "en": ["no"],
+            "fr": ["non"],
+            "ar": ["لا"],
+            "arz": ["لأ"]
+        },
+        "and": {
+            "en": ["and"],
+            "fr": ["et"],
+            "ar": ["و"],
+            "arz": ["و"]
+        },
+        "or": {
+            "en": ["or"],
+            "fr": ["ou"],
+            "ar": ["أو"],
+            "arz": ["أو"]
+        },
+        "black": {
+            "en": ["black"],
+            "fr": ["noir"],
+            "ar": ["اسود"],
+            "arz": ["اسود"]
+        },
+        "red": {
+            "en": ["red"],
+            "fr": ["rouge"],
+            "ar": ["احمر", "حمراء"],
+            "arz": ["احمر", "حمرة"]
+        },
+        "blue": {
+            "en": ["blue"],
+            "fr": ["bleu"],
+            "ar": ["ازرق", "زرقاء"],
+            "arz": ["ازرق", "زرقة"]
+        },
+        "cyan": {
+            "en": ["cyan"],
+            "fr": ["cyan"],
+            "ar": ["سماوى"],
+            "arz": ["لبنى"]
+        },
+        "gray": {
+            "en": ["gray"],
+            "fr": ["gris"],
+            "ar": ["رصاصى"],
+            "arz": ["فرانى"]
+        },
+        "green": {
+            "en": ["green"],
+            "fr": ["vert"],
+            "ar": ["اخضر", "خضراء"],
+            "arz": ["اخضر", "خضرة"]
+        },
+        "white": {
+            "en": ["white"],
+            "fr": ["blanc"],
+            "ar": ["ابيض", "بيضاء"],
+            "arz": ["ابيض", "بيضة"]
+        },
+        "orange": {
+            "en": ["orange"],
+            "fr": ["orange"],
+            "ar": ["برتقالى", "برتقالية"],
+            "arz": ["برتقانى", "اورانج"]
+        },
+        "yellow": {
+            "en": ["yellow"],
+            "fr": ["jaun", "jaune"],
+            "ar": ["اصفر", "صفراء"],
+            "arz": ["اصفر", "صفرة"]
+        },
+        "brown": {
+            "en": ["brown"],
+            "fr": ["marron"],
+            "ar": ["بنى", "بنية"],
+            "arz": ["بنى"]
+        },
+        "teal": {
+            "en": ["teal"],
+            "fr": ["sarcelle"],
+            "ar": ["تركواز"],
+            "arz": ["تركواز"]
+        },
+        "pink": {
+            "en": ["pink"],
+            "fr": ["rose"],
+            "ar": ["زهرى"],
+            "arz": ["بمبى", "بينك"]
+        },
+        "lightGreen": {
+            "en": ["light green"],
+            "fr": ["Vert clair"],
+            "ar": ["اخضر فاتح"],
+            "arz": ["اخضر فاتح"]
+        },
+        "color": {
+            "en": ["colour", "color"],
+            "fr": ["couleur"],
+            "ar": ["لون"],
+            "arz": ["لون"]
+        },
+        "withPin": {
+            "type": "attribute",
+            "en": ["with a pin"],
+            "fr": ["épingle"],
+            "ar": ["بدبوس"],
+            "arz": ["بدبوس"]
+        },
+        "scrollable": {
+            "type": "attribute",
+            "en": ["scrollable"],
+            "fr": ["épingle"],
+            "ar": ["قابل للتمرير"],
+            "arz": ["قابل للتمرير"]
+        },
+        "animation": {
+            "en": ["animation"],
+            "fr": ["animation"],
+            "ar": ["حركة"],
+            "arz": ["حركة"]
+        },
+        "commands": {
+            "en": ["commands"],
+            "fr": ["commandes"],
+            "ar": ["أوامر"],
+            "arz": ["أوامر"]
+        },
+        "slider": {
+            "type": "component",
+            "en": ["slider"],
+            "fr": ["curseur"],
+            "ar": ["منزلق"],
+            "arz": ["منزلق"]
+        },
+        "button": {
+            "type": "component",
+            "en": ["button"],
+            "fr": ["bouton"],
+            "ar": ["زر"],
+            "arz": ["زرار"]
+        },
+        "FAB": {
+            "type": "component",
+            "en": ["FAB"],
+            "fr": ["épingle"],
+            "ar": ["دبوس"],
+            "arz": ["دبوس"]
+        },
+        "colorsPalette": {
+            "type": "component",
+            "en": ["colours palette", "colors palette"],
+            "fr": ["palette de couleurs"],
+            "ar": ["لوحة الوان"],
+            "arz": ["بلتة الوان"]
+        },
+        "textFn": {
+            "type": "component",
+            "en": ["text"],
+            "fr": ["texte"],
+            "ar": ["نص"],
+            "arz": ["كلام"]
+        },
+        "buttonWithAnIcon": {
+            "type": "component",
+            "en": ["button with an icon"],
+            "fr": ["bouton avec icône"],
+            "ar": ["زر بأيقونة"],
+            "arz": ["زرار بأيكونة"]
+        },
+        "icon": {
+            "en": ["icon"],
+            "fr": ["icône"],
+            "ar": ["ايقونة"],
+            "arz": ["ايكونة"]
+        },
+        "image": {
+            "type": "component",
+            "en": ["image"],
+            "fr": ["image"],
+            "ar": ["صورة"],
+            "arz": ["صورة"]
+        },
+        "video": {
+            "type": "component",
+            "en": ["video"],
+            "fr": ["vidéo"],
+            "ar": ["فيديو"],
+            "arz": ["فيديو"]
+        },
+        "audio": {
+            "type": "component",
+            "en": ["audio"],
+            "fr": ["l'audio"],
+            "ar": ["صوت"],
+            "arz": ["صوت"]
+        },
+        "writingZone": {
+            "type": "component",
+            "en": ["writing zone"],
+            "fr": ["champ de texte"],
+            "ar": ["صندوق النص"],
+            "arz": ["مكان الكتابة"]
+        },
+        "section": {
+            "type": "component",
+            "en": ["section"],
+            "fr": ["section"],
+            "ar": ["دبوس"],
+            "arz": ["دبوس"]
+        },
+        "checkbox": {
+            "type": "component",
+            "en": ["checkbox"],
+            "fr": ["case à cocher"],
+            "ar": ["مربع الإختيار"],
+            "arz": ["مربع الإختيار"]
+        },
+        "checked": {
+            "type": "attribute",
+            "en": ["checked"],
+            "fr": ["choisi"],
+            "ar": ["مختار"],
+            "arz": ["مختار"]
+        },
+        "spinner": {
+            "en": ["spinner"],
+            "fr": ["fileur"],
+            "ar": ["دوار"],
+            "arz": ["دوار"]
+        },
+        "bar": {
+            "en": ["bar"],
+            "fr": ["bar"],
+            "ar": ["شريط"],
+            "arz": ["شريط"]
+        },
+        "loader": {
+            "type": "component",
+            "en": ["loader"],
+            "fr": ["chargeur"],
+            "ar": ["دبوس"],
+            "arz": ["دبوس"]
+        },
+        "notificationCount": {
+            "type": "component",
+            "en": ["notification count"],
+            "fr": ["nombre de notifications"],
+            "ar": ["عدد الإشعارات"],
+            "arz": ["عدد الإشعارات"]
+        },
+        "dialogBox": {
+            "type": "component",
+            "en": ["dialog box"],
+            "fr": ["boîte de dialogue"],
+            "ar": ["مربع حوار"],
+            "arz": ["مربع حوار"]
+        },
+        "dropdown": {
+            "type": "component",
+            "en": ["dropdown menu"],
+            "fr": ["menu déroulant"],
+            "ar": ["دبوس"],
+            "arz": ["دبوس"]
+        },
+        "background": {
+            "en": ["background"],
+            "fr": ["fond"],
+            "ar": ["خلفية"],
+            "arz": ["خلفية"]
+        },
+        "tooltip": {
+            "en": ["tooltip"],
+            "fr": ["info-bulle"],
+            "ar": ["تلميح"],
+            "arz": ["تلميح"]
+        },
+        "text": {
+            "type": "component",
+            "en": ["text"],
+            "fr": ["texte"],
+            "ar": ["نص"],
+            "arz": ["كلام"]
+        },
+        "width": {
+            "en": ["width"],
+            "fr": ["largeur"],
+            "ar": ["عرض"],
+            "arz": ["عرض"]
+        },
+        "length": {
+            "en": ["length"],
+            "fr": ["longueur"],
+            "ar": ["طول"],
+            "arz": ["طول"]
+        },
+        "position": {
+            "en": ["position"],
+            "fr": ["position"],
+            "ar": ["مكان"],
+            "arz": ["مكان"]
+        },
+        "distanceFromLeft": {
+            "en": ["distance from the left"],
+            "fr": ["distance de la gauche"],
+            "ar": ["مسافة من شمال"],
+            "arz": ["مسافة من شمال"]
+        },
+        "distanceFromRight": {
+            "en": ["distance from the right"],
+            "fr": ["distance de droite"],
+            "ar": ["مسافة من يمين"],
+            "arz": ["مسافة من لمين"]
+        },
+        "distanceFromTop": {
+            "en": ["distance from the top"],
+            "fr": ["distance du haut"],
+            "ar": ["مسافة من أعلى"],
+            "arz": ["مسافة من فوق"]
+        },
+        "distanceFromBottom": {
+            "en": ["distance from the bottom"],
+            "fr": ["distance du fond"],
+            "ar": ["مسافة من أسفل"],
+            "arz": ["مسافة من تحت"]
+        },
+        "firebaseCenter": {
+            "type": "component",
+            "en": ["firebase centre", "firebase center"],
+            "fr": ["centre de firebase"],
+            "ar": ["مركز البيانات"],
+            "arz": ["مركز البيانات"]
+        },
+        "username": {
+            "en": ["username"],
+            "fr": ["nom de utilisateur"],
+            "ar": ["اسم مستخدم"],
+            "arz": ["اسم مستخدم"]
+        },
+        "password": {
+            "en": ["password"],
+            "fr": ["mot de passe"],
+            "ar": ["كلمة مرور"],
+            "arz": ["كلمة سر"]
+        },
+        "time": {
+            "en": ["time"],
+            "fr": ["temps"],
+            "ar": ["توقيت"],
+            "arz": ["توقيت"]
+        },
+        "date": {
+            "en": ["date"],
+            "fr": ["date"],
+            "ar": ["تاريخ"],
+            "arz": ["تاريخ"]
+        },
+        "number": {
+            "en": ["number"],
+            "fr": ["nombre"],
+            "ar": ["رقم"],
+            "arz": ["رقم"]
+        },
+        "setup": {
+            "type": "component",
+            "en": ["setup"],
+            "fr": ["installation"],
+            "ar": ["الإعدادات"],
+            "arz": ["الإعدادات"]
+        },
+        "logo": {
+            "en": ["logo"],
+            "fr": ["logo"],
+            "ar": ["شعار"],
+            "arz": ["لوجو"]
+        },
+        "title": {
+            "en": ["title"],
+            "fr": ["titre"],
+            "ar": ["عنوان"],
+            "arz": ["عنوان"]
+        },
+        "mode": {
+            "en": ["mode"],
+            "fr": ["mode"],
+            "ar": ["وضعية"],
+            "arz": ["مود"]
+        },
+        "page": {
+            "type": "component",
+            "en": ["page"],
+            "fr": ["page"],
+            "ar": ["صفحة"],
+            "arz": ["صفحة"]
+        },
+        "name": {
+            "en": ["name"],
+            "fr": ["nom"],
+            "ar": ["اسم"],
+            "arz": ["اسم"]
+        },
+        "transparent": {
+            "type": "attribute",
+            "en": ["transparent"],
+            "fr": ["transparente"],
+            "ar": ["شفافة"],
+            "arz": ["شفافة"]
+        },
+        "transparency": {
+            "en": ["transparency"],
+            "fr": ["transparence"],
+            "ar": ["شفافية"],
+            "arz": ["شفافية"]
+        },
+        "fontSize": {
+            "en": ["font size"],
+            "fr": ["taille de police"],
+            "ar": ["حجم خط"],
+            "arz": ["حجم خط"]
+        },
+        "fontThickness": {
+            "en": ["font thickness"],
+            "fr": ["épaisseur de police"],
+            "ar": ["سمك خط"],
+            "arz": ["طخن خط"]
+        },
+        "switched": {
+            "type": "attribute",
+            "en": ["switched"],
+            "fr": ["commuté"],
+            "ar": ["مفتوح"],
+            "arz": ["مفتوح"]
+        },
+        "raised": {
+            "type": "attribute",
+            "en": ["raised"],
+            "fr": ["élevé"],
+            "ar": ["مرفوع"],
+            "arz": ["مرفوع"]
+        },
+        "disabled": {
+            "type": "attribute",
+            "en": ["disabled"],
+            "fr": ["désactivée"],
+            "ar": ["معطل"],
+            "arz": ["مقفول"]
+        },
+        "fontStyle": {
+            "en": ["font style"],
+            "fr": ["le style de police"],
+            "ar": ["شكل خط"],
+            "arz": ["شكل خط"]
+        },
+        "style": {
+            "type": "component",
+            "en": ["style"],
+            "fr": ["style"],
+            "ar": ["شكل"],
+            "arz": ["شكل", "ستايل"]
+        },
+        "fontColor": {
+            "en": ["font colour", "font color"],
+            "fr": ["couleur de police"],
+            "ar": ["لون خط"],
+            "arz": ["لون خط"]
+        },
+        "body": {
+            "en": ["body"],
+            "fr": ["corps"],
+            "ar": ["جسم"],
+            "arz": ["جسم"]
+        },
+        "ripple": {
+            "en": ["ripple"],
+            "fr": ["ondulation"],
+            "ar": ["تموج"],
+            "arz": ["تموج"]
+        },
+        "min": {
+            "en": ["minimum"],
+            "fr": ["minimum"],
+            "ar": ["حد أدنى"],
+            "arz": ["حد أدنى"]
+        },
+        "max": {
+            "en": ["maximum"],
+            "fr": ["maximum"],
+            "ar": ["حد أقصى"],
+            "arz": ["حد أقصى"]
+        },
+        "requirement": {
+            "en": ["requirement"],
+            "fr": ["exigence"],
+            "ar": ["مطلوب"],
+            "arz": ["مطلوب"]
+        },
+        "type": {
+            "en": ["type"],
+            "fr": ["type"],
+            "ar": ["نوع"],
+            "arz": ["نوع"]
+        },
+        "inputType": {
+            "en": ["input type"],
+            "fr": ["type d'entrée"],
+            "ar": ["نوع إدخال"],
+            "arz": ["نوع إدخال"]
+        },
+        "multiline": {
+            "en": ["multiline"],
+            "fr": ["multilignes"],
+            "ar": ["متعدد أسطر"],
+            "arz": ["متعدد أسطر"]
+        },
+        "clearButton": {
+            "en": ["clear button"],
+            "fr": ["bouton de suppression"],
+            "ar": ["زر حذف"],
+            "arz": ["زرار مسح"]
+        },
+        "suffix": {
+            "en": ["suffix"],
+            "fr": ["suffixe"],
+            "ar": ["نهاية"],
+            "arz": ["نهاية"]
+        },
+        "prefix": {
+            "en": ["prefix"],
+            "fr": ["préfixe"],
+            "ar": ["بداية"],
+            "arz": ["بداية"]
+        },
+        "step": {
+            "en": ["step"],
+            "fr": ["étape"],
+            "ar": ["خطوة"],
+            "arz": ["خطوة"]
+        },
+        "withDigitalValueEditor": {
+            "type": "attribute",
+            "en": ["with a digital value editor"],
+            "fr": ["avec un éditeur de valeur numérique"],
+            "ar": ["بمعدل رقمى للقيمة"],
+            "arz": ["بمعدل رقمى للقيمة"]
+        },
+        "iconColor": {
+            "en": ["icon colour", "icon color"],
+            "fr": ["couleur de l'icône"],
+            "ar": ["لون أيقونة"],
+            "arz": ["لون أيكونة"]
+        },
+        "imageSource": {
+            "en": ["image source"],
+            "fr": ["source de image"],
+            "ar": ["مصدر صورة"],
+            "arz": ["مصدر صورة"]
+        },
+        "FX": {
+            "en": ["FX"],
+            "fr": ["FX"],
+            "ar": ["FX"],
+            "arz": ["FX"]
+        },
+        "emitter": {
+            "en": ["emitter"],
+            "fr": ["émetteur"],
+            "ar": ["باعث"],
+            "arz": ["باعث"]
+        },
+        "direction": {
+            "en": ["direction"],
+            "fr": ["direction"],
+            "ar": ["إتجاه"],
+            "arz": ["إتجاه"]
+        },
+        "loading": {
+            "en": ["loading"],
+            "fr": ["chargement"],
+            "ar": ["يحمل"],
+            "arz": ["بيحمل"]
+        },
+        "source": {
+            "en": ["source"],
+            "fr": ["source"],
+            "ar": ["مصدر"],
+            "arz": ["مصدر"]
+        },
+        "items": {
+            "en": ["items"],
+            "fr": ["articles"],
+            "ar": ["عناصر"],
+            "arz": ["عناصر"]
+        },
+        "description": {
+            "en": ["description"],
+            "fr": ["la description"],
+            "ar": ["وصف"],
+            "arz": ["وصف"]
+        },
+        "private": {
+            "en": ["private"],
+            "fr": ["privé"],
+            "ar": ["خاص"],
+            "arz": ["خاص"]
+        },
+        "loginForm": {
+            "type": "component",
+            "en": ["login form"],
+            "fr": ["formulaire de connexion"],
+            "ar": ["خاص"],
+            "arz": ["فورم الدخول"]
+        },
+        "target": {
+            "en": ["target"],
+            "fr": ["cible"],
+            "ar": ["هدف"],
+            "arz": ["هدف"]
+        },
+        "container": {
+            "type": "component",
+            "en": ["container"],
+            "fr": ["récipient"],
+            "ar": ["حاوية"],
+            "arz": ["طبق"]
+        },
+        "shape": {
+            "en": ["shape"],
+            "fr": ["forme"],
+            "ar": ["شكل"],
+            "arz": ["شكل"]
+        },
+        "triangle": {
+            "en": ["triangle"],
+            "fr": ["triangle"],
+            "ar": ["مثلث"],
+            "arz": ["مثلث"]
+        },
+        "trapezoid": {
+            "en": ["trapezoid"],
+            "fr": ["trapézoïdal"],
+            "ar": ["شبه منحرف"],
+            "arz": ["شبه منحرف"]
+        },
+        "parallelogram": {
+            "en": ["parallelogram"],
+            "fr": ["parallélogramme"],
+            "ar": ["متوازى الأضلاع"],
+            "arz": ["متوازى الأضلاع"]
+        },
+        "rhombus": {
+            "en": ["rhombus"],
+            "fr": ["rhombe"],
+            "ar": ["معين"],
+            "arz": ["معين"]
+        },
+        "pentagon": {
+            "en": ["pentagon"],
+            "fr": ["pentagone"],
+            "ar": ["خماسى الأضلاع"],
+            "arz": ["خماسى الأضلاع"]
+        },
+        "hexagon": {
+            "en": ["hexagon"],
+            "fr": ["hexagone"],
+            "ar": ["سداسى الأضلاع"],
+            "arz": ["سداسى الأضلاع"]
+        },
+        "heptagon": {
+            "en": ["heptagon"],
+            "fr": ["heptagone"],
+            "ar": ["سباعى الأضلاع"],
+            "arz": ["سباعى الأضلاع"]
+        },
+        "octagon": {
+            "en": ["octagon"],
+            "fr": ["octagone"],
+            "ar": ["ثمانى الأضلاع"],
+            "arz": ["ثمانى الأضلاع"]
+        },
+        "decagon": {
+            "en": ["decagon"],
+            "fr": ["décagone"],
+            "ar": ["معشر الأضلاع"],
+            "arz": ["معشر الأضلاع"]
+        },
+        "circle": {
+            "en": ["circle"],
+            "fr": ["cercle"],
+            "ar": ["دائرة"],
+            "arz": ["دايرة"]
+        },
+        "ellipse": {
+            "en": ["ellipse"],
+            "fr": ["ellipse"],
+            "ar": ["بيضاوى"],
+            "arz": ["بيضاوى"]
+        },
+        "fromTheRight": {
+            "en": ["from the right"],
+            "fr": ["à partir de la droite"],
+            "ar": ["من اليمين"],
+            "arz": ["من اللمين"]
+        },
+        "fromTheLeft": {
+            "en": ["from the left"],
+            "fr": ["à partir de la gauche"],
+            "ar": ["من الشمال"],
+            "arz": ["من الشمال"]
+        },
+        "fromTheTop": {
+            "en": ["from the top"],
+            "fr": ["à partir de le haut"],
+            "ar": ["من فوق"],
+            "arz": ["من فوق"]
+        },
+        "fromTheBottom": {
+            "en": ["from the bottom"],
+            "fr": ["à partir de le fond"],
+            "ar": ["من أسفل"],
+            "arz": ["من تحت"]
+        },
+        "attributes": {
+            "en": ["attributes"],
+            "fr": ["attributs"],
+            "ar": ["صفات"],
+            "arz": ["صفات"]
+        },
+        "grid": {
+            "type": "attribute",
+            "en": ["grid"],
+            "fr": ["grille"],
+            "ar": ["شبكة"],
+            "arz": ["شبكة"]
+        },
+        "shareable": {
+            "type": "attribute",
+            "en": ["shareable"],
+            "fr": ["les attributs"],
+            "ar": ["صفات"],
+            "arz": ["صفات"]
+        },
+        "remoteScrolling": {
+            "type": "attribute",
+            "en": ["remote scrolling"],
+            "fr": ["défilement à distance"],
+            "ar": ["التمرير عن بعد"],
+            "arz": ["التمرير عن بعد"]
+        },
+        "parallax": {
+            "type": "attribute",
+            "en": ["parallax"],
+            "fr": ["parallaxe"],
+            "ar": ["مختلف المنظر"],
+            "arz": ["مختلف المنظر"]
+        },
+        "centimeter": {
+            "en": ["centimetre"],
+            "fr": ["centimètre"],
+            "ar": ["سنتيمتر"],
+            "arz": ["سنتيمتر"]
+        },
+        "millimeter": {
+            "en": ["millimetre"],
+            "fr": ["millimètre"],
+            "ar": ["ملليمتر"],
+            "arz": ["ملليمتر"]
+        },
+        "inch": {
+            "en": ["inch"],
+            "fr": ["pouce"],
+            "ar": ["بوصة"],
+            "arz": ["بوصة"]
+        },
+        "pixel": {
+            "en": ["pixel"],
+            "fr": ["pixel"],
+            "ar": ["بكسل"],
+            "arz": ["بكسل"]
+        },
+        "point": {
+            "en": ["point"],
+            "fr": ["point"],
+            "ar": ["نقطة"],
+            "arz": ["نقطة"]
+        },
+        "pica": {
+            "en": ["pica"],
+            "fr": ["pica"],
+            "ar": ["بيكا"],
+            "arz": ["بيكا"]
+        },
+        "centimeters": {
+            "en": ["centimetres"],
+            "fr": ["centimètres"],
+            "ar": ["سنتيمتر", "سم"],
+            "arz": ["سنتيمتر", "سم"]
+        },
+        "millimeters": {
+            "en": ["millimetres"],
+            "fr": ["millimètres"],
+            "ar": ["ملليمتر", "مم"],
+            "arz": ["ملليمتر", "مم"]
+        },
+        "inches": {
+            "en": ["inches"],
+            "fr": ["pouces"],
+            "ar": ["بوصة"],
+            "arz": ["بوصة"]
+        },
+        "pixels": {
+            "en": ["pixels"],
+            "fr": ["pixels"],
+            "ar": ["بكسل"],
+            "arz": ["بكسل"]
+        },
+        "points": {
+            "en": ["points"],
+            "fr": ["points"],
+            "ar": ["نقطة"],
+            "arz": ["نقطة"]
+        },
+        "picas": {
+            "en": ["picas"],
+            "fr": ["picas"],
+            "ar": ["بيكا"],
+            "arz": ["بيكا"]
+        },
+        "author": {
+            "en": ["author"],
+            "fr": ["auteur"],
+            "ar": ["فنان"],
+            "arz": ["فنان"]
+        },
+        "cover": {
+            "en": ["cover"],
+            "fr": ["couverture"],
+            "ar": ["غلاف"],
+            "arz": ["غلاف"]
+        },
+        "autoplay": {
+            "en": ["autoplay"],
+            "fr": ["couverture"],
+            "ar": ["يبدأ تلقائيا"],
+            "arz": ["بيشتغل الوحده"]
+        },
+        "audioPlayer": {
+            "type": "component",
+            "en": ["audio player"],
+            "fr": ["lecteur audio"],
+            "ar": ["مشغل الصوت"],
+            "arz": ["مشغل الصوت"]
+        },
+        "theValueOf": {
+            "en": ["the value of"],
+            "fr": ["la valeur de"],
+            "ar": ["قيمة"],
+            "arz": ["قيمة"]
+        },
+        "variable": {
+            "en": ["the variable", "variable"],
+            "fr": ["la variable", "variable"],
+            "ar": ["المتغير", "متغير"],
+            "arz": ["المتغير", "متغير"]
+        },
+        "theFollowingList": {
+            "en": ["the following list"],
+            "fr": ["la liste suivante"],
+            "ar": ["القائمة التالية"],
+            "arz": ["القايمة دى"]
+        },
+        "thick": {
+            "type": "attribute",
+            "en": ["thick"],
+            "fr": ["épais"],
+            "ar": ["سميك"],
+            "arz": ["طخين"]
+        },
+        "publicC": {
+            "en": ["public"],
+            "fr": ["publique"],
+            "ar": ["العامة"],
+            "arz": ["العامة"]
+        },
+        "privateC": {
+            "en": ["private"],
+            "fr": ["privée"],
+            "ar": ["الخاصة"],
+            "arz": ["الخاصة"]
+        },
+        "table": {
+            "type": "component",
+            "en": ["table"],
+            "fr": ["tableau"],
+            "ar": ["جدول"],
+            "arz": ["جدول"]
+        },
+        "data": {
+            "en": ["data"],
+            "fr": ["les données"],
+            "ar": ["بيانات"],
+            "arz": ["بيانات"]
+        },
+        "inTheCell": {
+            "en": ["in the cell"],
+            "fr": ["dans la cellule"],
+            "ar": ["فى الخلية"],
+            "arz": ["فى الخانة"]
+        },
+        "inTheGroup": {
+            "en": ["in the group"],
+            "fr": ["dans la cellule"],
+            "ar": ["فى الخلية"],
+            "arz": ["فى الخانة"]
+        },
+        "slideShow": {
+            "type": "component",
+            "en": ["slideshow"],
+            "fr": ["dans la cellule"],
+            "ar": ["فى الخلية"],
+            "arz": ["فى الخانة"]
+        },
+        "slideShowItem": {
+            "type": "component",
+            "en": ["slideshow item"],
+            "fr": ["dans la cellule"],
+            "ar": ["فى الخلية"],
+            "arz": ["فى الخانة"]
+        },
+        "acceptanceButton": {
+            "en": ["acceptance button"],
+            "fr": ["Bouton d'acceptation"],
+            "ar": ["زر الموافقة"],
+            "arz": ["زرار الموافقة"]
+        },
+        "cancellationButton": {
+            "en": ["cancellation button"],
+            "fr": ["Bouton d'annulation"],
+            "ar": ["زر الإلغاء"],
+            "arz": ["زرار الإلغاء"]
+        },
+        "selectMenu": {
+            "type": "component",
+            "en": ["select menu"],
+            "fr": ["menu de sélection"],
+            "ar": ["قائمة الإختيار"],
+            "arz": ["قايمة الإختيار"]
+        },
+        "aRandomColor": {
+            "en": ["a random colour", "a random color"],
+            "fr": ["une couleur aléatoire"],
+            "ar": ["لون عشوائى"],
+            "arz": ["لون عشوائى"]
+        },
+        "aRandomLightColor": {
+            "en": ["a random light colour", "a random light color"],
+            "fr": ["une couleur claire aléatoire"],
+            "ar": ["لون فاتح عشوائى", "لون عشوائى فاتح"],
+            "arz": ["لون فاتح عشوائى", "لون عشوائى فاتح"]
+        },
+        "aRandomDarkColor": {
+            "en": ["a random dark colour", "a random dark color"],
+            "fr": ["une couleur sombre aléatoire"],
+            "ar": ["لون غامق عشوائى", "لون عشوائى غامق"],
+            "arz": ["لون غامق عشوائى", "لون عشوائى غامق"]
+        },
+        "dropdownMenu": {
+            "type": "component",
+            "en": ["dropdown menu"],
+            "fr": ["menu déroulant"],
+            "ar": ["قائمة منسدلة"],
+            "arz": ["قايمة منسدلة"]
+        },
+        "clone": {
+            "type": "component",
+            "en": ["clone"],
+            "fr": ["clone"],
+            "ar": ["استنساخ"],
+            "arz": ["استنساخ"]
+        },
+        "withCommands": {
+            "type": "attribute",
+            "en": ["with commands"],
+            "fr": ["avec des commandes"],
+            "ar": ["بالأوامر"],
+            "arz": ["بالأوامر"]
+        },
+        "withoutShadow": {
+            "type": "attribute",
+            "en": ["without a shadow"],
+            "fr": ["sans ombre"],
+            "ar": ["بدون ظل"],
+            "arz": ["من غير ضل"]
+        },
+        "mini": {
+            "type": "attribute",
+            "en": ["mini"],
+            "fr": ["mini"],
+            "ar": ["مصغر", "مصغرة"],
+            "arz": ["مصغر", "مصغرة"]
+        },
+        "choose": {
+            "en": ["choose"],
+            "fr": ["choisir"],
+            "ar": ["اختر"],
+            "arz": ["اختار"]
+        },
+        "withFlexibleFontSize": {
+            "type": "attribute",
+            "en": ["with a flexible font size"],
+            "fr": ["avec une taille de police flexible"],
+            "ar": ["بمرونة حجم الخط"],
+            "arz": ["بمرونة حجم الخط"]
+        },
+        "withCounter": {
+            "type": "attribute",
+            "en": ["with a counter"],
+            "fr": ["avec un compteur"],
+            "ar": ["بعداد"],
+            "arz": ["بعداد"]
+        },
+        "if": {
+            "en": ["if"],
+            "fr": ["si"],
+            "ar": ["لو"],
+            "arz": ["لو"]
+        },
+        "vertical": {
+            "en": ["vertical"],
+            "fr": ["verticale"],
+            "ar": ["عمودى"],
+            "arz": ["عمودى"]
+        },
+        "horizontal": {
+            "en": ["horizontal"],
+            "fr": ["horizontal"],
+            "ar": ["أفقي"],
+            "arz": ["أفقي"]
+        },
+        "site": {
+            "en": ["site"],
+            "fr": ["site"],
+            "ar": ["الموقع"],
+            "arz": ["السايت"]
+        },
+        "app": {
+            "en": ["app"],
+            "fr": ["app"],
+            "ar": ["التطبيق"],
+            "arz": ["الآب"]
+        },
+        "sidebar": {
+            "type": "component",
+            "en": ["sidebar"],
+            "fr": ["barre latérale"],
+            "ar": ["شريط جانبى"],
+            "arz": ["شريط جانبى"]
+        },
+        "else": {
+            "en": ["else"],
+            "fr": ["sinon"],
+            "ar": ["و إلا"],
+            "arz": ["و إلا"]
+        },
+        "mainColor": {
+            "en": ["main colour", "main color"],
+            "fr": ["couleur principale"],
+            "ar": ["لون رئيسى"],
+            "arz": ["لون رئيسى"]
+        },
+        "propertiesAssignor": {
+            "type": "component",
+            "en": ["properties assignor"],
+            "fr": ["cédant des propriétés"],
+            "ar": ["مضيف الخواص"],
+            "arz": ["مضيف الخواص"]
+        },
+        "inTheCaseThat": {
+            "en": ["in the case that"],
+            "fr": ["si"],
+            "ar": ["فى حالة أن"],
+            "arz": ["فى حالة إن"]
+        },
+        "clonedElement": {
+            "en": ["cloned element"],
+            "fr": ["élément clone"],
+            "ar": ["عنصر مستنسخ"],
+            "arz": ["عنصر مستنسخ"]
+        },
+        "ltr": {
+            "en": ["from left to right"],
+            "fr": ["de gauche à droite"],
+            "ar": ["من الشمال إلى اليمين"],
+            "arz": ["من الشمال لللمين"]
+        },
+        "inTheCaseOfLandscapeMode": {
+            "en": ["in the case of the landscape mode"],
+            "fr": ["dans le cas du mode paysage"],
+            "ar": ["فى حالة الوضع الأفقى"],
+            "arz": ["فى حالة الوضع الأفقى"]
+        },
+        "defaultWindowResolution": {
+            "en": ["default window resolution"],
+            "fr": ["résolution par défaut de fenêtre"],
+            "ar": ["دقة الإفتراضية للنافذة"],
+            "arz": ["دقة الإفتراضية للنافذة"]
+        },
+        "inTheCaseOfPortraitMode": {
+            "en": ["in the case of the portrait mode"],
+            "fr": ["dans le cas du mode portrait"],
+            "ar": ["فى حالة الوضع العمودى"],
+            "arz": ["فى حالة الوضع العمودى"]
+        },
+        "rtl": {
+            "en": ["from right to left"],
+            "fr": ["de droite à gauche"],
+            "ar": ["من اليمين إلى الشمال"],
+            "arz": ["من اللمين للشمال"]
+        },
+        "the": {
+            "en": ["the "],
+            "fr": ["le ", "la ", "les ", "l'"],
+            "ar": ["ال"],
+            "arz": ["ال"]
+        },
+        "in": {
+            "en": ["in"],
+            "fr": ["dans", "à"],
+            "ar": ["فى"],
+            "arz": ["فى"]
+        },
+        "indexPage": {
+            "en": ["home"],
+            "fr": ["page_principale"],
+            "ar": ["الرئيسية"],
+            "arz": ["الرئيسية"]
+        },
+        "add": {
+            "en": ["add"],
+            "fr": ["ajouter"],
+            "ar": ["اضف"],
+            "arz": ["ضيف", "حط"]
+        },
+        "theResultOfTheMathematicalExpression": {
+            "en": ["the result of the mathematical expression"],
+            "fr": ["le résultat de l'expression mathématique"],
+            "ar": ["ناتج التعبير الرياضى"],
+            "arz": ["ناتج التعبير الرياضى"]
+        },
+        "url": {
+            "en": ["url", "link"],
+            "fr": ["url"],
+            "ar": ["رابط", "موقع"],
+            "arz": ["رابط", "موقع"]
+        },
+        "email": {
+            "en": ["email", "electronic mail"],
+            "fr": ["email"],
+            "ar": ["إيميل"],
+            "arz": ["إيميل"]
+        },
+        "element": {
+            "en": ["element"],
+            "fr": ["élément"],
+            "ar": ["عنصر"],
+            "arz": ["عنصر"]
+        },
+        "theItemNumber": {
+            "en": ["the item number"],
+            "fr": ["le élément nombre"],
+            "ar": ["العنصر رقم"],
+            "arz": ["العنصر رقم"]
+        },
+        "functionFn": {
+            "type": "component",
+            "en": ["function", "functions"],
+            "fr": ["fonction"],
+            "ar": ["دالة", "دوال"],
+            "arz": ["دالة", "فانكشن", "دوال"]
+        },
+        "arguments": {
+            "en": ["arguemnts", "paramaters", "params", "param", "parameter"],
+            "fr": ["paramètre", "arguments"],
+            "ar": ["خيارات", "معاملات"],
+            "arz": ["خيارات", "معاملات"]
+        }
+    },
+    "Operators": {
+        "operator1": {
+            "en": ["write this text in a bold font"],
+            "fr": ["écrire ce texte dans une police en gras"],
+            "ar": ["اكتب هذا النص بخط سميك"],
+            "arz": ["اكتب الكلام دة بخط طخين"]
+        },
+        "operator2": {
+            "en": ["write this text in an italic font"],
+            "fr": ["écrire ce texte dans une police en italique"],
+            "ar": ["اكتب هذا النص بخط مائل"],
+            "arz": ["اكتب الكلام دة بخط مايل"]
+        },
+        "operator3": {
+            "en": ["write this text in an underlined font"],
+            "fr": ["écrire ce texte dans une police soulignée"],
+            "ar": ["اكتب هذا النص بخط مخطط"],
+            "arz": ["اكتب الكلام دة بخط متخطط"]
+        },
+        "operator4": {
+            "en": ["write this text in a bold and italic font", "write this text in an italic and bold font"],
+            "fr": ["écrire ce texte dans une police en gras et en italique", "écrire ce texte dans une police en italique et en gras"],
+            "ar": ["اكتب هذا النص بخط سميك و مائل", "اكتب هذا النص بخط مائل و سميك"],
+            "arz": ["اكتب الكلام دة بخط طخين و مايل", "اكتب الكلام دة بخط مايل و طخين"]
+        },
+        "operator5": {
+            "en": ["write this text in a bold and underlined font", "write this text in an underlined and bold font"],
+            "fr": ["écrire ce texte dans une police en gras et soulignée", "écrire ce texte dans une police soulignée et en gras"],
+            "ar": ["اكتب هذا النص بخط سميك و مخطط", "اكتب هذا النص بخط مخطط و سميك"],
+            "arz": ["اكتب الكلام دة بخط طخين و متخطط", "اكتب الكلام دة بخط متخطط و طخين"]
+        },
+        "operator6": {
+            "en": ["write this text in an underlined and italic font", "write this text in an italic and underlined font"],
+            "fr": ["écrire ce texte dans une police soulignée et en italique", "écrire ce texte dans une police en italique et soulignée"],
+            "ar": ["اكتب هذا النص بخط مخطط و مائل", "اكتب هذا النص بخط مائل و مخطط"],
+            "arz": ["اكتب الكلام دة بخط متخطط و مايل", "اكتب الكلام دة بخط مايل و متخطط"]
+        },
+        "operator7": {
+            "en": ["write this text in a bold, italic and underlined font", "write this text in a bold, underlined and italic font", "write this text in an italic, bold and underlined font", "write this text in an italic, underlined and bold font", "write this text in an underlined, italic and bold font", "write this text in an underlined, bold and italic font"],
+            "fr": ["écrire ce texte dans une police en gras, en italique et soulignée", "écrire ce texte dans une police en gras, soulignée et en italique", "écrire ce texte dans une police en italique, en gras et soulignée", "écrire ce texte dans une police en italique, soulignée et en gras", "écrire ce texte dans une police soulignée, en italique et en gras", "écrire ce texte dans une police soulignée, en gras et en italique"],
+            "ar": ["اكتب هذا النص بخط سميك, مائل و مخطط", "اكتب هذا النص بخط سميك, مخطط و مائل", "اكتب هذا النص بخط مائل, سميك و مخطط", "اكتب هذا النص بخط مائل, مخطط و سميك", "اكتب هذا النص بخط مخطط, مائل و سميك", "اكتب هذا النص بخط مخطط, سميك و مائل"],
+            "arz": ["اكتب الكلام دة بخط طخين, مايل و متخطط", "اكتب الكلام دة بخط طخين, متخطط و مايل", "اكتب الكلام دة بخط مايل, طخين و متخطط", "اكتب الكلام دة بخط مايل, متخطط و طخين", "اكتب الكلام دة بخط متخطط, مايل و طخين", "اكتب الكلام دة بخط متخطط, طخين و مايل"]
+        },
+        "operator8": {
+            "en": ["the window length"],
+            "fr": ["la longueur de la fenêtre"],
+            "ar": ["طول النافذة"],
+            "arz": ["طول النافذة"]
+        },
+        "operator9": {
+            "en": ["the window width"],
+            "fr": ["la largeur de la fenêtre"],
+            "ar": ["عرض النافذة"],
+            "arz": ["عرض النافذة"]
+        },
+        "operator10": {
+            "en": ["the screen length"],
+            "fr": ["la longueur de l'écran"],
+            "ar": ["طول الشاشة"],
+            "arz": ["طول الشاشة"]
+        },
+        "operator11": {
+            "en": ["the screen width"],
+            "fr": ["la largeur de l'écran"],
+            "ar": ["عرض الشاشة"],
+            "arz": ["عرض الشاشة"]
+        },
+        "operator12": {
+            "en": ["an icon of"],
+            "fr": ["une icône de"],
+            "ar": ["ايقونة"],
+            "arz": ["ايكونة"]
+        },
+        "operator13": {
+            "en": ["a line break"],
+            "fr": ["un saut de ligne"],
+            "ar": ["سطر جديد"],
+            "arz": ["سطر جديد"]
+        },
+        "operator14": {
+            "en": ["the value of "],
+            "fr": ["la valeur de "],
+            "ar": ["قيمة "],
+            "arz": ["قيمة "]
+        },
+        "operator15": {
+            "en": ["the user's name"],
+            "fr": ["le nom de l'utilisateur"],
+            "ar": ["اسم المستخدم"],
+            "arz": ["اسم المستخدم"]
+        },
+        "operator16": {
+            "en": ["the user's email"],
+            "fr": ["le courrier électronique de l'utilisateur"],
+            "ar": ["بريد المستخدم"],
+            "arz": ["إيميل المستخدم"]
+        },
+        "operator17": {
+            "en": ["name this text", "call this text"],
+            "fr": ["nommer ce texte"],
+            "ar": ["سمى هذا النص"],
+            "arz": ["سمى الكلام دة"]
+        },
+        "operator18": {
+            "en": ["the argument", "the param", "the parameter", "the paramater"],
+            "fr": ["le paramètre", "paramètre", "l'argument", "argument"],
+            "ar": ["الخيار", "خيار", "المعامل", "معامل"],
+            "arz": ["الخيار", "خيار", "المعامل", "معامل"]
+        },
+        "operator19": {
+            "en": ["consider this text as a normal text", "consider the following text as a normal text"],
+            "fr": ["considère ce texte comme un texte normal"],
+            "ar": ["اعتبر هذا النص نصا عاديا", "اعتبر هذا النص نصاً عادياً", "اعتبر هذا النص نصاً عاديا", "اعتبر هذا النص نصا عادياً", "اعتبر النص الآتى نصا عاديا", "اعتبر النص الآتى نصاً عادياً", "اعتبر النص الآتى نصاً عاديا", "اعتبر النص الآتى نصا عادياً"],
+            "arz": ["اعتبر الكلام دة كلام عادى"]
+        },
+        "operator20": {
+            "en": ["^the value of the variable (\\S+)$"],
+            "fr": ["^la valeur de la variable (\\S+)$"],
+            "ar": ["^قيمة النتغير (\\S+)$"],
+            "arz": ["^قيمة المتغير (\\S+)$"]
+        },
+        "operator21": {
+            "en": ["^the value of the item number (.*?) in the variable (\\S+)$"],
+            "fr": ["^la valeur de l'élément nombre (.*?) dans la variable (\\S+)$"],
+            "ar": ["^قيمة العنصر رقم (.*?) فى المتغير (\\S+)$"],
+            "arz": ["^قيمة العنصر رقم (.*?) فى المتغير (\\S+)$"]
+        },
+        "operator22": {
+            "en": ["^the value of (\\S+)$"],
+            "fr": ["^la valeur de (\\S+)$"],
+            "ar": ["^قيمة (\\S+)$"],
+            "arz": ["^قيمة (\\S+)$"]
+        },
+        "operator23": {
+            "en": ["&lt;&lt; the value of the variable (\\S+).*? &gt;&gt;"],
+            "fr": ["&lt;&lt; la valeur de la variable (\\S+).*? &gt;&gt;"],
+            "ar": ["&lt;&lt; قيمة النتغير (\\S+).*? &gt;&gt;"],
+            "arz": ["&lt;&lt; قيمة المتغير (\\S+).*? &gt;&gt;"]
+        },
+        "operator24": {
+            "en": ["&lt;&lt; the value of the item number (.*?) in the variable (\\S+).*? &gt;&gt;"],
+            "fr": ["&lt;&lt; la valeur de l'élément nombre (.*?) dans la variable (\\S+).*? &gt;&gt;"],
+            "ar": ["&lt;&lt; قيمة العنصر رقم (.*?) فى المتغير (\\S+).*? &gt;&gt;"],
+            "arz": ["&lt;&lt; قيمة العنصر رقم (.*?) فى المتغير (\\S+).*? &gt;&gt;"]
+        },
+        "operator25": {
+            "en": ["&lt;&lt; the value of (\\S+).*? &gt;&gt;"],
+            "fr": ["&lt;&lt; la valeur de (\\S+).*? &gt;&gt;"],
+            "ar": ["&lt;&lt; قيمة (\\S+).*? &gt;&gt;"],
+            "arz": ["&lt;&lt; قيمة (\\S+).*? &gt;&gt;"]
+        }
+    },
+    "Syntax": {
+        "syntax1": {
+            "en": ["^define the (?<component>${getTranslations('functionFn')}) (?<name>.*?) with the following commands:\\n(?<commands>((\\n?)^([A-Z]|\\d)\\..*?(($\\n^([A-Z]|\\d)\\..*?$)|\\.$))+)"],
+            "fr": ["^définir la (?<component>${getTranslations('functionFn')}) (?<name>.*?) avec les commandes suivantes:\\n(?<commands>((\\n?)^([A-Z]|\\d)\\..*?(($\\n^([A-Z]|\\d)\\..*?$)|\\.$))+)"],
+            "ar": ["^عرف ال(?<component>${getTranslations('functionFn')}) (?<name>.*?) بالأوامر التالية:\\n(?<commands>((\\n?)^([A-Z]|\\d)\\..*?(($\\n^([A-Z]|\\d)\\..*?$)|\\.$))+)"],
+            "arz": ["^عرف ال(${getTranslations('functionFn')}) (?<name>.*?) بالأوامر دى:\\n(?<commands>((\\n?)^([A-Z]|\\d)\\..*?(($\\n^([A-Z]|\\d)\\..*?$)|\\.$))+)"]
+        },
+        "syntax2": {
+            "en": ["^define the (?<component>${getTranslations('style')}) (?<name>.*?) with the following properties:"],
+            "fr": ["^définir le (?<component>${getTranslations('style')}) (?<name>.*?) avec les propriétés suivantes:"],
+            "ar": ["^عرف ال(?<component>${getTranslations('style')}) (?<name>.*?) بالخواص التالية:"],
+            "arz": ["^عرف ال(${getTranslations('style')}) (?<name>.*?) بالخواص دى:"]
+        },
+        "syntax3": {
+            "en": ["^configure this( (?<attributes>.*?) | )(?<mode>site|app) with the following properties:$"],
+            "fr": ["^configurez ce (?<mode>site|app)( (?<attributes>.*?) | )avec les propriétés suivantes:$"],
+            "ar": ["^هيئ هذا (?<mode>الموقع|التطبيق)( (?<attributes>.*?) | )بالخواص التالية:$"],
+            "arz": ["^هيئ (?<mode>السايت|الآب)( (?<attributes>.*?) | )دة بالخواص دى:$"]
+        },
+        "syntax4": {
+            "en": ["^add (a|an)( (?<attributes>.*?) | )(?<component>${componentsRegex})( with (?<withAttributes>.*?) | without (?<withoutAttributes>.*?) | )with the following properties:$"],
+            "fr": ["^ajouter (le|la|un|une) (?<component>${componentsRegex}) (?<attributes>.*?) avec les propriétés suivantes:$"],
+            "ar": ["^اضف (?<component>${componentsRegex})( (?<attributes>.*?) | )بالخواص التالية:$"],
+            "arz": ["^ضيف (?<component>${componentsRegex})( (?<attributes>.*?) | )بالخواص دى:$"]
+        },
+        "syntax5": {
+            "en": ["^assign the following properties to the element (?<name>\\S+):$"],
+            "fr": ["^affectez les propriétés suivantes à l'élément (?<name>\\S+):$"],
+            "ar": ["^اضف هذه الخواص التالية إلى العنصر (?<name>\\S+):$"],
+            "arz": ["^ضيف الخواص دى للعنصر (?<name>\\S+):$"]
+        },
+        "syntax6": {
+            "en": ["^clone (?<clonedElement>\\S+) including its commands with the following properties:$"],
+            "fr": ["^cloner (?<clonedElement>.*?) y compris ses commandes avec les propriétés suivantes:$"],
+            "ar": ["^استنسخ (?<clonedElement>\\S+) بأوامره بالخواص التالية:$"],
+            "arz": ["^استنسخ (?<clonedElement>\\S+) بأوامره بالخواص دى:$"]
+        },
+        "syntax7": {
+            "en": ["^clone (?<clonedElement>\\S+) with the following properties:$"],
+            "fr": ["^cloner (?<clonedElement>.*?) avec les propriétés suivantes:$"],
+            "ar": ["^استنسخ (?<clonedElement>\\S+) بالخواص دى:$"],
+            "arz": ["^استنسخ (?<clonedElement>\\S+) بالخواص دى:$"]
+        },
+        "syntax8": {
+            "en": ["^its (?<property>.*?) (is|are) (?<propertyValue>(.|[\\r\\n])*?)(?<propertyValueSuffix>[\\.,])$"],
+            "fr": ["^(son|sa|ses) (?<property>.*?) (est|sont) (?<propertyValue>(.|[\\r\\n])*?)(?<propertyValueSuffix>[\\.,])$"],
+            "ar": ["^(?<property>.*?) (الخاص به|الخاصة به|الخاص بها|الخاصة بها) (?<propertyValue>(.|[\\r\\n])*?)(?<propertyValueSuffix>[\\.,])$"],
+            "arz": ["^(?<property>.*?) (بتاعه|بتاعته|بتاعها|بتاعتها) (?<propertyValue>(.|[\\r\\n])*?)(?<propertyValueSuffix>[\\.,])$"]
+        },
+        "syntax9": {
+            "en": ["^the commands of the item (?<itemName>.*?) are that (?<itemCommands>.*?)(?<propertyValueSuffix>[\\.,])$"],
+            "fr": ["^les commandes de l'élément (?<itemName>.*?) sont (?<itemCommands>.*?)(?<propertyValueSuffix>[\\.,])$"],
+            "ar": ["^الأوامر الخاصة بالعنصر (?<itemName>.*?) هى أنه (?<itemCommands>.*?)(?<propertyValueSuffix>[\\.,])$"],
+            "arz": ["^الأوامر بتاعت العنصر (?<itemName>.*?) هية إنه (?<itemCommands>.*?)(?<propertyValueSuffix>[\\.,])$"]
+        }
+    },
+    "Events": {
+        "event1": {
+            "en": ["When it has been clicked, "],
+            "fr": ["Quand il a été cliqué, "],
+            "ar": ["إذا نقر عليه, "],
+            "arz": ["لما يضغط عليه, "]
+        },
+        "event2": {
+            "en": ["When the mouse pointer has been moved over it, "],
+            "fr": ["Lorsque le pointeur de souris a été déplacé au dessus, "],
+            "ar": ["إذا مر به مؤشر الفأرة, "],
+            "arz": ["لما الماوس يعدى من فوقيه, "]
+        },
+        "event3": {
+            "en": ["When the mouse pointer has been moved away from it, "],
+            "fr": ["Lorsque le pointeur de la souris s'a été éloigné de lui, "],
+            "ar": ["إذا خرج مؤشر الفأرة منه, "],
+            "arz": ["لما الماوس يطلع منه, "]
+        },
+        "event4": {
+            "en": ["When the mouse pointer is being moved out of it, "],
+            "fr": ["Lorsque le pointeur de la souris se est en train d'être déplace hors de lui, "],
+            "ar": ["إذا كان مؤشر الفأرة يمر خارجه, "],
+            "arz": ["لما الماوس يكون بيمشى براه, "]
+        },
+        "event5": {
+            "en": ["When the mouse pointer is being moved over it, "],
+            "fr": ["Lorsque le pointeur de la souris se déplace au dessus, "],
+            "ar": ["إذا كان مؤشر الفأرة يمر به, "],
+            "arz": ["لما الماوس يكون بيمشى فوقيه, "]
+        },
+        "event6": {
+            "en": ["When it is no longer clicked, "],
+            "fr": ["Quand il n'est plus fait cliqué, "],
+            "ar": ["إذا تم الإنتهاء من النقر عليه, "],
+            "arz": ["لما يخلص الدوس عليه, "]
+        },
+        "event7": {
+            "en": ["When it has been double clicked, "],
+            "fr": ["Quand il a été double-cliqué, "],
+            "ar": ["إذا نقر عليه نقرتين مزدوجتين, "],
+            "arz": ["لما يضغط عليه دبل كليك, "]
+        },
+        "event8": {
+            "en": ["When it has been right clicked, "],
+            "fr": ["Quand il a été droit-cliqué, "],
+            "ar": ["إذا نقر عليه بالزر الأيمن, "],
+            "arz": ["لما يضغط عليك كليك لمين, "]
+        },
+        "event9": {
+            "en": ["When a key has been pressed while focusing it, "],
+            "fr": ["Lorsqu'une touche a été pressée tout en la focalisant, "],
+            "ar": ["إذا ضغط على زر اثناء نشاطه, "],
+            "arz": ["لو زرار اضغط و هوة نشط, "]
+        },
+        "event10": {
+            "en": ["When a key is being pressed while focusing it, "],
+            "fr": ["Lorsqu'une touche est en train d'être pressée tout en la focalisant, "],
+            "ar": ["إذا كان هناك زر يتم الضغط عليه اثناء نشاطه, "],
+            "arz": ["لما زرار يكون بيضغط و هوة نشط, "]
+        },
+        "event11": {
+            "en": ["When its contents have been modified, "],
+            "fr": ["Lorsque son contenu a été modifié, "],
+            "ar": ["إذا تغيرت محتوياته, "],
+            "arz": ["لما محتوياته تتغير, "]
+        },
+        "event12": {
+            "en": ["When it has been focused, "],
+            "fr": ["Lorsqu'on a été focalisé, "],
+            "ar": ["إن أصبح نشطا, "],
+            "arz": ["لما يبقى نشط, "]
+        },
+        "event13": {
+            "en": ["When it is being focused, "],
+            "fr": ["Quand il est en train d'être focalisé, "],
+            "ar": ["إذا كان نشطا, "],
+            "arz": ["لما يكون نشط, "]
+        },
+        "event14": {
+            "en": ["When it is no longer focused, "],
+            "fr": ["Quand il a dormi, "],
+            "ar": ["إن أصبح خاملا, "],
+            "arz": ["لما ينام, "]
+        },
+        "event15": {
+            "en": ["When the data of this form has been sent, "],
+            "fr": ["Lorsque les données de ce formulaire ont été envoyées, "],
+            "ar": ["إذا ارسلت بيانات هذه الإستمارة, "],
+            "arz": ["لما الداتا بتاعت الفورم دة تتبعت, "]
+        },
+        "event16": {
+            "en": ["When it has been scrolled, "],
+            "fr": ["Lorsqu'il s'a été déroulé, "],
+            "ar": ["إن تم تمريره, "],
+            "arz": ["لما يتمرر, "]
+        },
+        "event17": {
+            "en": ["When the user said: "],
+            "fr": ["Si l'utilisateur a dit: "],
+            "ar": ["إذا قال المستخدم: "],
+            "arz": ["لو المستخدم قال: "]
+        },
+        "event18": {
+            "en": ["When it becomes in the viewport, "],
+            "fr": ["Quand il devient dans la fenêtre d'affichage, "],
+            "ar": ["عندما يصبح في إطار العرض, "],
+            "arz": ["لما يبقى جوة إطار العرض, "]
+        },
+        "event19": {
+            "en": ["When it becomes out of the viewport, "],
+            "fr": ["Quand il devient hors de la fenêtre d'affichage, "],
+            "ar": ["عندما يصبح خارج إطار العرض, "],
+            "arz": ["لما يبقى برة إطار العرض, "]
+        }
+    },
+    "Conditions": {
+        "condition1": {
+            "en": ["the value of (?<elementName>\\S+) ((?<isEqual>equals)|(?<notEqual>doesn't equal)|(?<isGreater>is greater than)|(?<isSmaller>is smaller than)) (?<value>.*?)"],
+            "fr": ["la valeur de (?<elementName>\\S+) ((?<isEqual>est égal à)|(?<notEqual>n'est pas égal à)|(?<isGreater>est supérieur à)|(?<isSmaller>est plus petit que)) (?<value>.*?)"],
+            "ar": ["قيمة (?<elementName>\\S+) ((?<isGreater>أكبر من)|(?<isSmaller>أصغر من)|(?<isEqual>تساوى)|(?<notEqual>لا تساوى)) (?<value>.*?)"],
+            "arz": ["قيمة (?<elementName>\\S+) ((?<isGreater>أكبر من)|(?<isSmaller>أصغر من)|(?<isEqual>تساوى)|(?<notEqual>متساويش)) (?<value>.*?)"]
+        },
+        "condition2": {
+            "en": ["the keyboard is shown"],
+            "fr": ["le clavier est affiché"],
+            "ar": ["لوحة المفاتيح ظاهرة"],
+            "arz": ["الكيبورد ظاهر"]
+        },
+        "condition3": {
+            "en": ["the device is a phone"],
+            "fr": ["le périphérique est un téléphone"],
+            "ar": ["الجهاز جوال"],
+            "arz": ["الجهاز موبايل"]
+        },
+        "condition4": {
+            "en": ["the device is a tablet"],
+            "fr": ["le périphérique est une tablette"],
+            "ar": ["الجهاز جهاز لوحى"],
+            "arz": ["الجهاز تابلت"]
+        },
+        "condition5": {
+            "en": ["the device is a desktop"],
+            "fr": ["le périphérique est un ordinateur de bureau"],
+            "ar": ["الجهاز حاسوب"],
+            "arz": ["الجهاز كمبيوتر"]
+        },
+        "condition6": {
+            "en": ["the bluetooth is turned on"],
+            "fr": ["le bluetooth est allumé"],
+            "ar": ["البلوتوث مفتوح"],
+            "arz": ["البلوتوث مفتوح"]
+        },
+        "condition7": {
+            "en": ["the bluetooth is turned off"],
+            "fr": ["le bluetooth est éteint"],
+            "ar": ["البلوتوث مغلق"],
+            "arz": ["البلوتوث مطفى"]
+        },
+        "condition8": {
+            "en": ["the WIFI is turned on"],
+            "fr": ["le WIFI est activé"],
+            "ar": ["الواى فاى مفتوح"],
+            "arz": ["الواى فاى مفتوح"]
+        },
+        "condition9": {
+            "en": ["the WIFI is turned off"],
+            "fr": ["le WIFI est éteint"],
+            "ar": ["الواى فاى مغلق"],
+            "arz": ["الواى فاى مطفى"]
+        }
+    }
+}
