@@ -29,12 +29,13 @@ import {
 import {
   convertLengthCSS
 } from 'measurements/lengthUnits.js'
+import * as declarations from 'core/declarations'
 export default function (settings) {
   if (elementSettingsAnalyze(settings, 'fontStyle')) {
     $(`#${name}`).css('font-style', elementSettingsAnalyze(settings, 'fontStyle'))
   }
   if (elementSettingsAnalyze(settings, 'fontThickness')) {
-    if (getSafe(() => elementSettingsAnalyze(settings, 'fontThickness').findBestMatch(window.wordsTranslationsDB.Words['thick'][document.langCode]).rating > 0.8)) {
+    if (getSafe(() => elementSettingsAnalyze(settings, 'fontThickness').findBestMatch(window.wordsTranslationsDB.Words['thick'][declarations.langCode]).rating > 0.8)) {
       $(`#${name}`).css('font-weight', 'bold')
     } else {
       $(`#${name}`).css('font-weight', elementSettingsAnalyze(settings, 'fontThickness'))

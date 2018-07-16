@@ -32,6 +32,7 @@ import {
 import PerfectScrollbar from 'perfect-scrollbar'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import componentTemplate from './setup.pug'
+import * as declarations from 'core/declarations'
 export default function (settings) {
   settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
   var resolution
@@ -61,10 +62,10 @@ export default function (settings) {
     document.defaultWindowWidth = resolution.split(' × ')[0]
     document.defaultWindowLength = resolution.split(' × ')[1]
   }
-  if (getSafe(() => elementSettingsAnalyze(settings, 'mode') == undefined || elementSettingsAnalyze(settings, 'mode').findBestMatch(window.wordsTranslationsDB.Words['site'][document.langCode]).rating > 0.8)) {
+  if (getSafe(() => elementSettingsAnalyze(settings, 'mode') == undefined || elementSettingsAnalyze(settings, 'mode').findBestMatch(window.wordsTranslationsDB.Words['site'][declarations.langCode]).rating > 0.8)) {
     window.mode = 'site'
     $('body').append('<contents></contents>')
-  } else if (getSafe(() => elementSettingsAnalyze(settings, 'mode').findBestMatch(window.wordsTranslationsDB.Words['app'][document.langCode]).rating > 0.8)) {
+  } else if (getSafe(() => elementSettingsAnalyze(settings, 'mode').findBestMatch(window.wordsTranslationsDB.Words['app'][declarations.langCode]).rating > 0.8)) {
     window.mode = 'app'
     $('body').append('<app-header reveals><app-toolbar><paper-icon-button icon="menu" class="menuBtn"></paper-icon-button><div main-title class="appTitle">' + elementSettingsAnalyze(settings, 'title') + '</div></app-toolbar><div><contents></contents></div></app-header>')
   }
@@ -87,15 +88,15 @@ export default function (settings) {
   } else {
     setMainColor('#2196F3')
   }
-  if (getSafe(() => elementSettingsAnalyze(settings, 'direction') == undefined || elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['vertical'][document.langCode]).rating > 0.8)) {
+  if (getSafe(() => elementSettingsAnalyze(settings, 'direction') == undefined || elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['vertical'][declarations.langCode]).rating > 0.8)) {
     document.pageDirection = 'vertical'
-  } else if (getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['horizontal'][document.langCode]).rating > 0.8)) {
+  } else if (getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['horizontal'][declarations.langCode]).rating > 0.8)) {
     document.pageDirection = 'horizontal'
   }
   if (elementSettingsAnalyze(settings, 'attributes')) {
-    var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' &amp;&amp;&amp; ')
+    var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(' &&& ')
     for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['remoteScrolling'][document.langCode]).rating > 0.8) {
+      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['remoteScrolling'][declarations.langCode]).rating > 0.8) {
         var canvas = $('<canvas style="display: none;">').get(0),
           context = canvas.getContext('2d'),
           video = document.createElement('video'),

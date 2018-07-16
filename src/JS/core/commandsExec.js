@@ -25,6 +25,7 @@ import {
   evaluateEvent
 } from './events.js'
 import * as run from './commandsExec'
+import * as declarations from 'core/declarations'
 var eventSplit
 
 function getTheEventCode (command) {
@@ -43,7 +44,7 @@ export const execute = async function (elementName, command, execute, functionNa
   if (functionName) {
     var functionCommands = []
   }
-  var commands = command.split(' &amp;&amp;&amp; ')
+  var commands = command.split(' &&& ')
   for (var commandID = 0; commandID < commands.length; commandID++) {
     var commandType
     var pureCommand
@@ -112,7 +113,8 @@ export const execute = async function (elementName, command, execute, functionNa
       codeParam = ', typeOptions'
     }
     commandInfo.pureCommand = pureCommand
-    var commandEvaluation = eval(`evaluateScript(analyzeCommand(pureCommand${eventSplit}.split(new RegExp(\`\${getTranslations('inTheCaseThat')}.*?$\`, 'gimy'))[0]), getTheEventCode(pureCommand), commandType, commandInfo, ${functionName ? 'true' : 'false'}${codeParam})`)
+    var commandData = await eval(`analyzeCommand(pureCommand${eventSplit}.split(new RegExp(\`\${getTranslations('inTheCaseThat')}.*?$\`, 'gimy'))[0])`);
+    var commandEvaluation = eval(`evaluateScript(commandData, getTheEventCode(pureCommand), commandType, commandInfo, ${functionName ? 'true' : 'false'}${codeParam})`)
     if (execute == false) {
       return commandEvaluation
     } else if (functionName) {
@@ -120,7 +122,7 @@ export const execute = async function (elementName, command, execute, functionNa
         functionCommands.push(`${codePrefix} 
 				   ${commandEvaluation} 
 			    ${codeSuffix}`)
-        eval(`window.jsteFunctionsStore[\`${functionName}\`] = function(elementName, params) { 
+        eval(`declarations.jsteFunctionsStore[\`${functionName}\`] = function(elementName, params) { 
 				    ${codePrefix} 
 					    ${functionCommands.join('\n')} 
 				    ${codeSuffix}};`)

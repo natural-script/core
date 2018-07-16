@@ -10,9 +10,10 @@
  */
 import {inheritStyle} from 'core/styleInheritor'
 import {elementSettingsAnalyze} from 'core/elementSettingsAnalyze'
+import * as declarations from 'core/declarations'
 export default function (settings) {
   settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
   if (elementSettingsAnalyze(settings, 'name')) {
-    window.jsteStylesStore[elementSettingsAnalyze(settings, 'name')] = settings
+    declarations.jsteStylesStore[elementSettingsAnalyze(settings, 'name')] = settings
   }
 }

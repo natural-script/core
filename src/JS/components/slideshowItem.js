@@ -13,13 +13,14 @@ import {getSafe} from 'core/getSafe'
 import {elementSettingsAnalyze} from 'core/elementSettingsAnalyze'
 import {propSet} from 'core/propSet'
 import componentTemplate from './slideshowItem.pug'
+import * as declarations from 'core/declarations'
 export default function (settings) {
   settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
   var name = elementSettingsAnalyze(settings, 'name')
   var source = elementSettingsAnalyze(settings, 'source')
-  if (getSafe(() => elementSettingsAnalyze(settings, 'type') == undefined || elementSettingsAnalyze(settings, 'type').findBestMatch(window.wordsTranslationsDB.Words['image'][document.langCode]).rating > 0.8)) {
+  if (getSafe(() => elementSettingsAnalyze(settings, 'type') == undefined || elementSettingsAnalyze(settings, 'type').findBestMatch(window.wordsTranslationsDB.Words['image'][declarations.langCode]).rating > 0.8)) {
     var out = '<div class="owl-item" data-hash="' + name + '"><img src="' + source + '"></img></div>'
-  } else if (getSafe(() => elementSettingsAnalyze(settings, 'type').findBestMatch(window.wordsTranslationsDB.Words['video'][document.langCode]).rating > 0.8)) {
+  } else if (getSafe(() => elementSettingsAnalyze(settings, 'type').findBestMatch(window.wordsTranslationsDB.Words['video'][declarations.langCode]).rating > 0.8)) {
     var out = '<div class="item-video" data-hash="' + name + '"><a class="owl-video" href="' + source + '"></a></div>'
   }
   $('#' + elementSettingsAnalyze(settings, 'slideShow') + '').append(out)

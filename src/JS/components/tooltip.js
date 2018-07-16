@@ -14,16 +14,17 @@ import {elementSettingsAnalyze} from 'core/elementSettingsAnalyze'
 import componentTemplate from './tooltip.pug'
 import 'tipso/src/tipso.css'
 import 'tipso'
+import * as declarations from 'core/declarations'
 export default function (settings) {
   settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
   var position
-  if (getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['fromTheRight'][document.langCode]).rating > 0.8)) {
+  if (getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['fromTheRight'][declarations.langCode]).rating > 0.8)) {
     position = 'right'
-  } else if (getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['fromTheLeft'][document.langCode]).rating > 0.8)) {
+  } else if (getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['fromTheLeft'][declarations.langCode]).rating > 0.8)) {
     position = 'left'
-  } else if (getSafe(() => elementSettingsAnalyze(settings, 'direction') == undefined || elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['fromTheTop'][document.langCode]).rating > 0.8)) {
+  } else if (getSafe(() => elementSettingsAnalyze(settings, 'direction') == undefined || elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['fromTheTop'][declarations.langCode]).rating > 0.8)) {
     position = 'top'
-  } else if (getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['fromTheBottom'][document.langCode]).rating > 0.8)) {
+  } else if (getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['fromTheBottom'][declarations.langCode]).rating > 0.8)) {
     position = 'bottom'
   }
   if (elementSettingsAnalyze(settings, 'title')) {

@@ -24,17 +24,18 @@ import {
   getTranslations
 } from 'core/translationsGet.js'
 import componentTemplate from './dropdownMenu.pug'
+import * as declarations from 'core/declarations'
 export default function (settings) {
   settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
   var name = elementSettingsAnalyze(settings, 'name')
   var items, emitterHTML, isInGrid, isDisabled
   if (elementSettingsAnalyze(settings, 'items')) {
-    items = elementSettingsAnalyze(settings, 'items').split(' &amp;&amp;&amp; ')
+    items = elementSettingsAnalyze(settings, 'items').split(' &&& ')
   }
   if (elementSettingsAnalyze(settings, 'attributes')) {
     var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
     for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][document.langCode]).rating > 0.8) {
+      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][declarations.langCode]).rating > 0.8) {
         isDisabled = true
       }
     }
@@ -60,19 +61,19 @@ export default function (settings) {
     }
   })
   ro.observe($(`#${name}`).parent().find(`*[slot="dropdown-trigger"]`).children().get(0))
-  if (settings[wordsTranslationsDB.Words['commands'][document.langCode][0] + 0]) {
+  if (settings[wordsTranslationsDB.Words['commands'][declarations.langCode][0] + 0]) {
     var commandsNo = 0
     var preCommands
     var itemName
     var pureCommands
-    while (settings[wordsTranslationsDB.Words['commands'][document.langCode][0] + commandsNo] != undefined) {
+    while (settings[wordsTranslationsDB.Words['commands'][declarations.langCode][0] + commandsNo] != undefined) {
       commandsNo++
     }
     for (var i = 0; i < commandsNo; i++) {
-      preCommands = settings[wordsTranslationsDB.Words['commands'][document.langCode][0] + i]
+      preCommands = settings[wordsTranslationsDB.Words['commands'][declarations.langCode][0] + i]
       itemName = preCommands.split(':')[0].split(' ').join('_') + '_dropdownItem'
       pureCommands = preCommands.split(':')[1]
-      delete settings[wordsTranslationsDB.Words['commands'][document.langCode][0] + i]
+      delete settings[wordsTranslationsDB.Words['commands'][declarations.langCode][0] + i]
       execute(itemName, pureCommands)
     }
   }

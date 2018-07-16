@@ -8,13 +8,27 @@
  *
  * Date: 2018-02-05
  */
-import {setBG} from 'core/colors'
-import {inheritStyle} from 'core/styleInheritor'
-import {appendComponent} from 'core/componentAppend'
-import {getSafe} from 'core/getSafe'
-import {elementSettingsAnalyze} from 'core/elementSettingsAnalyze'
-import {propSet} from 'core/propSet'
-import {getTranslations} from 'core/translationsGet'
+import {
+  setBG
+} from 'core/colors'
+import {
+  inheritStyle
+} from 'core/styleInheritor'
+import {
+  appendComponent
+} from 'core/componentAppend'
+import {
+  getSafe
+} from 'core/getSafe'
+import {
+  elementSettingsAnalyze
+} from 'core/elementSettingsAnalyze'
+import {
+  propSet
+} from 'core/propSet'
+import {
+  getTranslations
+} from 'core/translationsGet'
 import componentTemplate from './text.pug'
 import shareThis from 'share-this'
 import * as facebookSharer from 'share-this/dist/sharers/facebook'
@@ -23,6 +37,7 @@ import * as linkedInSharer from 'share-this/dist/sharers/linked-in'
 import * as redditSharer from 'share-this/dist/sharers/reddit'
 import * as emailSharer from 'share-this/dist/sharers/email'
 import 'share-this/style/scss/share-this.scss'
+import * as declarations from 'core/declarations'
 export default function (settings) {
   settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
   var name = elementSettingsAnalyze(settings, 'name')
@@ -31,8 +46,8 @@ export default function (settings) {
   if (elementSettingsAnalyze(settings, 'attributes')) {
     var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
     for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['shareable'][document.langCode]).rating > 0.8) {
-        window.shareThis({
+      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['shareable'][declarations.langCode]).rating > 0.8) {
+        shareThis({
           selector: '#' + name + '',
           sharers: [twitterSharer, facebookSharer, linkedInSharer, redditSharer, emailSharer]
         }).init()
@@ -40,9 +55,9 @@ export default function (settings) {
     }
   }
   if (elementSettingsAnalyze(settings, 'direction')) {
-    if (getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['ltr'][document.langCode]).rating > 0.8)) {
+    if (getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['ltr'][declarations.langCode]).rating > 0.8)) {
       $(`#${name}`).css('direction', 'ltr')
-    } else if (getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['rtl'][document.langCode]).rating > 0.8)) {
+    } else if (getSafe(() => elementSettingsAnalyze(settings, 'direction').findBestMatch(window.wordsTranslationsDB.Words['rtl'][declarations.langCode]).rating > 0.8)) {
       $(`#${name}`).css('direction', 'rtl')
     }
   }

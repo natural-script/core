@@ -1,7 +1,8 @@
 import {verifyBLOB} from 'core/BLOBGet'
 import {showVideoA} from 'core/vidFn'
+import * as declarations from 'core/declarations'
 export const getVideoInfo = function (name, provider, videoID, url, title) {
-  fetch(window.isLive ? 'https://jste-manager.herokuapp.com/getVideoInfo' : `http://${window.localAddress}:5050/getVideoInfo`, {
+  fetch(window.isLive ? 'https://jste-manager.herokuapp.com/getVideoInfo' : `http://${declarations.localAddress}:5050/getVideoInfo`, {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/json'

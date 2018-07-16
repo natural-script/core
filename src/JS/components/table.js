@@ -26,6 +26,7 @@ import {
 import 'material-design-lite/src/data-table/_data-table.scss'
 import List from 'list.js'
 import componentTemplate from './table.pug'
+import * as declarations from 'core/declarations'
 export default function (settings) {
   settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
   var name = elementSettingsAnalyze(settings, 'name')
@@ -34,10 +35,10 @@ export default function (settings) {
   }
   appendComponent(elementSettingsAnalyze(settings, 'container'), componentTemplate(componentProp))
   if (elementSettingsAnalyze(settings, 'data')) {
-    var inputDataPlainA = elementSettingsAnalyze(settings, 'data').split(' &amp;&amp;&amp;&amp; ')
+    var inputDataPlainA = elementSettingsAnalyze(settings, 'data').split(' &&&& ')
     var inputDataRaw = '['
     for (var a = 0; a < inputDataPlainA.length; a++) {
-      var inputDataPlainB = inputDataPlainA[a].split(' &amp;&amp;&amp; ')
+      var inputDataPlainB = inputDataPlainA[a].split(' &&& ')
       inputDataRaw += '{'
       for (var i = 0; i < inputDataPlainB.length; i++) {
         if (i == inputDataPlainB.length - 1) {
@@ -82,7 +83,7 @@ export default function (settings) {
   if (elementSettingsAnalyze(settings, 'attributes')) {
     var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
     for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['grid'][document.langCode]).rating > 0.8) {
+      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['grid'][declarations.langCode]).rating > 0.8) {
         $(`#${name}`).addClass('row')
       }
     }

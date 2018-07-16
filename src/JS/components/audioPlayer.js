@@ -26,6 +26,7 @@ import {
 import APlayer from 'aplayer'
 import 'aplayer/dist/APlayer.min.css'
 import componentTemplate from './audioPlayer.pug'
+import * as declarations from 'core/declarations'
 export default function (settings) {
   settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
   var name = elementSettingsAnalyze(settings, 'name')
@@ -42,7 +43,7 @@ export default function (settings) {
   if (elementSettingsAnalyze(settings, 'attributes')) {
     var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
     for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['autoplay'][document.langCode]).rating > 0.8) {
+      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['autoplay'][declarations.langCode]).rating > 0.8) {
         var autoplay = true
       }
     }

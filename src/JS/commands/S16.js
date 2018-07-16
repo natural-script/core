@@ -1,3 +1,4 @@
+import * as declarations from 'core/declarations'
 export default function (elementName, script, functionArgumentsParam) {
   var dbType = script.dbType.parseValue(false, functionArgumentsParam)
   var dbname = script.dbName.parseValue(false, functionArgumentsParam)
@@ -12,14 +13,14 @@ export default function (elementName, script, functionArgumentsParam) {
   } else {
     targetElement = target
   }
-  if (dbType.findBestMatch(wordsTranslationsDB.Words['publicC'][document.langCode]).rating > 0.5) {
+  if (dbType.findBestMatch(wordsTranslationsDB.Words['publicC'][declarations.langCode]).rating > 0.5) {
     var dbRef = firebase.database().ref('public/' + dbname + '/' + tablename)
     dbRef.orderByChild(resourceSlotName).equalTo($('#' + resourceSlotValueResource + '').val()).on('value', function (snapshot) {
       snapshot.forEach(function (data) {
         $('#' + targetElement + '').val(data.val()[calledSlot])
       })
     })
-  } else if (dbType.findBestMatch(wordsTranslationsDB.Words['privateC'][document.langCode]).rating > 0.5) {
+  } else if (dbType.findBestMatch(wordsTranslationsDB.Words['privateC'][declarations.langCode]).rating > 0.5) {
     var dbRef = firebase.database().ref('private/' + window.user.uid + '/' + dbname + '/' + tablename)
     dbRef.orderByChild(resourceSlotName).equalTo($('#' + resourceSlotValueResource + '').val()).on('value', function (snapshot) {
       snapshot.forEach(function (data) {

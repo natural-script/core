@@ -41,6 +41,7 @@ import {
 } from 'core/BLOBGet.js'
 import PerfectScrollbar from 'perfect-scrollbar'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
+import * as declarations from 'core/declarations'
 export const propSet = function (elementName, properties, param1, param2, param3) {
   if (elementSettingsAnalyze(properties, 'distanceFromBottom')) {
     setDistance(elementName, 'bottom', elementSettingsAnalyze(properties, 'distanceFromBottom'))
@@ -77,7 +78,7 @@ export const propSet = function (elementName, properties, param1, param2, param3
             'background': 'url(' + elementSettingsAnalyze(properties, 'background') + ') no-repeat',
             'background-size': 'cover'
           })
-          if (window.deviceForm == 'desktop') {
+          if (declarations.deviceForm == 'desktop') {
             $(`#${elementName}`).addClass('parallax')
           }
         } else {
@@ -86,7 +87,7 @@ export const propSet = function (elementName, properties, param1, param2, param3
               'background': 'url(' + BLOBURL + ') no-repeat',
               'background-size': 'cover'
             })
-            if (window.deviceForm == 'desktop') {
+            if (declarations.deviceForm == 'desktop') {
               $(`#${elementName}`).addClass('parallax')
             }
             setTimeout(function () {
@@ -112,34 +113,34 @@ export const propSet = function (elementName, properties, param1, param2, param3
     $(`#${elementName}`).css('font-style', elementSettingsAnalyze(properties, 'fontStyle'))
   }
   if (elementSettingsAnalyze(properties, 'fontThickness')) {
-    if (elementSettingsAnalyze(properties, 'fontThickness').findBestMatch(window.wordsTranslationsDB.Words['thick'][document.langCode]).rating > 0.8) {
+    if (elementSettingsAnalyze(properties, 'fontThickness').findBestMatch(window.wordsTranslationsDB.Words['thick'][declarations.langCode]).rating > 0.8) {
       $(`#${elementName}`).css('font-weight', 'bold')
     } else {
       $(`#${elementName}`).css('font-weight', elementSettingsAnalyze(properties, 'fontThickness'))
     }
   }
   if (elementSettingsAnalyze(properties, 'shape')) {
-    if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['triangle'][document.langCode]).rating > 0.8)) {
+    if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['triangle'][declarations.langCode]).rating > 0.8)) {
       $(`#${elementName}`).addClass('triangle')
-    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['trapezoid'][document.langCode]).rating > 0.8)) {
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['trapezoid'][declarations.langCode]).rating > 0.8)) {
       $(`#${elementName}`).addClass('trapezoid')
-    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['parallelogram'][document.langCode]).rating > 0.8)) {
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['parallelogram'][declarations.langCode]).rating > 0.8)) {
       $(`#${elementName}`).addClass('parallelogram')
-    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['rhombus'][document.langCode]).rating > 0.8)) {
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['rhombus'][declarations.langCode]).rating > 0.8)) {
       $(`#${elementName}`).addClass('rhombus')
-    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['pentagon'][document.langCode]).rating > 0.8)) {
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['pentagon'][declarations.langCode]).rating > 0.8)) {
       $(`#${elementName}`).addClass('pentagon')
-    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['hexagon'][document.langCode]).rating > 0.8)) {
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['hexagon'][declarations.langCode]).rating > 0.8)) {
       $(`#${elementName}`).addClass('hexagon')
-    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['heptagon'][document.langCode]).rating > 0.8)) {
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['heptagon'][declarations.langCode]).rating > 0.8)) {
       $(`#${elementName}`).addClass('heptagon')
-    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['octagon'][document.langCode]).rating > 0.8)) {
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['octagon'][declarations.langCode]).rating > 0.8)) {
       $(`#${elementName}`).addClass('octagon')
-    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['decagon'][document.langCode]).rating > 0.8)) {
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['decagon'][declarations.langCode]).rating > 0.8)) {
       $(`#${elementName}`).addClass('decagon')
-    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['circle'][document.langCode]).rating > 0.8)) {
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['circle'][declarations.langCode]).rating > 0.8)) {
       $(`#${elementName}`).addClass('circle')
-    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['ellipse'][document.langCode]).rating > 0.8)) {
+    } else if (getSafe(() => elementSettingsAnalyze(properties, 'shape').findBestMatch(window.wordsTranslationsDB.Words['ellipse'][declarations.langCode]).rating > 0.8)) {
       $(`#${elementName}`).addClass('ellipse')
     }
   }
@@ -157,7 +158,7 @@ export const propSet = function (elementName, properties, param1, param2, param3
   if (elementSettingsAnalyze(properties, 'attributes')) {
     var propertiesArray = elementSettingsAnalyze(properties, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
     for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['scrollable'][document.langCode]).rating > 0.8) {
+      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['scrollable'][declarations.langCode]).rating > 0.8) {
         document[getUniqueID()] = new PerfectScrollbar(`#${elementName}`)
       }
     }

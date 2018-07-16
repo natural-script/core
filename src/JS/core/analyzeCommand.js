@@ -12,28 +12,28 @@ import en_rivescript from 'translations/RiveScript/en.rive'
 import fr_rivescript from 'translations/RiveScript/fr.rive'
 import ar_rivescript from 'translations/RiveScript/ar.rive'
 import arz_rivescript from 'translations/RiveScript/arz.rive'
-import RiveScript from 'thirdParty/Rivescript/rivescript.min'
+import RiveScript from 'rivescript'
 import objectPath from 'object-path'
+import * as declarations from 'core/declarations'
 var bot = new RiveScript({
-  utf8: true,
   forceCase: true
 })
-bot.unicodePunctuation = new RegExp(/[]/g)
-if (document.langCode == 'en') {
+if (declarations.langCode == 'en') {
   bot.loadFile(en_rivescript)
-} else if (document.langCode == 'fr') {
+} else if (declarations.langCode == 'fr') {
   bot.loadFile(fr_rivescript)
-} else if (document.langCode == 'ar') {
+} else if (declarations.langCode == 'ar') {
   bot.loadFile(ar_rivescript)
-} else if (document.langCode == 'arz') {
+} else if (declarations.langCode == 'arz') {
   bot.loadFile(arz_rivescript)
 }
-export const analyzeCommand = function (commandRaw) {
+export async function analyzeCommand(commandRaw) {
   bot.sortReplies()
-  var command = bot.reply('local-user', commandRaw.replace(new XRegExp('\n', 'gmi'), '&lt;&lt;br&gt;&gt;')).replace(new XRegExp('&lt;&lt;br&gt;&gt;', 'gmi'), '\n').split(' ==> ')
-  var commandAnalysed = {}
-  for (var i = 0; i < command.length; i++) {
-    commandAnalysed[/^(.*?):/miy.exec(command[i])[1]] = /^.*?: ((?:.*|[\r\n])+)/miy.exec(command[i])[1]
+  let reply = await bot.reply('local-user', commandRaw.replace(new XRegExp('\n', 'gmi'), '<<br>>'));
+  let command = reply.replace(new XRegExp('<<br>>', 'gmi'), '\n').split(' ==> ');
+  let commandAnalysed = {}
+  for (const prop of command) {
+    commandAnalysed[/^(.*?):/miy.exec(prop)[1]] = /^.*?: ((?:.*|[\r\n])+)/miy.exec(prop)[1]
   }
   var loops = []
   for (var i = 0; i < Object.keys(commandAnalysed).length; i++) {
@@ -49,15 +49,15 @@ export const analyzeCommand = function (commandRaw) {
       commandAnalysed[loop_name]['DATA'] = loop_data[5]
     }
   }
-  for (var i = 0; i < loops.length; i++) {
-    var mainRegex = new RegExp(commandAnalysed[loops[i]]['REGEX'] + '(?:' + commandAnalysed[loops[i]]['SEPARATOR'] + '|&&&& |$)', 'gmyi')
-    var regex = new RegExp(commandAnalysed[loops[i]]['REGEX'] + '(?:' + commandAnalysed[loops[i]]['SEPARATOR'] + '|$)', 'gmyi')
-    var str = commandAnalysed[loops[i]]['DATA']
-    var isGrouped = (commandAnalysed[loops[i]]['IS_GROUPED'] == 'true')
-    var elements = JSON.parse(commandAnalysed[loops[i]]['ELEMENTS'])
+  for (const loop of loops) {
+    var mainRegex = new RegExp(commandAnalysed[loop]['REGEX'] + '(?:' + commandAnalysed[loop]['SEPARATOR'] + '|&&&& |$)', 'gmyi')
+    var regex = new RegExp(commandAnalysed[loop]['REGEX'] + '(?:' + commandAnalysed[loop]['SEPARATOR'] + '|$)', 'gmyi')
+    var str = commandAnalysed[loop]['DATA']
+    var isGrouped = (commandAnalysed[loop]['IS_GROUPED'] == 'true')
+    var elements = JSON.parse(commandAnalysed[loop]['ELEMENTS'])
     var m
     var z
-    commandAnalysed[loops[i]] = {}
+    commandAnalysed[loop] = {}
     if (isGrouped) {
       var mainGroupIndex = 0
       var groupIndex = 0
@@ -70,7 +70,7 @@ export const analyzeCommand = function (commandRaw) {
         // The result can be accessed through the `m`-variable.
         z.forEach((match, matchIndex) => {
           if (matchIndex != 0) {
-            objectPath.set(commandAnalysed, loops[i] + '.' + mainGroupIndex + '.' + groupIndex + '.' + elements[matchIndex - 1], match)
+            objectPath.set(commandAnalysed, loop + '.' + mainGroupIndex + '.' + groupIndex + '.' + elements[matchIndex - 1], match)
           }
           if (/^.*?&&&& $/gmiy.test(match)) {
             newGroupTrigger = true
@@ -79,7 +79,7 @@ export const analyzeCommand = function (commandRaw) {
         if (newGroupTrigger) {
           newGroupTrigger = false
           groupIndex = 0
-          ++mainGroupIndex
+            ++mainGroupIndex
         } else {
           ++groupIndex
         }
@@ -94,7 +94,7 @@ export const analyzeCommand = function (commandRaw) {
         // The result can be accessed through the `m`-variable.
         m.forEach((match, matchIndex) => {
           if (matchIndex != 0) {
-            objectPath.set(commandAnalysed, loops[i] + '.' + groupIndex + '.' + elements[matchIndex - 1], match)
+            objectPath.set(commandAnalysed, loop + '.' + groupIndex + '.' + elements[matchIndex - 1], match)
           }
         })
         groupIndex++

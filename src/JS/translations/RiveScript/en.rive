@@ -26,7 +26,7 @@
 
 // open the dialog box learn_more
 
-+ (?:go to|navigate to|visit|open) the * (%)
++ (?:go to|navigate to|visit|open) the * (<1 word>)
 - command_id: S2 ==> lang: en ==> targetType: <star1> ==> target: <star2>
 
 // play it

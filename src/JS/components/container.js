@@ -31,6 +31,7 @@ import {
 } from 'core/propSet.js'
 import 'bootstrap/scss/bootstrap-grid.scss'
 import componentTemplate from './container.pug'
+import * as declarations from 'core/declarations'
 export default function (settings) {
   settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
   var name = elementSettingsAnalyze(settings, 'name')
@@ -39,9 +40,9 @@ export default function (settings) {
   if (elementSettingsAnalyze(settings, 'attributes')) {
     var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
     for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withoutShadow'][document.langCode]).rating > 0.8) {
+      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withoutShadow'][declarations.langCode]).rating > 0.8) {
         elevation = 0
-      } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['grid'][document.langCode]).rating > 0.8) {
+      } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['grid'][declarations.langCode]).rating > 0.8) {
         isGrid = true
       }
     }

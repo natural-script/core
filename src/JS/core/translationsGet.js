@@ -8,6 +8,7 @@
  *
  * Date: 2018-03-15
  */
+import * as declarations from 'core/declarations'
 export const getTranslations = function (phrase) {
   var phraseType = (XRegExp('^operator\\d+', 'mi').test(phrase)) ? 'Operators' : (XRegExp('^condition\\d+', 'mi').test(phrase)) ? 'Conditions' : (XRegExp('^syntax\\d+', 'mi').test(phrase)) ? 'Syntax' : (XRegExp('^event\\d+', 'mi').test(phrase)) ? 'Events' : 'Words'
   var output = ''
@@ -16,10 +17,10 @@ export const getTranslations = function (phrase) {
       if (i != 0) {
         output += '|'
       }
-      output += wordsTranslationsDB[phraseType][phrase[i]][document.langCode].join('|')
+      output += wordsTranslationsDB[phraseType][phrase[i]][declarations.langCode].join('|')
     }
   } else {
-    output = wordsTranslationsDB[phraseType][phrase][document.langCode].join('|')
+    output = wordsTranslationsDB[phraseType][phrase][declarations.langCode].join('|')
   }
   return `(?:${output})`.replace(/\\/gmi, '\\\\')
 }

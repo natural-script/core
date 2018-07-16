@@ -55,6 +55,7 @@ import {
 } from 'core/uniqueID.js'
 import camcorderIcon from '../../Media/img/icons/camcorderA.svg'
 import componentTemplate from './video.pug'
+import * as declarations from 'core/declarations'
 export default function (settings) {
   settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
   var name = elementSettingsAnalyze(settings, 'name')
@@ -64,7 +65,7 @@ export default function (settings) {
   if (elementSettingsAnalyze(settings, 'attributes')) {
     var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
     for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['transparent'][document.langCode]).rating > 0.8) {
+      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['transparent'][declarations.langCode]).rating > 0.8) {
         componentProp.noShadow = true
       }
     }

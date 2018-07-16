@@ -20,10 +20,11 @@ import {
 import 'imports-loader?userAgent=>true!izimodal'
 import 'izimodal/css/iziModal.css'
 import componentTemplate from './dialogBox.pug'
+import * as declarations from 'core/declarations'
 export default function (settings) {
   settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
   var name = elementSettingsAnalyze(settings, 'name')
-  var isRTL = document.isRTL
+  var isRTL = declarations.isRTL
   var title
   if (elementSettingsAnalyze(settings, 'title')) {
     title = elementSettingsAnalyze(settings, 'title')

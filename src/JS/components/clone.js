@@ -26,6 +26,7 @@ import {
 import {
   convertLengthCSS
 } from 'measurements/lengthUnits.js'
+import * as declarations from 'core/declarations'
 export default function (settings) {
   var clonedElement = elementSettingsAnalyze(settings, 'clonedElement')
   var name = elementSettingsAnalyze(settings, 'name')
@@ -33,7 +34,7 @@ export default function (settings) {
   if (elementSettingsAnalyze(settings, 'attributes')) {
     var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
     for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withCommands'][document.langCode]).rating > 0.8) {
+      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withCommands'][declarations.langCode]).rating > 0.8) {
         out = $(`#${clonedElement}`).clone(true).attr('id', name)
       }
     }
@@ -57,7 +58,7 @@ export default function (settings) {
     $(`#${name}`).css('font-style', elementSettingsAnalyze(settings, 'fontStyle'))
   }
   if (elementSettingsAnalyze(settings, 'fontThickness')) {
-    if (getSafe(() => elementSettingsAnalyze(settings, 'fontThickness').findBestMatch(window.wordsTranslationsDB.Words['thick'][document.langCode]).rating > 0.8)) {
+    if (getSafe(() => elementSettingsAnalyze(settings, 'fontThickness').findBestMatch(window.wordsTranslationsDB.Words['thick'][declarations.langCode]).rating > 0.8)) {
       $(`#${name}`).css('font-weight', 'bold')
     } else {
       $(`#${name}`).css('font-weight', elementSettingsAnalyze(settings, 'fontThickness'))

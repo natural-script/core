@@ -1,3 +1,4 @@
+import * as declarations from 'core/declarations'
 export default function (elementName, script, functionArgumentsParam) {
   var dbType = script.dbType.parseValue(false, functionArgumentsParam)
   var dbname = script.dbName.parseValue(false, functionArgumentsParam)
@@ -12,10 +13,10 @@ export default function (elementName, script, functionArgumentsParam) {
     }
   }
   data = JSON.parse(data)
-  if (dbType.findBestMatch(window.wordsTranslationsDB.Words['publicC'][document.langCode]).rating > 0.8) {
+  if (dbType.findBestMatch(window.wordsTranslationsDB.Words['publicC'][declarations.langCode]).rating > 0.8) {
     var newPostKey = firebase.database().ref('public/' + dbname).child(tablename).push().key
     firebase.database().ref('public/' + dbname + '/' + tablename + '/' + newPostKey).set(data)
-  } else if (dbType.findBestMatch(window.wordsTranslationsDB.Words['privateC'][document.langCode]).rating > 0.8) {
+  } else if (dbType.findBestMatch(window.wordsTranslationsDB.Words['privateC'][declarations.langCode]).rating > 0.8) {
     var newPostKey = firebase.database().ref('private/' + window.user.uid + '/' + dbname).child(tablename).push().key
     firebase.database().ref('private/' + window.user.uid + '/' + dbname + '/' + tablename + '/' + newPostKey).set(data)
   }

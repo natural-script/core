@@ -14,8 +14,9 @@ import {
 import {
   showVideoA
 } from 'core/vidFn.js'
-export let requestBLOB
-export let verifyBLOB
+import * as declarations from 'core/declarations'
+export let requestBLOB;
+export let verifyBLOB;
 if (window.isLive) {
   // Requesting The Stored BLOBs
   requestBLOB = function (name, type, url, URLID) {
@@ -101,11 +102,11 @@ if (window.isLive) {
   // Requesting The Stored data URL
 
   requestBLOB = function (url, URLID, callback) {
-    $.post('http://' + window.localAddress + ':5050/verifyDataURL', {
+    $.post('http://' + declarations.localAddress + ':5050/verifyDataURL', {
       URLID: URLID
     }).done(function (data) {
       if (data == 'exists') {
-        $.post('http://' + window.localAddress + ':5050/getDataURL', {
+        $.post('http://' + declarations.localAddress + ':5050/getDataURL', {
           URLID: URLID
         }).done(function (data) {
           callback(dataURItoBlob(data))
@@ -113,7 +114,7 @@ if (window.isLive) {
       } else if (data == 'not exist') {
         var xhr = new XMLHttpRequest(),
           BLOBObject
-        xhr.open('GET', window.corsPolicy + url,
+        xhr.open('GET', declarations.corsPolicy + url,
           true)
         xhr.responseType = 'blob'
         xhr.addEventListener('load', function () {
@@ -123,7 +124,7 @@ if (window.isLive) {
             reader.readAsDataURL(BLOBObject)
             reader.onloadend = function () {
               dataURL = reader.result
-              $.post('http://' + window.localAddress + ':5050/insertDataURL', {
+              $.post('http://' + declarations.localAddress + ':5050/insertDataURL', {
                 URLID: URLID,
                 dataURL: dataURL
               })
@@ -139,7 +140,7 @@ if (window.isLive) {
   // Verifying If A Specific data URL Exists
 
   verifyBLOB = function (URLID, callback) {
-    $.post('http://' + window.localAddress + ':5050/verifyDataURL', {
+    $.post('http://' + declarations.localAddress + ':5050/verifyDataURL', {
       URLID: URLID
     }).done(function (data) {
       callback(data)

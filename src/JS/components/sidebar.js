@@ -13,11 +13,12 @@ import {appendComponent} from 'core/componentAppend'
 import {elementSettingsAnalyze} from 'core/elementSettingsAnalyze'
 import {propSet} from 'core/propSet'
 import componentTemplate from './sidebar.pug'
+import * as declarations from 'core/declarations'
 export default function (settings) {
   settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
   var name = elementSettingsAnalyze(settings, 'name')
   var edge
-  if (document.isRTL) {
+  if (declarations.isRTL) {
     edge = 'right'
   } else {
     edge = 'left'

@@ -11,16 +11,17 @@ import {
 import {
   rain
 } from 'FX/rain.js'
+import * as declarations from 'core/declarations'
 export const showImageA = function (name, URLID, source) {
   var nudity = $(`#${name}`).attr('nude')
   var fx = $(`#${name}`).attr('fx')
   if (typeof nudity !== typeof undefined && nudity !== false) {
-    if (window.childModeStatus == 'off') {
+    if (declarations.childModeStatus == 'off') {
       if ($('#showImage_' + name + '_containerA').length > 0) {
         fadeOut('showImage_' + name + '_containerA')
       }
       fadeIn('showImage_' + name + '_containerB')
-    } else if (window.childModeStatus == 'on') {
+    } else if (declarations.childModeStatus == 'on') {
       if ($('#showImage_' + name + '_containerA').length > 0) {
         fadeOut('showImage_' + name + '_containerA')
       }

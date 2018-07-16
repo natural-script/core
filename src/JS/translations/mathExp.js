@@ -11,6 +11,7 @@
 import {elementValue} from 'core/elementValue'
 import {getTranslations} from 'core/translationsGet'
 import math from 'mathjs'
+import * as declarations from 'core/declarations'
 export const evaluateExpression = function (expression) {
   var valNo = expression.match(XRegExp('' + getTranslations('theValueOf') + '', 'gmi'))
   var finalExpression = expression
@@ -19,23 +20,23 @@ export const evaluateExpression = function (expression) {
   if (valNo != null) {
     if (valNo.length > -1) {
       for (i = 0; i < valNo.length; i++) {
-        if (document.langID == 0 || document.langID == 1) {
+        if (declarations.langID == 0 || declarations.langID == 1) {
           valueResource = finalExpression.split(XRegExp('' + getTranslations('theValueOf') + '', 'gmi'))[1].split(' ')[1]
           finalValue = elementValue.get(valueResource)
           finalExpression = finalExpression.replace(XRegExp('' + getTranslations('theValueOf') + '' + ' ' + valueResource, 'gmi'), finalValue)
-        } else if (document.langID == 2) {
+        } else if (declarations.langID == 2) {
           valueResource = finalExpression.split(XRegExp('' + getTranslations('theValueOf') + '', 'gmi'))[1].split(' ')[1]
           finalValue = elementValue.get(valueResource)
           finalExpression = finalExpression.replace(XRegExp('' + getTranslations('theValueOf') + '' + ' ' + valueResource, 'gmi'), finalValue)
-        } else if (document.langID == 3) {
+        } else if (declarations.langID == 3) {
           valueResource = finalExpression.split(XRegExp('' + getTranslations('theValueOf') + '', 'gmi'))[1].split(' ')[1]
           finalValue = elementValue.get(valueResource)
           finalExpression = finalExpression.replace(XRegExp('' + getTranslations('theValueOf') + '' + ' ' + valueResource, 'gmi'), finalValue)
-        } else if (document.langID == 4) {
+        } else if (declarations.langID == 4) {
           valueResource = finalExpression.split(XRegExp('' + getTranslations('theValueOf') + '', 'gmi'))[1].split(' ')[1]
           finalValue = elementValue.get(valueResource)
           finalExpression = finalExpression.replace(XRegExp('' + getTranslations('theValueOf') + '' + ' ' + valueResource, 'gmi'), finalValue)
-        } else if (document.langID == 5) {
+        } else if (declarations.langID == 5) {
           valueResource = finalExpression.split(XRegExp('' + getTranslations('theValueOf') + '', 'gmi'))[1].split(' ')[1]
           finalValue = elementValue.get(valueResource)
           finalExpression = finalExpression.replace(XRegExp('' + getTranslations('theValueOf') + '' + ' ' + valueResource, 'gmi'), finalValue)

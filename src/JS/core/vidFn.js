@@ -12,6 +12,7 @@ import 'thirdParty/videoJS/videojs.hotkeys'
 import 'thirdParty/videoJS/videojs-resume'
 import 'thirdParty/videoJS/videojs.framebyframe'
 import 'thirdParty/videoJS/videojs-dock'
+import * as declarations from 'core/declarations'
 export const showVideoA = function (name, source, title, videoURLID, fps) {
   var FPS
   if (fps) {
@@ -68,7 +69,7 @@ export const showVideoA = function (name, source, title, videoURLID, fps) {
       player.dock({
         title: title
       })
-      if (document.langID == 3 || document.langID == 4) {
+      if (declarations.langID == 3 || declarations.langID == 4) {
         $('.vjs-dock-text').css('padding', '1em 5% 2em 1em')
       }
       clearInterval(document[uniqueID + 'checker'])

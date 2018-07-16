@@ -23,18 +23,19 @@ import {
 import {
   evaluateExpression
 } from 'translations/mathExp.js'
+import * as declarations from 'core/declarations'
 String.prototype.parseValue = function (dynamic, params) {
   var output = this.replace(XRegExp('NORMALTEXTPREFIX(.*?)NORMALTEXTSUFFIX', 'gmi'), function (match, p1, offset, string) {
     return atob(p1)
   }).replace(XRegExp(getTranslations('operator20'), 'mi'), function (match, p1, offset, string) {
-    var variable = 'window.jsteVariablesStore'
+    var variable = 'declarations.jsteVariablesStore'
     var branches = p1.split(' ==> ')
     for (var i = 0; i < branches.length; i++) {
       variable += '[`' + branches[i] + '`]'
     }
     return exec('getSafe(() => ' + variable + ')')
   }).replace(XRegExp(getTranslations('operator21'), 'mi'), function (match, p1, p2, offset, string) {
-    var variable = 'window.jsteVariablesStore'
+    var variable = 'declarations.jsteVariablesStore'
     var branches = p2.split(' ==> ')
     for (var i = 0; i < branches.length; i++) {
       variable += '[`' + branches[i] + '`]'
@@ -44,14 +45,14 @@ String.prototype.parseValue = function (dynamic, params) {
   }).replace(XRegExp(getTranslations('operator22'), 'mi'), function (match, p1, offset, string) {
     return elementValue.get(p1)
   }).replace(XRegExp(getTranslations('operator23'), 'gmi'), function (match, p1, offset, string) {
-    var variable = 'window.jsteVariablesStore'
+    var variable = 'declarations.jsteVariablesStore'
     var branches = p1.split(' ==> ')
     for (var i = 0; i < branches.length; i++) {
       variable += '[`' + branches[i] + '`]'
     }
     return exec('getSafe(() => ' + variable + ')')
   }).replace(XRegExp(getTranslations('operator24'), 'gmi'), function (match, p1, p2, offset, string) {
-    var variable = 'window.jsteVariablesStore'
+    var variable = 'declarations.jsteVariablesStore'
     var branches = p2.split(' ==> ')
     for (var i = 0; i < branches.length; i++) {
       variable += '[`' + branches[i] + '`]'
@@ -60,9 +61,9 @@ String.prototype.parseValue = function (dynamic, params) {
     return exec('getSafe(() => ' + variable + ')')
   }).replace(XRegExp(getTranslations('operator25'), 'gmi'), function (match, p1, offset, string) {
     return elementValue.get(p1)
-  }).replace(XRegExp('&lt;&lt; ' + getTranslations('theResultOfTheMathematicalExpression') + ': ((?:(?:.*?&lt;&lt;.*?&gt;&gt;.*?)|.*?)+?) &gt;&gt;', 'gmi'), function (match, p1, offset, string) {
+  }).replace(XRegExp('<< ' + getTranslations('theResultOfTheMathematicalExpression') + ': ((?:(?:.*?<<.*?>>.*?)|.*?)+?) >>', 'gmi'), function (match, p1, offset, string) {
     return evaluateExpression(p1)
-  }).replace(new RegExp('&lt;&lt; (' + getTranslations(['operator1', 'operator2', 'operator3', 'operator4', 'operator5', 'operator6', 'operator7']) + '): ((?:(?:.*?&lt;&lt;.*?&gt;&gt;.*?)|.*?)+?) &gt;&gt;', 'g'), function (match, p1, p2, offset, string) {
+  }).replace(new RegExp('<< (' + getTranslations(['operator1', 'operator2', 'operator3', 'operator4', 'operator5', 'operator6', 'operator7']) + '): ((?:(?:.*?<<.*?>>.*?)|.*?)+?) >>', 'g'), function (match, p1, p2, offset, string) {
     var prefix,
       suffix
     if (XRegExp('^' + getTranslations('operator1') + '$', 'gmi').test(p1)) {
@@ -89,16 +90,16 @@ String.prototype.parseValue = function (dynamic, params) {
     }
     return prefix + p2 + suffix
   })
-    .replace(new RegExp('&lt;&lt; ' + getTranslations('operator12') + ' ((?:(?:.*?&lt;&lt;.*?&gt;&gt;.*?)|.*?)+?) &gt;&gt;', 'g'), "<i class='far fa-$1' aria-hidden='true'></i>")
-    .replace(new RegExp('&lt;&lt; ' + getTranslations('operator13') + ' &gt;&gt;', 'g'), '<br />')
-    .replace(new RegExp('&lt;&lt; ' + getTranslations('operator17') + ' (.*?): ((?:(?:.*?&lt;&lt;.*?&gt;&gt;.*?)|.*?)+?) &gt;&gt;', 'g'), function (match, p1, p2, offset, string) {
+    .replace(new RegExp('<< ' + getTranslations('operator12') + ' ((?:(?:.*?<<.*?>>.*?)|.*?)+?) >>', 'g'), "<i class='fas fa-$1' aria-hidden='true'></i>")
+    .replace(new RegExp('<< ' + getTranslations('operator13') + ' >>', 'g'), '<br />')
+    .replace(new RegExp('<< ' + getTranslations('operator17') + ' (.*?): ((?:(?:.*?<<.*?>>.*?)|.*?)+?) >>', 'g'), function (match, p1, p2, offset, string) {
       return "<span id='" + p1 + "'>" + p2 + '</span>'
     })
-    .replace(new RegExp('&lt;&lt; ' + getTranslations('operator18') + ' ((?:(?:.*?&lt;&lt;.*?&gt;&gt;.*?)|.*?)+?) &gt;&gt;', 'g'), function (match, p1, offset, string) {
+    .replace(new RegExp('<< ' + getTranslations('operator18') + ' ((?:(?:.*?<<.*?>>.*?)|.*?)+?) >>', 'g'), function (match, p1, offset, string) {
       return params[p1]
     })
   if (dynamic == undefined || dynamic == true) {
-    output = output.replace(new RegExp('&lt;&lt; (' + getTranslations(['operator14', 'operator15', 'operator16', 'operator8', 'operator9', 'operator10', 'operator11']) + ')(|.*?) &gt;&gt;', 'g'), function (match, p1, p2, offset, string) {
+    output = output.replace(new RegExp('<< (' + getTranslations(['operator14', 'operator15', 'operator16', 'operator8', 'operator9', 'operator10', 'operator11']) + ')(|.*?) >>', 'g'), function (match, p1, p2, offset, string) {
       if (XRegExp('^' + getTranslations('operator15') + '$', 'gmi').test(p1)) {
         p2 = 'currentUserName'
       } else if (XRegExp('^' + getTranslations('operator16') + '$', 'gmi').test(p1)) {

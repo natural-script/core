@@ -26,7 +26,7 @@
 
 // افتح مربع الحوار learn_more
 
-+ (?:روح|توجه|زور|افتح) [إلى] * (%)
++ (?:روح|توجه|زور|افتح) [إلى] * (<1 word>)
 - command_id: S2 ==> lang: arz ==> targetType: <star1> ==> target: <star2>
 
 // شغلها
@@ -91,7 +91,7 @@
 
 // خلى الوقت اللى عدا من Close_To_You 1536
 
-+ خلى الوقت اللى (?:عدا|عدى) من (%) *
++ خلى الوقت اللى (?:عدا|عدى) من (<1 word>) *
 - command_id: S5 ==> lang: arz ==> target: <star1> ==> timePosition: <star2>
 
 // خلى القيمة بتاعته Hello World !
@@ -106,7 +106,7 @@
 
 // خلى قيمة welcome_message Welcome, folks !
 
-+ خلى قيمة (%) *
++ خلى قيمة (<1 word>) *
 - command_id: S6 ==> lang: arz ==> target: <star1> ==> value: <star2>
 
 // بدل حالة الفلاش
@@ -181,7 +181,7 @@
 
 // خلى عرض containerA 30 بكسل
 
-+ خلى عرض (%) *
++ خلى عرض (<1 word>) *
 - command_id: S17 ==> lang: arz ==> target: <star1> ==> value: <star2>
 
 // خلى طوله 30 بكسل
@@ -201,7 +201,7 @@
 
 // خلى طول containerA 30 بكسل
 
-+ خلى طول (%) *
++ خلى طول (<1 word>) *
 - command_id: S18 ==> lang: arz ==> target: <star1> ==> value: <star2>
 
 // خلى خلفيتها لون غامق عشوائى
@@ -216,7 +216,7 @@
 
 // خلى خلفية main_page حمرة
 
-+ خلى خلفية (%) *
++ خلى خلفية (<1 word>) *
 - command_id: S19 ==> lang: arz ==> target: <star1> ==> value: <star2>
 
 // خلى خلفية العنصر دة لون فاتح عشوائى
@@ -241,12 +241,12 @@
 
 // حلى لون خط heading_title ازرق
 
-+ خلى لون خط (%) *
++ خلى لون خط (<1 word>) *
 - command_id: S20 ==> lang: arz ==> target: <star1> ==> value: <star2>
 
 // خلى قيمة المتغير العمر 15 سنة !
 
-+ خلى قيمة المتغير (%) *
++ خلى قيمة المتغير (<1 word>) *
 - command_id: S21 ==> lang: arz ==> variableName: <star1> ==> value: <star2>
 
 /* نفذ الدالة send data بالمعاملات دى:

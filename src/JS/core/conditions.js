@@ -6,9 +6,9 @@ import {
 } from 'core/translationsGet.js'
 var conditionsRaw = {
   'condition2': 'Keyboard.isVisible',
-  'condition3': 'window.deviceForm == `phone`',
-  'condition4': 'window.deviceForm == `tablet`',
-  'condition5': 'window.deviceForm == `desktop`',
+  'condition3': 'declarations.deviceForm == `phone`',
+  'condition4': 'declarations.deviceForm == `tablet`',
+  'condition5': 'declarations.deviceForm == `desktop`',
   'condition6': 'cordova.plugins.BluetoothStatus.BTenabled == true',
   'condition7': 'cordova.plugins.BluetoothStatus.BTenabled == false',
   'condition8': 'WifiWizard.isWifiEnabled(win, fail) == true',

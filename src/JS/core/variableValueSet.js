@@ -8,8 +8,10 @@
  *
  * Date: 2018-04-22
  */
-function assignValue (keyPath, value, isArray) {
-  var obj = window.jsteVariablesStore
+import * as declarations from 'core/declarations'
+
+function assignValue(keyPath, value, isArray) {
+  var obj = declarations.jsteVariablesStore
   lastKeyIndex = keyPath.length - 1
   for (var i = 0; i < lastKeyIndex; ++i) {
     key = keyPath[i]
@@ -31,7 +33,7 @@ function assignValue (keyPath, value, isArray) {
 }
 export const setVariable = function (name, value) {
   var keyPath = name.split(' ==> ')
-  if (XRegExp('^(' + wordsTranslationsDB.Words['theFollowingList'][document.langCode].join('|') + '):', 'gmi').test(value)) {
+  if (XRegExp('^(' + wordsTranslationsDB.Words['theFollowingList'][declarations.langCode].join('|') + '):', 'gmi').test(value)) {
     var inputtedList = value.match(/^\d(?:.*|[\r\n])+/mi)[0].parseList()
     assignValue(keyPath, inputtedList, true)
   } else {

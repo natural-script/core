@@ -33,6 +33,7 @@ import {
   convertLengthCSS
 } from 'measurements/lengthUnits.js'
 import componentTemplate from './slider.pug'
+import * as declarations from 'core/declarations'
 export default function (settings) {
   settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
   var name = elementSettingsAnalyze(settings, 'name')
@@ -49,11 +50,11 @@ export default function (settings) {
   if (elementSettingsAnalyze(settings, 'attributes')) {
     var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
     for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][document.langCode]).rating > 0.8) {
+      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][declarations.langCode]).rating > 0.8) {
         out += 'disabled '
-      } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withPin'][document.langCode]).rating > 0.8) {
+      } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withPin'][declarations.langCode]).rating > 0.8) {
         out += 'pin '
-      } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withDigitalValueEditor'][document.langCode]).rating > 0.8) {
+      } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withDigitalValueEditor'][declarations.langCode]).rating > 0.8) {
         out += 'editable '
       }
     }
@@ -70,13 +71,13 @@ export default function (settings) {
   if (elementSettingsAnalyze(settings, 'attributes')) {
     var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
     for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][document.langCode]).rating > 0.8) {
+      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][declarations.langCode]).rating > 0.8) {
         $(`#${name}`).attr('disabled', '')
       }
     }
   }
   if (elementSettingsAnalyze(settings, 'fontThickness')) {
-    if (getSafe(() => elementSettingsAnalyze(settings, 'fontThickness').findBestMatch(window.wordsTranslationsDB.Words['thick'][document.langCode]).rating > 0.8)) {
+    if (getSafe(() => elementSettingsAnalyze(settings, 'fontThickness').findBestMatch(window.wordsTranslationsDB.Words['thick'][declarations.langCode]).rating > 0.8)) {
       $(`#${name}`).css('font-weight', 'bold')
     } else {
       $(`#${name}`).css('font-weight', elementSettingsAnalyze(settings, 'fontThickness'))

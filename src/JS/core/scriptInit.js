@@ -8,27 +8,27 @@
  *
  * Date: 2018-05-01
  */
-import './declarations'
-import './jsteFirebaseInit'
-import './wordsTranslationsInit'
-import './listParser'
-import './stringValueParser'
-// import './report'
-import './smoothScrolling'
-import './punctuationAndArticleRemover'
-import './mediaCVAnalysis'
+import 'core/jsteFirebaseInit'
+import 'core/wordsTranslationsInit'
+import 'core/listParser'
+import 'core/stringValueParser'
+// import 'core/report'
+import 'core/smoothScrolling'
+import 'core/punctuationAndArticleRemover'
+import 'core/mediaCVAnalysis'
 import Modernizr from 'modernizr'
 import annyang from 'annyang'
 import isReachable from 'is-reachable'
 import {
   componentsFnInit
-} from './componentsFnInit.js'
+} from 'core/componentsFnInit.js'
 import {
   showCurrentPage
-} from './pageChange.js'
+} from 'core/pageChange.js'
 import {
   getTranslations
-} from './translationsGet.js'
+} from 'core/translationsGet.js'
+import * as declarations from 'core/declarations'
 window.scriptInit = async function () {
   window.getTranslations = getTranslations
   componentsFnInit()
@@ -37,7 +37,7 @@ window.scriptInit = async function () {
   meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
   document.getElementsByTagName('head')[0].appendChild(meta)
   var componentsRegex = `(${window.componentsDB.join('|')})`
-  var rawCode = $(`jste`).html()
+  var rawCode = $(`jste`).text()
   if (navigator.onLine) {
     let managerIsReachable = await isReachable('https://jste-manager.herokuapp.com/autoCorrect')
     if (managerIsReachable) {
@@ -45,10 +45,10 @@ window.scriptInit = async function () {
       rawCode = ''
       for (var i = 0; i < codeChunks.length; i++) {
         rawCode += '\n' + await $.ajax({
-          url: window.autoCorrectionAddress,
+          url: declarations.autoCorrectionAddress,
           method: 'POST',
           data: {
-            lang: document.langCode == 'arz' ? 'ar' : document.langCode,
+            lang: declarations.langCode == 'arz' ? 'ar' : declarations.langCode,
             input: codeChunks[i]
           }
         })
@@ -56,136 +56,136 @@ window.scriptInit = async function () {
     }
   }
   var codePrefix = 'jQuery(document).ready(\nfunction ($) {'
-  var addTranslations = window.wordsTranslationsDB.Words['add'][document.langCode]
+  var addTranslations = window.wordsTranslationsDB.Words['add'][declarations.langCode]
   for (const i of addTranslations) {
-    codePrefix += `\nvar ${i} = window.jsteComponentsFnStore;`
+    codePrefix += `\nvar ${i} = declarations.jsteComponentsFnStore;`
   }
   var code = rawCode
   code = XRegExp.replace(code, XRegExp(`((^ +| +$)|(^\\s*$(?:\\r\\n?|\\n)))`, 'gmi'), ``)
   code = XRegExp.replace(code, XRegExp(`^((?!^(?:\\d|[A-Z])\\. )(.*?)[^,|\\.|:])$\\s(?!^(?:\\d|[A-Z])\\. )`, 'gmi'), '$1 ')
   code = `${codePrefix}\n${code}\n});`
-  code = XRegExp.replace(code, XRegExp('&lt;&lt; ' + getTranslations('operator19') + ': ((?:(?:.*?&lt;&lt;.*?&gt;&gt;.*?)|.*?)+?) &gt;&gt;', 'gmi'), function (match, p1, offset, string) {
+  code = XRegExp.replace(code, XRegExp('<< ' + getTranslations('operator19') + ': ((?:(?:.*?<<.*?>>.*?)|.*?)+?) >>', 'gmi'), function (match, p1, offset, string) {
     return `NORMALTEXTPREFIX${btoa(p1.replace(XRegExp('\n', 'gmi'), ' '))}NORMALTEXTSUFFIX`
   })
-  if (document.langID == 3 || document.langID == 4) {
-    document.isRTL = true
-    $(`html`).attr(`dir`, `rtl`).attr(`document.langID`, `ar`)
+  if (declarations.langID == 3 || declarations.langID == 4) {
+    declarations.isRTL = true
+    $(`html`).attr(`dir`, `rtl`).attr(`declarations.langID`, `ar`)
   } else {
-    document.isRTL = false
+    declarations.isRTL = false
   }
   if (Modernizr.speechrecognition) {
-    if (document.langID == 0) {
+    if (declarations.langID == 0) {
       annyang.setLanguage(`en-GB`)
-    } else if (document.langID == 1) {
+    } else if (declarations.langID == 1) {
       annyang.setLanguage(`en-US`)
-    } else if (document.langID == 2) {
+    } else if (declarations.langID == 2) {
       annyang.setLanguage(`fr-FR`)
-    } else if (document.langID == 3) {
+    } else if (declarations.langID == 3) {
       annyang.setLanguage(`ar-AE`)
-    } else if (document.langID == 4) {
+    } else if (declarations.langID == 4) {
       annyang.setLanguage(`ar-EG`)
     }
   }
   var i = -1
   code = XRegExp.replace(code, XRegExp(eval(`\`${getTranslations('syntax1')}\``), 'gmin'), (match) => {
-    match.commands = match.commands.replace(XRegExp(`^[A-Z]\\. (.*?)\\.$\\n(?=^[A-Z]\\.)`, 'gmis'), '$1 &amp;&amp;&amp; ').replace(XRegExp(` &amp;&amp;&amp; [A-Z]\\. (.*?)\\.$`, 'gmi'), ' &amp;&amp;&amp; $1')
-    return (document.langID == 0 || document.langID == 1)
+    match.commands = match.commands.replace(XRegExp(`^[A-Z]\\. (.*?)\\.$\\n(?=^[A-Z]\\.)`, 'gmis'), '$1 &&& ').replace(XRegExp(` &&& [A-Z]\\. (.*?)\\.$`, 'gmi'), ' &&& $1')
+    return (declarations.langID == 0 || declarations.langID == 1)
       ? `add['${match.component}']({\nits name is ${match.name},\nits commands are ${match.commands}.`
-      : (document.langID == 2)
+      : (declarations.langID == 2)
         ? `ajouter['${match.component}']({\nsa nom est ${match.name},\nses commandes sont ${match.commands}.`
-        : (document.langID == 3)
+        : (declarations.langID == 3)
           ? `اضف['${match.component}']({\nالاسم الخاص بها ${match.name},\nالأوامر الخاصة بها ${match.commands}.`
-          : (document.langID == 4)
+          : (declarations.langID == 4)
             ? `ضيف['${match.component}']({\nالاسم بتاعها ${match.name},\nالأوامر بتاعتها ${match.commands}.` : ``
   })
   code = XRegExp.replace(code, XRegExp(eval(`\`${getTranslations('syntax2')}\``), 'gmin'), (match) => {
-    return (document.langID == 0 || document.langID == 1)
+    return (declarations.langID == 0 || declarations.langID == 1)
       ? `add['${match.component}']({\nits name is ${match.name},`
-      : (document.langID == 2)
+      : (declarations.langID == 2)
         ? `ajouter['${match.component}']({\nson nom est ${match.name},`
-        : (document.langID == 3)
+        : (declarations.langID == 3)
           ? `اضف['${match.component}']({\nالاسم الخاص به ${match.name},`
-          : (document.langID == 4)
+          : (declarations.langID == 4)
             ? `ضيف['${match.component}']({\nالاسم بتاعه ${match.name},` : ``
   })
   code = XRegExp.replace(code, XRegExp(eval(`\`${getTranslations('syntax3')}\``), 'gmin'), (match) => {
-    return ((document.langID == 0 || document.langID == 1) && match.attributes)
+    return ((declarations.langID == 0 || declarations.langID == 1) && match.attributes)
       ? `add.setup({\nits mode is ${match.mode},\nits attributes are ${match.attributes},`
-      : ((document.langID == 2) && match.attributes)
+      : ((declarations.langID == 2) && match.attributes)
         ? `ajouter.installation({\nson mode est ${match.mode},\nses attributs sont ${match.attributes},`
-        : ((document.langID == 3) && match.attributes)
+        : ((declarations.langID == 3) && match.attributes)
           ? `اضف.الإعدادات({\nالوضعية الخاصة به ${match.mode},\nالصفات الخاصة به ${match.attributes},`
-          : ((document.langID == 4) && match.attributes)
+          : ((declarations.langID == 4) && match.attributes)
             ? `ضيف.الإعدادات({\nالمود بتاعه ${match.mode},\nالصفات بتاعته ${match.attributes},`
-            : (document.langID == 0 || document.langID == 1)
+            : (declarations.langID == 0 || declarations.langID == 1)
               ? `add.setup({\nits mode is ${match.mode},`
-              : (document.langID == 2)
+              : (declarations.langID == 2)
                 ? `ajouter.installation({\nson mode est ${match.mode},`
-                : (document.langID == 3)
+                : (declarations.langID == 3)
                   ? `اضف.الإعدادات({\nالوضعية الخاصة به ${match.mode},`
-                  : (document.langID == 4)
+                  : (declarations.langID == 4)
                     ? `ضيف.الإعدادات({\nالمود بتاعه ${match.mode},` : ``
   })
   code = XRegExp.replace(code, XRegExp(eval(`\`${getTranslations('syntax4')}\``), 'gmin'), (match) => {
-    return ((document.langID == 0 || document.langID == 1) && match.attributes && match.withAttributes)
+    return ((declarations.langID == 0 || declarations.langID == 1) && match.attributes && match.withAttributes)
       ? `add['${match.component}']({\nits attributes are ${match.attributes} and with ${match.withAttributes},`
-      : ((document.langID == 0 || document.langID == 1) && match.attributes && match.withoutAttributes)
+      : ((declarations.langID == 0 || declarations.langID == 1) && match.attributes && match.withoutAttributes)
         ? `add['${match.component}']({\nits attributes are ${match.attributes} and without ${match.withoutAttributes},`
-        : ((document.langID == 0 || document.langID == 1) && match.withAttributes)
+        : ((declarations.langID == 0 || declarations.langID == 1) && match.withAttributes)
           ? `add['${match.component}']({\nits attributes are with ${match.withAttributes},`
-          : ((document.langID == 0 || document.langID == 1) && match.withoutAttributes)
+          : ((declarations.langID == 0 || declarations.langID == 1) && match.withoutAttributes)
             ? `add['${match.component}']({\nits attributes are without ${match.withoutAttributes},`
-            : ((document.langID == 0 || document.langID == 1) && match.attributes)
+            : ((declarations.langID == 0 || declarations.langID == 1) && match.attributes)
               ? `add['${match.component}']({\nits attributes are ${match.attributes},`
-              : ((document.langID == 2) && match.attributes)
+              : ((declarations.langID == 2) && match.attributes)
                 ? `ajouter['${match.component}']({\nses attributs sont ${match.attributes},`
-                : ((document.langID == 3) && match.attributes)
+                : ((declarations.langID == 3) && match.attributes)
                   ? `اضف['${match.component}']({\nالصفات الخاصة به ${match.attributes},`
-                  : ((document.langID == 4) && match.attributes)
+                  : ((declarations.langID == 4) && match.attributes)
                     ? `ضيف['${match.component}']({\nالصفات بتاعته ${match.attributes},`
-                    : (document.langID == 0 || document.langID == 1)
+                    : (declarations.langID == 0 || declarations.langID == 1)
                       ? `add['${match.component}']({`
-                      : (document.langID == 2)
+                      : (declarations.langID == 2)
                         ? `ajouter['${match.component}']({`
-                        : (document.langID == 3)
+                        : (declarations.langID == 3)
                           ? `اضف['${match.component}']({`
-                          : (document.langID == 4)
+                          : (declarations.langID == 4)
                             ? `ضيف['${match.component}']({` : ``
   })
   code = XRegExp.replace(code, XRegExp(eval(`\`${getTranslations('syntax5')}\``), 'gmin'), (match) => {
-    return (document.langID == 0 || document.langID == 1)
+    return (declarations.langID == 0 || declarations.langID == 1)
       ? `add['properties assignor']({\nits name is ${match.name},`
-      : (document.langID == 2)
+      : (declarations.langID == 2)
         ? `ajouter.cédant_des_propriétés({\nson nom est ${match.name},`
-        : (document.langID == 3)
+        : (declarations.langID == 3)
           ? `اضف.مضيف_الخواص({\nالاسم الخاص به ${match.name},`
-          : (document.langID == 4)
+          : (declarations.langID == 4)
             ? `ضيف.مضيف_الخواص({\nالاسم بتاعه ${match.name},` : ``
   })
   code = XRegExp.replace(code, XRegExp(eval(`\`${getTranslations('syntax6')}\``), 'gmin'), (match) => {
-    return (document.langID == 0 || document.langID == 1)
+    return (declarations.langID == 0 || declarations.langID == 1)
       ? `add.clone({\nits cloned element is ${match.clonedElement},\nits attributes are with commands,`
-      : (document.langID == 2)
+      : (declarations.langID == 2)
         ? `ajouter.clone({\nson élément clone est ${match.clonedElement},\nses attributs sont avec des commandes,`
-        : (document.langID == 3)
+        : (declarations.langID == 3)
           ? `اضف.استنساخ({\nالعنصر المستنسخ الخاص به ${match.clonedElement},\nالصفات الخاصة به بالأوامر,`
-          : (document.langID == 4)
+          : (declarations.langID == 4)
             ? `ضيف.استنساخ({\nالعنصر المستنسخ بتاعه ${match.clonedElement},\nالصفات بتاعته بالأوامر,` : ``
   })
   code = XRegExp.replace(code, XRegExp(eval(`\`${getTranslations('syntax7')}\``), 'gmin'), (match) => {
-    return (document.langID == 0 || document.langID == 1)
+    return (declarations.langID == 0 || declarations.langID == 1)
       ? `add.clone({\nits cloned element is ${match.clonedElement},`
-      : (document.langID == 2)
+      : (declarations.langID == 2)
         ? `ajouter.clone({\nson élément clone est ${match.clonedElement},`
-        : (document.langID == 3)
+        : (declarations.langID == 3)
           ? `اضف.استنساخ({\nالعنصر المستنسخ الخاص به ${match.clonedElement},`
-          : (document.langID == 4)
+          : (declarations.langID == 4)
             ? `ضيف.استنساخ({\nالعنصر المستنسخ بتاعه ${match.clonedElement},` : ``
   })
   code = XRegExp.replace(code, XRegExp(eval(`\`${getTranslations('syntax8')}\``), 'gmin'), (match) => {
-    if (match.property.punctuationAndArticleRemover().findBestMatch(wordsTranslationsDB.Words['text'][document.langCode]).rating > 0.9) {
+    if (match.property.punctuationAndArticleRemover().findBestMatch(wordsTranslationsDB.Words['text'][declarations.langCode]).rating > 0.9) {
       match.propertyValue = match.propertyValue.parseValue()
-    } else if (match.property.punctuationAndArticleRemover().findBestMatch(wordsTranslationsDB.Words['commands'][document.langCode]).rating < 0.7) {
+    } else if (match.property.punctuationAndArticleRemover().findBestMatch(wordsTranslationsDB.Words['commands'][declarations.langCode]).rating < 0.7) {
       match.propertyValue = match.propertyValue.parseValue(false)
     }
     return `"${match.property.punctuationAndArticleRemover()}": \`${match.propertyValue.replace(XRegExp('^(.*?)`(.*)$', 'gmi'), '$1\\`$2')}\`${(match.propertyValueSuffix == '.' ? '\n});' : ',')}`
@@ -207,7 +207,7 @@ window.scriptInit = async function () {
 $(function () {
   $(function () {
     setTimeout(function () {
-      if (document.langID != null) {
+      if (declarations.langID != null) {
         window.scriptInit()
       }
     }, 100)

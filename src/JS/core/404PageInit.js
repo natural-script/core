@@ -1,5 +1,6 @@
 import {changePage} from './pageChange'
 import {setURLParameter} from './URLParamsSet'
+import * as declarations from 'core/declarations'
 export const notFoundPageInit = function () {
   if ($(`page#page_not_found`).length == 0) {
     $('contents').append('<page id="page_not_found" style="display: none;"></page>')
@@ -24,7 +25,7 @@ export const notFoundPageInit = function () {
             <p class="p">4</p>
             <div class="page-ms">
                 <p class="page-msg"> Oops, the page you're looking for Disappeared </p>
-                <button class="go-back" onclick="changePage('${wordsTranslationsDB.Words.indexPage[document.langCode][0]}');setURLParameter('page', '${wordsTranslationsDB.Words.indexPage[document.langCode][0]}');">Go Back To The Home Page</button>
+                <button class="go-back" onclick="changePage('${wordsTranslationsDB.Words.indexPage[declarations.langCode][0]}');setURLParameter('page', '${wordsTranslationsDB.Words.indexPage[declarations.langCode][0]}');">Go Back To The Home Page</button>
             </div>
         </div>
     </div>`)

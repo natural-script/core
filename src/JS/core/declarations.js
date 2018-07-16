@@ -9,51 +9,52 @@
  * Date: 2018-05-01
  */
 console.log(`\n %c NaturalScript ${NS_Version} ${window.isLive ? '( Live Edition )' : ''} %c https://project-jste.github.io \n`, 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
-window.jsteVariablesStore = {}
-window.jsteFunctionsStore = {}
-window.jsteStylesStore = {}
-window.jsteComponentsFnStore = {}
-var code = $('jste').html()
-var detectedLang = detectLanguage(code)
+export let jsteVariablesStore = {};
+export let jsteFunctionsStore = {};
+export let jsteStylesStore = {};
+export let jsteComponentsFnStore = {};
+export let langID, langCode, deviceForm, childModeStatus, nudityDetectionStatus, localAddress;
+let code = $('jste').text();
+let detectedLang = detectLanguage(code)
 if (detectedLang == 'English') {
   if (code.includes('colour') || code.includes('centre')) {
-    document.langID = 0
+    langID = 0
   } else {
-    document.langID = 1
+    langID = 1
   }
-  document.langCode = 'en'
+  langCode = 'en'
 } else if (detectedLang == 'French') {
-  document.langID = 2
-  document.langCode = 'fr'
+  langID = 2
+  langCode = 'fr'
 } else if (detectedLang == 'Arabic') {
   if (code.includes('بتاعه') || code.includes('بتاعها') || code.includes('بتاعته') || code.includes('بتاعتها')) {
-    document.langID = 4
-    document.langCode = 'arz'
+    langID = 4
+      .langCode = 'arz'
   } else {
-    document.langID = 3
-    document.langCode = 'ar'
+    langID = 3
+    langCode = 'ar'
   }
 } else if (detectedLang == 'Japanese') {
-  document.langID = 5
+  langID = 5
 }
 if (!window.isLive) {
   if (navigator.platform == 'Win32') {
-    window.localAddress = 'localhost'
+    localAddress = 'localhost'
   } else {
-    window.localAddress = '0.0.0.0'
+    localAddress = '0.0.0.0'
   }
 }
-fetch(window.isLive ? 'https://jste-manager.herokuapp.com/deviceForm' : `http://${window.localAddress}:5050/deviceForm`)
+fetch(window.isLive ? 'https://jste-manager.herokuapp.com/deviceForm' : `http://${localAddress}:5050/deviceForm`)
   .then(res => res.text())
-  .then(data => window.deviceForm = data)
+  .then(data => deviceForm = data)
 if (!window.isLive) {
-  fetch(`http://${window.localAddress}:5050/childModeStatus`)
+  fetch(`http://${localAddress}:5050/childModeStatus`)
     .then(res => res.text())
-    .then(data => window.childModeStatus = data)
-  fetch(`http://${window.localAddress}:5050/nudityDetectionStatus`)
+    .then(data => childModeStatus = data)
+  fetch(`http://${localAddress}:5050/nudityDetectionStatus`)
     .then(res => res.text())
-    .then(data => window.nudityDetectionStatus = data)
+    .then(data => nudityDetectionStatus = data)
 }
-document.isRTL = false
-window.corsPolicy = window.isLive ? 'https://jste-cors-proxy.herokuapp.com/' : `http://${window.localAddress}:6060/`
-window.autoCorrectionAddress = window.isLive ? 'https://jste-manager.herokuapp.com/autoCorrect' : `http://${window.localAddress}:5050/autoCorrect`
+export let isRTL = false
+export const corsPolicy = window.isLive ? 'https://jste-cors-proxy.herokuapp.com/' : `http://${localAddress}:6060/`
+export const autoCorrectionAddress = window.isLive ? 'https://jste-manager.herokuapp.com/autoCorrect' : `http://${localAddress}:5050/autoCorrect`

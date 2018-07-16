@@ -12,16 +12,17 @@ import {fadeIn, fadeOut} from './fadeInOut'
 import {getTranslations} from 'core/translationsGet'
 import {getAllUrlParams} from './URLParamsGet'
 import {setURLParameter} from './URLParamsSet'
+import * as declarations from 'core/declarations'
 function getLocation () {
   return location.pathname + location.search
 }
 export const showCurrentPage = function () {
-  var currentPageRaw = ($(`page#${decodeURIComponent(getAllUrlParams().page)}`).length > 0 || getAllUrlParams().page == undefined) ? (getAllUrlParams().page || wordsTranslationsDB.Words['indexPage'][document.langCode][0]) : 'page_not_found'
+  var currentPageRaw = ($(`page#${decodeURIComponent(getAllUrlParams().page)}`).length > 0 || getAllUrlParams().page == undefined) ? (getAllUrlParams().page || wordsTranslationsDB.Words['indexPage'][declarations.langCode][0]) : 'page_not_found'
   if (currentPageRaw == 'page_not_found') {
     setURLParameter('page', 'page_not_found')
   }
   if (XRegExp('' + getTranslations('indexPage') + '', 'gmi').test(currentPageRaw)) {
-    setURLParameter('page', wordsTranslationsDB.Words['indexPage'][document.langCode][0])
+    setURLParameter('page', wordsTranslationsDB.Words['indexPage'][declarations.langCode][0])
   }
   var currentPage = decodeURIComponent(currentPageRaw)
   setTimeout(() => $('#' + currentPage + '').fadeIn(500), 1)
@@ -38,7 +39,7 @@ export const changePage = function (pageName) {
   if ($(`page#${pageName}`).length == 0) {
     pageName = 'page_not_found'
   }
-  var currentPage = getAllUrlParams().page || wordsTranslationsDB.Words['indexPage'][document.langCode][0]
+  var currentPage = getAllUrlParams().page || wordsTranslationsDB.Words['indexPage'][declarations.langCode][0]
   if (decodeURIComponent(currentPage) != pageName) {
     fadeOut(decodeURIComponent(currentPage))
     fadeIn(pageName, 'inline-block')

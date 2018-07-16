@@ -15,20 +15,21 @@ import {elementSettingsAnalyze} from 'core/elementSettingsAnalyze'
 import {propSet} from 'core/propSet'
 import {getTranslations} from 'core/translationsGet'
 import componentTemplate from './loader.pug'
+import * as declarations from 'core/declarations'
 export default function (settings) {
   settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
   var name = elementSettingsAnalyze(settings, 'name')
   var out
-  if (getSafe(() => elementSettingsAnalyze(settings, 'type').findBestMatch(window.wordsTranslationsDB.Words['bar'][document.langCode]).rating > 0.8)) {
+  if (getSafe(() => elementSettingsAnalyze(settings, 'type').findBestMatch(window.wordsTranslationsDB.Words['bar'][declarations.langCode]).rating > 0.8)) {
     out = `<paper-progress id="${name}"></paper-progress>`
-  } else if (getSafe(() => elementSettingsAnalyze(settings, 'type') == undefined || elementSettingsAnalyze(settings, 'type').findBestMatch(window.wordsTranslationsDB.Words['spinner'][document.langCode]).rating > 0.8)) {
+  } else if (getSafe(() => elementSettingsAnalyze(settings, 'type') == undefined || elementSettingsAnalyze(settings, 'type').findBestMatch(window.wordsTranslationsDB.Words['spinner'][declarations.langCode]).rating > 0.8)) {
     out = `<paper-spinner id="${name}"></paper-spinner>`
   }
   appendComponent(elementSettingsAnalyze(settings, 'container'), out)
   if (elementSettingsAnalyze(settings, 'attributes')) {
     var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
     for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['loading'][document.langCode]).rating > 0.8) {
+      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['loading'][declarations.langCode]).rating > 0.8) {
         $(`#${name}`).attr('active', '')
       }
     }

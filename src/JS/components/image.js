@@ -14,6 +14,7 @@ import {
 import {
   verifyBLOB
 } from 'core/BLOBGet.js'
+import analyseImage from 'core/mediaCVAnalysis'
 import {
   setBG
 } from 'core/colors.js'
@@ -55,8 +56,9 @@ import {
 } from 'core/uniqueID.js'
 import componentTemplate from './image.pug'
 import photoIcon from '../../Media/img/icons/photoA.svg'
+import * as declarations from 'core/declarations'
 
-function setImgProp (name, settings, isTitled) {
+function setImgProp(name, settings, isTitled) {
   if (isTitled) {
     $(`#${name}`).prop('isTitled', true)
   } else {
@@ -110,17 +112,17 @@ export default function (settings) {
   var URLID = encodeURIComponent(source).replace(/\./g, '%2E')
   var subContainerStartTag = '<paper-material elevation="2" style="position: absolute;">'
   var subContainerEndTag = '</paper-material>'
-  window.analyseImage(name, source)
+  analyseImage(name, source)
   if (elementSettingsAnalyze(settings, 'attributes')) {
     var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
     for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['transparent'][document.langCode]).rating > 0.8) {
+      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['transparent'][declarations.langCode]).rating > 0.8) {
         subContainerStartTag = '<div style="position: absolute;">'
         subContainerEndTag = '</div>'
       }
     }
   }
-  if (getSafe(() => elementSettingsAnalyze(settings, 'type').findBestMatch(window.wordsTranslationsDB.Words['icon'][document.langCode]).rating > 0.8)) {
+  if (getSafe(() => elementSettingsAnalyze(settings, 'type').findBestMatch(window.wordsTranslationsDB.Words['icon'][declarations.langCode]).rating > 0.8)) {
     getFileSize(source, function (size) {
       if (size.split(' kb')[0] < 100) {
         isIcon = true

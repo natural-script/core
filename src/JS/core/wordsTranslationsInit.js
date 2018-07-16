@@ -9,6 +9,7 @@
  * Date: 2018-02-15
  */
 import translations from 'translations/dictionary.json'
+import * as declarations from 'core/declarations'
 $(function () {
   window.wordsTranslationsDB = translations
   window.componentsDB = []
@@ -16,17 +17,17 @@ $(function () {
   window.conditionsDB = []
   for (const wordID in wordsTranslationsDB.Words) {
     if (wordsTranslationsDB.Words[wordID].type == 'component') {
-      wordsTranslationsDB.Words[wordID][document.langCode].forEach(element => {
+      wordsTranslationsDB.Words[wordID][declarations.langCode].forEach(element => {
         componentsDB.push(element)
       })
     } else if (wordsTranslationsDB.Words[wordID].type == 'attribute') {
-      wordsTranslationsDB.Words[wordID][document.langCode].forEach(element => {
+      wordsTranslationsDB.Words[wordID][declarations.langCode].forEach(element => {
         attributesDB.push(element)
       })
     }
   }
   for (const conditionID in wordsTranslationsDB.Conditions) {
-    wordsTranslationsDB.Conditions[conditionID][document.langCode].forEach(element => {
+    wordsTranslationsDB.Conditions[conditionID][declarations.langCode].forEach(element => {
       conditionsDB.push(element.replace(/\?<.*?>/gi, ''))
     })
   }
