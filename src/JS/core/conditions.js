@@ -14,14 +14,13 @@ var conditionsRaw = {
   'condition8': 'WifiWizard.isWifiEnabled(win, fail) == true',
   'condition9': 'WifiWizard.isWifiEnabled(win, fail) == false'
 }
-export const evaluateCondition = async function (command) {
+export const evaluateCondition = async function (statement) {
   let imports = [
     ['getTranslations', 'getTranslations', 'translationsGet']
   ]
   const conditionsRegex = `(${window.conditionsDB.join('|')})`
   const conditionRegexPrefix = `(?<=^|( (\\|\\||&&) ))`
   const conditionRegexSuffix = `(?=( (\\|\\||&&) )|$)`
-  let statement = command.split(XRegExp(` ${getTranslations('inTheCaseThat')} (?=${conditionsRegex})`, 'gmin'))[1]
   let conditions = statement.split(XRegExp(` &&& (?=${conditionsRegex})`, 'gmin'))
   let subConditions = []
   for (let subCondition of conditions) {

@@ -1,0 +1,25 @@
+/*!
+ * English Commands Utilities RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-08-12
+ */
+
++ In the case that *
+- id: CU1 ==> lang: en ==> conditions: <star1>
+
++ Else in the case that *
+- id: CU2 ==> lang: en ==> conditions: <star1>
+
++ Else
+- id: CU3 ==> lang: en
+
++ After a period of *
+- id: CU4 ==> lang: en ==> period: <star1>
+
++ Every a period of *
+- id: CU5 ==> lang: en ==> period: <star1>

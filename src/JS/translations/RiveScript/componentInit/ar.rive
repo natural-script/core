@@ -1,0 +1,34 @@
+/*!
+ * Standard Arabic Components Initializers RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-08-12
+ */
+
++ عرف الدالة * بالأوامر التالية
+- id: CI1 ==> lang: ar ==> name: <star1>
+
++ عرف الشكل * بالخواص التالية
+- id: CI2 ==> lang: ar ==> name: <star1>
+
++ هيئ هذا (الموقع|التطبيق) [(.*?)] بالخواص التالية
+- id: CI3 ==> lang: ar ==> mode: <star1> ==> attributes: <star2>
+
++ اضف (<bot components>) [(.*?)] بالخواص التالية
+- id: CI4 ==> lang: ar ==> name: <star2> ==> attributes: <star1> ==> withAttributes: <star3> ==> withoutAttributes: <star4>
+
++ اضف هذه الخواص التالية إلى العنصر *
+- id: CI5 ==> lang: ar ==> name: <star1>
+
++ استنسخ العنصر * بأوامره بالخواص التالية
+- id: CI6 ==> lang: ar ==> name: <star1>
+
++ استنسخ العنصر * بالخواص دى
+- id: CI7 ==> lang: ar ==> name: <star1>
+
++ * (الخاص به|الخاصة به|الخاص بها|الخاصة بها) *
+- id: CI8 ==> lang: ar ==> property: <star1> ==> propertyValue: <star3>

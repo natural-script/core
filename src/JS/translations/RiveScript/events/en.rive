@@ -1,0 +1,67 @@
+/*!
+ * English Events RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-08-12
+ */
+
++ When the element * has been clicked
+- id: E1 ==> lang: en ==> target: <star1>
+
++ When the mouse pointer has been moved over the element *
+- id: E2 ==> lang: en ==> target: <star1>
+
++ When the mouse pointer has been moved away from the element *
+- id: E3 ==> lang: en ==> target: <star1>
+
++ When the mouse pointer is being moved out of the element *
+- id: E4 ==> lang: en ==> target: <star1>
+
++ When the mouse pointer is being moved over the element *
+- id: E5 ==> lang: en ==> target: <star1>
+
++ When the element * is no longer clicked
+- id: E6 ==> lang: en ==> target: <star1>
+
++ When the element * has been double clicked
+- id: E7 ==> lang: en ==> target: <star1>
+
++ When the element * has been right clicked
+- id: E8 ==> lang: en ==> target: <star1>
+
++ When a key has been pressed while focusing the element *
+- id: E9 ==> lang: en ==> target: <star1>
+
++ When a key is being pressed while focusing the element *
+- id: E10 ==> lang: en ==> target: <star1>
+
++ When the contents of the element * have been modified
+- id: E11 ==> lang: en ==> target: <star1>
+
++ When the element * has been focused
+- id: E12 ==> lang: en ==> target: <star1>
+
++ When the element * is being focused
+- id: E13 ==> lang: en ==> target: <star1>
+
++ When the element * is no longer focused
+- id: E14 ==> lang: en ==> target: <star1>
+
++ When the data of the form * has been sent
+- id: E15 ==> lang: en ==> target: <star1>
+
++ When the element * has been scrolled
+- id: E16 ==> lang: en ==> target: <star1>
+
++ When the user said: *
+- id: E17 ==> lang: en ==> hotWord: <star1>
+
++ When the element * becomes in the viewport
+- id: E18 ==> lang: en ==> target: <star1>
+
++ When the element * becomes out of the viewport
+- id: E19 ==> lang: en ==> target: <star1>

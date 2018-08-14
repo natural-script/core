@@ -1,0 +1,67 @@
+/*!
+ * Standard Arabic Events RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-08-12
+ */
+
++ إذا نقر على العنصر *
+- id: E1 ==> lang: ar ==> target: <star1>
+
++ إذا مر بالعنصر * مؤشر الفأرة
+- id: E2 ==> lang: ar ==> target: <star1>
+
++ إذا خرج مؤشر الفأرة منه
+- id: E3 ==> lang: ar ==> target: <star1>
+
++ إذا كان مؤشر الفأرة يمر خارجه
+- id: E4 ==> lang: ar ==> target: <star1>
+
++ إذا كان مؤشر الفأرة يمر بالعنصر *
+- id: E5 ==> lang: ar ==> target: <star1>
+
++ إذا تم الإنتهاء من النقر على العنصر *
+- id: E6 ==> lang: ar ==> target: <star1>
+
++ إذا نقر على العنصر * نقرتين مزدوجتين
+- id: E7 ==> lang: ar ==> target: <star1>
+
++ إذا نقر على العنصر * بالزر الأيمن
+- id: E8 ==> lang: ar ==> target: <star1>
+
++ إذا ضغط على زر اثناء نشاط العنصر *
+- id: E9 ==> lang: ar ==> target: <star1>
+
++ إذا كان هناك زر يتم الضغط عليه اثناء نشاط العنصر *
+- id: E10 ==> lang: ar ==> target: <star1>
+
++ إذا تغيرت محتويات العنصر *
+- id: E11 ==> lang: ar ==> target: <star1>
+
++ إن أصبح العنصر * نشطا
+- id: E12 ==> lang: ar ==> target: <star1>
+
++ إذا كان العنصر * نشطا
+- id: E13 ==> lang: ar ==> target: <star1>
+
++ إن أصبح العنصر * خاملا
+- id: E14 ==> lang: ar ==> target: <star1>
+
++ إذا ارسلت بيانات الإستمارة *
+- id: E15 ==> lang: ar ==> target: <star1>
+
++ إن تم تمرير العنصر *
+- id: E16 ==> lang: ar ==> target: <star1>
+
++ إذا قال المستخدم: *
+- id: E17 ==> lang: ar ==> hotWord: <star1>
+
++ عندما يصبح العنصر * في إطار العرض
+- id: E18 ==> lang: ar ==> target: <star1>
+
++ عندما يصبح العنصر * خارج إطار العرض
+- id: E19 ==> lang: ar ==> target: <star1>

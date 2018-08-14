@@ -5,9 +5,12 @@ start
     { return l; }
 
 line
-  = SAMEDENT line:(!EOL c:. { return c; })+ EOL?
+  = (SAMEDENT '*' ([ ]+)? line:(!("\n" &(SAMEDENT'*'/(''!SAMEDENT))) c:. { return c; })+ ("\n" &(SAMEDENT'*'/(''!SAMEDENT)))?
     children:( INDENT c:line* DEDENT { return c; })?
-    { var o = {}; line = line.join("").split(/[\s]+/).join(" "); o[line] = children; return children ? o : line; }
+    { var o = {}; line = line.join("").split(/[\s]+/).join(" "); o[line] = children; return children ? o : line; }) 
+    /(SAMEDENT line:(!EOL c:. { return c; })+ EOL?
+    children:( INDENT c:line* DEDENT { return c; })?
+    { var o = {}; line = line.join("").split(/[\s]+/).join(" "); o[line] = children; return children ? o : line; })
 
 EOL
   = "\.\n" / "\,\n" / "\:\n"

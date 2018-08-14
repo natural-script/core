@@ -1,0 +1,34 @@
+/*!
+ * English Components Initializers RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-08-12
+ */
+
++ define the function * with the following commands
+- id: CI1 ==> lang: en ==> name: <star1>
+
++ define the style * with the following properties
+- id: CI2 ==> lang: en ==> name: <star1>
+
++ configure this [(.*?)] (site|app) with the following properties
+- id: CI3 ==> lang: en ==> mode: <star2> ==> attributes: <star1>
+
++ add [a|an] [(.*?)] (<bot components>) [(with *|without *) (*)] with the following properties
+- id: CI4 ==> lang: en ==> component: <star2> ==> attributes: <star1> ==> withAttributes: <star3> <star5> ==> withoutAttributes: <star4> <star5>
+
++ assign the following properties to the element *
+- id: CI5 ==> lang: en ==> name: <star1>
+
++ clone the element * including its commands with the following properties
+- id: CI6 ==> lang: en ==> name: <star1>
+
++ clone the element * with the following properties
+- id: CI7 ==> lang: en ==> name: <star1>
+
++ its * (is|are) *
+- id: CI8 ==> lang: en ==> property: <star1> ==> propertyValue: <star3>

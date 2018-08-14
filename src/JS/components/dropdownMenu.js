@@ -12,9 +12,6 @@ import {
   inheritStyle
 } from 'core/styleInheritor.js'
 import {
-  execute
-} from 'core/commandsExec.js'
-import {
   elementSettingsAnalyze
 } from 'core/elementSettingsAnalyze.js'
 import {
@@ -61,7 +58,7 @@ export default function (settings) {
     }
   })
   ro.observe($(`#${name}`).parent().find(`*[slot="dropdown-trigger"]`).children().get(0))
-  if (settings[wordsTranslationsDB.Words['commands'][declarations.langCode][0] + 0]) {
+/*   if (settings[wordsTranslationsDB.Words['commands'][declarations.langCode][0] + 0]) {
     var commandsNo = 0
     var preCommands
     var itemName
@@ -76,6 +73,6 @@ export default function (settings) {
       delete settings[wordsTranslationsDB.Words['commands'][declarations.langCode][0] + i]
       execute(itemName, pureCommands)
     }
-  }
+  } */
   propSet(name, settings)
 }

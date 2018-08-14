@@ -9,7 +9,6 @@
  * Date: 2018-04-28
  */
 import {inheritStyle} from 'core/styleInheritor'
-import {execute} from 'core/commandsExec'
 import {elementSettingsAnalyze} from 'core/elementSettingsAnalyze'
 import componentTemplate from './page.pug'
 export default function (settings) {
@@ -17,7 +16,4 @@ export default function (settings) {
   var name = elementSettingsAnalyze(settings, 'name')
   let componentProp = {name}
   $('contents').append(componentTemplate(componentProp))
-  if (elementSettingsAnalyze(settings, 'commands')) {
-    execute(name, elementSettingsAnalyze(settings, 'commands'))
-  }
 }

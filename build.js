@@ -41,7 +41,7 @@ async function startBuild() {
   );
   console.log(" Minifying the BLOB DB Manager file ");
   shell.exec(
-    "html-minifier ../utils/db-manager.html --remove-comments --minify-css --minify-js" +
+    "npx html-minifier ../utils/db-manager.html --remove-comments --minify-css --minify-js" +
       " --remove-comments --use-short-doctype > db-manager.min.html"
   );
   buildInfo.dbManager.minified.size = fs.statSync("db-manager.min.html").size;

@@ -18,9 +18,6 @@ import {
   inheritStyle
 } from 'core/styleInheritor.js'
 import {
-  execute
-} from 'core/commandsExec.js'
-import {
   getSafe
 } from 'core/getSafe.js'
 import {

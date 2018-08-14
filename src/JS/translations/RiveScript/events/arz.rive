@@ -1,0 +1,67 @@
+/*!
+ * Egyptian Arabic Events RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-08-12
+ */
+
++ لما يضغط على العنصر *
+- id: E1 ==> lang: arz ==> target: <star1>
+
++ لما الماوس يعدى من فوق العنصر *
+- id: E2 ==> lang: arz ==> target: <star1>
+
++ لما الماوس يطلع من العنصر *
+- id: E3 ==> lang: arz ==> target: <star1>
+
++ لما الماوس يكون بيمشى برا العنصر *
+- id: E4 ==> lang: arz ==> target: <star1>
+
++ لما الماوس يكون بيمشى فوق العنصر *
+- id: E5 ==> lang: arz ==> target: <star1>
+
++ لما يخلص الدوس على العنصر *
+- id: E6 ==> lang: arz ==> target: <star1>
+
++ لما يضغط على العنصر * دبل كليك
+- id: E7 ==> lang: arz ==> target: <star1>
+
++ لما يضغط على العنصر * كليك لمين
+- id: E8 ==> lang: arz ==> target: <star1>
+
++ لو زرار اضغط أثناء نشاط العنصر *
+- id: E9 ==> lang: arz ==> target: <star1>
+
++ لما زرار يكون بيضغط أثناء نشاط العنصر *
+- id: E10 ==> lang: arz ==> target: <star1>
+
++ لما محتويات العنصر * تتغير
+- id: E11 ==> lang: arz ==> target: <star1>
+
++ لما العنصر * يبقى نشط
+- id: E12 ==> lang: arz ==> target: <star1>
+
++ لما العنصر * يكون نشط
+- id: E13 ==> lang: arz ==> target: <star1>
+
++ لما العنصر * ينام
+- id: E14 ==> lang: arz ==> target: <star1>
+
++ لما الداتا بتاعت الفورم * تتبعت
+- id: E15 ==> lang: arz ==> target: <star1>
+
++ لما العنصر * يتمرر
+- id: E16 ==> lang: arz ==> target: <star1>
+
++ لو المستخدم قال: *
+- id: E17 ==> lang: arz ==> hotWord: <star1>
+
++ لما العنصر * يبقى جوة إطار العرض
+- id: E18 ==> lang: arz ==> target: <star1>
+
++ لما العنصر * يبقى برة إطار العرض
+- id: E19 ==> lang: arz ==> target: <star1>

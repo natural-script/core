@@ -1,8 +1,9 @@
 import {verifyBLOB} from 'core/BLOBGet'
 import {showVideoA} from 'core/vidFn'
 import * as declarations from 'core/declarations'
+import filesize from 'filesize/lib/filesize.es6'
 export const getVideoInfo = function (name, provider, videoID, url, title) {
-  fetch(window.isLive ? 'https://jste-manager.herokuapp.com/getVideoInfo' : `http://${declarations.localAddress}:5050/getVideoInfo`, {
+  fetch('https://jste-manager.herokuapp.com/getVideoInfo', {
     method: 'POST',
     headers: new Headers({
       'Content-Type': 'application/json'
@@ -10,15 +11,20 @@ export const getVideoInfo = function (name, provider, videoID, url, title) {
     body: JSON.stringify({
       'url': url
     })
-  }).then(res => res.text())
+  }).then(res => res.json())
     .then(function (data) {
-      var availableQualities = $.parseJSON(data).qualities
-      if (availableQualities) {
-        for (var i = 0; i < availableQualities.length; i++) {
-          var videoQuality = availableQualities[i].width
-          var videoURL = availableQualities[i].url
-          var videoSize = availableQualities[i].size
-          var fps = parseFloat(availableQualities[i].fps)
+      let availableQualities = [];
+      for (const format of data.info.formats) {
+        if (format.ext == 'mp4') {
+          availableQualities.push(format);
+        }
+      }
+      if (availableQualities.length > 0) {
+        for (const quality of availableQualities) {
+          var videoQuality = quality.height
+          var videoURL = quality.url
+          var videoSize = filesize(quality.filesize)
+          var fps = parseFloat(quality.fps)
           var videoURLID = encodeURIComponent(url + videoQuality).replace(/\./g, '%2E')
           if (availableQualities.length == 1) {
             window.verifyVideoURL(name, videoURL, title, videoURLID, fps)
@@ -27,12 +33,12 @@ export const getVideoInfo = function (name, provider, videoID, url, title) {
             .addClass('col')
             .attr('resolution', videoQuality)
             .attr('vidurl', videoURL)
-            .text(videoQuality + 'p')
-            .attr('onclick', 'window.verifyVideoURL(\"' + name + '\", \"' + videoURL + '\", \"' + title + '\", \"' + videoURLID + '", \"' + fps + '\"); \
-                        window.jQuery(\'#video_' + name + '_mainButton\').attr(\'onclick\', \'showVideoA(\"' + name + '\", \"' + videoURL + '\", \"' + title + '\", \"' + videoURLID + '", \"' + fps + '\");\') \
-                        .html(\'<i class="material-icons">play_arrow</i> ' + videoSize + '\');')
-            .appendTo('#' + name + '_resolutionsBtnConatiner')
-          $('#' + name + '_resolutionsBtnConatiner').show()
+            .text(`${videoQuality}p`)
+            .attr('onclick', `window.verifyVideoURL("${name}", "${videoURL}", "${title}", "${videoURLID}", "${fps}"); 
+                        document.getElementById('video_${name}_mainButton').setAttribute('onclick', 'showVideoA("${name}", "${videoURL}", "${title}", "${videoURLID}", "${fps}");');
+                        document.getElementById('video_${name}_mainButton').innerHTML = '<i class="material-icons">play_arrow</i> ${videoSize} ';`)
+            .appendTo(`#${name}_resolutionsBtnConatiner`)
+          $(`#${name}_resolutionsBtnConatiner`).show()
         }
       }
     })

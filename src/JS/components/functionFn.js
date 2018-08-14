@@ -9,11 +9,10 @@
  * Date: 2018-04-19
  */
 import {inheritStyle} from 'core/styleInheritor'
-import {execute} from 'core/commandsExec'
 import {elementSettingsAnalyze} from 'core/elementSettingsAnalyze'
 export default function (settings) {
   settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
-  if (elementSettingsAnalyze(settings, 'commands')) {
+/*   if (elementSettingsAnalyze(settings, 'commands')) {
     execute(null, elementSettingsAnalyze(settings, 'commands'), true, elementSettingsAnalyze(settings, 'name'))
-  }
+  } */
 }

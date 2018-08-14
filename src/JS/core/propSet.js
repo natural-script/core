@@ -16,9 +16,6 @@ import {
   setBG
 } from 'core/colors.js'
 import {
-  execute
-} from 'core/commandsExec.js'
-import {
   elementSettingsAnalyze
 } from 'core/elementSettingsAnalyze.js'
 import {
@@ -54,9 +51,6 @@ export const propSet = function (elementName, properties, param1, param2, param3
   }
   if (elementSettingsAnalyze(properties, 'distanceFromRight')) {
     setDistance(elementName, 'right', elementSettingsAnalyze(properties, 'distanceFromRight'))
-  }
-  if (elementSettingsAnalyze(properties, 'commands')) {
-    execute(elementName, elementSettingsAnalyze(properties, 'commands'))
   }
   if (elementSettingsAnalyze(properties, 'width')) {
     setDimension(elementName, 'width', elementSettingsAnalyze(properties, 'width'))

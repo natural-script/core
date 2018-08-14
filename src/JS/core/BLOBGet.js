@@ -123,7 +123,7 @@ if (window.isLive) {
             var reader = new window.FileReader()
             reader.readAsDataURL(BLOBObject)
             reader.onloadend = function () {
-              dataURL = reader.result
+              const dataURL = reader.result
               $.post('http://' + declarations.localAddress + ':5050/insertDataURL', {
                 URLID: URLID,
                 dataURL: dataURL

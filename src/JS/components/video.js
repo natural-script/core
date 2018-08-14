@@ -24,9 +24,6 @@ import {
   appendComponent
 } from 'core/componentAppend.js'
 import {
-  execute
-} from 'core/commandsExec.js'
-import {
   elementSettingsAnalyze
 } from 'core/elementSettingsAnalyze.js'
 import {
@@ -58,10 +55,17 @@ import componentTemplate from './video.pug'
 import * as declarations from 'core/declarations'
 export default function (settings) {
   settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
-  var name = elementSettingsAnalyze(settings, 'name')
-  var source = elementSettingsAnalyze(settings, 'source')
-  var title = elementSettingsAnalyze(settings, 'title')
-  var URLID = encodeURIComponent(source).replace(/\./g, '%2E')
+  let name = elementSettingsAnalyze(settings, 'name')
+  let source = elementSettingsAnalyze(settings, 'source')
+  let title = elementSettingsAnalyze(settings, 'title')
+  let URLID = encodeURIComponent(source).replace(/\./g, '%2E')
+  let componentProp = {
+    name,
+    source,
+    title,
+    URLID,
+    camcorderIcon
+  }
   if (elementSettingsAnalyze(settings, 'attributes')) {
     var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
     for (var i = 0; i < propertiesArray.length; i++) {
@@ -69,13 +73,6 @@ export default function (settings) {
         componentProp.noShadow = true
       }
     }
-  }
-  let componentProp = {
-    name,
-    source,
-    title,
-    URLID,
-    camcorderIcon
   }
   appendComponent(elementSettingsAnalyze(settings, 'container'), componentTemplate(componentProp))
   $(`#${name}`).prop('isTitled', false)
@@ -140,9 +137,6 @@ export default function (settings) {
   }
   if (elementSettingsAnalyze(settings, 'distanceFromRight')) {
     setDistance(`name${_container}`, 'right', elementSettingsAnalyze(settings, 'distanceFromRight'))
-  }
-  if (elementSettingsAnalyze(settings, 'commands')) {
-    execute(name, elementSettingsAnalyze(settings, 'commands'))
   }
   if (elementSettingsAnalyze(settings, 'animation')) {
     setAnimation(`name${_container}`, elementSettingsAnalyze(settings, 'animation'))

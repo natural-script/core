@@ -35,7 +35,7 @@ export default function (settings) {
     var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
     for (var i = 0; i < propertiesArray.length; i++) {
       if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withCommands'][declarations.langCode]).rating > 0.8) {
-        out = $(`#${clonedElement}`).clone(true).attr('id', name)
+        out = $(`#${clonedElement}`).clone(true, true).attr('id', name)
       }
     }
   }

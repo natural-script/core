@@ -50,6 +50,7 @@ export const showImageA = function (name, URLID, source) {
     })
   }
 }
+window.showImageA = showImageA
 
 export const showImageB = function (name, URLID, source) {
   if (window.isLive) {

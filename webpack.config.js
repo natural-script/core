@@ -17,6 +17,7 @@ module.exports = (env, argv) => {
         core: path.resolve(__dirname, "./src/JS/core"),
         FX: path.resolve(__dirname, "./src/JS/FX"),
         measurements: path.resolve(__dirname, "./src/JS/measurements"),
+        parsers: path.resolve(__dirname, "./src/JS/parsers"),
         providers: path.resolve(__dirname, "./src/JS/providers"),
         thirdParty: path.resolve(__dirname, "./src/JS/thirdParty"),
         translations: path.resolve(__dirname, "./src/JS/translations"),
@@ -25,10 +26,12 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new NpmInstallPlugin(),
-      // new BundleAnalyzerPlugin(),
-      new UglifyJsPlugin(),
-      new CompressionPlugin(),
-      new OptimizeCssAssetsPlugin(),
+      new BundleAnalyzerPlugin({
+        analyzerMode: 'static'
+      }),
+      // new UglifyJsPlugin(),
+      // new CompressionPlugin(),
+      // new OptimizeCssAssetsPlugin(),
       new webpack.ProvidePlugin({
         $: 'jquery',
         jQuery: 'jquery',

@@ -15,9 +15,6 @@ import {
   appendComponent
 } from 'core/componentAppend.js'
 import {
-  execute
-} from 'core/commandsExec.js'
-import {
   getSafe
 } from 'core/getSafe.js'
 import {

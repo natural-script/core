@@ -1,0 +1,67 @@
+/*!
+ * French Events RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-08-12
+ */
+
++ Quand l'élément * a été cliqué
+- id: E1 ==> lang: fr ==> target: <star1>
+
++ Lorsque le pointeur de souris a été déplacé au dessus l'élément *
+- id: E2 ==> lang: fr ==> target: <star1>
+
++ Lorsque le pointeur de la souris s'a été éloigné de l'élément *
+- id: E3 ==> lang: fr ==> target: <star1>
+
++ Lorsque le pointeur de la souris se est en train d'être déplace hors de l'élément *
+- id: E4 ==> lang: fr ==> target: <star1>
+
++ Lorsque le pointeur de la souris se déplace au dessus l'élément *
+- id: E5 ==> lang: fr ==> target: <star1>
+
++ Quand l'élément * n'est plus fait cliqué
+- id: E6 ==> lang: fr ==> target: <star1>
+
++ Quand l'élément * a été double-cliqué
+- id: E7 ==> lang: fr ==> target: <star1>
+
++ Quand l'élément * a été droit-cliqué
+- id: E8 ==> lang: fr ==> target: <star1>
+
++ Lorsqu'une touche a été enfoncée tout en se concentrant l'élément *
+- id: E9 ==> lang: fr ==> target: <star1>
+
++ Lorsqu'une touche est en train d'être pressée tout en se concentrant l'élément *
+- id: E10 ==> lang: fr ==> target: <star1>
+
++ Lorsque le contenu de l'élément * a été modifié
+- id: E11 ==> lang: fr ==> target: <star1>
+
++ Quand l'élément * a été focalisé
+- id: E12 ==> lang: fr ==> target: <star1>
+
++ Quand l'élément * est en train d'être focalisé
+- id: E13 ==> lang: fr ==> target: <star1>
+
++ Quand l'élément * a dormi
+- id: E14 ==> lang: fr ==> target: <star1>
+
++ Lorsque les données de le formulaire * ont été envoyées
+- id: E15 ==> lang: fr ==> target: <star1>
+
++ Lorsque l'élément * s'a été déroulé
+- id: E16 ==> lang: fr ==> target: <star1>
+
++ Si l'utilisateur a dit: *
+- id: E17 ==> lang: fr ==> hotWord: <star1>
+
++ Quand l'élément * devient dans la fenêtre d'affichage
+- id: E18 ==> lang: fr ==> target: <star1>
+
++ Quand l'élément * devient hors de la fenêtre d'affichage
+- id: E19 ==> lang: fr ==> target: <star1>

@@ -12,9 +12,6 @@ import {
   setAnimation
 } from 'core/animations.js'
 import {
-  execute
-} from 'core/commandsExec.js'
-import {
   getSafe
 } from 'core/getSafe.js'
 import {
@@ -60,9 +57,6 @@ export default function (settings) {
   }
   if (elementSettingsAnalyze(settings, 'distanceFromRight')) {
     setDistance(name, 'right', elementSettingsAnalyze(settings, 'distanceFromRight'))
-  }
-  if (elementSettingsAnalyze(settings, 'commands')) {
-    execute(name, elementSettingsAnalyze(settings, 'commands'))
   }
   if (elementSettingsAnalyze(settings, 'width')) {
     setDimension(name, 'width', elementSettingsAnalyze(settings, 'width'))
