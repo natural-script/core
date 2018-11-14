@@ -9,130 +9,122 @@
  * Date: 2018-03-10
  */
 
-const importRS = require.context('translations/RiveScript', true, /\.rive$/);
-import RiveScript from 'rivescript'
-import objectPath from 'object-path'
-import evaluateComponentInit from 'core/componentInit'
+const importRS = require.context('translations', true, /\.rive$/)
+import getTranslations from 'core/translationsGet'
+import codeAnalyzer from 'codeAnalyzer/rivescript'
+import parseCondition from 'parsers/conditions'
+import parseMs from 'parsers/ms'
 import {
-    evaluateEvent
-} from 'core/events'
-import {
-    evaluateCondition
-} from 'core/conditions'
+    componentsDB
+} from 'core/wordsTranslationsInit'
 import * as declarations from 'core/declarations'
-var bot = new RiveScript({
-    forceCase: true
-})
+export let operatorsDB = []
+export let conditionsDB = []
+export let commandUtilsDB = []
+export let normalTxtOperatorTranslations = []
+var bot = new codeAnalyzer()
 if (declarations.langCode) {
-    bot.loadFile([importRS(`./commands/${declarations.langCode}.rive`), importRS(`./commandsUtils/${declarations.langCode}.rive`), importRS(`./componentInit/${declarations.langCode}.rive`), importRS(`./events/${declarations.langCode}.rive`)])
+    bot.stream([importRS(`./commands/${declarations.langCode}.rive`), importRS(`./commandsUtils/${declarations.langCode}.rive`), importRS(`./componentInit/${declarations.langCode}.rive`), importRS(`./events/${declarations.langCode}.rive`), importRS(`./operators/${declarations.langCode}.rive`), importRS(`./conditions/${declarations.langCode}.rive`)])
+    for (const i of bot.deparse().topics.random) {
+        if ((/^id: O\d+.*$/).test(i.reply[0])) {
+            operatorsDB.push(bot.brain.triggerRegexp('user', i.trigger))
+        } else if ((/^id: Co\d+.*$/).test(i.reply[0])) {
+            conditionsDB.push(bot.brain.triggerRegexp('user', i.trigger))
+        } else if ((/^id: CU\d+.*$/).test(i.reply[0])) {
+            commandUtilsDB.push(bot.brain.triggerRegexp('user', i.trigger))
+        } else if ((/^id: O19.*$/).test(i.reply[0])) {
+            normalTxtOperatorTranslations.push(bot.brain.triggerRegexp('user', i.trigger))
+        }
+    }
 }
-bot.setVariable('components', window.componentsDB.join('|'));
-export async function analyze(commandRaw) {
-    console.log(commandRaw)
+bot.setVariable('components', componentsDB.join('|'))
+export default function analyze(commandRaw) {
     bot.sortReplies()
-    let reply = await bot.reply('local-user', commandRaw.replace(new XRegExp('\n', 'gmi'), '<<br>>'));
-    let command = reply.replace(new XRegExp('<<br>>', 'gmi'), '\n').split(' ==> ');
+    let reply = bot.reply('local-user', commandRaw.replace(/\n/gmi, '<<br>>').replace(/\t/gmi, '<<tab>>'));
+    if (reply == 'ERR: No Reply Matched') {
+        return false
+    }
+    let command = reply.split(' ==> ')
     let analysisResult = {}
-    for (const prop of command) {
-        analysisResult[/^(.*?):/miy.exec(prop)[1]] = /^.*?: ((?:.*|[\r\n])+)/miy.exec(prop)[1]
-    }
-    var loops = []
-    for (var i = 0; i < Object.keys(analysisResult).length; i++) {
-        if (/^IS_GROUPED: .* SEPARATOR: .* REGEX: .* ELEMENTS: .* DATA: .*/gmiy.test(analysisResult[Object.keys(analysisResult)[i]])) {
-            var loop_data = /^IS_GROUPED: (.*) SEPARATOR: (.*) REGEX: (.*) ELEMENTS: (.*) DATA: (.*)/gmiy.exec(analysisResult[Object.keys(analysisResult)[i]])
-            var loop_name = Object.keys(analysisResult)[i]
-            loops.push(loop_name)
-            analysisResult[loop_name] = {}
-            analysisResult[loop_name]['IS_GROUPED'] = loop_data[1]
-            analysisResult[loop_name]['SEPARATOR'] = loop_data[2]
-            analysisResult[loop_name]['REGEX'] = loop_data[3]
-            analysisResult[loop_name]['ELEMENTS'] = loop_data[4]
-            analysisResult[loop_name]['DATA'] = loop_data[5]
+    command.forEach(entity => {
+        const processedEntity = /(.*?): (.*)/.exec(entity)
+        if (!processedEntity[1].includes('undefined')) {
+            analysisResult[processedEntity[1]] = processedEntity[2].replace(/<<br>>/gmi, '\n').replace(/<<tab>>/gmi, '\t')
         }
-    }
-    for (const loop of loops) {
-        var mainRegex = new RegExp(analysisResult[loop]['REGEX'] + '(?:' + analysisResult[loop]['SEPARATOR'] + '|&&&& |$)', 'gmyi')
-        var regex = new RegExp(analysisResult[loop]['REGEX'] + '(?:' + analysisResult[loop]['SEPARATOR'] + '|$)', 'gmyi')
-        var str = analysisResult[loop]['DATA']
-        var isGrouped = (analysisResult[loop]['IS_GROUPED'] == 'true')
-        var elements = JSON.parse(analysisResult[loop]['ELEMENTS'])
-        var m
-        var z
-        analysisResult[loop] = {}
-        if (isGrouped) {
-            var mainGroupIndex = 0
-            var groupIndex = 0
-            var newGroupTrigger
-            while ((z = mainRegex.exec(str)) !== null) {
-                // This is necessary to avoid infinite loops with zero-width matches
-                if (z.index === regex.lastIndex) {
-                    regex.lastIndex++
-                }
-                // The result can be accessed through the `m`-variable.
-                z.forEach((match, matchIndex) => {
-                    if (matchIndex != 0) {
-                        objectPath.set(analysisResult, loop + '.' + mainGroupIndex + '.' + groupIndex + '.' + elements[matchIndex - 1], match)
-                    }
-                    if (/^.*?&&&& $/gmiy.test(match)) {
-                        newGroupTrigger = true
-                    }
-                })
-                if (newGroupTrigger) {
-                    newGroupTrigger = false
-                    groupIndex = 0
-                        ++mainGroupIndex
-                } else {
-                    ++groupIndex
-                }
-            }
-        } else {
-            var groupIndex = 0
-            while ((m = regex.exec(str)) !== null) {
-                // This is necessary to avoid infinite loops with zero-width matches
-                if (m.index === regex.lastIndex) {
-                    regex.lastIndex++
-                }
-                // The result can be accessed through the `m`-variable.
-                m.forEach((match, matchIndex) => {
-                    if (matchIndex != 0) {
-                        objectPath.set(analysisResult, loop + '.' + groupIndex + '.' + elements[matchIndex - 1], match)
-                    }
-                })
-                groupIndex++
-            }
-        }
-    }
-    console.log(analysisResult)
+    })
     if (analysisResult.id.match(/S\d+/)) {
-        return `runCommand.${analysisResult.id.toLowerCase()}(event.id, ${JSON.stringify(analysisResult)});`
+        return `runCommand('./${analysisResult.id}.js').default({elementName, parentFnParams, scopes, ...${JSON.stringify(analysisResult)}})`
     } else if (analysisResult.id.match(/E\d+/)) {
-        return evaluateEvent(analysisResult.id, analysisResult.target);
-    } else if (analysisResult.id.match(/CI\d+/)) {
-        return evaluateComponentInit(analysisResult);
+        return {
+            prefix: `initEvent('./${analysisResult.id}.js').default({parentFnParams, scopes, ...${JSON.stringify(analysisResult)}}, (elementName) => {`,
+            suffix: `})`,
+            isScope: true
+        };
+    } else if (analysisResult.id.match(/CI(?!6)\d+/)) {
+        return {
+            prefix: `manageComponent(${JSON.stringify(analysisResult)}, {`,
+            suffix: `}, scopes, parentFnParams)`,
+            isScope: false
+        }
+    } else if (analysisResult.id == 'CI6') {
+        return `"${getTranslations(analysisResult.property, true)}": \`${analysisResult.propertyValue.replace(XRegExp('^(.*?)`(.*)$', 'gmi'), '$1\\`$2')}\`,`
     } else if (analysisResult.id == 'CU1') {
         return {
-            prefix: `if (${evaluateCondition(analysisResult.conditions)}) {`,
-            suffix: `}`
+            prefix: `if (${parseCondition(analysisResult.conditions)}) {`,
+            suffix: `}`,
+            isScope: true
         }
     } else if (analysisResult.id == 'CU2') {
         return {
-            prefix: `else if (${evaluateCondition(analysisResult.conditions)}) {`,
-            suffix: `}`
+            prefix: `else if (${parseCondition(analysisResult.conditions)}) {`,
+            suffix: `}`,
+            isScope: true
         }
     } else if (analysisResult.id == 'CU3') {
         return {
             prefix: `else {`,
-            suffix: `}`
+            suffix: `}`,
+            isScope: true
         }
     } else if (analysisResult.id == 'CU4') {
         return {
-            prefix: `setInterval(() => {`,
-            suffix: `}, ${analysisResult.period});`
+            prefix: `setTimeout(() => {`,
+            suffix: `}, ${parseMs(analysisResult.period)})`,
+            isScope: true
         }
     } else if (analysisResult.id == 'CU5') {
         return {
-            prefix: `setTimeout(() => {`,
-            suffix: `}, ${analysisResult.period});`
+            prefix: `setInterval(() => {`,
+            suffix: `}, ${parseMs(analysisResult.period)})`,
+            isScope: true
         }
+    } else if (analysisResult.id == 'CU6') {
+        return {
+            prefix: `NS.functions.${analysisResult.name} = (elementName, parentFnParams) => {`,
+            suffix: `}`,
+            isScope: true
+        }
+    } else if (analysisResult.id == 'CU7') {
+        return {
+            prefix: `NS.styles.${analysisResult.name} = {`,
+            suffix: `}`,
+            isScope: false
+        }
+    } else if (analysisResult.id == 'CU8') {
+        return {
+            prefix: `.then(${analysisResult.varName} => {`,
+            suffix: `})`,
+            isScope: true,
+            varName: analysisResult.varName
+        }
+    } else if (analysisResult.id == 'CU9') {
+        return {
+            prefix: `for (const ${analysisResult.varName} of getVar(\`${analysisResult.listName}\`, scopes, parentFnParams)) {`,
+            suffix: `}`,
+            isScope: true,
+            varName: analysisResult.varName
+        }
+    } else {
+        return analysisResult
     }
 }

@@ -1,0 +1,37 @@
+/*!
+ * English Commands Utilities RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-08-12
+ */
+
++ In the case that *
+- id: CU1 ==> lang: en ==> conditions: <star1>
+
++ Else in the case that *
+- id: CU2 ==> lang: en ==> conditions: <star1>
+
++ Else
+- id: CU3 ==> lang: en
+
++ After a period of *
+- id: CU4 ==> lang: en ==> period: <star1>
+
++ Every a period of *
+- id: CU5 ==> lang: en ==> period: <star1>
+
++ define the function * with the following commands
+- id: CU6 ==> lang: en ==> name: <star1>
+
++ define the style * with the following properties
+- id: CU7 ==> lang: en ==> name: <star1>
+
++ After finishing executing the previous command, get the value of the returned * then do the following
+- id: CU8 ==> lang: en ==> varName: <star1>
+
++ for every * in the list *
+- id: CU9 ==> lang: en ==> varName: <star1> ==> listName: <star2>

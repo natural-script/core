@@ -1,0 +1,247 @@
+/*!
+ * French Commands RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-02-16
+ */
+
+// retirer il
+
++ (?:retirer|effacer|supprimer) (?:il|elle)
+- id: S1 ==> lang: fr ==> target: itself
+
+// supprimer cet élément
+
++ (?:retirer|effacer|supprimer) cet élément
+- id: S1 ==> lang: fr ==> target: itself
+
+// effacer elephant_photo
+
++ (?:retirer|effacer|supprimer) *
+- id: S1 ==> lang: fr ==> target: <star1>
+
+// aller à l'url https://www.google.fr/
+
++ (?:aller à|aller vers|visiter|ouvrir) (?:le |la |l')* (<1 word>)
+- id: S2 ==> lang: fr ==> targetType: <star1> ==> target: <star2>
+
+// lecture il
+
++ lecture il
+- id: S3 ==> lang: fr ==> target: itself
+
+// lecture cette chanson
+
++ lecture (?:cette|cet) (?:chanson|élément|vidéo)
+- id: S3 ==> lang: fr ==> target: itself
+
+// lecture Close_To_You
+
++ lecture *
+- id: S3 ==> lang: fr ==> target: <star1>
+
+// pauser elle
+
++ (?:pauser|arrêter|suspendre) (?:il|elle)
+- id: S4 ==> lang: fr ==> target: itself
+
+// arrêter this song
+
++ (?:pauser|arrêter|suspendre) (?:cette|cet) (?:chanson|élément|vidéo)
+- id: S4 ==> lang: fr ==> target: itself
+
+// arrêter Close_To_You
+
++ (?:pauser|arrêter|suspendre) *
+- id: S4 ==> lang: fr ==> target: <star1>
+
+// définir the time position de il à 51654
+
++ définir the time position de (?:il|elle) à *
+- id: S5 ==> lang: fr ==> target: itself ==> timePosition: <star1>
+
+// définir the time position de cette vidéo à 13575
+
++ définir the time position de (?:cette|cet) (?:chanson|élément|vidéo) à *
+- id: S5 ==> lang: fr ==> target: itself ==> timePosition: <star1>
+
+// définir the time position de Close_To_You à 2048
+
++ définir the time position de * à *
+- id: S5 ==> lang: fr ==> target: <star1> ==> timePosition: <star2>
+
+// définir sa valeur à Hello World !
+
++ (?:définir|changerr) sa valeur à *
+- id: S6 ==> lang: fr ==> target: itself ==> value: <star1>
+
+// définir la valeur de cet élément à Bonjour Le Monde !
+
++ (?:définir|changerr) la valeur de cet élément à *
+- id: S6 ==> lang: fr ==> target: itself ==> value: <star1>
+
+// définir la valeur de welcome_message à Bienvenue, les gens !
+
++ (?:définir|changerr) la valeur de * à *
+- id: S6 ==> lang: fr ==> target: <star1> ==> value: <star2>
+
+// basculer la lampe de poche
+
++ basculer (?:le|la) (?:lampe de poche|torche|flash)
+- id: S7 ==> lang: fr
+
+// allumer la torche
+
++ (?:ouvrir|allumer) (?:le|la) (?:lampe de poche|torche|flash)
+- id: S8 ==> lang: fr
+
+// fermer le flash
+
++ (?:fermer|éteindre) (?:le|la) (?:lampe de poche|torche|flash)
+- id: S9 ==> lang: fr
+
+// allumer le WIFI
+
++ (?:ouvrir|allumer|activer) (?:le|la) (?:wifi|wi-fi|wi fi|connexion wifi)
+- id: S10 ==> lang: fr
+
+// désactiver le WI-FI
+
++ (?:fermer|éteindre|désactiver) (?:le|la) (?:wifi|wi-fi|wi fi|connexion wifi)
+- id: S11 ==> lang: fr
+
+// allumer le Bluetooth
+
++ (?:ouvrir|allumer|activer) (?:le|la) (?:blue tooth|bluetooth|bt|connexion bluetooth)
+- id: S12 ==> lang: fr
+
+// ouvrir le clavier
+
++ (?:montrer|ouvrir) le (?:clavier|clavier à l'écran|sur le clavier de l'écran)
+- id: S13 ==> lang: fr
+
+// cacher le clavier
+
++ (?:cacher|fermer) le (?:clavier|clavier à l'écran|sur le clavier de l'écran)
+- id: S14 ==> lang: fr
+
+// aller à la base de données publique egypt la branche citizines et ensuite insérer les données suivantes: la valeur de name_input dans la fente name, la valeur de address_input dans la fente address
+
++ (?:aller|ouvrir une connexion|ouvrir une nouvelle connexion) à la base de données * * la branche * et ensuite insérer les données suivantes:<line break>*
+- id: S15 ==> lang: en ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> data: <star4>
+
+// aller à la base de données publique egypt la branche citizines aet ensuite obtenir la valeur de la fente address qui a la même classe de la valeur de name_input dans la fente name et le définir comme la valeur de paragraphA
+
++ (?:aller|ouvrir une connexion|ouvrir une nouvelle connexion) à la base de données * * la branche * et ensuite obtenir la valeur de la fente * qui a la même classe de * dans la fente * et le définir comme la valeur de *
+- id: S16 ==> lang: fr ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> requiredSlot: <star4> ==> resourceValue: <star5> ==> resourceSlot: <star6> ==> target: <star7>
+
+// aller à la base de données publique egypt la branche citizines aet ensuite obtenir la valeur de la fente address qui a la même classe de la valeur de name_input dans la fente name et le définir comme la valeur de cet élément
+
++ (?:aller|ouvrir une connexion|ouvrir une nouvelle connexion) à la base de données * * la branche * et ensuite obtenir la valeur de la fente * qui a la même classe de * dans la fente * et le définir comme la valeur de cet élément
+- id: S16 ==> lang: fr ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> requiredSlot: <star4> ==> resourceValue: <star5> ==> resourceSlot: <star6> ==> target: itself
+
+// définir its largeur à 30 pixels
+
++ (?:définir|changer) sa largeur à *
+- id: S17 ==> lang: fr ==> target: itself ==> value: <star1>
+
+// définir la largeur de cet élément à 50 pixels
+
++ (?:définir|changer) la largeur de cet élément à *
+- id: S17 ==> lang: fr ==> target: itself ==> value: <star1>
+
+// définir la largeur de containerA à 30 pixels
+
++ (?:définir|changer) la largeur de * à *
+- id: S17 ==> lang: fr ==> target: <star1> ==> value: <star2>
+
+// définir its longueur à 30 pixels
+
++ (?:définir|changer) sa longueur à *
+- id: S18 ==> lang: fr ==> target: itself ==> value: <star1>
+
+// définir la longueur de cet élément à 50 pixels
+
++ (?:définir|changer) la longueur de cet élément à *
+- id: S18 ==> lang: fr ==> target: itself ==> value: <star1>
+
+// définir la longueur de containerA à 30 pixels
+
++ (?:définir|changer) la longueur de * à *
+- id: S18 ==> lang: fr ==> target: <star1> ==> value: <star2>
+
+// définir son fond à une couleur sombre aléatoire
+
++ (?:définir|changer) son (?:arrière-plan|fond) à *
+- id: S19 ==> lang: fr ==> target: itself ==> value: <star1>
+
+// définir l'arrière-plan de main_page à rouge
+
++ (?:définir|changer) (?:le |l')(?:arrière-plan|fond) de * à *
+- id: S19 ==> lang: fr ==> target: <star1> ==> value: <star2>
+
+// définir le fond de cet élément à une couleur claire aléatoire
+
++ (?:définir|changer) (?:le |l')(?:arrière-plan|fond) de cet élément à *
+- id: S19 ==> lang: fr ==> target: itself ==> value: <star1>
+
+// définir la couleur de sa police à une couleur aléatoire
+
++ (?:définir|changer) la couleur de sa police à *
+- id: S20 ==> lang: fr ==> target: itself ==> value: <star1>
+
+// définir la couleur de la police de cet élément à une couleur claire aléatoire
+
++ (?:définir|changer) la couleur de la police de cet élément à *
+- id: S20 ==> lang: fr ==> target: itself ==> value: <star1>
+
+// définir la couleur de la police de heading_title à blueu
+
++ (?:définir|changer) la couleur de la police de * à *
+- id: S20 ==> lang: fr ==> target: <star1> ==> value: <star2>
+
+// définir la variable âge 15 ans !
+
++ (?:définir|changerr) la variable * à(?:<line break>| )*
+- id: S21 ==> lang: fr ==> variablePath: <star1> ==> value: <star2>
+
+// déclarer la variable locale var1
+
++ (?:créer|déclarer) la variable locale *
+- id: S22 ==> lang: en ==> variableName: <star1> ==> type: local
+
+// déclarer la variable globale var1
+
++ (?:créer|déclarer) la variable globale *
+- id: S22 ==> lang: en ==> variableName: <star1> ==> type: global
+
+/* exécuter la fonction send data avec les params suivantes:
+1. Link: https://example.com/POST
+2. Data: << la valeur de data_input >> */
+
++ (?:apeler|exécuter|courir) la fonction * avec les (?:arguemnts|paramètres|params) suivantes:<line break>*
+- id: S23 ==> lang: fr ==> functionName: <star1> ==> params: <star2>
+
+// exécuter la fonction alert
+
++ (?:apeler|exécuter|courir) la fonction *
+- id: S23 ==> lang: fr ==> functionName: <star1>
+
++ envoyer un message au (?:programmeur|développeur) qui dit: *
+- id: S24 ==> lang: fr ==> msg: <star1>
+
++ envoyer un avertissement au (?:programmeur|développeur) qui dit: *
+- id: S25 ==> lang: fr ==> msg: <star1>
+
++ envoyer une erreur au (?:programmeur|développeur) qui dit: *
+- id: S26 ==> lang: fr ==> msg: <star1>
+
++ envoyer les données suivantes à * :(?:<line break>| )*
+- id: S27 ==> lang: fr ==> URL: <star1> ==> data: <star2>
+
++ (?:obtenir|récupérer|récupérer) les données envoyées de *
+- id: S28 ==> lang: fr ==> URL: <star1>

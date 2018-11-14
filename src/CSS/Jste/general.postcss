@@ -1,0 +1,38 @@
+$font_family_1: roboto;
+
+* {
+	font-family: $font_family_1;
+	&:not(.dropdown-content) {
+		transition: all 0.4s ease-out;
+	}
+	&:not(.vjs-icon-placeholder) {
+		&::before {
+			display: none !important;
+		}
+	}
+	&::after {
+		display: none !important;
+	}
+}
+.ps__rail-x {
+	transition: all 0.4s ease-out;
+}
+.ps__rail-y {
+	transition: all 0.4s ease-out;
+}
+html {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+body {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+}
+jste {
+	display: none !important;
+}

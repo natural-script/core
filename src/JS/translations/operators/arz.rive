@@ -1,0 +1,112 @@
+/*!
+ * Egyptian Arabic Operators RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-08-12
+ */
+
++ اكتب الكلام دة بخط طخين: *
+- id: O1 ==> lang: arz ==> text: <star1>
+
++ اكتب الكلام دة بخط مايل: *
+- id: O2 ==> lang: arz ==> text: <star1>
+
++ اكتب الكلام دة بخط متخطط: *
+- id: O3 ==> lang: arz ==> text: <star1>
+
++ اكتب الكلام دة بخط طخين و مايل: *
+- id: O4 ==> lang: arz ==> text: <star1>
+
++ اكتب الكلام دة بخط مايل و طخين: *
+- id: O4 ==> lang: arz ==> text: <star1>
+
++ اكتب الكلام دة بخط طخين و متخطط: *
+- id: O5 ==> lang: arz ==> text: <star1>
+
++ اكتب الكلام دة بخط متخطط و طخين: *
+- id: O5 ==> lang: arz ==> text: <star1>
+
++ اكتب الكلام دة بخط متخطط و مايل: *
+- id: O6 ==> lang: arz ==> text: <star1>
+
++ "اكتب الكلام دة بخط مايل و متخطط: *
+- id: O6 ==> lang: arz ==> text: <star1>
+
++ اكتب الكلام دة بخط طخين, مايل و متخطط: *
+- id: O7 ==> lang: arz ==> text: <star1>
+
++ اكتب الكلام دة بخط طخين, متخطط و مايل: *
+- id: O7 ==> lang: arz ==> text: <star1>
+
++ اكتب الكلام دة بخط مايل, طخين و متخطط: *
+- id: O7 ==> lang: arz ==> text: <star1>
+
++ اكتب الكلام دة بخط مايل, متخطط و طخين: *
+- id: O7 ==> lang: arz ==> text: <star1>
+
++ اكتب الكلام دة بخط متخطط, مايل و طخين: *
+- id: O7 ==> lang: arz ==> text: <star1>
+
++ اكتب الكلام دة بخط متخطط, طخين و مايل: *
+- id: O7 ==> lang: arz ==> text: <star1>
+
++ طول النافذة
+- id: O8 ==> lang: arz
+
++ عرض النافذة
+- id: O9 ==> lang: arz
+
++ طول الشاشة
+- id: O10 ==> lang: arz
+
++ عرض الشاشة
+- id: O11 ==> lang: arz
+
++ ايكونة *
+- id: O12 ==> lang: arz ==> icon: <star1>
+
++ سطر جديد
+- id: O13 ==> lang: arz
+
++ قيمة العنصر *
+- id: O14 ==> lang: arz ==> elementName: <star1>
+
++ اسم المستخدم
+- id: O15 ==> lang: arz
+
++ إيميل المستخدم
+- id: O16 ==> lang: arz
+
++ سمى الكلام دة *: *
+- id: O17 ==> lang: arz ==> name: <star1> ==> text: <star2>
+
++ الخيار *
+- id: O18 ==> lang: arz ==> param: <star1>
+
++ خيار *
+- id: O18 ==> lang: arz ==> param: <star1>
+
++ قيمة المعامل *
+- id: O18 ==> lang: arz ==> param: <star1>
+
++ قيمة معامل *
+- id: O18 ==> lang: arz ==> param: <star1>
+
++ اعتبر الكلام دة كلام عادى
+- id: O19 ==> lang: arz
+
++ قيمة المتغير *
+- id: O20 ==> lang: arz ==> variablePath: <star1>
+
++ قيمة العنصر رقم (\d+) فى المتغير *
+- id: O20 ==> lang: arz ==> item: <star1> ==> variablePath: <star2>
+
++ ناتج التعبير الرياضى: *
+- id: O21 ==> lang: arz ==> expression: <star1>
+
++ اسم العنصر رقم (\d+) فى القايمة المنسدلة *
+- id: O22 ==> lang: arz ==> item: <star1> ==> dropdownMenuName: <star2>

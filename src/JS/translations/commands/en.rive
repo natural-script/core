@@ -1,0 +1,252 @@
+/*!
+ * English Commands RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-02-16
+ */
+
+// remove it
+
++ (?:remove|delete) it
+- id: S1 ==> lang: en ==> target: itself
+
+// delete this element
+
++ (?:remove|delete) this element
+- id: S1 ==> lang: en ==> target: itself
+
+// remove elephant_photo
+
++ (?:remove|delete) *
+- id: S1 ==> lang: en ==> target: <star1>
+
+// open the dialog box learn_more
+
++ (?:go to|navigate to|visit|open) the * (<1 word>)
+- id: S2 ==> lang: en ==> targetType: <star1> ==> target: <star2>
+
+// play it
+
++ play it
+- id: S3 ==> lang: en ==> target: itself
+
+// play this song
+
++ play this (?:song|element|video)
+- id: S3 ==> lang: en ==> target: itself
+
+// play Close_To_You
+
++ play *
+- id: S3 ==> lang: en ==> target: <star1>
+
+// pause it
+
++ (?:pause|stop|suspend) it
+- id: S4 ==> lang: en ==> target: itself
+
+// stop this (?:song|element|video)
+
++ (?:pause|stop|suspend) this song
+- id: S4 ==> lang: en ==> target: itself
+
+// stop Close_To_You
+
++ (?:pause|stop|suspend) *
+- id: S4 ==> lang: en ==> target: <star1>
+
+// set the time position of it to 51654
+
++ set the time position of it to *
+- id: S5 ==> lang: en ==> target: itself ==> timePosition: <star1>
+
+// set the time position of (?:this song|this element|this video) to 13575
+
++ set the time position of this song to *
+- id: S5 ==> lang: en ==> target: itself ==> timePosition: <star1>
+
+// set the time position of Close_To_You to 2048
+
++ set the time position of * to *
+- id: S5 ==> lang: en ==> target: <star1> ==> timePosition: <star2>
+
+// set its value to Hello World !
+
++ (?:set|change) its value to *
+- id: S6 ==> lang: en ==> target: itself ==> value: <star1>
+
+// set the value of this element to Hello World !
+
++ (?:set|change) the value of this element to *
+- id: S6 ==> lang: en ==> target: itself ==> value: <star1>
+
+// set the value of welcome_message to Welcome, folks !
+
++ (?:set|change) the value of * to *
+- id: S6 ==> lang: en ==> target: <star1> ==> value: <star2>
+
+// toggle the flashlight
+
++ toggle the (?:flashlight|flash light|torch|flash)
+- id: S7 ==> lang: en
+
+// switch on the torch
+
++ (?:open|turn on|switch on) the (?:flashlight|flash light|torch|flash)
+- id: S8 ==> lang: en
+
+// close the flash
+
++ (?:close|turn off|switch off) the (?:flashlight|flash light|torch|flash)
+- id: S9 ==> lang: en
+
+// switch on the WIFI
+
++ (?:open|turn on|switch on|enable) the (?:wifi|wi-fi|wi fi|wifi connection)
+- id: S10 ==> lang: en
+
+// disable the WI-FI
+
++ (?:close|turn off|switch off|disable) the (?:wifi|wi-fi|wi fi|wifi connection)
+- id: S11 ==> lang: en
+
+// switch on the Bluetooth
+
++ (?:open|turn on|switch on|enable) the (?:blue tooth|bluetooth|bt|bluetooth connection)
+- id: S12 ==> lang: en
+
+// open the keyboard
+
++ (?:show|open) the (?:keyboard|on-screen keyboard|on screen keyboard)
+- id: S13 ==> lang: en
+
+// hide the keyboard
+
++ (?:hide|close) the (?:keyboard|on-screen keyboard|on screen keyboard)
+- id: S14 ==> lang: en
+
+// go to the public database egypt the branch citizines and then insert the following data: the value of name_input in the slot name, the value of address_input in the slot address
+
++ (?:go|open a connection|open a new connection) to the * database * the branch * and then insert the following data:<line break>*
+- id: S15 ==> lang: en ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> data: <star4>
+
+// go to the public database egypt the branch citizines and then get the value of the slot address which has the same class of the value of name_input in the slot name and set it as the value of textB
+
++ (?:go|open a connection|open a new connection) to the * database * the branch * and then get the value of the slot * which has the same class of * in the slot * and set it as the value of *
+- id: S16 ==> lang: en ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> requiredSlot: <star4> ==> resourceValue: <star5> ==> resourceSlot: <star6> ==> target: <star7>
+
+// go to the public database egypt the branch citizines and then get the value of the slot address which has the same class of the value of name_input in the slot name and set it as the value of this element
+
++ (?:go|open a connection|open a new connection) to the * database * the branch * and then get the value of the slot * which has the same class of * in the slot * and set it as the value of this element
+- id: S16 ==> lang: en ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> requiredSlot: <star4> ==> resourceValue: <star5> ==> resourceSlot: <star6> ==> target: itself
+
+// set its width to 30 pixels
+
++ (?:set|change) its width to *
+- id: S17 ==> lang: en ==> target: itself ==> value: <star1>
+
+// set the width of this element to 50 pixels
+
++ (?:set|change) the width of this element to *
+- id: S17 ==> lang: en ==> target: itself ==> value: <star1>
+
+// set the width of containerA to 30 pixels
+
++ (?:set|change) the width of * to *
+- id: S17 ==> lang: en ==> target: <star1> ==> value: <star2>
+
+// set its length to 30 pixels
+
++ (?:set|change) its length to *
+- id: S18 ==> lang: en ==> target: itself ==> value: <star1>
+
+// set the length of this element to 50 pixels
+
++ (?:set|change) the length of this element to *
+- id: S18 ==> lang: en ==> target: itself ==> value: <star1>
+
+// set the length of containerA to 30 pixels
+
++ (?:set|change) the length of * to *
+- id: S18 ==> lang: en ==> target: <star1> ==> value: <star2>
+
+// set its background to a random dark colour
+
++ (?:set|change) its background to *
+- id: S19 ==> lang: en ==> target: itself ==> value: <star1>
+
+// set the background of main_page to red
+
++ (?:set|change) the background of * to *
+- id: S19 ==> lang: en ==> target: <star1> ==> value: <star2>
+
+// set the background of this element to a random light colour
+
++ (?:set|change) the background of this element to *
+- id: S19 ==> lang: en ==> target: itself ==> value: <star1>
+
+// set its font color to a random dark color
+
++ (?:set|change) its font (?:colour|color) to *
+- id: S20 ==> lang: en ==> target: itself ==> value: <star1>
+
+// set the color of its font to a random color
+
++ (?:set|change) the (?:colour|color) of its font to *
+- id: S20 ==> lang: en ==> target: itself ==> value: <star1>
+
+// set the font colour of this element to a random light colour
+
++ (?:set|change) (?:the font colour of|the font color of|the colour of the font of |the color of the font of ) this element to *
+- id: S20 ==> lang: en ==> target: itself ==> value: <star1>
+
+// set the font color of heading_title to blue
+
++ (?:set|change) (?:the font colour of|the font color of|the colour of the font of |the color of the font of ) * to *
+- id: S20 ==> lang: en ==> target: <star1> ==> value: <star2>
+
+// set the value of the variable age to 15 years old !
+
++ (?:set|change) the value of the variable * to(?:<line break>| )*
+- id: S21 ==> lang: en ==> variablePath: <star1> ==> value: <star2>
+
+// declare the local variable var1
+
++ (?:create|declare) the local variable *
+- id: S22 ==> lang: en ==> variableName: <star1> ==> type: local
+
+// declare the local variable var1
+
++ (?:create|declare) the global variable *
+- id: S22 ==> lang: en ==> variableName: <star1> ==> type: global
+
+/* execute the function send data with the following params:
+1. Link: https://example.com/POST
+2. Data: << the value of data_input >> */
+
++ (?:call|execute|run) the funciton * with the following (?:arguemnts|paramaters|params):<line break>*
+- id: S23 ==> lang: en ==> functionName: <star1> ==> params: <star2>
+
+// execute the function alert
+
++ (?:call|execute|run) the funciton *
+- id: S23 ==> lang: en ==> functionName: <star1>
+
++ send a message to the (?:programmer|developer) which says: *
+- id: S24 ==> lang: en ==> msg: <star1>
+
++ send a warning to the (?:programmer|developer) which says: *
+- id: S25 ==> lang: en ==> msg: <star1>
+
++ send an error to the (?:programmer|developer) which says: *
+- id: S26 ==> lang: en ==> msg: <star1>
+
++ send the following data to * :(?:<line break>| )*
+- id: S27 ==> lang: en ==> URL: <star1> ==> data: <star2>
+
++ (?:get|retrieve|fetch) the sent data from *
+- id: S28 ==> lang: en ==> URL: <star1>

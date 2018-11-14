@@ -1,5 +1,5 @@
-import RainyDay from 'rainyday.js/src/rainyday.js'
-export const rain = function (elementName) {
+import RainyDay from 'rainyday.js/src/rainyday'
+export default function rain (elementName) {
   var image = document.getElementById(elementName)
   var container = document.getElementById(elementName + '_container')
   var engine = new RainyDay({

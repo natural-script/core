@@ -8,37 +8,30 @@
  *
  * Date: 2018-02-05
  */
-import {
-  inheritStyle
-} from 'core/styleInheritor.js'
-import {
-  elementSettingsAnalyze
-} from 'core/elementSettingsAnalyze.js'
-import {
-  propSet
-} from 'core/propSet.js'
+import inheritStyle from 'core/styleInheritor'
+import propSet from 'core/propSet'
 import 'imports-loader?userAgent=>true!izimodal'
 import 'izimodal/css/iziModal.css'
 import componentTemplate from './dialogBox.pug'
 import * as declarations from 'core/declarations'
-export default function (settings) {
-  settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
-  var name = elementSettingsAnalyze(settings, 'name')
+export default function (props) {
+  props = inheritStyle(props, props.style)
+  var name = props.name
   var isRTL = declarations.isRTL
   var title
-  if (elementSettingsAnalyze(settings, 'title')) {
-    title = elementSettingsAnalyze(settings, 'title')
+  if (props.title) {
+    title = props.title
   }
-  let componentProp = {
+  let componentProps = {
     name,
     isRTL,
     title
   }
-  $('body').append(componentTemplate(componentProp))
+  $('body').append(componentTemplate(componentProps))
   $(`#${name}`).iziModal()
-  if (elementSettingsAnalyze(settings, 'emitter')) {
-    $('#' + elementSettingsAnalyze(settings, 'emitter') + '').attr('onclick', elementSettingsAnalyze(settings, 'name') + '.open()')
+  if (props.emitter) {
+    $('#' + props.emitter + '').attr('onclick', props.name + '.open()')
   }
-  propSet(name, settings)
+  propSet(name, props)
   $(`#${name}`).css('position', 'fixed')
 }

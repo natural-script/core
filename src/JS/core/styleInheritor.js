@@ -8,16 +8,15 @@
  *
  * Date: 2018-04-24
  */
-import {getTranslations} from 'core/translationsGet'
-import * as declarations from 'core/declarations'
-export const inheritStyle = function (properties, styles) {
+import getTranslations from 'core/translationsGet'
+export default function inheritStyle(props, styles) {
   if (styles) {
     var inheritedProerties = {}
     var currentProperties
     var currentPropertiesKeys
     styles = styles.split(XRegExp(`(?:, )|(?: ${getTranslations('and')} )|(?: &+ )`, 'gmis'))
     for (var i = 0; i <= styles.length; i++) {
-      currentProperties = (i == styles.length) ? properties : declarations.jsteStylesStore[styles[i]]
+      currentProperties = (i == styles.length) ? props : NS.styles[styles[i]]
       currentPropertiesKeys = Object.keys(currentProperties)
       for (var k = 0; k < currentPropertiesKeys.length; k++) {
         inheritedProerties[currentPropertiesKeys[k]] = currentProperties[currentPropertiesKeys[k]]
@@ -25,6 +24,6 @@ export const inheritStyle = function (properties, styles) {
     }
     return inheritedProerties
   } else {
-    return properties
+    return props
   }
 }

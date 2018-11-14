@@ -1,7 +1,8 @@
 mixin image
-  img(id=name src='' crossorigin='anonymous' style='-webkit-filter: blur(10px);')
+  img(id=name src='' alt=`${title ? title : "Unfortunately, This image isn't titled"}` crossorigin='anonymous' style='-webkit-filter: blur(10px);' isTitled=isTitled)
   if title
-    .imageTitle= title
+    if isTitled
+      .imageTitle= title
   if !isIcon
     div(id=`showImage_${name}_containerA`)
       .showImageContainerA
@@ -19,11 +20,13 @@ mixin image
     p.showTheFullContentWarning Show the full content ?
     paper-button.yesRemoveTheBlur(onclick=`showImageD('${name}');`) Continue
   div(id=`showImage_${name}_containerD` style='display: none;')
-    p.forbiddenContentWarning You are prohibited from accessing this 
-div(id=`${name}_container` style='position: relative; overflow: hidden;')
+    p.forbiddenContentWarning You are prohibited from accessing this
+if isContainerRequired 
+  div(id=`${name}_container` style='position: relative; overflow: hidden;')
+else
   if isTransparent
-    paper-material(elevation='2' style='position: absolute;')
+    div(style='position: absolute;')
       +image
   else
-    div(style='position: absolute;')
+    paper-material(elevation='2' style='position: absolute;')
       +image

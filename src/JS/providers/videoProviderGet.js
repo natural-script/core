@@ -1,4 +1,4 @@
-export const getVideoProvider = function (videoURL) {
+export default function getVideoProvider (videoURL) {
   var videoInfo = []
   if (videoURL.split('https://www.youtube.com/watch?v=').length == 2) {
     videoInfo.videoProvider = 'youtube'

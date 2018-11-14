@@ -1,13 +1,12 @@
-import {
-  elementValue
-} from 'core/elementValue.js'
-export default function (elementName, script, functionArgumentsParam) {
-  var targetElement
-  var target = script.target.parseValue(false, functionArgumentsParam)
+import elementValue from 'core/elementValue'
+import parseStringValue from 'parsers/stringValue'
+export default function ({elementName, target, value, scopes, parentFnParams}) {
+  let targetElement
+  target = parseStringValue(target, false, scopes, parentFnParams)
   if (target == 'itself') {
     targetElement = elementName
   } else {
     targetElement = target
   }
-  elementValue.set(targetElement, script.value.parseValue(false, functionArgumentsParam))
+  elementValue.set(targetElement, parseStringValue(value, false, scopes, parentFnParams))
 }

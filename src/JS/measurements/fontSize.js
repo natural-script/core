@@ -8,13 +8,9 @@
  *
  * Date: 2017-09-18
  */
-import {
-  getTranslations
-} from 'core/translationsGet.js'
-import {
-  convertLengthCSS
-} from './lengthUnits.js'
-export const setFontSize = function (elementName, size) {
+import getTranslations from 'core/translationsGet.js'
+import convertLengthCSS from 'measurements/lengthUnits.js'
+export default function setFontSize (elementName, size) {
   var landscapeSize = null
   var portraitSize = null
   if (XRegExp(` ${getTranslations('and')} `, 'gmi').test(size)) {

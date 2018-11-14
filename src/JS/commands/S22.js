@@ -1,10 +1,11 @@
-import * as declarations from 'core/declarations'
-export default function (elementName, script, functionArgumentsParam) {
-  var functionName = script.functionName.parseValue(false, functionArgumentsParam)
-  var params = script.arguemtns
-  if (params) {
-    declarations.jsteFunctionsStore[functionName](elementName, params.parseList(true))
-  } else {
-    declarations.jsteFunctionsStore[functionName](elementName)
-  }
+import parseStringValue from 'parsers/stringValue'
+import dotProp from 'dot-prop'
+export default function ({variableName, type, scopes, parentFnParams}) {
+    variableName = parseStringValue(variableName, false, scopes, parentFnParams)
+    type = type
+    if (type == 'local') {
+        dotProp.set(NS.variables, `${scopes[0]}.${variableName}`, null)
+    } else if (type == 'global') {
+        NS.variables.global[variableName] = null
+    }
 }

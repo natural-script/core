@@ -1,0 +1,28 @@
+/*!
+ * Standard Arabic Components Initializers RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-08-12
+ */
+
++ هيئ هذا (الموقع|التطبيق) [(.*?)] بالخواص التالية
+- id: CI1 ==> lang: ar ==> mode: <star1> ==> attributes: <star2>
+
++ اضف (<bot components>) [(.*?)] بالخواص التالية
+- id: CI2 ==> lang: ar ==> component: <star1> ==> attributes: <star2>
+
++ اضف هذه الخواص التالية إلى العنصر *
+- id: CI3 ==> lang: ar ==> name: <star1>
+
++ استنسخ العنصر * بالخواص دى
+- id: CI4 ==> lang: ar ==> clonedElement: <star1>
+
++ استنسخ العنصر * بأوامره بالخواص التالية
+- id: CI5 ==> lang: ar ==> clonedElement: <star1>
+
++ * (الخاص به|الخاصة به|الخاص بها|الخاصة بها) *
+- id: CI6 ==> lang: ar ==> property: <star1> ==> propertyValue: <star3>

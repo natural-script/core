@@ -8,40 +8,34 @@
  *
  * Date: 2018-02-05
  */
-import {inheritStyle} from 'core/styleInheritor'
-import {appendComponent} from 'core/componentAppend'
-import {elementSettingsAnalyze} from 'core/elementSettingsAnalyze'
-import {propSet} from 'core/propSet'
+import inheritStyle from 'core/styleInheritor'
+import appendComponent from 'core/componentAppend'
+import propSet from 'core/propSet'
+import 'materialize-css/dist/css/materialize.min.css'
+import 'materialize-css/dist/js/materialize.min.js'
 import componentTemplate from './sidebar.pug'
 import * as declarations from 'core/declarations'
-export default function (settings) {
-  settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
-  var name = elementSettingsAnalyze(settings, 'name')
+export default function (props) {
+  props = inheritStyle(props, props.style)
+  var name = props.name
   var edge
   if (declarations.isRTL) {
     edge = 'right'
   } else {
     edge = 'left'
   }
-  var out = `<ul id="${name}" data-activates="${name}" class="sidenav"></ul>`
-  appendComponent(elementSettingsAnalyze(settings, 'container'), out)
-  var elem = document.querySelector('#' + name + '')
+  let componentProps = {
+    name
+  }
+  appendComponent(props.container, componentTemplate(componentProps))
+  var elem = document.querySelector(`#${name}`)
   var instance = M.Sidenav.init(elem, {
     edge: edge,
-    draggable: true,
-    closeOnClick: false
+    draggable: true
   })
-  if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('row') == true) {
-    $(`#${name}`).addClass('col')
-  }
-  if (elementSettingsAnalyze(settings, 'position')) {
-    $(`#${name}`).css('position', elementSettingsAnalyze(settings, 'position'))
-  } else {
-    $(`#${name}`).css('position', 'relative')
-  }
-  propSet(name, settings)
+  propSet(name, props)
   $(`#${name}`).css('position', 'fixed')
-  if (window.mode == 'app') {
+  if (declarations.mode == 'app') {
     if ($('.sidenav').length == 1) {
       $('.menuBtn').on('click', function () {
         instance.open()

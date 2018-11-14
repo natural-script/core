@@ -1,0 +1,47 @@
+/*!
+ * Egyptian Arabic Conditions RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-08-12
+ */
+
++ قيمة * تساوى *
+- id: Co1 ==> lang: arz ==> elementName: <star1> ==> value: <star2>
+
++ قيمة * متساويش *
+- id: Co2 ==> lang: arz ==> elementName: <star1> ==> value: <star2>
+
++ قيمة * أكبر من *
+- id: Co3 ==> lang: arz ==> elementName: <star1> ==> value: <star2>
+
++ قيمة * أصغر من *
+- id: Co4 ==> lang: arz ==> elementName: <star1> ==> value: <star2>
+
++ الكيبورد ظاهر
+- id: Co5 ==> lang: arz
+
++ الجهاز موبايل
+- id: Co6 ==> lang: arz
+
++ الجهاز تابلت
+- id: Co7 ==> lang: arz
+
++ الجهاز كمبيوتر
+- id: Co8 ==> lang: arz
+
++ البلوتوث مفتوح
+- id: Co9 ==> lang: arz
+
++ البلوتوث مطفى
+- id: Co10 ==> lang: arz
+
++ الواى فاى مفتوح
+- id: Co11 ==> lang: arz
+
++ الواى فاى مطفى
+- id: Co12 ==> lang: arz
+

@@ -8,50 +8,32 @@
  *
  * Date: 2018-02-05
  */
-import {
-  inheritStyle
-} from 'core/styleInheritor.js'
-import {
-  appendComponent
-} from 'core/componentAppend.js'
-import {
-  elementSettingsAnalyze
-} from 'core/elementSettingsAnalyze.js'
-import {
-  propSet
-} from 'core/propSet.js'
-import {
-  getTranslations
-} from 'core/translationsGet.js'
+import inheritStyle from 'core/styleInheritor'
+import appendComponent from 'core/componentAppend'
+import propSet from 'core/propSet.js'
+import getTranslations from 'core/translationsGet'
+import isAttributedByBeing from 'core/isAttributedByBeing'
 import componentTemplate from './checkbox.pug'
 import * as declarations from 'core/declarations'
-export default function (settings) {
-  settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
-  var name = elementSettingsAnalyze(settings, 'name')
-  var title, description, isChecked, isDisabled
-  if (elementSettingsAnalyze(settings, 'description')) {
-    description = elementSettingsAnalyze(settings, 'description')
+export default function (props) {
+  props = inheritStyle(props, props.style)
+  let name, title, description, isChecked, isDisabled
+  name = props.name
+  if (props.description) {
+    description = props.description
   }
-  if (elementSettingsAnalyze(settings, 'title')) {
-    title = elementSettingsAnalyze(settings, 'title')
+  if (props.title) {
+    title = props.title
   }
-  if (elementSettingsAnalyze(settings, 'attributes')) {
-    var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
-    for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][declarations.langCode]).rating > 0.8) {
-        isDisabled = true
-      } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['checked'][declarations.langCode]).rating > 0.8) {
-        isChecked = true
-      }
-    }
-  }
-  let componentProp = {
+  isDisabled = isAttributedByBeing(props, 'disabled')
+  isChecked = isAttributedByBeing(props, 'checked')
+  let componentProps = {
     name,
     title,
     description,
     isChecked,
     isDisabled
   }
-  appendComponent(elementSettingsAnalyze(settings, 'container'), componentTemplate(componentProp))
-  propSet(name, settings)
+  appendComponent(props.container, componentTemplate(componentProps))
+  propSet(name, props)
 }

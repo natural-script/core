@@ -8,15 +8,11 @@
  *
  * Date: 2018-02-02
  */
-import {
-  getTranslations
-} from 'core/translationsGet.js'
-import {
-  convertLengthCSS
-} from './lengthUnits.js'
-export const setDimension = function (name, dimension, value) {
+import getTranslations from 'core/translationsGet'
+import convertLengthCSS from 'measurements/lengthUnits.js'
+export default function setDimension (name, dimension, value) {
   document[name + dimension + '_updater'] = null
-  var type = $(`#${name}`).prop('type')
+  var type = $(`#${name}`)[0].nodeName
   var isTitled = $(`#${name}`).prop('isTitled')
   var landscapeValue = null
   var portraitValue = null
@@ -33,7 +29,7 @@ export const setDimension = function (name, dimension, value) {
   var setDimensionFn = function (ratio, vhvwRatio) {
     if (dimension == 'length') {
       var vh2vwRatio = (document.defaultWindowLength / 100) / (document.defaultWindowWidth / 100)
-      if (type == 'img' || type == 'vid') {
+      if (type == 'IMG' || type == 'VIDEO') {
         if (isTitled) {
           if (document.pageDirection == 'horizontal') {
             $('#' + name + '_container').each(function () {
@@ -76,7 +72,7 @@ export const setDimension = function (name, dimension, value) {
         }
       }
     } else if (dimension == 'width') {
-      if (type == 'img' || type == 'vid') {
+      if (type == 'IMG' || type == 'VIDEO') {
         if (document.pageDirection == 'horizontal') {
           $('#' + name + '_container').each(function () {
             this.style.setProperty('width', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important')

@@ -166,7 +166,7 @@ import videojs from 'video.js';
  */
   var dock = function dock (options) {
     var opts = options || {}
-    var settings = {
+    var props = {
       title: {
         title: opts.title || '',
         description: opts.description || ''
@@ -184,13 +184,13 @@ import videojs from 'video.js';
     // add shelf first so `title` is added before it if available
     // because shelf will now be at index
     if (!shelf) {
-      shelf = this.shelf = this.addChild('shelf', settings, index)
+      shelf = this.shelf = this.addChild('shelf', props, index)
     }
 
     if (!title) {
-      title = this.title = this.addChild('title', settings.title, index)
+      title = this.title = this.addChild('title', props.title, index)
     } else {
-      title.update(settings.title.title, settings.title.description)
+      title.update(props.title.title, props.title.description)
     }
 
     this.one(title, 'dispose', function () {

@@ -10,8 +10,6 @@
  */
 import 'core/jsteFirebaseInit'
 import 'core/wordsTranslationsInit'
-import 'core/listParser'
-import 'core/stringValueParser'
 // import 'core/report'
 import 'core/smoothScrolling'
 import 'core/punctuationAndArticleRemover'
@@ -19,32 +17,41 @@ import 'core/mediaCVAnalysis'
 import Modernizr from 'modernizr'
 import annyang from 'annyang'
 import isReachable from 'is-reachable'
-import runCommand from 'commands/index'
 import indetationParser from 'parsers/indentation.pegjs'
 import evalCode from 'parsers/code'
+import manageComponent from 'core/manageComponent'
+import parseStringValue from 'parsers/stringValue'
+import elementValue from 'core/elementValue'
+import getTranslations from 'core/translationsGet'
+import getVar from 'core/getVar'
+import analyze from 'core/analyzer'
 import {
-  componentsFnInit
-} from 'core/componentsFnInit.js'
+  normalTxtOperatorTranslations
+} from 'core/analyzer'
 import {
   showCurrentPage
-} from 'core/pageChange.js'
+} from 'core/pageChange'
 import {
-  getTranslations
-} from 'core/translationsGet.js'
+  commandUtilsDB
+} from 'core/analyzer'
+import beautify from 'js-beautify'
 import * as declarations from 'core/declarations'
+const initEvent = require.context('event', true, /\.js$/)
+const runCommand = require.context('commands', true, /\.js$/)
 window.scriptInit = async function () {
-  window.getTranslations = getTranslations
-  componentsFnInit()
+  let naturalCode, structuredCode
   var meta = document.createElement('meta')
   meta.name = 'viewport'
   meta.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0')
   document.getElementsByTagName('head')[0].appendChild(meta)
-  var componentsRegex = `(${window.componentsDB.join('|')})`
   var rawCode = $(`jste`).text()
+  rawCode = rawCode.replace(/^(?:[\t ]*(?:\r?\n|\r))+/gmi, ``)
+  rawCode = rawCode.replace(/^/gmi, `\t`)
+  rawCode = rawCode.replace(/\s+$(?!\n)/gm, '')
   if (navigator.onLine) {
     let managerIsReachable = await isReachable('https://jste-manager.herokuapp.com/autoCorrect')
     if (managerIsReachable) {
-      var codeChunks = rawCode.match(/^(.|[\r\n]){0,10000}(,|\.)$/gmi)
+      var codeChunks = rawCode.match(/^(.|[\r\n]){0,10000}((,|\.)$|$(?!\n))/gmi)
       rawCode = ''
       for (var i = 0; i < codeChunks.length; i++) {
         rawCode += '\n' + await $.ajax({
@@ -58,25 +65,16 @@ window.scriptInit = async function () {
       }
     }
   }
-  var codePrefix = 'jQuery(document).ready(\nfunction ($) {'
-  var addTranslations = window.wordsTranslationsDB.Words['add'][declarations.langCode]
-  for (const i of addTranslations) {
-    codePrefix += `\nvar ${i} = declarations.jsteComponentsFnStore;`
-  }
+  var codePrefix = 'jQuery(document).ready(\nfunction ($) {let elementName, scopes, parentFnParams;'
   var code = rawCode
-  // code = XRegExp.replace(code, XRegExp(`((^[\\r\\n\\f\\v]+|[\\r\\n\\f\\v]+$)|(^[\\r\\n\\f\\v]*$(?:\\r\\n?|\\n)))`, 'gmi'), ``)
-  code = XRegExp.replace(code, XRegExp(`^`, 'gmi'), `\t`)
+  naturalCode = code
   code = `start:\n${code}`
-  // code = XRegExp.replace(code, XRegExp(`^((?!^(?:\\d|[A-Z])\\. )(.*?)[^,|\\.|:])$\\s(?!^(?:\\d|[A-Z])\\. )`, 'gmi'), '$1 ')
-  // code = `${codePrefix}\n${code}\n});`
-  code = XRegExp.replace(code, XRegExp('<< ' + getTranslations('operator19') + ': ((?:(?:.*?<<.*?>>.*?)|.*?)+?) >>', 'gmi'), function (match, p1, offset, string) {
-    return `NORMALTEXTPREFIX${btoa(p1.replace(XRegExp('\n', 'gmi'), ' '))}NORMALTEXTSUFFIX`
+  code = code.replace(/^(?:[\t ]*(?:\r?\n|\r))+/gmi, ``)
+  code = XRegExp.replace(code, XRegExp(`<< (${normalTxtOperatorTranslations.join('|')}) >>`, 'gmi'), function (match, p1, offset, string) {
+    return `NORMALTEXTPREFIX${btoa(analyze(p1).text.replace(/\n/gmi, ' '))}NORMALTEXTSUFFIX`
   })
-  if (declarations.langID == 3 || declarations.langID == 4) {
-    declarations.isRTL = true
+  if (declarations.isRTL) {
     $(`html`).attr(`dir`, `rtl`).attr(`declarations.langID`, `ar`)
-  } else {
-    declarations.isRTL = false
   }
   if (Modernizr.speechrecognition) {
     if (declarations.langID == 0) {
@@ -91,15 +89,34 @@ window.scriptInit = async function () {
       annyang.setLanguage(`ar-EG`)
     }
   }
-  console.log(indetationParser.parse(code))
-code = await evalCode(indetationParser.parse(code).start.pop())
+  indetationParser.commandUtils = `(${commandUtilsDB.join('|')})`
+  structuredCode = indetationParser.parse(code).start
+  code = evalCode(structuredCode)
+  code = `${codePrefix}\n${code}\n});`
   $(`jste`).remove()
   if (window.isLive) {
     $('<iframe>').attr('id', 'receiver').attr('src', 'https://jste-manager.herokuapp.com/db-manager.min.html').hide().appendTo('body')
   }
-  console.groupCollapsed('Compiled Syntax')
-  console.log(code)
+  console.groupCollapsed('Source Code')
+  console.groupCollapsed('Natural Syntax')
+  console.log(naturalCode)
   console.groupEnd()
+  console.groupCollapsed('Structured Syntax')
+  console.log(structuredCode)
+  console.groupEnd()
+  console.groupCollapsed('Compiled Syntax')
+  console.log(beautify.js(code))
+  console.groupEnd()
+  console.groupEnd()
+  window.manageComponent = manageComponent
+  window.parseStringValue = parseStringValue
+  window.elementValue = elementValue
+  window.getTranslations = getTranslations
+  window.getVar = getVar
+  window.initEvent = initEvent
+  window.runCommand = runCommand
+  window.$ = jQuery
+  window.jQuery = jQuery
   eval(code)
   setTimeout(() => showCurrentPage(), 1)
 }

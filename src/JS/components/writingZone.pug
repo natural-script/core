@@ -5,7 +5,7 @@ mixin prefixAndSuffix
     if suffix
         each val in suffix
             div(slot='suffix')= val
-if isMultiline
+if isMultilined
     paper-textarea(id=name label=title type=type auto-validate=auto_validate allowed-pattern=allowed_pattern maxlength=max minlength=min disabled=isDisabled char-counter=isCounted)
         +prefixAndSuffix
 else

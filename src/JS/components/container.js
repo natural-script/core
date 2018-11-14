@@ -8,48 +8,29 @@
  *
  * Date: 2018-02-05
  */
-import {
-  inheritStyle
-} from 'core/styleInheritor.js'
-import {
-  appendComponent
-} from 'core/componentAppend.js'
-import {
-  getSafe
-} from 'core/getSafe.js'
-import {
-  elementSettingsAnalyze
-} from 'core/elementSettingsAnalyze.js'
-import {
-  getTranslations
-} from 'core/translationsGet.js'
-import {
-  propSet
-} from 'core/propSet.js'
+import inheritStyle from 'core/styleInheritor'
+import appendComponent from 'core/componentAppend'
+import propSet from 'core/propSet'
 import 'bootstrap/scss/bootstrap-grid.scss'
+import isAttributedByBeing from 'core/isAttributedByBeing'
 import componentTemplate from './container.pug'
-import * as declarations from 'core/declarations'
-export default function (settings) {
-  settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
-  var name = elementSettingsAnalyze(settings, 'name')
-  var elevation = 2
-  var isGrid
-  if (elementSettingsAnalyze(settings, 'attributes')) {
-    var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
-    for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withoutShadow'][declarations.langCode]).rating > 0.8) {
-        elevation = 0
-      } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['grid'][declarations.langCode]).rating > 0.8) {
-        isGrid = true
-      }
-    }
+export default function (props) {
+  props = inheritStyle(props, props.style)
+  let name, elevation, isGrid
+  name = props.name
+  elevation = 2
+  isGrid = isAttributedByBeing(props, 'grid')
+  if (isAttributedByBeing(props, 'withoutShadow')) {
+    elevation = 0
   }
-  let componentProp = {
+  let componentProps = {
     name,
     elevation,
     isGrid
   }
-  appendComponent(elementSettingsAnalyze(settings, 'container'), componentTemplate(componentProp))
-  propSet(name, settings)
-  $(`#${name}`).css('position', 'absolute')
+  appendComponent(props.container, componentTemplate(componentProps))
+  propSet(name, props)
+  if (!props.position) {
+    $(`#${name}`).css('position', 'absolute')
+  }
 }

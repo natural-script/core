@@ -1,17 +1,15 @@
 import {
   requestBLOB
-} from './BLOBGet.js'
+} from 'core/BLOBGet'
 import {
   fadeOut
-} from './fadeInOut.js'
-import {
-  getUniqueID
-} from './uniqueID.js'
+} from 'core/fadeInOut'
+import nanoid from 'nanoid'
 import videojs from 'video.js'
 import 'thirdParty/videoJS/videojs.hotkeys'
 import 'thirdParty/videoJS/videojs-resume'
 import 'thirdParty/videoJS/videojs.framebyframe'
-import 'thirdParty/videoJS/videojs-dock'
+import 'videojs-dock'
 import * as declarations from 'core/declarations'
 export const showVideoA = function (name, source, title, videoURLID, fps) {
   var FPS
@@ -20,7 +18,7 @@ export const showVideoA = function (name, source, title, videoURLID, fps) {
   } else {
     FPS = 30
   }
-  var uniqueID = getUniqueID()
+  var uniqueID = nanoid(10)
   var v = document.getElementById(name)
   if (window.isLive) {
     requestBLOB(name, 'vid', source, videoURLID)

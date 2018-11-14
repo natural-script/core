@@ -1,4 +1,4 @@
-export const getRatings = function () {
+export default function getRatings() {
     if (window.jsteFirebase) {
         var ref = window.jsteFirebase.database().ref(`sites/${window.location.hostname}/ratings`);
         ref.once('value').then(function (snapshot) {

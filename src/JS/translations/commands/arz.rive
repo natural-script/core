@@ -1,0 +1,287 @@
+/*!
+ * Egyptian Arabic Commands RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-02-16
+ */
+
+// امسحه
+
++ امسح(?:ه|ها)
+- id: S1 ==> lang: arz ==> target: itself
+
+// امسح العنصر دة
+
++ امسح العنصر دة
+- id: S1 ==> lang: arz ==> target: itself
+
+// امسح elephant_photo
+
++ امسح *
+- id: S1 ==> lang: arz ==> target: <star1>
+
+// افتح مربع الحوار learn_more
+
++ (?:روح|توجه|زور|افتح) [إلى] * (<1 word>)
+- id: S2 ==> lang: arz ==> targetType: <star1> ==> target: <star2>
+
+// شغلها
+
++ شغل(?:ه|ها)
+- id: S3 ==> lang: arz ==> target: itself
+
+// شغل اﻷغنية دى
+
++ شغل (?:اﻷغنية|الاغنية|الأغنية) دى
+- id: S3 ==> lang: arz ==> target: itself
+
+// شغل العنصر دة
+
++ شغل العنصر دة
+- id: S3 ==> lang: arz ==> target: itself
+
+// شغل الفيديو دة
+
++ شغل الفيديو دة
+- id: S3 ==> lang: arz ==> target: itself
+
+// شغل Close_To_You
+
++ شغل *
+- id: S3 ==> lang: arz ==> target: <star1>
+
+// وقفه
+
++ وقف(?:ه|ها)
+- id: S4 ==> lang: arz ==> target: itself
+
+// وقف اﻷغنية دى
+
++ وقف (?:اﻷغنية|الاغنية|الأغنية) دى
+- id: S4 ==> lang: arz ==> target: itself
+
+// وقف العنصر دة
+
++ وقف العنصر دة
+- id: S4 ==> lang: arz ==> target: itself
+
+// وقف الفيديو دة
+
++ وقف الفيديو دة
+- id: S4 ==> lang: arz ==> target: itself
+
+// وقف Close_To_You
+
++ وقف *
+- id: S4 ==> lang: arz ==> target: <star1>
+
+// خلى الوقت اللى عدى منها 51654
+
++ خلى الوقت اللى (?:عدا|عدى) من(?:ه|ها) *
+- id: S5 ==> lang: arz ==> target: itself ==> timePosition: <star1>
+
+// خلى الوقت اللى عدى من الفيديو دة 13575
+
++ خلى الوقت اللى (?:عدا|عدى) من (?:الفيديو|الأغنية|الاغنية|العنصر) (?:دة|دى) *
+- id: S5 ==> lang: arz ==> target: itself ==> timePosition: <star1>
+
+// خلى الوقت اللى عدا من Close_To_You 1536
+
++ خلى الوقت اللى (?:عدا|عدى) من (<1 word>) *
+- id: S5 ==> lang: arz ==> target: <star1> ==> timePosition: <star2>
+
+// خلى القيمة بتاعته Hello World !
+
++ خلى القيمة بتاعت(?:ه|ها) *
+- id: S6 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى قيمة العنصر دة Hello World !
+
++ خلى قيمة العنصر دة *
+- id: S6 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى قيمة welcome_message Welcome, folks !
+
++ خلى قيمة (<1 word>) *
+- id: S6 ==> lang: arz ==> target: <star1> ==> value: <star2>
+
+// بدل حالة الفلاش
+
++ بدل حالة (?:الفلاش|الكشاف)
+- id: S7 ==> lang: arz
+
+// ولع الفلاش
+
++ (?:ولع|شغل|افتح) (?:الفلاش|الكشاف)
+- id: S8 ==> lang: arz
+
+// طفى الكشاف
+
++ طفى (?:الفلاش|الكشاف)
+- id: S9 ==> lang: arz
+
+// شغل الواى فاى
+
++ (?:ولع|شغل|افتح) (?:الويفى|الويفي|الوافاى|الواى فاى|الانترنت اللاسلكى|الإنترنت اللاسلكى)
+- id: S10 ==> lang: arz
+
+// طفى الإنترنت اللاسلكى
+
++ طفى (?:الويفى|الويفي|الوافاى|الواى فاى|الانترنت اللاسلكى|الإنترنت اللاسلكى)
+- id: S11 ==> lang: arz
+
+// شغل البلوتوث
+
++ (?:ولع|شغل|افتح) (?:الإتصال بالبلوتوث|البلوتوث)
+- id: S12 ==> lang: arz
+
+// اظهر الكيبورد
+
++ (?:اظهر|افتح) (?:الكيبورد|الكى بورد|الكي بورد)
+- id: S13 ==> lang: arz
+
+// اقفل الكيبورد
+
++ (?:اخفى|اقفل) (?:الكيبورد|الكى بورد|الكي بورد)
+- id: S14 ==> lang: arz
+
+// روح لقاعدة البيانات العامة egypt الفرع citizines و بعد كدة دخل البيانات دى: قيمة name_input فى الشريحة, قيمة address_input فى الشريحة address
+
++ روح لقاعدة البيانات * * الفرع * و بعد كدة دخل البيانات دى:<line break>*
+- id: S15 ==> lang: en ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> data: <star4>
+
+// روح لقاعدة البيانات العامة egypt الفرع citizines و بعد كدة هات قيمة الشريحة address اللى عندها نفس نوع قيمة name_input فى الشريحة name و خليها قيمة textB
+
++ روح لقاعدة البيانات * * الفرع * و بعد كدة هات قيمة الشريحة * اللى عندها نفس نوع قيمة * فى الشريحة * و خليها قيمة *
+- id: S16 ==> lang: arz ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> requiredSlot: <star4> ==> resourceValue: <star5> ==> resourceSlot: <star6> ==> target: <star7>
+
+// روح لقاعدة البيانات العامة egypt الفرع citizines و بعد كدة هات قيمة الشريحة address اللى عندها نفس نوع قيمة name_input فى الشريحة name و خليها قيمة العنصر دة
+
++ روح لقاعدة البيانات * * الفرع * و بعد كدة هات قيمة الشريحة * اللى عندها نفس نوع قيمة * فى الشريحة * و خليها قيمة العنصر دة
+- id: S16 ==> lang: arz ==> dbType: <star1> ==> dbName: <star2> ==> branchName: <star3> ==> requiredSlot: <star4> ==> resourceValue: <star5> ==> resourceSlot: <star6> ==> target: itself
+
+// خلى عرضه 30 بكسل
+
++ خلى عرض(?:ه|ها) *
+- id: S17 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى العرض بتاعه 30 بكسل
+
++ خلى العرض بتاع(?:ه|ها) *
+- id: S18 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى عرض العنصر دة 50 بكسل
+
++ خلى عرض العنصر دة *
+- id: S17 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى عرض containerA 30 بكسل
+
++ خلى عرض (<1 word>) *
+- id: S17 ==> lang: arz ==> target: <star1> ==> value: <star2>
+
+// خلى طوله 30 بكسل
+
++ خلى طول(?:ه|ها) *
+- id: S18 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى الطول بتاعه 30 بكسل
+
++ خلى الطول بتاع(?:ه|ها) *
+- id: S18 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى طول العنصر دة 50 بكسل
+
++ خلى طول العنصر دة *
+- id: S18 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى طول containerA 30 بكسل
+
++ خلى طول (<1 word>) *
+- id: S18 ==> lang: arz ==> target: <star1> ==> value: <star2>
+
+// خلى خلفيتها لون غامق عشوائى
+
++ خلى خلفيت(?:ه|ها) *
+- id: S19 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى الخلفية بتاعته 30 بكسل
+
++ خلى الخلفية بتاعت(?:ه|ها) *
+- id: S18 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى خلفية main_page حمرة
+
++ خلى خلفية (<1 word>) *
+- id: S19 ==> lang: arz ==> target: <star1> ==> value: <star2>
+
+// خلى خلفية العنصر دة لون فاتح عشوائى
+
++ خلى خلفية العنصر دة *
+- id: S19 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى لون خطه لون عشوائى
+
++ خلى لون خط(?:ه|ها) *
+- id: S20 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى لون الخط بتاعه 30 بكسل
+
++ خلى لون الخط بتاع(?:ه|ها) *
+- id: S18 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// خلى لون خط العنصر دة لون فاتح عشوائى
+
++ خلى لون خط العنصر دة *
+- id: S20 ==> lang: arz ==> target: itself ==> value: <star1>
+
+// حلى لون خط heading_title ازرق
+
++ خلى لون خط (<1 word>) *
+- id: S20 ==> lang: arz ==> target: <star1> ==> value: <star2>
+
+// خلى قيمة المتغير العمر 15 سنة !
+
++ خلى قيمة المتغير (<1 word>)(?:<line break>| )*
+- id: S21 ==> lang: arz ==> variablePath: <star1> ==> value: <star2>
+
+// انشأ المتغير المحلى var1
+
++ انشأ المتغير المحلى *
+- id: S22 ==> lang: arz ==> variableName: <star1> ==> type: local
+
+// انشأ المتغير العام var1
+
++ انشأ المتغير العام *
+- id: S22 ==> lang: arz ==> variableName: <star1> ==> type: global
+
+/* نفذ الفانكشن send data بالمعاملات دى:
+1. Link: https://example.com/POST
+2. Data: << قيمة data_input >> */
+
++ (?:نادى|نفذ|شغل) الفانكشن * بال(?:خيارات|معاملات) دى:<line break>*
+- id: S23 ==> lang: arz ==> functionName: <star1> ==> params: <star2>
+
+// نفذ الفانكشن alert
+
++ (?:نادى|نفذ|شغل) الفانكشن *
+- id: S23 ==> lang: arz ==> functionName: <star1>
+
++ ابعت رسالة إلى (?:المطور|المبرمج) بتقول: *
+- id: S24 ==> lang: arz ==> msg: <star1>
+
++ ابعت تحذير إلى (?:المطور|المبرمج) بيقول: *
+- id: S25 ==> lang: arz ==> msg: <star1>
+
++ ابعت خطأ إلى (?:المطور|المبرمج) بيقول: *
+- id: S26 ==> lang: arz ==> msg: <star1>
+
++ ابعت (?:البيانات|الداتا) دى (ل|إلى )* :(?:<line break>| )*
+- id: S27 ==> lang: arz ==> URL: <star1> ==> data: <star2>
+
++ (?:استلم|هات) البيانات المبعوتة من *
+- id: S28 ==> lang: arz ==> URL: <star1>

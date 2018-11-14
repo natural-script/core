@@ -8,45 +8,23 @@
  *
  * Date: 2018-02-05
  */
-import {
-  setAnimation
-} from 'core/animations.js'
-import {
-  appendComponent
-} from 'core/componentAppend.js'
-import {
-  inheritStyle
-} from 'core/styleInheritor.js'
-import {
-  getSafe
-} from 'core/getSafe.js'
-import {
-  elementSettingsAnalyze
-} from 'core/elementSettingsAnalyze.js'
-import {
-  getTranslations
-} from 'core/translationsGet.js'
+import appendComponent from 'core/componentAppend'
+import inheritStyle from 'core/styleInheritor'
+import getTranslations from 'core/translationsGet'
+import isAttributedByBeing from 'core/isAttributedByBeing'
 import componentTemplate from './FAB.pug'
 import * as declarations from 'core/declarations'
-export default function (settings) {
-  settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
-  var name = elementSettingsAnalyze(settings, 'name')
-  var text, icon, isMini, isDisabled
-  if (elementSettingsAnalyze(settings, 'text')) {
-    text = elementSettingsAnalyze(settings, 'text')
+export default function (props) {
+  props = inheritStyle(props, props.style)
+  let name, text, icon, isMini, isDisabled
+  name = props.name
+  if (props.text) {
+    text = props.text
   }
-  if (elementSettingsAnalyze(settings, 'icon')) {
-    icon = elementSettingsAnalyze(settings, 'icon')
+  if (props.icon) {
+    icon = props.icon
   }
-  if (elementSettingsAnalyze(settings, 'attributes')) {
-    var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
-    for (var i = 0; i < propertiesArray.length; i++) {
-      if (settings.mini.findBestMatch(window.wordsTranslationsDB.Words['mini'][declarations.langCode]).rating > 0.8) {
-        isMini = true
-      } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][declarations.langCode]).rating > 0.8) {
-        isDisabled = true
-      }
-    }
-  }
-  appendComponent(name, componentTemplate(componentProp))
+  isMini = isAttributedByBeing(props, 'mini')
+  isDisabled = isAttributedByBeing(props, 'disabled')
+  appendComponent(name, componentTemplate(componentProps))
 }

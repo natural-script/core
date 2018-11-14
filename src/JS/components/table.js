@@ -8,34 +8,23 @@
  *
  * Date: 2018-02-05
  */
-import {
-  inheritStyle
-} from 'core/styleInheritor.js'
-import {
-  appendComponent
-} from 'core/componentAppend.js'
-import {
-  elementSettingsAnalyze
-} from 'core/elementSettingsAnalyze.js'
-import {
-  propSet
-} from 'core/propSet.js'
-import {
-  getTranslations
-} from 'core/translationsGet.js'
+import inheritStyle from 'core/styleInheritor'
+import appendComponent from 'core/componentAppend'
+import propSet from 'core/propSet'
+import getTranslations from 'core/translationsGet'
 import 'material-design-lite/src/data-table/_data-table.scss'
 import List from 'list.js'
 import componentTemplate from './table.pug'
 import * as declarations from 'core/declarations'
-export default function (settings) {
-  settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
-  var name = elementSettingsAnalyze(settings, 'name')
-  let componentProp = {
+export default function (props) {
+  props = inheritStyle(props, props.style)
+  var name = props.name
+  let componentProps = {
     name
   }
-  appendComponent(elementSettingsAnalyze(settings, 'container'), componentTemplate(componentProp))
-  if (elementSettingsAnalyze(settings, 'data')) {
-    var inputDataPlainA = elementSettingsAnalyze(settings, 'data').split(' &&&& ')
+  appendComponent(props.container, componentTemplate(componentProps))
+  if (props.data) {
+    var inputDataPlainA = props.data.split(' &&&& ')
     var inputDataRaw = '['
     for (var a = 0; a < inputDataPlainA.length; a++) {
       var inputDataPlainB = inputDataPlainA[a].split(' &&& ')
@@ -59,7 +48,6 @@ export default function (settings) {
     }
     inputDataRaw += ']'
   }
-  console.log(inputDataRaw)
   var inputData = JSON.parse(inputDataRaw)
   var keys = []
   for (var i = 0; i < inputData.length; i++) {
@@ -75,26 +63,10 @@ export default function (settings) {
     template += '<td class="' + keys[i] + '"></td>'
   }
   template += '</tr>'
-  var settings = {
+  var props = {
     valueNames: keys,
     item: template
   }
-  var userList = new List(name, settings, inputData)
-  if (elementSettingsAnalyze(settings, 'attributes')) {
-    var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
-    for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['grid'][declarations.langCode]).rating > 0.8) {
-        $(`#${name}`).addClass('row')
-      }
-    }
-  }
-  if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('row') == true) {
-    $(`#${name}`).addClass('col')
-  }
-  if (elementSettingsAnalyze(settings, 'position')) {
-    $(`#${name}`).css('position', elementSettingsAnalyze(settings, 'position'))
-  } else {
-    $(`#${name}`).css('position', 'relative')
-  }
-  propSet(name, settings)
+  var userList = new List(name, props, inputData)
+  propSet(name, props)
 }

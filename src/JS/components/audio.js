@@ -10,39 +10,34 @@
  */
 import {
   requestBLOB
-} from 'core/BLOBGet.js'
-import {
-  inheritStyle
-} from 'core/styleInheritor.js'
-import {
-  elementSettingsAnalyze
-} from 'core/elementSettingsAnalyze.js'
-export default function (settings) {
-  settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
-  var source = elementSettingsAnalyze(settings, 'source')
+} from 'core/BLOBGet'
+import inheritStyle from 'core/styleInheritor'
+export default function (props) {
+  props = inheritStyle(props, props.style)
+  var source = props.source
   let initAudio = function (source) {
-    if (elementSettingsAnalyze(settings, 'cover')) {
+    if (props.cover) {
       var audioInfo = [{
-        name: elementSettingsAnalyze(settings, 'title'),
-        artist: elementSettingsAnalyze(settings, 'author'),
+        name: props.title,
+        artist: props.author,
         url: source,
-        cover: elementSettingsAnalyze(settings, 'cover')
+        cover: props.cover
       }]
-      if ($('#' + elementSettingsAnalyze(settings, 'audioPlayer')).html().trim() != '') {
-        document[elementSettingsAnalyze(settings, 'audioPlayer')].addAudio(audioInfo)
+      if ($('#' + props.audioPlayer).html().trim() != '') {
+        document[props.audioPlayer].addAudio(audioInfo)
       } else {
-        document.initializeAudioPlayerB[elementSettingsAnalyze(settings, 'audioPlayer')](elementSettingsAnalyze(settings, 'title'), elementSettingsAnalyze(settings, 'author'), source, elementSettingsAnalyze(settings, 'cover'))
+        document.initializeAudioPlayerB[props.audioPlayer](props.title, props.author, source, props.cover)
       }
     } else {
       var audioInfo = [{
-        name: elementSettingsAnalyze(settings, 'title'),
-        artist: elementSettingsAnalyze(settings, 'author'),
+        name: props.title,
+        artist: props.author,
         url: source
       }]
-      if ($('#' + elementSettingsAnalyze(settings, 'audioPlayer')).html().trim() != '') {
-        document[elementSettingsAnalyze(settings, 'audioPlayer')].addAudio(audioInfo)
+      if ($('#' + props.audioPlayer).html().trim() != '') {
+        document[props.audioPlayer].addAudio(audioInfo)
       } else {
-        document.initializeAudioPlayerA[elementSettingsAnalyze(settings, 'audioPlayer')](elementSettingsAnalyze(settings, 'title'), elementSettingsAnalyze(settings, 'author'), source)
+        document.initializeAudioPlayerA[props.audioPlayer](props.title, props.author, source)
       }
     }
   }

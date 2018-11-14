@@ -1,3 +1,3 @@
-export default function (elementName, script, functionArgumentsParam) {
+export default function () {
   WifiWizard.setWifiEnabled(false, win, fail)
 }

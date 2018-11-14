@@ -8,11 +8,9 @@
  *
  * Date: 2017-09-15
  */
-import {
-  getTranslations
-} from 'core/translationsGet.js'
+import  getTranslations from 'core/translationsGet.js'
 import toPx from '@yavuzmester/css-length-to-px'
-export const convertLengthCSS = function (propertyValue) {
+export default function convertLengthCSS (propertyValue) {
   var measurement = propertyValue
     .replace(RegExp(' ' + getTranslations('centimeters') + '', 'gmi'), 'cm')
     .replace(RegExp(' ' + getTranslations('millimeters') + '', 'gmi'), 'mm')
@@ -26,5 +24,5 @@ export const convertLengthCSS = function (propertyValue) {
     .replace(RegExp(' ' + getTranslations('pixel') + '', 'gmi'), 'px')
     .replace(RegExp(' ' + getTranslations('point') + '', 'gmi'), 'pt')
     .replace(RegExp(' ' + getTranslations('pica') + '', 'gmi'), 'pc')
-  return toPx(measurement, document.body) + 'px'
+  return toPx(measurement, document.head) + 'px'
 }

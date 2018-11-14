@@ -8,13 +8,9 @@
  *
  * Date: 2018-02-02
  */
-import {
-  getTranslations
-} from 'core/translationsGet.js'
-import {
-  convertLengthCSS
-} from './lengthUnits.js'
-export const setDistance = function (name, direction, value) {
+import getTranslations from 'core/translationsGet'
+import convertLengthCSS from 'measurements/lengthUnits'
+export default function setDistance (name, direction, value) {
   var landscapeValue = null
   var portraitValue = null
   if (XRegExp(` ${getTranslations('and')} `, 'gmi').test(value)) {
@@ -32,40 +28,48 @@ export const setDistance = function (name, direction, value) {
       if (document.pageDirection == 'horizontal') {
         $(`#${name}`).each(function () {
           this.style.setProperty('bottom', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh', 'important')
+          this.style.setProperty('top', 'auto', 'important')
         })
       } else if (document.pageDirection == 'vertical') {
         $(`#${name}`).each(function () {
           this.style.setProperty('bottom', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important')
+          this.style.setProperty('top', 'auto', 'important')
         })
       }
     } else if (direction == 'top') {
       if (document.pageDirection == 'horizontal') {
         $(`#${name}`).each(function () {
           this.style.setProperty('top', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh', 'important')
+          this.style.setProperty('bottom', 'auto', 'important')
         })
       } else if (document.pageDirection == 'vertical') {
         $(`#${name}`).each(function () {
           this.style.setProperty('top', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important')
+          this.style.setProperty('bottom', 'auto', 'important')
         })
       }
     } else if (direction == 'left') {
       if (document.pageDirection == 'horizontal') {
         $(`#${name}`).each(function () {
           this.style.setProperty('left', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important')
+          this.style.setProperty('right', 'auto', 'important')
         })
       } else if (document.pageDirection == 'vertical') {
         $(`#${name}`).each(function () {
           this.style.setProperty('left', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important')
+          this.style.setProperty('right', 'auto', 'important')
         })
       }
     } else if (direction == 'right') {
       if (document.pageDirection == 'horizontal') {
         $(`#${name}`).each(function () {
           this.style.setProperty('right', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important')
+          this.style.setProperty('left', 'auto', 'important')
         })
       } else if (document.pageDirection == 'vertical') {
         $(`#${name}`).each(function () {
           this.style.setProperty('right', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important')
+          this.style.setProperty('left', 'auto', 'important')
         })
       }
     }

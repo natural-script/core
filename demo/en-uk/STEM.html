@@ -1,526 +1,558 @@
-<meta charset="UTF-8">
+﻿<meta charset="UTF-8">
 <script src="https://jste-manager.herokuapp.com/loader.min.js"></script>
 configure this site with the following properties:
-its title is STEM Schools Of Alexandria,
-its logo is https://preview.ibb.co/c4Knwv/STEM_Alex_Logo.jpg,
-its default window resolution is 1366 × 644 in the case of the landscape mode and 412 × 732 in the case of the portrait mode.
+	* its title is STEM Schools Of Alexandria
+	* its logo is https://preview.ibb.co/c4Knwv/STEM_Alex_Logo.jpg
+	* its default window resolution is 1366 × 644 in the case of the landscape mode and 412 × 732 in the case of the portrait mode
 
 add a firebase centre with the following properties:
-its username is stem-alex-site,
-its password is AIzaSyAVWkpzwzE00p-_oJx40uf4DvZZtT4rz5k.
+	* its username is stem-alex-site
+	* its password is AIzaSyAVWkpzwzE00p-_oJx40uf4DvZZtT4rz5k
 
 add a page with the following properties:
-its name is home.
+	* its name is home
 
 add a page with the following properties:
-its name is features.
+	* its name is features
 
 add a page with the following properties:
-its name is contact_us.
+	* its name is contact_us
 
 add a page with the following properties:
-its name is news1.
+	* its name is news1
 
 add a page with the following properties:
-its name is news2.
+	* its name is news2
 
 add a page with the following properties:
-its name is news3.
+	* its name is news3
 
 add a container with the following properties:
-its name is header,
-its container is home,
-its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode,
-its length is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode.
+	* its name is header
+	* its container is home
+	* its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode
+	* its length is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode
 
 add a transparent image with the following properties:
-its name is school_logo,
-its container is header,
-its source is https://preview.ibb.co/c4Knwv/STEM_Alex_Logo.jpg,
-its type is icon,
-its length is 60 pixels in the case of the landscape mode and 60 pixels in the case of the portrait mode,
-its width is 60 pixels in the case of the landscape mode and 60 pixels in the case of the portrait mode,
-its distance from the top is 15 pixels in the case of the landscape mode and 15 pixels in the case of the portrait mode,
-its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode.
+	* its name is school_logo
+	* its container is header
+	* its source is https://preview.ibb.co/c4Knwv/STEM_Alex_Logo.jpg
+	* its type is icon
+	* its length is 60 pixels in the case of the landscape mode and 60 pixels in the case of the portrait mode
+	* its width is 60 pixels in the case of the landscape mode and 60 pixels in the case of the portrait mode
+	* its distance from the top is 15 pixels in the case of the landscape mode and 15 pixels in the case of the portrait mode
+	* its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
 
 add a grid container without a shadow with the following properties:
-its name is nav_bar,
-its container is header,
-its length is 80 pixels in the case of the landscape mode and 80 pixels in the case of the portrait mode,
-its width is 1000 pixels in the case of the landscape mode and 250 pixels in the case of the portrait mode,
-its distance from the top is 5 pixels in the case of the landscape mode and 15 pixels in the case of the portrait mode,
-its distance from the right is 45 pixels in the case of the landscape mode and 50 pixels in the case of the portrait mode.
+	* its name is nav_bar
+	* its container is header
+	* its length is 80 pixels in the case of the landscape mode and 80 pixels in the case of the portrait mode
+	* its width is 1000 pixels in the case of the landscape mode and 250 pixels in the case of the portrait mode
+	* its distance from the top is 5 pixels in the case of the landscape mode and 15 pixels in the case of the portrait mode
+	* its distance from the right is 45 pixels in the case of the landscape mode and 50 pixels in the case of the portrait mode
 
 add a text with the following properties:
-its name is home_link,
-its text is Home,
-its container is nav_bar,
-its font colour is black,
-its font size is 30 pixels in the case of the landscape mode and 15 pixels in the case of the portrait mode,
-its font thickness is thick,
-its distance from the top is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode,
-its commands are When it has been clicked, go to the page home.
+	* its name is home_link
+	* its text is Home
+	* its container is nav_bar
+	* its font colour is black
+	* its font size is 30 pixels in the case of the landscape mode and 15 pixels in the case of the portrait mode
+	* its font thickness is thick
+
+When the element home_link has been clicked,
+	* go to the page home
 
 add a text with the following properties:
-its name is features_link,
-its text is Features,
-its container is nav_bar,
-its font colour is black,
-its font size is 30 pixels in the case of the landscape mode and 15 pixels in the case of the portrait mode,
-its font thickness is thick,
-its distance from the top is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode,
-its commands are When it has been clicked, go to the page features &&& When it has been clicked, go to the element feature1.
+	* its name is features_link
+	* its text is Features
+	* its container is nav_bar
+	* its font colour is black
+	* its font size is 30 pixels in the case of the landscape mode and 15 pixels in the case of the portrait mode
+	* its font thickness is thick
+
+When the element features_link has been clicked,
+	* go to the page features
+	* go to the element feature1
 
 add a dropdown menu with the following properties:
-its name is features_menu,
-its items are Prepared Labs &&& Delicious Meals,
-its emitter is features_link,
-the commands of the item Prepared Labs are that When it has been clicked, go to the page features &&& When it has been clicked, go to the element feature1,
-the commands of the item Delicious Meals are that When it has been clicked, go to the page features &&& When it has been clicked, go to the element feature2.
+	* its name is features_menu
+	* its items are Prepared Labs &&& Delicious Meals
+	* its emitter is features_link
+
+When the element << the name of the item number 1 in the dropdown menu features_menu >> has been clicked,
+	* go to the page features
+	* go to the element feature1
+
+When the element << the name of the item number 2 in the dropdown menu features_menu >> has been clicked,
+	* go to the page features
+	* go to the element feature2
 
 add a text with the following properties:
-its name is contact_us_link,
-its text is Contact us,
-its container is nav_bar,
-its font colour is black,
-its font size is 30 pixels in the case of the landscape mode and 15 pixels in the case of the portrait mode,
-its font thickness is thick,
-its distance from the top is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode,
-its commands are When it has been clicked, go to the page contact_us.
+	* its name is contact_us_link
+	* its text is Contact us
+	* its container is nav_bar
+	* its font colour is black
+	* its font size is 30 pixels in the case of the landscape mode and 15 pixels in the case of the portrait mode
+	* its font thickness is thick
+
+When the element contact_us_link has been clicked,
+	* go to the page contact_us
 
 add a parallax container with the following properties:
-its name is intro,
-its container is home,
-its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode,
-its length is 400 pixels in the case of the landscape mode and 560 pixels in the case of the portrait mode,
-its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode,
-its background is https://preview.ibb.co/ctYxgv/STEM_Alex_Students.jpg.
+	* its name is intro
+	* its container is home
+	* its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode
+	* its length is 400 pixels in the case of the landscape mode and 560 pixels in the case of the portrait mode
+	* its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode
+	* its background is https://preview.ibb.co/ctYxgv/STEM_Alex_Students.jpg
 
 add a container with the following properties:
-its name is intro_container_mask,
-its container is intro,
-its background is black,
-its transparency is 50,
-its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode,
-its length is 400 pixels in the case of the landscape mode and 560 pixels in the case of the portrait mode.
+	* its name is intro_container_mask
+	* its container is intro
+	* its background is black
+	* its transparency is 50
+	* its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode
+	* its length is 400 pixels in the case of the landscape mode and 560 pixels in the case of the portrait mode
 
 add a text with the following properties:
-its name is intro_message,
-its text is Learn More About The Best Schools In Egypt Ever,
-its container is intro,
-its font colour is white,
-its font size is 42 pixels in the case of the landscape mode and 45 pixels in the case of the portrait mode,
-its font thickness is thick,
-its width is 960 pixels in the case of the landscape mode and 300 pixels in the case of the portrait mode,
-its distance from the top is 70 pixels in the case of the landscape mode and 70 pixels in the case of the portrait mode,
-its distance from the left is 210 pixels in the case of the landscape mode and 70 pixels in the case of the portrait mode.
+	* its name is intro_message
+	* its text is Learn More About The Best Schools In Egypt Ever
+	* its container is intro
+	* its font colour is white
+	* its font size is 42 pixels in the case of the landscape mode and 45 pixels in the case of the portrait mode
+	* its font thickness is thick
+	* its width is 960 pixels in the case of the landscape mode and 300 pixels in the case of the portrait mode
+	* its distance from the top is 70 pixels in the case of the landscape mode and 70 pixels in the case of the portrait mode
+	* its distance from the left is 210 pixels in the case of the landscape mode and 70 pixels in the case of the portrait mode
 
 add a text with the following properties:
-its name is intro_video_watch_btn,
-its text is Watch Video << an icon of play-circle-o >>,
-its container is intro,
-its font colour is white,
-its font size is 40 pixels in the case of the landscape mode and 40 pixels in the case of the portrait mode,
-its font thickness is thick,
-its width is 280 pixels in the case of the landscape mode and 280 pixels in the case of the portrait mode,
-its distance from the top is 120 pixels in the case of the landscape mode and 120 pixels in the case of the portrait mode,
-its distance from the left is 550 pixels in the case of the landscape mode and 70 pixels in the case of the portrait mode,
-its commands are When it has been clicked, open the dialog box intro_video_container.
+	* its name is intro_video_watch_btn
+	* its text is Watch Video << an icon of play-circle >>
+	* its container is intro
+	* its font colour is white
+	* its font size is 40 pixels in the case of the landscape mode and 40 pixels in the case of the portrait mode
+	* its font thickness is thick
+	* its width is 280 pixels in the case of the landscape mode and 280 pixels in the case of the portrait mode
+	* its distance from the top is 120 pixels in the case of the landscape mode and 120 pixels in the case of the portrait mode
+	* its distance from the left is 550 pixels in the case of the landscape mode and 70 pixels in the case of the portrait mode
+
+When the element intro_video_watch_btn has been clicked,
+	* open the dialog box intro_video_container
 
 add a container without a shadow with the following properties:
-its name is news,
-its container is home,
-its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode,
-its length is 420 pixels in the case of the landscape mode and 820 pixels in the case of the portrait mode,
-its distance from the top is 500 pixels in the case of the landscape mode and 660 pixels in the case of the portrait mode.
+	* its name is news
+	* its container is home
+	* its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode
+	* its length is 420 pixels in the case of the landscape mode and 820 pixels in the case of the portrait mode
+	* its distance from the top is 500 pixels in the case of the landscape mode and 660 pixels in the case of the portrait mode
 
 add a text with the following properties:
-its name is news_title,
-its text is News,
-its container is news,
-its font colour is black,
-its font size is 40 pixels in the case of the landscape mode and 40 pixels in the case of the portrait mode,
-its font thickness is thick,
-its width is 110 pixels in the case of the landscape mode and 110 pixels in the case of the portrait mode,
-its distance from the top is 35 pixels in the case of the landscape mode and 35 pixels in the case of the portrait mode,
-its distance from the left is 640 pixels in the case of the landscape mode and 150 pixels in the case of the portrait mode.
+	* its name is news_title
+	* its text is News
+	* its container is news
+	* its font colour is black
+	* its font size is 40 pixels in the case of the landscape mode and 40 pixels in the case of the portrait mode
+	* its font thickness is thick
+	* its width is 110 pixels in the case of the landscape mode and 110 pixels in the case of the portrait mode
+	* its distance from the top is 35 pixels in the case of the landscape mode and 35 pixels in the case of the portrait mode
+	* its distance from the left is 640 pixels in the case of the landscape mode and 150 pixels in the case of the portrait mode
 
 add a container without a shadow with the following properties:
-its name is news_links_container,
-its container is news,
-its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode,
-its distance from the top is 150 pixels in the case of the landscape mode and 150 pixels in the case of the portrait mode.
+	* its name is news_links_container
+	* its container is news
+	* its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode
+	* its distance from the top is 150 pixels in the case of the landscape mode and 150 pixels in the case of the portrait mode
 
 add a container with the following properties:
-its name is news1_link_container,
-its container is news_links_container,
-its length is 200 pixels in the case of the landscape mode and 200 pixels in the case of the portrait mode,
-its width is 400 pixels in the case of the landscape mode and 380 pixels in the case of the portrait mode,
-its distance from the left is 40 pixels in the case of the landscape mode and 15 pixels in the case of the portrait mode.
+	* its name is news1_link_container
+	* its container is news_links_container
+	* its length is 200 pixels in the case of the landscape mode and 200 pixels in the case of the portrait mode
+	* its width is 400 pixels in the case of the landscape mode and 380 pixels in the case of the portrait mode
+	* its distance from the left is 40 pixels in the case of the landscape mode and 15 pixels in the case of the portrait mode
 
 add a container with the following properties:
-its name is news2_link_container,
-its container is news_links_container,
-its length is 200 pixels in the case of the landscape mode and 200 pixels in the case of the portrait mode,
-its width is 400 pixels in the case of the landscape mode and 380 pixels in the case of the portrait mode,
-its distance from the left is 480 pixels in the case of the landscape mode and 15 pixels in the case of the portrait mode,
-its distance from the top is 0 pixel in the case of the landscape mode and 230 pixels in the case of the portrait mode.
+	* its name is news2_link_container
+	* its container is news_links_container
+	* its length is 200 pixels in the case of the landscape mode and 200 pixels in the case of the portrait mode
+	* its width is 400 pixels in the case of the landscape mode and 380 pixels in the case of the portrait mode
+	* its distance from the left is 480 pixels in the case of the landscape mode and 15 pixels in the case of the portrait mode
+	* its distance from the top is 0 pixel in the case of the landscape mode and 230 pixels in the case of the portrait mode
 
 add a container with the following properties:
-its name is news3_link_container,
-its container is news_links_container,
-its length is 200 pixels in the case of the landscape mode and 200 pixels in the case of the portrait mode,
-its width is 400 pixels in the case of the landscape mode and 380 pixels in the case of the portrait mode,
-its distance from the left is 920 pixels in the case of the landscape mode and 15 pixels in the case of the portrait mode,
-its distance from the top is 0 pixel in the case of the landscape mode and 460 pixels in the case of the portrait mode.
+	* its name is news3_link_container
+	* its container is news_links_container
+	* its length is 200 pixels in the case of the landscape mode and 200 pixels in the case of the portrait mode
+	* its width is 400 pixels in the case of the landscape mode and 380 pixels in the case of the portrait mode
+	* its distance from the left is 920 pixels in the case of the landscape mode and 15 pixels in the case of the portrait mode
+	* its distance from the top is 0 pixel in the case of the landscape mode and 460 pixels in the case of the portrait mode
 
 add a text with the following properties:
-its name is news1_link,
-its text is Starting School this year on 24 September,
-its font colour is black,
-its container is news1_link_container,
-its width is 360 pixels in the case of the landscape mode and 360 pixels in the case of the portrait mode,
-its distance from the left is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode,
-its distance from the top is 40 pixels in the case of the landscape mode and 40 pixels in the case of the portrait mode,
-its font size is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its commands are When it has been clicked, go to the page news1.
+	* its name is news1_link
+	* its text is Starting School this year on 24 September
+	* its font colour is black
+	* its container is news1_link_container
+	* its width is 360 pixels in the case of the landscape mode and 360 pixels in the case of the portrait mode
+	* its distance from the left is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode
+	* its distance from the top is 40 pixels in the case of the landscape mode and 40 pixels in the case of the portrait mode
+	* its font size is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+
+When the element news1_link has been clicked,
+	* go to the page news1
 
 add a text with the following properties:
-its name is news2_link,
-its text is Now, the G11 & G12 students who have left school have the ability to join the school again,
-its font colour is black,
-its container is news2_link_container,
-its width is 360 pixels in the case of the landscape mode and 360 pixels in the case of the portrait mode,
-its distance from the left is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode,
-its distance from the top is 40 pixels in the case of the landscape mode and 40 pixels in the case of the portrait mode,
-its font size is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode,
-its commands are When it has been clicked, go to the page news2.
+	* its name is news2_link
+	* its text is Nowthe G11 & G12 students who have left school have the ability to join the school again,
+	* its font colour is black
+	* its container is news2_link_container
+	* its width is 360 pixels in the case of the landscape mode and 360 pixels in the case of the portrait mode
+	* its distance from the left is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode
+	* its distance from the top is 40 pixels in the case of the landscape mode and 40 pixels in the case of the portrait mode
+	* its font size is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode
+
+When the element news2_link has been clicked,
+	* go to the page news2
 
 add a text with the following properties:
-its name is news3_link,
-its text is Accommodation for first grade students starting on 9 September,
-its font colour is black,
-its container is news3_link_container,
-its width is 360 pixels in the case of the landscape mode and 360 pixels in the case of the portrait mode,
-its distance from the left is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode,
-its distance from the top is 40 pixels in the case of the landscape mode and 40 pixels in the case of the portrait mode,
-its font size is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its commands are When it has been clicked, go to the page news3.
+	* its name is news3_link
+	* its text is Accommodation for first grade students starting on 9 September
+	* its font colour is black
+	* its container is news3_link_container
+	* its width is 360 pixels in the case of the landscape mode and 360 pixels in the case of the portrait mode
+	* its distance from the left is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode
+	* its distance from the top is 40 pixels in the case of the landscape mode and 40 pixels in the case of the portrait mode
+	* its font size is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+
+When the element news3_link has been clicked,
+	* go to the page news3
 
 add a dialog box with the following properties:
-its name is intro_video_container,
-its width is 800 pixels in the case of the landscape mode and 300 pixels in the case of the portrait mode,
-its commands are When it becomes out of the viewport, pause intro_video_about_stem.
+	* its name is intro_video_container
+	* its width is 800 pixels in the case of the landscape mode and 300 pixels in the case of the portrait mode
+
+When the element intro_video_container becomes out of the viewport,
+	* pause intro_video_about_stem
 
 add a video with the following properties:
-its name is intro_video_about_stem,
-its title is What are STEM schools ?!!,
-its source is https://www.youtube.com/watch?v=4ZTodnFfj10,
-its container is intro_video_container,
-its width is 800 pixels in the case of the landscape mode and 300 pixels in the case of the portrait mode,
-its length is 400 pixels in the case of the landscape mode and 400 pixels in the case of the portrait mode.
+	* its name is intro_video_about_stem
+	* its title is What are STEM schools ?!!
+	* its source is https://www.youtube.com/watch?v=4ZTodnFfj10
+	* its container is intro_video_container
+	* its width is 800 pixels in the case of the landscape mode and 300 pixels in the case of the portrait mode
+	* its length is 400 pixels in the case of the landscape mode and 400 pixels in the case of the portrait mode
 
 add a container with the following properties:
-its name is footer,
-its container is home,
-its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode,
-its length is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode,
-its background is white,
-its distance from the top is 1000 pixels in the case of the landscape mode and 1500 pixels in the case of the portrait mode.
+	* its name is footer
+	* its container is home
+	* its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode
+	* its length is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode
+	* its background is white
+	* its distance from the top is 1000 pixels in the case of the landscape mode and 1500 pixels in the case of the portrait mode
 
 add a text with the following properties:
-its name is copyrights,
-its container is footer,
-its text is Copyrights 2017 Jste Team,
-its font colour is black,
-its font size is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode,
-its distance from the left is 550 pixels in the case of the landscape mode and 80 pixels in the case of the portrait mode,
-its distance from the top is 35 pixels in the case of the landscape mode and 35 pixels in the case of the portrait mode,
-its width is 300 pixels in the case of the landscape mode and 300 pixels in the case of the portrait mode.
+	* its name is copyrights
+	* its container is footer
+	* its text is Copyrights 2017 Jste Team
+	* its font colour is black
+	* its font size is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode
+	* its distance from the left is 550 pixels in the case of the landscape mode and 80 pixels in the case of the portrait mode
+	* its distance from the top is 35 pixels in the case of the landscape mode and 35 pixels in the case of the portrait mode
+	* its width is 300 pixels in the case of the landscape mode and 300 pixels in the case of the portrait mode
 
 add a parallax container with the following properties:
-its name is feature1,
-its container is features,
-its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode,
-its length is 644 pixels in the case of the landscape mode and 732 pixels in the case of the portrait mode,
-its background is https://www.innova-solutions.co.uk/wp-content/uploads/2014/09/Brine-Leas-School-Lab.jpg.
+	* its name is feature1
+	* its container is features
+	* its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode
+	* its length is 644 pixels in the case of the landscape mode and 732 pixels in the case of the portrait mode
+	* its background is https://www.innova-solutions.co.uk/wp-content/uploads/2014/09/Brine-Leas-School-Lab.jpg
 
 add a parallax container with the following properties:
-its name is feature2,
-its container is features,
-its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode,
-its length is 644 pixels in the case of the landscape mode and 732 pixels in the case of the portrait mode,
-its distance from the top is 644 pixels in the case of the landscape mode and 732 pixels in the case of the portrait mode,
-its background is http://media.npr.org/assets/img/2015/09/24/istock_000021865129_full_custom-481c5aaa7d727302821a0599c422d9d9d61f33ae-s900-c85.jpg.
+	* its name is feature2
+	* its container is features
+	* its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode
+	* its length is 644 pixels in the case of the landscape mode and 732 pixels in the case of the portrait mode
+	* its distance from the top is 644 pixels in the case of the landscape mode and 732 pixels in the case of the portrait mode
+	* its background is http://media.npr.org/assets/img/2015/09/24/istock_000021865129_full_custom-481c5aaa7d727302821a0599c422d9d9d61f33ae-s900-c85.jpg
 
 add a container with the following properties:
-its name is feature1_container_mask,
-its container is feature1,
-its background is black,
-its transparency is 50,
-its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode,
-its length is 644 pixels in the case of the landscape mode and 732 pixels in the case of the portrait mode.
+	* its name is feature1_container_mask
+	* its container is feature1
+	* its background is black
+	* its transparency is 50
+	* its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode
+	* its length is 644 pixels in the case of the landscape mode and 732 pixels in the case of the portrait mode
 
 add a container with the following properties:
-its name is feature2_container_mask,
-its container is feature2,
-its background is black,
-its transparency is 50,
-its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode,
-its length is 644 pixels in the case of the landscape mode and 732 pixels in the case of the portrait mode.
+	* its name is feature2_container_mask
+	* its container is feature2
+	* its background is black
+	* its transparency is 50
+	* its width is 1366 pixels in the case of the landscape mode and 412 pixels in the case of the portrait mode
+	* its length is 644 pixels in the case of the landscape mode and 732 pixels in the case of the portrait mode
 
 add a text with the following properties:
-its name is back2home_btn,
-its text is << an icon of chevron-left >>,
-its container is feature1,
-its distance from the top is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its font colour is white,
-its font size is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its commands are When it has been clicked, go to the page home.
+	* its name is back2home_btn
+	* its text is << an icon of chevron-left >>
+	* its container is feature1
+	* its distance from the top is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its font colour is white
+	* its font size is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
 
-
-add a text with the following properties:
-its name is feature1_title,
-its text is Prepared Labs,
-its container is feature1,
-its font thickness is thick,
-its font colour is white,
-its distance from the top is 100 pixels in the case of the landscape mode and 50 pixels in the case of the portrait mode,
-its distance from the left is 70 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its font size is 100 pixels in the case of the landscape mode and 70 pixels in the case of the portrait mode,
-its width is 1000 pixels in the case of the landscape mode and 300 pixels in the case of the portrait mode,
-its animation is fadeInRight.
+When the element back2home_btn has been clicked,
+	* go to the page home
 
 add a text with the following properties:
-its name is feature1_description,
-its text is STEM School of Alexandria is characterized by modern laboratories which have been prepared and designed according the latest technologies for << write this text in a bold font: Biology, Chemistry, Mechanics, Geology and Physics >>, which gives the students the chance to apply all what they study in the school instead of the useless theoretical studying without applying anything.,
-its container is feature1,
-its font colour is white,
-its distance from the top is 100 pixels in the case of the landscape mode and 60 pixels in the case of the portrait mode,
-its distance from the left is 70 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its font size is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode,
-its width is 1250 pixels in the case of the landscape mode and 350 pixels in the case of the portrait mode,
-its animation is fadeInRightBig.
+	* its name is feature1_title
+	* its text is Prepared Labs
+	* its container is feature1
+	* its font thickness is thick
+	* its font colour is white
+	* its distance from the top is 100 pixels in the case of the landscape mode and 50 pixels in the case of the portrait mode
+	* its distance from the left is 70 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its font size is 100 pixels in the case of the landscape mode and 70 pixels in the case of the portrait mode
+	* its width is 1000 pixels in the case of the landscape mode and 300 pixels in the case of the portrait mode
+	* its animation is fadeInRight
 
 add a text with the following properties:
-its name is feature2_title,
-its text is Delicious Meals,
-its container is feature2,
-its font thickness is thick,
-its font colour is white,
-its distance from the top is 100 pixels in the case of the landscape mode and 150 pixels in the case of the portrait mode,
-its distance from the left is 70 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its font size is 100 pixels in the case of the landscape mode and 70 pixels in the case of the portrait mode,
-its width is 1000 pixels in the case of the landscape mode and 300 pixels in the case of the portrait mode,
-its animation is fadeInRight.
+	* its name is feature1_description
+	* its text is STEM School of Alexandria is characterized by modern laboratories which have been prepared and designed according the latest technologies for << write this text in a bold font: BiologyChemistry,Mechanics,Geology and Physics >>,which gives the students the chance to apply all what they study in the school instead of the useless theoretical studying without applying anything.,
+	* its container is feature1
+	* its font colour is white
+	* its distance from the top is 100 pixels in the case of the landscape mode and 60 pixels in the case of the portrait mode
+	* its distance from the left is 70 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its font size is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode
+	* its width is 1250 pixels in the case of the landscape mode and 350 pixels in the case of the portrait mode
+	* its animation is fadeInRightBig
 
 add a text with the following properties:
-its name is feature2_description,
-its text is The school pays full attention to the students' living in the school and one of the main concerns of this attention is providing healthy meals to the students three times a day: << write this text in an italic font: the breakfast in the morning, the lunch and the dinner at night >>.,
-its container is feature2,
-its font colour is white,
-its distance from the top is 100 pixels in the case of the landscape mode and 150 pixels in the case of the portrait mode,
-its distance from the left is 70 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its font size is 25 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode,
-its width is 1250 pixels in the case of the landscape mode and 350 pixels in the case of the portrait mode,
-its animation is fadeInRightBig.
+	* its name is feature2_title
+	* its text is Delicious Meals
+	* its container is feature2
+	* its font thickness is thick
+	* its font colour is white
+	* its distance from the top is 100 pixels in the case of the landscape mode and 150 pixels in the case of the portrait mode
+	* its distance from the left is 70 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its font size is 100 pixels in the case of the landscape mode and 70 pixels in the case of the portrait mode
+	* its width is 1000 pixels in the case of the landscape mode and 300 pixels in the case of the portrait mode
+	* its animation is fadeInRight
+
+add a text with the following properties:
+	* its name is feature2_description
+	* its text is The school pays full attention to the students' living in the school and one of the main concerns of this attention is providing healthy meals to the students three times a day: << write this text in an italic font: the breakfast in the morningthe lunch and the dinner at night >>.,
+	* its container is feature2
+	* its font colour is white
+	* its distance from the top is 100 pixels in the case of the landscape mode and 150 pixels in the case of the portrait mode
+	* its distance from the left is 70 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its font size is 25 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode
+	* its width is 1250 pixels in the case of the landscape mode and 350 pixels in the case of the portrait mode
+	* its animation is fadeInRightBig
 
 add a container with the following properties:
-its name is news1_container,
-its container is news1,
-its length is 1000 pixels in the case of the landscape mode and 1600 pixels in the case of the portrait mode,
-its width is 1166 pixels in the case of the landscape mode and 380 pixels in the case of the portrait mode,
-its distance from the left is 100 pixels in the case of the landscape mode and 13 pixels in the case of the portrait mode,
-its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode,
-its animation is fadeInUp.
+	* its name is news1_container
+	* its container is news1
+	* its length is 1000 pixels in the case of the landscape mode and 1600 pixels in the case of the portrait mode
+	* its width is 1166 pixels in the case of the landscape mode and 380 pixels in the case of the portrait mode
+	* its distance from the left is 100 pixels in the case of the landscape mode and 13 pixels in the case of the portrait mode
+	* its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode
+	* its animation is fadeInUp
 
 add a container with the following properties:
-its name is news2_container,
-its container is news2,
-its length is 1000 pixels in the case of the landscape mode and 1000 pixels in the case of the portrait mode,
-its width is 1166 pixels in the case of the landscape mode and 380 pixels in the case of the portrait mode,
-its distance from the left is 100 pixels in the case of the landscape mode and 13 pixels in the case of the portrait mode,
-its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode,
-its animation is fadeInUp.
+	* its name is news2_container
+	* its container is news2
+	* its length is 1000 pixels in the case of the landscape mode and 1000 pixels in the case of the portrait mode
+	* its width is 1166 pixels in the case of the landscape mode and 380 pixels in the case of the portrait mode
+	* its distance from the left is 100 pixels in the case of the landscape mode and 13 pixels in the case of the portrait mode
+	* its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode
+	* its animation is fadeInUp
 
 add a container with the following properties:
-its name is news3_container,
-its container is news3,
-its length is 1300 pixels in the case of the landscape mode and 1600 pixels in the case of the portrait mode,
-its width is 1166 pixels in the case of the landscape mode and 380 pixels in the case of the portrait mode,
-its distance from the left is 100 pixels in the case of the landscape mode and 13 pixels in the case of the portrait mode,
-its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode,
-its animation is fadeInUp.
+	* its name is news3_container
+	* its container is news3
+	* its length is 1300 pixels in the case of the landscape mode and 1600 pixels in the case of the portrait mode
+	* its width is 1166 pixels in the case of the landscape mode and 380 pixels in the case of the portrait mode
+	* its distance from the left is 100 pixels in the case of the landscape mode and 13 pixels in the case of the portrait mode
+	* its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode
+	* its animation is fadeInUp
 
 add a text with the following properties:
-its name is news1_title,
-its container is news1_container,
-its text is Starting school this year on 24 September,
-its font colour is red,
-its distance from the top is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode,
-its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its font size is 60 pixels in the case of the landscape mode and 40 pixels in the case of the portrait mode,
-its width is 1126 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode,
-its font thickness is thick.
+	* its name is news1_title
+	* its container is news1_container
+	* its text is Starting school this year on 24 September
+	* its font colour is red
+	* its distance from the top is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode
+	* its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its font size is 60 pixels in the case of the landscape mode and 40 pixels in the case of the portrait mode
+	* its width is 1126 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode
+	* its font thickness is thick
 
 add a text with the following properties:
-its name is news2_title,
-its container is news2_container,
-its text is Now, the G11 & G12 students who have left school have the ability to join the school again,
-its font colour is red,
-its distance from the top is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode,
-its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its font size is 40 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode,
-its width is 1126 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode,
-its font thickness is thick.
+	* its name is news2_title
+	* its container is news2_container
+	* its text is Nowthe G11 & G12 students who have left school have the ability to join the school again,
+	* its font colour is red
+	* its distance from the top is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode
+	* its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its font size is 40 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode
+	* its width is 1126 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode
+	* its font thickness is thick
 
 add a text with the following properties:
-its name is news3_title,
-its container is news3_container,
-its text is Accommodation for first grade students starting on 9 September,
-its font colour is red,
-its distance from the top is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode,
-its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its font size is 60 pixels in the case of the landscape mode and 40 pixels in the case of the portrait mode,
-its width is 1126 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode,
-its font thickness is thick.
+	* its name is news3_title
+	* its container is news3_container
+	* its text is Accommodation for first grade students starting on 9 September
+	* its font colour is red
+	* its distance from the top is 20 pixels in the case of the landscape mode and 20 pixels in the case of the portrait mode
+	* its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its font size is 60 pixels in the case of the landscape mode and 40 pixels in the case of the portrait mode
+	* its width is 1126 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode
+	* its font thickness is thick
 
 add an image with the following properties:
-its name is news3_photo,
-its title is New students' reception schedule,
-its source is https://preview.ibb.co/gMR4EF/News3_Photo.jpg,
-its width is 394 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode,
-its length is 700 pixels in the case of the landscape mode and 569 pixels in the case of the portrait mode,
-its container is news3_container,
-its distance from the left is 370 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its distance from the top is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode.
+	* its name is news3_photo
+	* its title is New students' reception schedule
+	* its source is https://preview.ibb.co/gMR4EF/News3_Photo.jpg
+	* its width is 394 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode
+	* its length is 700 pixels in the case of the landscape mode and 569 pixels in the case of the portrait mode
+	* its container is news3_container
+	* its distance from the left is 370 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its distance from the top is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
 
 add an image with the following properties:
-its name is news2_photo,
-its source is https://i0.wp.com/www.speakinginbytes.com/wp-content/uploads/2016/12/announcement-banner.png,
-its width is 500 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode,
-its length is 362 pixels in the case of the landscape mode and 232 pixels in the case of the portrait mode,
-its container is news2_container,
-its distance from the left is 300 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its distance from the top is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode.
+	* its name is news2_photo
+	* its source is https://i0.wp.com/www.speakinginbytes.com/wp-content/uploads/2016/12/announcement-banner.png
+	* its width is 500 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode
+	* its length is 362 pixels in the case of the landscape mode and 232 pixels in the case of the portrait mode
+	* its container is news2_container
+	* its distance from the left is 300 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its distance from the top is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
 
 add an image with the following properties:
-its name is news1_photo,
-its title is The minister of the education during a meeting,
-its source is http://portal.moe.gov.eg/MediaCenter/PhotoAlbums/n_2017/n1_26-8-17.jpg,
-its width is 1046 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode,
-its length is 325 pixels in the case of the landscape mode and 99 pixels in the case of the portrait mode,
-its container is news1_container,
-its distance from the left is 60 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its distance from the top is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode.
+	* its name is news1_photo
+	* its title is The minister of the education during a meeting
+	* its source is http://portal.moe.gov.eg/MediaCenter/PhotoAlbums/n_2017/n1_26-8-17.jpg
+	* its width is 1046 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode
+	* its length is 325 pixels in the case of the landscape mode and 99 pixels in the case of the portrait mode
+	* its container is news1_container
+	* its distance from the left is 60 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its distance from the top is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
 
 add a text with the following properties:
-its name is news1_description,
-its container is news1_container,
-its text is Ahmed Khairy, the official spokesman of the Ministry of Education and Technical Education, said that the first decisions of the Supreme Education Council before the university start the new academic year September 23, and approve the timetable for the academic year 2018/2017.<< a line break >><< a line break >>Chaired by Dr. Tarek Shawqi, Minister of Education and Technical Education, in the presence of Dr. Youssef Rashid, Secretary General of the Supreme Council of Universities, Dr. Abdulwahab Ezzat, President of Ain Shams University, Dr. Mohammed Abu Zaid Al Amir, Head of Al Azhar Sector, A number of ministries, and heads of the sector T. ministry; to discuss the special pre-university education files for the academic year 2018/2017.,
-its font colour is black,
-its width is 1106 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode,
-its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode,
-its font size is 25 pixels in the case of the landscape mode and 25 pixels in the case of the portrait mode.
+	* its name is news1_description
+	* its container is news1_container
+	* its text is Ahmed Khairythe official spokesman of the Ministry of Education and Technical Education,said that the first decisions of the Supreme Education Council before the university start the new academic year September 23,and approve the timetable for the academic year 2018/2017.<< a line break >><< a line break >>Chaired by Dr. Tarek Shawqi,Minister of Education and Technical Education,in the presence of Dr. Youssef Rashid,Secretary General of the Supreme Council of Universities,Dr. Abdulwahab Ezzat,President of Ain Shams University,Dr. Mohammed Abu Zaid Al Amir,Head of Al Azhar Sector,A number of ministries,and heads of the sector T. ministry; to discuss the special pre-university education files for the academic year 2018/2017.,
+	* its font colour is black
+	* its width is 1106 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode
+	* its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode
+	* its font size is 25 pixels in the case of the landscape mode and 25 pixels in the case of the portrait mode
 
 add a text with the following properties:
-its name is news2_description,
-its container is news2_container,
-its text is In the light of the decisions taken by the executive committee of schools of excellence at the meeting held on Thursday 7/9/2017 students who have transferred to the secondary schools and wish to return to the schools of excellence again can write their wishes and send them through the school to the STEM unit by the end of next week .,
-its font colour is black,
-its width is 1106 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode,
-its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode,
-its font size is 25 pixels in the case of the landscape mode and 25 pixels in the case of the portrait mode.
+	* its name is news2_description
+	* its container is news2_container
+	* its text is In the light of the decisions taken by the executive committee of schools of excellence at the meeting held on Thursday 7/9/2017 students who have transferred to the secondary schools and wish to return to the schools of excellence again can write their wishes and send them through the school to the STEM unit by the end of next week ,
+	* its font colour is black
+	* its width is 1106 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode
+	* its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode
+	* its font size is 25 pixels in the case of the landscape mode and 25 pixels in the case of the portrait mode
 
 add a text with the following properties:
-its name is news3_description,
-its container is news3_container,
-its text is STEM schools all over the republic has announced that populate the first secondary grade students and newly enrolled in the school will start on Saturday 09/09/2017 that walking this day, according to the schedule mentioned above in preparation for the start of training on the school system or what is called The Summer Camp, which lasts for two weeks.,
-its font colour is black,
-its width is 1106 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode,
-its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode,
-its font size is 25 pixels in the case of the landscape mode and 25 pixels in the case of the portrait mode.
+	* its name is news3_description
+	* its container is news3_container
+	* its text is STEM schools all over the republic has announced that populate the first secondary grade students and newly enrolled in the school will start on Saturday 09/09/2017 that walking this dayaccording to the schedule mentioned above in preparation for the start of training on the school system or what is called The Summer Camp,which lasts for two weeks.,
+	* its font colour is black
+	* its width is 1106 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode
+	* its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode
+	* its font size is 25 pixels in the case of the landscape mode and 25 pixels in the case of the portrait mode
 
-clone back2home_btn including its commands with the following properties:
-its name is back2home_btn_A,
-its distance from the top is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its container is news1,
-its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its font colour is black.
+clone the element back2home_btn including its commands with the following properties:
+	* its name is back2home_btn_A
+	* its distance from the top is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its container is news1
+	* its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its font colour is black
 
-clone back2home_btn_A including its commands with the following properties:
-its name is back2home_btn_B,
-its container is news2.
+clone the element back2home_btn_A including its commands with the following properties:
+	* its name is back2home_btn_B
+	* its container is news2
 
-clone back2home_btn_A including its commands with the following properties:
-its name is back2home_btn_C,
-its container is news3.
+clone the element back2home_btn_A including its commands with the following properties:
+	* its name is back2home_btn_C
+	* its container is news3
 
 add a container with the following properties:
-its name is contact_page_container,
-its container is contact_us,
-its length is 600 pixels in the case of the landscape mode and 600 pixels in the case of the portrait mode,
-its width is 1166 pixels in the case of the landscape mode and 380 pixels in the case of the portrait mode,
-its distance from the left is 100 pixels in the case of the landscape mode and 13 pixels in the case of the portrait mode,
-its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode,
-its animation is fadeInUp.
+	* its name is contact_page_container
+	* its container is contact_us
+	* its length is 600 pixels in the case of the landscape mode and 600 pixels in the case of the portrait mode
+	* its width is 1166 pixels in the case of the landscape mode and 380 pixels in the case of the portrait mode
+	* its distance from the left is 100 pixels in the case of the landscape mode and 13 pixels in the case of the portrait mode
+	* its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode
+	* its animation is fadeInUp
 
-clone back2home_btn_A including its commands with the following properties:
-its name is back2home_btn_D,
-its container is contact_us.
+clone the element back2home_btn_A including its commands with the following properties:
+	* its name is back2home_btn_D
+	* its container is contact_us
 
 add a text with the following properties:
-its text is Contact Us,
-its name is contact_page_title,
-its container is contact_page_container,
-its distance from the top is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its font size is 60 pixels in the case of the landscape mode and 40 pixels in the case of the portrait mode,
-its width is 1126 pixels in the case of the landscape mode and 1126 pixels in the case of the portrait mode,
-its font thickness is thick.
+	* its text is Contact Us
+	* its name is contact_page_title
+	* its container is contact_page_container
+	* its distance from the top is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its distance from the left is 30 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its font size is 60 pixels in the case of the landscape mode and 40 pixels in the case of the portrait mode
+	* its width is 1126 pixels in the case of the landscape mode and 1126 pixels in the case of the portrait mode
+	* its font thickness is thick
 
 add a writing zone with the following properties:
-its name is name_field,
-its title is name,
-its container is contact_page_container,
-its width is 800 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode,
-its distance from the left is 40 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its distance from the top is 60 pixels in the case of the landscape mode and 60 pixels in the case of the portrait mode.
+	* its name is name_field
+	* its title is name
+	* its container is contact_page_container
+	* its width is 800 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode
+	* its distance from the left is 40 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its distance from the top is 60 pixels in the case of the landscape mode and 60 pixels in the case of the portrait mode
 
 add a writing zone with the following properties:
-its name is email_field,
-its title is E-mail,
-its container is contact_page_container,
-its width is 800 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode,
-its distance from the left is 40 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its distance from the top is 60 pixels in the case of the landscape mode and 60 pixels in the case of the portrait mode.
+	* its name is email_field
+	* its title is E-mail
+	* its container is contact_page_container
+	* its width is 800 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode
+	* its distance from the left is 40 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its distance from the top is 60 pixels in the case of the landscape mode and 60 pixels in the case of the portrait mode
 
 add a select menu with the following properties:
-its name is message_type,
-its title is Message Type,
-its items are complaint &&& enquiry,
-its container is contact_page_container,
-its width is 800 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode,
-its distance from the left is 40 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode.
+	* its name is message_type
+	* its title is Message Type
+	* its items are complaint &&& enquiry
+	* its container is contact_page_container
+	* its width is 800 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode
+	* its distance from the left is 40 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode
 
 add a multiline writing zone with a counter with the following properties:
-its name is the_message,
-its title is The Message,
-its container is contact_page_container,
-its width is 800 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode,
-its distance from the left is 40 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode,
-its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode.
+	* its name is the_message
+	* its title is The Message
+	* its container is contact_page_container
+	* its width is 800 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode
+	* its distance from the left is 40 pixels in the case of the landscape mode and 30 pixels in the case of the portrait mode
+	* its distance from the top is 100 pixels in the case of the landscape mode and 100 pixels in the case of the portrait mode
 
 add a raised button with the following properties:
-its name is send_button,
-its text is Send,
-its font colour is red,
-its container is contact_page_container,
-its distance from the left is 1050 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode,
-its distance from the top is 120 pixels in the case of the landscape mode and 120 pixels in the case of the portrait mode,
-its commands are When it has been clicked, go to the public database messages the branch enquiries and then insert the following data: the value of name_field in the slot name, the value of email_field in the slot email, the value of the_message in the slot enquiry in the case that the value of message_type is enquiry else go to the public database messages the branch complaints and then insert the following data: the value of name_field in the slot name, the value of email_field in the slot email, the value of the_message in the slot complaint in the case that the value of message_type is complaint.
+	* its name is send_button
+	* its text is Send
+	* its font colour is red
+	* its container is contact_page_container
+	* its distance from the left is 1050 pixels in the case of the landscape mode and 320 pixels in the case of the portrait mode
+	* its distance from the top is 120 pixels in the case of the landscape mode and 120 pixels in the case of the portrait mode
+
+When the element send_button has been clicked,
+	In the case that the value of message_type equals enquiry,
+		* go to the public database messages the branch enquiries and then insert the following data:
+			* name: << the value of the element name_field >>
+			* email: << the value of the element email_field >>
+			* enquiry: << the value of the element the_message >>
+	Else in the case that the value of message_type equals complaint,
+		* go to the public database messages the branch complaints and then insert the following data:
+			* name: << the value of the element name_field >>
+			* email: << the value of the element email_field >>
+			* complaint: << the value of the element the_message >>

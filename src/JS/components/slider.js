@@ -8,94 +8,42 @@
  *
  * Date: 2018-02-05
  */
-import {
-  setFontColour
-} from 'core/colors.js'
-import {
-  inheritStyle
-} from 'core/styleInheritor.js'
-import {
-  appendComponent
-} from 'core/componentAppend.js'
-import {
-  getSafe
-} from 'core/getSafe.js'
-import {
-  elementSettingsAnalyze
-} from 'core/elementSettingsAnalyze.js'
-import {
-  propSet
-} from 'core/propSet.js'
-import {
-  getTranslations
-} from 'core/translationsGet.js'
-import {
-  convertLengthCSS
-} from 'measurements/lengthUnits.js'
+import inheritStyle from 'core/styleInheritor'
+import appendComponent from 'core/componentAppend'
+import propSet from 'core/propSet'
+import isAttributedByBeing from 'core/isAttributedByBeing'
 import componentTemplate from './slider.pug'
-import * as declarations from 'core/declarations'
-export default function (settings) {
-  settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
-  var name = elementSettingsAnalyze(settings, 'name')
-  var out = '<paper-slider '
-  if (elementSettingsAnalyze(settings, 'max')) {
-    out += 'max="' + elementSettingsAnalyze(settings, 'max') + '" '
+export default function (props) {
+  props = inheritStyle(props, props.style)
+  let max, min, step, isDisabled, isPinned, isEditable
+  var name = props.name
+  if (props.max) {
+    max = props.max
   }
-  if (elementSettingsAnalyze(settings, 'min')) {
-    out += 'min="' + elementSettingsAnalyze(settings, 'min') + '" '
+  if (props.min) {
+    min = props.min
   }
-  if (elementSettingsAnalyze(settings, 'step')) {
-    out += 'step="' + elementSettingsAnalyze(settings, 'step') + '" '
+  if (props.step) {
+    step = props.step
   }
-  if (elementSettingsAnalyze(settings, 'attributes')) {
-    var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
-    for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][declarations.langCode]).rating > 0.8) {
-        out += 'disabled '
-      } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withPin'][declarations.langCode]).rating > 0.8) {
-        out += 'pin '
-      } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withDigitalValueEditor'][declarations.langCode]).rating > 0.8) {
-        out += 'editable '
-      }
-    }
+  if (isAttributedByBeing(props, 'disabled')) {
+    isDisabled = true
   }
-  out += 'id="' + name + '">'
-  out += '</paper-slider>'
-  appendComponent(elementSettingsAnalyze(settings, 'container'), out)
-  if (elementSettingsAnalyze(settings, 'fontColor')) {
-    setFontColour(name, elementSettingsAnalyze(settings, 'fontColor'))
+  if (isAttributedByBeing(props, 'withPin')) {
+    isPinned = true
   }
-  if (elementSettingsAnalyze(settings, 'fontStyle')) {
-    $(`#${name}`).css('font-style', elementSettingsAnalyze(settings, 'fontStyle'))
+  if (isAttributedByBeing(props, 'withDigitalValueEditor')) {
+    isEditable = true
   }
-  if (elementSettingsAnalyze(settings, 'attributes')) {
-    var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
-    for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][declarations.langCode]).rating > 0.8) {
-        $(`#${name}`).attr('disabled', '')
-      }
-    }
+  let componentProps = {
+    name,
+    max,
+    min,
+    step,
+    isDisabled,
+    isPinned,
+    isEditable
   }
-  if (elementSettingsAnalyze(settings, 'fontThickness')) {
-    if (getSafe(() => elementSettingsAnalyze(settings, 'fontThickness').findBestMatch(window.wordsTranslationsDB.Words['thick'][declarations.langCode]).rating > 0.8)) {
-      $(`#${name}`).css('font-weight', 'bold')
-    } else {
-      $(`#${name}`).css('font-weight', elementSettingsAnalyze(settings, 'fontThickness'))
-    }
-  }
-  if (elementSettingsAnalyze(settings, 'fontSize')) {
-    $(`#${name}`).css('font-size', convertLengthCSS(elementSettingsAnalyze(settings, 'fontSize')))
-  }
-  if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('row') == true) {
-    $(`#${name}`).addClass('col')
-  }
-  if (elementSettingsAnalyze(settings, 'position')) {
-    $(`#${name}`).css('position', elementSettingsAnalyze(settings, 'position'))
-  } else {
-    $(`#${name}`).css('position', 'relative')
-  }
-  propSet(name, settings)
-  if (elementSettingsAnalyze(settings, 'transparency')) {
-    $(`#${name}`).css('-webkit-filter', 'opacity(' + elementSettingsAnalyze(settings, 'transparency') + '%)')
-  }
+  appendComponent(props.container, componentTemplate(componentProps))
+  propSet(name, props)
 }

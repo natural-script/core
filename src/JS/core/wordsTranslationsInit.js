@@ -8,13 +8,12 @@
  *
  * Date: 2018-02-15
  */
-import translations from 'translations/dictionary.json'
+import translations from 'translations/words.json'
 import * as declarations from 'core/declarations'
+export let componentsDB = []
+export let attributesDB = []
 $(function () {
   window.wordsTranslationsDB = translations
-  window.componentsDB = []
-  window.attributesDB = []
-  window.conditionsDB = []
   for (const wordID in wordsTranslationsDB.Words) {
     if (wordsTranslationsDB.Words[wordID].type == 'component') {
       wordsTranslationsDB.Words[wordID][declarations.langCode].forEach(element => {
@@ -25,10 +24,5 @@ $(function () {
         attributesDB.push(element)
       })
     }
-  }
-  for (const conditionID in wordsTranslationsDB.Conditions) {
-    wordsTranslationsDB.Conditions[conditionID][declarations.langCode].forEach(element => {
-      conditionsDB.push(element.replace(/\?<.*?>/gi, ''))
-    })
   }
 }(jQuery))

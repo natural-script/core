@@ -8,7 +8,7 @@
  *
  * Date: 2017-09-20
  */
-export const appendComponent = function (container, code) {
+export default function appendComponent (container, code) {
   if (container) {
     if ($('#' + container + '').hasClass('iziModal')) {
       $('#' + container + '').iziModal('setContent', code)

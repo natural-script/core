@@ -17,7 +17,7 @@ $.fn.extend({
     })
   }
 })
-export const setAnimation = function (elementName, animation) {
+export default function setAnimation(elementName, animation) {
   $(`#${elementName}`).visibilityChanged({
     callback: function (element, visible) {
       if (visible == true) {

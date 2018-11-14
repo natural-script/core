@@ -1,4 +1,4 @@
-export default function (elementName, script, functionArgumentsParam) {
+export default function () {
   window.plugins.flashlight.available(function (isAvailable) {
     if (isAvailable) {
       window.plugins.flashlight.switchOff()

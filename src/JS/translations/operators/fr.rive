@@ -1,0 +1,112 @@
+/*!
+ * French Operators RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-08-12
+ */
+
++ écrire ce texte dans une police en gras: *
+- id: O1 ==> lang: fr ==> text: <star1>
+
++ écrire ce texte dans une police en italique: *
+- id: O2 ==> lang: fr ==> text: <star1>
+
++ écrire ce texte dans une police soulignée: *
+- id: O3 ==> lang: fr ==> text: <star1>
+
++ écrire ce texte dans une police en gras et en italique: *
+- id: O4 ==> lang: fr ==> text: <star1>
+
++ écrire ce texte dans une police en italique et en gras: *
+- id: O4 ==> lang: fr ==> text: <star1>
+
++ écrire ce texte dans une police en gras et soulignée: *
+- id: O5 ==> lang: fr ==> text: <star1>
+
++ écrire ce texte dans une police soulignée et en gras: *
+- id: O5 ==> lang: fr ==> text: <star1>
+
++ écrire ce texte dans une police soulignée et en italique: *
+- id: O6 ==> lang: fr ==> text: <star1>
+
++ écrire ce texte dans une police en italique et soulignée: *
+- id: O6 ==> lang: fr ==> text: <star1>
+
++ écrire ce texte dans une police en gras, en italique et soulignée: *
+- id: O7 ==> lang: fr ==> text: <star1>
+
++ écrire ce texte dans une police en gras, soulignée et en italique: *
+- id: O7 ==> lang: fr ==> text: <star1>
+
++ écrire ce texte dans une police en italique, en gras et soulignée: *
+- id: O7 ==> lang: fr ==> text: <star1>
+
++ écrire ce texte dans une police en italique, soulignée et en gras: *
+- id: O7 ==> lang: fr ==> text: <star1>
+
++ écrire ce texte dans une police soulignée, en italique et en gras: *
+- id: O7 ==> lang: fr ==> text: <star1>
+
++ écrire ce texte dans une police soulignée, en gras et en italique: *
+- id: O7 ==> lang: fr ==> text: <star1>
+
++ la longueur de la fenêtre
+- id: O8 ==> lang: fr
+
++ la largeur de la fenêtre
+- id: O9 ==> lang: fr
+
++ la longueur de l'écran
+- id: O10 ==> lang: fr
+
++ la largeur de l'écran
+- id: O11 ==> lang: fr
+
++ une icône de *
+- id: O12 ==> lang: fr ==> icon: <star1>
+
++ un saut de ligne
+- id: O13 ==> lang: fr
+
++ la valeur de l'élément *
+- id: O14 ==> lang: fr ==> elementName: <star1>
+
++ le nom de l'utilisateur
+- id: O15 ==> lang: fr
+
++ le courrier électronique de l'utilisateur
+- id: O16 ==> lang: fr
+
++ nommer ce texte *: *
+- id: O17 ==> lang: fr ==> name: <star1> ==> text: <star2>
+
++ le paramètre *
+- id: O18 ==> lang: fr ==> param: <star1>
+
++ paramètre *
+- id: O18 ==> lang: fr ==> param: <star1>
+
++ la valeur de l'argument *
+- id: O18 ==> lang: fr ==> param: <star1>
+
++ la valeur de argument *
+- id: O18 ==> lang: fr ==> param: <star1>
+
++ considère ce texte comme un texte normal
+- id: O19 ==> lang: fr
+
++ la valeur de la variable *
+- id: O20 ==> lang: fr ==> variablePath: <star1>
+
++ la valeur de l'élément nombre (\d+) dans la variable *
+- id: O20 ==> lang: fr ==> item: <star1> ==> variablePath: <star2>
+
++ le résultat de l'expression mathématique: *
+- id: O21 ==> lang: fr ==> expression: <star1>
+
++ le nom du numéro d'article (\d+) dans le menu déroulant *
+- id: O22 ==> lang: fr ==> item: <star1> ==> dropdownMenuName: <star2>

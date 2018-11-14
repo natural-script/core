@@ -1,4 +1,3 @@
-// fade out
 export const fadeOut = function (elementName) {
   var el = document.querySelector(`#${elementName}`)
   if (el != null) {

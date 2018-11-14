@@ -8,31 +8,30 @@
  *
  * Date: 2018-02-05
  */
-import {inheritStyle} from 'core/styleInheritor'
-import {appendComponent} from 'core/componentAppend'
-import {getSafe} from 'core/getSafe'
-import {elementSettingsAnalyze} from 'core/elementSettingsAnalyze'
-import {propSet} from 'core/propSet'
-import {getTranslations} from 'core/translationsGet'
+import inheritStyle from 'core/styleInheritor'
+import appendComponent from 'core/componentAppend'
+import propSet from 'core/propSet'
+import getTranslations from 'core/translationsGet'
+import isAttributedByBeing from 'core/isAttributedByBeing'
 import componentTemplate from './loader.pug'
 import * as declarations from 'core/declarations'
-export default function (settings) {
-  settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
-  var name = elementSettingsAnalyze(settings, 'name')
-  var out
-  if (getSafe(() => elementSettingsAnalyze(settings, 'type').findBestMatch(window.wordsTranslationsDB.Words['bar'][declarations.langCode]).rating > 0.8)) {
-    out = `<paper-progress id="${name}"></paper-progress>`
-  } else if (getSafe(() => elementSettingsAnalyze(settings, 'type') == undefined || elementSettingsAnalyze(settings, 'type').findBestMatch(window.wordsTranslationsDB.Words['spinner'][declarations.langCode]).rating > 0.8)) {
-    out = `<paper-spinner id="${name}"></paper-spinner>`
+export default function (props) {
+  props = inheritStyle(props, props.style)
+  let isBar, isSpinner
+  var name = props.name
+  if (props.type.findBestMatch(window.wordsTranslationsDB.Words['bar'][declarations.langCode]).rating > 0.8) {
+    isBar = true
+  } else if (props.type == undefined || props.type.findBestMatch(window.wordsTranslationsDB.Words['spinner'][declarations.langCode]).rating > 0.8) {
+    isSpinner = true
   }
-  appendComponent(elementSettingsAnalyze(settings, 'container'), out)
-  if (elementSettingsAnalyze(settings, 'attributes')) {
-    var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
-    for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['loading'][declarations.langCode]).rating > 0.8) {
-        $(`#${name}`).attr('active', '')
-      }
-    }
+  let componentProps = {
+    name,
+    isBar,
+    isSpinner
   }
-  propSet(name, settings)
+  appendComponent(props.container, componentTemplate(componentProps))
+  if (isAttributedByBeing(props, 'loading')) {
+    $(`#${name}`).attr('active', '')
+  }
+  propSet(name, props)
 }

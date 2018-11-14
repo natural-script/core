@@ -1,365 +1,506 @@
 <meta charset="UTF-8">
 <script src="https://jste-manager.herokuapp.com/loader.min.js"></script>
 configure this app with the following properties:
-its title is Calculator,
-its logo is http://www.iconarchive.com/download/i99341/dtafalonso/android-lollipop/Calculator.ico,
-its mode is app,
-its default window resolution is 412 × 690.
+	* its title is Calculator
+	* its logo is http://www.iconarchive.com/download/i99341/dtafalonso/android-lollipop/Calculator.ico
+	* its mode is app
+	* its default window resolution is 412 × 690
 
 add a page with the following properties:
-its name is calculator.
+	* its name is calculator
 
 add a sidebar with the following properties:
-its name is primary_sidebar,
-its distance from the bottom is 0 pixels,
-its background is #69F0AE,
-its width is 300 pixels,
-its length is 400 pixels.
+	* its name is primary_sidebar
+	* its distance from the bottom is 0 pixels
+	* its background is #69F0AE
+	* its width is 300 pixels
+	* its length is 400 pixels
 
 add a grid container without a shadow with the following properties:
-its name is btnSetF,
-its container is primary_sidebar,
-its width is 280 pixels,
-its length is 50 pixels,
-its distance from the top is 50 pixels.
+	* its name is btnSetF
+	* its container is primary_sidebar
+	* its width is 280 pixels
+	* its length is 50 pixels
+	* its distance from the top is 50 pixels
 
 add a button with the following properties:
-its name is sinBtn,
-its text is sin,
-its container is btnSetF,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to sin( in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>sin(.
+	* its name is sinBtn
+	* its text is sin
+	* its container is btnSetF
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element sinBtn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to sin(
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>sin(
 
 add a button with the following properties:
-its name is cosBtn,
-its text is cos,
-its container is btnSetF,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to cos( in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>cos(.
+	* its name is cosBtn
+	* its text is cos
+	* its container is btnSetF
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element cosBtn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to cos(
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>cos(
 
 add a button with the following properties:
-its name is tanBtn,
-its text is tan,
-its container is btnSetF,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to tan( in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>tan(.
+	* its name is tanBtn
+	* its text is tan
+	* its container is btnSetF
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element tanBtn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to tan(
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>tan(
 
 add a grid container without a shadow with the following properties:
-its name is btnSetG,
-its container is primary_sidebar,
-its width is 280 pixels,
-its length is 50 pixels,
-its distance from the top is 140 pixels.
+	* its name is btnSetG
+	* its container is primary_sidebar
+	* its width is 280 pixels
+	* its length is 50 pixels
+	* its distance from the top is 140 pixels
 
 add a button with the following properties:
-its name is lnBtn,
-its text is ln,
-its container is btnSetG,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to ln( in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>ln(.
+	* its name is lnBtn
+	* its text is ln
+	* its container is btnSetG
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element lnBtn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to ln(
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>ln(
 
 add a button with the following properties:
-its name is logBtn,
-its text is log,
-its container is btnSetG,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to log( in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>log(.
+	* its name is logBtn
+	* its text is log
+	* its container is btnSetG
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element logBtn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to log(
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>log(
 
 add a button with the following properties:
-its name is factorialBtn,
-its text is !,
-its container is btnSetG,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to << the value of resultTextA >>! in the case that the value of resultTextA isn't 00000000 &&& When it has been clicked, set the value of resultTextB to << the result of the mathematical expression: the value of resultTextA >>.
+	* its name is factorialBtn
+	* its text is !
+	* its container is btnSetG
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element factorialBtn has been clicked,
+	In the case that the value of resultTextA doesn't equal 00000000,
+		* set the value of resultTextA to << the value of the element resultTextA >>!
 
 add a grid container without a shadow with the following properties:
-its name is btnSetH,
-its container is primary_sidebar,
-its width is 280 pixels,
-its length is 50 pixels,
-its distance from the top is 220 pixels.
+	* its name is btnSetH
+	* its container is primary_sidebar
+	* its width is 280 pixels
+	* its length is 50 pixels
+	* its distance from the top is 220 pixels
 
 add a button with the following properties:
-its name is piBtn,
-its text is π,
-its container is btnSetH,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to π in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>π &&& When it has been clicked, set the value of resultTextB to << the result of the mathematical expression: the value of resultTextA >>.
+	* its name is piBtn
+	* its text is π
+	* its container is btnSetH
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element piBtn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to π
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>π
 
 add a button with the following properties:
-its name is eualrNoBtn,
-its text is e,
-its container is btnSetH,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to e in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>e &&& When it has been clicked, set the value of resultTextB to << the result of the mathematical expression: the value of resultTextA >>.
+	* its name is eualrNoBtn
+	* its text is e
+	* its container is btnSetH
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element eualrNoBtn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to e
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>e
 
 add a button with the following properties:
-its name is powerBtn,
-its text is ^,
-its container is btnSetH,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to << the value of resultTextA >>^ in the case that the value of resultTextA isn't 00000000.
+	* its name is powerBtn
+	* its text is ^
+	* its container is btnSetH
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element powerBtn has been clicked,
+	In the case that the value of resultTextA doesn't equal 00000000,
+		* set the value of resultTextA to << the value of the element resultTextA >>^
 
 add a grid container without a shadow with the following properties:
-its name is btnSetI,
-its container is primary_sidebar,
-its width is 280 pixels,
-its length is 50 pixels,
-its distance from the top is 300 pixels.
+	* its name is btnSetI
+	* its container is primary_sidebar
+	* its width is 280 pixels
+	* its length is 50 pixels
+	* its distance from the top is 300 pixels
 
 add a button with the following properties:
-its name is openingBracketBtn,
-its text is (,
-its container is btnSetI,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to ( in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>(.
+	* its name is openingBracketBtn
+	* its text is (
+	* its container is btnSetI
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element openingBracketBtn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to (
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>(
 
 add a button with the following properties:
-its name is closingBracketBtn,
-its text is ),
-its container is btnSetI,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to ) in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>) &&& When it has been clicked, set the value of resultTextB to << the result of the mathematical expression: the value of resultTextA >>.
+	* its name is closingBracketBtn
+	* its text is )
+	* its container is btnSetI
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element closingBracketBtn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to )
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>)
 
 add a button with the following properties:
-its name is sqrtBtn,
-its text is √,
-its container is btnSetI,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to sqrt( in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>sqrt(.
+	* its name is sqrtBtn
+	* its text is √
+	* its container is btnSetI
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element sqrtBtn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to sqrt(
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>sqrt(
 
 add a container without a shadow with the following properties:
-its name is resultContainerA,
-its container is calculator,
-its background is #FFFFFF,
-its width is 412 pixels,
-its length is 210 pixels,
-its distance from the top is 60 pixels.
+	* its name is resultContainerA
+	* its container is calculator
+	* its background is #FFFFFF
+	* its width is 412 pixels
+	* its length is 210 pixels
+	* its distance from the top is 60 pixels
 
 add a container without a shadow with the following properties:
-its name is btnContainerA,
-its container is calculator,
-its background is #212121,
-its width is 412 pixels,
-its length is 400 pixels,
-its distance from the bottom is 0 pixels.
+	* its name is btnContainerA
+	* its container is calculator
+	* its background is #212121
+	* its width is 412 pixels
+	* its length is 400 pixels
+	* its distance from the bottom is 0 pixels
 
 add a text with the following properties:
-its name is flashlightBtn,
-its text is << an icon of lightbulb-o >>,
-its container is resultContainerA,
-its font size is 30 pixels,
-its length is 50 pixels,
-its width is 30 pixels,
-its distance from the top is 20 pixels,
-its distance from the left is 370 pixels,
-its font colour is gray,
-its commands are When it has been clicked, toggle the flashlight.
+	* its name is flashlightBtn
+	* its text is << an icon of lightbulb >>
+	* its container is resultContainerA
+	* its font size is 30 pixels
+	* its length is 50 pixels
+	* its width is 30 pixels
+	* its distance from the top is 20 pixels
+	* its distance from the left is 370 pixels
+	* its font colour is gray
+
+When the element flashlightBtn has been clicked,
+	* toggle the flashlight
 
 add a scrollable text with the following properties:
-its name is resultTextA,
-its text is 00000000,
-its container is resultContainerA,
-its font thickness is thick,
-its font size is 50 pixels,
-its width is 380 pixels,
-its length is 60 pixels,
-its distance from the top is 10 pixels,
-its distance from the left is 5 pixels,
-its font colour is gray.
+	* its name is resultTextA
+	* its text is 00000000
+	* its container is resultContainerA
+	* its font thickness is thick
+	* its font size is 50 pixels
+	* its width is 380 pixels
+	* its length is 60 pixels
+	* its distance from the top is 10 pixels
+	* its distance from the left is 5 pixels
+	* its font colour is gray
 
 add a scrollable text with the following properties:
-its name is resultTextB,
-its text is 0,
-its container is resultContainerA,
-its font thickness is thick,
-its font size is 35 pixels,
-its width is 380 pixels,
-its length is 50 pixels,
-its distance from the left is 5 pixels,
-its font colour is gray.
+	* its name is resultTextB
+	* its text is 0
+	* its container is resultContainerA
+	* its font thickness is thick
+	* its font size is 35 pixels
+	* its width is 380 pixels
+	* its length is 50 pixels
+	* its distance from the left is 5 pixels
+	* its font colour is gray
 
 add a grid container without a shadow with the following properties:
-its name is btnSetA,
-its container is btnContainerA,
-its width is 320 pixels,
-its length is 50 pixels,
-its distance from the top is 50 pixels.
+	* its name is btnSetA
+	* its container is btnContainerA
+	* its width is 320 pixels
+	* its length is 50 pixels
+	* its distance from the top is 50 pixels
 
 add a button with the following properties:
-its name is 1Btn,
-its text is 1,
-its container is btnSetA,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to 1 in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>1 &&& When it has been clicked, set the value of resultTextB to << the result of the mathematical expression: the value of resultTextA >>.
+	* its name is 1Btn
+	* its text is 1
+	* its container is btnSetA
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element 1Btn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to 1
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>1
+	* set the value of resultTextB to << the result of the mathematical expression: << the value of the element resultTextA >> >>
 
 add a button with the following properties:
-its name is 2Btn,
-its text is 2,
-its container is btnSetA,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to 2 in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>2 &&& When it has been clicked, set the value of resultTextB to << the result of the mathematical expression: the value of resultTextA >>.
+	* its name is 2Btn
+	* its text is 2
+	* its container is btnSetA
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element 2Btn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to 2
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>2
+	* set the value of resultTextB to << the result of the mathematical expression: << the value of the element resultTextA >> >>
 
 add a button with the following properties:
-its name is 3Btn,
-its text is 3,
-its container is btnSetA,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to 3 in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>3 &&& When it has been clicked, set the value of resultTextB to << the result of the mathematical expression: the value of resultTextA >>.
+	* its name is 3Btn
+	* its text is 3
+	* its container is btnSetA
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element 3Btn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to 3
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>3
+	* set the value of resultTextB to << the result of the mathematical expression: << the value of the element resultTextA >> >>
 
 add a grid container without a shadow with the following properties:
-its name is btnSetB,
-its container is btnContainerA,
-its width is 320 pixels,
-its length is 50 pixels,
-its distance from the top is 140 pixels.
+	* its name is btnSetB
+	* its container is btnContainerA
+	* its width is 320 pixels
+	* its length is 50 pixels
+	* its distance from the top is 140 pixels
 
 add a button with the following properties:
-its name is 4Btn,
-its text is 4,
-its container is btnSetB,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to 4 in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>4 &&& When it has been clicked, set the value of resultTextB to << the result of the mathematical expression: the value of resultTextA >>.
+	* its name is 4Btn
+	* its text is 4
+	* its container is btnSetB
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element 4Btn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to 4
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>4
+	* set the value of resultTextB to << the result of the mathematical expression: << the value of the element resultTextA >> >>
 
 add a button with the following properties:
-its name is 5Btn,
-its text is 5,
-its container is btnSetB,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to 5 in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>5 &&& When it has been clicked, set the value of resultTextB to << the result of the mathematical expression: the value of resultTextA >>.
+	* its name is 5Btn
+	* its text is 5
+	* its container is btnSetB
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element 5Btn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to 5
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>5
+	* set the value of resultTextB to << the result of the mathematical expression: << the value of the element resultTextA >> >>
 
 add a button with the following properties:
-its name is 6Btn,
-its text is 6,
-its container is btnSetB,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to 6 in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>6 &&& When it has been clicked, set the value of resultTextB to << the result of the mathematical expression: the value of resultTextA >>.
+	* its name is 6Btn
+	* its text is 6
+	* its container is btnSetB
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element 6Btn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to 6
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>6
+	* set the value of resultTextB to << the result of the mathematical expression: << the value of the element resultTextA >> >>
 
 add a grid container without a shadow with the following properties:
-its name is btnSetC,
-its container is btnContainerA,
-its width is 320 pixels,
-its length is 50 pixels,
-its distance from the top is 220 pixels.
+	* its name is btnSetC
+	* its container is btnContainerA
+	* its width is 320 pixels
+	* its length is 50 pixels
+	* its distance from the top is 220 pixels
 
 add a button with the following properties:
-its name is 7Btn,
-its text is 7,
-its container is btnSetC,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to 7 in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>7 &&& When it has been clicked, set the value of resultTextB to << the result of the mathematical expression: the value of resultTextA >>.
+	* its name is 7Btn
+	* its text is 7
+	* its container is btnSetC
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element 7Btn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to 7
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>7
+	* set the value of resultTextB to << the result of the mathematical expression: << the value of the element resultTextA >> >>
 
 add a button with the following properties:
-its name is 8Btn,
-its text is 8,
-its container is btnSetC,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to 8 in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>8 &&& When it has been clicked, set the value of resultTextB to << the result of the mathematical expression: the value of resultTextA >>.
+	* its name is 8Btn
+	* its text is 8
+	* its container is btnSetC
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element 8Btn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to 8
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>8
+	* set the value of resultTextB to << the result of the mathematical expression: << the value of the element resultTextA >> >>
 
 add a button with the following properties:
-its name is 9Btn,
-its text is 9,
-its container is btnSetC,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to 9 in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>9 &&& When it has been clicked, set the value of resultTextB to << the result of the mathematical expression: the value of resultTextA >>.
+	* its name is 9Btn
+	* its text is 9
+	* its container is btnSetC
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element 9Btn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to 9
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>9
+	* set the value of resultTextB to << the result of the mathematical expression: << the value of the element resultTextA >> >>
 
 add a grid container without a shadow with the following properties:
-its name is btnSetD,
-its container is btnContainerA,
-its width is 320 pixels,
-its length is 50 pixels,
-its distance from the top is 300 pixels.
+	* its name is btnSetD
+	* its container is btnContainerA
+	* its width is 320 pixels
+	* its length is 50 pixels
+	* its distance from the top is 300 pixels
 
 add a button with the following properties:
-its name is dotBtn,
-its text is .,
-its container is btnSetD,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to . in the case that the value of resultTextA is 00000000 else set the value of resultTextA to << the value of resultTextA >>. &&& When it has been clicked, set the value of resultTextB to << the result of the mathematical expression: the value of resultTextA >>.
+	* its name is dotBtn
+	* its text is ,
+	* its container is btnSetD
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element dotBtn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to .
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>.
+	* set the value of resultTextB to << the result of the mathematical expression: << the value of the element resultTextA >> >>
 
 add a button with the following properties:
-its name is 0Btn,
-its text is 0,
-its container is btnSetD,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to 0 in the case that the value of resultTextA is 00000000 or the value of resultTextA is 0 else set the value of resultTextA to << the value of resultTextA >>0 &&& When it has been clicked, set the value of resultTextB to << the result of the mathematical expression: the value of resultTextA >>.
+	* its name is 0Btn
+	* its text is 0
+	* its container is btnSetD
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element 0Btn has been clicked,
+	In the case that the value of resultTextA equals 00000000,
+		* set the value of resultTextA to 0
+	Else,
+		* set the value of resultTextA to << the value of the element resultTextA >>0
+	* set the value of resultTextB to << the result of the mathematical expression: << the value of the element resultTextA >> >>
 
 add a button with the following properties:
-its name is equalBtn,
-its text is =,
-its container is btnSetD,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to << the value of resultTextB >>.
+	* its name is equalBtn
+	* its text is =
+	* its container is btnSetD
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element equalBtn has been clicked,
+	* set the value of resultTextA to << the value of the element resultTextB >>
 
 add a grid container without a shadow with the following properties:
-its name is btnSetE,
-its container is btnContainerA,
-its background is #616161,
-its width is 80 pixels,
-its length is 400 pixels,
-its distance from the left is 332 pixels,
-its distance from the top is 0 pixels.
+	* its name is btnSetE
+	* its container is btnContainerA
+	* its background is #616161
+	* its width is 80 pixels
+	* its length is 400 pixels
+	* its distance from the left is 332 pixels
+	* its distance from the top is 0 pixels
 
 add a button with the following properties:
-its name is clearBtn,
-its text is c,
-its container is btnSetE,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to 00000000 &&& When it has been clicked, set the value of resultTextB to 0.
+	* its name is clearBtn
+	* its text is c
+	* its container is btnSetE
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element clearBtn has been clicked,
+	* set the value of resultTextA to 00000000
+	* set the value of resultTextB to 0
 
 add a button with the following properties:
-its name is dividedByBtn,
-its text is ÷,
-its container is btnSetE,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to << the value of resultTextA >>÷ in the case that the value of resultTextA isn't 00000000.
+	* its name is dividedByBtn
+	* its text is ÷
+	* its container is btnSetE
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element dividedByBtn has been clicked,
+	In the case that the value of resultTextA doesn't equal 00000000,
+		* set the value of resultTextA to << the value of the element resultTextA >>÷
 
 add a button with the following properties:
-its name is multipliedByBtn,
-its text is ×,
-its container is btnSetE,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to << the value of resultTextA >>× in the case that the value of resultTextA isn't 00000000.
+	* its name is multipliedByBtn
+	* its text is ×
+	* its container is btnSetE
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element multipliedByBtn has been clicked,
+	In the case that the value of resultTextA doesn't equal 00000000,
+		* set the value of resultTextA to << the value of the element resultTextA >>×
 
 add a button with the following properties:
-its name is minusBtn,
-its text is -,
-its container is btnSetE,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to << the value of resultTextA >>- in the case that the value of resultTextA isn't 00000000.
+	* its name is minusBtn
+	* its text is -
+	* its container is btnSetE
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element minusBtn has been clicked,
+	In the case that the value of resultTextA doesn't equal 00000000,
+		* set the value of resultTextA to << the value of the element resultTextA >>-
 
 add a button with the following properties:
-its name is plusBtn,
-its text is +,
-its container is btnSetE,
-its font colour is white,
-its font size is 40 pixels,
-its commands are When it has been clicked, set the value of resultTextA to << the value of resultTextA >>+ in the case that the value of resultTextA isn't 00000000.
+	* its name is plusBtn
+	* its text is +
+	* its container is btnSetE
+	* its font colour is white
+	* its font size is 40 pixels
+
+When the element plusBtn has been clicked,
+	In the case that the value of resultTextA doesn't equal 00000000,
+		* set the value of resultTextA to << the value of the element resultTextA >>+

@@ -8,31 +8,27 @@
  *
  * Date: 2018-02-05
  */
-import {inheritStyle} from 'core/styleInheritor'
-import {appendComponent} from 'core/componentAppend'
-import {elementSettingsAnalyze} from 'core/elementSettingsAnalyze'
-import {propSet} from 'core/propSet'
-import {getTranslations} from 'core/translationsGet'
+import inheritStyle from 'core/styleInheritor'
+import appendComponent from 'core/componentAppend'
+import propSet from 'core/propSet'
+import isAttributedByBeing from 'core/isAttributedByBeing'
 import componentTemplate from './button.pug'
 import * as declarations from 'core/declarations'
-export default function (settings) {
-  settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
-  var name = elementSettingsAnalyze(settings, 'name')
-  var text = elementSettingsAnalyze(settings, 'text')
+export default function (props) {
+  props = inheritStyle(props, props.style)
+  var name = props.name
+  var text = props.text
   var isDisabled, isRaised, isToggled
-  if (elementSettingsAnalyze(settings, 'attributes')) {
-    var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
-    for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][declarations.langCode]).rating > 0.8) {
-        isDisabled = true
-      } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['raised'][declarations.langCode]).rating > 0.8) {
-        isRaised = true
-      } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['switched'][declarations.langCode]).rating > 0.8) {
-        isToggled = true
-      }
-    }
+  isDisabled = isAttributedByBeing(props, 'disabled')
+  isRaised = isAttributedByBeing(props, 'raised')
+  isToggled = isAttributedByBeing(props, 'switched')
+  let componentProps = {
+    name,
+    text,
+    isDisabled,
+    isRaised,
+    isToggled
   }
-  let componentProp = {name, text, isDisabled, isRaised, isToggled}
-  appendComponent(elementSettingsAnalyze(settings, 'container'), componentTemplate(componentProp))
-  propSet(name, settings)
+  appendComponent(props.container, componentTemplate(componentProps))
+  propSet(name, props)
 }

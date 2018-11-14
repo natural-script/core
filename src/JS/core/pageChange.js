@@ -8,10 +8,10 @@
  *
  * Date: 2018-05-01
  */
-import {fadeIn, fadeOut} from './fadeInOut'
-import {getTranslations} from 'core/translationsGet'
-import {getAllUrlParams} from './URLParamsGet'
-import {setURLParameter} from './URLParamsSet'
+import {fadeIn, fadeOut} from 'core/fadeInOut'
+import getTranslations from 'core/translationsGet'
+import getAllUrlParams from 'core/URLParamsGet'
+import setURLParameter from 'core/URLParamsSet'
 import * as declarations from 'core/declarations'
 function getLocation () {
   return location.pathname + location.search
@@ -29,7 +29,7 @@ export const showCurrentPage = function () {
   $('title').html(currentPage.replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
   }) + ' | ' + window.title)
-  if (window.mode == 'app') {
+  if (declarations.mode == 'app') {
     $('.appTitle').html(currentPage.replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
     }))
@@ -46,7 +46,7 @@ export const changePage = function (pageName) {
     $('title').html(pageName.replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
     }) + ' | ' + window.title)
-    if (window.mode) {
+    if (declarations.mode) {
       $('.appTitle').html(decodeURIComponent(getAllUrlParams().page).replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
       }))
@@ -63,7 +63,7 @@ $(function () {
       $('title').html(decodeURIComponent(getAllUrlParams().page).replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
       }) + ' | ' + window.title)
-      if (window.mode) {
+      if (declarations.mode) {
         $('.appTitle').html(decodeURIComponent(getAllUrlParams().page).replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
           return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
         }))

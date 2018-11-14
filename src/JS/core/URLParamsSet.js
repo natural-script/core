@@ -11,7 +11,7 @@
 function getLocation () {
   return location.pathname + location.search
 }
-export const setURLParameter = function (paramName, paramValue) {
+export default function setURLParameter (paramName, paramValue) {
   var url = window.location.href
   var hash = location.hash
   url = url.replace(hash, '')

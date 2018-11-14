@@ -1,0 +1,13 @@
+if requiredTag == 'body'
+    if mode == 'app'
+        app-toolbar
+            paper-icon-button.menuBtn(icon='menu')
+            .appTitle(main-title=true) #{title}
+        app-header(reveals=true)
+        div
+            contents
+    else
+        contents
+else if requiredTag == 'head'
+    link(rel='icon' type='image/png' href=logoURL)
+    title #{title}

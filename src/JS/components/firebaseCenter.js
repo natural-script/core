@@ -8,20 +8,20 @@
  *
  * Date: 2018-02-16
  */
-import {inheritStyle} from 'core/styleInheritor'
-import {elementSettingsAnalyze} from 'core/elementSettingsAnalyze'
+import inheritStyle from 'core/styleInheritor'
 import isReachable from 'is-reachable'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/database'
 import 'firebase/storage'
-export default async function (settings) {
+export let appFirebase
+export default async function (props) {
   if (navigator.onLine) {
-    let firebaseIsReachable = await isReachable(`https://${elementSettingsAnalyze(settings, 'username')}.firebaseio.com/`)
+    let firebaseIsReachable = await isReachable(`https://${props.username}.firebaseio.com/`)
     if (firebaseIsReachable) {
-      settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
-      sessionStorage.firebaseID = elementSettingsAnalyze(settings, 'username')
-      sessionStorage.firebaseKey = elementSettingsAnalyze(settings, 'password')
+      props = inheritStyle(props, props.style)
+      sessionStorage.firebaseID = props.username
+      sessionStorage.firebaseKey = props.password
       var config = {
         apiKey: sessionStorage.firebaseKey,
         authDomain: sessionStorage.firebaseID + '.firebaseapp.com',
@@ -29,7 +29,7 @@ export default async function (settings) {
         storageBucket: sessionStorage.firebaseID + '.appspot.com'
       }
       firebase.initializeApp(config)
-      var database = firebase.database()
+      appFirebase = firebase
     }
   }
 }

@@ -1,31 +1,34 @@
+import parseStringValue from 'parsers/stringValue'
+import {appFirebase} from 'components/firebaseCenter'
 import * as declarations from 'core/declarations'
-export default function (elementName, script, functionArgumentsParam) {
-  var dbType = script.dbType.parseValue(false, functionArgumentsParam)
-  var dbname = script.dbName.parseValue(false, functionArgumentsParam)
-  var tablename = script.branchName.parseValue(false, functionArgumentsParam)
-  var calledSlot = script.requiredSlot.parseValue(false, functionArgumentsParam)
-  var resourceSlotValueResource = script.resourceValue.parseValue(false, functionArgumentsParam)
-  var resourceSlotName = script.resourceSlot.parseValue(false, functionArgumentsParam)
-  var targetElement
-  var target = script.target.parseValue(false, functionArgumentsParam)
+let firebase = appFirebase
+export default function ({elementName, dbType, dbName, branchName, requiredSlot, resourceValue, resourceSlot, target, scopes, parentFnParams}) {
+  let targetElement
+  dbType = parseStringValue(dbType, false, scopes, parentFnParams)
+  dbName = parseStringValue(dbName, false, scopes, parentFnParams)
+  branchName = parseStringValue(branchName, false, scopes, parentFnParams)
+  requiredSlot = parseStringValue(requiredSlot, false, scopes, parentFnParams)
+  resourceValue = parseStringValue(resourceValue, false, scopes, parentFnParams)
+  resourceSlot = parseStringValue(resourceSlot, false, scopes, parentFnParams)
+  target = parseStringValue(target, false, scopes, parentFnParams)
   if (target == 'itself') {
     targetElement = elementName
   } else {
     targetElement = target
   }
   if (dbType.findBestMatch(wordsTranslationsDB.Words['publicC'][declarations.langCode]).rating > 0.5) {
-    var dbRef = firebase.database().ref('public/' + dbname + '/' + tablename)
-    dbRef.orderByChild(resourceSlotName).equalTo($('#' + resourceSlotValueResource + '').val()).on('value', function (snapshot) {
+    const dbRef = firebase.database().ref('public/' + dbName + '/' + branchName)
+    dbRef.orderByChild(resourceSlot).equalTo($('#' + resourceValue + '').val()).on('value', function (snapshot) {
       snapshot.forEach(function (data) {
-        $('#' + targetElement + '').val(data.val()[calledSlot])
+        $('#' + targetElement + '').val(data.val()[requiredSlot])
       })
     })
   } else if (dbType.findBestMatch(wordsTranslationsDB.Words['privateC'][declarations.langCode]).rating > 0.5) {
-    var dbRef = firebase.database().ref('private/' + window.user.uid + '/' + dbname + '/' + tablename)
-    dbRef.orderByChild(resourceSlotName).equalTo($('#' + resourceSlotValueResource + '').val()).on('value', function (snapshot) {
+    const dbRef = firebase.database().ref('private/' + window.user.uid + '/' + dbName + '/' + branchName)
+    dbRef.orderByChild(resourceSlot).equalTo($('#' + resourceValue + '').val()).on('value', function (snapshot) {
       snapshot.forEach(function (data) {
-        $('#' + targetElement + '').val(data.val()[calledSlot])
+        $('#' + targetElement + '').val(data.val()[requiredSlot])
       })
     })
-  };
+  }
 }

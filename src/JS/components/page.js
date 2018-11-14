@@ -8,12 +8,11 @@
  *
  * Date: 2018-04-28
  */
-import {inheritStyle} from 'core/styleInheritor'
-import {elementSettingsAnalyze} from 'core/elementSettingsAnalyze'
+import inheritStyle from 'core/styleInheritor'
 import componentTemplate from './page.pug'
-export default function (settings) {
-  settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
-  var name = elementSettingsAnalyze(settings, 'name')
-  let componentProp = {name}
-  $('contents').append(componentTemplate(componentProp))
+export default function (props) {
+  props = inheritStyle(props, props.style)
+  var name = props.name
+  let componentProps = {name}
+  $('contents').append(componentTemplate(componentProps))
 }

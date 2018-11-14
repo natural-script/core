@@ -27,9 +27,9 @@
   }
 
   $.fn.visibilityChanged = function (options) {
-    var settings = $.extend({}, defaults, options)
+    var props = $.extend({}, defaults, options)
     return this.each(function () {
-      methods.checkVisibility($(this), settings)
+      methods.checkVisibility($(this), props)
     })
   }
 })(jQuery)

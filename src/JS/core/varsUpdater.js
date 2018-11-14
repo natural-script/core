@@ -8,10 +8,10 @@
  *
  * Date: 2017-09-15
  */
-import {elementValue} from './elementValue'
+import elementValue from 'core/elementValue'
 import DisplayJS from 'display.js'
 window.varsArray = []
-export const varsUpdater = function () {
+export default function varsUpdater () {
   window.displayJS = new DisplayJS(window.varsArray)
   window.displayJS.dynamic(function () {
     for (var i = 0; i < Object.keys(window.varsArray).length; i++) {

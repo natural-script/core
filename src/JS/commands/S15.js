@@ -1,23 +1,18 @@
+import parseStringValue from 'parsers/stringValue'
+import parseList from 'parsers/list'
+import {appFirebase} from 'components/firebaseCenter'
 import * as declarations from 'core/declarations'
-export default function (elementName, script, functionArgumentsParam) {
-  var dbType = script.dbType.parseValue(false, functionArgumentsParam)
-  var dbname = script.dbName.parseValue(false, functionArgumentsParam)
-  var tablename = script.branchName.parseValue(false, functionArgumentsParam)
-  var dataRaw = script.data
-  var data = '{'
-  for (var i = 0; i < Object.keys(dataRaw).length; i++) {
-    if (i != Object.keys(dataRaw).length - 1) {
-      data += '"' + dataRaw[i].slotName.parseValue(false, functionArgumentsParam) + '":"' + dataRaw[i].value.parseValue(false, functionArgumentsParam).replace(/\\n/g, '<br />') + '", '
-    } else {
-      data += '"' + dataRaw[i].slotName.parseValue(false, functionArgumentsParam) + '":"' + dataRaw[i].value.parseValue(false, functionArgumentsParam).replace(/\\n/g, '<br />') + '"}'
-    }
-  }
-  data = JSON.parse(data)
+let firebase = appFirebase
+export default function ({dbType, dbName, branchName, data, scopes, parentFnParams}) {
+  dbType = parseStringValue(dbType, false, scopes, parentFnParams)
+  dbName = parseStringValue(dbName, false, scopes, parentFnParams)
+  branchName = parseStringValue(branchName, false, scopes, parentFnParams)
+  const parsedData = parseList(data, scopes, parentFnParams)
   if (dbType.findBestMatch(window.wordsTranslationsDB.Words['publicC'][declarations.langCode]).rating > 0.8) {
-    var newPostKey = firebase.database().ref('public/' + dbname).child(tablename).push().key
-    firebase.database().ref('public/' + dbname + '/' + tablename + '/' + newPostKey).set(data)
+    const newPostKey = firebase.database().ref('public/' + dbName).child(branchName).push().key
+    return firebase.database().ref('public/' + dbName + '/' + branchName + '/' + newPostKey).set(parsedData)
   } else if (dbType.findBestMatch(window.wordsTranslationsDB.Words['privateC'][declarations.langCode]).rating > 0.8) {
-    var newPostKey = firebase.database().ref('private/' + window.user.uid + '/' + dbname).child(tablename).push().key
-    firebase.database().ref('private/' + window.user.uid + '/' + dbname + '/' + tablename + '/' + newPostKey).set(data)
+    const newPostKey = firebase.database().ref('private/' + window.user.uid + '/' + dbName).child(branchName).push().key
+    return firebase.database().ref('private/' + window.user.uid + '/' + dbName + '/' + branchName + '/' + newPostKey).set(parsedData)
   }
 }

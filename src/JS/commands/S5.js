@@ -1,12 +1,13 @@
-export default function (elementName, script, functionArgumentsParam) {
-  var targetElement
-  var target = script.target.parseValue(false, functionArgumentsParam)
+import parseStringValue from 'parsers/stringValue'
+export default function ({elementName, target, timePosition, scopes, parentFnParams}) {
+  let targetElement
+  target = parseStringValue(target, false, scopes, parentFnParams)
   if (target == 'itself') {
     targetElement = elementName
   } else {
     targetElement = target
   }
-  var timePosition = script.timePosition.parseValue(false, functionArgumentsParam)
+  timePosition = parseStringValue(timePosition, false, scopes, parentFnParams)
   if ($('#' + targetElement + '').hasClass('aplayer')) {
     document[targetElement].audio.currentTime = timePosition
   } else if ($('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO') {

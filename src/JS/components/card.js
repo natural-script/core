@@ -8,22 +8,21 @@
  *
  * Date: 2018-02-05
  */
-import {inheritStyle} from 'core/styleInheritor'
-import {appendComponent} from 'core/componentAppend'
-import {elementSettingsAnalyze} from 'core/elementSettingsAnalyze'
-import {propSet} from 'core/propSet'
+import inheritStyle from 'core/styleInheritor'
+import appendComponent from 'core/componentAppend'
+import propSet from 'core/propSet'
 import componentTemplate from './card.pug'
-export default function (settings) {
-  settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
-  var name = elementSettingsAnalyze(settings, 'name')
+export default function (props) {
+  props = inheritStyle(props, props.style)
+  var name = props.name
   var title, imageURL
-  if (elementSettingsAnalyze(settings, 'title')) {
-    title = elementSettingsAnalyze(settings, 'title')
+  if (props.title) {
+    title = props.title
   }
-  if (elementSettingsAnalyze(settings, 'imageSource')) {
-    imageURL = elementSettingsAnalyze(settings, 'imageSource')
+  if (props.imageSource) {
+    imageURL = props.imageSource
   }
-  let componentProp = {name, title, imageURL}
-  appendComponent(elementSettingsAnalyze(settings, 'container'), componentTemplate(componentProp))
-  propSet(name, settings)
+  let componentProps = {name, title, imageURL}
+  appendComponent(props.container, componentTemplate(componentProps))
+  propSet(name, props)
 }

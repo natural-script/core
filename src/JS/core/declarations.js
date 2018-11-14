@@ -9,11 +9,16 @@
  * Date: 2018-05-01
  */
 console.log(`\n %c NaturalScript ${NS_Version} ${window.isLive ? '( Live Edition )' : ''} %c https://project-jste.github.io \n`, 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
-export let jsteVariablesStore = {};
-export let jsteFunctionsStore = {};
-export let jsteStylesStore = {};
-export let jsteComponentsFnStore = {};
-export let langID, langCode, deviceForm, childModeStatus, nudityDetectionStatus, localAddress;
+window.NS = {
+  variables: {
+    global: {}
+  },
+  functions: {},
+  styles: {},
+  components: {}
+}
+export let langID, langCode, deviceForm, childModeStatus, nudityDetectionStatus, localAddress, mode
+export let isRTL = false
 let code = $('jste').text();
 let detectedLang = detectLanguage(code)
 if (detectedLang == 'English') {
@@ -27,9 +32,10 @@ if (detectedLang == 'English') {
   langID = 2
   langCode = 'fr'
 } else if (detectedLang == 'Arabic') {
+  isRTL = true
   if (code.includes('بتاعه') || code.includes('بتاعها') || code.includes('بتاعته') || code.includes('بتاعتها')) {
     langID = 4
-      .langCode = 'arz'
+    langCode = 'arz'
   } else {
     langID = 3
     langCode = 'ar'
@@ -55,6 +61,8 @@ if (!window.isLive) {
     .then(res => res.text())
     .then(data => nudityDetectionStatus = data)
 }
-export let isRTL = false
+export function setMode(currentMode) {
+  mode = currentMode
+}
 export const corsPolicy = window.isLive ? 'https://jste-cors-proxy.herokuapp.com/' : `http://${localAddress}:6060/`
 export const autoCorrectionAddress = window.isLive ? 'https://jste-manager.herokuapp.com/autoCorrect' : `http://${localAddress}:5050/autoCorrect`

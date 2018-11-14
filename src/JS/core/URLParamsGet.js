@@ -8,7 +8,7 @@
  *
  * Date: 2018-02-07
  */
-export const getAllUrlParams = function (url) {
+export default function getAllUrlParams (url) {
   // get query string from url (optional) or window
   var queryString = url ? url.split('?')[1] : window.location.search.slice(1)
   // we'll store the parameters here

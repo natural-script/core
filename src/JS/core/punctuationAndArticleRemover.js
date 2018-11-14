@@ -8,6 +8,7 @@
  *
  * Date: 2018-02-07
  */
+import arli from 'arli'
 String.prototype.punctuationAndArticleRemover = function () {
-  return this.split(XRegExp('^(?:ال|لل)', 'gmi')).join('').split(XRegExp('\\s+ال')).join(' ')
+  return arli.removeDash(this.split(/^(?:ال|لل)/gmi).join('').split(/\s+ال/).join(' ').replace(/[أإآ]/g, 'ا'))
 }

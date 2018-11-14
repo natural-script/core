@@ -1,0 +1,37 @@
+/*!
+ * French Commands Utilities RiveScript
+ * https://project-jste.github.io/
+ *
+ * Copyright 2018 Jste Team
+ * Released under the GNU AGPLv3 license
+ * https://project-jste.github.io/license
+ *
+ * Date: 2018-08-12
+ */
+
++ Si *
+- id: CU1 ==> lang: fr ==> conditions: <star1>
+
++ Autre si *
+- id: CU2 ==> lang: en ==> conditions: <star1>
+
++ Autre
+- id: CU3 ==> lang: en
+
++ Après une période de *
+- id: CU4 ==> lang: fr ==> period: <star1>
+
++ Toutes [les|le|la] *
+- id: CU5 ==> lang: fr ==> period: <star1>
+
++ définir la function * avec les commandes suivantes
+- id: CU6 ==> lang: fr ==> name: <star1>
+
++ définir le style * avec les propriétés suivantes
+- id: CU7 ==> lang: fr ==> name: <star1>
+
++ Après la finition l'exécution de la commande précédente, obtenez la valeur du * retourné puis faire ce qui suit
+- id: CU8 ==> lang: en ==> varName: <star1>
+
++ pour chaque * de la liste *
+- id: CU9 ==> lang: en ==> varName: <star1> ==> listName: <star2>

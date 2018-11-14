@@ -9,18 +9,28 @@
  * Date: 2018-03-15
  */
 import * as declarations from 'core/declarations'
-export const getTranslations = function (phrase) {
-  var phraseType = (XRegExp('^operator\\d+', 'mi').test(phrase)) ? 'Operators' : (XRegExp('^condition\\d+', 'mi').test(phrase)) ? 'Conditions' : (XRegExp('^syntax\\d+', 'mi').test(phrase)) ? 'Syntax' : (XRegExp('^event\\d+', 'mi').test(phrase)) ? 'Events' : 'Words'
-  var output = ''
-  if (typeof phrase === 'object') {
-    for (const i in phrase) {
-      if (i != 0) {
-        output += '|'
+export default function getTranslations(phrase, isCommon) {
+  if (isCommon) {
+    var translation
+    for (const commonTranslation in wordsTranslationsDB.Words) {
+      if (phrase.findBestMatch(wordsTranslationsDB.Words[commonTranslation][declarations.langCode]).rating > 0.9) {
+        translation = commonTranslation
+        break
       }
-      output += wordsTranslationsDB[phraseType][phrase[i]][declarations.langCode].join('|')
     }
+    return translation ? translation : false
   } else {
-    output = wordsTranslationsDB[phraseType][phrase][declarations.langCode].join('|')
+    let output = ''
+    if (typeof phrase === 'object') {
+      for (const i in phrase) {
+        if (i != 0) {
+          output += '|'
+        }
+        output += wordsTranslationsDB.Words[phrase[i]][declarations.langCode].join('|')
+      }
+    } else {
+      output = wordsTranslationsDB.Words[phrase][declarations.langCode].join('|')
+    }
+    return `(?:${output})`.replace(/\\/gmi, '\\\\')
   }
-  return `(?:${output})`.replace(/\\/gmi, '\\\\')
 }

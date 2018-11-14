@@ -8,83 +8,56 @@
  *
  * Date: 2018-02-05
  */
-import {
-  setFontColour
-} from 'core/colors.js'
-import {
-  inheritStyle
-} from 'core/styleInheritor.js'
-import {
-  appendComponent
-} from 'core/componentAppend.js'
-import {
-  getSafe
-} from 'core/getSafe.js'
-import {
-  elementSettingsAnalyze
-} from 'core/elementSettingsAnalyze.js'
-import {
-  propSet
-} from 'core/propSet.js'
-import {
-  getTranslations
-} from 'core/translationsGet.js'
-import {
-  convertLengthCSS
-} from 'measurements/lengthUnits.js'
+import inheritStyle from 'core/styleInheritor'
+import appendComponent from 'core/componentAppend'
+import propSet from 'core/propSet'
+import isAttributedByBeing from 'core/isAttributedByBeing'
 import 'datedropper3'
 import 'datedropper3/datedropper.css'
 import 'timedropper'
 import 'timedropper/timedropper.css'
 import componentTemplate from './writingZone.pug'
 import * as declarations from 'core/declarations'
-export default function (settings) {
-  settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
-  var name = elementSettingsAnalyze(settings, 'name')
-  var isMultilined, title, type, auto_validate, allowed_pattern, max, min, isDisabled, isCounted, prefix, suffix
-  if (elementSettingsAnalyze(settings, 'attributes')) {
-    var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
-    for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['multiline'][declarations.langCode]).rating > 0.8) {
-        isMultilined = true
-      }
+export default function (props) {
+  props = inheritStyle(props, props.style)
+  let name = props.name
+  let isMultilined, title, type, auto_validate, allowed_pattern, max, min, isDisabled, isCounted, prefix, suffix
+  if (isAttributedByBeing(props, 'multiline')) {
+    isMultilined = true
+  }
+  if (props.title) {
+    title = props.title
+  }
+  if (props.inputType) {
+    if (props.inputType.findBestMatch(window.wordsTranslationsDB.Words['password'][declarations.langCode]).rating > 0.8) {
+      type = 'password'
+    } else if (props.inputType.findBestMatch(window.wordsTranslationsDB.Words['number'][declarations.langCode]).rating > 0.8) {
+      type = 'number'
     }
   }
-  if (elementSettingsAnalyze(settings, 'title')) {
-    title = elementSettingsAnalyze(settings, 'title')
-  }
-  if (getSafe(() => elementSettingsAnalyze(settings, 'inputType').findBestMatch(window.wordsTranslationsDB.Words['password'][declarations.langCode]).rating > 0.8)) {
-    type = 'password'
-  } else if (getSafe(() => elementSettingsAnalyze(settings, 'inputType').findBestMatch(window.wordsTranslationsDB.Words['number'][declarations.langCode]).rating > 0.8)) {
-    type = 'number'
-  }
-  if (elementSettingsAnalyze(settings, 'requirement')) {
+  if (props.requirement) {
     auto_validate = true
-    allowed_pattern = elementSettingsAnalyze(settings, 'requirement')
+    allowed_pattern = props.requirement
   }
-  if (elementSettingsAnalyze(settings, 'max')) {
-    max = elementSettingsAnalyze(settings, 'max')
+  if (props.max) {
+    max = props.max
   }
-  if (elementSettingsAnalyze(settings, 'min')) {
-    min = elementSettingsAnalyze(settings, 'min')
+  if (props.min) {
+    min = props.min
   }
-  if (elementSettingsAnalyze(settings, 'attributes')) {
-    var propertiesArray = elementSettingsAnalyze(settings, 'attributes').split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
-    for (var i = 0; i < propertiesArray.length; i++) {
-      if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['disabled'][declarations.langCode]).rating > 0.8) {
-        isDisabled = true
-      } else if (propertiesArray[i].findBestMatch(window.wordsTranslationsDB.Words['withCounter'][declarations.langCode]).rating > 0.8) {
-        isCounted = true
-      }
-    }
+  if (isAttributedByBeing(props, 'disabled')) {
+    isDisabled = true
   }
-  if (elementSettingsAnalyze(settings, 'prefix')) {
-    prefix = elementSettingsAnalyze(settings, 'prefix').split(' &&& ')
+  if (isAttributedByBeing(props, 'withCounter')) {
+    isCounted = true
   }
-  if (elementSettingsAnalyze(settings, 'suffix')) {
-    var suffix = elementSettingsAnalyze(settings, 'suffix').split(' &&& ')
+  if (props.prefix) {
+    prefix = props.prefix.split(' &&& ')
   }
-  let componentProp = {
+  if (props.suffix) {
+    suffix = props.suffix.split(' &&& ')
+  }
+  let componentProps = {
     name,
     isMultilined,
     title,
@@ -96,45 +69,25 @@ export default function (settings) {
     isDisabled,
     isCounted
   }
-  appendComponent(elementSettingsAnalyze(settings, 'container'), componentTemplate(componentProp))
-  if (getSafe(() => elementSettingsAnalyze(settings, 'inputType').findBestMatch(window.wordsTranslationsDB.Words['date'][declarations.langCode]).rating > 0.8)) {
-    if (declarations.langID == 0 || declarations.langID == 1) {
-      $(`#${name}`).attr('data-lang', 'en')
-    } else if (declarations.langID == 2) {
-      $(`#${name}`).attr('data-lang', 'fr')
-    } else if (declarations.langID == 3 || declarations.langID == 4) {
-      $(`#${name}`).attr('data-lang', 'ar')
+  appendComponent(props.container, componentTemplate(componentProps))
+  if (props.inputType) {
+    if (props.inputType.findBestMatch(window.wordsTranslationsDB.Words['date'][declarations.langCode]).rating > 0.8) {
+      if (declarations.langID == 0 || declarations.langID == 1) {
+        $(`#${name}`).attr('data-lang', 'en')
+      } else if (declarations.langID == 2) {
+        $(`#${name}`).attr('data-lang', 'fr')
+      } else if (declarations.langID == 3 || declarations.langID == 4) {
+        $(`#${name}`).attr('data-lang', 'ar')
+      }
     }
     $(`#${name}`).attr('data-modal', 'true')
     $(`#${name}`).attr('data-large-mode', 'true')
     $(`#${name}`).attr('data-translate-mode', 'true')
     $(`#${name}`).dateDropper()
-  } else if (getSafe(() => elementSettingsAnalyze(settings, 'inputType').findBestMatch(window.wordsTranslationsDB.Words['time'][declarations.langCode]).rating > 0.8)) {
-    $(`#${name}`).timeDropper()
-  }
-  if (elementSettingsAnalyze(settings, 'fontColor')) {
-    setFontColour(name, elementSettingsAnalyze(settings, 'fontColor'))
-  }
-  if (elementSettingsAnalyze(settings, 'fontStyle')) {
-    $(`#${name}`).css('font-style', elementSettingsAnalyze(settings, 'fontStyle'))
-  }
-  if (elementSettingsAnalyze(settings, 'fontThickness')) {
-    if (getSafe(() => elementSettingsAnalyze(settings, 'fontThickness').findBestMatch(window.wordsTranslationsDB.Words['thick'][declarations.langCode]).rating > 0.8)) {
-      $(`#${name}`).css('font-weight', 'bold')
-    } else {
-      $(`#${name}`).css('font-weight', elementSettingsAnalyze(settings, 'fontThickness'))
+  } else if (props.inputType) {
+    if (props.inputType.findBestMatch(window.wordsTranslationsDB.Words['time'][declarations.langCode]).rating > 0.8) {
+      $(`#${name}`).timeDropper()
     }
   }
-  if (elementSettingsAnalyze(settings, 'fontSize')) {
-    $(`#${name}`).css('font-size', convertLengthCSS(elementSettingsAnalyze(settings, 'fontSize')))
-  }
-  if ($('#' + elementSettingsAnalyze(settings, 'container') + '').hasClass('row') == true) {
-    $(`#${name}`).addClass('col')
-  }
-  if (elementSettingsAnalyze(settings, 'position')) {
-    $(`#${name}`).css('position', elementSettingsAnalyze(settings, 'position'))
-  } else {
-    $(`#${name}`).css('position', 'relative')
-  }
-  propSet(name, settings)
+  propSet(name, props)
 }

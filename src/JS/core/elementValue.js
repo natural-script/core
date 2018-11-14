@@ -10,7 +10,7 @@
  */
 function elementValueFn (name, newValue) {
   this.get = function (name) {
-    if (['P', 'B', 'I', 'SPAN', 'U', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'].indexOf($(`#${name}`).prop('tagName')) + 1) {
+    if (/^(P|B|I|SPAN|U|H1|H2|H3|H4|H5|H6)$/.test($(`#${name}`).prop('tagName'))) {
       return $(`#${name}`).text()
     } else if ($(`#${name}`).prop('tagName') == 'PAPER-SWATCH-PICKER') {
       return $(`#${name}`).prop('color')
@@ -20,7 +20,7 @@ function elementValueFn (name, newValue) {
   }
 
   this.set = function (name, newValue) {
-    if (['P', 'B', 'I', 'SPAN', 'U', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6'].indexOf($(`#${name}`).prop('tagName')) + 1) {
+    if (/^(P|B|I|SPAN|U|H1|H2|H3|H4|H5|H6)$/.test($(`#${name}`).prop('tagName'))) {
       return $(`#${name}`).text(newValue)
     } else {
       return $(`#${name}`).val(newValue)
@@ -28,4 +28,4 @@ function elementValueFn (name, newValue) {
   }
 }
 
-export const elementValue = new elementValueFn()
+export default new elementValueFn()

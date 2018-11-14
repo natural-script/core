@@ -1,16 +1,12 @@
 import {
   requestBLOB
-} from './BLOBGet.js'
+} from 'core/BLOBGet'
 import {
   fadeIn,
   fadeOut
-} from './fadeInOut.js'
-import {
-  setDimension
-} from 'measurements/Dimensions.js'
-import {
-  rain
-} from 'FX/rain.js'
+} from 'core/fadeInOut'
+import setDimension from 'measurements/Dimensions'
+import rain from 'FX/rain'
 import * as declarations from 'core/declarations'
 export const showImageA = function (name, URLID, source) {
   var nudity = $(`#${name}`).attr('nude')

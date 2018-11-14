@@ -8,15 +8,14 @@
  *
  * Date: 2018-02-05
  */
-import {inheritStyle} from 'core/styleInheritor'
-import {elementSettingsAnalyze} from 'core/elementSettingsAnalyze'
+import inheritStyle from 'core/styleInheritor'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
 import componentTemplate from './loginForm.pug'
-export default function (settings) {
-  settings = inheritStyle(settings, elementSettingsAnalyze(settings, 'style'))
+export default function (props) {
+  props = inheritStyle(props, props.style)
   $('body').append('<div id="firebaseui-container"></div>')
 
   function getRecaptchaMode () {
