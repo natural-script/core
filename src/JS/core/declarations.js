@@ -8,7 +8,7 @@
  *
  * Date: 2018-05-01
  */
-console.log(`\n %c NaturalScript ${NS_Version} ${window.isLive ? '( Live Edition )' : ''} %c https://project-jste.github.io \n`, 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
+console.log(`\n %c NaturalScript ${window.isLive ? '(Live Edition)' : ''} %c https://project-jste.github.io \n`, 'color: #fadfa3; background: #030307; padding:5px 0;', 'background: #fadfa3; padding:5px 0;')
 window.NS = {
   variables: {
     global: {}
