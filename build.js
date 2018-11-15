@@ -83,7 +83,7 @@ async function startBuild() {
       shell.cp("../framework/dist/naturalScript.min.js.gz", "src/assets");
       console.log(" ");
       console.log(" Starting building Jste Manager ");
-      shell.exec("node build");
+      shell.exec("npm run-script build");
       if (global.gitURLPrefix) {
         console.log(" ");
         console.log(" Updating the index ");
