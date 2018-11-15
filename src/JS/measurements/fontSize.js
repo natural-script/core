@@ -25,9 +25,9 @@ export default function setFontSize (elementName, size) {
   }
   var setFontSizeFn = function (ratio, vhvwRatio) {
     if (document.pageDirection == 'horizontal') {
-      $(`#${elementName}`).css('font-size', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh')
+      $('body').find(`#${elementName}`).css('font-size', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh')
     } else if (document.pageDirection == 'vertical') {
-      $(`#${elementName}`).css('font-size', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw')
+      $('body').find(`#${elementName}`).css('font-size', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw')
     }
   }
   var updateFontSize = function () {

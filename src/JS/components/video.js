@@ -43,11 +43,11 @@ export default function (props) {
   }
   appendComponent(props.container, componentTemplate(componentProps))
   propSet(name, props)
-  $(`#${name}`).prop('isTitled', false)
-  $(`#${name}`).prop('type', 'vid')
+  $('body').find(`#${name}`).prop('isTitled', false)
+  $('body').find(`#${name}`).prop('type', 'vid')
   if (window.isLive) {
     getFileSize(source, function (size) {
-      $(`#video_${name}_mainButton`).html(`<i class="material-icons">play_arrow</i> ${size}`)
+      $('body').find(`#video_${name}_mainButton`).html(`<i class="material-icons">play_arrow</i> ${size}`)
     })
     if (getVideoProvider(source).videoProvider == 'webHosting') {
       $('#receiver').on('load', function () {
@@ -72,7 +72,7 @@ export default function (props) {
       verifyBLOB(encodeURIComponent(source).replace(/\./g, '%2E'), function (data) {
         if (data == 'not exist') {
           getFileSize(source, function (size) {
-            $('#video_' + name + '_mainButton').html('<i class="material-icons">play_arrow</i> ' + size)
+            $('body').find(`#video_${name}_mainButton`).html('<i class="material-icons">play_arrow</i> ' + size)
           })
         } else if (data == 'exists') {
           showVideoA(name, source, title, encodeURIComponent(source).replace(/\./g, '%2E'))
@@ -83,6 +83,6 @@ export default function (props) {
     }
   }
   if (props.title) {
-    $(`#${name}`).attr('alt', props.title)
+    $('body').find(`#${name}`).attr('alt', props.title)
   }
 }

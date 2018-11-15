@@ -47,7 +47,7 @@ export default function getVideoInfo(name, provider, videoID, url, title) {
                         document.getElementById('video_${name}_mainButton').setAttribute('onclick', 'showVideoA("${name}", "${videoURL}", "${title}", "${videoURLID}", "${fps}");');
                         document.getElementById('video_${name}_mainButton').innerHTML = '<i class="material-icons">play_arrow</i> ${videoSize} ';`)
             .appendTo(`#${name}_resolutionsBtnConatiner`)
-          $(`#${name}_resolutionsBtnConatiner`).show()
+          $('body').find(`#${name}_resolutionsBtnConatiner`).show()
         }
       }
     })

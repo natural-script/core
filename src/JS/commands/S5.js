@@ -8,9 +8,9 @@ export default function ({elementName, target, timePosition, scopes, parentFnPar
     targetElement = target
   }
   timePosition = parseStringValue(timePosition, false, scopes, parentFnParams)
-  if ($('#' + targetElement + '').hasClass('aplayer')) {
+  if ($('body').find(`#${targetElement}`).hasClass('aplayer')) {
     document[targetElement].audio.currentTime = timePosition
-  } else if ($('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO') {
+  } else if ($('body').find(`#${targetElement}_html5_api`).prop('tagName') == 'VIDEO') {
     document[targetElement].currentTime(timePosition)
   } else {
     document.getElementById(targetElement).currentTime = timePosition

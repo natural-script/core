@@ -2,7 +2,7 @@ const runCommand = require.context('commands', true, /\.js$/)
 import parseStringValue from 'parsers/stringValue'
 export default function ({target, scopes, parentFnParams}, functionToBeExecuted) {
     target = parseStringValue(target, false, scopes, parentFnParams)
-    $(`#${target}`).focus(function (event) {
+    $('body').find(`#${target}`).focus(function (event) {
         event.stopPropagation()
         functionToBeExecuted(event.id)
     })

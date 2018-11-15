@@ -93,7 +93,7 @@ export default function parseStringValue(text, isDynamic, scopes, parentFnParams
       return parentFnParams[data.param]
     }
     if (data.id == 'O22') {
-      return $(`#${data.dropdownMenuName}`).children()[parseInt(data.item) - 1].id
+      return $('body').find(`#${data.dropdownMenuName}`).children()[parseInt(data.item) - 1].id
     }
     if (isDynamic == undefined || isDynamic == true) {
       if (/^O(8|9|10|11|14|15|16)$/.test(data.id)) {

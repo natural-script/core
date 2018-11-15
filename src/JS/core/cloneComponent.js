@@ -15,9 +15,9 @@ export default function cloneComponent(clonedElement, props, includingCommands) 
   let name = props.name
   let out
   if (includingCommands) {
-    out = $(`#${clonedElement}`).clone(true, true).attr('id', name)
+    out = $('body').find(`#${clonedElement}`).clone(true, true).attr('id', name)
   } else {
-    out = $(`#${clonedElement}`).clone(false).attr('id', name)
+    out = $('body').find(`#${clonedElement}`).clone(false).attr('id', name)
   }
   if (props.container) {
     appendComponent(props.container, out)

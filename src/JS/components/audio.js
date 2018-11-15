@@ -23,7 +23,7 @@ export default function (props) {
         url: source,
         cover: props.cover
       }]
-      if ($('#' + props.audioPlayer).html().trim() != '') {
+      if ($('body').find(`#${props.audioPlayer}`).html().trim() != '') {
         document[props.audioPlayer].addAudio(audioInfo)
       } else {
         document.initializeAudioPlayerB[props.audioPlayer](props.title, props.author, source, props.cover)
@@ -34,7 +34,7 @@ export default function (props) {
         artist: props.author,
         url: source
       }]
-      if ($('#' + props.audioPlayer).html().trim() != '') {
+      if ($('body').find(`#${props.audioPlayer}`).html().trim() != '') {
         document[props.audioPlayer].addAudio(audioInfo)
       } else {
         document.initializeAudioPlayerA[props.audioPlayer](props.title, props.author, source)

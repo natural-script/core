@@ -34,7 +34,7 @@ export default function (props) {
     draggable: true
   })
   propSet(name, props)
-  $(`#${name}`).css('position', 'fixed')
+  $('body').find(`#${name}`).css('position', 'fixed')
   if (declarations.mode == 'app') {
     if ($('.sidenav').length == 1) {
       $('.menuBtn').on('click', function () {

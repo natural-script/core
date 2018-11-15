@@ -28,10 +28,10 @@ export default function (props) {
     title
   }
   $('body').append(componentTemplate(componentProps))
-  $(`#${name}`).iziModal()
+  $('body').find(`#${name}`).iziModal()
   if (props.emitter) {
-    $('#' + props.emitter + '').attr('onclick', props.name + '.open()')
+    $('body').find(`#${props.emitter}`).attr('onclick', props.name + '.open()')
   }
   propSet(name, props)
-  $(`#${name}`).css('position', 'fixed')
+  $('body').find(`#${name}`).css('position', 'fixed')
 }

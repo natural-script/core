@@ -59,7 +59,7 @@ export default function (props) {
   }
   var template = '<tr>'
   for (var i = 0; i < keys.length; i++) {
-    $('#' + name + ' > thead > tr').append('<th>' + keys[i] + '</th>')
+    $('body').find(`#${name} > thead > tr`).append('<th>' + keys[i] + '</th>')
     template += '<td class="' + keys[i] + '"></td>'
   }
   template += '</tr>'

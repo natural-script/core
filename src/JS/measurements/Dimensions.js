@@ -12,8 +12,8 @@ import getTranslations from 'core/translationsGet'
 import convertLengthCSS from 'measurements/lengthUnits.js'
 export default function setDimension (name, dimension, value) {
   document[name + dimension + '_updater'] = null
-  var type = $(`#${name}`)[0].nodeName
-  var isTitled = $(`#${name}`).prop('isTitled')
+  var type = $('body').find(`#${name}`)[0].nodeName
+  var isTitled = $('body').find(`#${name}`).prop('isTitled')
   var landscapeValue = null
   var portraitValue = null
   if (XRegExp(` ${getTranslations('and')} `, 'gmi').test(value)) {
@@ -32,41 +32,41 @@ export default function setDimension (name, dimension, value) {
       if (type == 'IMG' || type == 'VIDEO') {
         if (isTitled) {
           if (document.pageDirection == 'horizontal') {
-            $('#' + name + '_container').each(function () {
+            $('body').find(`#${name}_container`).each(function () {
               this.style.setProperty('height', ((parseFloat(ratio * screen.availHeight) + 40) * (100 / screen.availHeight)) + 'vh', 'important')
             })
           } else if (document.pageDirection == 'vertical') {
-            $('#' + name + '_container').each(function () {
+            $('body').find(`#${name}_container`).each(function () {
               this.style.setProperty('height', (((parseFloat(ratio * screen.availHeight) + 40) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important')
             })
           }
         } else {
           if (document.pageDirection == 'horizontal') {
-            $('#' + name + '_container').each(function () {
+            $('body').find(`#${name}_container`).each(function () {
               this.style.setProperty('height', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh', 'important')
             })
           } else if (document.pageDirection == 'vertical') {
-            $('#' + name + '_container').each(function () {
+            $('body').find(`#${name}_container`).each(function () {
               this.style.setProperty('height', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important')
             })
           }
         }
         if (document.pageDirection == 'horizontal') {
-          $(`#${name}`).each(function () {
+          $('body').find(`#${name}`).each(function () {
             this.style.setProperty('height', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh', 'important')
           })
         } else if (document.pageDirection == 'vertical') {
-          $(`#${name}`).each(function () {
+          $('body').find(`#${name}`).each(function () {
             this.style.setProperty('height', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important')
           })
         }
       } else {
         if (document.pageDirection == 'horizontal') {
-          $(`#${name}`).each(function () {
+          $('body').find(`#${name}`).each(function () {
             this.style.setProperty('height', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh', 'important')
           })
         } else if (document.pageDirection == 'vertical') {
-          $(`#${name}`).each(function () {
+          $('body').find(`#${name}`).each(function () {
             this.style.setProperty('height', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important')
           })
         }
@@ -74,39 +74,39 @@ export default function setDimension (name, dimension, value) {
     } else if (dimension == 'width') {
       if (type == 'IMG' || type == 'VIDEO') {
         if (document.pageDirection == 'horizontal') {
-          $('#' + name + '_container').each(function () {
+          $('body').find(`#${name}_container`).each(function () {
             this.style.setProperty('width', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important')
           })
-          $('#' + name + '_html5_api').each(function () {
+          $('body').find(`#${name}_html5_api`).each(function () {
             this.style.setProperty('width', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important')
           })
-          $(`#${name}`).each(function () {
+          $('body').find(`#${name}`).each(function () {
             this.style.setProperty('width', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important')
           })
         } else if (document.pageDirection == 'vertical') {
-          $('#' + name + '_container').each(function () {
+          $('body').find(`#${name}_container`).each(function () {
             this.style.setProperty('width', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important')
           })
-          $('#' + name + '_html5_api').each(function () {
+          $('body').find(`#${name}_html5_api`).each(function () {
             this.style.setProperty('width', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important')
           })
-          $(`#${name}`).each(function () {
+          $('body').find(`#${name}`).each(function () {
             this.style.setProperty('width', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important')
           })
         }
-      } else if ($(`#${name}`).hasClass('iziModal')) {
+      } else if ($('body').find(`#${name}`).hasClass('iziModal')) {
         if (document.pageDirection == 'horizontal') {
-          $(`#${name}`).iziModal('setWidth', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh')
+          $('body').find(`#${name}`).iziModal('setWidth', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh')
         } else if (document.pageDirection == 'vertical') {
-          $(`#${name}`).iziModal('setWidth', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw')
+          $('body').find(`#${name}`).iziModal('setWidth', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw')
         }
       } else {
         if (document.pageDirection == 'horizontal') {
-          $(`#${name}`).each(function () {
+          $('body').find(`#${name}`).each(function () {
             this.style.setProperty('width', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important')
           })
         } else if (document.pageDirection == 'vertical') {
-          $(`#${name}`).each(function () {
+          $('body').find(`#${name}`).each(function () {
             this.style.setProperty('width', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important')
           })
         }

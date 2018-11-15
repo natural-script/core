@@ -32,7 +32,7 @@ export default function (props) {
     }
   }
   jQuery(document).ready(function ($) {
-    $(`#${name}`).owlCarousel({
+    $('body').find(`#${name}`).owlCarousel({
       animateOut: 'slideOutDown',
       animateIn: 'flipInX',
       items: 1,
@@ -49,9 +49,9 @@ export default function (props) {
     })
   })
   if (props.position) {
-    $(`#${name}`).css('position', props.position)
+    $('body').find(`#${name}`).css('position', props.position)
   } else {
-    $(`#${name}`).css('position', 'relative')
+    $('body').find(`#${name}`).css('position', 'relative')
   }
   propSet(name, props)
 }

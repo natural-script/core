@@ -73,20 +73,20 @@ export default function (props) {
   if (props.inputType) {
     if (props.inputType.findBestMatch(window.wordsTranslationsDB.Words['date'][declarations.langCode]).rating > 0.8) {
       if (declarations.langID == 0 || declarations.langID == 1) {
-        $(`#${name}`).attr('data-lang', 'en')
+        $('body').find(`#${name}`).attr('data-lang', 'en')
       } else if (declarations.langID == 2) {
-        $(`#${name}`).attr('data-lang', 'fr')
+        $('body').find(`#${name}`).attr('data-lang', 'fr')
       } else if (declarations.langID == 3 || declarations.langID == 4) {
-        $(`#${name}`).attr('data-lang', 'ar')
+        $('body').find(`#${name}`).attr('data-lang', 'ar')
       }
     }
-    $(`#${name}`).attr('data-modal', 'true')
-    $(`#${name}`).attr('data-large-mode', 'true')
-    $(`#${name}`).attr('data-translate-mode', 'true')
-    $(`#${name}`).dateDropper()
+    $('body').find(`#${name}`).attr('data-modal', 'true')
+    $('body').find(`#${name}`).attr('data-large-mode', 'true')
+    $('body').find(`#${name}`).attr('data-translate-mode', 'true')
+    $('body').find(`#${name}`).dateDropper()
   } else if (props.inputType) {
     if (props.inputType.findBestMatch(window.wordsTranslationsDB.Words['time'][declarations.langCode]).rating > 0.8) {
-      $(`#${name}`).timeDropper()
+      $('body').find(`#${name}`).timeDropper()
     }
   }
   propSet(name, props)

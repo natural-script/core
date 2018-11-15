@@ -23,12 +23,12 @@ import photoIcon from '../../Media/img/icons/photoA.svg'
 import * as declarations from 'core/declarations'
 
 function setImgProp(name, props) {
-	$(`#${name}`).prop('type', 'img')
+	$('body').find(`#${name}`).prop('type', 'img')
 	if (props.title) {
-		$(`#${name}`).attr('alt', props.title)
+		$('body').find(`#${name}`).attr('alt', props.title)
 	}
 	if (props.FX == 'rain') {
-		$(`#${name}`).attr('fx', 'rain')
+		$('body').find(`#${name}`).attr('fx', 'rain')
 	}
 }
 export default function (props) {
@@ -74,7 +74,7 @@ export default function (props) {
 					}, 1)
 				} else {
 					getFileSize(source, function (size) {
-						$(`#image_${name}_mainButton`).html('<i class="material-icons">file_download</i> ' + size)
+						$('body').find(`#image_${name}_mainButton`).html('<i class="material-icons">file_download</i> ' + size)
 					})
 					var uniqueID = nanoid(10)
 					document[uniqueID + 'checker'] = setInterval(function () {
@@ -91,7 +91,7 @@ export default function (props) {
 					verifyBLOB(URLID, function (data) {
 						if (data == 'not exist') {
 							getFileSize(source, function (size) {
-								$('#image_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size)
+								$('body').find(`#image_${name}_mainButton`).html('<i class="material-icons">file_download</i> ' + size)
 							})
 						} else if (data == 'exists') {
 							showImageA(name, URLID, source)
@@ -120,7 +120,7 @@ export default function (props) {
 		appendComponent(`${props.name}_container`, componentTemplate(componentProps))
 		if (window.isLive) {
 			getFileSize(source, function (size) {
-				$(`#image_${name}_mainButton`).html(`<i class="material-icons">file_download</i> ${size}`)
+				$('body').find(`#image_${name}_mainButton`).html(`<i class="material-icons">file_download</i> ${size}`)
 			})
 			var uniqueID = nanoid(10)
 			document[uniqueID + 'checker'] = setInterval(function () {
@@ -133,7 +133,7 @@ export default function (props) {
 			verifyBLOB(URLID, function (data) {
 				if (data == 'not exist') {
 					getFileSize(source, function (size) {
-						$('#image_' + name + '_mainButton').html('<i class="material-icons">file_download</i> ' + size)
+						$('body').find(`#image_${name}_mainButton`).html('<i class="material-icons">file_download</i> ' + size)
 					})
 				} else if (data == 'exists') {
 					showImageA(name, URLID, source)

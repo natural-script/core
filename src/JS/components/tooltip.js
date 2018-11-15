@@ -26,14 +26,14 @@ export default function (props) {
     position = 'bottom'
   }
   if (props.title) {
-    $('#' + props.emitter).tipso({
+    $('body').find(`#${props.emitter}`).tipso({
       titleContent: props.title,
       content: props.text,
       position: position,
       background: '#FE5970'
     })
   } else {
-    $('#' + props.emitter).tipso({
+    $('body').find(`#${props.emitter}`).tipso({
       content: props.text,
       position: position,
       background: '#FE5970'

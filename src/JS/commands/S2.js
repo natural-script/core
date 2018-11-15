@@ -11,7 +11,7 @@ export default function ({targetType, target, scopes, parentFnParams}) {
     window.open(target)
   } else if (targetType.findBestMatch(wordsTranslationsDB.Words['element'][declarations.langCode]).rating > 0.5) {
     $([document.documentElement, document.body]).animate({
-        scrollTop: $(`#${target}`).offset().top
+        scrollTop: $('body').find(`#${target}`).offset().top
     }, 1000)
   } else if (targetType.findBestMatch(wordsTranslationsDB.Words['email'][declarations.langCode]).rating > 0.5) {
     window.open('mailto:' + target)
@@ -19,8 +19,8 @@ export default function ({targetType, target, scopes, parentFnParams}) {
     changePage(target)
     setURLParameter('page', (($(`page#${target}`).length > 0) ? target : 'page_not_found'))
   } else if (targetType.findBestMatch(wordsTranslationsDB.Words['dialogBox'][declarations.langCode]).rating > 0.5) {
-    $(`#${target}`).iziModal('open')
+    $('body').find(`#${target}`).iziModal('open')
   } else if (targetType.findBestMatch(wordsTranslationsDB.Words['sidebar'][declarations.langCode]).rating > 0.5) {
-    $(`#${target}`).sideNav('show')
+    $('body').find(`#${target}`).sideNav('show')
   }
 }

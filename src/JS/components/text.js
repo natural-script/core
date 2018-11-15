@@ -36,9 +36,9 @@ export default function (props) {
   }
   if (props.direction) {
     if (props.direction.findBestMatch(window.wordsTranslationsDB.Words['ltr'][declarations.langCode]).rating > 0.8) {
-      $(`#${name}`).css('direction', 'ltr')
+      $('body').find(`#${name}`).css('direction', 'ltr')
     } else if (props.direction.findBestMatch(window.wordsTranslationsDB.Words['rtl'][declarations.langCode]).rating > 0.8) {
-      $(`#${name}`).css('direction', 'rtl')
+      $('body').find(`#${name}`).css('direction', 'rtl')
     }
   }
   propSet(name, props)

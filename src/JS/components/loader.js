@@ -31,7 +31,7 @@ export default function (props) {
   }
   appendComponent(props.container, componentTemplate(componentProps))
   if (isAttributedByBeing(props, 'loading')) {
-    $(`#${name}`).attr('active', '')
+    $('body').find(`#${name}`).attr('active', '')
   }
   propSet(name, props)
 }

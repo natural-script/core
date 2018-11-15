@@ -10,10 +10,10 @@
  */
 export default function appendComponent (container, code) {
   if (container) {
-    if ($('#' + container + '').hasClass('iziModal')) {
-      $('#' + container + '').iziModal('setContent', code)
+    if ($('body').find(`#${container}`).hasClass('iziModal')) {
+      $('body').find(`#${container}`).iziModal('setContent', code)
     } else {
-      $('#' + container + '').append(code)
+      $('body').find(`#${container}`).append(code)
     }
   } else {
     $('contents').append(code)

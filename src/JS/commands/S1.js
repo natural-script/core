@@ -7,5 +7,5 @@ export default function ({elementName, target, scopes, parentFnParams}) {
   } else {
     targetElement = target
   }
-  $(`#${targetElement}`).remove()
+  $('body').find(`#${targetElement}`).remove()
 }

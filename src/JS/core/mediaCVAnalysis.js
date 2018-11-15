@@ -13,7 +13,7 @@ export default function analyseImage(name, source) {
           var encodedSource = encodeURIComponent(source).replace(/\./g, '%2E')
           if (declarations.nudityDetectionStatus || window.isLive) {
             if (imageData[encodedSource].nfsw.rawData.outputs[0].data.concepts[0].name == 'nfsw') {
-              $(`#${name}`).attr('nude', '')
+              $('body').find(`#${name}`).attr('nude', '')
             }
           }
           let detectedObjectsRaw = imageData[encodedSource].general
@@ -25,7 +25,7 @@ export default function analyseImage(name, source) {
               detectedObjects += detectedObjectsRaw.rawData.outputs[0].data.concepts[i].name + ', '
             }
           }
-          $('#' + name + '_imageData').text(detectedObjects.split('undefined')[1])
+          $('body').find(`#${name}_imageData`).text(detectedObjects.split('undefined')[1])
         })
       } else {
         // predict the contents of an image by passing in a url
@@ -39,7 +39,7 @@ export default function analyseImage(name, source) {
               imageData += response.rawData.outputs[0].data.concepts[i].name + ', '
             }
           }
-          $('#' + name + '_imageData').text(imageData)
+          $('body').find(`#${name}_imageData`).text(imageData)
         }, function (err) {
           console.error(err)
         })
@@ -47,7 +47,7 @@ export default function analyseImage(name, source) {
           window.jsteFirebase.database().ref('clarifai/' + encodeURIComponent(source).replace(/\./g, '%2E') + '/nfsw').set(response)
           if (declarations.nudityDetectionStatus || window.isLive) {
             if (response.rawData.outputs[0].data.concepts[0].name == 'nfsw') {
-              $(`#${name}`).attr('nude', '')
+              $('body').find(`#${name}`).attr('nude', '')
             }
           }
         }, function (err) {

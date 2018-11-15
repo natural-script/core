@@ -25,7 +25,7 @@ export const showCurrentPage = function () {
     setURLParameter('page', wordsTranslationsDB.Words['indexPage'][declarations.langCode][0])
   }
   var currentPage = decodeURIComponent(currentPageRaw)
-  setTimeout(() => $('#' + currentPage + '').fadeIn(500), 1)
+  setTimeout(() => $('body').find(`#${currentPage}`).fadeIn(500), 1)
   $('title').html(currentPage.replace(/[_]/g, ' ').replace(/\w\S*/g, function (txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
   }) + ' | ' + window.title)

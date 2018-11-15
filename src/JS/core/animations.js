@@ -18,7 +18,7 @@ $.fn.extend({
   }
 })
 export default function setAnimation(elementName, animation) {
-  $(`#${elementName}`).visibilityChanged({
+  $('body').find(`#${elementName}`).visibilityChanged({
     callback: function (element, visible) {
       if (visible == true) {
         if (animation == 'bounce') {

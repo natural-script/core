@@ -28,11 +28,11 @@ import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import * as declarations from 'core/declarations'
 export default function propSet(elementName, props) {
 	let elementContainerName
-	if ($(`#${elementName}`).parent().parent().attr('id') == `${elementName}_container`) {
+	if ($('body').find(`#${elementName}`).parent().parent().attr('id') == `${elementName}_container`) {
 		elementContainerName = `${elementName}_container`
 	}
 	if (props.text) {
-		$(`#${elementName}`).html((/^(ar|arz)$/.test(declarations.langCode)) ? arli.arabize(props.text) : props.text)
+		$('body').find(`#${elementName}`).html((/^(ar|arz)$/.test(declarations.langCode)) ? arli.arabize(props.text) : props.text)
 	}
 	if (props.distanceFromBottom) {
 		if (elementContainerName) {
@@ -76,27 +76,27 @@ export default function propSet(elementName, props) {
 		}
 	}
 	if (props.transparency) {
-		$(`#${elementName}`).css('-webkit-filter', 'opacity(' + props.transparency + '%)')
+		$('body').find(`#${elementName}`).css('-webkit-filter', 'opacity(' + props.transparency + '%)')
 	}
 	if (props.attributes) {
 		if (props.attributes.search(XRegExp('' + getTranslations('parallax') + '', 'gmi')) > -1) {
 			if (props.background) {
 				if (window.isLive) {
-					$(`#${elementName}`).css({
+					$('body').find(`#${elementName}`).css({
 						'background': 'url(' + props.background + ') no-repeat',
 						'background-size': 'cover'
 					})
 					if (declarations.deviceForm == 'desktop') {
-						$(`#${elementName}`).addClass('parallax')
+						$('body').find(`#${elementName}`).addClass('parallax')
 					}
 				} else {
 					requestBLOB(props.background, encodeURIComponent(props.background).replace(/\./g, '%2E'), function (BLOBURL) {
-						$(`#${elementName}`).css({
+						$('body').find(`#${elementName}`).css({
 							'background': 'url(' + BLOBURL + ') no-repeat',
 							'background-size': 'cover'
 						})
 						if (declarations.deviceForm == 'desktop') {
-							$(`#${elementName}`).addClass('parallax')
+							$('body').find(`#${elementName}`).addClass('parallax')
 						}
 						setTimeout(function () {
 							window.URL.revokeObjectURL(BLOBURL)
@@ -118,50 +118,50 @@ export default function propSet(elementName, props) {
 		setFontColour(elementName, props.fontColor)
 	}
 	if (props.fontStyle) {
-		$(`#${elementName}`).css('font-style', props.fontStyle)
+		$('body').find(`#${elementName}`).css('font-style', props.fontStyle)
 	}
 	if (props.fontThickness) {
 		if (props.fontThickness.findBestMatch(window.wordsTranslationsDB.Words['thick'][declarations.langCode]).rating > 0.8) {
-			$(`#${elementName}`).css('font-weight', 'bold')
+			$('body').find(`#${elementName}`).css('font-weight', 'bold')
 		} else {
-			$(`#${elementName}`).css('font-weight', props.fontThickness)
+			$('body').find(`#${elementName}`).css('font-weight', props.fontThickness)
 		}
 	}
 	if (props.shape) {
 		if (props.shape.findBestMatch(window.wordsTranslationsDB.Words['triangle'][declarations.langCode]).rating > 0.8) {
-			$(`#${elementName}`).addClass('triangle')
+			$('body').find(`#${elementName}`).addClass('triangle')
 		} else if (props.shape.findBestMatch(window.wordsTranslationsDB.Words['trapezoid'][declarations.langCode]).rating > 0.8) {
-			$(`#${elementName}`).addClass('trapezoid')
+			$('body').find(`#${elementName}`).addClass('trapezoid')
 		} else if (props.shape.findBestMatch(window.wordsTranslationsDB.Words['parallelogram'][declarations.langCode]).rating > 0.8) {
-			$(`#${elementName}`).addClass('parallelogram')
+			$('body').find(`#${elementName}`).addClass('parallelogram')
 		} else if (props.shape.findBestMatch(window.wordsTranslationsDB.Words['rhombus'][declarations.langCode]).rating > 0.8) {
-			$(`#${elementName}`).addClass('rhombus')
+			$('body').find(`#${elementName}`).addClass('rhombus')
 		} else if (props.shape.findBestMatch(window.wordsTranslationsDB.Words['pentagon'][declarations.langCode]).rating > 0.8) {
-			$(`#${elementName}`).addClass('pentagon')
+			$('body').find(`#${elementName}`).addClass('pentagon')
 		} else if (props.shape.findBestMatch(window.wordsTranslationsDB.Words['hexagon'][declarations.langCode]).rating > 0.8) {
-			$(`#${elementName}`).addClass('hexagon')
+			$('body').find(`#${elementName}`).addClass('hexagon')
 		} else if (props.shape.findBestMatch(window.wordsTranslationsDB.Words['heptagon'][declarations.langCode]).rating > 0.8) {
-			$(`#${elementName}`).addClass('heptagon')
+			$('body').find(`#${elementName}`).addClass('heptagon')
 		} else if (props.shape.findBestMatch(window.wordsTranslationsDB.Words['octagon'][declarations.langCode]).rating > 0.8) {
-			$(`#${elementName}`).addClass('octagon')
+			$('body').find(`#${elementName}`).addClass('octagon')
 		} else if (props.shape.findBestMatch(window.wordsTranslationsDB.Words['decagon'][declarations.langCode]).rating > 0.8) {
-			$(`#${elementName}`).addClass('decagon')
+			$('body').find(`#${elementName}`).addClass('decagon')
 		} else if (props.shape.findBestMatch(window.wordsTranslationsDB.Words['circle'][declarations.langCode]).rating > 0.8) {
-			$(`#${elementName}`).addClass('circle')
+			$('body').find(`#${elementName}`).addClass('circle')
 		} else if (props.shape.findBestMatch(window.wordsTranslationsDB.Words['ellipse'][declarations.langCode]).rating > 0.8) {
-			$(`#${elementName}`).addClass('ellipse')
+			$('body').find(`#${elementName}`).addClass('ellipse')
 		}
 	}
 	if (props.fontSize) {
 		setFontSize(elementName, props.fontSize)
 	}
-	if ($('#' + props.container + '').hasClass('row') == true) {
-		$(`#${elementName}`).addClass('col')
+	if ($('body').find(`#${props.container}`).hasClass('row') == true) {
+		$('body').find(`#${elementName}`).addClass('col')
 	}
 	if (props.position) {
-		$(`#${elementName}`).css('position', props.position)
+		$('body').find(`#${elementName}`).css('position', props.position)
 	} else {
-		$(`#${elementName}`).css('position', 'relative')
+		$('body').find(`#${elementName}`).css('position', 'relative')
 	}
 	if (isAttributedByBeing(props, 'scrollable')) {
 		document[nanoid(10)] = new PerfectScrollbar(`#${elementName}`)

@@ -7,7 +7,7 @@ export default function ({elementName, target, scopes, parentFnParams}) {
   } else {
     targetElement = target
   }
-  if ($('#' + targetElement + '').hasClass('aplayer') || $('#' + targetElement + '_html5_api').prop('tagName') == 'VIDEO') {
+  if ($('body').find(`#${targetElement}`).hasClass('aplayer') || $('body').find(`#${targetElement}_html5_api`).prop('tagName') == 'VIDEO') {
     document[targetElement].play()
   } else {
     document.getElementById(targetElement).play()

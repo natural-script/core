@@ -24,15 +24,15 @@ export const showVideoA = function (name, source, title, videoURLID, fps) {
     requestBLOB(name, 'vid', source, videoURLID)
   } else {
     requestBLOB(source, videoURLID, function (BLOBURL) {
-      $(`#${name}`).html('<source src="' + BLOBURL + '" type="video/mp4" />')
+      $('body').find(`#${name}`).html('<source src="' + BLOBURL + '" type="video/mp4" />')
       document[uniqueID + 'src'] = BLOBURL
     })
   }
   document[uniqueID + 'checker'] = setInterval(function () {
     if (v.readyState === 4) {
-      $(`#${name}`).attr('controls', '')
+      $('body').find(`#${name}`).attr('controls', '')
       fadeOut('showVideo_' + name + '_containerA')
-      $(`#${name}`).css('-webkit-filter', 'blur(0px)')
+      $('body').find(`#${name}`).css('-webkit-filter', 'blur(0px)')
       document[name] = videojs(name, {
         plugins: {
           framebyframe: {
@@ -77,6 +77,6 @@ export const showVideoA = function (name, source, title, videoURLID, fps) {
 window.showVideoA = showVideoA
 
 export const showVideoB = function (name) {
-  $(`#${name}`).css('-webkit-filter', 'blur(0px)')
+  $('body').find(`#${name}`).css('-webkit-filter', 'blur(0px)')
   fadeOut('showVideo_' + name + '_containerB')
 }

@@ -31,6 +31,6 @@ export default function (props) {
   appendComponent(props.container, componentTemplate(componentProps))
   propSet(name, props)
   if (!props.position) {
-    $(`#${name}`).css('position', 'absolute')
+    $('body').find(`#${name}`).css('position', 'absolute')
   }
 }

@@ -21,14 +21,14 @@ export default function (props) {
   } else if (props.type.findBestMatch(window.wordsTranslationsDB.Words['video'][declarations.langCode]).rating > 0.8) {
     var out = '<div class="item-video" data-hash="' + name + '"><a class="owl-video" href="' + source + '"></a></div>'
   }
-  $('#' + props.slideShow + '').append(out)
+  $('body').find(`#${props.slideShow}`).append(out)
   if (props.position) {
-    $(`#${name}`).css('position', props.position)
+    $('body').find(`#${name}`).css('position', props.position)
   } else {
-    $(`#${name}`).css('position', 'relative')
+    $('body').find(`#${name}`).css('position', 'relative')
   }
   propSet(name, props)
   if (props.title) {
-    $(`#${name}`).attr('alt', props.title)
+    $('body').find(`#${name}`).attr('alt', props.title)
   }
 }

@@ -26,48 +26,48 @@ export default function setDistance (name, direction, value) {
   var setDistanceFn = function (ratio, vhvwRatio) {
     if (direction == 'bottom') {
       if (document.pageDirection == 'horizontal') {
-        $(`#${name}`).each(function () {
+        $('body').find(`#${name}`).each(function () {
           this.style.setProperty('bottom', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh', 'important')
           this.style.setProperty('top', 'auto', 'important')
         })
       } else if (document.pageDirection == 'vertical') {
-        $(`#${name}`).each(function () {
+        $('body').find(`#${name}`).each(function () {
           this.style.setProperty('bottom', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important')
           this.style.setProperty('top', 'auto', 'important')
         })
       }
     } else if (direction == 'top') {
       if (document.pageDirection == 'horizontal') {
-        $(`#${name}`).each(function () {
+        $('body').find(`#${name}`).each(function () {
           this.style.setProperty('top', (parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) + 'vh', 'important')
           this.style.setProperty('bottom', 'auto', 'important')
         })
       } else if (document.pageDirection == 'vertical') {
-        $(`#${name}`).each(function () {
+        $('body').find(`#${name}`).each(function () {
           this.style.setProperty('top', ((parseFloat(ratio * screen.availHeight) * (100 / screen.availHeight)) * vhvwRatio) + 'vw', 'important')
           this.style.setProperty('bottom', 'auto', 'important')
         })
       }
     } else if (direction == 'left') {
       if (document.pageDirection == 'horizontal') {
-        $(`#${name}`).each(function () {
+        $('body').find(`#${name}`).each(function () {
           this.style.setProperty('left', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important')
           this.style.setProperty('right', 'auto', 'important')
         })
       } else if (document.pageDirection == 'vertical') {
-        $(`#${name}`).each(function () {
+        $('body').find(`#${name}`).each(function () {
           this.style.setProperty('left', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important')
           this.style.setProperty('right', 'auto', 'important')
         })
       }
     } else if (direction == 'right') {
       if (document.pageDirection == 'horizontal') {
-        $(`#${name}`).each(function () {
+        $('body').find(`#${name}`).each(function () {
           this.style.setProperty('right', ((parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) * vhvwRatio) + 'vh', 'important')
           this.style.setProperty('left', 'auto', 'important')
         })
       } else if (document.pageDirection == 'vertical') {
-        $(`#${name}`).each(function () {
+        $('body').find(`#${name}`).each(function () {
           this.style.setProperty('right', (parseFloat(ratio * screen.availWidth) * (100 / screen.availWidth)) + 'vw', 'important')
           this.style.setProperty('left', 'auto', 'important')
         })

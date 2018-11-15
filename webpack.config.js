@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const PACKAGE = require('./package.json');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -40,7 +41,7 @@ module.exports = (env, argv) => {
         'XRegExp': 'xregexp'
       }),
       new webpack.DefinePlugin({
-        'NS_Version': JSON.stringify(process.env.npm_package_version)
+        'NS_Version': PACKAGE.version
       })
     ],
     entry: ["@babel/polyfill", "./src/app.js"],

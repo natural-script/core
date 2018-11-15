@@ -24,10 +24,10 @@ export default function (props) {
   isDisabled = isAttributedByBeing(props, 'disabled')
   if (props.emitter) {
     var emitter = props.emitter
-    if ($(`#${emitter}`).hasClass('col')) {
+    if ($('body').find(`#${emitter}`).hasClass('col')) {
       isInGrid = true
     }
-    emitterHTML = $(`#${emitter}`).get(0).outerHTML
+    emitterHTML = $('body').find(`#${emitter}`).get(0).outerHTML
     let componentProps = {
       name,
       items,
@@ -35,13 +35,13 @@ export default function (props) {
       isInGrid,
       isDisabled
     }
-    $(`#${emitter}`).replaceWith(componentTemplate(componentProps))
+    $('body').find(`#${emitter}`).replaceWith(componentTemplate(componentProps))
   }
   let ro = new ResizeObserver(entries => {
     for (let entry of entries) {
       $(entry.target).parent().parent().find(`paper-listbox[slot="dropdown-content"]`).width($(entry.target).outerWidth())
     }
   })
-  ro.observe($(`#${name}`).parent().find(`*[slot="dropdown-trigger"]`).children().get(0))
+  ro.observe($('body').find(`#${name}`).parent().find(`*[slot="dropdown-trigger"]`).children().get(0))
   propSet(name, props)
 }
