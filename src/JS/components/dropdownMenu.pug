@@ -1,6 +1,0 @@
-paper-menu-button(class=(isInGrid ? 'col' : false) horizontalAlign='center' verticalAlign='middle' dynamicAlign=true)
-  div(slot='dropdown-trigger')!= emitterHTML
-  paper-listbox(id=name slot='dropdown-content' disabled=isDisabled)
-    each val in items
-      paper-item(id=`${val.split(' ').join('_')}_dropdownItem`)= val
-        paper-ripple

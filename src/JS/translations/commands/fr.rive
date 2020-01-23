@@ -245,3 +245,12 @@
 
 + (?:obtenir|récupérer|récupérer) les données envoyées de *
 - id: S28 ==> lang: fr ==> URL: <star1>
+
++ (?:créer un nouvel utilisateur|inscrivez-vous) (?:en fournissant|en utilisant) les données suivantes:<line break>*
+- id: S29 ==> lang: fr ==> data: <star1>
+
++ connectez-vous (?:en fournissant|en utilisant) les données suivantes:<line break>*
+- id: S30 ==> lang: fr ==> data: <star1>
+
++ déconnexion
+- id: S31 ==> lang: fr

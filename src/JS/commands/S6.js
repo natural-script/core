@@ -1,12 +1,23 @@
-import elementValue from 'core/elementValue'
-import parseStringValue from 'parsers/stringValue'
-export default function ({elementName, target, value, scopes, parentFnParams}) {
-  let targetElement
-  target = parseStringValue(target, false, scopes, parentFnParams)
-  if (target == 'itself') {
-    targetElement = elementName
+import applyOp from "core/applyOp";
+import theComponentCalled from "core/theComponentCalled";
+import parseStringValue from "parsers/stringValue";
+export default function({
+  elementName,
+  target,
+  value,
+  scopes,
+  parentFnParams
+}) {
+  let targetElement;
+  target = parseStringValue(target, false, scopes, parentFnParams);
+  if (target == "itself") {
+    targetElement = elementName;
   } else {
-    targetElement = target
+    targetElement = target;
   }
-  elementValue.set(targetElement, parseStringValue(value, false, scopes, parentFnParams))
+  applyOp(targetElement, () =>
+    theComponentCalled(targetElement).setVal(
+      parseStringValue(value, false, scopes, parentFnParams)
+    )
+  );
 }

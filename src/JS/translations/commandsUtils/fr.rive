@@ -13,10 +13,10 @@
 - id: CU1 ==> lang: fr ==> conditions: <star1>
 
 + Autre si *
-- id: CU2 ==> lang: en ==> conditions: <star1>
+- id: CU2 ==> lang: fr ==> conditions: <star1>
 
 + Autre
-- id: CU3 ==> lang: en
+- id: CU3 ==> lang: fr
 
 + Après une période de *
 - id: CU4 ==> lang: fr ==> period: <star1>
@@ -31,7 +31,10 @@
 - id: CU7 ==> lang: fr ==> name: <star1>
 
 + Après la finition l'exécution de la commande précédente, obtenez la valeur du * retourné puis faire ce qui suit
-- id: CU8 ==> lang: en ==> varName: <star1>
+- id: CU8 ==> lang: fr ==> varName: <star1>
 
 + pour chaque * de la liste *
-- id: CU9 ==> lang: en ==> varName: <star1> ==> listName: <star2>
+- id: CU9 ==> lang: fr ==> varName: <star1> ==> listName: <star2>
+
++ Après la finition l'exécution de la commande précédente, faire ce qui suit
+- id: CU10 ==> lang: fr

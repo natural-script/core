@@ -1,49 +1,49 @@
-/*!
- * Slider
- * https://project-jste.github.io/
- *
- * Copyright 2017 Jste Team
- * Released under the GNU AGPLv3 license
- * https://project-jste.github.io/license
- *
- * Date: 2018-02-05
- */
-import inheritStyle from 'core/styleInheritor'
-import appendComponent from 'core/componentAppend'
-import propSet from 'core/propSet'
-import isAttributedByBeing from 'core/isAttributedByBeing'
-import componentTemplate from './slider.pug'
-export default function (props) {
-  props = inheritStyle(props, props.style)
-  let max, min, step, isDisabled, isPinned, isEditable
-  var name = props.name
-  if (props.max) {
-    max = props.max
+import React from "react";
+import basicComponent from "core/basicComponent";
+import updateDynamicData from "core/updateDynamicData";
+import Radium from "radium";
+import * as Material from "@material-ui/core";
+class slider extends basicComponent {
+  constructor(props) {
+    super(props);
+    if (!this.isRestored) {
+      this.internalData = {
+        ...this.internalData,
+        value: null
+      };
+    }
+    this.myRef = React.createRef();
   }
-  if (props.min) {
-    min = props.min
+  componentDidMount() {
+    this.attatchHandler(
+      "E11",
+      event => {
+        this.internalData.value = event.target.checked;
+        updateDynamicData(
+          `components["${this.state.name}"].internalData.checked`
+        );
+      },
+      true
+    );
   }
-  if (props.step) {
-    step = props.step
-  }
-  if (isAttributedByBeing(props, 'disabled')) {
-    isDisabled = true
-  }
-  if (isAttributedByBeing(props, 'withPin')) {
-    isPinned = true
-  }
-  if (isAttributedByBeing(props, 'withDigitalValueEditor')) {
-    isEditable = true
-  }
-  let componentProps = {
-    name,
-    max,
-    min,
-    step,
-    isDisabled,
-    isPinned,
-    isEditable
-  }
-  appendComponent(props.container, componentTemplate(componentProps))
-  propSet(name, props)
+
+  thisComponent = () => {
+    const state = this.getState();
+    const styles = this.getStyles();
+    return (
+      <Material.Slider
+        ref={this.myRef}
+        disabled={this.isAttributedByBeing("disabled")}
+        valueLabelDisplay={this.isAttributedByBeing("withPin") ? "auto" : "off"}
+        value={state.name}
+        max={state.max}
+        min={state.min}
+        step={state.step}
+        style={styles}
+        {...this.getEvents()}
+      />
+    );
+  };
 }
+
+export default Radium(slider);

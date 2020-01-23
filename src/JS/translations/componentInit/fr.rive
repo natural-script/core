@@ -26,3 +26,16 @@
 
 + (son|sa|ses) * (est|sont) *
 - id: CI6 ==> lang: fr ==> property: <star2> ==> propertyValue: <star4>
+
+> topic componentProps
+
+  + (son|sa|ses) * (est|sont) *
+  - id: CI6 ==> lang: fr ==> property: <star2> ==> propertyValue: <star4>
+
+  + dans le cas du mode portrait
+  - id: CI7 ==> lang: fr
+
+  + dans le cas du mode paysage
+  - id: CI8 ==> lang: fr
+
+< topic

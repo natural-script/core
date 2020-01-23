@@ -1,88 +1,97 @@
-/*!
- * Video
- * https://project-jste.github.io/
- *
- * Copyright 2017 Jste Team
- * Released under the GNU AGPLv3 license
- * https://project-jste.github.io/license
- *
- * Date: 2018-05-01
- */
-import {
-  verifyBLOB
-} from 'core/BLOBGet.js'
-import inheritStyle from 'core/styleInheritor'
-import appendComponent from 'core/componentAppend'
-import propSet from 'core/propSet'
-import getFileSize from 'core/fileSizeGet.js'
-import isAttributedByBeing from 'core/isAttributedByBeing'
-import {
-  showVideoA
-} from 'core/vidFn'
-import getVideoInfo from 'providers/videoInfoGet'
-import getVideoProvider from 'providers/videoProviderGet'
-import nanoid from 'nanoid'
-import camcorderIcon from '../../Media/img/icons/camcorderA.svg'
-import componentTemplate from './video.pug'
-import * as declarations from 'core/declarations'
-export default function (props) {
-  props = inheritStyle(props, props.style)
-  let name = props.name
-  let source = props.source
-  let title = props.title
-  let URLID = encodeURIComponent(source).replace(/\./g, '%2E')
-  let componentProps = {
-    name,
-    source,
-    title,
-    URLID,
-    camcorderIcon
-  }
-  if (isAttributedByBeing(props, 'transparent')) {
-    componentProps.noShadow = true
-  }
-  appendComponent(props.container, componentTemplate(componentProps))
-  propSet(name, props)
-  $('body').find(`#${name}`).prop('isTitled', false)
-  $('body').find(`#${name}`).prop('type', 'vid')
-  if (window.isLive) {
-    getFileSize(source, function (size) {
-      $('body').find(`#video_${name}_mainButton`).html(`<i class="material-icons">play_arrow</i> ${size}`)
-    })
-    if (getVideoProvider(source).videoProvider == 'webHosting') {
-      $('#receiver').on('load', function () {
-        if (isTitled) {
-          verifyBLOB(name, 'vid', source, encodeURIComponent(source).replace(/\./g, '%2E'), title)
-        } else {
-          verifyBLOB(name, 'vid', source, encodeURIComponent(source).replace(/\./g, '%2E'))
-        }
-      })
-      var uniqueID = nanoid(10)
-      document[uniqueID + 'checker'] = setInterval(function () {
-        if ($('#receiver').prop('ready')) {
-          verifyBLOB(name, 'vid', encodeURIComponent(source).replace(/\./g, '%2E'))
-          clearInterval(document[uniqueID + 'checker'])
-        }
-      }, 1)
-    } else {
-      getVideoInfo(name, getVideoProvider(source).videoProvider, getVideoProvider(source).videoID, getVideoProvider(source).videoURL, title)
+import React from "react";
+import basicComponent from "core/basicComponent";
+import Radium from "radium";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Async from "react-async";
+import VideoPlayer from "react-video-js-player";
+
+class video extends basicComponent {
+  constructor(props) {
+    super(props);
+    if (!this.isRestored) {
+      this.internalData = {
+        ...this.internalData,
+        source: null,
+        url: null,
+        thumbnail: null,
+        title: null,
+        timePos: 0
+      };
     }
-  } else {
-    if (getVideoProvider(source).videoProvider == 'webHosting') {
-      verifyBLOB(encodeURIComponent(source).replace(/\./g, '%2E'), function (data) {
-        if (data == 'not exist') {
-          getFileSize(source, function (size) {
-            $('body').find(`#video_${name}_mainButton`).html('<i class="material-icons">play_arrow</i> ' + size)
-          })
-        } else if (data == 'exists') {
-          showVideoA(name, source, title, encodeURIComponent(source).replace(/\./g, '%2E'))
-        }
-      })
+    this.myRef = React.createRef();
+  }
+  onPlayerReady = player => {
+    this.player = player;
+  };
+
+  play = () => this.player.play();
+
+  pause = () => this.player.pause();
+
+  seek = timePos => this.player.currentTime(timePos);
+
+  onVideoPlay = duration => {
+    this.player.currentTime(this.internalData.timePos);
+  };
+
+  onVideoTimeUpdate = duration => {
+    this.internalData = {
+      ...this.internalData,
+      timePos: duration
+    };
+  };
+  async getVideoURL(src) {
+    let data;
+    const prevURL = this.internalData.source;
+    const nextURL = this.state.source;
+    if (prevURL === nextURL) {
+      data = this.internalData;
     } else {
-      getVideoInfo(name, getVideoProvider(source).videoProvider, getVideoProvider(source).videoID, getVideoProvider(source).videoURL, title)
+      data = (await fetch(
+        `https://jste-video-dl.herokuapp.com/api/info?url=${src}`
+      ).then(res => res.json())).info;
+      this.internalData = {
+        ...this.internalData,
+        source: this.state.source,
+        url: data.url,
+        thumbnail: data.thumbnail,
+        title: data.title,
+        ext: data.ext,
+        timePos: 0
+      };
     }
+    return data;
   }
-  if (props.title) {
-    $('body').find(`#${name}`).attr('alt', props.title)
-  }
+  getVid = ({ src }) => this.getVideoURL(src);
+  thisComponent = () => {
+    const state = this.getState();
+    const styles = this.getStyles();
+    return (
+      <Async promiseFn={this.getVid} src={state.source} watch={state}>
+        <Async.Loading>
+          <CircularProgress />
+        </Async.Loading>
+        <Async.Resolved>
+          {data => (
+            <div style={styles}>
+              <VideoPlayer
+                ref={this.myRef}
+                controls={true}
+                src={{ type: `video/${data.ext}`, src: data.url }}
+                poster={data.thumbnail}
+                width={state.width}
+                height={state.length}
+                onReady={this.onPlayerReady}
+                onPlay={this.onVideoPlay}
+                onTimeUpdate={this.onVideoTimeUpdate}
+                {...this.getEvents()}
+              />
+            </div>
+          )}
+        </Async.Resolved>
+      </Async>
+    );
+  };
 }
+
+export default Radium(video);

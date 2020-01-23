@@ -25,78 +25,91 @@
             "arz": ["أو"]
         },
         "black": {
+            "type": "color",
             "en": ["black"],
             "fr": ["noir"],
             "ar": ["اسود"],
             "arz": ["اسود"]
         },
         "red": {
+            "type": "color",
             "en": ["red"],
             "fr": ["rouge"],
             "ar": ["احمر", "حمراء"],
             "arz": ["احمر", "حمرة"]
         },
         "blue": {
+            "type": "color",
             "en": ["blue"],
             "fr": ["bleu"],
             "ar": ["ازرق", "زرقاء"],
             "arz": ["ازرق", "زرقة"]
         },
         "cyan": {
+            "type": "color",
             "en": ["cyan"],
             "fr": ["cyan"],
             "ar": ["سماوى"],
             "arz": ["لبنى"]
         },
         "gray": {
+            "type": "color",
             "en": ["gray"],
             "fr": ["gris"],
             "ar": ["رصاصى"],
             "arz": ["فرانى"]
         },
         "green": {
+            "type": "color",
             "en": ["green"],
             "fr": ["vert"],
             "ar": ["اخضر", "خضراء"],
             "arz": ["اخضر", "خضرة"]
         },
         "white": {
+            "type": "color",
             "en": ["white"],
             "fr": ["blanc"],
             "ar": ["ابيض", "بيضاء"],
             "arz": ["ابيض", "بيضة"]
         },
         "orange": {
+            "type": "color",
             "en": ["orange"],
             "fr": ["orange"],
             "ar": ["برتقالى", "برتقالية"],
             "arz": ["برتقانى", "اورانج"]
         },
         "yellow": {
+            "type": "color",
             "en": ["yellow"],
             "fr": ["jaun", "jaune"],
             "ar": ["اصفر", "صفراء"],
             "arz": ["اصفر", "صفرة"]
         },
         "brown": {
+            "type": "color",
             "en": ["brown"],
             "fr": ["marron"],
             "ar": ["بنى", "بنية"],
             "arz": ["بنى"]
         },
         "teal": {
+            "type": "color",
             "en": ["teal"],
             "fr": ["sarcelle"],
             "ar": ["تركواز"],
             "arz": ["تركواز"]
         },
         "pink": {
+            "type": "color",
             "en": ["pink"],
             "fr": ["rose"],
             "ar": ["زهرى"],
             "arz": ["بمبى", "بينك"]
         },
         "lightGreen": {
+            "type": "color",
             "en": ["light green"],
             "fr": ["Vert clair"],
             "ar": ["اخضر فاتح"],
@@ -162,13 +175,6 @@
             "ar": ["لوحة الوان"],
             "arz": ["بلتة الوان"]
         },
-        "text": {
-            "type": "component",
-            "en": ["text"],
-            "fr": ["texte"],
-            "ar": ["نص"],
-            "arz": ["كلام"]
-        },
         "buttonWithAnIcon": {
             "type": "component",
             "en": ["button with an icon"],
@@ -177,6 +183,7 @@
             "arz": ["زرار بأيكونة"]
         },
         "icon": {
+            "type": "component",
             "en": ["icon"],
             "fr": ["icône"],
             "ar": ["ايقونة"],
@@ -203,12 +210,12 @@
             "ar": ["صوت"],
             "arz": ["صوت"]
         },
-        "writingZone": {
+        "textField": {
             "type": "component",
             "en": ["writing zone"],
             "fr": ["champ de texte"],
-            "ar": ["صندوق النص"],
-            "arz": ["مكان الكتابة"]
+            "ar": ["صندوق النص", "صندوق نص"],
+            "arz": ["مكان الكتابة", "مكان كتابة"]
         },
         "section": {
             "type": "component",
@@ -247,8 +254,15 @@
             "type": "component",
             "en": ["loader"],
             "fr": ["chargeur"],
-            "ar": ["دبوس"],
-            "arz": ["دبوس"]
+            "ar": ["رمز تحميل", "علامة تحميل", "مؤشر تحميل"],
+            "arz": ["رمز تحميل", "علامة تحميل", "مؤشر تحميل"]
+        },
+        "centered": {
+            "type": "component",
+            "en": ["centered", "centred"],
+            "fr": ["centrée", "centré"],
+            "ar": ["متوسط", "متوسطة"],
+            "arz": ["متوسط", "متوسطة"]
         },
         "notificationCount": {
             "type": "component",
@@ -263,13 +277,6 @@
             "fr": ["boîte de dialogue"],
             "ar": ["مربع حوار"],
             "arz": ["مربع حوار"]
-        },
-        "dropdownMenu": {
-            "type": "component",
-            "en": ["dropdown menu"],
-            "fr": ["menu déroulant"],
-            "ar": ["دبوس"],
-            "arz": ["دبوس"]
         },
         "background": {
             "en": ["background"],
@@ -348,8 +355,8 @@
         "password": {
             "en": ["password"],
             "fr": ["mot de passe"],
-            "ar": ["كلمة مرور"],
-            "arz": ["كلمة سر"]
+            "ar": ["كلمة المرور", "كلمة مرور"],
+            "arz": ["كلمة السر", "كلمة سر"]
         },
         "time": {
             "en": ["time"],
@@ -401,6 +408,31 @@
             "ar": ["صفحة"],
             "arz": ["صفحة"]
         },
+        "relativeToItsNormalPosition": {
+            "en": ["relative to its normal position"],
+            "fr": ["relatif à sa position normale"],
+            "ar": ["متناسب مع وضعها الطبيعي", "متناسب مع وصعه الطبيعي", "متناسب مع مكانه الطبيعي", "متناسب مع مكانها الطبيعي", "متناسب مع وضعها العادى", "متناسب مع وصعه العادى", "متناسب مع مكانه العادى", "متناسب مع مكانها العادى"],
+            "arz": ["متناسب مع وضعها الطبيعي", "متناسب مع وصعه الطبيعي", "متناسب مع مكانه الطبيعي", "متناسب مع مكانها الطبيعي", "متناسب مع وضعها العادى", "متناسب مع وصعه العادى", "متناسب مع مكانه العادى", "متناسب مع مكانها العادى"]
+        },
+        "relativeToItsContainer": {
+            "en": ["relative to its container"],
+            "fr": ["relatif à son conteneur"],
+            "ar": ["متناسب مع الطبق الخاص به", "متناسب مع الحاوية الخاصة به", "متناسب مع الطبق الخاص بها", "متناسب مع الحاوية الخاصة بها"],
+            "arz": ["متناسب مع الطبق بتاعه", "متناسب مع الحاوية بتاعته", "متناسب مع الطبق بتاعها", "متناسب مع الحاوية بتاعتها"]
+        },
+        "relativeToTheViewport": {
+            "en": ["relative to the window", "relative to the viewport"],
+            "fr": ["relatif à la fenêtre"],
+            "ar": ["متناسب مع النافذة", "متناسب مع نطاق العرض"],
+            "arz": ["متناسب مع النافذة", "متناسب مع نطاق العرض"]
+        },
+        "router": {
+            "type": "component",
+            "en": ["router"],
+            "fr": ["routeur"],
+            "ar": ["موجه"],
+            "arz": ["موجه"]
+        },
         "name": {
             "en": ["name"],
             "fr": ["nom"],
@@ -420,6 +452,19 @@
             "ar": ["شفافة"],
             "arz": ["شفافة"]
         },
+        "fullScreen": {
+            "type": "attribute",
+            "en": ["full screen", "full-screen"],
+            "fr": ["plein écran", "plein-écran"],
+            "ar": ["ملء الشاشة", "فى وضع ملء الشاشة"],
+            "arz": ["ملء الشاشة", "فى وضع ملء الشاشة"]
+        },
+        "code": {
+            "en": ["code"],
+            "fr": ["code"],
+            "ar": ["رمز"],
+            "arz": ["رمز"]
+        },
         "fontSize": {
             "en": ["font size"],
             "fr": ["taille de police"],
@@ -430,7 +475,7 @@
             "en": ["font thickness"],
             "fr": ["épaisseur de police"],
             "ar": ["سمك خط"],
-            "arz": ["طخن خط"]
+            "arz": ["طخن خط", "سمك خط"]
         },
         "switched": {
             "type": "attribute",
@@ -453,11 +498,24 @@
             "ar": ["معطل"],
             "arz": ["مقفول"]
         },
+        "routed": {
+            "type": "attribute",
+            "en": ["routed"],
+            "fr": ["acheminé"],
+            "ar": ["موجه", "موجهة"],
+            "arz": ["موجه", "موجهة"]
+        },
         "fontStyle": {
             "en": ["font style"],
             "fr": ["le style de police"],
             "ar": ["شكل خط"],
             "arz": ["شكل خط"]
+        },
+        "path": {
+            "en": ["path"],
+            "fr": ["chemin"],
+            "ar": ["مسار"],
+            "arz": ["مسار"]
         },
         "style": {
             "type": "component",
@@ -514,8 +572,8 @@
             "ar": ["نوع إدخال"],
             "arz": ["نوع إدخال"]
         },
-        "multiline": {
-            "en": ["multiline"],
+        "multilined": {
+            "en": ["multilined"],
             "fr": ["multilignes"],
             "ar": ["متعدد أسطر"],
             "arz": ["متعدد أسطر"]
@@ -550,6 +608,20 @@
             "fr": ["avec un éditeur de valeur numérique"],
             "ar": ["بمعدل رقمى للقيمة"],
             "arz": ["بمعدل رقمى للقيمة"]
+        },
+        "linear": {
+            "type": "attribute",
+            "en": ["linear"],
+            "fr": ["linéaire"],
+            "ar": ["خطى", "خطية"],
+            "arz": ["خطى", "خطية"]
+        },
+        "circular": {
+            "type": "attribute",
+            "en": ["circular"],
+            "fr": ["circulaire"],
+            "ar": ["دائرى", "دائرية"],
+            "arz": ["دائرى", "دائرية"]
         },
         "iconColor": {
             "en": ["icon colour", "icon color"],
@@ -628,8 +700,8 @@
             "type": "component",
             "en": ["container"],
             "fr": ["récipient"],
-            "ar": ["حاوية"],
-            "arz": ["طبق"]
+            "ar": ["طبق", "حاوية"],
+            "arz": ["طبق", "حاوية"]
         },
         "shape": {
             "en": ["shape"],
@@ -876,12 +948,40 @@
             "ar": ["القائمة التالية"],
             "arz": ["القايمة دى"]
         },
-        "thick": {
+        "bold": {
             "type": "attribute",
-            "en": ["thick"],
+            "en": ["thick", "bold"],
             "fr": ["épais"],
-            "ar": ["سميك"],
-            "arz": ["طخين"]
+            "ar": ["سميك", "عريض"],
+            "arz": ["طخين", "سميك", "عريض"]
+        },
+        "heavy": {
+            "type": "attribute",
+            "en": ["heavy", "bold"],
+            "fr": ["lourde", "lourd"],
+            "ar": ["ثقيل"],
+            "arz": ["تقيل"]
+        },
+        "normal": {
+            "type": "attribute",
+            "en": ["normal", "ordinary", "regualr"],
+            "fr": ["normal", "ordinaire"],
+            "ar": ["عادى", "اعتيادى"],
+            "arz": ["عادى", "اعتيادى"]
+        },
+        "light": {
+            "type": "attribute",
+            "en": ["light"],
+            "fr": ["légère", "léger"],
+            "ar": ["خفيف"],
+            "arz": ["خفيف"]
+        },
+        "thin": {
+            "type": "attribute",
+            "en": ["thin", "hairline"],
+            "fr": ["mince"],
+            "ar": ["رفيع"],
+            "arz": ["رفيع"]
         },
         "publicC": {
             "en": ["public"],
@@ -1157,8 +1257,8 @@
         "email": {
             "en": ["email", "electronic mail"],
             "fr": ["email"],
-            "ar": ["إيميل"],
-            "arz": ["إيميل"]
+            "ar": ["البريد الإلكترونى", "إيميل", "بريد الكترونى"],
+            "arz": ["الإيميل", "إيميل"]
         },
         "element": {
             "en": ["element"],
@@ -1178,6 +1278,13 @@
             "fr": ["fonction"],
             "ar": ["دالة", "دوال"],
             "arz": ["دالة", "فانكشن", "دوال"]
+        },
+        "appBar": {
+            "type": "component",
+            "en": ["app bar"],
+            "fr": ["barre d'application"],
+            "ar": ["شريط التطبيق"],
+            "arz": ["شريط الاب", "شريط التطبيق"]
         },
         "arguments": {
             "en": ["arguemnts", "paramaters", "params", "param", "parameter"],

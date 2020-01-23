@@ -1,39 +1,49 @@
-/*!
- * Checkbox
- * https://project-jste.github.io/
- *
- * Copyright 2018 Jste Team
- * Released under the GNU AGPLv3 license
- * https://project-jste.github.io/license
- *
- * Date: 2018-02-05
- */
-import inheritStyle from 'core/styleInheritor'
-import appendComponent from 'core/componentAppend'
-import propSet from 'core/propSet.js'
-import getTranslations from 'core/translationsGet'
-import isAttributedByBeing from 'core/isAttributedByBeing'
-import componentTemplate from './checkbox.pug'
-import * as declarations from 'core/declarations'
-export default function (props) {
-  props = inheritStyle(props, props.style)
-  let name, title, description, isChecked, isDisabled
-  name = props.name
-  if (props.description) {
-    description = props.description
+import React from "react";
+import basicComponent from "core/basicComponent";
+import updateDynamicData from "core/updateDynamicData";
+import Radium from "radium";
+import * as Material from "@material-ui/core";
+class checkbox extends basicComponent {
+  constructor(props) {
+    super(props);
+    if (!this.isRestored) {
+      this.internalData = {
+        ...this.internalData,
+        value: null
+      };
+    }
+    this.myRef = React.createRef();
   }
-  if (props.title) {
-    title = props.title
+  componentDidMount() {
+    this.attatchHandler(
+      "E11",
+      event => {
+        this.internalData.value = event.target.checked;
+        updateDynamicData(
+          `components["${this.state.name}"].internalData.checked`
+        );
+      },
+      true
+    );
   }
-  isDisabled = isAttributedByBeing(props, 'disabled')
-  isChecked = isAttributedByBeing(props, 'checked')
-  let componentProps = {
-    name,
-    title,
-    description,
-    isChecked,
-    isDisabled
-  }
-  appendComponent(props.container, componentTemplate(componentProps))
-  propSet(name, props)
+
+  thisComponent = () => {
+    const state = this.getState();
+    const styles = this.getStyles();
+    return (
+      <Material.FormControlLabel
+        control={
+          <Material.Checkbox
+            disabled={this.isAttributedByBeing("disabled")}
+            value={state.name}
+            style={styles}
+            {...this.getEvents()}
+          />
+        }
+        label={state.description}
+      />
+    );
+  };
 }
+
+export default Radium(checkbox);

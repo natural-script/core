@@ -1,45 +1,50 @@
-/*!
- * Audio Player
- * https://project-jste.github.io/
- *
- * Copyright 2018 Jste Team
- * Released under the GNU AGPLv3 license
- * https://project-jste.github.io/license
- *
- * Date: 2018-04-26
- */
-import inheritStyle from 'core/styleInheritor'
-import appendComponent from 'core/componentAppend'
-import propSet from 'core/propSet.js'
-import getTranslations from 'core/translationsGet'
-import APlayer from 'aplayer'
-import 'aplayer/dist/APlayer.min.css'
-import componentTemplate from './audioPlayer.pug'
-import * as declarations from 'core/declarations'
-export default function (props) {
-  props = inheritStyle(props, props.style)
-  var name = props.name
-  var title
-  if (props.title) {
-    title = props.title
-  }
-  var autoplay = false
-  let componentProps = {
-    name,
-    title
-  }
-  appendComponent(props.container, componentTemplate(componentProps))
-  if (props.attributes) {
-    var attributesArray = props.attributes.split(XRegExp(` ${getTranslations('and')} `, 'gmi'))
-    for (var i = 0; i < attributesArray.length; i++) {
-      if (attributesArray[i].findBestMatch(window.wordsTranslationsDB.Words['autoplay'][declarations.langCode]).rating > 0.8) {
-        var autoplay = true
-      }
+import React from "react";
+import basicComponent from "core/basicComponent";
+import Radium from "radium";
+import ReactAplayer from "react-aplayer";
+import mergeAdvanced from "object-merge-advanced";
+class audioPlayer extends basicComponent {
+  constructor(props) {
+    super(props);
+    if (!this.isRestored) {
+      this.state = { ...this.state, audios: [] };
     }
+    this.myRef = React.createRef();
   }
-  document.initializeAudioPlayerA = []
-  document.initializeAudioPlayerB = []
-  document.initializeAudioPlayerA[name] = new Function('title, author, url', 'document.' + name + " = new APlayer({container: document.getElementById('" + name + "'), mini: false, autoplay: " + autoplay + ", lrcType: 0, mutex: true, theme: '#e6d0b2', order: 'random', preload: 'metadata', listMaxHeight: '513px', audio: {name: title, artist: author, url: url}});")
-  document.initializeAudioPlayerB[name] = new Function('title, author, url, coverURL', 'document.' + name + " = new APlayer({container: document.getElementById('" + name + "'), mini: false, autoplay: " + autoplay + ", lrcType: 0, mutex: true, theme: '#e6d0b2', order: 'random', preload: 'metadata', listMaxHeight: '513px', audio: {name: title, artist: author, url: url, cover: coverURL}});")
-  propSet(name, props)
+
+  onInit = ap => {
+    this.ap = ap;
+  };
+
+  play = () => this.ap.play();
+
+  pause = () => this.ap.pause();
+
+  seek = timePos => this.ap.seek(timePos);
+
+  addAudio(audioProps) {
+    this.setState(prevState => {
+      const prevAudios = prevState.audios;
+      const nextAudios = prevAudios.concat([audioProps]);
+      const nextState = mergeAdvanced(prevState, { audios: nextAudios });
+      return nextState;
+    });
+  }
+  thisComponent = () => {
+    const state = this.getState();
+    const styles = this.getStyles();
+    return (
+      <ReactAplayer
+        ref={this.myRef}
+        theme="#F57F17"
+        lrcType={3}
+        audio={state.audios || []}
+        onInit={this.onInit}
+        style={styles}
+        {...this.getEvents()}
+      />
+    );
+  };
 }
+
+export default Radium(audioPlayer);

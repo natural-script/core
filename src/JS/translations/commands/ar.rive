@@ -104,9 +104,9 @@
 + اجعل قيمة هذا العنصر *
 - id: S6 ==> lang: ar ==> target: itself ==> value: <star1>
 
-// اجعل قيمة welcome_message Welcome, folks !
+// اجعل قيمة العنصر welcome_message Welcome, folks !
 
-+ اجعل قيمة (<1 word>) *
++ اجعل قيمة العنصر (<1 word>) *
 - id: S6 ==> lang: ar ==> target: <star1> ==> value: <star2>
 
 // بدل حالة الفلاش
@@ -285,3 +285,12 @@
 
 + (?:استلم|احصل على) البيانات المرسلة من *
 - id: S28 ==> lang: ar ==> URL: <star1>
+
++ (?:انشئ|اعمل) (?:حساب جديد|مستخدم جديد) باستخدام (?:المعلومات|البيانات) التالية:<line break>*
+- id: S29 ==> lang: ar ==> data: <star1>
+
++ سجل الدخول باستخدام (?:المعلومات|البيانات) التالية:<line break>*
+- id: S30 ==> lang: ar ==> data: <star1>
+
++ سجل الخروج
+- id: S31 ==> lang: ar

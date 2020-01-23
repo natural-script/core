@@ -26,3 +26,16 @@
 
 + its * (is|are) *
 - id: CI6 ==> lang: en ==> property: <star1> ==> propertyValue: <star3>
+
+> topic componentProps
+
+  + its * (is|are) *
+  - id: CI6 ==> lang: en ==> property: <star1> ==> propertyValue: <star3>
+
+  + in [the] case of the portrait mode
+  - id: CI7 ==> lang: en
+
+  + in [the] case of the landscape mode
+  - id: CI8 ==> lang: en
+
+< topic

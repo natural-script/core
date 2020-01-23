@@ -110,3 +110,6 @@
 
 + le nom du numéro d'article (\d+) dans le menu déroulant *
 - id: O22 ==> lang: fr ==> item: <star1> ==> dropdownMenuName: <star2>
+
++ l'identifiant unique de l'utilisateur
+- id: O23 ==> lang: fr

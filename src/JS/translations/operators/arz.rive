@@ -110,3 +110,6 @@
 
 + اسم العنصر رقم (\d+) فى القايمة المنسدلة *
 - id: O22 ==> lang: arz ==> item: <star1> ==> dropdownMenuName: <star2>
+
++ كود المستخدم
+- id: O23 ==> lang: arz

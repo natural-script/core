@@ -1,37 +1,51 @@
-/*!
- * Dialog Box
- * https://project-jste.github.io/
- *
- * Copyright 2017 Jste Team
- * Released under the GNU AGPLv3 license
- * https://project-jste.github.io/license
- *
- * Date: 2018-02-05
- */
-import inheritStyle from 'core/styleInheritor'
-import propSet from 'core/propSet'
-import 'imports-loader?userAgent=>true!izimodal'
-import 'izimodal/css/iziModal.css'
-import componentTemplate from './dialogBox.pug'
-import * as declarations from 'core/declarations'
-export default function (props) {
-  props = inheritStyle(props, props.style)
-  var name = props.name
-  var isRTL = declarations.isRTL
-  var title
-  if (props.title) {
-    title = props.title
+import React from "react";
+import basicComponent from "core/basicComponent";
+import Radium from "radium";
+import * as Material from "@material-ui/core";
+class dialogBox extends basicComponent {
+  constructor(props) {
+    super(props);
+    if (!this.isRestored) {
+      this.state = { ...this.state, isOpened: false };
+    }
+    this.myRef = React.createRef();
   }
-  let componentProps = {
-    name,
-    isRTL,
-    title
-  }
-  $('body').append(componentTemplate(componentProps))
-  $('body').find(`#${name}`).iziModal()
-  if (props.emitter) {
-    $('body').find(`#${props.emitter}`).attr('onclick', props.name + '.open()')
-  }
-  propSet(name, props)
-  $('body').find(`#${name}`).css('position', 'fixed')
+  open = () => {
+    if (this.getState().isOpened != true) {
+      this.updateProps({ isOpened: true });
+    }
+  };
+  close = () => {
+    if (this.getState().isOpened != false) {
+      this.updateProps({ isOpened: false });
+    }
+  };
+  thisComponent = () => {
+    const state = this.getState();
+    const styles = this.getStyles();
+    return (
+      <Material.Dialog
+        ref={this.myRef}
+        open={state.isOpened}
+        fullScreen={this.isAttributedByBeing("fullscreen")}
+        aria-labelledby={state.name}
+        style={styles}
+        {...this.getEvents()}
+      >
+        {state.title && (
+          <Material.DialogTitle id={state.name}>
+            {state.title}
+          </Material.DialogTitle>
+        )}
+        <Material.DialogContent>{state.children}</Material.DialogContent>
+        <Material.DialogActions>
+          <Material.Button onClick={this.close} color="primary">
+            Close
+          </Material.Button>
+        </Material.DialogActions>
+      </Material.Dialog>
+    );
+  };
 }
+
+export default Radium(dialogBox);

@@ -1,43 +1,70 @@
-/*!
- * Select Menu
- * https://project-jste.github.io/
- *
- * Copyright 2017 Jste Team
- * Released under the GNU AGPLv3 license
- * https://project-jste.github.io/license
- *
- * Date: 2018-02-05
- */
-import inheritStyle from 'core/styleInheritor'
-import appendComponent from 'core/componentAppend'
-import propSet from 'core/propSet'
-import getTranslations from 'core/translationsGet'
-import isAttributedByBeing from 'core/isAttributedByBeing'
-import componentTemplate from './selectMenu.pug'
-import * as declarations from 'core/declarations'
-export default function (props) {
-  props = inheritStyle(props, props.style)
-  var name = props.name
-  var title, items, isDisabled
-  if (props.title) {
-    title = props.title
-  }
-  if (props.items) {
-    items = props.items.split(' &&& ')
-  }
-  isDisabled = isAttributedByBeing(props, 'disabled')
-  let componentProps = {
-    name,
-    title,
-    items,
-    isDisabled
-  }
-  appendComponent(props.container, componentTemplate(componentProps))
-  let ro = new ResizeObserver(entries => {
-    for (let entry of entries) {
-      $(entry.target).find(`paper-listbox[slot="dropdown-content"]`).width($(entry.target).outerWidth())
+import React from "react";
+import basicComponent from "core/basicComponent";
+import updateDynamicData from "core/updateDynamicData";
+import parseStringValue from "parsers/stringValue.js";
+import Radium from "radium";
+import * as Material from "@material-ui/core";
+class selectMenu extends basicComponent {
+  constructor(props) {
+    super(props);
+    if (!this.isRestored) {
+      this.internalData = {
+        ...this.internalData,
+        value: null
+      };
     }
-  })
-  ro.observe($(`paper-dropdown-menu#${name}`).get(0))
-  propSet(name + '', props)
+    this.myRef = React.createRef();
+  }
+  getVal = () => this.internalData.value;
+  componentDidMount() {
+    this.attatchHandler(
+      "E11",
+      event => {
+        this.internalData.value = event.target.value;
+        console.log(this.internalData.value);
+        updateDynamicData(
+          `components["${this.state.name}"].internalData.value`
+        );
+      },
+      true
+    );
+  }
+
+  thisComponent = () => {
+    const state = this.getState();
+    const styles = this.getStyles();
+    return (
+      <Material.FormControl
+        variant="outlined"
+        style={styles}
+        disabled={this.isAttributedByBeing("disabled")}
+      >
+        <Material.InputLabel htmlFor={state.name}>
+          {state.title}
+        </Material.InputLabel>
+        <Material.Select
+          value={this.internalData.value}
+          input={<Material.OutlinedInput name={state.name} id={state.name} />}
+          {...this.getEvents()}
+        >
+          <Material.MenuItem value="">
+            <em>None</em>
+          </Material.MenuItem>
+          {state.items.split(" &&& ").map(item => {
+            item = parseStringValue(item);
+            return (
+              <Material.MenuItem key={item} value={item}>
+                {item}
+              </Material.MenuItem>
+            );
+          })}
+        </Material.Select>
+        {state.description && (
+          <Material.FormHelperText>{state.description}</Material.FormHelperText>
+        )}
+      </Material.FormControl>
+    );
+  };
 }
+
+export default Radium(selectMenu);

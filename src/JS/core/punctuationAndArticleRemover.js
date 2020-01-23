@@ -8,7 +8,14 @@
  *
  * Date: 2018-02-07
  */
-import arli from 'arli'
-String.prototype.punctuationAndArticleRemover = function () {
-  return arli.removeDash(this.split(/^(?:ال|لل)/gmi).join('').split(/\s+ال/).join(' ').replace(/[أإآ]/g, 'ا'))
-}
+import arli from "arli";
+String.prototype.punctuationAndArticleRemover = function() {
+  return arli.removeDash(
+    this.split(/^(?:ال|لل)/gim)
+      .join("")
+      .split(/\s+ال/)
+      .join(" ")
+      .replace(/[أإآ]/g, "ا")
+      .replace(/ي/g, "ى")
+  );
+};

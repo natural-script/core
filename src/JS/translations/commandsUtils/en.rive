@@ -35,3 +35,6 @@
 
 + for every * in the list *
 - id: CU9 ==> lang: en ==> varName: <star1> ==> listName: <star2>
+
++ After finishing executing the previous command, do the following
+- id: CU10 ==> lang: en

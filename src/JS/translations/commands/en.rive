@@ -250,3 +250,12 @@
 
 + (?:get|retrieve|fetch) the sent data from *
 - id: S28 ==> lang: en ==> URL: <star1>
+
++ (?:create a new user|sign up) (?:providing|using) the following data:<line break>*
+- id: S29 ==> lang: en ==> data: <star1>
+
++ sign in (?:providing|using) the following data:<line break>*
+- id: S30 ==> lang: en ==> data: <star1>
+
++ sign out
+- id: S31 ==> lang: en

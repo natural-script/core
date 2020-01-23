@@ -24,5 +24,15 @@
 + استنسخ العنصر * بأوامره بالخواص التالية
 - id: CI5 ==> lang: ar ==> clonedElement: <star1>
 
-+ * (الخاص به|الخاصة به|الخاص بها|الخاصة بها) *
-- id: CI6 ==> lang: ar ==> property: <star1> ==> propertyValue: <star3>
+> topic componentProps
+
+  + * (الخاص به|الخاصة به|الخاص بها|الخاصة بها) *
+  - id: CI6 ==> lang: ar ==> property: <star1> ==> propertyValue: <star3>
+
+  + فى حالة الوضع الطولى
+  - id: CI7 ==> lang: ar
+
+  + فى حالة الوضع الأفقى
+  - id: CI8 ==> lang: ar
+
+< topic

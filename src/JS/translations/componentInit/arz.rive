@@ -24,5 +24,15 @@
 + استنسخ العنصر * بأوامره بالخواص دى
 - id: CI5 ==> lang: arz ==> clonedElement: <star1>
 
-+ * (بتاعه|بتاعته|بتاعها|بتاعتها) *
-- id: CI6 ==> lang: arz ==> property: <star1> ==> propertyValue: <star3>
+> topic componentProps
+
+  + * (بتاعه|بتاعته|بتاعها|بتاعتها|الخاص بيه|الخاص بيها|الخاصة بيه|الخاصة بيها) *
+  - id: CI6 ==> lang: arz ==> property: <star1> ==> propertyValue: <star3>
+
+  + فى حالة الوضع الطولى
+  - id: CI7 ==> lang: arz
+
+  + فى حالة الوضع الأفقى
+  - id: CI8 ==> lang: arz
+
+< topic

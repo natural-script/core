@@ -104,9 +104,9 @@
 + خلى قيمة العنصر دة *
 - id: S6 ==> lang: arz ==> target: itself ==> value: <star1>
 
-// خلى قيمة welcome_message Welcome, folks !
+// خلى قيمة العنصر welcome_message Welcome, folks !
 
-+ خلى قيمة (<1 word>) *
++ خلى قيمة العنصر (<1 word>) *
 - id: S6 ==> lang: arz ==> target: <star1> ==> value: <star2>
 
 // بدل حالة الفلاش
@@ -285,3 +285,12 @@
 
 + (?:استلم|هات) البيانات المبعوتة من *
 - id: S28 ==> lang: arz ==> URL: <star1>
+
++ (?:انشئ|اعمل) (?:حساب جديد|مستخدم جديد) باستخدام (?:المعلومات|البيانات) دى:<line break>*
+- id: S29 ==> lang: arz ==> data: <star1>
+
++ سجل الدخول باستخدام (?:المعلومات|البيانات) دى:<line break>*
+- id: S30 ==> lang: arz ==> data: <star1>
+
++ سجل الخروج
+- id: S31 ==> lang: arz
