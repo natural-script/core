@@ -43,7 +43,7 @@ window.scriptInit = async function() {
   rawCode = rawCode.replace(/^(?:[\t ]*(?:\r?\n|\r))+/gim, ``);
   rawCode = rawCode.replace(/^/gim, `\t`);
   rawCode = rawCode.replace(/\s+$(?!\n)/gm, "");
-  if (navigator.onLine) {
+  /*if (navigator.onLine) {
     let managerIsReachable = await isReachable(
       "https://jste-manager.herokuapp.com/autoCorrect"
     );
@@ -66,7 +66,7 @@ window.scriptInit = async function() {
           }));
       }
     }
-  }
+  }*/
   var codePrefix =
     "jQuery(document).ready(\nfunction ($) {let elementName; let scopes = []; let parentFnParams = [];";
   var code = rawCode;

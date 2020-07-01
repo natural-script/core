@@ -60,6 +60,34 @@ export default class extends Component {
       data: { state: state, internalData: internalData }
     });
   }
+  componentDidMount() {
+    const internalData = this.internalData;
+    const state = this.state;
+    preservedData.dispatch({
+      type: "PRESERVE_DATA",
+      componentName: this.state.name,
+      data: { state: state, internalData: internalData }
+    });
+  }
+  componentDidUpdate() {
+    const internalData = this.internalData;
+    const state = this.state;
+    preservedData.dispatch({
+      type: "PRESERVE_DATA",
+      componentName: this.state.name,
+      data: { state: state, internalData: internalData }
+    });
+  }
+  getSnapshotBeforeUpdate() {
+    const internalData = this.internalData;
+    const state = this.state;
+    preservedData.dispatch({
+      type: "PRESERVE_DATA",
+      componentName: this.state.name,
+      data: { state: state, internalData: internalData }
+    });
+    return null
+  }
   updateProps = (patch = {}) => {
     patch = parseStringValue(
       patch,
@@ -70,9 +98,6 @@ export default class extends Component {
     this.setState(prevState => {
       return mergeAdvanced(prevState, patch);
     });
-    if (patch.routes) {
-      this.forceUpdate();
-    }
   };
   animate = animationProps =>
     anime({

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node build.js",
     "build": "node build.js",
-    "test": "webpack-dev-server --config ./webpack.config.js --mode development --port 8080 --host 0.0.0.0"
+    "test": "webpack-dev-server --config ./webpack.config.js --mode development --port 8080"
   },
   "dependencies": {
     "@babel/core": "",
@@ -15,6 +15,7 @@
     "@fortawesome/fontawesome-free": "",
     "@material-ui/core": "",
     "@material-ui/icons": "",
+    "@react-navigation/native": "",
     "@tensorflow/tfjs": "",
     "@yavuzmester/css-length-to-px": "",
     "animate.css": "",
@@ -47,6 +48,7 @@
     "fs-readdir-recursive": "",
     "gzipy": "",
     "history": "",
+    "hookrouter": "^1.2.3",
     "html-minifier": "",
     "image-data-uri": "",
     "imports-loader": "",
@@ -69,6 +71,7 @@
     "optimize-css-assets-webpack-plugin": "",
     "pegjs": "",
     "pegjs-loader": "",
+    "preact": "",
     "radium": "",
     "rainyday.js": "",
     "randomcolor": "",
@@ -104,7 +107,8 @@
     "webpack-dev-server": "",
     "webpack-modernizr-loader": "",
     "webpack-plugin-install-deps": "",
-    "xregexp": ""
+    "xregexp": "",
+    "hookrouter": ""
   },
   "repository": {
     "type": "git",

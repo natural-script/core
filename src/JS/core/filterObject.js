@@ -1,5 +1,5 @@
 import filterObject from "core/filterObject";
-import nanoid from "nanoid";
+import { nanoid } from "nanoid";
 export let EscapeFilteration = nanoid();
 
 function syncFilterObject(object, filterer, path) {

@@ -3,7 +3,9 @@ import ReactDOM from "react-dom";
 import { Helmet } from "react-helmet";
 import { components } from "core/NSStore";
 import Container from "components/container";
+import Router from "components/router";
 import * as declarations from "core/declarations";
+export let router;
 export default function setup(props) {
   let mode, logoURL, title;
   if (
@@ -37,6 +39,10 @@ export default function setup(props) {
         <link rel="icon" type="image/png" href={logoURL} />
         <title>{title}</title>
       </Helmet>
+      <Router 
+        ref={ourComponent => {
+          router = ourComponent;
+        }} />
       <Container
         prestate={{
           name: "NSMAINCONTAINER",

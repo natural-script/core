@@ -1,5 +1,5 @@
 import analyze from "core/analyzer";
-import nanoid from "nanoid";
+import { nanoid } from "nanoid";
 export default function evalCode(code, previousScopes, topic) {
   let finalCode = "";
   if (code) {

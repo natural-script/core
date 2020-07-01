@@ -1,5 +1,5 @@
 import mapObject from "core/mapObject";
-import nanoid from "nanoid";
+import { nanoid } from "nanoid";
 export let EscapeMapping = nanoid();
 export let ContinueDeepper = nanoid();
 

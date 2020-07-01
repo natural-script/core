@@ -3,12 +3,15 @@ import applyOp from "core/applyOp";
 import { components } from "core/NSStore";
 import parseStringValue from "parsers/stringValue";
 export default function appendComponent(component, props) {
-  const elemContainer = parseStringValue(
+  let elemContainer = parseStringValue(
     props.container || props.router || "NSHOMEPAGE",
     false,
     props.scopes,
     props.parentFnParams
   );
+  if (props.router) {
+    elemContainer = "NSMAINCONTAINER"
+  }
   applyOp(elemContainer, () => {
     const name = parseStringValue(
       props.name,

@@ -51,9 +51,11 @@ export default function manageComponent(
         ...props
       });
     } else {
+      if (getTranslations(data.component, true) == "page") {
+        props.container = "NSMAINCONTAINER"
+      }
       appendComponent(
-        getComponent(`./${getTranslations(data.component, true)}.js`).default,
-        {
+        getComponent(`./${getTranslations(data.component, true)}.js`).default, {
           scopes,
           parentFnParams,
           ...props
