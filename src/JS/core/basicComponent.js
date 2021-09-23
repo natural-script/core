@@ -3,7 +3,7 @@ import { preservedData } from "core/NSStore";
 import deepEql from "deep-eql";
 import mapObject, { ContinueDeepper } from "core/mapObject";
 import filterObject, { EscapeFilteration } from "core/filterObject";
-import mergeAdvanced from "object-merge-advanced";
+import { mergeAdvanced } from "object-merge-advanced";
 import clone from "clone";
 import blackOrWhite from "blackorwhite";
 import anime from "animejs";

@@ -1,15 +1,20 @@
 const webpack = require("webpack");
-const TerserPlugin = require("terser-webpack-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
   .BundleAnalyzerPlugin;
 const CompressionPlugin = require("compression-webpack-plugin");
-const NpmInstallPlugin = require("webpack-plugin-install-deps");
 const path = require("path");
 module.exports = (env, argv) => {
   return {
     // devtool: argv.mode == `development` ? `inline-source-map` : `source-map`,
+    cache: false,
     resolve: {
+      fallback: {
+        fs: false,
+        stream: require.resolve("stream-browserify"),
+        path: require.resolve("path-browserify"),
+        zlib: require.resolve("browserify-zlib")
+      },
       alias: {
         modernizr$: path.resolve(__dirname, "./.modernizrrc.js"),
         jquery$: path.resolve(__dirname, "./node_modules/jquery"),
@@ -29,7 +34,6 @@ module.exports = (env, argv) => {
       }
     },
     plugins: [
-      new NpmInstallPlugin(),
       /* new BundleAnalyzerPlugin({
 				analyzerMode: 'static'
 			}), */
@@ -43,26 +47,12 @@ module.exports = (env, argv) => {
       })
     ],
     entry: ["core-js/stable", "regenerator-runtime/runtime", "./src/app.js"],
-    node: {
-      fs: "empty"
-    },
     target: "web",
-    output: {
-      filename:
-        argv.mode == `development`
-          ? `./src/bundle.js`
-          : `./naturalScript.min.js`
-    },
-	optimization: {
-      minimizer: [new TerserPlugin()]
-    },
     module: {
-      rules: [
-        {
+      rules: [{
           test: /\.js$/,
           exclude: [
-            path.resolve(__dirname, "./src/JS/Third Party/CLD/cld-min.js"),
-            path.resolve(__dirname, "./node_modules/firebaseui")
+            path.resolve(__dirname, "./src/JS/Third Party/CLD/cld-min.js")
           ],
           loader: "babel-loader",
           options: {
@@ -118,11 +108,11 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.(jpg|png|svg|mp4|m4a|woff|woff2|eot|ttf|wav)$/,
-          loader: "url-loader"
+          type: 'asset/inline'
         },
         {
           test: /\.rive$/,
-          use: "raw-loader"
+          type: 'asset/source'
         }
       ]
     }

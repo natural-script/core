@@ -280,17 +280,7 @@ const codeAnalyzer = (function() {
 		running in a web browser or from node.
 		*/
 		runtime() {
-			var self = this;
-
-			// Webpack and browserify define `process.browser` so this is the best place
-			// to check if we're running in a web environment.
-			if (process.browser) {
-				return "web";
-			}
-
-			// Import the Node filesystem library.
-			self._node.fs = require("fs");
-			return "node";
+			return "web";
 		}
 
 		/**

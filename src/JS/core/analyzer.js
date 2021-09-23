@@ -23,12 +23,12 @@ export let normalTxtOperatorTranslations = [];
 var bot = new codeAnalyzer();
 if (declarations.langCode) {
   bot.stream([
-    importRS(`./commands/${declarations.langCode}.rive`).default,
-    importRS(`./commandsUtils/${declarations.langCode}.rive`).default,
-    importRS(`./componentInit/${declarations.langCode}.rive`).default,
-    importRS(`./events/${declarations.langCode}.rive`).default,
-    importRS(`./operators/${declarations.langCode}.rive`).default,
-    importRS(`./conditions/${declarations.langCode}.rive`).default
+    importRS(`./commands/${declarations.langCode}.rive`),
+    importRS(`./commandsUtils/${declarations.langCode}.rive`),
+    importRS(`./componentInit/${declarations.langCode}.rive`),
+    importRS(`./events/${declarations.langCode}.rive`),
+    importRS(`./operators/${declarations.langCode}.rive`),
+    importRS(`./conditions/${declarations.langCode}.rive`)
   ]);
   const topics = bot.deparse().topics;
   let commonTopic = [];
