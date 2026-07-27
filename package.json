@@ -75,7 +75,7 @@
     "webpack": "",
     "webpack-bundle-analyzer": "",
     "webpack-cli": "",
-    "webpack-dev-server": "4.0.0-beta.2",
+    "webpack-dev-server": "5.2.6",
     "webpack-modernizr-loader": "",
     "xregexp": ""
   },
